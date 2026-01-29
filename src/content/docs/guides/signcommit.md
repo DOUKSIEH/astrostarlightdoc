@@ -16,7 +16,7 @@ Signer un commit Git avec une clé **GPG** permet de garantir deux choses fondam
 
 Sur GitHub, un commit signé affiche le badge **✅ Verified**.
 
->Un commit signé prouve cryptographiquement que **toi seul** (détenteur de la clé privée)
+> Un commit signé prouve cryptographiquement que **toi seul** (détenteur de la clé privée)
 as pu produire ce commit et que son contenu n’a pas été modifié.
 
 
