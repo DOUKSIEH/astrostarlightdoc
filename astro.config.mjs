@@ -1,6 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import remarkArticleMeta   from "./src/plugins/remark-reading-time.mjs";
+//remarkReadingTime --> ./src/plugins/remark-reading-time.mjs';
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +26,10 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
+
 		}),
 	],
+	markdown: {
+    	remarkPlugins: [remarkArticleMeta],
+ 	 },
 });
