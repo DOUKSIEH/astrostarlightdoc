@@ -1,11 +1,23 @@
 ---
-title: Signer ses commits Git avec une clé GPG
-description: Pourquoi et comment signer ses commits Git avec GPG pour garantir l’intégrité et l’identité de l’auteur.
-authors: [douksieh]
-tags: [ngrok]
-image: https://i.imgur.com/mErPwqL.png
-hide_table_of_contents: false
+title: "Signer ses commits Git avec une clé GPG"
+description: "Pourquoi et comment signer ses commits Git avec GPG pour garantir l’intégrité et l’identité de l’auteur."
+# template: "doc"
+# hero:
+#   title: "Mon projet : Mise en place d'une plateforme Odoo avec K8S"
+#   tagline: "Emmenez vos affaires sur la lune et revenez-y en un clin d'œil."
+#   image:
+#     alt: "Un logo aux couleurs vives et scintillantes"
+#     dark: "https://i.imgur.com/mErPwqL.png"
+#     light: "https://i.imgur.com/mErPwqL.png"
+created: "2026-01-29"
+updated: "2026-01-30"
+author:
+  name: "Douksieh"
+  role: "DevOps Engineer"
+  avatar: "https://github.com/DOUKSIEH.png"
+# hide_table_of_contents: false
 ---
+
 
 ## 🎯 Pourquoi signer ses commits Git avec GPG ?
 
