@@ -5,3 +5,142 @@
   padding: 0.75rem 1rem;
   margin-left: 0;
 }
+.reading-time {
+  font-size: 0.875rem;
+  color: var(--sl-color-gray-500);
+  margin-bottom: 1rem;
+}
+/* .article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 0.75rem 0 1.25rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+} */
+.article-meta {
+  display: grid;
+  grid-template-columns: 1fr auto; /* gauche = auteur, droite = lecture */
+  align-items: start;
+  gap: 1.5rem;
+
+  margin: 0.75rem 0 1.25rem 0;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+.am-author {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+ /* Colonne gauche : auteur */
+/* .am-author {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+} */
+
+
+.am-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid var(--sl-color-hairline);
+}
+
+.am-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.am-role {
+  font-style: italic;
+  color: var(--sl-color-gray-600);
+  margin-top: 0.1rem;
+}
+
+.am-updated {
+  color: #dc2626;
+  margin-top: 0.35rem;
+}
+
+.am-published {
+  color: var(--sl-color-gray-600);
+  margin-top: 0.25rem;
+}
+
+/* .am-reading {
+  flex: 0 0 auto;
+} */
+/* Colonne droite : temps de lecture EN BAS */
+/* .am-reading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  align-self: end; 
+} */
+ /* Badge lecture : colonne droite, ligne 2 (EN DESSOUS) */
+.am-reading {
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  justify-content: flex-end;
+}
+/* .am-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--sl-color-bg);
+   font-weight: 600;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+ 
+} */
+/* .am-pill::before {
+  content: "⏱️";
+  font-size: 1rem;
+  line-height: 1;
+} */
+.am-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+
+  /* Layout */
+  padding: 0.90rem 1rem;
+  border-radius: 0.75rem;
+
+  /* Couleurs */
+  background: rgba(214, 3, 233, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  color: #d50ce8;
+
+  /* Texte */
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1;
+
+  /* Shadow */
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.15);
+
+  /* Finition */
+  /* white-space: nowrap; */
+}
+/* 🎯 SHADOW UNIQUEMENT SUR LE TEXTE */
+/* .am-pill-text {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.6rem;
+
+  background: #ffffff;
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 0.9rem;
+
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
+} */
