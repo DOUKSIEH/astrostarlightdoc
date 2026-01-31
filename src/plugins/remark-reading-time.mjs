@@ -88,6 +88,7 @@ export default function remarkArticleMeta() {
 
     // Frontmatter
     const fm = file?.data?.astro?.frontmatter ?? {};
+    const showReadingTime = fm.showReadingTime !== false;
     const created = formatDateFR(fm.created);
     const updated = formatDateFR(fm.updated);
 
@@ -104,27 +105,33 @@ export default function remarkArticleMeta() {
 
     const nameHtml = authorName ? `<div class="am-name">${authorName}</div>` : "";
     const roleHtml = authorRole ? `<div class="am-role">${authorRole}</div>` : "";
+    // --- Badge lecture (désactivable) à la page d'accueil ---
+    const readingHtml = showReadingTime
+      ? `
+      <div class="am-reading">
+        <span class="am-pill">⏱️ ${minutes} min de lecture</span>
+      </div>
+      `
+      : "";
 
     const html = `
-<div class="article-meta">
-  <div class="am-author">
-    ${avatarHtml}
-    <div class="am-author-text">
-      ${nameHtml}
-      ${roleHtml}
-      ${updatedLine}
-      ${publishedLine}
+    <div class="article-meta">
+      <div class="am-author">
+        ${avatarHtml}
+        <div class="am-author-text">
+          ${nameHtml}
+          ${roleHtml}
+          ${updatedLine}
+          ${publishedLine}
+        </div>
+      </div>
+      ${readingHtml}
     </div>
-  </div>
-  <div class="am-reading">
-    <span class="am-pill">⏱️ ${minutes} min de lecture</span>
-  </div>
-</div>
-`;
+    `;
 
     // Injecter juste après le H1 si présent
     const idxH1 = tree.children.findIndex((n) => n?.type === "heading" && n?.depth === 1);
-    const insertAt = idxH1 >= 0 ? idxH1 + 1 : 0;
+    const insertAt = idxH1 >= 0 ? idxH1  : 0;
 
     tree.children.splice(insertAt, 0, { type: "html", value: html });
   };

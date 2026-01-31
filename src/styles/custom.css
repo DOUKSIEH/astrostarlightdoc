@@ -144,3 +144,40 @@
 
   box-shadow: 0 4px 10px rgba(22, 163, 74, 0.25);
 } */
+
+/* Style pour tous les tableaux du site */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+/* En-tête : Fond vert foncé avec texte blanc */
+th {
+  background-color: #2e7d32 !important;
+  color: white !important;
+  padding: 12px;
+}
+
+/* Lignes paires (Even) : Vert très clair */
+tr:nth-child(even) {
+  background-color: #e8f5e9;
+}
+
+/* Lignes impaires (Odd) : Blanc */
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* Bordures discrètes */
+td, th {
+  border: 1px solid #c8e6c9;
+  padding: 10px;
+}
+
+/* === Splash page: full width hero === */
+/* Splash (home) : enlever la largeur max du container pour que le titre prenne toute la page */
+
+/* S'assure que la partie "copy" (titre + tagline) peut prendre toute la largeur */
+
+
