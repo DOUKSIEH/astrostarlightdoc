@@ -2,7 +2,7 @@
 title: "Guide de Commandes Talos Linux"
 description: "Aide-mémoire des commandes talosctl pour la gestion du cluster, des nœuds et de la configuration."
 created: "2026-01-31"
-# updated: "2026-01-31"
+updated: "2026-02-02"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -121,6 +121,20 @@ kubectl get nodes
 
 ---
 
+## 🌐 Accès au Cluster à distance (Tunneling)
+
+:::tip[Pédagogie]
+Comme Talos n'a pas de SSH, si votre cluster est hébergé sur un réseau privé (ex: Proxmox à la maison ou Cloud), vous devez créer un tunnel sécurisé pour que vos outils locaux (`talosctl` et `kubectl`) puissent joindre les APIs.
+:::
+
+### 1. Création du tunnel SSH
+Exécutez cette commande depuis votre machine locale pour rediriger les ports nécessaires :
+
+```bash
+# Tunnel pour l'API Talos (50000) et l'API Kubernetes (6443)
+ssh -L 50000:$CONTROL_PLANE_IP:50000 -L 6443:$CONTROL_PLANE_IP:6443 user@votre-serveur-rebond
+
+---
 ## 🛰️ État du Cluster et des Nœuds
 ### Informations générales
 
@@ -143,6 +157,44 @@ talosctl containers -k
 talosctl dashboard
 
 ```
+
+### 2. Configuration pour Talosctl
+Une fois le tunnel ouvert, vous devez dire à talosctl de passer par votre propre machine (127.0.0.1) pour atteindre le nœud :
+
+```bash
+
+# On définit l'endpoint sur localhost (entrée du tunnel)
+talosctl config endpoint 127.0.0.1
+
+# On définit le node sur l'IP réelle du nœud cible
+talosctl config node $CONTROL_PLANE_IP
+
+```
+### 3. Configuration pour Kubectl
+Avant de modifier l'adresse, vérifiez le nom exact de votre cluster enregistré dans votre configuration locale :
+
+```bash
+# Lister les clusters connus par votre kubectl
+kubectl config get-clusters
+Modifiez votre fichier kubeconfig pour qu'il pointe vers le port tunnelé :
+
+``` 
+
+Une fois le nom identifié (ex: talos-proxmox-cluster), modifiez l'adresse du serveur pour qu'elle pointe vers l'entrée de votre tunnel local :
+
+```bash
+
+# Modifier l'adresse du serveur vers localhost
+kubectl config set-cluster talos-proxmox-cluster --server=https://127.0.0.1:6443
+
+```
+:::note[Pourquoi localhost ?] 
+En réglant le serveur sur 127.0.0.1, vous forcez kubectl à envoyer les requêtes dans votre tunnel SSH ouvert précédemment. Votre ordinateur local sert alors de relais vers l'API Kubernetes distante. 
+:::
+
+
+
+
 ---
 
 ## ⚙️ Gestion de la Configuration
