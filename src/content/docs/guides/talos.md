@@ -131,31 +131,8 @@ Comme Talos n'a pas de SSH, si votre cluster est hébergé sur un réseau privé
 Exécutez cette commande depuis votre machine locale pour rediriger les ports nécessaires :
 
 ```bash
-# Tunnel pour l'API Talos (50000) et l'API Kubernetes (6443)
+## Tunnel pour l'API Talos (50000) et l'API Kubernetes (6443)
 ssh -L 50000:$CONTROL_PLANE_IP:50000 -L 6443:$CONTROL_PLANE_IP:6443 user@votre-serveur-rebond
-
----
-## 🛰️ État du Cluster et des Nœuds
-### Informations générales
-
-```bash
-# Vérifier la version de Talos (Client et Serveur)
-talosctl version
-
-# Voir l'état de santé général du cluster
-talosctl health
-
-# Lister les conteneurs système tournant sur le nœud (Talos runtime)
-talosctl containers -k
-
-```
-### Dashboard temps réel
-
-```bash
-
-# Lancer le dashboard interactif (similaire à 'top' pour Talos)
-talosctl dashboard
-
 ```
 
 ### 2. Configuration pour Talosctl
@@ -192,7 +169,29 @@ kubectl config set-cluster talos-proxmox-cluster --server=https://127.0.0.1:6443
 En réglant le serveur sur 127.0.0.1, vous forcez kubectl à envoyer les requêtes dans votre tunnel SSH ouvert précédemment. Votre ordinateur local sert alors de relais vers l'API Kubernetes distante. 
 :::
 
+---
+## 🛰️ État du Cluster et des Nœuds
+### Informations générales
 
+```bash
+# Vérifier la version de Talos (Client et Serveur)
+talosctl version
+
+# Voir l'état de santé général du cluster
+talosctl health
+
+# Lister les conteneurs système tournant sur le nœud (Talos runtime)
+talosctl containers -k
+
+```
+### Dashboard temps réel
+
+```bash
+
+# Lancer le dashboard interactif (similaire à 'top' pour Talos)
+talosctl dashboard
+
+```
 
 
 ---
