@@ -42,6 +42,7 @@ export default defineConfig({
 						// { label: 'Example Guide', slug: 'guides/example' },
 						{ label: 'Signer le commit', slug: 'guides/signcommit' },
 						{ label: 'Guide Talos linux', slug: 'guides/talos' },
+						{ label: 'Guide cilium & hubble', slug: 'guides/cilium-hubble' },
 					],
 				},
 				{
