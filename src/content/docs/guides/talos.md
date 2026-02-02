@@ -84,7 +84,21 @@ WORKER1_IP="192.168.1.119"
 talosctl apply-config --insecure --nodes $WORKER_IP --file worker.yaml
 talosctl apply-config --insecure --nodes $WORKER1_IP --file worker.yaml
 ```
+## 🚀 Initialiser votre cluster Etcd
+:::tip
+Une fois le démarrage du Control Plane terminé, procédez à l'amorçage (bootstrap) du cluster etcd en lançant la commande suivante :
+:::
+```bash
 
+talosctl bootstrap --nodes $CONTROL_PLANE_IP --talosconfig=./talosconfig
+
+```
+:::note
+
+**Important :** 
+Cette commande doit être exécutée une seule fois sur l'un des nœuds du Control Plane. Si votre cluster en comporte plusieurs, choisissez-en un arbitrairement.
+
+:::
 ## 🔧 Configuration de base (Context & Kubeconfig)
 
 
@@ -92,8 +106,8 @@ Avant toute opération, assurez-vous que votre environnement pointe vers les bon
 
 ```bash
 # Définir les nœuds cibles (IPs)
-talosctl config endpoint <IP_CONTROL_PLANE>
-talosctl config node <IP_NODE>
+talosctl config endpoint $CONTROL_PLANE_IP
+talosctl config node $CONTROL_PLANE_IP
 
 # Récupérer le kubeconfig pour kubectl
 talosctl kubeconfig .
