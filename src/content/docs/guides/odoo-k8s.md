@@ -2,7 +2,7 @@
 title: "Kubernetes - Odoo"
 description: "Guide d'Administration : Odoo, CloudNativePG & ngrok avec K8S"
 created: "2026-02-03"
-# updated: "2026-02-02"
+updated: "2026-02-04"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,7 +11,7 @@ author:
 # hide_table_of_contents: false
 ---
 
-# 📚 Formation Complète : Architecture Odoo sur Kubernetes avec Talos Linux
+# 📚 Guide : Architecture Odoo sur Kubernetes avec Talos Linux
 
 ## Table des Matières
 
@@ -30,7 +30,7 @@ author:
 ### 🎯 Objectif de l'infrastructure
 
 Cette architecture vise à créer une plateforme Kubernetes **hybride** où :
-- Les applications métier (Odoo + PostgreSQL) tournent sur des nœuds dédiés
+- Les applications métier (Odoo + PostgreSQL **(CNPG)**) tournent sur des nœuds dédiés
 - Les outils d'observabilité (monitoring, logs, SIEM) ont leurs propres ressources
 - Chaque composant est isolé et optimisé selon ses besoins
 
@@ -50,7 +50,7 @@ Cette architecture vise à créer une plateforme Kubernetes **hybride** où :
 │  │                                                         │          │
 │  │  ┌─────────────┐  ┌─────────────┐                    │          │
 │  │  │ Worker 1    │  │ Worker 2    │  ← Production      │          │
-│  │  │ 4 GB RAM    │  │ 4 GB RAM    │     (Odoo + DB)    │          │
+│  │  │ 4 GB RAM    │  │ 4 GB RAM    │    (Odoo + DB )    │          │
 │  │  │ role=prod   │  │ role=prod   │                    │          │
 │  │  └─────────────┘  └─────────────┘                    │          │
 │  │                                                         │          │
@@ -65,12 +65,12 @@ Cette architecture vise à créer une plateforme Kubernetes **hybride** où :
 
 ### 📊 Répartition des ressources
 
-| Nœud | RAM | CPU | Rôle | Charge de travail |
-|------|-----|-----|------|-------------------|
-| **Worker 1** | 4 GB | 2+ cores | Production | Odoo (backend web) |
-| **Worker 2** | 4 GB | 2+ cores | Production | PostgreSQL (base de données) |
-| **Worker 3** | 6 GB | 2+ cores | Monitoring | Elasticsearch, Kibana |
-| **Worker 4** | 6 GB | 2+ cores | Monitoring | Loki, Grafana, Prometheus |
+| Nœud         | RAM  | CPU      | Rôle       | Charge de travail                   |
+|--------------|------|----------|------------|-------------------------------------|
+| **Worker 1** | 4 GB | 4 cores | Production | Odoo (backend web)                  |
+| **Worker 2** | 4 GB | 4 cores | Production | PostgreSQL (**CNPG** base données) |
+| **Worker 3** | 6 GB | 6 cores | Monitoring | Elasticsearch, Kibana               |
+| **Worker 4** | 6 GB | 6 cores | Monitoring | Loki, Grafana, Prometheus           |
 
 ### 🎓 Pourquoi cette séparation ?
 
