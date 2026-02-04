@@ -43,6 +43,8 @@ export default defineConfig({
 						{ label: 'Signer le commit', slug: 'guides/signcommit' },
 						{ label: 'Guide Talos linux', slug: 'guides/talos' },
 						{ label: 'Guide cilium & hubble', slug: 'guides/cilium-hubble' },
+						{ label: 'Kubernetes - CloudNativePG', slug: 'guides/cnpg-provisionner' },
+						{ label: 'Kubernetes - Odoo', slug: 'guides/odoo-k8s' },
 					],
 				},
 				{
@@ -53,6 +55,16 @@ export default defineConfig({
 
 		}),
 	],
+	 // ✅ AJOUTE ÇA
+	vite: {
+		server: {
+		allowedHosts: [
+			'testiculate-corrina-airily.ngrok-free.dev',
+			// ou plus pratique si l’URL change souvent :
+			// '.ngrok-free.dev',
+		],
+		},
+	},
 	markdown: {
     	remarkPlugins: [remarkArticleMeta],
  	 },
