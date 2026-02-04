@@ -8,7 +8,6 @@ author:
   name: "Douksieh IH"
   role: "DevOps Engineer"
   avatar: "https://github.com/DOUKSIEH.png"
-# hide_table_of_contents: false
 ---
 
 # 📚 Guide : Architecture Odoo sur Kubernetes avec Talos Linux
