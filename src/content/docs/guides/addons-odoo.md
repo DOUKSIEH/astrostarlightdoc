@@ -253,8 +253,9 @@ ls -la /mnt/extra-addons
 # drwxr-xr-x 2 101 101 4096 Jan 15 10:00 .
 # drwxr-xr-x 3 root root 4096 Jan 15 09:00 ..
 ```
-
+:::note
 Si le dossier n'existe pas, il faut modifier le Deployment Odoo pour monter le volume.
+:::
 
 ### 📦 Structure de répertoires recommandée
 
@@ -278,7 +279,7 @@ mkdir -p ~/odoo-platform/kubernetes/apps/odoo/addons/{accounting,hr,sales,custom
 
 ## 4. Méthode 1 : Installation via fichier ZIP
 
-*Cette méthode est la plus courante pour les modules téléchargés depuis l'Odoo Apps Store.*
+> Cette méthode est la plus courante pour les modules téléchargés depuis l'Odoo Apps Store.
 
 ### 📥 Étape 1 : Téléchargement du module
 
@@ -304,10 +305,12 @@ scp $LOCAL_PATH $REMOTE_PATH
 ssh odoo@vagrant-vm "ls -lh ~/odoo-platform/kubernetes/apps/odoo/addons/accounting/"
 ```
 
+:::note
 **Alternative avec WinSCP** (interface graphique) :
 1. Ouvrir WinSCP
 2. Se connecter à `vagrant-vm`
 3. Glisser-déposer le fichier ZIP
+:::
 
 ### 🔧 Étape 3 : Préparation dans Vagrant
 
@@ -476,7 +479,7 @@ kubectl exec -n odoo-v19 $POD_NAME -- tar -xzf /mnt/extra-addons/modules_account
 # tar: .: Cannot change mode to rwxr-xr-x: Operation not permitted
 ```
 
-**Pourquoi cette erreur ?**
+:::tip[**Pourquoi cette erreur ?**]
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -488,7 +491,7 @@ kubectl exec -n odoo-v19 $POD_NAME -- tar -xzf /mnt/extra-addons/modules_account
 │  Kubernetes REFUSE (protection du point de montage)        │
 └────────────────────────────────────────────────────────────┘
 ```
-
+:::
 **Commande CORRECTE** (avec `--no-overwrite-dir`) :
 
 ```bash
