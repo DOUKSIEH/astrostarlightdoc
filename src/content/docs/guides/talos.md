@@ -548,21 +548,6 @@ talosctl processes
 # Monitorer les ressources système
 talosctl stats
 
-# Logs kubelet (dernières 5 lignes)
-talosctl logs kubelet --tail 5
-
-# Logs etcd (dernières 5 lignes)
-talosctl logs etcd --tail 5
-
-# Logs containerd (dernières 5 lignes)
-talosctl logs containerd --tail 5
-
-# Logs apid (API Talos)
-talosctl logs apid --tail 5
-
-# Logs trustd (gestion des certificats)
-talosctl logs trustd --tail 5
-
 # Capturer les événements du kernel
 talosctl events
 
@@ -638,6 +623,12 @@ talosctl logs etcd --tail 100
 
 # Vérifier les logs containerd
 talosctl logs containerd -f
+
+# Logs apid (API Talos)
+talosctl logs apid --tail 5
+
+# Logs trustd (gestion des certificats)
+talosctl logs trustd --tail 5
 ```
 
 :::warning
@@ -813,17 +804,6 @@ echo "Backup saved to: $BACKUP_DIR/etcd-snapshot-$TIMESTAMP.db"
 
 ---
 
-## 📚 Ressources utiles
-
-- **Documentation officielle :** [https://www.talos.dev](https://www.talos.dev)
-- **Référence API :** [https://www.talos.dev/latest/reference/api/](https://www.talos.dev/latest/reference/api/)
-- **Configuration de référence :** [https://www.talos.dev/latest/reference/configuration/](https://www.talos.dev/latest/reference/configuration/)
-- **GitHub :** [https://github.com/siderolabs/talos](https://github.com/siderolabs/talos)
-- **Community Slack :** [Kubernetes Slack #talos](https://kubernetes.slack.com)
-- **Forum de discussion :** [https://github.com/siderolabs/talos/discussions](https://github.com/siderolabs/talos/discussions)
-
----
-
 ## 🎓 Bonnes Pratiques
 
 ### 1. Gestion des configurations
@@ -915,7 +895,7 @@ Ces commandes peuvent causer des interruptions de service ou des pertes de donn�
 
 ---
 
-## 🎪 Commandes Avancées pour Experts
+## 🎪 Commandes Avancées
 
 ### Manipulation du système de fichiers
 
@@ -982,23 +962,8 @@ talosctl service containerd restart
 Les deux outils sont complémentaires et nécessaires pour gérer un cluster Talos/Kubernetes complet.
 :::
 
----
 
-## 📝 Notes de Version
 
-### v2.0 (2026-02-05)
-- ✅ Correction de la section "Vérification des ressources Kubernetes"
-- ✅ Ajout de sections avancées (Etcd, Certificats, Réseau)
-- ✅ Amélioration du troubleshooting
-- ✅ Ajout de scripts d'automatisation
-- ✅ Checklist de déploiement complète
-- ✅ Glossaire et bonnes pratiques
 
-### v1.0 (2026-01-31)
-- 🎉 Version initiale du guide
 
----
 
-**Auteur :** Douksieh IH - DevOps Engineer  
-**Dernière mise à jour :** 05 février 2026  
-**License :** CC BY-SA 4.0
