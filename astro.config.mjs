@@ -45,11 +45,13 @@ export default defineConfig({
 						{ label: 'Guide cilium & hubble', slug: 'guides/cilium-hubble' },
 						{ label: 'Kubernetes - CloudNativePG', slug: 'guides/cnpg-provisionner' },
 						{ label: 'Kubernetes - Odoo', slug: 'guides/odoo-k8s' },
+	                    { label: 'Guide Odoo - addons' , slug: 'guides/addons-odoo' },
+						// { label: 'Infrastructure (Proxmox) - Talos-odoo19-k8s (en cours...)', slug: 'guides/infrastructure-odoo'},
 					],
 				},
 				{
 					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					autogenerate: { directory: 'reference' }, 
 				},
 			],
 
