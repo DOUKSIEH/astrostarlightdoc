@@ -49,7 +49,6 @@ La documentation de Sidero Labs est la source de vérité pour les configuration
 
 ---
 
-:::tip 
-Note de Maintenance
+:::tip[**Note de Maintenance**] 
 Lors de vos mises à jour, vérifiez toujours si l'URL de la documentation a changé. Talos versionne ses docs par branche (v1.11, v1.12, etc.).
 :::
