@@ -46,7 +46,8 @@ export default defineConfig({
 						{ label: 'Kubernetes - CloudNativePG', slug: 'guides/cnpg-provisionner' },
 						{ label: 'Kubernetes - Odoo', slug: 'guides/odoo-k8s' },
 	                    { label: 'Guide Odoo - addons' , slug: 'guides/addons-odoo' },
-						// { label: 'Infrastructure (Proxmox) - Talos-odoo19-k8s (en cours...)', slug: 'guides/infrastructure-odoo'},
+						{ label: 'Infrastructure (Proxmox) - Talos-odoo19-k8s (en cours...)', slug: 'guides/infrastructure-odoo'},
+						{ label: 'Guide Ceph & RADOS Gateway (S3) sur Proxmox VE 9', slug: 'guides/ceph-rgw'},
 					],
 				},
 				{
