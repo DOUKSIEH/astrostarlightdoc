@@ -924,19 +924,16 @@ kubectl get secret odoo-db-superuser -n odoo-v19 -o jsonpath='{.data.password}' 
 ### 🧪 Tester la haute disponibilité
 
 ```bash
-# 1. Voir le cluster actuel
-kubectl cnpg status odoo-db -n odoo-v19
-
-# 2. Identifier le primaire
+# 1. Identifier le primaire
 kubectl get pods -n odoo-v19 -l role=primary
 
-# 3. Supprimer le primaire (simule un crash)
+# 2. Supprimer le primaire (simule un crash)
 kubectl delete pod odoo-db-1 -n odoo-v19
 
-# 4. Observer le failover (5-10 secondes)
+# 3. Observer le failover (5-10 secondes)
 watch kubectl get pods -n odoo-v19
 
-# 5. Vérifier que le nouveau primaire est odoo-db-2
+# 4. Vérifier que le nouveau primaire est odoo-db-2
 kubectl cnpg status odoo-db -n odoo-v19
 ```
 
