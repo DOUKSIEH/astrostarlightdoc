@@ -1,7 +1,7 @@
 ---
 title: "Incident Mémoire & Java OutOfMemory"
 description: "Guide de Diagnostic : Incident Mémoire & Java OutOfMemory"
-created: "2026-02-03"
+created: "2026-02-11"
 # updated: "2026-02-04"
 locales: "fr"
 author:
