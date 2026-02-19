@@ -53,7 +53,7 @@ export default defineConfig({
 						{ label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
 						// { label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
 						{ label: 'Document de clarification technique (RATP)', slug: 'guides/entretien-ratp'}, 
-						{ label: 'Questions entretien (RATP)', slug: 'guides/questions'}, 
+						// { label: 'Questions entretien (RATP)', slug: 'guides/questions'}, 
 					],
 				},
 				{
