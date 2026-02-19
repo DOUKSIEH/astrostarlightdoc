@@ -50,7 +50,10 @@ export default defineConfig({
 						{ label: 'Guide Ceph & RADOS Gateway (S3) sur Proxmox VE 9', slug: 'guides/ceph-rgw'},
 						{ label: 'Guide de Diagnostic : Incident Mémoire & Java OutOfMemory', slug: 'guides/java-cg'},
 						{ label: 'Guide : Gestion d\'Incident', slug: 'guides/incident'}, 
-						{ label: 'Document de clarification technique', slug: 'guides/entretien'}, 
+						{ label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
+						// { label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
+						{ label: 'Document de clarification technique (RATP)', slug: 'guides/entretien-ratp'}, 
+						{ label: 'Questions entretien (RATP)', slug: 'guides/questions'}, 
 					],
 				},
 				{
