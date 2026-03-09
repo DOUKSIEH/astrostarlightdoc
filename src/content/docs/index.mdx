@@ -1,40 +1,208 @@
 ---
 title: Bienvenue sur la documentation technique
-description: Documentation DevOps centralisée pour les environnements Linux, Kubernetes et Talos.
+description: Documentation DevOps centralisée pour les environnements Linux, Kubernetes, Talos, observabilité, stockage et sécurité.
 template: splash
 showReadingTime: false
 hero:
   tagline: Une base de connaissances DevOps claire, structurée et orientée production.
   actions:
-    - text: Découvrir le guide Talos Linux
-      link: /guides/talos/
+    - text: 🚀 Explorer Talos Linux
+      link: /guides/linux/talos/
       icon: right-arrow
-
-    - text: Documentation Starlight
+      variant: primary
+    - text: ☸️ Architecture Kubernetes
+      link: /guides/kubernetes/odoo-k8s/
+      icon: right-arrow
+      variant: secondary
+    - text: Starlight Docs
       link: https://starlight.astro.build
       icon: external
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, Badge, Aside } from '@astrojs/starlight/components';
 
-## Next steps
+{/* ─────────────────────────────────────────────────────────── */}
+{/*  BANDEAU INTRO                                              */}
+{/* ─────────────────────────────────────────────────────────── */}
 
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+<div class="intro-banner">
+  <p>
+    📖 Cette base de connaissances couvre l'ensemble de la chaîne <strong>cloud-native</strong> :
+    du bare-metal jusqu'à l'observabilité en production.
+    Chaque guide est issu d'une expérience terrain.
+  </p>
+</div>
+
+---
+
+## 🗺️ Domaines techniques couverts
+
+<div class="cardgrid-aligned">
+<CardGrid>
+  <Card title="🐧 Linux & Talos" icon="linux">
+    Déploiement, architecture et exploitation de clusters basés sur **Talos Linux** — l'OS immuable conçu pour Kubernetes.
+
+    → Gestion des nœuds, upgrades, configuration réseau bas niveau.
+
+    [Voir les guides Linux & Talos →](/guides/linux/talos/)
+  </Card>
+
+  <Card title="☸️ Kubernetes" icon="kubernetes">
+    Déploiement d'applications, gestion de **etcd**, **CloudNativePG** et architecture complète **Odoo sur Kubernetes**.
+
+    → Ressources, namespaces, RBAC, stockage persistant.
+
+    [Voir les guides Kubernetes →](/guides/kubernetes/odoo-k8s/)
+  </Card>
+
+  <Card title="🔭 Observability" icon="magnifier">
+    Mise en place de la supervision avancée avec **Cilium**, **Hubble** et **Loki**.
+
+    → Tracing réseau, logs agrégés, dashboards Grafana.
+
+    [Voir les guides Observability →](/guides/observability/cilium-hubble/)
+  </Card>
+
+  <Card title="🗄️ Storage & Backup" icon="archive">
+    Stockage objet, sauvegarde et restauration avec **Ceph RGW** — compatible S3 sur Proxmox.
+
+    → Buckets, politiques de rétention, restauration d'urgence.
+
+    [Voir les guides Storage →](/guides/storage/ceph-rgw/)
+  </Card>
+
+  <Card title="🚨 Incident & Troubleshooting" icon="warning">
+    Diagnostic d'incidents, gestion de crise, erreurs mémoire Java et bonnes pratiques de résolution sous pression.
+
+    → Runbooks, checklist post-mortem, commandes utiles.
+
+    [Voir les guides Incident →](/guides/incident/incident/)
+  </Card>
+
+  <Card title="🔐 DevSecOps" icon="shield">
+    Culture DevSecOps, préparation d'entretien, bonnes pratiques sécurité et méthodes de travail en équipe.
+
+    → Signing des commits, hardening, checklist sécurité.
+
+    [Voir les guides DevSecOps →](/guides/devsecops/entretien/)
+  </Card>
 </CardGrid>
+</div>
+
+---
+
+## 📚 Guides recommandés pour commencer
+
+<CardGrid>
+  <Card title="Guide Talos Linux" icon="open-book">
+    **Par où commencer ?** Ce guide couvre l'installation complète, l'exploitation quotidienne et l'administration avancée d'un cluster avec Talos Linux.
+
+    [Ouvrir le guide →](/guides/linux/talos/)
+  </Card>
+
+  <Card title="Odoo sur Kubernetes" icon="open-book">
+    Architecture de référence, composants déployés, ressources dimensionnées et bonnes pratiques pour un déploiement Odoo en production.
+
+    [Ouvrir le guide →](/guides/kubernetes/odoo-k8s/)
+  </Card>
+
+  <Card title="CloudNativePG Provisioning" icon="open-book">
+    Déploiement et exploitation de PostgreSQL cloud-native dans Kubernetes — réplication, backup, failover automatique.
+
+    [Ouvrir le guide →](/guides/kubernetes/cnpg-provisionner/)
+  </Card>
+
+  <Card title="Cilium & Hubble" icon="open-book">
+    Observabilité réseau avancée : visualisation des flux, politique réseau eBPF, et intégration Grafana/Prometheus.
+
+    [Ouvrir le guide →](/guides/observability/cilium-hubble/)
+  </Card>
+
+  <Card title="Ceph RGW (S3)" icon="open-book">
+    Stockage objet compatible S3 sur Proxmox avec Ceph RADOS Gateway — configuration, buckets, accès via CLI et SDK.
+
+    [Ouvrir le guide →](/guides/storage/ceph-rgw/)
+  </Card>
+
+  <Card title="Restauration après ransomware" icon="open-book">
+    Guide pédagogique complet : restauration, reprise d'activité, communication de crise et bonnes pratiques post-incident.
+
+    [Ouvrir le guide →](/guides/storage/restore/)
+  </Card>
+</CardGrid>
+
+---
+
+## 🧰 Stack technique couverte
+
+<div class="badge-grid">
+  <Badge text="Talos Linux" variant="tip" />
+  <Badge text="Kubernetes" variant="note" />
+  <Badge text="CloudNativePG" variant="tip" />
+  <Badge text="Ceph RGW" variant="caution" />
+  <Badge text="Loki" variant="note" />
+  <Badge text="Cilium" variant="tip" />
+  <Badge text="Hubble" variant="note" />
+  <Badge text="Odoo" variant="caution" />
+  <Badge text="DevSecOps" variant="danger" />
+  <Badge text="Proxmox" variant="note" />
+  <Badge text="etcd" variant="tip" />
+  <Badge text="Grafana" variant="note" />
+</div>
+
+---
+
+## 🎯 Objectif de cette documentation
+
+<Aside type="tip" title="Pour qui est-ce fait ?">
+  Cette documentation s'adresse aux **ingénieurs DevOps, SRE et administrateurs systèmes** qui travaillent sur des environnements cloud-native en production.
+  Elle est aussi utile pour préparer des **entretiens techniques** ou **monter en compétence** rapidement sur ces stacks.
+</Aside>
+
+Tu y trouveras notamment :
+
+- ✅ Des **guides d'installation et d'exploitation** pas-à-pas
+- 🔍 Des **procédures de dépannage** avec commandes concrètes
+- 🏗️ Des **architectures de référence** commentées
+- 🔒 Des **notes de sécurité et de résilience** orientées production
+- 🎓 Des **supports de préparation** technique DevOps/SRE
+
+---
+
+## ⚡ Références rapides
+
+<CardGrid>
+  <Card title="📌 Références Talos" icon="document">
+    Commandes `talosctl`, fichiers de config, schéma machine config.
+
+    [Accéder aux références →](/reference/talos/)
+  </Card>
+
+  <Card title="📌 Kubernetes & etcd" icon="document">
+    Sauvegarder, restaurer et diagnostiquer etcd dans un cluster Kubernetes.
+
+    [Voir le guide →](/guides/kubernetes/kube-etcd/)
+  </Card>
+
+  <Card title="📌 Loki + S3 (Ceph RGW)" icon="document">
+    Configurer Loki pour stocker ses logs dans un bucket Ceph RGW compatible S3.
+
+    [Voir le guide →](/guides/observability/loki-s3-rgw/)
+  </Card>
+
+  <Card title="📌 Signer ses commits Git" icon="document">
+    Configurer GPG ou SSH pour signer ses commits — bonne pratique DevSecOps de base.
+
+    [Voir le guide →](/guides/incident/signcommit/)
+  </Card>
+</CardGrid>
+
+---
+
+<div class="footer-note">
+  <p>
+    💡 <strong>Contribution bienvenue.</strong> Si tu repères une erreur ou souhaites enrichir un guide,
+    ouvre une issue ou une pull request sur le dépôt.
+  </p>
+</div>

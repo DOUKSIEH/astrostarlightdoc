@@ -13,7 +13,13 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/DOUKSIEH/astrostarlightdoc' }],
 			customCss: ['./src/styles/custom.css'],
 			// Définit l'anglais comme langue par défaut pour ce site.
-			// defaultLocale: 'fr',
+			defaultLocale: 'fr',
+			locales: {
+				root: {
+				label: 'Français',
+				lang: 'fr',
+				},
+			},
 			// locales: {
 			// 	// Docs en français dans `src/content/docs/fr/`
 			// 	fr: {
@@ -34,31 +40,88 @@ export default defineConfig({
 			// 	dir: 'rtl',
 			// 	},
 			// },
+			// sidebar: [
+			// 	{
+			// 		label: 'Guides',
+			// 		items: [
+			// 			// Each item here is one entry in the navigation menu.
+			// 			// { label: 'Example Guide', slug: 'guides/example' },
+			// 			{ label: 'Signer le commit', slug: 'guides/signcommit' },
+			// 			{ label: 'Guide Talos linux', slug: 'guides/talos' },
+			// 			{ label: 'Guide cilium & hubble', slug: 'guides/cilium-hubble' },
+			// 			{ label: 'Kubernetes - CloudNativePG', slug: 'guides/cnpg-provisionner' },
+			// 			{ label: 'Kubernetes - Odoo', slug: 'guides/odoo-k8s' },
+	        //             { label: 'Guide Odoo - addons' , slug: 'guides/addons-odoo' },
+			// 			{ label: 'Infrastructure (Proxmox) - Talos-odoo19-k8s (en cours...)', slug: 'guides/infrastructure-odoo'},
+			// 			{ label: 'Guide Ceph & RADOS Gateway (S3) sur Proxmox VE 9', slug: 'guides/ceph-rgw'},
+			// 			{ label: 'Guide de Diagnostic : Incident Mémoire & Java OutOfMemory', slug: 'guides/java-cg'},
+			// 			{ label: 'Guide : Gestion d\'Incident', slug: 'guides/incident'}, 
+			// 			{ label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
+			// 			{ label: 'Guide : Kubernetes et etcd', slug: 'guides/kube-etcd'}, 
+			// 			{ label: 'Guide : Loki + Stockage S3 (Ceph RGW)', slug: 'guides/loki-s3-rgw'}, 
+			// 			{ label: 'Guide : DevSecOps - CALMS', slug: 'guides/entretien'}, 
+			// 		],
+			// 	},
+			// 	{
+			// 		label: 'Reference',
+			// 		autogenerate: { directory: 'reference' }, 
+			// 	},
+			// ],
 			sidebar: [
 				{
-					label: 'Guides',
+					label: "Guides",
 					items: [
-						// Each item here is one entry in the navigation menu.
-						// { label: 'Example Guide', slug: 'guides/example' },
-						{ label: 'Signer le commit', slug: 'guides/signcommit' },
-						{ label: 'Guide Talos linux', slug: 'guides/talos' },
-						{ label: 'Guide cilium & hubble', slug: 'guides/cilium-hubble' },
-						{ label: 'Kubernetes - CloudNativePG', slug: 'guides/cnpg-provisionner' },
-						{ label: 'Kubernetes - Odoo', slug: 'guides/odoo-k8s' },
-	                    { label: 'Guide Odoo - addons' , slug: 'guides/addons-odoo' },
-						{ label: 'Infrastructure (Proxmox) - Talos-odoo19-k8s (en cours...)', slug: 'guides/infrastructure-odoo'},
-						{ label: 'Guide Ceph & RADOS Gateway (S3) sur Proxmox VE 9', slug: 'guides/ceph-rgw'},
-						{ label: 'Guide de Diagnostic : Incident Mémoire & Java OutOfMemory', slug: 'guides/java-cg'},
-						{ label: 'Guide : Gestion d\'Incident', slug: 'guides/incident'}, 
-						{ label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
-						{ label: 'Guide : Kubernetes et etcd', slug: 'guides/kube-etcd'}, 
-						{ label: 'Guide : Loki + Stockage S3 (Ceph RGW)', slug: 'guides/loki-s3-rgw'}, 
-						{ label: 'Guide : DevSecOps - CALMS', slug: 'guides/entretien'}, 
+					{
+						label: "DevSecOps",
+						items: [
+						{ label: "Préparation entretien DevOps", slug: "guides/devsecops/entretien" },
+						],
+					},
+					{
+						label: "Incident & Troubleshooting",
+						items: [
+						{ label: "Gestion d'incident", slug: "guides/incident/incident" },
+						{ label: "Diagnostic Java OutOfMemory", slug: "guides/incident/java-cg" },
+						{ label: "Signer ses commits Git", slug: "guides/incident/signcommit" },
+						],
+					},
+					{
+						label: "Kubernetes",
+						items: [
+						{ label: "Odoo sur Kubernetes", slug: "guides/kubernetes/odoo-k8s" },
+						{ label: "CloudNativePG Provisioning", slug: "guides/kubernetes/cnpg-provisionner" },
+						{ label: "Kubernetes et Etcd", slug: "guides/kubernetes/kube-etcd" },
+						{ label: "Gestion des addons Odoo", slug: "guides/kubernetes/addons-odoo" },
+						],
+					},
+					{
+						label: "Linux & Talos",
+						items: [
+						{ label: "Guide Talos Linux", slug: "guides/linux/talos" },
+						{ label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
+						],
+					},
+					{
+						label: "Observability",
+						items: [
+						{ label: "Cilium & Hubble", slug: "guides/observability/cilium-hubble" },
+						{ label: "Loki avec stockage S3 (Ceph RGW)", slug: "guides/observability/loki-s3-rgw" },
+						],
+					},
+					{
+						label: "Storage & Backup",
+						items: [
+						{ label: "Ceph RGW (S3) sur Proxmox", slug: "guides/storage/ceph-rgw" },
+						{ label: "Restauration après un ransomware", slug: "guides/storage/restore" },
+						],
+					},
 					],
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' }, 
+					label: "Reference",
+					items: [
+					{ label: "Références Talos", slug: "reference/talos" },
+					],
 				},
 			],
 
