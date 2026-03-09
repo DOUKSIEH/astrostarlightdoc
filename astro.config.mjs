@@ -51,9 +51,9 @@ export default defineConfig({
 						{ label: 'Guide de Diagnostic : Incident Mémoire & Java OutOfMemory', slug: 'guides/java-cg'},
 						{ label: 'Guide : Gestion d\'Incident', slug: 'guides/incident'}, 
 						{ label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
-						// { label: 'Guide : Restauration après un Ransomware', slug: 'guides/restore'}, 
-						{ label: 'Document de clarification technique (RATP)', slug: 'guides/entretien-ratp'}, 
-						// { label: 'Questions entretien (RATP)', slug: 'guides/questions'}, 
+						{ label: 'Guide : Kubernetes et etcd', slug: 'guides/kube-etcd'}, 
+						{ label: 'Guide : Loki + Stockage S3 (Ceph RGW)', slug: 'guides/loki-s3-rgw'}, 
+						{ label: 'Guide : DevSecOps - CALMS', slug: 'guides/entretien'}, 
 					],
 				},
 				{
