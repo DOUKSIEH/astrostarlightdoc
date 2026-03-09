@@ -574,3 +574,103 @@ td, th { padding: 10px; }
   .article-meta    { grid-template-columns: 1fr; }
   .am-reading      { grid-column: 1; grid-row: auto; justify-content: flex-start; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   MODALE DE RECHERCHE (Pagefind) — fond blanc, texte lisible
+   ══════════════════════════════════════════════════════════ */
+
+/* Conteneur principal de la modale */
+site-search dialog,
+site-search [role="dialog"],
+.pagefind-ui,
+.pagefind-ui__search-clear,
+#pagefind-search {
+  --pagefind-ui-background: #ffffff !important;
+  --pagefind-ui-text: #111111 !important;
+  --pagefind-ui-primary: #7c3aed !important;
+  --pagefind-ui-border: rgba(124, 58, 237, 0.25) !important;
+  --pagefind-ui-tag: #ede9fe !important;
+  --pagefind-ui-border-width: 1px !important;
+  --pagefind-ui-border-radius: 0.5rem !important;
+}
+
+/* Fond de la modale dialog */
+site-search dialog {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid rgba(124, 58, 237, 0.2) !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fond de chaque résultat */
+.pagefind-ui__result {
+  background: #faf5ff !important;
+  border: 1px solid rgba(124, 58, 237, 0.12) !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.pagefind-ui__result:hover {
+  background: #f3e8ff !important;
+  border-color: rgba(124, 58, 237, 0.3) !important;
+}
+
+/* Titre du résultat */
+.pagefind-ui__result-title,
+.pagefind-ui__result-title a {
+  color: #4c1d95 !important;
+  font-weight: 700 !important;
+}
+
+/* Extrait de texte */
+.pagefind-ui__result-excerpt {
+  color: #111111 !important;
+}
+
+/* Texte surligné (mot recherché) */
+.pagefind-ui__result-excerpt mark,
+mark {
+  background: rgba(124, 58, 237, 0.2) !important;
+  color: #4c1d95 !important;
+  border-radius: 0.2rem !important;
+  padding: 0 0.15em !important;
+}
+
+/* Champ de saisie */
+.pagefind-ui__search-input {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid rgba(124, 58, 237, 0.3) !important;
+  border-radius: 0.5rem !important;
+}
+
+.pagefind-ui__search-input:focus {
+  border-color: #7c3aed !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15) !important;
+}
+
+/* Compteur de résultats */
+.pagefind-ui__message {
+  color: #6d28d9 !important;
+  font-weight: 600 !important;
+}
+
+/* Bouton effacer */
+.pagefind-ui__search-clear {
+  color: #7c3aed !important;
+}
+
+/* Breadcrumb / chemin du résultat */
+.pagefind-ui__result-link {
+  color: #7c3aed !important;
+}
+
+/* Fond du backdrop (overlay) */
+site-search dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
