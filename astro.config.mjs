@@ -92,6 +92,8 @@ export default defineConfig({
 						{ label: "CloudNativePG Provisioning", slug: "guides/kubernetes/cnpg-provisionner" },
 						{ label: "Kubernetes et Etcd", slug: "guides/kubernetes/kube-etcd" },
 						{ label: "Gestion des addons Odoo", slug: "guides/kubernetes/addons-odoo" },
+						{ label: "Comprendre et exploiter SBOM", slug: "guides/kubernetes/sbom" },
+						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						],
 					},
 					{
