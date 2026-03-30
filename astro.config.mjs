@@ -76,7 +76,7 @@ export default defineConfig({
 						items: [
 						{ label: "Préparation entretien DevOps", slug: "guides/devsecops/entretien" },
 						// { label: "Préparation entretien LINE", slug: "guides/devsecops/entretien-line" },
-						{ label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
+						// { label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
 						],
 					},
 					{
@@ -96,6 +96,19 @@ export default defineConfig({
 						{ label: "Gestion des addons Odoo", slug: "guides/kubernetes/addons-odoo" },
 						{ label: "Comprendre et exploiter SBOM", slug: "guides/kubernetes/sbom" },
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
+						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
+						],
+					},
+					{
+						label: "Iac",
+						items: [
+						{ label: "Packer & Golden Image Odoo 19", slug: "guides/iac/odoo-packer" },
+						],
+					},
+										{
+						label: "Security",
+						items: [
+						{ label: "Guide : gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
 						],
 					},
 					{
