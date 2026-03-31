@@ -176,6 +176,52 @@
   padding-bottom: 0.5rem;
 }
 
+/* ══════════════════════════════════════════════════════════
+   TABLEAUX — Style alterné (Violet/Gris)
+   ══════════════════════════════════════════════════════════ */
+
+/* Structure commune */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th {
+  padding: 12px;
+  font-weight: 700;
+  background-color: #4c1d95 !important; /* Fond violet foncé pour l'en-tête */
+  color: #ffffff !important;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+td {
+  padding: 10px;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+/* --- Mode LIGHT --- */
+[data-theme="light"] tr:nth-child(even) { 
+  background-color: #f5f3ff; /* Gris/Violet très clair pour les lignes paires */
+}
+[data-theme="light"] tr:nth-child(odd) { 
+  background-color: #ffffff; /* Blanc pour les lignes impaires */
+}
+[data-theme="light"] td {
+  color: #111111 !important;
+}
+
+/* --- Mode DARK --- */
+[data-theme="dark"] tr:nth-child(even) { 
+  background-color: rgba(124, 58, 237, 0.07); /* Violet sombre transparent */
+}
+[data-theme="dark"] tr:nth-child(odd) { 
+  background-color: rgba(15, 10, 30, 0.5); /* Fond sombre de base */
+}
+[data-theme="dark"] td {
+  color: #e2e8f0 !important;
+}
+
 /* Animation de l'apparition du contenu */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(10px); }
