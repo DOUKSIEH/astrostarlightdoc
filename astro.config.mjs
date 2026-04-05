@@ -98,18 +98,22 @@ export default defineConfig({
 						{ label: "Comprendre et exploiter SBOM", slug: "guides/kubernetes/sbom" },
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
+						{ label: "Docker - bonnes pratiques", slug: "guides/kubernetes/docker" },
 						],
 					},
 					{
 						label: "Iac",
 						items: [
 						{ label: "Packer & Golden Image Odoo 19", slug: "guides/iac/odoo-packer" },
+						{ label: "Guide Ansible", slug: "guides/iac/ansible" },
+						{ label: "Guide Terraform", slug: "guides/iac/terraform" },
 						],
 					},
 										{
 						label: "Security",
 						items: [
-						{ label: "Guide : gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
+						{ label: "Gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
+						{ label: "IAM - Keycloak & authentik", slug: "guides/security/keycloak-authentik" },
 						],
 					},
 					{
@@ -122,6 +126,8 @@ export default defineConfig({
 					{
 						label: "Observability",
 						items: [
+						{ label: "Guide Observabilité", slug: "guides/observability/observabilite" },
+						{ label: "Prometheus - Grafana - Thanos", slug: "guides/observability/prometheus-thanos" },
 						{ label: "Cilium & Hubble", slug: "guides/observability/cilium-hubble" },
 						{ label: "Loki avec stockage S3 (Ceph RGW)", slug: "guides/observability/loki-s3-rgw" },
 						],
