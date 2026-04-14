@@ -11,7 +11,7 @@ author:
 
 ---
 
-# 🔐 Guide IAM Complet : Keycloak & authentik
+<!-- # 🔐 Guide IAM Complet : Keycloak & authentik -->
 > **Concepts, Architecture, Cas d'usage Cloud & On-Premise (Proxmox) — Comparaison Keycloak vs authentik**
 
 ---
