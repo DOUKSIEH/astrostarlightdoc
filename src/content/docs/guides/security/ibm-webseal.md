@@ -11,14 +11,6 @@ author:
 
 ---
 
-<!-- # 🔐 IBM WebSEAL — Documentation Pédagogique Complète -->
-
-<!-- > **Audience :** Ingénieurs OPS N3, DevOps, préparation entretien technique
-> **Contexte mission :** Socle STCA — La Poste BGPN / DSP
-> **Version :** 1.0 — Avril 2026 -->
-
-<!-- --- -->
-
 ## 📋 Table des matières
 
 | # | Section |
