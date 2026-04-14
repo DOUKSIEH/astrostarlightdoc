@@ -76,8 +76,8 @@ export default defineConfig({
 						items: [
 						{ label: "DevSecOps - CALMS", slug: "guides/devsecops/calms" },
 						{ label: "Audit de Maturité DevOps", slug: "guides/devsecops/audit-devops" },
-						{ label: "Préparation entretien poste", slug: "guides/devsecops/preparation" },
-						{ label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
+						// { label: "Préparation entretien poste", slug: "guides/devsecops/preparation" },
+						// { label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
 						],
 					},
 					{
