@@ -256,6 +256,8 @@ volumes:
 
 networks:
   keycloak-net:
+    name: keycloak-network
+    driver: bridge    
 ```
 
 ```bash
