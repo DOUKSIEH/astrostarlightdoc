@@ -114,7 +114,7 @@ export default defineConfig({
 						items: [
 						{ label: "Gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
 						{ label: "IAM - Keycloak & authentik", slug: "guides/security/keycloak-authentik" },
-						{ label: "IBM WEBSEAL", slug: "guides/security/ibm-webseal" },
+						// { label: "IBM WEBSEAL", slug: "guides/security/ibm-webseal" },
 						{ label: "SIEM - Graylog · Wazuh · Suricata", slug: "guides/security/siem" },
 						],
 					},
