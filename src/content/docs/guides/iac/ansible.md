@@ -1,8 +1,8 @@
 ---
-title: "🐳 Guide Ansible : Configuration centralisée de serveurs et d'applications"
+title: "📘 Guide Ansible : Configuration centralisée de serveurs et d'applications"
 description: "📘 Documentation Ansible — Du débutant à la maîtrise"
 created: "2026-04-04"
-# updated: "2026-04-04"
+updated: "2026-04-13"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -12,9 +12,21 @@ author:
 ---
 
 <!-- # 📘 Documentation Ansible — Du débutant à la maîtrise -->
+<!-- # 📘 Documentation Ansible — Du débutant à la maîtrise -->
+
+<div align="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Ansible_logo.svg"
+     alt="Ansible Logo"
+     width="120"
+     style="margin-bottom: 16px;" />
+</div>
+
+---
 
 > **À qui s'adresse ce guide ?**
-> À toute personne qui n'a jamais touché à Ansible et qui veut apprendre étape par étape, sans brûler les étapes. Ce guide suit la structure du livre *Ansible* (Editions ENI) et la complète avec des exemples concrets, commentés et prêts à l'emploi.
+> Ce guide s'adresse à toute personne souhaitant apprendre Ansible pas à pas, des fondamentaux aux concepts avancés. À travers des exemples concrets, commentés et prêts à l'emploi, il accompagne les débutants tout en offrant une valeur ajoutée réelle aux profils plus expérimentés. 
+<!-- Ce guide suit la structure du livre *Ansible*  et la complète avec des exemples concrets, commentés et prêts à l'emploi. -->
 
 ---
 
@@ -81,7 +93,7 @@ author:
 ### Partie VI — Intégration, UI et écosystème
 36. [Intégration CI/CD (GitHub Actions / GitLab CI)](#36-intégration-cicd-github-actions--gitlab-ci)
 37. [Semaphore — Interface web légère pour Ansible](#37-semaphore--interface-web-légère-pour-ansible)
-38. [AWX / Ansible Tower — Plateforme enterprise](#38-awx--ansible-tower--plateforme-enterprise)
+38. [AWX, Ansible Tower et Semaphore — Comparatif complet](#38-awx-ansible-tower-et-semaphore--comparatif-complet)
 39. [Outils utiles de l'écosystème Ansible](#39-outils-utiles-de-lécosystème-ansible)
 40. [Résumé des bonnes pratiques et checklist](#40-résumé-des-bonnes-pratiques-et-checklist)
 41. [Glossaire](#41-glossaire)
@@ -5895,70 +5907,1862 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 
 ---
 
-## 38. AWX / Ansible Tower — Plateforme enterprise
+## 38. AWX, Ansible Tower et Semaphore — Comparatif complet
 
-**AWX** est la version open-source d'Ansible Tower. C'est la solution la plus complète pour gérer Ansible à grande échelle en équipe.
+Cette section est une exploration approfondie et pédagogique des trois grandes interfaces de gestion d'Ansible. Comprendre leurs différences vous aidera à choisir la bonne selon votre contexte.
 
-### Présentation et fonctionnalités
+---
 
-- Interface web complète pour gérer et lancer les playbooks
-- Planification (cron jobs)
-- Gestion sécurisée des credentials (intégration avec HashiCorp Vault, AWS Secrets Manager...)
-- Logs et rapports d'exécution détaillés
-- **RBAC** avancé (contrôle d'accès par rôle) : par organisation, équipe, projet
-- API REST complète
-- Webhooks GitHub, GitLab, Bitbucket
-- Notifications (email, Slack, Teams, PagerDuty, Webhook...)
-- Workflows graphiques (enchaîner des playbooks conditionnellement)
-- **Isolated nodes** pour exécuter des playbooks dans des zones réseau isolées
-- Inventaires dynamiques intégrés (AWS, Azure, GCP, VMware...)
+### 38.1 La grande famille Ansible — Comprendre les niveaux
 
-### Installation d'AWX
+Avant de comparer les outils, il faut comprendre le **paysage Ansible** dans son ensemble. C'est souvent une source de confusion.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                   ÉCOSYSTÈME ANSIBLE                            │
+│                                                                 │
+│  ┌─────────────┐                                                │
+│  │  Ansible    │  → Outil en ligne de commande (CLI)            │
+│  │  Core       │    Gratuit, open-source, sans interface web    │
+│  │  (ansible)  │    "Le moteur" : c'est lui qui fait le travail │
+│  └──────┬──────┘                                                │
+│         │ projet "upstream" (code source de base)               │
+│  ┌──────▼──────┐                                                │
+│  │    AWX      │  → Interface web GRATUITE et open-source       │
+│  │             │    Basée sur Ansible Core                      │
+│  │  (awx.awx)  │    Communautaire, sans support Red Hat         │
+│  └──────┬──────┘                                                │
+│         │ projet "downstream" (version enterprise)              │
+│  ┌──────▼──────────────────────────────────┐                   │
+│  │  Red Hat Ansible Automation Platform    │                    │
+│  │  (anciennement : Ansible Tower)         │  → PAYANT          │
+│  │  Composant principal : Automation       │    Support Red Hat │
+│  │  Controller (remplace Tower)            │    SLA garanti     │
+│  └─────────────────────────────────────────┘                   │
+│                                                                 │
+│  ┌──────────────┐                                               │
+│  │  Semaphore   │  → Interface web GRATUITE et open-source      │
+│  │  (semui)     │    Indépendant de Red Hat                     │
+│  │              │    Légère, facile à installer                 │
+│  └──────────────┘                                               │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+> **Analogie simple** : Ansible Core c'est le moteur d'une voiture. AWX et Semaphore sont deux tableaux de bord différents branchés sur ce même moteur. Ansible Tower/Automation Platform, c'est la voiture complète avec garantie constructeur, service après-vente et extras premium.
+
+---
+
+### 38.2 AWX — La plateforme open-source de Red Hat
+
+#### C'est quoi concrètement AWX ?
+
+AWX est l'**interface web officielle d'Ansible**, développée par Red Hat et publiée en open-source. Elle transforme Ansible — un outil en ligne de commande — en une **plateforme collaborative** que toute une équipe peut utiliser sans connaître les commandes.
+
+Imaginez : sans AWX, un développeur doit avoir accès au terminal du control node, connaître les commandes Ansible, gérer lui-même les clés SSH et les mots de passe. Avec AWX, il clique sur un bouton dans un navigateur.
+
+#### Architecture d'AWX
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    CLUSTER AWX                                │
+│                                                              │
+│  ┌──────────────────┐    ┌──────────────────────────────┐   │
+│  │  Interface Web   │    │    API REST                  │   │
+│  │  (React/Angular) │    │    (toutes les actions sont  │   │
+│  │  Port 443/80     │    │    disponibles via l'API)    │   │
+│  └────────┬─────────┘    └──────────────┬───────────────┘   │
+│           │                              │                   │
+│  ┌────────▼──────────────────────────────▼────────────────┐  │
+│  │                  AWX Backend (Django/Python)            │  │
+│  │  - Gestion des jobs        - RBAC                      │  │
+│  │  - Planificateur           - Notifications             │  │
+│  │  - Webhooks                - Audit trail               │  │
+│  └───────────────────────────┬────────────────────────────┘  │
+│                              │                               │
+│  ┌───────────────────────────▼────────────────────────────┐  │
+│  │           Execution Environments (Conteneurs)           │  │
+│  │  Chaque job Ansible tourne dans son propre conteneur    │  │
+│  │  → Isolation totale   → Dépendances maîtrisées          │  │
+│  └───────────────────────────┬────────────────────────────┘  │
+│                              │ SSH / WinRM / API              │
+│  ┌───────────────────────────▼────────────────────────────┐  │
+│  │              Infrastructure cible                       │  │
+│  │   Serveurs Linux, Windows, Cloud, VMs, Containers...    │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                                                              │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────────┐   │
+│  │  PostgreSQL  │  │  Redis       │  │  RabbitMQ/Redis  │   │
+│  │  (données)   │  │  (cache)     │  │  (messages)      │   │
+│  └──────────────┘  └──────────────┘  └──────────────────┘   │
+└──────────────────────────────────────────────────────────────┘
+```
+
+#### Les concepts clés d'AWX expliqués simplement
+
+```
+ORGANISATIONS
+  → C'est le niveau le plus haut de hiérarchie dans AWX.
+  → Exemple : "Équipe Infra", "Équipe Dev", "Client A"
+  → Chaque organisation a ses propres ressources isolées.
+
+PROJETS
+  → Un projet = un dépôt Git contenant vos playbooks.
+  → AWX clone/synchronise le dépôt automatiquement.
+  → Toujours pointer sur un dépôt Git (pas d'upload manuel).
+
+INVENTAIRES
+  → La liste des serveurs à gérer.
+  → Peut être statique (fichier) ou dynamique (AWS, VMware...).
+  → Plusieurs inventaires possibles par organisation.
+
+INFORMATIONS D'IDENTIFICATION (Credentials)
+  → Clés SSH, mots de passe, tokens API...
+  → Stockés chiffrés dans la base de données AWX.
+  → Jamais visibles en clair par les utilisateurs.
+  → Types : Machine (SSH), Vault, AWS, Azure, GCP, GitHub...
+
+MODÈLES DE JOB (Job Templates)
+  → C'est la "recette" d'une exécution :
+    Playbook + Inventaire + Credentials + Variables + Options
+  → C'est ce qu'on lance (manuellement, via cron, via webhook).
+
+JOBS
+  → Une instance d'exécution d'un modèle de job.
+  → Chaque job a ses logs complets, son statut, sa durée.
+  → Historique complet conservé.
+
+WORKFLOWS
+  → Enchaîner plusieurs modèles de job conditionnellement.
+  → Comme un organigramme visuel avec des nœuds de décision.
+  → "Si le job A réussit → lancer B, sinon → lancer C"
+
+ENVIRONNEMENTS D'EXÉCUTION (Execution Environments)
+  → Des images Docker contenant Ansible + collections + dépendances.
+  → Garantit que chaque job tourne dans un environnement reproductible.
+  → Remplace les anciens "venv" et "requirements.txt" globaux.
+```
+
+#### Installation d'AWX sur Kubernetes (méthode recommandée)
+
+AWX tourne nativement sur Kubernetes depuis la version 18. L'installation se fait via l'**AWX Operator**.
 
 ```bash
-# Prérequis : Kubernetes ou k3s
-# Installation avec Helm
+# Prérequis : un cluster Kubernetes (k3s pour un serveur unique)
+# Installation de k3s (si pas de cluster K8s existant)
+curl -sfL https://get.k3s.io | sh -
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 
-helm repo add awx-operator https://ansible.github.io/awx-operator/
-helm install awx-operator awx-operator/awx-operator
+# Créer le namespace AWX
+kubectl create namespace awx
 
-# Créer la ressource AWX
-cat <<EOF | kubectl apply -f -
+# Installer l'AWX Operator via Kustomize
+cat > kustomization.yaml << 'EOF'
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - github.com/ansible/awx-operator/config/default?ref=2.19.1
+images:
+  - name: quay.io/ansible/awx-operator
+    newTag: 2.19.1
+namespace: awx
+EOF
+
+kubectl apply -k .
+kubectl get pods -n awx    # Attendre que l'opérateur soit Running
+```
+
+```yaml
+# awx-instance.yaml — Déclarer l'instance AWX
 apiVersion: awx.ansible.com/v1beta1
 kind: AWX
 metadata:
   name: awx
+  namespace: awx
 spec:
-  service_type: LoadBalancer
-  admin_password_secret: awx-admin-password
-EOF
+  service_type: NodePort          # NodePort pour accès externe
+  nodeport_port: 30932            # Port d'accès : http://IP:30932
 
-# Récupérer le mot de passe admin
-kubectl get secret awx-admin-password -o jsonpath="{.data.password}" | base64 --decode
+  # Base de données externe (recommandé en production)
+  # external_database: true
+  # external_database_host: postgres.example.com
+
+  # Taille des répliques (haute disponibilité)
+  # replicas: 2
+
+  # Environnement d'exécution par défaut
+  # default_execution_environment_image: quay.io/ansible/awx-ee:latest
+
+  # Ressources (adapter selon votre infrastructure)
+  web_resource_requirements:
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "2000m"
+  task_resource_requirements:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "4Gi"
+      cpu: "2000m"
 ```
 
 ```bash
-# Alternative plus simple : Docker Compose pour le développement
-git clone https://github.com/ansible/awx.git
-cd awx
-make docker-compose-build
-make docker-compose
-# → Accessible sur https://localhost:8043
+kubectl apply -f awx-instance.yaml -n awx
+
+# Suivre l'installation (peut prendre 5-10 minutes)
+kubectl logs -f deployments/awx-operator-controller-manager -n awx
+
+# Vérifier que les pods sont Running
+kubectl get pods -n awx
+# NAME                                               READY   STATUS
+# awx-operator-controller-manager-xxx               2/2     Running
+# awx-postgres-15-0                                 1/1     Running
+# awx-task-xxx                                      4/4     Running
+# awx-web-xxx                                       3/3     Running
+
+# Récupérer le mot de passe admin
+kubectl get secret awx-admin-password -n awx \
+  -o jsonpath="{.data.password}" | base64 --decode
+echo ""
+
+# Accéder à AWX : http://<IP_SERVEUR>:30932
+# Login : admin / <mot_de_passe_récupéré>
 ```
 
-### Différence Semaphore vs AWX
+#### Mise à jour d'AWX
+
+```bash
+# Mettre à jour l'opérateur vers une nouvelle version
+# Modifier kustomization.yaml : newTag: 2.20.0
+
+kubectl apply -k .
+
+# AWX se met à jour automatiquement (rolling update)
+kubectl get pods -n awx -w    # Surveiller le redémarrage progressif
+
+# Vérifier la version installée
+kubectl exec -it deploy/awx-web -n awx \
+  -c awx-web -- awx-manage --version
+```
+
+#### Base de données externe (production)
+
+```yaml
+# awx-instance-prod.yaml — Configuration pour la production
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+  namespace: awx
+spec:
+  service_type: ClusterIP       # Derrière un Ingress en prod
+
+  # Utiliser une base de données externe PostgreSQL
+  external_database: true
+
+  # Secret contenant les infos de connexion à la BDD externe
+  # kubectl create secret generic awx-postgres-configuration \
+  #   --from-literal=host=postgres.example.com \
+  #   --from-literal=port=5432 \
+  #   --from-literal=database=awx \
+  #   --from-literal=username=awx \
+  #   --from-literal=password=SECRET \
+  #   --from-literal=sslmode=require \
+  #   --from-literal=type=managed_external \
+  #   -n awx
+  postgres_configuration_secret: awx-postgres-configuration
+
+  ingress_type: ingress
+  hostname: awx.example.com
+  ingress_tls_secret: awx-tls-secret
+```
+
+---
+
+### 38.3 Les Workflows AWX — Le pouvoir de l'orchestration
+
+C'est la fonctionnalité la plus puissante d'AWX. Un **workflow** permet d'enchaîner plusieurs jobs selon des conditions, comme un organigramme.
+
+#### Pourquoi les workflows ?
 
 ```
-Pour des petites équipes (< 10 personnes) et projets simples :
-→ Semaphore est suffisant et beaucoup plus facile à gérer
+Sans workflow : un seul gros playbook monolithique
+  site.yml
+    ├── Rôle : provisionner_vm
+    ├── Rôle : configurer_os
+    ├── Rôle : déployer_app
+    ├── Rôle : tester_app
+    └── Rôle : détruire_vm_si_erreur
+  → Si une étape échoue au milieu, tout s'arrête.
+  → Difficile à maintenir, à déboguer, à réutiliser.
 
-Pour des équipes larges, environnements complexes, entreprises :
-→ AWX/Tower avec son RBAC avancé, workflows, audit trail
+Avec workflow : plusieurs jobs indépendants enchaînés
+  [Provisionner VM] → [Configurer OS] → [Déployer App]
+                                               |
+                                    Succès → [Tester App]
+                                    Échec  → [Détruire VM] → [Alerter]
+  → Chaque job est petit, réutilisable, facile à déboguer.
+  → La gestion des erreurs est visuelle et explicite.
+  → Des équipes différentes peuvent gérer des nœuds différents.
+```
 
-Les deux offrent :
-→ Interface web, API REST, planification, logs
-→ Gestion des credentials, inventaires dynamiques
-→ Notifications, webhooks
+#### Exemple concret — Workflow de provisionnement complet
+
+Voici un workflow réel basé sur l'article de Stéphane Robert qui provisionne une VM via Terraform, enregistre son IP dans AWX, teste la connectivité, puis la détruit en cas d'échec.
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                   WORKFLOW AWX COMPLET                      │
+│                                                             │
+│  [Sync Projet]                                              │
+│       │                                                     │
+│       ▼ (succès)                                            │
+│  [1. terraform-deploy.yml]   ← Crée la VM via Terraform     │
+│  Inventaire: cluster libvirt                                │
+│       │                                                     │
+│       ▼ (succès)                                            │
+│  [2. create-inventory.yml]   ← Récupère l'IP et crée        │
+│  Inventaire: cluster libvirt   l'inventaire dans AWX        │
+│       │                    │                                │
+│       ▼ (succès)           ▼ (échec) ─────────────────────┐ │
+│  [3. test.yml]        [terraform-destroy.yml]              │ │
+│  Inventaire: Test      (rollback automatique)              │ │
+│  (ping la VM)              │                               │ │
+│       │                    ▼                               │ │
+│       ▼ (succès)      [Notification Slack]                 │ │
+│  [Succès !]                                                │ │
+│       │ (échec)                                            │ │
+│       └────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Les playbooks du workflow (commentés)
+
+**Playbook 1 : terraform-deploy.yml** — Provisionner la VM
+
+```yaml
+# terraform-deploy.yml
+# Ce playbook provisionne une VM sur un cluster libvirt via Terraform.
+# Il tourne sur le control node AWX (delegate_to: localhost)
+# car Terraform s'exécute localement dans l'environnement d'exécution.
+---
+- name: Deploy VM via Terraform
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars:
+    # La clé SSH chiffrée avec Ansible Vault
+    # → Stockée dans AWX Credentials (type Vault)
+    # → Jamais visible en clair dans les logs
+    id_ed25519: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      38666539653431373639613935323362...
+
+    # Clé d'hôte connue pour éviter les erreurs SSH
+    known_hosts: |
+      devbox.robert.local,192.168.1.42 ecdsa-sha2-nistp256 AAAAE2VjZH...
+
+  tasks:
+    # Préparer le répertoire .ssh dans l'environnement d'exécution
+    # (le conteneur EE est éphémère, il faut tout reconstruire)
+    - name: Créer le répertoire .ssh dans l'EE
+      ansible.builtin.file:
+        path: $HOME/.ssh
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Déposer la clé publique SSH
+      ansible.builtin.copy:
+        dest: $HOME/.ssh/id_ed25519.pub
+        content: "{{ id_ed25519 }}"
+        mode: '0644'
+      delegate_to: localhost
+
+    - name: Configurer les hôtes SSH connus
+      ansible.builtin.copy:
+        dest: $HOME/.ssh/known_hosts
+        content: "{{ known_hosts }}"
+        mode: '0600'
+      delegate_to: localhost
+
+    # Appel au module Terraform — lance terraform init + apply
+    - name: Provisionner la VM avec Terraform
+      community.general.terraform:
+        project_path: './'     # Répertoire contenant les fichiers .tf
+        state: present         # present = terraform apply
+        force_init: true       # Toujours relancer terraform init
+      delegate_to: localhost
+
+    # Sauvegarder le state Terraform sur le serveur distant
+    # (car l'EE est éphémère, le state serait perdu sinon)
+    - name: Sauvegarder le state Terraform
+      ansible.builtin.copy:
+        src: terraform.tfstate
+        dest: ~/terraform.tfstate
+        mode: '0644'
+```
+
+**Playbook 2 : create-inventory.yml** — Enregistrer la VM dans AWX
+
+```yaml
+# create-inventory.yml
+# Ce playbook récupère l'IP de la VM provisionnée via qemu-agent
+# et crée/met à jour dynamiquement l'inventaire dans AWX via l'API.
+---
+- name: Enregistrer la VM dans l'inventaire AWX
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars:
+    # Token OAuth AWX pour l'API (chiffré avec Vault)
+    # → Créer dans AWX : Users > Admin > Tokens > Add
+    token: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      33653263303262396336316133343531...
+
+  tasks:
+    # Interroger l'agent QEMU pour obtenir l'IP de la VM
+    # L'agent QEMU doit être installé dans la VM (via cloud-init)
+    # On réessaie jusqu'à 15 fois car la VM met du temps à démarrer
+    - name: Récupérer l'IP de la VM via qemu-agent
+      ansible.builtin.shell: >
+        virsh -c qemu+ssh://root@devbox.robert.local/system
+        qemu-agent-command test
+        '{"execute":"guest-network-get-interfaces"}'
+      register: vm_network_info
+      changed_when: vm_network_info.rc != 0
+      retries: 15     # 15 tentatives maximum
+      delay: 10       # 10 secondes entre chaque tentative
+      until: vm_network_info is success
+      # → Attendra au maximum 15 × 10 = 150 secondes
+
+    # Extraire l'IP de la réponse JSON
+    - name: Extraire l'adresse IP
+      ansible.builtin.set_fact:
+        ip_address: >-
+          {{ (vm_network_info.stdout | from_json).return[1]
+          ['ip-addresses'][0]['ip-address'] }}
+
+    - name: Afficher l'IP récupérée
+      ansible.builtin.debug:
+        msg: "IP de la VM : {{ ip_address }}"
+
+    # Supprimer l'ancien inventaire s'il existe
+    # (car après destroy/recreate, l'ID interne AWX change)
+    - name: Supprimer l'ancien inventaire AWX si existant
+      awx.awx.inventory:
+        controller_host: "http://192.168.1.74:30932"
+        controller_oauthtoken: "{{ token }}"
+        name: "Test"
+        state: absent
+        organization: "Default"
+        validate_certs: false
+
+    # Créer un nouvel inventaire propre
+    - name: Créer l'inventaire AWX
+      awx.awx.inventory:
+        controller_host: "http://192.168.1.74:30932"
+        controller_oauthtoken: "{{ token }}"
+        name: "Test"
+        description: "VM provisionnée dynamiquement"
+        state: present
+        organization: "Default"
+        validate_certs: false
+
+    # Ajouter l'hôte avec son IP dans l'inventaire
+    - name: Ajouter la VM à l'inventaire
+      awx.awx.host:
+        controller_host: "http://192.168.1.74:30932"
+        controller_oauthtoken: "{{ token }}"
+        inventory: "Test"
+        name: "{{ ip_address }}"   # L'IP comme nom d'hôte
+        state: present
+        enabled: true
+        validate_certs: false
+
+    # Mettre à jour le modèle de job test-VM pour pointer
+    # sur le nouvel inventaire (l'ID a changé)
+    - name: Mettre à jour le modèle de job test-VM
+      awx.awx.job_template:
+        controller_host: "http://192.168.1.74:30932"
+        controller_oauthtoken: "{{ token }}"
+        name: test-VM
+        inventory: Test
+        validate_certs: false
+```
+
+**Playbook 3 : test.yml** — Tester la VM
+
+```yaml
+# test.yml — Vérification basique de la connectivité
+---
+- name: Tester la connectivité de la VM
+  hosts: all
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Ping Ansible
+      ansible.builtin.ping:
+
+    - name: Vérifier l'accès SSH et les facts
+      ansible.builtin.setup:
+      register: facts
+
+    - name: Afficher les infos de la VM
+      ansible.builtin.debug:
+        msg: "VM OK : {{ facts.ansible_facts.ansible_distribution }}
+              {{ facts.ansible_facts.ansible_distribution_version }}"
+```
+
+**Playbook 4 : terraform-destroy.yml** — Détruire la VM (rollback)
+
+```yaml
+# terraform-destroy.yml — Rollback en cas d'échec
+---
+- name: Détruire la VM via Terraform (rollback)
+  hosts: all
+  become: false
+  gather_facts: false
+
+  vars:
+    known_hosts: |
+      devbox.robert.local,192.168.1.42 ecdsa-sha2-nistp256 ...
+    id_ed25519: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      ...
+
+  tasks:
+    - name: Reconstruire le répertoire .ssh dans l'EE
+      ansible.builtin.file:
+        path: $HOME/.ssh
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+
+    - name: Restaurer les fichiers SSH
+      ansible.builtin.copy:
+        dest: $HOME/.ssh/known_hosts
+        content: "{{ known_hosts }}"
+        mode: '0600'
+      delegate_to: localhost
+
+    - name: Restaurer la clé publique
+      ansible.builtin.copy:
+        dest: $HOME/.ssh/id_ed25519.pub
+        content: "{{ id_ed25519 }}"
+        mode: '0644'
+      delegate_to: localhost
+
+    # Récupérer le state Terraform sauvegardé lors du deploy
+    # (indispensable car l'EE ne garde pas l'état entre les jobs)
+    - name: Restaurer le state Terraform
+      ansible.builtin.fetch:
+        src: ~/terraform.tfstate
+        dest: ./
+        flat: true
+        validate_checksum: false
+
+    # Lancer terraform destroy
+    - name: Détruire la VM via Terraform
+      community.general.terraform:
+        project_path: './'
+        state: absent         # absent = terraform destroy
+        check_destroy: true   # Vérifier avant de détruire
+        force_init: true
+      delegate_to: localhost
+```
+
+#### Construction de l'Environnement d'Exécution (EE)
+
+Les Execution Environments sont des images Docker contenant toutes les dépendances d'un projet. Ils garantissent que vos playbooks fonctionnent toujours de la même façon.
+
+```bash
+# Installer ansible-builder
+pip install ansible-builder
+```
+
+```yaml
+# execution-environment.yml — Définition de l'EE
+---
+version: 1
+
+build_arg_defaults:
+  # Image de base officielle Ansible
+  EE_BASE_IMAGE: 'quay.io/ansible/ansible-runner:latest'
+
+dependencies:
+  # Collections Ansible nécessaires
+  galaxy: requirements.yml
+  # Bibliothèques Python nécessaires
+  python: requirements.txt
+
+additional_build_steps:
+  prepend: |
+    # Installer les outils système nécessaires
+    RUN yum install -y yum-utils genisoimage
+    # Ajouter le dépôt HashiCorp pour Terraform
+    RUN yum-config-manager \
+      --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    # Installer Terraform
+    RUN yum -y install terraform
+```
+
+```txt
+# requirements.txt — Bibliothèques Python
+python-terraform==0.10.1    # Pour le module community.general.terraform
+```
+
+```yaml
+# requirements.yml — Collections Ansible
+---
+collections:
+  - name: community.general
+    version: 4.4.0
+  - name: awx.awx           # Pour piloter AWX depuis Ansible !
+    version: 19.4.0
+```
+
+```bash
+# Construire l'image EE
+ansible-builder build --tag=registry.example.com/ee-terraform:1.0.0
+
+# Pousser vers votre registry Docker privé
+docker push registry.example.com/ee-terraform:1.0.0
+
+# Dans AWX : Administration > Execution Environments > Ajouter
+# Image : registry.example.com/ee-terraform:1.0.0
+```
+
+#### Construction des ressources AWX — étape par étape
+
+```
+Avant de créer le workflow, il faut créer ces ressources dans AWX :
+
+1. ENVIRONNEMENT D'EXÉCUTION
+   → Administration > Execution Environments > Ajouter
+   → Pointer sur l'image poussée dans le registry
+
+2. PROJET
+   → Ressources > Projets > Ajouter
+   → Type SCM : Git
+   → URL : https://github.com/monorg/mon-projet-ansible.git
+   → Branche : main
+   → Options : Mise à jour à la révision du lancement
+
+3. INFORMATIONS D'IDENTIFICATION (Credentials)
+   → Ressources > Informations d'identification > Ajouter
+
+   a) Vault AWX (type : Vault)
+      → Mot de passe : le mot de passe Ansible Vault
+      → Utilisé pour déchiffrer les !vault dans les playbooks
+
+   b) Clé SSH libvirt (type : Machine)
+      → Clé privée SSH pour se connecter au cluster libvirt
+
+   c) Clé SSH VM (type : Machine)
+      → Clé privée SSH pour se connecter à la VM provisionnée
+
+4. INVENTAIRE
+   → Ressources > Inventaires > Ajouter
+   → Nom : Cluster libvirt
+   → Ajouter un hôte : devbox.robert.local (le serveur libvirt)
+
+5. MODÈLES DE JOB (un par playbook)
+   → Ressources > Modèles > Ajouter > Modèle de job
+
+   a) deploy-vm
+      Projet: mon-projet | Playbook: terraform-deploy.yml
+      Inventaire: Cluster libvirt
+      Credentials: Vault AWX + Clé SSH libvirt
+      EE: ee-terraform
+
+   b) create-inventory
+      Playbook: create-inventory.yml
+      Inventaire: Cluster libvirt
+      Credentials: Vault AWX + Clé SSH libvirt
+
+   c) test-VM
+      Playbook: test.yml
+      Inventaire: Test  (créé dynamiquement par create-inventory)
+      Credentials: Clé SSH VM
+
+   d) destroy-vm
+      Playbook: terraform-destroy.yml
+      Inventaire: Cluster libvirt
+      Credentials: Vault AWX + Clé SSH libvirt
+```
+
+#### Construction du Workflow dans l'interface AWX
+
+```
+1. Ressources > Modèles > Ajouter > Modèle de flux de travail
+   → Nom : "Provisionner et tester une VM"
+   → Inventaire : Cluster libvirt
+   → Enregistrer
+
+2. Cliquer sur [Visualiseur]
+
+3. Survoler [Démarrer] → cliquer sur [+]
+   → Type de nœud : Synchronisation de projet
+   → Sélectionner le projet
+   → Enregistrer
+
+4. Survoler le nœud "Sync Projet" → cliquer sur [+]
+   → Condition : "En cas de succès" (vert)
+   → Type : Modèle de job → deploy-vm
+   → Enregistrer
+
+5. Répéter depuis deploy-vm :
+   → Succès → create-inventory → Succès → test-VM
+   → Échec de create-inventory → destroy-vm (rouge)
+   → Échec de test-VM → destroy-vm (rouge)
+
+Résultat visuel :
+[Sync Projet] ──succès──▶ [deploy-vm] ──succès──▶ [create-inventory]
+                                                         │
+                                          succès ──▶ [test-VM] ──▶ [Succès !]
+                                          échec ──▶ [destroy-vm] ──▶ [Alerte]
+```
+
+#### Avantages des workflows AWX
+
+```
+1. PAS DE PLAYBOOK MONOLITHIQUE
+   Chaque étape est un playbook simple et ciblé.
+   Plus facile à écrire, tester, maintenir et réutiliser.
+
+2. GESTION DES ERREURS EXPLICITE
+   On voit visuellement ce qui se passe en cas d'échec.
+   Le rollback automatique est configuré graphiquement.
+
+3. POINTS D'APPROBATION (Approval Nodes)
+   Vous pouvez insérer une étape "Approbation requise" :
+   → Le workflow s'arrête et attend qu'un humain valide.
+   → Parfait avant un déploiement en production.
+   → Envoie une notification par email/Slack.
+
+4. RÉUTILISATION
+   Un nœud peut être un workflow imbriqué.
+   → Workflow "déploiement" peut appeler le workflow "tests"
+   → Modularité maximale.
+
+5. SUIVI VISUEL
+   Chaque nœud affiche son statut en temps réel (vert/rouge).
+   Les logs de chaque job sont accessibles directement.
+```
+
+---
+
+### 38.4 Ansible Tower et Ansible Automation Platform
+
+#### La confusion Tower / AWX expliquée
+
+```
+Historique :
+  2013 → Red Hat crée AnsibleWorks Tower (interface web payante)
+  2015 → Red Hat rachète Ansible
+  2017 → Red Hat open-source le code de Tower → AWX est né
+  2019 → Tower est rebaptisé "Ansible Automation Platform"
+  2021 → Tower est remplacé par "Automation Controller" dans AAP
+  2023 → AAP 2.x : architecture complètement redessinée
+
+Aujourd'hui :
+  AWX       = version open-source, gratuite, communautaire
+              (upstream : le code source de base)
+  AAP       = Red Hat Ansible Automation Platform
+              (downstream : version enterprise avec support)
+  Automation Controller = composant principal d'AAP
+              (remplace Tower, basé sur AWX)
+
+Analogie :
+  AWX est à AAP ce que Fedora est à Red Hat Enterprise Linux.
+  → Fedora/AWX : gratuit, dernières fonctionnalités, sans support
+  → RHEL/AAP : payant, stable, certifié, support Red Hat
+```
+
+#### Ce que Tower/AAP ajoute par rapport à AWX
+
+```
+FONCTIONNALITÉS AWX (open-source, gratuit)
+  Interface web complète
+  RBAC (organisations, équipes, utilisateurs)
+  Jobs, workflows, planification
+  Inventaires dynamiques
+  Credentials management
+  API REST
+  Notifications basiques
+  Execution Environments
+
+FONCTIONNALITÉS EXCLUSIVES AAP (payant)
+  + Support Red Hat avec SLA (réponse garantie sous 4h)
+  + Mises à jour supportées entre versions majeures
+  + Correctifs de sécurité rétroactifs
+  + Certified Content Collections (140+ collections certifiées)
+  + Automation Hub privé (dépôt de collections interne)
+  + Automation Analytics (tableaux de bord, ROI, adoption)
+  + Event-Driven Ansible (intégré et testé)
+  + Ansible Lightspeed (IA pour générer des playbooks)
+  + Isolated nodes certifiés pour zones DMZ/air-gapped
+  + Compatibilité garantie avec les solutions ISV
+  + Protection juridique (Open Source Assurance)
+```
+
+#### Comparaison financière
+
+```
+AWX (gratuit) :
+  → Coût licence : 0 €
+  → Coût caché : temps de maintenance, mises à jour manuelles,
+    débogage des incompatibilités, pas de support officiel
+  → Risque : une faille de sécurité non corrigée peut impacter
+    toute votre infrastructure
+
+AAP (payant) :
+  → Tarif : basé sur le nombre de nœuds gérés
+    (environ 13 000 €/an pour 100 nœuds - tarif indicatif)
+  → Inclut : support, formation, certifications, SLA
+  → ROI annoncé par Red Hat : 702% sur 5 ans
+    (source : étude ESG 2023)
+
+Règle pratique :
+  < 50 serveurs, petite équipe    → AWX ou Semaphore
+  > 50 serveurs, équipe > 5 pers  → Évaluer AAP
+  Secteur réglementé (banque, santé, défense) → AAP obligatoire
+```
+
+---
+
+### 38.5 Comparatif Semaphore vs AWX vs Ansible Tower
+
+Voici le tableau de comparaison le plus complet possible pour vous aider à choisir.
+
+#### Tableau comparatif détaillé
+
+| Critère | **Semaphore** | **AWX** | **Ansible Tower / AAP** |
+|---|---|---|---|
+| **Licence** | MIT (gratuit) | Apache 2.0 (gratuit) | Payant (souscription) |
+| **Éditeur** | Communauté | Red Hat + communauté | Red Hat |
+| **Support officiel** | Non | Non | Oui (SLA garanti) |
+| **Installation** | Très simple (1 binaire ou Docker) | Complexe (Kubernetes) | Très complexe (cluster K8s) |
+| **RAM minimale** | 256 MB | 4 GB | 8 GB+ |
+| **Dépendances** | Go + PostgreSQL/MySQL/Bolt | Kubernetes + PostreSQL + Redis | Kubernetes + nombreux composants |
+| **Interface web** | Simple et claire | Complète | Très complète |
+| **RBAC** | Basique (projets/équipes) | Avancé (organisations/équipes/rôles) | Très avancé |
+| **Workflows visuels** | Non | Oui (éditeur graphique) | Oui (éditeur graphique) |
+| **Execution Environments** | Non | Oui | Oui |
+| **Inventaires dynamiques** | Limité | Complet (AWS, GCP, Azure, VMware...) | Complet + certifié |
+| **API REST** | Oui (simple) | Oui (complète) | Oui (très complète) |
+| **Webhooks** | Oui (GitHub, GitLab) | Oui | Oui |
+| **Notifications** | Email, Slack, Telegram | Email, Slack, Teams, PagerDuty, Webhook... | Idem + plus d'intégrations |
+| **Planification** | Oui (cron) | Oui (cron avancé) | Oui |
+| **Event-Driven Ansible** | Non | Projet séparé | Intégré et supporté |
+| **Ansible Lightspeed (IA)** | Non | Non | Oui |
+| **Automation Analytics** | Non | Non | Oui |
+| **Collections certifiées** | Non | Non | 140+ collections |
+| **Isolation multi-équipes** | Partielle | Complète | Complète |
+| **Mises à jour supportées** | Non | Non | Oui |
+| **Correctifs sécurité** | Non garanti | Non garanti | Garantis |
+| **Public cible** | Petites équipes / indie | Équipes techniques moyennes | Entreprises |
+| **Courbe d'apprentissage** | Faible | Moyenne | Élevée |
+
+#### Arbre de décision — Quelle solution choisir ?
+
+```
+Vous débutez avec Ansible ?
+  └─→ Commencez par Semaphore.
+      Simple, rapide, vous apprendrez les concepts sans complexité.
+
+Vous avez une équipe de moins de 10 personnes ?
+  └─→ Semaphore suffit probablement.
+      Si vous avez besoin de workflows, passez à AWX.
+
+Vous avez besoin de workflows conditionnels ?
+  └─→ AWX. Semaphore ne les supporte pas.
+
+Vous gérez plus de 50 serveurs avec une équipe technique ?
+  └─→ AWX est le bon choix. Gratuit, puissant, flexible.
+
+Votre infrastructure est dans un secteur réglementé ?
+(Banque, santé, défense, industrie critique)
+  └─→ Ansible Automation Platform obligatoire pour le SLA
+      et les certifications de sécurité.
+
+Vous avez déjà AWX et vous grandissez ?
+  └─→ Migration vers AAP supportée par Red Hat.
+      La migration est documentée et assistée.
+
+Vous utilisez Red Hat Enterprise Linux partout ?
+  └─→ AAP s'intègre nativement avec RHEL.
+      Les certifications sont cohérentes.
+```
+
+#### Comparaison par cas d'usage
+
+```
+CAS 1 : Startup / Indépendant
+  → 1 à 5 serveurs, 1 développeur
+  → Recommandation : Semaphore
+  → Raison : Installation en 5 minutes, interface intuitive,
+    parfait pour apprendre
+
+CAS 2 : PME Tech
+  → 10 à 50 serveurs, équipe de 3 à 10 personnes
+  → Recommandation : AWX
+  → Raison : Gratuit, workflows, RBAC, API complète
+  → Alternative légère si pas de workflows : Semaphore
+
+CAS 3 : Moyenne entreprise
+  → 50 à 500 serveurs, équipe DevOps dédiée
+  → Recommandation : AWX ou AAP selon le budget
+  → Si budget disponible : AAP pour le support et les collections
+
+CAS 4 : Grande entreprise / Banque / Assurance
+  → 500+ serveurs, exigences de conformité
+  → Recommandation : Ansible Automation Platform
+  → Raison : SLA, audit, conformité, support Red Hat,
+    protection juridique
+
+CAS 5 : Environnement sans connexion internet (air-gapped)
+  → Datacenter isolé, secteur défense
+  → Recommandation : AWX avec Private Automation Hub
+    ou AAP (option air-gapped)
+```
+
+---
+
+### 38.6 Bonnes pratiques pour AWX
+
+#### Organisation des ressources
+
+```
+Bonne pratique 1 : Une organisation par client/projet
+  Org "Client A"
+    ├── Projets (dépôts Git)
+    ├── Inventaires
+    ├── Credentials
+    └── Équipes
+
+Bonne pratique 2 : Séparer les credentials
+  Un credential = une clé d'accès
+  → Jamais un credential "fourre-tout"
+  → Rotation facile si compromise
+
+Bonne pratique 3 : Versionner les EE
+  ee-monapp:1.0.0, ee-monapp:1.1.0...
+  → Jamais utiliser :latest en production
+  → Rebuild à chaque changement de dépendances
+
+Bonne pratique 4 : Un projet = un dépôt Git
+  → Jamais uploader des fichiers manuellement
+  → Tout dans Git, AWX synchronise automatiquement
+
+Bonne pratique 5 : Variables sensibles dans Vault
+  → Jamais en clair dans les "Extra Variables" d'AWX
+  → Utiliser les Credentials de type "Vault"
+```
+
+#### Sécuriser AWX
+
+```yaml
+# Bonne pratique : token OAuth2 avec expiration
+# → Créer depuis : User > Tokens > Add
+# → Scope : Write (ou Read selon l'usage)
+# → Expiration : 30 jours max
+
+# Bonne pratique : RBAC minimal
+# → Un utilisateur = les accès strictement nécessaires
+# → Rôle "Execute" pour lancer les jobs sans modifier la config
+# → Rôle "Admin" uniquement pour les responsables
+
+# Bonne pratique : audit des exécutions
+# → AWX conserve l'historique complet
+# → Qui a lancé quoi, quand, avec quel résultat
+# → Export possible via l'API REST
+```
+
+#### Intégration avec Git (webhooks)
+
+```bash
+# Configurer AWX pour se déclencher sur un push Git
+# 1. Dans AWX : Projets > Mon Projet > Webhook
+#    Copier l'URL du webhook et le secret
+
+# 2. Dans GitHub : Settings > Webhooks > Add webhook
+#    URL : https://awx.example.com/api/v2/projects/1/update/
+#    Secret : le secret copié depuis AWX
+#    Events : Push events
+
+# 3. Résultat : chaque `git push` déclenche une synchronisation
+#    du projet dans AWX, puis lance les jobs configurés.
+
+# Pour les modèles de job :
+# → Activer "Webhook" dans les paramètres du job template
+# → Le job se lance automatiquement après la sync du projet
+```
+
+#### Surveiller AWX
+
+```bash
+# Vérifier la santé d'AWX via l'API
+curl -s https://awx.example.com/api/v2/ping/ | jq .
+
+# Voir les jobs en cours
+curl -s -H "Authorization: Bearer $TOKEN" \
+  https://awx.example.com/api/v2/jobs/?status=running | jq '.count'
+
+# Voir les erreurs récentes
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://awx.example.com/api/v2/jobs/?status=failed&page_size=10" \
+  | jq '.results[].name'
+
+# Métriques Prometheus (AWX expose des métriques)
+curl -s -H "Authorization: Bearer $TOKEN" \
+  https://awx.example.com/api/v2/metrics/
+```
+
+---
+
+### 38.7 Modèles de Job (Job Templates) — Configuration complète
+
+Le **Modèle de Job** est l'objet central d'AWX. C'est lui qu'on lance, qu'on programme, qu'on expose aux équipes. Comprendre toutes ses options est essentiel.
+
+#### Anatomie d'un Modèle de Job
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  MODÈLE DE JOB AWX                          │
+│                                                             │
+│  Informations de base                                       │
+│  ├─ Nom          : "Déploiement Application Prod"           │
+│  ├─ Description  : "Déploie la dernière version en prod"    │
+│  ├─ Type de job  : Run (ou Check / Scan)                    │
+│  └─ Projet       : → mon-projet-git                         │
+│                                                             │
+│  Exécution                                                  │
+│  ├─ Inventaire   : → Prod-Servers (ou "Demander au lancement")│
+│  ├─ Playbook     : playbooks/deploy.yml                     │
+│  ├─ Credentials  : SSH-Prod + Vault-Prod                    │
+│  └─ EE           : ee-monapp:2.0.0                          │
+│                                                             │
+│  Options avancées                                           │
+│  ├─ Limite       : webservers (cibler un groupe)            │
+│  ├─ Tags         : deploy,configure                         │
+│  ├─ Tags ignorés : tests                                    │
+│  ├─ Verbosité    : 0 (Normal) à 5 (Debug)                   │
+│  ├─ Forks        : 10 (parallélisme)                        │
+│  ├─ Timeout      : 3600 secondes                            │
+│  ├─ Variables    : (YAML/JSON inline ou fichier)             │
+│  └─ Questionnaire: Oui/Non                                  │
+│                                                             │
+│  Permissions                                                │
+│  └─ Équipe "Dev" : Execute seulement                        │
+│     Équipe "Ops" : Admin                                    │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Créer un Modèle de Job complet via l'API REST
+
+```bash
+# Authentification : récupérer un token
+TOKEN=$(curl -s -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"monpass"}' \
+  https://awx.example.com/api/v2/tokens/ \
+  | jq -r '.token')
+
+# Créer un Modèle de Job complet
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/job_templates/ \
+  -d '{
+    "name": "Déploiement Application Prod",
+    "description": "Déploie la dernière version en production",
+    "job_type": "run",
+    "inventory": 3,
+    "project": 5,
+    "playbook": "playbooks/deploy.yml",
+    "scm_branch": "",
+    "forks": 10,
+    "limit": "webservers",
+    "verbosity": 0,
+    "extra_vars": "env: production\napp_version: latest",
+    "job_tags": "deploy",
+    "skip_tags": "tests",
+    "timeout": 3600,
+    "use_fact_cache": true,
+    "allow_simultaneous": false,
+    "ask_variables_on_launch": false,
+    "ask_limit_on_launch": false,
+    "ask_tags_on_launch": false,
+    "ask_inventory_on_launch": false,
+    "ask_credential_on_launch": false,
+    "webhook_service": "github",
+    "survey_enabled": false
+  }' | jq .
+```
+
+#### Options "Demander au lancement" (Ask on Launch)
+
+Ces options permettent de rendre un modèle **interactif** : certains paramètres sont fixés dans le template, d'autres sont demandés à chaque lancement.
+
+```
+ask_inventory_on_launch  : true
+  → L'opérateur choisit l'inventaire (staging ou prod ?)
+  → Utile pour un template "multi-environnement"
+
+ask_limit_on_launch : true
+  → L'opérateur saisit une limite (web1 ? webservers ? all ?)
+  → Utile pour cibler un serveur spécifique
+
+ask_variables_on_launch : true
+  → L'opérateur peut passer des variables supplémentaires
+  → Ex : app_version=2.1.0
+
+ask_tags_on_launch : true
+  → L'opérateur choisit les tags à exécuter
+  → Ex : deploy, configure, rollback
+
+ask_credential_on_launch : true
+  → Utile si différentes clés SSH selon l'environnement
+
+ask_scm_branch_on_launch : true
+  → L'opérateur choisit la branche Git
+  → Utile pour déployer feature/ma-branche en staging
+```
+
+```bash
+# Exemple : template multi-environnement
+curl -s -X PATCH \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/job_templates/7/ \
+  -d '{
+    "ask_inventory_on_launch": true,
+    "ask_limit_on_launch": true,
+    "ask_variables_on_launch": true
+  }' | jq '.name,.ask_inventory_on_launch'
+```
+
+#### Les types de jobs
+
+```
+RUN   → Exécution normale du playbook (le plus courant)
+CHECK → Mode simulation (--check) sans modification
+SCAN  → Analyse des facts de sécurité (deprecated)
+```
+
+---
+
+### 38.8 Inventaires AWX — Gestion complète
+
+L'inventaire dans AWX est beaucoup plus puissant qu'un simple fichier texte. Il supporte la hiérarchie, les variables, les groupes imbriqués, et les sources dynamiques cloud.
+
+#### Types d'inventaires AWX
+
+```
+INVENTAIRE STANDARD
+  → Vous saisissez les hôtes et groupes manuellement dans l'UI
+  → Ou vous les importez/gérez via l'API
+
+INVENTAIRE INTELLIGENT (Smart Inventory)
+  → Filtre dynamique sur d'autres inventaires existants
+  → Ex : "tous les hôtes avec la variable env=production"
+  → Mis à jour automatiquement
+
+INVENTAIRE CONSTRUIT (Constructed Inventory)
+  → Crée des groupes dynamiques depuis des expressions
+  → Ex : grouper par région AWS, par tag, par version d'OS
+
+SOURCE DYNAMIQUE
+  → Synchronisation depuis AWS, GCP, Azure, VMware, OpenStack...
+  → Mise à jour planifiée ou à la demande
+```
+
+#### Créer et peupler un inventaire via l'API
+
+```bash
+# 1. Créer l'inventaire
+INVENTAIRE_ID=$(curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/inventories/ \
+  -d '{
+    "name": "Production",
+    "description": "Serveurs de production",
+    "organization": 1,
+    "variables": "ntp_server: ntp.prod.example.com\ntimezone: Europe/Paris"
+  }' | jq -r '.id')
+
+echo "Inventaire créé : ID=$INVENTAIRE_ID"
+
+# 2. Créer des groupes
+GROUPE_WEB_ID=$(curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/groups/ \
+  -d "{
+    \"name\": \"webservers\",
+    \"inventory\": $INVENTAIRE_ID,
+    \"variables\": \"nginx_port: 80\nssl_enabled: true\"
+  }" | jq -r '.id')
+
+GROUPE_DB_ID=$(curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/groups/ \
+  -d "{
+    \"name\": \"dbservers\",
+    \"inventory\": $INVENTAIRE_ID,
+    \"variables\": \"mysql_max_connections: 500\"
+  }" | jq -r '.id')
+
+# 3. Ajouter des hôtes
+for i in 1 2 3; do
+  curl -s -X POST \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/json" \
+    https://awx.example.com/api/v2/hosts/ \
+    -d "{
+      \"name\": \"web${i}.prod.example.com\",
+      \"inventory\": $INVENTAIRE_ID,
+      \"enabled\": true,
+      \"variables\": \"ansible_user: deployer\nserver_id: ${i}\"
+    }" | jq -r '.name'
+done
+
+# 4. Associer les hôtes à un groupe
+WEB1_ID=$(curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://awx.example.com/api/v2/hosts/?name=web1.prod.example.com" \
+  | jq -r '.results[0].id')
+
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/groups/${GROUPE_WEB_ID}/hosts/" \
+  -d "{\"id\": $WEB1_ID}" | jq .
+```
+
+#### Source dynamique — AWS EC2
+
+```bash
+# Ajouter une source dynamique AWS à un inventaire existant
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  https://awx.example.com/api/v2/inventory_sources/ \
+  -d "{
+    \"name\": \"AWS EC2 Production\",
+    \"inventory\": $INVENTAIRE_ID,
+    \"source\": \"ec2\",
+    \"credential\": 8,
+    \"source_vars\": \"regions:\\n  - eu-west-1\\n  - eu-central-1\\nfilters:\\n  instance-state-name: running\\n  tag:Environment: production\",
+    \"overwrite\": true,
+    \"overwrite_vars\": true,
+    \"update_on_launch\": true,
+    \"update_cache_timeout\": 3600
+  }" | jq .
+```
+
+```yaml
+# Équivalent en source_vars YAML (pour les sources dynamiques)
+# (à coller dans le champ "Source Variables" de l'UI AWX)
+regions:
+  - eu-west-1
+  - eu-central-1
+
+filters:
+  instance-state-name: running
+  "tag:Environment": production
+
+# Grouper les hôtes par tag Role
+keyed_groups:
+  - key: tags.Role
+    prefix: role
+
+# Ajouter des variables depuis les tags AWS
+compose:
+  ansible_host: public_ip_address
+  ec2_region: placement.region
+```
+
+#### Inventaire Construit — Grouper dynamiquement
+
+```yaml
+# Variables de l'inventaire construit
+# (champ "Variables" dans AWX > Inventaires > Construit)
+
+# Source : mon inventaire principal
+source_inventory: Production
+
+# Créer des groupes dynamiques depuis des conditions
+groups:
+  # Groupe "ubuntu_servers" : tous les hôtes Ubuntu
+  ubuntu_servers: ansible_distribution == "Ubuntu"
+
+  # Groupe "high_memory" : serveurs avec + de 8Go de RAM
+  high_memory: ansible_memtotal_mb > 8192
+
+  # Groupe "web_eu" : webservers en Europe
+  web_eu: >
+    'webservers' in group_names and
+    ec2_region is match('eu-.*')
+
+# Ajouter des variables calculées sur les hôtes
+compose:
+  # Construire un FQDN propre
+  fqdn: inventory_hostname + ".prod.example.com"
+
+  # Variable de l'environnement depuis un tag
+  environment: tags.Environment | default('unknown')
+```
+
+#### Variables d'inventaire — Priorités et bonnes pratiques
+
+```yaml
+# Niveau 1 : Variables de l'inventaire (les moins prioritaires)
+# → Dans AWX : Inventaires > Mon Inventaire > Variables
+ntp_server: ntp.example.com
+timezone: Europe/Paris
+ansible_user: deployer
+
+# Niveau 2 : Variables d'un groupe
+# → Dans AWX : Inventaires > Mon Inventaire > Groupes > webservers > Variables
+nginx_port: 80
+ssl_enabled: true
+
+# Niveau 3 : Variables d'un hôte spécifique (les plus prioritaires)
+# → Dans AWX : Inventaires > Mon Inventaire > Hôtes > web1 > Variables
+nginx_port: 8080       # Surcharge la variable du groupe
+backup_role: primary   # Variable spécifique à cet hôte
+```
+
+```bash
+# Voir les variables résolues pour un hôte via l'API
+# (très utile pour déboguer)
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://awx.example.com/api/v2/hosts/?name=web1.prod.example.com" \
+  | jq '.results[0].id' \
+  | xargs -I{} curl -s -H "Authorization: Bearer $TOKEN" \
+      "https://awx.example.com/api/v2/hosts/{}/variable_data/" \
+  | jq .
+```
+
+---
+
+### 38.9 Questionnaires AWX — Rendre les jobs interactifs
+
+Le **questionnaire** est l'une des fonctionnalités les plus utiles d'AWX pour les équipes non-techniques. Il transforme un job en **formulaire web** : l'utilisateur remplit des champs avant de lancer, sans toucher au code.
+
+#### Cas d'usage typiques
+
+```
+SANS questionnaire :
+  Un développeur veut déployer la version 2.1.0 en staging.
+  → Il doit accéder au terminal, modifier un fichier de vars,
+    lancer ansible-playbook avec les bonnes options...
+  → Risque d'erreur, complexe, dépendant d'un expert Ansible.
+
+AVEC questionnaire :
+  → Il ouvre AWX, clique sur "Déploiement Application"
+  → Un formulaire s'affiche :
+      Environnement : [staging ▼]
+      Version :       [2.1.0      ]
+      Commentaire :   [Fix bug #42]
+  → Il clique sur "Lancer" → le job démarre.
+  → Aucune connaissance d'Ansible requise.
+```
+
+#### Types de champs disponibles
+
+| Type | Description | Exemple d'usage |
+|---|---|---|
+| `text` | Champ texte court | Version, nom d'hôte |
+| `textarea` | Texte multi-lignes | Liste d'IPs, commentaire |
+| `password` | Texte masqué (non logué) | Mot de passe temporaire |
+| `integer` | Nombre entier | Nombre de répliques |
+| `float` | Nombre décimal | Timeout en secondes |
+| `multiplechoice` | Menu déroulant (1 choix) | Environnement, région |
+| `multiselect` | Cases à cocher (N choix) | Tags à activer |
+
+#### Créer un questionnaire via l'API REST
+
+```bash
+# Activer le questionnaire sur un Job Template existant
+# ET définir toutes ses questions en une seule requête
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/survey_spec/" \
+  -d '{
+    "name": "Paramètres de déploiement",
+    "description": "Renseignez les informations de votre déploiement",
+    "spec": [
+      {
+        "question_name": "Environnement cible",
+        "question_description": "Sur quel environnement déployer ?",
+        "variable": "deploy_env",
+        "type": "multiplechoice",
+        "required": true,
+        "default": "staging",
+        "choices": "staging\npreproduction\nproduction"
+      },
+      {
+        "question_name": "Version à déployer",
+        "question_description": "Tag Git ou numéro de version (ex: v2.1.0)",
+        "variable": "app_version",
+        "type": "text",
+        "required": true,
+        "default": "latest",
+        "min": 1,
+        "max": 50
+      },
+      {
+        "question_name": "Nombre de serveurs simultanés",
+        "question_description": "Combien de serveurs mettre à jour en même temps ?",
+        "variable": "deploy_forks",
+        "type": "integer",
+        "required": false,
+        "default": 3,
+        "min": 1,
+        "max": 20
+      },
+      {
+        "question_name": "Composants à déployer",
+        "question_description": "Quels composants mettre à jour ?",
+        "variable": "deploy_tags",
+        "type": "multiselect",
+        "required": true,
+        "default": "frontend\nbackend",
+        "choices": "frontend\nbackend\ndatabase\nconfiguration\ncertificats"
+      },
+      {
+        "question_name": "Mot de passe de validation",
+        "question_description": "Mot de passe requis pour déployer en production",
+        "variable": "deploy_validation_pass",
+        "type": "password",
+        "required": false,
+        "default": ""
+      },
+      {
+        "question_name": "Commentaire de déploiement",
+        "question_description": "Décrivez les changements apportés (pour l'historique)",
+        "variable": "deploy_comment",
+        "type": "textarea",
+        "required": false,
+        "default": "",
+        "min": 0,
+        "max": 500
+      }
+    ]
+  }' | jq .
+
+# Activer le questionnaire sur le template
+curl -s -X PATCH \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/" \
+  -d '{"survey_enabled": true}' | jq '.survey_enabled'
+```
+
+#### Utiliser les variables du questionnaire dans le playbook
+
+```yaml
+# playbooks/deploy.yml
+---
+- name: Déployer l'application
+  hosts: "{{ deploy_env }}_servers"   # Utilise la variable du questionnaire
+  become: true
+  serial: "{{ deploy_forks | default(3) }}"
+
+  vars:
+    # Variables injectées automatiquement par AWX depuis le questionnaire
+    # deploy_env       → ex: "production"
+    # app_version      → ex: "v2.1.0"
+    # deploy_forks     → ex: 3
+    # deploy_tags      → ex: "frontend\nbackend" (multi-select)
+    # deploy_comment   → ex: "Fix bug #42"
+
+  pre_tasks:
+    - name: Afficher le résumé du déploiement
+      ansible.builtin.debug:
+        msg: |
+          ════════════════════════════════════
+          DÉPLOIEMENT {{ app_version }}
+          Environnement : {{ deploy_env }}
+          Composants    : {{ deploy_tags | replace('\n', ', ') }}
+          Commentaire   : {{ deploy_comment | default('(aucun)') }}
+          Lancé par     : {{ awx_user_name | default('API') }}
+          ════════════════════════════════════
+
+    # Validation : en production, vérifier le mot de passe
+    - name: Vérifier le mot de passe de validation (prod uniquement)
+      ansible.builtin.assert:
+        that:
+          - deploy_validation_pass == vault_deploy_prod_password
+        fail_msg: "Mot de passe de validation incorrect pour la production !"
+      when: deploy_env == "production"
+      no_log: true   # Ne pas afficher le mot de passe dans les logs
+
+  roles:
+    - role: deploy_frontend
+      tags: [frontend]
+      when: "'frontend' in deploy_tags"
+
+    - role: deploy_backend
+      tags: [backend]
+      when: "'backend' in deploy_tags"
+
+    - role: deploy_database
+      tags: [database]
+      when: "'database' in deploy_tags"
+```
+
+#### Variables AWX automatiques (awx_*)
+
+AWX injecte automatiquement des variables dans chaque job. Très utiles pour les audits et les conditions.
+
+```yaml
+tasks:
+  - name: Afficher les métadonnées AWX du job
+    ansible.builtin.debug:
+      msg:
+        - "Job ID       : {{ tower_job_id }}"
+        - "Lancé par    : {{ awx_user_name }}"
+        - "Template     : {{ awx_job_template_name }}"
+        - "Inventaire   : {{ awx_inventory_name }}"
+        - "Projet       : {{ awx_project_name }}"
+        - "Branche SCM  : {{ awx_project_scm_branch }}"
+        - "URL du job   : {{ tower_job_launch_type }}"
+
+# Ces variables sont toujours disponibles dans vos playbooks
+# sans rien configurer — AWX les injecte automatiquement.
+# Très pratique pour logger l'identité de qui a lancé quoi.
+```
+
+#### Lancer un job avec questionnaire via l'API (automation)
+
+```bash
+# Lancer un job en passant les réponses du questionnaire
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/launch/" \
+  -d '{
+    "extra_vars": {
+      "deploy_env": "staging",
+      "app_version": "v2.1.0",
+      "deploy_forks": 5,
+      "deploy_tags": "frontend\nbackend",
+      "deploy_comment": "Déploiement automatique depuis CI/CD"
+    }
+  }' | jq '{job_id: .id, status: .status, url: .url}'
+
+# Surveiller le job jusqu'à sa fin
+JOB_ID=42
+while true; do
+  STATUS=$(curl -s -H "Authorization: Bearer $TOKEN" \
+    "https://awx.example.com/api/v2/jobs/${JOB_ID}/" \
+    | jq -r '.status')
+  echo "$(date +%H:%M:%S) — Statut : $STATUS"
+  if [[ "$STATUS" == "successful" || "$STATUS" == "failed" ]]; then
+    break
+  fi
+  sleep 10
+done
+
+echo "Job terminé avec le statut : $STATUS"
+```
+
+---
+
+### 38.10 Planification (Scheduling) — Automatiser les lancements
+
+Le **scheduler** d'AWX permet de déclencher automatiquement des jobs selon une règle de temps : toutes les nuits, chaque semaine, à une date précise, etc. C'est l'équivalent de `crontab` mais intégré à l'interface AWX avec logs et notifications.
+
+#### Pourquoi planifier des jobs Ansible ?
+
+```
+Cas d'usage typiques :
+
+MAINTENANCE PRÉVENTIVE
+  → Appliquer les patches de sécurité chaque dimanche à 2h
+  → Rotation des logs chaque nuit
+  → Nettoyage des fichiers temporaires chaque semaine
+
+OPÉRATIONS RÉCURRENTES
+  → Sauvegarde des configurations toutes les 4 heures
+  → Synchronisation des certificats SSL tous les mois
+  → Vérification de conformité chaque jour à 6h
+
+DÉPLOIEMENTS PROGRAMMÉS
+  → "Déployer en prod à 22h le vendredi"
+  → "Mettre à jour les dépendances chaque lundi à 3h"
+
+RAPPORTS ET AUDITS
+  → Générer un rapport d'inventaire chaque matin
+  → Vérifier l'état des services chaque heure
+```
+
+#### Créer une planification via l'interface AWX
+
+```
+AWX > Ressources > Modèles > Mon Template > Planifications > Ajouter
+
+Formulaire de planification :
+┌─────────────────────────────────────────────────────────┐
+│ Nom          : Patch sécurité hebdomadaire               │
+│ Commencer le : 2026-04-14  02:00:00  (UTC)               │
+│ Fuseau       : Europe/Paris                              │
+│                                                          │
+│ Fréquence :  ○ Jamais   ● Heure   ○ Jour   ○ Semaine    │
+│                         ○ Mois    ○ Année  ○ Avancée     │
+│                                                          │
+│ [Mode avancé — règle RRULE :]                            │
+│ DTSTART:20260414T020000Z                                 │
+│ RRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=2;BYMINUTE=0           │
+│                                                          │
+│ Variables supplémentaires :                              │
+│ patch_level: security                                    │
+│ reboot_allowed: true                                     │
+└─────────────────────────────────────────────────────────┘
+```
+
+#### Créer une planification via l'API REST
+
+```bash
+# Planification : chaque dimanche à 2h du matin (UTC)
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/schedules/" \
+  -d '{
+    "name": "Patch sécurité hebdomadaire",
+    "description": "Applique les patches de sécurité chaque dimanche à 2h",
+    "enabled": true,
+    "rrule": "DTSTART:20260414T020000Z RRULE:FREQ=WEEKLY;BYDAY=SU",
+    "extra_data": {
+      "patch_level": "security",
+      "reboot_allowed": true
+    }
+  }' | jq '{id, name, next_run}'
+```
+
+#### Exemples de règles RRULE courantes
+
+Les planifications AWX utilisent le format **RRULE** (RFC 5545), le même que les calendriers iCalendar.
+
+```bash
+# ── Quotidien ─────────────────────────────────────────
+# Tous les jours à 3h00 UTC
+RRULE="DTSTART:20260101T030000Z RRULE:FREQ=DAILY"
+
+# Du lundi au vendredi à 8h30
+RRULE="DTSTART:20260101T083000Z RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR"
+
+# ── Hebdomadaire ──────────────────────────────────────
+# Chaque dimanche à 2h
+RRULE="DTSTART:20260414T020000Z RRULE:FREQ=WEEKLY;BYDAY=SU"
+
+# Chaque lundi ET jeudi à 22h
+RRULE="DTSTART:20260414T220000Z RRULE:FREQ=WEEKLY;BYDAY=MO,TH"
+
+# ── Mensuel ───────────────────────────────────────────
+# Le 1er de chaque mois à 1h
+RRULE="DTSTART:20260101T010000Z RRULE:FREQ=MONTHLY;BYMONTHDAY=1"
+
+# Le dernier vendredi de chaque mois à 22h
+RRULE="DTSTART:20260101T220000Z RRULE:FREQ=MONTHLY;BYDAY=-1FR"
+
+# ── Horaire ───────────────────────────────────────────
+# Toutes les 4 heures
+RRULE="DTSTART:20260101T000000Z RRULE:FREQ=HOURLY;INTERVAL=4"
+
+# Toutes les 30 minutes
+RRULE="DTSTART:20260101T000000Z RRULE:FREQ=MINUTELY;INTERVAL=30"
+
+# ── Ponctuel ──────────────────────────────────────────
+# Une seule fois, le 1er mai 2026 à 22h
+RRULE="DTSTART:20260501T220000Z RRULE:FREQ=DAILY;COUNT=1"
+
+# ── Avec fin ──────────────────────────────────────────
+# Chaque nuit pendant 30 jours puis arrêt
+RRULE="DTSTART:20260414T030000Z RRULE:FREQ=DAILY;COUNT=30"
+
+# Chaque semaine jusqu'au 31 décembre 2026
+RRULE="DTSTART:20260414T030000Z RRULE:FREQ=WEEKLY;UNTIL=20261231T235959Z"
+```
+
+#### Exemple complet — Stratégie de maintenance automatisée
+
+```bash
+# SCÉNARIO : 3 jobs planifiés pour une maintenance automatique complète
+
+# ── JOB 1 : Sauvegarde quotidienne des configurations ──
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/10/schedules/" \
+  -d '{
+    "name": "Sauvegarde configs - quotidien 1h",
+    "enabled": true,
+    "rrule": "DTSTART:20260414T010000Z RRULE:FREQ=DAILY",
+    "extra_data": {"backup_type": "config", "retention_days": 30}
+  }' | jq '{name, next_run}'
+
+# ── JOB 2 : Patches de sécurité - dimanche 2h ─────────
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/11/schedules/" \
+  -d '{
+    "name": "Patches sécurité - hebdo dimanche 2h",
+    "enabled": true,
+    "rrule": "DTSTART:20260414T020000Z RRULE:FREQ=WEEKLY;BYDAY=SU",
+    "extra_data": {
+      "patch_category": "security",
+      "reboot_policy": "if_needed",
+      "notification_email": "ops@example.com"
+    }
+  }' | jq '{name, next_run}'
+
+# ── JOB 3 : Audit de conformité - lundi 6h ────────────
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/12/schedules/" \
+  -d '{
+    "name": "Audit conformité - hebdo lundi 6h",
+    "enabled": true,
+    "rrule": "DTSTART:20260414T060000Z RRULE:FREQ=WEEKLY;BYDAY=MO",
+    "extra_data": {
+      "report_format": "html",
+      "report_recipients": "audit@example.com,direction@example.com",
+      "standards": ["CIS", "PCI-DSS"]
+    }
+  }' | jq '{name, next_run}'
+
+# ── Lister toutes les planifications actives ───────────
+curl -s -H "Authorization: Bearer $TOKEN" \
+  "https://awx.example.com/api/v2/schedules/?enabled=true" \
+  | jq '.results[] | {nom: .name, prochain: .next_run, job: .summary_fields.unified_job_template.name}'
+```
+
+#### Gérer les planifications dans le playbook lui-même
+
+```yaml
+# Exemple : planifier un job AWX depuis un playbook Ansible
+# (utile pour créer des planifications automatiquement lors du déploiement)
+---
+- name: Configurer les planifications AWX
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    awx_host: "https://awx.example.com"
+    awx_token: "{{ vault_awx_token }}"
+
+  tasks:
+    - name: Créer la planification de sauvegarde
+      awx.awx.schedule:
+        controller_host: "{{ awx_host }}"
+        controller_oauthtoken: "{{ awx_token }}"
+        validate_certs: false
+        name: "Sauvegarde {{ inventory_name }} - quotidien"
+        state: present
+        enabled: true
+        unified_job_template: "Sauvegarde Configurations"
+        rrule: "DTSTART:20260101T010000Z RRULE:FREQ=DAILY"
+        extra_data:
+          target_inventory: "{{ inventory_name }}"
+          backup_path: "/var/backups/ansible/{{ inventory_name }}"
+
+    - name: Désactiver une planification
+      awx.awx.schedule:
+        controller_host: "{{ awx_host }}"
+        controller_oauthtoken: "{{ awx_token }}"
+        validate_certs: false
+        name: "Ancienne planification"
+        state: absent
+```
+
+#### Notifications sur les planifications
+
+```bash
+# Associer une notification à un job template
+# (s'envoie en cas de succès, d'échec, ou toujours)
+
+# Créer d'abord un profil de notification Slack
+NOTIF_ID=$(curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/notification_templates/" \
+  -d '{
+    "name": "Slack OPS Channel",
+    "organization": 1,
+    "notification_type": "slack",
+    "notification_configuration": {
+      "token": "xoxb-mon-token-slack",
+      "channels": ["#ops-ansible"],
+      "hex_color": ""
+    }
+  }' | jq -r '.id')
+
+# Associer la notification au job template en cas d'ÉCHEC
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/notification_templates_error/" \
+  -d "{\"id\": $NOTIF_ID}"
+
+# Associer aussi en cas de SUCCÈS (optionnel)
+curl -s -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  "https://awx.example.com/api/v2/job_templates/7/notification_templates_success/" \
+  -d "{\"id\": $NOTIF_ID}"
+```
+
+#### Bonnes pratiques de planification
+
+```
+FUSEAU HORAIRE
+  → Toujours spécifier le fuseau dans DTSTART (UTC recommandé)
+  → Ou utiliser le champ "Timezone" dans l'interface AWX
+  → Éviter les heures ambiguës (changement heure été/hiver)
+
+ESPACEMENT DES JOBS
+  → Ne pas lancer 10 jobs planifiés à la même heure
+  → Décaler de 15-30 minutes pour éviter la surcharge
+  → Ex : sauvegarde à 1h00, patches à 2h00, audit à 3h00
+
+FENÊTRE DE MAINTENANCE
+  → Définir une fenêtre claire (ex : dimanche 1h-5h)
+  → Documenter dans la description du job
+  → Prévoir une marge de sécurité (un job de 2h ne lance pas à 3h55)
+
+JOBS LONGS → TIMEOUT
+  → Toujours définir un timeout sur les templates planifiés
+  → Un job bloqué qui tourne depuis 12h est souvent un bug
+  → AWX peut tuer le job et alerter si timeout dépassé
+
+DÉSACTIVER, PAS SUPPRIMER
+  → En période de gel (vacances, congés)
+  → Désactiver enabled: false plutôt que supprimer
+  → La planification est conservée pour la réactiver facilement
+
+HISTORIQUE
+  → AWX conserve les 200 dernières exécutions par défaut
+  → Configurable dans Administration > Paramètres > Jobs
+  → Purger régulièrement pour ne pas saturer la base de données
 ```
 
 ---
@@ -6179,5 +7983,6 @@ ansible-console -i hosts webservers
 
 ---
 
-*Documentation rédigée à partir des sources : Stéphane Robert (blog.stephane-robert.info), Editions ENI — Ansible (DOUKSIEH ISMAN), documentation officielle Ansible (docs.ansible.com), et la communauté Ansible.*
+<!-- *Documentation rédigée à partir des sources : Stéphane Robert (blog.stephane-robert.info), Editions ENI — Ansible (DOUKSIEH ISMAN), documentation officielle Ansible (docs.ansible.com), et la communauté Ansible.*
 
+*Version : Avril 2026 — 41 chapitres — 6 parties — ~8000 lignes — Niveau débutant à expert* -->

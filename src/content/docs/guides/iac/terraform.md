@@ -1,8 +1,8 @@
 ---
-title: "🐳 Guide Terraform : Déployez votre infrastructure"
-description: "📘 Documentation Ansible — Du débutant à la maîtrise"
+title: "📘 Guide Terraform : Déployez votre infrastructure"
+description: "📘 Documentation Terraform — Du débutant à la maîtrise"
 created: "2026-04-04"
-# updated: "2026-04-04"
+updated: "2026-04-13"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,7 +11,15 @@ author:
 
 ---
 
-# 🏗️ Terraform — Guide Complet de A à Z
+
+<div align="center">
+<img src="https://www.datocms-assets.com/2885/1620155116-brandhcterraformverticalcolor.svg"
+     alt="Terraform Logo"
+     width="120"
+     style="margin-bottom: 16px;" />
+</div>
+
+---
 
 > **Documentation pédagogique** couvrant l'architecture, les concepts fondamentaux, la sécurité, les modules, les backends distants, les rollbacks, les bonnes pratiques, et bien plus encore.
 
@@ -2915,12 +2923,6 @@ remote_state {
 - [Tutoriels officiels HashiCorp](https://developer.hashicorp.com/terraform/tutorials)
 - [Registry Terraform](https://registry.terraform.io)
 - [Documentation des modules](https://developer.hashicorp.com/terraform/tutorials/modules)
-
-### Formation et certification
-
-- **Certification Terraform Associate 003** : valide les compétences fondamentales
-- **Certification Terraform Professional** : pour les utilisateurs avancés
-- [devopssec.fr — Cours complet Terraform](https://devopssec.fr/article/cours-complet-terraform)
 
 ### Communauté
 
