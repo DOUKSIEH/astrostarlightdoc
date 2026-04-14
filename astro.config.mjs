@@ -9,7 +9,7 @@ import remarkArticleMeta   from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'Ma documentation',
+			title: 'DevSecOps & Cloud-Native — Notes de production',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/DOUKSIEH/astrostarlightdoc' }],
 			customCss: ['./src/styles/custom.css'],
 			// Définit l'anglais comme langue par défaut pour ce site.
@@ -76,8 +76,8 @@ export default defineConfig({
 						items: [
 						{ label: "DevSecOps - CALMS", slug: "guides/devsecops/calms" },
 						{ label: "Audit de Maturité DevOps", slug: "guides/devsecops/audit-devops" },
-						// { label: "Préparation entretien LINE", slug: "guides/devsecops/entretien-line" },
-						// { label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
+						{ label: "Préparation entretien poste", slug: "guides/devsecops/preparation" },
+						{ label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
 						],
 					},
 					{
@@ -114,6 +114,8 @@ export default defineConfig({
 						items: [
 						{ label: "Gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
 						{ label: "IAM - Keycloak & authentik", slug: "guides/security/keycloak-authentik" },
+						{ label: "IBM WEBSEAL", slug: "guides/security/ibm-webseal" },
+						{ label: "SIEM - Graylog · Wazuh · Suricata", slug: "guides/security/siem" },
 						],
 					},
 					{
@@ -127,6 +129,7 @@ export default defineConfig({
 						label: "Observability",
 						items: [
 						{ label: "Guide Observabilité", slug: "guides/observability/observabilite" },
+						{ label: "Guide Observabilité HD", slug: "guides/observability/observabilite-hd" },
 						{ label: "Prometheus - Grafana - Thanos", slug: "guides/observability/prometheus-thanos" },
 						{ label: "Cilium & Hubble", slug: "guides/observability/cilium-hubble" },
 						{ label: "Loki avec stockage S3 (Ceph RGW)", slug: "guides/observability/loki-s3-rgw" },
