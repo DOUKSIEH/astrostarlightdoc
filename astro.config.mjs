@@ -67,6 +67,37 @@ export default defineConfig({
 			// 		autogenerate: { directory: 'reference' }, 
 			// 	},
 			// ],
+			// expressiveCode: {
+			// // 	langs: {
+			// 	// Liste exhaustive des langages pour stopper les avertissements [WARN]
+			// 	shiki: {
+			// 	langs: [
+			// 		'javascript',
+			// 		'typescript',
+			// 		'shell',
+			// 		'bash',
+			// 		'yaml',
+			// 		'json',
+			// 		'python',
+			// 		'markdown',
+			// 		'docker',
+			// 		'terraform',
+			// 		'sql',
+			// 		// --- Vos langages spécifiques détectés dans les logs ---
+			// 		'gitignore',
+			// 		'jinja2',
+			// 		'promql',
+			// 		'logql',
+			// 		'lucene',
+			// 		'suricata',
+			// 		'sudoers',
+			// 		'fstab',
+			// 		'sshconfig',
+			// 		'sshd_config',
+			// 		'pam'
+			// 	],
+			// 	},
+			// },
 			sidebar: [
 				{
 					label: "Guides",
@@ -148,6 +179,12 @@ export default defineConfig({
 						{ label: "Prometheus - Grafana - Thanos", slug: "guides/observability/prometheus-thanos" },
 						{ label: "Cilium & Hubble", slug: "guides/observability/cilium-hubble" },
 						{ label: "Loki avec stockage S3 (Ceph RGW)", slug: "guides/observability/loki-s3-rgw" },
+						],
+					},
+					{
+						label: "CI/CD",
+						items: [
+						{ label: "Git & Git Flow", slug: "guides/cicd/git" },
 						],
 					},
 					{
