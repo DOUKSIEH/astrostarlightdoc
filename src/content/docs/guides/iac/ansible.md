@@ -2,7 +2,7 @@
 title: "📘 Guide Ansible : Configuration centralisée de serveurs et d'applications"
 description: "📘 Documentation Ansible — Du débutant à la maîtrise"
 created: "2026-04-04"
-updated: "2026-04-13"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,8 +11,6 @@ author:
 
 ---
 
-<!-- # 📘 Documentation Ansible — Du débutant à la maîtrise -->
-<!-- # 📘 Documentation Ansible — Du débutant à la maîtrise -->
 
 <div align="center">
 
@@ -26,7 +24,7 @@ author:
 
 > **À qui s'adresse ce guide ?**
 > Ce guide s'adresse à toute personne souhaitant apprendre Ansible pas à pas, des fondamentaux aux concepts avancés. À travers des exemples concrets, commentés et prêts à l'emploi, il accompagne les débutants tout en offrant une valeur ajoutée réelle aux profils plus expérimentés. 
-<!-- Ce guide suit la structure du livre *Ansible*  et la complète avec des exemples concrets, commentés et prêts à l'emploi. -->
+
 
 ---
 
@@ -7981,8 +7979,5 @@ ansible-console -i hosts webservers
 | **add_host** | Ajouter dynamiquement un hôte à l'inventaire pendant le play |
 | **WinRM** | Windows Remote Management — protocole pour gérer Windows |
 
----
 
-<!-- *Documentation rédigée à partir des sources : Stéphane Robert (blog.stephane-robert.info), Editions ENI — Ansible (DOUKSIEH ISMAN), documentation officielle Ansible (docs.ansible.com), et la communauté Ansible.*
 
-*Version : Avril 2026 — 41 chapitres — 6 parties — ~8000 lignes — Niveau débutant à expert* -->
