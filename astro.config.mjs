@@ -106,8 +106,8 @@ export default defineConfig({
 						items: [
 						{ label: "Packer & Golden Image Odoo 19", slug: "guides/iac/odoo-packer" },
 						{ label: "Guide Ansible", slug: "guides/iac/ansible" },
-						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
 						{ label: "Guide Terraform", slug: "guides/iac/terraform" },
+						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
 						],
 					},
 					{
