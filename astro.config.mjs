@@ -75,7 +75,7 @@ export default defineConfig({
 						label: "DevSecOps",
 						items: [
 						{ label: "DevSecOps - CALMS", slug: "guides/devsecops/calms" },
-						{ label: "Audit de Maturité DevOps", slug: "guides/devsecops/audit-devops" },
+						// { label: "Audit de Maturité DevOps", slug: "guides/devsecops/audit-devops" },
 						// { label: "Préparation entretien poste", slug: "guides/devsecops/preparation" },
 						// { label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
 						],
@@ -106,16 +106,31 @@ export default defineConfig({
 						items: [
 						{ label: "Packer & Golden Image Odoo 19", slug: "guides/iac/odoo-packer" },
 						{ label: "Guide Ansible", slug: "guides/iac/ansible" },
+						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
 						{ label: "Guide Terraform", slug: "guides/iac/terraform" },
 						],
 					},
-										{
+					{
 						label: "Security",
 						items: [
 						{ label: "Gestion des secrets avec HashiCorp Vault", slug: "guides/security/vault" },
 						{ label: "IAM - Keycloak & authentik", slug: "guides/security/keycloak-authentik" },
 						{ label: "IBM WEBSEAL", slug: "guides/security/ibm-webseal" },
 						{ label: "SIEM - Graylog · Wazuh · Suricata", slug: "guides/security/siem" },
+						],
+					},
+					{
+						label: "Systèmes & Réseaux",
+						items: [
+						{ label: "Les réseaux...", slug: "guides/sysnet/reseaux" },
+						{ label: "Linux Administration Système", slug: "guides/sysnet/adminsys" },
+						],
+					},
+					{
+						label: "Cloud",
+						items: [
+						{ label: "Guide Openstack", slug: "guides/cloud/openstack" },
+						// { label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
 						],
 					},
 					{
