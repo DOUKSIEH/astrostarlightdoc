@@ -2,7 +2,7 @@
 title: "Guide de Commandes Talos Linux"
 description: "Aide-mémoire des commandes talosctl pour la gestion du cluster, des nœuds et de la configuration."
 created: "2026-01-31"
-updated: "2026-02-05"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,7 +11,7 @@ author:
 # hide_table_of_contents: false
 ---
 
-# 🛠️ Guide de Commandes Talos Linux
+<!-- # 🛠️ Guide de Commandes Talos Linux -->
 
 > Talos est un OS immuable et "API-managed". Toute l'interaction se fait via l'outil **`talosctl`**.
 

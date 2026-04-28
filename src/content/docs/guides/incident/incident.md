@@ -1,8 +1,8 @@
 ---
-title: "Gestion d'incident"
-description: "Guide Complet : Gestion d'Incident de A à Z"
+title: "Gestion d'Incident de A à Z"
+description: "Guide Complet : Gestion d'Incident - Infrastructure WebLogic & ColdFusion 2021 — Red Hat / Debian  "
 created: "2026-02-11"
-# updated: "2026-02-04"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -10,8 +10,6 @@ author:
   avatar: "https://github.com/DOUKSIEH.png"
 ---
 
-# 📘 Guide Complet : Gestion d'Incident de A à Z
-### Infrastructure WebLogic & ColdFusion 2021 — Red Hat / Debian 
 
 > **Public cible :** Administrateurs système, équipes d'astreinte, ingénieurs DevOps  
 > **Objectif :** Maîtriser le cycle complet d'un incident — de la détection au post-mortem — avec les métriques ITIL (MTTR, MTTD, MTBF, RTO, RPO)

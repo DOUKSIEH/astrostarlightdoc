@@ -1,8 +1,8 @@
 ---
-title: "Guide de Commandes Talos Linux"
+title: "Observabilité et Sécurité Réseau avec Cilium & Hubble"
 description: "Aide-mémoire des commandes talosctl pour la gestion du cluster, des nœuds et de la configuration."
 created: "2026-02-01"
-updated: "2026-02-02"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -10,8 +10,8 @@ author:
   avatar: "https://github.com/DOUKSIEH.png"
 # hide_table_of_contents: false
 ---
-
-# 📘 Guide Complet : Observabilité et Sécurité Réseau avec Cilium & Hubble
+<!-- 
+# 📘 Guide Complet : Observabilité et Sécurité Réseau avec Cilium & Hubble -->
 :::tip
 Ce document explique les concepts fondamentaux de Cilium et Hubble, détaille leur installation et fournit les procédures de configuration pour une intégration complète avec Prometheus.
 :::

@@ -2,7 +2,7 @@
 title: "Incident Mémoire & Java OutOfMemory"
 description: "Guide de Diagnostic : Incident Mémoire & Java OutOfMemory"
 created: "2026-02-11"
-# updated: "2026-02-04"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -10,7 +10,7 @@ author:
   avatar: "https://github.com/DOUKSIEH.png"
 ---
 
-# 📘 Guide d'Intervention : Java, Mémoire et OOM Killer sous Red Hat
+
 
 > **Public cible :** Administrateurs système et équipes d'astreinte  
 > **Objectif :** Diagnostiquer et remédier aux incidents mémoire sur serveurs d'applications (WebLogic, JBoss, WildFly)

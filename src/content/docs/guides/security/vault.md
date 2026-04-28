@@ -2,19 +2,18 @@
 title: "🚀 Les fondamentaux de la gestion des secrets avec HashiCorp Vault"
 description: "HashiCorp Vault : gérez vos secrets en toute sécurité"
 created: "2026-03-30"
-#updated: "2026-02-02"
+updated: "2026-04-27"
 locales: "fr"
 author:
   name: "Douksieh IH"
   role: "DevOps Engineer"
   avatar: "https://github.com/DOUKSIEH.png"
-
 ---
 
 
-<!-- # HashiCorp Vault — Guide Complet et Pédagogique -->
 
-> **Version couverte** : Vault Community Edition 1.21.x (mars 2026)
+
+<!-- > **Version couverte** : Vault Community Edition 1.21.x (mars 2026) -->
 > **Public cible** : Développeurs, DevOps, Administrateurs Systèmes, Équipes Sécurité
 
 ---

@@ -1,8 +1,8 @@
 ---
-title: "Infrastructure - Kubernetes/Odoo-CNPG"
+title: "🏗️ Infrastructure - Kubernetes/Odoo 19 - CNPG"
 description: "Guide pédagogique complet pour déployer une infrastructure moderne avec Odoo 19 + PostgreSQL HA & ngrok avec K8S"
 created: "2026-02-04"
-#updated: "2026-02-02"
+updated: "2026-04-28"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,7 +11,7 @@ author:
 
 ---
 
-# 🏗️ Infrastructure Production : De Zéro à Odoo 19 sur Kubernetes
+<!-- # 🏗️ Infrastructure Production : De Zéro à Odoo 19 sur Kubernetes -->
 
 >Guide pédagogique complet pour déployer une infrastructure moderne avec Odoo 19 + PostgreSQL HA
 
