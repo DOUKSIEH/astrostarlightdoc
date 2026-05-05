@@ -126,7 +126,6 @@ export default defineConfig({
 						{ label: "CloudNativePG Provisioning", slug: "guides/kubernetes/cnpg-provisionner" },
 						{ label: "Kubernetes et Etcd", slug: "guides/kubernetes/kube-etcd" },
 						{ label: "Gestion des addons Odoo", slug: "guides/kubernetes/addons-odoo" },
-						{ label: "Comprendre et exploiter SBOM", slug: "guides/kubernetes/sbom" },
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
 						{ label: "Docker - bonnes pratiques", slug: "guides/kubernetes/docker" },
@@ -148,6 +147,9 @@ export default defineConfig({
 						{ label: "IAM - Keycloak & authentik", slug: "guides/security/keycloak-authentik" },
 						{ label: "IBM WEBSEAL", slug: "guides/security/ibm-webseal" },
 						{ label: "SIEM - Graylog · Wazuh · Suricata", slug: "guides/security/siem" },
+						{ label: "Comprendre et exploiter SBOM", slug: "guides/security/sbom" },
+						{ label: "Sécurité de la Supply Chain", slug: "guides/security/supply-chain" },
+
 						],
 					},
 					{
@@ -185,6 +187,13 @@ export default defineConfig({
 						label: "CI/CD",
 						items: [
 						{ label: "Git & Git Flow", slug: "guides/cicd/git" },
+						],
+					},
+					{
+						label: "IA",
+						items: [
+						{ label: "Comprendre l'IA", slug: "guides/ia/ia" },
+						// { label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
 						],
 					},
 					{
