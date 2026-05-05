@@ -2,7 +2,7 @@
 title: "SBOM — Comprendre et exploiter le Software Bill of Materials"
 description: "Guide pédagogique complet pour Comprendre et exploiter le Software Bill of Materials"
 created: "2026-03-13"
-#updated: "2026-02-02"
+updated: "2026-05-02"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -11,7 +11,7 @@ author:
 
 ---
 
-# 📦 SBOM — Comprendre et exploiter le Software Bill of Materials
+<!-- # 📦 SBOM — Comprendre et exploiter le Software Bill of Materials -->
 
 > **À qui s'adresse ce guide ?**
 > Ce document s'adresse à un public hétérogène : développeurs, ops, managers techniques, responsables sécurité. Les notions sont introduites progressivement, avec des analogies et des exemples concrets. Aucun prérequis avancé n'est nécessaire pour commencer.
