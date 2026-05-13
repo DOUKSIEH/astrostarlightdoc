@@ -13,9 +13,9 @@ author:
 
 <!-- # 📚 AWS Cloud + Certification SAA-C03 — Documentation complète -->
 
-> **Documentation complète en français** pour maîtriser AWS Cloud et préparer la certification **AWS Solutions Architect Associate (SAA-C03)**.
->
-> **Niveau** : Junior → Senior · **Région de référence** : eu-west-3 (Paris) · **Date** : 2026
+> **Documentation complète** pour maîtriser AWS Cloud et préparer la certification **AWS Solutions Architect Associate (SAA-C03)**.
+<!-- >
+> **Niveau** : Junior → Senior · **Région de référence** : eu-west-3 (Paris) · **Date** : 2026 -->
 
 ---
 
