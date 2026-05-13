@@ -105,7 +105,8 @@ export default defineConfig({
 					{
 						label: "DevSecOps",
 						items: [
-						{ label: "DevSecOps - CALMS", slug: "guides/devsecops/calms" },
+						{ label: "Frameworks ITIL 4 et CALMS", slug: "guides/devsecops/itil" },
+						{ label: "Audit de Maturité  DevSecOps - CALMS", slug: "guides/devsecops/calms" },
 						// { label: "Audit de Maturité DevOps", slug: "guides/devsecops/audit-devops" },
 						// { label: "Préparation entretien poste", slug: "guides/devsecops/preparation" },
 						// { label: "Compréhension du Besoin", slug: "guides/devsecops/entretien-laposte" },
@@ -128,7 +129,7 @@ export default defineConfig({
 						{ label: "Gestion des addons Odoo", slug: "guides/kubernetes/addons-odoo" },
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
-						{ label: "Docker - bonnes pratiques", slug: "guides/kubernetes/docker" },
+						{ label: "Docker...", slug: "guides/kubernetes/docker" },
 						],
 					},
 					{
