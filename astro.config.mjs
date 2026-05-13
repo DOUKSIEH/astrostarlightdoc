@@ -164,6 +164,7 @@ export default defineConfig({
 						label: "Cloud",
 						items: [
 						{ label: "Guide Openstack", slug: "guides/cloud/openstack" },
+						{ label: "Guide AWS", slug: "guides/cloud/aws" },
 						// { label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
 						],
 					},
