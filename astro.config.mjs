@@ -130,7 +130,7 @@ export default defineConfig({
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
 						{ label: "Docker...", slug: "guides/kubernetes/docker" },
-						{ label: "K8S - Outils & Méthodes", slug: "guides/kubernetes/k8s-outils" },
+						// { label: "K8S - Outils & Méthodes", slug: "guides/kubernetes/k8s-outils" },
 						],
 					},
 					{
