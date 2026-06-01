@@ -130,6 +130,7 @@ export default defineConfig({
 						{ label: "OpenShift vs Talos", slug: "guides/kubernetes/openshift-talos" },
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
 						{ label: "Docker...", slug: "guides/kubernetes/docker" },
+						{ label: "K8S - Outils & Méthodes", slug: "guides/kubernetes/k8s-outils" },
 						],
 					},
 					{
@@ -195,7 +196,7 @@ export default defineConfig({
 						label: "IA",
 						items: [
 						{ label: "Comprendre l'IA", slug: "guides/ia/ia" },
-						// { label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
+						{ label: "Agentique - gestion d'incidents", slug: "guides/ia/agent-incident" },
 						],
 					},
 					{
