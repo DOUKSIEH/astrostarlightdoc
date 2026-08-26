@@ -23,7 +23,6 @@ author:
 > **Statut** : version reformulée et restructurée pour publication en Markdown
 
 ---
-
 ## Table des matières
 
 - [Chapitre I. Contexte éducatif, territorial et environnemental des écoles rurales djiboutiennes](#chapitre-i-contexte-éducatif-territorial-et-environnemental-des-écoles-rurales-djiboutiennes)
@@ -90,7 +89,6 @@ author:
     - [2.4.1 Nutrition et développement cognitif](#241-nutrition-et-développement-cognitif)
     - [2.4.2 Malnutrition, vulnérabilité et décrochage scolaire](#242-malnutrition-vulnérabilité-et-décrochage-scolaire)
     - [2.4.3 Jardins scolaires et sécurité alimentaire](#243-jardins-scolaires-et-sécurité-alimentaire)
-    - [Synthèse de la section 2.4](#synthèse-de-la-section-24)
     - [2.4.4 Les jardins scolaires comme outils d'éducation nutritionnelle](#244-les-jardins-scolaires-comme-outils-déducation-nutritionnelle)
     - [2.4.5 Jardins scolaires et maintien scolaire](#245-jardins-scolaires-et-maintien-scolaire)
     - [2.4.6 Jardins scolaires et résilience éducative](#246-jardins-scolaires-et-résilience-éducative)
@@ -120,6 +118,7 @@ author:
     - [2.7.5 Participation communautaire et dynamiques locales](#275-participation-communautaire-et-dynamiques-locales)
     - [2.7.6 Tensions entre discours institutionnels et réalités de terrain](#276-tensions-entre-discours-institutionnels-et-réalités-de-terrain)
     - [Conclusion de la section 2.7](#conclusion-de-la-section-27)
+  - [Note de vérification bibliographique du chapitre II](#note-de-vérification-bibliographique-du-chapitre-ii)
 - [Chapitre III. Méthodologie de la recherche](#chapitre-iii-méthodologie-de-la-recherche)
   - [Introduction du chapitre III](#introduction-du-chapitre-iii)
   - [3.1 Positionnement épistémologique de la recherche](#31-positionnement-épistémologique-de-la-recherche)
@@ -159,21 +158,17 @@ author:
     - [3.6.6 Organisation et classification du corpus documentaire](#366-organisation-et-classification-du-corpus-documentaire)
     - [3.6.7 Volume et composition du corpus documentaire](#367-volume-et-composition-du-corpus-documentaire)
     - [3.6.8 Préparation du corpus pour l'analyse dans NVivo 15](#368-préparation-du-corpus-pour-lanalyse-dans-nvivo-15)
-    - [3.6.9 Fonction analytique du corpus documentaire](#369-fonction-analytique-du-corpus-documentaire)
+    - [3.6.9 Fonctions analytiques du corpus documentaire](#369-fonctions-analytiques-du-corpus-documentaire)
     - [3.6.10 Le corpus documentaire comme fondement de l'émergence théorique](#3610-le-corpus-documentaire-comme-fondement-de-lémergence-théorique)
-  - [3.7 Analyse des données avec NVivo 15](#37-analyse-des-données-avec-nvivo-15)
+  - [3.7 L'analyse assistée par NVivo 15 : justification et mise en œuvre](#37-lanalyse-assistée-par-nvivo-15--justification-et-mise-en-œuvre)
     - [3.7.1 Justification du choix de NVivo 15](#371-justification-du-choix-de-nvivo-15)
-    - [3.7.2 Préparation des données avant l'importation dans NVivo 15](#372-préparation-des-données-avant-limportation-dans-nvivo-15)
-    - [3.7.3 Organisation du corpus documentaire dans NVivo 15](#373-organisation-du-corpus-documentaire-dans-nvivo-15)
+    - [3.7.2 Préparation des données avant importation](#372-préparation-des-données-avant-importation)
+    - [3.7.3 Organisation du corpus dans le logiciel](#373-organisation-du-corpus-dans-le-logiciel)
     - [3.7.4 Création des attributs descriptifs](#374-création-des-attributs-descriptifs)
-    - [3.7.5 Le codage ouvert](#375-le-codage-ouvert)
-    - [3.7.6 Le codage axial](#376-le-codage-axial)
-    - [3.7.7 Le codage sélectif et l'émergence de la catégorie centrale](#377-le-codage-sélectif-et-lémergence-de-la-catégorie-centrale)
-    - [3.7.8 Les mémos analytiques](#378-les-mémos-analytiques)
-    - [3.7.9 Les cartes conceptuelles et matrices analytiques](#379-les-cartes-conceptuelles-et-matrices-analytiques)
-    - [3.7.10 Apports méthodologiques de NVivo 15](#3710-apports-méthodologiques-de-nvivo-15)
-  - [3.8 Processus de codage dans la théorisation ancrée](#38-processus-de-codage-dans-la-théorisation-ancrée)
-    - [3.8.1 Fondements analytiques de la théorisation ancrée](#381-fondements-analytiques-de-la-théorisation-ancrée)
+    - [3.7.5 Cartes conceptuelles et matrices analytiques](#375-cartes-conceptuelles-et-matrices-analytiques)
+    - [3.7.6 Apports méthodologiques de l'outil](#376-apports-méthodologiques-de-loutil)
+  - [3.8 Le processus de codage dans la théorisation ancrée](#38-le-processus-de-codage-dans-la-théorisation-ancrée)
+    - [3.8.1 Fondements analytiques de la démarche](#381-fondements-analytiques-de-la-démarche)
     - [3.8.2 La logique inductive de l'analyse](#382-la-logique-inductive-de-lanalyse)
     - [3.8.3 Le principe de comparaison constante](#383-le-principe-de-comparaison-constante)
     - [3.8.4 Le codage ouvert](#384-le-codage-ouvert)
@@ -198,14 +193,14 @@ author:
     - [3.10.2 Le consentement libre et éclairé](#3102-le-consentement-libre-et-éclairé)
     - [3.10.3 Confidentialité et anonymat des participants](#3103-confidentialité-et-anonymat-des-participants)
     - [3.10.4 Respect des personnes et des contextes locaux](#3104-respect-des-personnes-et-des-contextes-locaux)
-    - [3.10.5 Éthique de l'observation et de l'utilisation des données visuelles](#3105-éthique-de-lobservation-et-de-lutilisation-des-données-visuelles)
-    - [3.10.6 Réflexivité éthique du chercheur](#3106-réflexivité-éthique-du-chercheur)
+    - [3.10.5 Éthique de l'observation et des données visuelles](#3105-éthique-de-lobservation-et-des-données-visuelles)
+    - [3.10.6 La dimension éthique de la réflexivité](#3106-la-dimension-éthique-de-la-réflexivité)
     - [3.10.7 Protection et sécurisation des données](#3107-protection-et-sécurisation-des-données)
     - [3.10.8 Intégrité scientifique de la recherche](#3108-intégrité-scientifique-de-la-recherche)
     - [3.10.9 Difficultés et enjeux éthiques rencontrés sur le terrain](#3109-difficultés-et-enjeux-éthiques-rencontrés-sur-le-terrain)
     - [3.10.10 L'éthique comme composante de la rigueur méthodologique](#31010-léthique-comme-composante-de-la-rigueur-méthodologique)
   - [3.11 Limites méthodologiques de la recherche](#311-limites-méthodologiques-de-la-recherche)
-    - [3.11.1 Importance de l'analyse des limites méthodologiques](#3111-importance-de-lanalyse-des-limites-méthodologiques)
+    - [3.11.1 Importance de l'analyse des limites](#3111-importance-de-lanalyse-des-limites)
     - [3.11.2 Contraintes d'accès au terrain](#3112-contraintes-daccès-au-terrain)
     - [3.11.3 Limites liées à la constitution du corpus documentaire](#3113-limites-liées-à-la-constitution-du-corpus-documentaire)
     - [3.11.4 Limites inhérentes à l'approche qualitative](#3114-limites-inhérentes-à-lapproche-qualitative)
@@ -216,79 +211,82 @@ author:
     - [3.11.9 Limites temporelles de la recherche](#3119-limites-temporelles-de-la-recherche)
     - [3.11.10 Portée scientifique des résultats](#31110-portée-scientifique-des-résultats)
   - [3.12 Synthèse méthodologique du dispositif de recherche](#312-synthèse-méthodologique-du-dispositif-de-recherche)
-    - [3.12.1 Cohérence globale de la démarche méthodologique](#3121-cohérence-globale-de-la-démarche-méthodologique)
+    - [3.12.1 Cohérence globale de la démarche](#3121-cohérence-globale-de-la-démarche)
     - [3.12.2 Articulation entre théorie et terrain](#3122-articulation-entre-théorie-et-terrain)
     - [3.12.3 Contribution de l'analyse documentaire et de la triangulation](#3123-contribution-de-lanalyse-documentaire-et-de-la-triangulation)
-    - [3.12.4 Apports de l'analyse assistée par NVivo 15](#3124-apports-de-lanalyse-assistée-par-nvivo-15)
+    - [3.12.4 Apports et limites de l'analyse assistée par NVivo 15](#3124-apports-et-limites-de-lanalyse-assistée-par-nvivo-15)
     - [3.12.5 Émergence de la catégorie centrale](#3125-émergence-de-la-catégorie-centrale)
     - [3.12.6 Contribution scientifique du dispositif méthodologique](#3126-contribution-scientifique-du-dispositif-méthodologique)
   - [Conclusion du chapitre III](#conclusion-du-chapitre-iii)
+  - [Note de vérification bibliographique du chapitre III](#note-de-vérification-bibliographique-du-chapitre-iii)
 - [Chapitre IV. Analyse documentaire des jardins scolaires à Djibouti : une approche par théorisation ancrée et analyse assistée par NVivo 15](#chapitre-iv-analyse-documentaire-des-jardins-scolaires-à-djibouti--une-approche-par-théorisation-ancrée-et-analyse-assistée-par-nvivo-15)
   - [Introduction du chapitre IV](#introduction-du-chapitre-iv)
   - [4.1 Objectifs de l'analyse documentaire](#41-objectifs-de-lanalyse-documentaire)
     - [4.1.1 Identifier les représentations institutionnelles des jardins scolaires](#411-identifier-les-représentations-institutionnelles-des-jardins-scolaires)
     - [4.1.2 Analyser les usages pédagogiques des jardins scolaires](#412-analyser-les-usages-pédagogiques-des-jardins-scolaires)
     - [4.1.3 Comprendre les logiques de mise en œuvre territoriale](#413-comprendre-les-logiques-de-mise-en-œuvre-territoriale)
-    - [4.1.4 Examiner les dimensions environnementales et climatiques des jardins scolaires](#414-examiner-les-dimensions-environnementales-et-climatiques-des-jardins-scolaires)
+    - [4.1.4 Examiner les dimensions environnementales et climatiques](#414-examiner-les-dimensions-environnementales-et-climatiques)
     - [4.1.5 Identifier les contraintes et les limites de fonctionnement](#415-identifier-les-contraintes-et-les-limites-de-fonctionnement)
     - [4.1.6 Faire émerger les catégories analytiques de la recherche](#416-faire-émerger-les-catégories-analytiques-de-la-recherche)
   - [4.2 Constitution et organisation du corpus documentaire](#42-constitution-et-organisation-du-corpus-documentaire)
     - [4.2.1 Démarche de collecte documentaire](#421-démarche-de-collecte-documentaire)
     - [4.2.2 Typologie du corpus documentaire](#422-typologie-du-corpus-documentaire)
-    - [4.2.3 Répartition statistique du corpus documentaire](#423-répartition-statistique-du-corpus-documentaire)
+    - [4.2.3 Répartition du corpus documentaire](#423-répartition-du-corpus-documentaire)
     - [4.2.4 Organisation du corpus dans NVivo 15](#424-organisation-du-corpus-dans-nvivo-15)
   - [4.3 Préparation et traitement du corpus documentaire dans NVivo 15](#43-préparation-et-traitement-du-corpus-documentaire-dans-nvivo-15)
-    - [4.3.1 Préparation du corpus documentaire](#431-préparation-du-corpus-documentaire)
-    - [4.3.2 Importation des données dans NVivo 15](#432-importation-des-données-dans-nvivo-15)
+    - [4.3.1 Préparation du corpus](#431-préparation-du-corpus)
+    - [4.3.2 Importation des données](#432-importation-des-données)
     - [4.3.3 Création des attributs descriptifs](#433-création-des-attributs-descriptifs)
     - [4.3.4 Pré-analyse exploratoire du corpus](#434-pré-analyse-exploratoire-du-corpus)
     - [4.3.5 Intégration des données visuelles et audiovisuelles](#435-intégration-des-données-visuelles-et-audiovisuelles)
     - [4.3.6 Construction de l'arborescence analytique initiale](#436-construction-de-larborescence-analytique-initiale)
-    - [4.3.7 Importance méthodologique de NVivo 15 dans la recherche](#437-importance-méthodologique-de-nvivo-15-dans-la-recherche)
+    - [4.3.7 Portée et limites de l'outil dans le traitement documentaire](#437-portée-et-limites-de-loutil-dans-le-traitement-documentaire)
   - [4.4 Le codage ouvert : émergence des premières catégories analytiques](#44-le-codage-ouvert--émergence-des-premières-catégories-analytiques)
-    - [4.4.1 Le principe du codage ouvert dans la théorisation ancrée](#441-le-principe-du-codage-ouvert-dans-la-théorisation-ancrée)
+    - [4.4.1 Le principe du codage ouvert](#441-le-principe-du-codage-ouvert)
     - [4.4.2 Émergence des premiers concepts analytiques](#442-émergence-des-premiers-concepts-analytiques)
     - [4.4.3 Le jardin scolaire comme espace pédagogique](#443-le-jardin-scolaire-comme-espace-pédagogique)
     - [4.4.4 Le jardin scolaire comme dispositif nutritionnel](#444-le-jardin-scolaire-comme-dispositif-nutritionnel)
     - [4.4.5 Le jardin scolaire comme réponse aux vulnérabilités climatiques](#445-le-jardin-scolaire-comme-réponse-aux-vulnérabilités-climatiques)
     - [4.4.6 Le jardin scolaire comme espace communautaire](#446-le-jardin-scolaire-comme-espace-communautaire)
     - [4.4.7 Les contraintes de fonctionnement émergentes](#447-les-contraintes-de-fonctionnement-émergentes)
-    - [4.4.8 Utilisation de NVivo 15 dans le codage ouvert](#448-utilisation-de-nvivo-15-dans-le-codage-ouvert)
+    - [4.4.8 Mise en œuvre du codage dans NVivo 15](#448-mise-en-œuvre-du-codage-dans-nvivo-15)
     - [4.4.9 Premières interprétations issues du codage ouvert](#449-premières-interprétations-issues-du-codage-ouvert)
   - [4.5 Le codage axial : structuration et mise en relation des catégories émergentes](#45-le-codage-axial--structuration-et-mise-en-relation-des-catégories-émergentes)
-    - [4.5.1 Le rôle du codage axial dans la théorisation ancrée](#451-le-rôle-du-codage-axial-dans-la-théorisation-ancrée)
-    - [4.5.2 Le jardin scolaire comme support pédagogique contextualisé](#452-le-jardin-scolaire-comme-support-pédagogique-contextualisé)
-    - [4.5.3 Le jardin scolaire comme dispositif d'apprentissage expérientiel](#453-le-jardin-scolaire-comme-dispositif-dapprentissage-expérientiel)
-    - [4.5.4 Le jardin scolaire comme dispositif nutritionnel et alimentaire](#454-le-jardin-scolaire-comme-dispositif-nutritionnel-et-alimentaire)
-    - [4.5.5 Le jardin scolaire comme espace de résilience communautaire](#455-le-jardin-scolaire-comme-espace-de-résilience-communautaire)
-    - [4.5.6 Le jardin scolaire comme mécanisme d'adaptation climatique](#456-le-jardin-scolaire-comme-mécanisme-dadaptation-climatique)
-    - [4.5.7 Les contraintes structurelles et institutionnelles](#457-les-contraintes-structurelles-et-institutionnelles)
-    - [4.5.8 Les relations entre les catégories émergentes](#458-les-relations-entre-les-catégories-émergentes)
-    - [4.5.9 Utilisation de NVivo 15 dans le codage axial](#459-utilisation-de-nvivo-15-dans-le-codage-axial)
-    - [4.5.10 Premières interprétations issues du codage axial](#4510-premières-interprétations-issues-du-codage-axial)
+    - [4.5.1 Le rôle du codage axial](#451-le-rôle-du-codage-axial)
+    - [4.5.2 Structuration des catégories selon le modèle paradigmatique](#452-structuration-des-catégories-selon-le-modèle-paradigmatique)
+    - [4.5.3 Le jardin scolaire comme support pédagogique contextualisé](#453-le-jardin-scolaire-comme-support-pédagogique-contextualisé)
+    - [4.5.4 Le jardin scolaire comme dispositif d'apprentissage expérientiel](#454-le-jardin-scolaire-comme-dispositif-dapprentissage-expérientiel)
+    - [4.5.5 Le jardin scolaire comme dispositif nutritionnel et alimentaire](#455-le-jardin-scolaire-comme-dispositif-nutritionnel-et-alimentaire)
+    - [4.5.6 Le jardin scolaire comme espace de résilience communautaire](#456-le-jardin-scolaire-comme-espace-de-résilience-communautaire)
+    - [4.5.7 Le jardin scolaire comme mécanisme d'adaptation climatique](#457-le-jardin-scolaire-comme-mécanisme-dadaptation-climatique)
+    - [4.5.8 Les contraintes structurelles et institutionnelles](#458-les-contraintes-structurelles-et-institutionnelles)
+    - [4.5.9 Le système d'interactions entre catégories](#459-le-système-dinteractions-entre-catégories)
+    - [4.5.10 Mise en œuvre du codage axial dans NVivo 15](#4510-mise-en-œuvre-du-codage-axial-dans-nvivo-15)
+    - [4.5.11 Interprétations issues du codage axial](#4511-interprétations-issues-du-codage-axial)
   - [4.6 Le codage sélectif : émergence de la catégorie centrale et construction du modèle théorique](#46-le-codage-sélectif--émergence-de-la-catégorie-centrale-et-construction-du-modèle-théorique)
-    - [4.6.1 Le rôle du codage sélectif dans la théorisation ancrée](#461-le-rôle-du-codage-sélectif-dans-la-théorisation-ancrée)
+    - [4.6.1 Le rôle du codage sélectif](#461-le-rôle-du-codage-sélectif)
     - [4.6.2 Émergence de la catégorie centrale](#462-émergence-de-la-catégorie-centrale)
-    - [4.6.3 Le jardin scolaire comme laboratoire pédagogique vivant](#463-le-jardin-scolaire-comme-laboratoire-pédagogique-vivant)
-    - [4.6.4 Le jardin scolaire comme espace de résilience communautaire](#464-le-jardin-scolaire-comme-espace-de-résilience-communautaire)
-    - [4.6.5 Le jardin scolaire comme mécanisme d'adaptation climatique](#465-le-jardin-scolaire-comme-mécanisme-dadaptation-climatique)
-    - [4.6.6 Les tensions entre ambitions institutionnelles et réalités du terrain](#466-les-tensions-entre-ambitions-institutionnelles-et-réalités-du-terrain)
-    - [4.6.7 Construction du modèle théorique émergent](#467-construction-du-modèle-théorique-émergent)
-    - [4.6.8 Apports de NVivo 15 dans le codage sélectif](#468-apports-de-nvivo-15-dans-le-codage-sélectif)
-    - [4.6.9 Interprétation globale du modèle émergent](#469-interprétation-globale-du-modèle-émergent)
-    - [4.6.10 Transition vers les analyses de terrain](#4610-transition-vers-les-analyses-de-terrain)
-  - [4.7 Discussion interprétative des résultats de l'analyse documentaire](#47-discussion-interprétative-des-résultats-de-lanalyse-documentaire)
-    - [4.7.1 Une transformation progressive des pratiques pédagogiques dans les écoles rurales](#471-une-transformation-progressive-des-pratiques-pédagogiques-dans-les-écoles-rurales)
-    - [4.7.2 Une articulation étroite entre éducation, nutrition et environnement](#472-une-articulation-étroite-entre-éducation-nutrition-et-environnement)
-    - [4.7.3 Le jardin scolaire comme dispositif de résilience territoriale](#473-le-jardin-scolaire-comme-dispositif-de-résilience-territoriale)
-    - [4.7.4 Une participation communautaire différenciée selon les contextes](#474-une-participation-communautaire-différenciée-selon-les-contextes)
-    - [4.7.5 Les contraintes structurelles de la durabilité](#475-les-contraintes-structurelles-de-la-durabilité)
-    - [4.7.6 L'hybridation fonctionnelle du jardin scolaire](#476-lhybridation-fonctionnelle-du-jardin-scolaire)
-    - [4.7.7 Contribution de l'analyse documentaire à la construction théorique](#477-contribution-de-lanalyse-documentaire-à-la-construction-théorique)
+    - [4.6.3 Le modèle théorique émergent](#463-le-modèle-théorique-émergent)
+    - [4.6.4 Les trois piliers du modèle](#464-les-trois-piliers-du-modèle)
+    - [4.6.5 Les tensions entre ambitions institutionnelles et réalités du terrain](#465-les-tensions-entre-ambitions-institutionnelles-et-réalités-du-terrain)
+    - [4.6.6 Mise en œuvre du codage sélectif dans NVivo 15](#466-mise-en-œuvre-du-codage-sélectif-dans-nvivo-15)
+    - [4.6.7 Transition vers les analyses de terrain](#467-transition-vers-les-analyses-de-terrain)
+  - [4.7 Discussion interprétative des résultats](#47-discussion-interprétative-des-résultats)
+    - [4.7.1 Convergence avec les théories de l'apprentissage expérientiel](#471-convergence-avec-les-théories-de-lapprentissage-expérientiel)
+    - [4.7.2 Une interdisciplinarité effective, mais inégalement documentée](#472-une-interdisciplinarité-effective-mais-inégalement-documentée)
+    - [4.7.3 L'articulation éducation-nutrition-environnement](#473-larticulation-éducation-nutrition-environnement)
+    - [4.7.4 Le jardin scolaire comme dispositif de résilience territoriale](#474-le-jardin-scolaire-comme-dispositif-de-résilience-territoriale)
+    - [4.7.5 Une participation communautaire différenciée selon les contextes](#475-une-participation-communautaire-différenciée-selon-les-contextes)
+    - [4.7.6 Les contraintes structurelles de la durabilité](#476-les-contraintes-structurelles-de-la-durabilité)
+    - [4.7.7 L'hybridation fonctionnelle comme apport théorique](#477-lhybridation-fonctionnelle-comme-apport-théorique)
   - [4.8 Synthèse générale de l'analyse documentaire](#48-synthèse-générale-de-lanalyse-documentaire)
-  - [4.9 Conclusion du chapitre](#49-conclusion-du-chapitre)
+  - [4.9 Conclusion du chapitre IV](#49-conclusion-du-chapitre-iv)
+  - [Note de vérification bibliographique du chapitre IV](#note-de-vérification-bibliographique-du-chapitre-iv)
 - [Bibliographie](#bibliographie)
-- [Suivi de rédaction](#suivi-de-rédaction)
+- [Suivi de rédaction et points à arbitrer](#suivi-de-rédaction-et-points-à-arbitrer)
+  - [État du document](#état-du-document)
+  - [Corrections structurelles apportées](#corrections-structurelles-apportées)
+  - [Points à arbitrer avant dépôt](#points-à-arbitrer-avant-dépôt)
 
 ---
 
@@ -1437,833 +1435,562 @@ L'application des approches constructivistes et socioconstructivistes met en év
 
 ### 2.3 Les jardins scolaires comme dispositifs éducatifs multifonctionnels
 
-Les jardins scolaires occupent aujourd'hui une place croissante dans les politiques éducatives internationales ainsi que dans les programmes de développement visant à promouvoir simultanément l'éducation, la sécurité alimentaire, la santé, la durabilité environnementale et le développement communautaire. Initialement conçus comme des espaces destinés à l'apprentissage des pratiques agricoles et à la production alimentaire au sein des établissements scolaires, ils ont progressivement évolué vers des dispositifs éducatifs complexes mobilisant des finalités multiples et complémentaires.
+Les jardins scolaires occupent aujourd'hui une place croissante dans les politiques éducatives internationales et dans les programmes de développement visant à promouvoir conjointement l'éducation, la sécurité alimentaire, la santé, la durabilité environnementale et le développement communautaire. Initialement conçus comme des espaces d'apprentissage des pratiques agricoles et de production alimentaire, ils ont évolué vers des dispositifs éducatifs complexes mobilisant des finalités multiples et complémentaires.
 
-Cette évolution s'inscrit dans un contexte mondial marqué par l'émergence de nouveaux défis éducatifs, environnementaux et sociaux. Les effets du changement climatique, les préoccupations liées à la sécurité alimentaire, la nécessité de promouvoir des modes de vie durables ainsi que les transformations des paradigmes pédagogiques ont contribué à élargir les fonctions traditionnellement attribuées aux jardins scolaires. Ceux-ci ne sont plus uniquement envisagés comme des espaces de production agricole, mais comme des environnements d'apprentissage intégrés permettant d'articuler savoirs académiques, expériences pratiques et engagement communautaire.
+Cette évolution s'inscrit dans un contexte marqué par l'émergence de nouveaux défis éducatifs, environnementaux et sociaux : effets du changement climatique, préoccupations de sécurité alimentaire, promotion de modes de vie durables, transformation des paradigmes pédagogiques. Le jardin scolaire n'est plus envisagé comme un simple espace de production agricole, mais comme un **environnement d'apprentissage intégré** articulant savoirs académiques, expériences pratiques et engagement communautaire.
 
-Les recherches contemporaines soulignent que les jardins scolaires constituent des dispositifs particulièrement adaptés aux approches pédagogiques fondées sur l'apprentissage expérientiel, le constructivisme et le socioconstructivisme. Ils offrent aux apprenants des opportunités d'apprentissage contextualisées favorisant l'observation, l'expérimentation, la résolution de problèmes et la coopération. En ce sens, ils participent à la transformation des pratiques éducatives en rapprochant les contenus scolaires des réalités vécues par les élèves et de leur environnement quotidien.
+Les recherches contemporaines soulignent son adéquation avec les approches fondées sur l'apprentissage expérientiel, le constructivisme et le socioconstructivisme examinées précédemment : il offre des situations contextualisées favorisant l'observation, l'expérimentation, la résolution de problèmes et la coopération. La FAO (2010, p. 8) le décrit ainsi comme une plateforme au service de l'apprentissage, de la nutrition et du développement communautaire — définition qui met en évidence son caractère multidimensionnel.
 
-Cette reconnaissance croissante a été largement soutenue par les organisations internationales œuvrant dans les domaines de l'éducation, de l'agriculture et du développement. L'Organisation des Nations Unies pour l'alimentation et l'agriculture (FAO) considère notamment que :
+Le tableau ci-dessous synthétise les cinq fonctions attribuées au dispositif, développées dans les sous-sections suivantes.
 
-« School gardens are a platform for learning, nutrition and community development » (FAO, 2010, p. 8).
+| Fonction | Objet | Enjeu en contexte vulnérable |
+|---|---|---|
+| **Pédagogique** | Situations d'apprentissage authentiques, interdisciplinarité, compétences transversales | Motivation et engagement des apprenants |
+| **Nutritionnelle** | Éducation alimentaire, appui aux cantines, sensibilisation à la santé | Réponse partielle à l'insécurité alimentaire |
+| **Sociale et communautaire** | Participation des familles et acteurs locaux, capital social, savoirs locaux | Rapprochement école / communauté |
+| **Environnementale** | Éducation au développement durable, gestion des ressources, biodiversité | Conscience écologique fondée sur l'expérience |
+| **Adaptative** | Compétences d'adaptation, réponses locales aux contraintes climatiques | Renforcement de la résilience éducative et territoriale |
 
-Cette définition met en évidence la nature multidimensionnelle des jardins scolaires. Ceux-ci apparaissent comme des espaces dans lesquels se croisent des objectifs éducatifs, nutritionnels, sociaux et environnementaux. Ils constituent des plateformes permettant non seulement le développement des apprentissages, mais également le renforcement des liens entre l'école et son environnement communautaire.
+Cette dernière dimension est particulièrement pertinente dans les régions arides et semi-arides telles que Djibouti, où les effets du changement climatique accentuent les défis liés à la gestion des ressources naturelles, à la sécurité alimentaire et à la qualité de l'éducation. Le jardin scolaire y devient un espace où les élèves développent des connaissances directement mobilisables face aux réalités environnementales de leur territoire.
 
-D'un point de vue pédagogique, les jardins scolaires favorisent le développement de situations d'apprentissage authentiques permettant aux élèves d'établir des liens entre les savoirs théoriques et les réalités observables. Ils contribuent à renforcer la motivation scolaire, l'engagement des apprenants et l'acquisition de compétences transversales telles que la coopération, la communication, la pensée critique et la résolution de problèmes. Cette dimension pédagogique est particulièrement cohérente avec les approches éducatives contemporaines centrées sur l'apprenant et sur la construction active des connaissances.
-
-Parallèlement, les jardins scolaires remplissent une fonction nutritionnelle importante. Dans de nombreux contextes, ils contribuent à l'amélioration de l'éducation alimentaire des élèves, à la sensibilisation aux habitudes nutritionnelles saines et, dans certains cas, au renforcement des programmes d'alimentation scolaire. Cette dimension est particulièrement significative dans les régions confrontées à des situations d'insécurité alimentaire ou de vulnérabilité nutritionnelle.
-
-Les jardins scolaires possèdent également une forte dimension sociale et communautaire. Leur mise en œuvre implique souvent la participation conjointe des élèves, des enseignants, des parents et des acteurs locaux. Cette mobilisation collective favorise le développement du capital social, renforce les liens entre l'école et la communauté et contribue à la valorisation des savoirs locaux. Les jardins deviennent ainsi des espaces de coopération et de participation citoyenne favorisant la cohésion sociale et l'engagement communautaire.
-
-Sur le plan environnemental, les jardins scolaires constituent des outils privilégiés d'éducation au développement durable. Ils permettent aux apprenants d'observer directement les interactions entre les êtres vivants et leur environnement, de comprendre les principes de la gestion durable des ressources naturelles et de développer une conscience écologique fondée sur l'expérience. Les activités de jardinage favorisent ainsi l'acquisition de connaissances relatives à la biodiversité, à la conservation des sols, à la gestion de l'eau et aux pratiques agricoles durables.
-
-Au-delà de ces fonctions éducatives, sociales et environnementales, les jardins scolaires sont aujourd'hui de plus en plus analysés comme des dispositifs contribuant au développement de la résilience des systèmes éducatifs et des communautés. Dans les contextes exposés aux risques climatiques, aux crises alimentaires ou aux vulnérabilités socio-économiques, ils peuvent favoriser le développement de compétences adaptatives, renforcer les capacités locales de réponse aux contraintes environnementales et soutenir les stratégies communautaires de résilience.
-
-Cette dimension apparaît particulièrement pertinente dans les régions arides et semi-arides telles que Djibouti, où les effets du changement climatique accentuent les défis liés à la gestion des ressources naturelles, à la sécurité alimentaire et à la qualité de l'éducation. Dans ces contextes, les jardins scolaires peuvent être envisagés comme des espaces d'apprentissage permettant aux élèves de développer des connaissances et des compétences directement mobilisables pour faire face aux réalités environnementales de leur territoire.
-
-Ainsi, les jardins scolaires peuvent être conceptualisés comme des dispositifs éducatifs multifonctionnels situés à l'intersection de plusieurs champs d'intervention : l'éducation, la nutrition, l'environnement, le développement communautaire et la résilience. Leur intérêt réside précisément dans leur capacité à articuler ces différentes dimensions au sein d'un même environnement d'apprentissage. Cette multifonctionnalité constitue aujourd'hui l'un des principaux fondements théoriques justifiant leur intégration croissante dans les politiques éducatives et les stratégies de développement durable.
-
-Les sections suivantes analyseront plus en détail les différentes fonctions attribuées aux jardins scolaires dans la littérature scientifique, notamment leurs dimensions pédagogiques, nutritionnelles, sociales, environnementales et adaptatives, afin de mieux comprendre leur contribution potentielle au développement de la résilience éducative dans les contextes vulnérables.
+Le jardin scolaire peut ainsi être conceptualisé comme un **dispositif éducatif multifonctionnel** situé à l'intersection de l'éducation, de la nutrition, de l'environnement, du développement communautaire et de la résilience. Son intérêt réside précisément dans sa capacité à articuler ces dimensions au sein d'un même environnement d'apprentissage — multifonctionnalité qui fonde aujourd'hui son intégration croissante dans les politiques éducatives et les stratégies de développement durable.
 
 #### 2.3.1 Définition et évolution historique des jardins scolaires
 
-La compréhension des jardins scolaires dans les systèmes éducatifs contemporains nécessite un examen de leur évolution historique, dans la mesure où les fonctions qui leur sont aujourd'hui attribuées résultent d'un long processus de transformation pédagogique, sociale et institutionnelle. Loin d'être une innovation récente, les jardins scolaires s'inscrivent dans une tradition éducative ancienne dont les objectifs et les usages ont évolué en fonction des contextes historiques, des priorités politiques et des besoins des sociétés. Leur développement témoigne de l'élargissement progressif des missions assignées à l'école, qui ne se limitent plus à la transmission des savoirs académiques mais englobent également la formation citoyenne, l'éducation environnementale, la santé et le développement communautaire.
+Les fonctions aujourd'hui attribuées aux jardins scolaires résultent d'un long processus de transformation pédagogique, sociale et institutionnelle. Loin d'être une innovation récente, le dispositif s'inscrit dans une tradition éducative ancienne dont les objectifs ont évolué au gré des contextes historiques, des priorités politiques et des besoins des sociétés. Son développement témoigne de l'élargissement des missions assignées à l'école, qui ne se limitent plus à la transmission des savoirs académiques mais englobent la formation citoyenne, l'éducation environnementale, la santé et le développement communautaire.
 
 ##### a) Les origines historiques des jardins scolaires
 
-Les premières expériences de jardins scolaires apparaissent en Europe au cours du XIXe siècle dans un contexte marqué par l'industrialisation, l'urbanisation croissante et les réformes des systèmes éducatifs. À cette époque, les responsables politiques et les pédagogues cherchent à rapprocher l'école des réalités quotidiennes des élèves, notamment dans les sociétés où l'agriculture constitue encore une activité économique dominante. Les jardins scolaires sont alors conçus comme des espaces permettant d'initier les enfants aux pratiques agricoles tout en développant des valeurs associées au travail, à la discipline et à la responsabilité individuelle.
+Les premières expériences apparaissent en Europe au cours du **XIX<sup>e</sup> siècle**, dans un contexte d'industrialisation, d'urbanisation croissante et de réforme des systèmes éducatifs. Responsables politiques et pédagogues cherchent alors à rapprocher l'école des réalités quotidiennes des élèves, en particulier dans des sociétés où l'agriculture demeure une activité économique dominante. Le jardin scolaire est conçu comme un espace d'initiation aux pratiques agricoles, associé à des valeurs de travail, de discipline et de responsabilité individuelle.
 
-Ces premiers dispositifs poursuivent une double finalité. D'une part, ils visent à transmettre des connaissances pratiques relatives à la culture des plantes et à l'observation du milieu naturel. D'autre part, ils participent à un projet éducatif plus large cherchant à former des individus capables de contribuer au développement économique et social de leur communauté. Les activités réalisées dans les jardins permettent ainsi aux élèves d'observer directement les phénomènes naturels, d'expérimenter différentes techniques de culture et de développer des compétences pratiques difficilement accessibles dans le cadre de l'enseignement exclusivement théorique.
+Ces premiers dispositifs poursuivent une double finalité : transmettre des connaissances pratiques relatives à la culture des plantes et à l'observation du milieu naturel ; participer à un projet éducatif plus large visant à former des individus capables de contribuer au développement de leur communauté. Les activités menées au jardin permettent d'observer directement les phénomènes naturels, d'expérimenter des techniques de culture et de développer des compétences difficilement accessibles par le seul enseignement théorique.
 
-Cette orientation pédagogique est soulignée par Desmond, Grieshop et Subramaniam lorsqu'ils affirment que :
-
-« Early school gardens were designed to connect children with nature and practical work » (Desmond et al., 2004, p. 12).
-
-Cette citation met en évidence deux dimensions fondatrices des jardins scolaires : leur fonction de rapprochement entre les apprenants et leur environnement naturel, ainsi que leur rôle dans le développement d'un apprentissage fondé sur l'expérience. Dès leur origine, les jardins scolaires apparaissent ainsi comme des espaces favorisant une pédagogie active dans laquelle les connaissances se construisent à travers l'observation et l'action.
+Desmond, Grieshop et Subramaniam (2004, p. 12) rappellent que les premiers jardins scolaires avaient précisément pour objet de relier les enfants à la nature et au travail pratique. Deux dimensions fondatrices s'y dessinent : le rapprochement entre les apprenants et leur environnement naturel, et l'ancrage de l'apprentissage dans l'expérience. Dès l'origine, le jardin scolaire relève donc d'une **pédagogie active**.
 
 ##### b) La diffusion internationale des jardins scolaires
 
-Au cours du XXe siècle, les jardins scolaires connaissent une diffusion progressive à l'échelle internationale. Cette expansion est favorisée à la fois par la circulation des innovations pédagogiques et par l'intérêt croissant porté aux questions de nutrition, de santé publique et de développement rural. Après la Seconde Guerre mondiale, de nombreux pays mettent en place des programmes visant à utiliser les jardins scolaires comme outils de soutien aux politiques de sécurité alimentaire et d'amélioration des conditions de vie des populations.
+Au cours du **XX<sup>e</sup> siècle**, les jardins scolaires se diffusent à l'échelle internationale, portés par la circulation des innovations pédagogiques et par l'intérêt croissant pour la nutrition, la santé publique et le développement rural. Après la Seconde Guerre mondiale, de nombreux pays les mobilisent comme outils de soutien aux politiques de sécurité alimentaire.
 
-Dans plusieurs contextes, les jardins scolaires sont intégrés aux programmes d'alimentation scolaire afin de contribuer à l'amélioration de la nutrition des enfants. Ils deviennent également des supports privilégiés pour l'enseignement des pratiques agricoles et la sensibilisation à la gestion des ressources naturelles. Cette évolution est particulièrement visible dans les pays en développement où les défis liés à la pauvreté, à l'insécurité alimentaire et à l'accès à l'éducation conduisent les gouvernements et les organisations internationales à promouvoir des approches éducatives davantage ancrées dans les réalités locales.
+Ils sont alors fréquemment intégrés aux programmes d'alimentation scolaire et deviennent des supports privilégiés pour l'enseignement des pratiques agricoles et la sensibilisation à la gestion des ressources naturelles. Cette évolution est particulièrement nette dans les pays en développement, où les défis liés à la pauvreté, à l'insécurité alimentaire et à l'accès à l'éducation conduisent gouvernements et organisations internationales à promouvoir des approches éducatives ancrées dans les réalités locales.
 
-Le rôle joué par les organisations internationales dans cette diffusion est déterminant. La FAO souligne notamment que :
-
-« School gardens provide opportunities for improving nutrition education and food security » (FAO, 2004, p. 5).
-
-Cette définition illustre l'élargissement progressif des fonctions attribuées aux jardins scolaires. Ceux-ci ne sont plus considérés uniquement comme des espaces destinés à l'enseignement agricole, mais également comme des instruments de promotion de la sécurité alimentaire, de l'éducation nutritionnelle et du développement communautaire. Cette évolution contribue à renforcer leur légitimité dans les politiques éducatives et sociales.
+Le rôle des organisations internationales est déterminant. La FAO (2004, p. 5) souligne ainsi que les jardins scolaires ouvrent des perspectives pour améliorer l'éducation nutritionnelle et la sécurité alimentaire — élargissement notable des fonctions du dispositif, qui cesse d'être un simple support d'enseignement agricole pour devenir un instrument de politique éducative et sociale.
 
 ##### c) L'institutionnalisation des jardins scolaires dans les politiques éducatives
 
-À partir des années 1990, les jardins scolaires connaissent un processus d'institutionnalisation marqué par leur intégration progressive dans les politiques éducatives nationales et internationales. Cette évolution accompagne l'émergence de nouvelles orientations pédagogiques qui valorisent l'apprentissage expérientiel, l'interdisciplinarité et l'éducation au développement durable.
+À partir des **années 1990**, les jardins scolaires connaissent un processus d'institutionnalisation, marqué par leur intégration aux politiques éducatives nationales et internationales. Cette évolution accompagne l'émergence d'orientations pédagogiques valorisant l'apprentissage expérientiel, l'interdisciplinarité et l'éducation au développement durable.
 
-Les jardins scolaires sont désormais reconnus comme des environnements d'apprentissage capables de soutenir simultanément plusieurs objectifs éducatifs. Ils favorisent l'acquisition de connaissances scientifiques à travers l'expérimentation, contribuent à l'éducation environnementale et participent au développement de compétences de vie telles que la coopération, la responsabilité et la résolution de problèmes. Leur potentiel en matière de sensibilisation à la santé, à la nutrition et au développement durable est également de plus en plus mis en avant dans les politiques publiques.
+Le dispositif est désormais reconnu comme un environnement d'apprentissage soutenant simultanément plusieurs objectifs : acquisition de connaissances scientifiques par l'expérimentation, éducation environnementale, développement de compétences de vie telles que la coopération, la responsabilité et la résolution de problèmes. L'UNESCO (2017, p. 16) le qualifie d'outil efficace d'éducation expérientielle et environnementale.
 
-Cette reconnaissance institutionnelle est notamment reflétée dans les travaux de l'UNESCO, qui considère que :
-
-« School gardens are effective tools for experiential and environmental education » (UNESCO, 2017, p. 16).
-
-Cette affirmation traduit une transformation profonde de la place occupée par les jardins scolaires dans les systèmes éducatifs contemporains. Ceux-ci ne sont plus envisagés comme des activités périphériques ou complémentaires, mais comme de véritables dispositifs pédagogiques intégrés aux programmes scolaires. Dans de nombreux pays, ils sont aujourd'hui mobilisés dans le cadre des stratégies d'éducation environnementale, des programmes de nutrition scolaire, des initiatives de développement durable et des politiques d'adaptation aux changements climatiques.
-
-Cette évolution témoigne du caractère multifonctionnel des jardins scolaires et de leur capacité à répondre à des enjeux éducatifs, sociaux et environnementaux de plus en plus complexes. Ils apparaissent désormais comme des espaces d'apprentissage permettant de relier les savoirs académiques aux réalités du terrain tout en favorisant le développement de compétences essentielles pour faire face aux défis contemporains.
+Cette reconnaissance traduit une transformation profonde : les jardins scolaires ne sont plus des activités périphériques ou complémentaires, mais de véritables dispositifs pédagogiques intégrés aux programmes. Dans de nombreux pays, ils sont mobilisés dans les stratégies d'éducation environnementale, les programmes de nutrition scolaire, les initiatives de développement durable et les politiques d'adaptation climatique.
 
 ##### Synthèse de la section 2.3.1
 
-L'analyse de l'évolution historique des jardins scolaires montre que ces dispositifs ont connu une transformation progressive de leurs finalités et de leurs fonctions. Initialement orientés vers l'enseignement des pratiques agricoles et la formation morale des élèves, ils se sont progressivement imposés comme des outils éducatifs multifonctionnels mobilisés dans les domaines de l'éducation, de la nutrition, du développement durable et de la résilience communautaire. Leur diffusion internationale et leur intégration dans les politiques éducatives contemporaines témoignent de la reconnaissance croissante de leur potentiel pédagogique et social. Cette évolution constitue le fondement des approches actuelles qui considèrent les jardins scolaires comme des laboratoires vivants d'apprentissage capables d'articuler savoirs, pratiques et engagement communautaire.
+L'évolution historique des jardins scolaires révèle une transformation progressive de leurs finalités. Initialement orientés vers l'enseignement des pratiques agricoles et la formation morale des élèves, ils se sont imposés comme des outils multifonctionnels mobilisés en éducation, en nutrition, en développement durable et en résilience communautaire. Leur diffusion internationale et leur institutionnalisation témoignent de la reconnaissance de leur potentiel pédagogique et social — fondement des approches actuelles qui les envisagent comme des **laboratoires vivants d'apprentissage**.
 
 #### 2.3.2 Typologies des jardins scolaires
 
-La diversité des contextes éducatifs, des objectifs pédagogiques et des besoins communautaires a conduit au développement de différentes formes de jardins scolaires à travers le monde. Bien que ces dispositifs partagent un objectif commun consistant à utiliser l'environnement naturel comme support d'apprentissage, leur conception et leurs fonctions varient considérablement selon les finalités qui leur sont attribuées. La littérature scientifique distingue généralement plusieurs catégories de jardins scolaires, dont les frontières demeurent souvent perméables dans la pratique. En effet, un même jardin peut simultanément remplir des fonctions pédagogiques, nutritionnelles, sociales et environnementales.
+La diversité des contextes éducatifs, des objectifs pédagogiques et des besoins communautaires a donné naissance à plusieurs formes de jardins scolaires. Bien qu'ils partagent l'objectif d'utiliser l'environnement naturel comme support d'apprentissage, leur conception et leurs fonctions varient sensiblement. La littérature distingue quatre grandes catégories, dont les frontières demeurent perméables : un même jardin remplit fréquemment plusieurs fonctions à la fois.
+
+| Type | Finalité dominante | Disciplines et thématiques mobilisées | Acteurs impliqués |
+|---|---|---|---|
+| **Jardin pédagogique** | Soutenir l'enseignement et l'apprentissage | Sciences naturelles, biologie, écologie, géographie | Élèves et enseignants |
+| **Jardin nutritionnel** | Améliorer la sécurité alimentaire et l'éducation nutritionnelle | Éducation à la santé, alimentation, production vivrière | École, cantine, programmes d'alimentation scolaire |
+| **Jardin communautaire** | Associer la communauté au projet éducatif | Savoirs locaux, pratiques traditionnelles, éducation citoyenne | Familles, agriculteurs, associations, autorités locales |
+| **Jardin écologique et climatique** | Éduquer au développement durable et à l'adaptation | Gestion de l'eau, conservation des sols, biodiversité, climat | École, partenaires techniques, communauté |
 
 ##### a) Les jardins pédagogiques
 
-Les jardins pédagogiques constituent la forme la plus traditionnellement associée à l'utilisation éducative des espaces cultivés en milieu scolaire. Leur objectif principal consiste à soutenir les processus d'enseignement et d'apprentissage en offrant aux élèves des situations concrètes d'observation, d'expérimentation et de découverte. Dans cette perspective, le jardin est envisagé comme un prolongement de la salle de classe, permettant de relier les connaissances théoriques aux réalités observables de l'environnement.
+Forme la plus classique, le jardin pédagogique vise à soutenir les processus d'enseignement en offrant des situations concrètes d'observation, d'expérimentation et de découverte. Il fonctionne comme un **prolongement de la salle de classe**, reliant les connaissances théoriques aux réalités observables.
 
-Ces jardins sont fréquemment utilisés dans l'enseignement des sciences naturelles, de la biologie, de l'écologie ou encore de la géographie. Ils favorisent l'observation directe des phénomènes naturels et permettent aux apprenants de développer une compréhension plus approfondie des cycles biologiques, des interactions écologiques et des processus environnementaux. Leur intérêt pédagogique réside également dans leur capacité à soutenir des approches interdisciplinaires associant différentes disciplines scolaires autour d'activités communes.
-
-Dans cette optique, le jardin scolaire peut être considéré comme un véritable laboratoire vivant d'apprentissage. Les élèves y développent des compétences d'observation, d'analyse, d'expérimentation et de résolution de problèmes tout en construisant leurs connaissances à partir de situations authentiques. Cette fonction pédagogique s'inscrit pleinement dans les principes de l'apprentissage expérientiel, du constructivisme et du socioconstructivisme examinés précédemment.
+Fréquemment mobilisé en sciences naturelles, en biologie, en écologie ou en géographie, il favorise l'observation directe des phénomènes et permet de comprendre les cycles biologiques, les interactions écologiques et les processus environnementaux. Son intérêt tient aussi à sa capacité à soutenir des approches interdisciplinaires autour d'activités communes. Les élèves y développent des compétences d'observation, d'analyse, d'expérimentation et de résolution de problèmes — pleinement conforme aux principes examinés dans les sections 2.1 et 2.2.
 
 ##### b) Les jardins nutritionnels
 
-Les jardins nutritionnels sont principalement orientés vers l'amélioration de la sécurité alimentaire et de l'éducation nutritionnelle des élèves. Leur développement s'est particulièrement intensifié dans les contextes où les questions de malnutrition, d'insécurité alimentaire ou de vulnérabilité économique constituent des préoccupations majeures pour les systèmes éducatifs et les communautés locales.
+Orientés vers la sécurité alimentaire et l'éducation nutritionnelle, ces jardins se sont développés là où malnutrition, insécurité alimentaire et vulnérabilité économique constituent des préoccupations majeures.
 
-Contrairement aux jardins strictement pédagogiques, ces dispositifs accordent une attention particulière à la production de denrées alimentaires destinées à compléter les programmes d'alimentation scolaire ou à soutenir les cantines des établissements. Les cultures réalisées dans ces jardins contribuent souvent à diversifier les régimes alimentaires des élèves tout en favorisant leur sensibilisation aux principes d'une alimentation saine et équilibrée.
+Contrairement aux jardins strictement pédagogiques, ils accordent une attention particulière à la production de denrées destinées à compléter les programmes d'alimentation scolaire ou à soutenir les cantines. Les cultures contribuent à diversifier les régimes alimentaires tout en sensibilisant les élèves aux principes d'une alimentation équilibrée.
 
-Au-delà de leur contribution directe à la production alimentaire, les jardins nutritionnels constituent également des outils d'éducation à la santé. Ils permettent aux apprenants de mieux comprendre les liens entre alimentation, nutrition et bien-être, tout en développant des comportements favorables à la santé. Cette dimension apparaît particulièrement importante dans les régions confrontées à des défis nutritionnels ou à des situations de vulnérabilité alimentaire.
-
-Dans cette perspective, le jardin scolaire devient un espace où s'articulent apprentissage, production alimentaire et promotion de la santé, renforçant ainsi son rôle dans le développement global des élèves.
+Leur portée dépasse toutefois la production : ils constituent des espaces d'**éducation à la santé** où les apprenants comprennent les liens entre alimentation, nutrition et bien-être, et découvrent l'origine des aliments qu'ils consomment.
 
 ##### c) Les jardins communautaires
 
-Les jardins communautaires se distinguent par le niveau élevé de participation des familles, des organisations locales et des autres acteurs communautaires dans leur conception, leur gestion et leur utilisation. Ces dispositifs reposent sur une approche collaborative qui dépasse le cadre strictement scolaire pour intégrer l'ensemble de la communauté dans les activités éducatives.
+Ils se distinguent par le niveau élevé de participation des familles, des organisations locales et des acteurs communautaires dans leur conception, leur gestion et leur usage. L'approche collaborative dépasse le cadre scolaire pour intégrer la communauté aux activités éducatives.
 
-Cette forme de jardin scolaire favorise le renforcement des relations entre l'école et son environnement social. Les familles, les agriculteurs locaux, les associations communautaires ou encore les autorités locales peuvent être impliqués dans les différentes phases du projet, qu'il s'agisse de la préparation des parcelles, de l'entretien des cultures ou de la transmission de connaissances spécifiques.
+Familles, agriculteurs locaux, associations et autorités peuvent intervenir à toutes les phases du projet — préparation des parcelles, entretien des cultures, transmission de connaissances spécifiques. Leur principal apport réside dans la **valorisation des savoirs locaux** : les élèves apprennent auprès des membres de leur communauté et découvrent des pratiques agricoles, environnementales ou culturelles adaptées à leur contexte.
 
-L'un des principaux apports de ces jardins réside dans leur capacité à valoriser les savoirs locaux et les connaissances traditionnelles. Les élèves ont ainsi l'opportunité d'apprendre auprès des membres de leur communauté et de découvrir des pratiques agricoles, environnementales ou culturelles adaptées à leur contexte local.
-
-Par ailleurs, les jardins communautaires contribuent au développement du capital social en favorisant la coopération, la participation collective et la solidarité. Ils renforcent le sentiment d'appartenance à la communauté éducative et participent à la construction de partenariats durables entre l'école et les acteurs locaux.
+Ces jardins développent en outre le capital social en favorisant la coopération, la participation collective et la solidarité, et contribuent à construire des partenariats durables entre l'école et les acteurs locaux.
 
 ##### d) Les jardins écologiques et climatiques
 
-Les jardins écologiques et climatiques constituent une catégorie plus récente de jardins scolaires, dont l'émergence est étroitement liée à la montée des préoccupations environnementales et aux enjeux associés au changement climatique. Ces dispositifs sont principalement conçus comme des outils d'éducation au développement durable et de sensibilisation aux questions environnementales.
+Catégorie plus récente, liée à la montée des préoccupations environnementales, ces jardins sont conçus comme des outils d'éducation au développement durable. Ils visent à faire comprendre les interactions entre activités humaines et écosystèmes et à développer des comportements favorables à la gestion durable des ressources. Les activités portent sur les pratiques agricoles durables, la conservation de l'eau, la protection de la biodiversité et la gestion écologique des sols.
 
-Leur objectif consiste à permettre aux élèves de comprendre les interactions entre les activités humaines et les écosystèmes, tout en développant des comportements favorables à la gestion durable des ressources naturelles. Les activités réalisées dans ces jardins mettent généralement l'accent sur les pratiques agricoles durables, la conservation de l'eau, la protection de la biodiversité et la gestion écologique des sols.
-
-Dans les régions exposées aux effets du changement climatique, ces jardins jouent également un rôle important dans le développement de compétences liées à l'adaptation et à la résilience environnementale. Les élèves y apprennent des techniques permettant de faire face aux contraintes climatiques locales, notamment dans les contextes caractérisés par la rareté de l'eau, la dégradation des sols ou l'augmentation des températures.
-
-Cette dimension revêt une importance particulière dans les zones arides et semi-arides telles que Djibouti, où les défis environnementaux influencent directement les conditions de vie des populations. Les jardins écologiques peuvent ainsi contribuer à sensibiliser les élèves aux enjeux climatiques tout en leur permettant d'expérimenter des solutions adaptées à leur environnement.
+Dans les régions exposées au changement climatique, ils jouent un rôle déterminant dans le développement de compétences d'adaptation : les élèves y apprennent des techniques permettant de composer avec la rareté de l'eau, la dégradation des sols ou l'élévation des températures. Cette dimension est stratégique en zone aride et semi-aride comme à Djibouti, où les défis environnementaux conditionnent directement les conditions de vie des populations.
 
 ##### Synthèse de la section 2.3.2
 
-L'analyse des différentes typologies de jardins scolaires met en évidence la diversité des fonctions attribuées à ces dispositifs éducatifs. Les jardins pédagogiques privilégient le développement des apprentissages et des compétences académiques, tandis que les jardins nutritionnels accordent une importance particulière à la sécurité alimentaire et à l'éducation nutritionnelle. Les jardins communautaires renforcent quant à eux les liens entre l'école et son environnement social, alors que les jardins écologiques et climatiques contribuent à la sensibilisation environnementale et au développement de capacités d'adaptation aux changements climatiques. Toutefois, ces catégories ne doivent pas être envisagées comme mutuellement exclusives. Dans la pratique, de nombreux jardins scolaires combinent plusieurs de ces fonctions et apparaissent comme des dispositifs intégrés capables de répondre simultanément à des objectifs éducatifs, sociaux, nutritionnels et environnementaux. Cette multifonctionnalité constitue précisément l'une des caractéristiques essentielles des jardins scolaires contemporains.
+Les typologies mettent en évidence la diversité des fonctions attribuées au dispositif : apprentissages et compétences académiques pour les jardins pédagogiques ; sécurité alimentaire et éducation nutritionnelle pour les jardins nutritionnels ; liens entre l'école et son environnement social pour les jardins communautaires ; sensibilisation environnementale et adaptation climatique pour les jardins écologiques. Ces catégories ne sont toutefois pas exclusives : dans la pratique, la plupart des jardins scolaires combinent plusieurs fonctions et constituent des dispositifs intégrés — trait qui définit précisément leur **multifonctionnalité**.
 
 #### 2.3.3 Les fonctions éducatives et sociales des jardins scolaires
 
-L'intérêt croissant accordé aux jardins scolaires dans les systèmes éducatifs contemporains s'explique largement par la diversité des fonctions qu'ils remplissent au sein des établissements et des communautés. Bien au-delà de leur rôle traditionnel de support aux activités agricoles, les jardins scolaires sont aujourd'hui reconnus comme des dispositifs éducatifs multifonctionnels capables d'agir simultanément sur les apprentissages, la nutrition, la cohésion sociale et la sensibilisation environnementale. Cette multifonctionnalité constitue l'un des principaux fondements de leur intégration dans les politiques éducatives, les programmes de développement durable et les stratégies d'adaptation aux changements climatiques.
-
-Les recherches menées au cours des dernières décennies montrent que les jardins scolaires contribuent à créer des environnements d'apprentissage plus interactifs, plus contextualisés et davantage connectés aux réalités vécues par les élèves. Ils permettent également d'établir des passerelles entre l'école, la famille et la communauté, tout en favorisant le développement de compétences essentielles à la vie individuelle et collective. Ces différentes contributions peuvent être regroupées autour de quatre fonctions principales : la fonction pédagogique, la fonction nutritionnelle, la fonction sociale et communautaire ainsi que la fonction environnementale.
+Les recherches menées au cours des dernières décennies montrent que les jardins scolaires créent des environnements d'apprentissage plus interactifs, plus contextualisés et davantage connectés aux réalités vécues par les élèves. Ils établissent également des passerelles entre l'école, la famille et la communauté. Quatre fonctions structurent cette contribution.
 
 ##### a) La fonction pédagogique des jardins scolaires
 
-La fonction pédagogique constitue sans doute la dimension la plus étudiée dans la littérature consacrée aux jardins scolaires. De nombreux travaux soulignent leur capacité à favoriser des formes d'apprentissage actives reposant sur l'expérience directe, l'observation, l'expérimentation et la résolution de problèmes. Dans cette perspective, le jardin scolaire apparaît comme un environnement éducatif permettant de concrétiser les principes de l'apprentissage expérientiel, du constructivisme et du socioconstructivisme examinés dans les sections précédentes.
+La fonction pédagogique est la plus étudiée dans la littérature. Blair (2009, p. 19) qualifie les jardins scolaires d'environnements d'apprentissage expérientiel efficaces : les activités qui s'y déroulent permettent d'acquérir des connaissances par l'action, la manipulation et l'observation directe. Les savoirs ne sont plus transmis par l'enseignant, ils se construisent dans l'interaction entre l'apprenant et son environnement.
 
-Blair souligne à cet égard que :
+Cette approche favorise également la **contextualisation** : les élèves relient les contenus enseignés en classe aux réalités observables du jardin, ce qui renforce la signification des connaissances. Elle permet en outre de développer des approches interdisciplinaires mobilisant sciences naturelles, géographie, mathématiques, éducation à la santé et sciences sociales.
 
-« School gardens are effective experiential learning environments » (Blair, 2009, p. 19).
-
-Cette affirmation met en évidence le potentiel pédagogique des jardins scolaires en tant qu'espaces d'apprentissage fondés sur l'expérience. Les activités réalisées dans ces environnements permettent aux élèves d'acquérir des connaissances à travers l'action, la manipulation et l'observation directe des phénomènes étudiés. Les savoirs ne sont plus uniquement transmis par l'enseignant ; ils sont progressivement construits à partir des interactions entre les apprenants et leur environnement.
-
-Cette approche favorise également la contextualisation des apprentissages. Les élèves peuvent relier les contenus enseignés en classe aux réalités observables dans le jardin, ce qui contribue à renforcer la signification des connaissances acquises. Les jardins scolaires permettent en outre de développer des approches interdisciplinaires en mobilisant simultanément des savoirs issus des sciences naturelles, de la géographie, des mathématiques, de l'éducation à la santé et parfois même des sciences sociales.
-
-Dans cette perspective, le jardin scolaire constitue un laboratoire pédagogique vivant où les apprenants développent non seulement des connaissances disciplinaires, mais également des compétences transversales telles que la pensée critique, la résolution de problèmes, l'autonomie et la capacité d'adaptation.
+Le jardin fonctionne dès lors comme un **laboratoire pédagogique vivant**, où se développent aussi bien des connaissances disciplinaires que des compétences transversales : pensée critique, résolution de problèmes, autonomie, capacité d'adaptation.
 
 ##### b) La fonction nutritionnelle des jardins scolaires
 
-Au-delà de leur contribution aux apprentissages, les jardins scolaires remplissent une fonction nutritionnelle importante, particulièrement dans les contextes caractérisés par des situations de vulnérabilité alimentaire ou de malnutrition. Cette dimension a largement contribué à leur diffusion dans les programmes soutenus par les organisations internationales et les agences de développement.
+Les productions issues du jardin peuvent compléter l'alimentation fournie en cantine ou soutenir des initiatives locales d'amélioration de la qualité nutritionnelle des repas. La portée de cette fonction dépasse toutefois la seule production alimentaire.
 
-Les productions issues des jardins scolaires peuvent contribuer à compléter l'alimentation fournie dans les cantines scolaires ou à soutenir certaines initiatives locales visant à améliorer la qualité nutritionnelle des repas servis aux élèves. Toutefois, la portée de cette fonction dépasse largement la simple production alimentaire.
-
-Les jardins scolaires constituent également des espaces d'éducation nutritionnelle permettant aux élèves de développer une meilleure compréhension des liens entre alimentation, santé et bien-être. En participant à la culture de légumes, de fruits ou d'autres produits alimentaires, les apprenants découvrent l'origine des aliments qu'ils consomment et prennent conscience de l'importance d'une alimentation équilibrée.
-
-Cette sensibilisation apparaît particulièrement pertinente dans les contextes où les défis liés à la sécurité alimentaire sont étroitement associés aux conditions environnementales et socio-économiques. Les jardins scolaires peuvent alors contribuer à promouvoir des comportements alimentaires plus sains tout en renforçant les connaissances des élèves relatives à la nutrition et à la santé.
+Le jardin constitue un espace d'**éducation nutritionnelle** : en participant à la culture de légumes ou de fruits, les apprenants découvrent l'origine de leur alimentation et prennent conscience de l'importance d'un régime équilibré. Cette sensibilisation est d'autant plus pertinente là où les défis de sécurité alimentaire sont étroitement liés aux conditions environnementales et socio-économiques.
 
 ##### c) La fonction sociale et communautaire des jardins scolaires
 
-Les jardins scolaires remplissent également une fonction sociale importante en favorisant le développement des relations entre les différents acteurs de la communauté éducative. Leur mise en œuvre repose fréquemment sur des formes de coopération associant élèves, enseignants, parents et membres de la communauté locale autour d'objectifs communs.
+La mise en œuvre du jardin repose fréquemment sur une coopération associant élèves, enseignants, parents et membres de la communauté autour d'objectifs communs. Cette dimension collaborative renforce les liens sociaux et le sentiment d'appartenance à la communauté scolaire, les activités exigeant coordination des efforts, partage des responsabilités et participation collective.
 
-Cette dimension collaborative contribue à renforcer les liens sociaux et à développer un sentiment d'appartenance à la communauté scolaire. Les activités de jardinage exigent généralement une coordination des efforts, un partage des responsabilités et une participation collective qui favorisent l'apprentissage de la coopération et du travail en équipe.
-
-Les jardins scolaires peuvent ainsi être envisagés comme des espaces de socialisation où les élèves développent des compétences relationnelles essentielles telles que la communication, l'écoute, la négociation et la résolution collective de problèmes. Ils participent également au développement de valeurs liées à la solidarité, au respect mutuel et à la responsabilité partagée.
-
-Par ailleurs, ces dispositifs favorisent souvent le rapprochement entre l'école et son environnement social. La participation des familles et des acteurs communautaires aux activités du jardin contribue à renforcer les partenariats éducatifs et à valoriser les savoirs locaux. Cette ouverture de l'école vers la communauté apparaît particulièrement importante dans les contextes ruraux où les ressources éducatives et les connaissances traditionnelles constituent des éléments essentiels du développement local.
+Le jardin devient ainsi un **espace de socialisation** où se développent la communication, l'écoute, la négociation et la résolution collective de problèmes, ainsi que des valeurs de solidarité, de respect mutuel et de responsabilité partagée. La participation des familles et des acteurs communautaires renforce les partenariats éducatifs et valorise les savoirs locaux — enjeu essentiel en milieu rural, où les connaissances traditionnelles constituent une ressource du développement local.
 
 ##### d) La fonction environnementale des jardins scolaires
 
-La fonction environnementale des jardins scolaires occupe une place de plus en plus importante dans les politiques éducatives contemporaines, notamment dans le contexte des préoccupations croissantes liées aux changements climatiques et à la durabilité des systèmes de production. Les jardins scolaires constituent des environnements privilégiés pour l'éducation à l'environnement et au développement durable.
+Cette fonction occupe une place croissante dans les politiques éducatives contemporaines. Les activités du jardin permettent d'observer directement les interactions entre organismes vivants et environnement, de comprendre les cycles naturels et de mieux connaître les écosystèmes — compréhension plus approfondie que ne le permettent les approches exclusivement théoriques.
 
-Grâce aux activités réalisées dans ces espaces, les élèves peuvent observer directement les interactions entre les organismes vivants et leur environnement, comprendre les cycles naturels et développer une meilleure connaissance des écosystèmes. Cette expérience concrète favorise une compréhension plus approfondie des enjeux environnementaux que ne le permettent souvent les approches exclusivement théoriques.
-
-Les jardins scolaires contribuent également à sensibiliser les apprenants à des problématiques telles que la gestion durable de l'eau, la conservation des sols, la biodiversité, la gestion des déchets ou encore les effets du changement climatique. Ils permettent ainsi de développer des comportements plus respectueux de l'environnement et d'encourager l'adoption de pratiques durables.
-
-Dans les régions particulièrement exposées aux risques climatiques, cette fonction environnementale revêt une importance stratégique. Les jardins scolaires peuvent servir de supports à l'apprentissage de techniques adaptées aux contraintes locales et contribuer au développement de compétences nécessaires à l'adaptation et à la résilience face aux changements environnementaux.
+Le jardin sensibilise également à la gestion durable de l'eau, à la conservation des sols, à la biodiversité, à la gestion des déchets et aux effets du changement climatique, encourageant l'adoption de pratiques durables. Dans les régions exposées aux risques climatiques, cette fonction revêt une importance stratégique : le jardin sert de support à l'apprentissage de techniques adaptées aux contraintes locales et au développement de compétences d'adaptation.
 
 ##### Conclusion de la section 2.3.3
 
-L'analyse des fonctions éducatives et sociales des jardins scolaires met en évidence leur caractère profondément multidimensionnel. Initialement associés à l'apprentissage des pratiques agricoles, ces dispositifs sont progressivement devenus des environnements éducatifs intégrés capables de répondre simultanément à plusieurs enjeux contemporains. Leur contribution aux apprentissages, à l'éducation nutritionnelle, au renforcement des liens sociaux et à la sensibilisation environnementale explique l'intérêt croissant qu'ils suscitent dans les politiques éducatives et les programmes de développement.
-
-Cette multifonctionnalité confère aux jardins scolaires un potentiel particulièrement important pour soutenir les approches éducatives fondées sur l'expérience, la participation et la contextualisation des savoirs. Toutefois, elle soulève également des interrogations relatives aux conditions nécessaires à leur efficacité et à leur intégration dans les systèmes éducatifs. Ces questions conduisent à examiner plus spécifiquement le rôle des jardins scolaires comme espaces d'innovation pédagogique et de transformation des pratiques éducatives, dimension qui sera développée dans la section suivante.
+Les fonctions éducatives et sociales du jardin scolaire révèlent son caractère profondément multidimensionnel. Initialement associé à l'apprentissage des pratiques agricoles, il est devenu un environnement éducatif intégré répondant simultanément à plusieurs enjeux contemporains. Cette multifonctionnalité soulève toutefois des interrogations sur les conditions de son efficacité et de son intégration dans les systèmes éducatifs — questions abordées dans les deux sections suivantes.
 
 #### 2.3.4 Les jardins scolaires comme espaces d'innovation pédagogique
 
-Les transformations contemporaines des systèmes éducatifs ont progressivement remis en question les modèles traditionnels d'enseignement fondés sur la transmission verticale des connaissances. Face aux défis posés par les mutations sociales, environnementales et technologiques, les institutions éducatives sont désormais appelées à développer des approches pédagogiques capables de favoriser l'engagement des apprenants, le développement de compétences complexes et l'adaptation aux réalités locales. Dans ce contexte, les jardins scolaires apparaissent comme des dispositifs particulièrement propices à l'innovation pédagogique en raison de leur capacité à articuler apprentissage expérientiel, interdisciplinarité, participation active et contextualisation des savoirs.
+Face aux mutations sociales, environnementales et technologiques, les institutions éducatives sont appelées à développer des approches favorisant l'engagement des apprenants, le développement de compétences complexes et l'adaptation aux réalités locales. Le jardin scolaire s'y prête particulièrement, en articulant apprentissage expérientiel, interdisciplinarité, participation active et contextualisation des savoirs.
 
-L'innovation pédagogique peut être définie comme l'introduction de pratiques, de méthodes ou d'environnements éducatifs permettant de renouveler les modalités d'enseignement et d'apprentissage afin de mieux répondre aux besoins des apprenants et aux enjeux contemporains. Les jardins scolaires s'inscrivent pleinement dans cette dynamique en offrant des situations éducatives qui dépassent les limites de l'enseignement traditionnel et favorisent des formes d'apprentissage plus interactives, plus contextualisées et davantage centrées sur l'expérience.
-
-Cette perspective est soulignée par la FAO lorsqu'elle affirme que :
-
-« School gardens provide dynamic environments for active and participatory learning » (FAO, 2010, p. 9).
-
-Cette définition met en évidence le caractère dynamique des jardins scolaires et leur capacité à transformer les environnements éducatifs en espaces favorisant la participation, l'expérimentation et la construction active des connaissances. Loin d'être de simples lieux destinés à la production agricole ou à l'éducation nutritionnelle, ils apparaissent comme de véritables laboratoires pédagogiques dans lesquels les élèves développent des compétences cognitives, sociales et environnementales à travers leur engagement direct dans des activités significatives.
+L'**innovation pédagogique** peut se définir comme l'introduction de pratiques, de méthodes ou d'environnements éducatifs renouvelant les modalités d'enseignement et d'apprentissage. La FAO (2010, p. 9) décrit à cet égard le jardin scolaire comme un environnement dynamique propice à un apprentissage actif et participatif. Loin d'être un simple lieu de production agricole ou d'éducation nutritionnelle, il constitue un véritable laboratoire pédagogique.
 
 ##### a) L'interdisciplinarité comme vecteur d'innovation pédagogique
 
-L'un des principaux apports des jardins scolaires réside dans leur capacité à favoriser des approches interdisciplinaires. Les systèmes éducatifs traditionnels reposent souvent sur une organisation des savoirs en disciplines distinctes, ce qui peut limiter la compréhension des liens existant entre les différents domaines de connaissance. Les jardins scolaires permettent au contraire de décloisonner les apprentissages en mobilisant simultanément plusieurs disciplines autour de problématiques concrètes.
+Les systèmes éducatifs traditionnels organisent les savoirs en disciplines distinctes, ce qui peut masquer les liens entre domaines de connaissance. Le jardin scolaire décloisonne les apprentissages en mobilisant plusieurs disciplines autour de problématiques concrètes. Drake et Burns (2004, p. 7) soulignent que l'enseignement interdisciplinaire crée précisément des connexions entre les disciplines et les expériences de la vie réelle.
 
-Cette approche est mise en évidence par Drake et Burns, qui soulignent que :
+Les activités du jardin illustrent cette articulation :
 
-« Interdisciplinary instruction creates connections between disciplines and real-life experiences » (Drake & Burns, 2004, p. 7).
+- l'**étude des végétaux** mobilise les sciences naturelles et la biologie ;
+- la **gestion des cultures** requiert des concepts mathématiques — mesures, calculs, organisation de l'espace ;
+- les **observations de terrain** donnent lieu à des productions écrites ou orales, développant les compétences linguistiques ;
+- les **activités collectives** favorisent l'apprentissage de valeurs citoyennes : coopération, responsabilité, participation communautaire.
 
-Les activités réalisées dans les jardins scolaires illustrent parfaitement cette articulation entre les disciplines et les expériences vécues. L'étude des végétaux mobilise des connaissances relevant des sciences naturelles et de la biologie, tandis que la gestion des cultures nécessite l'utilisation de concepts mathématiques liés aux mesures, aux calculs et à l'organisation de l'espace. Les observations réalisées sur le terrain peuvent donner lieu à des productions écrites ou orales, contribuant ainsi au développement des compétences linguistiques. De même, les activités collectives associées au jardin favorisent l'apprentissage de valeurs citoyennes telles que la coopération, la responsabilité et la participation communautaire.
-
-Cette interdisciplinarité permet aux apprenants de percevoir les connaissances comme des ensembles cohérents et interdépendants plutôt que comme des contenus isolés. Elle favorise également une meilleure compréhension des problématiques complexes, notamment celles liées à l'environnement, à l'alimentation et au développement durable.
-
-Dans les contextes ruraux, cette approche présente un intérêt particulier dans la mesure où elle permet de relier les contenus scolaires aux réalités économiques, sociales et environnementales auxquelles les élèves sont quotidiennement confrontés.
+Cette interdisciplinarité permet de percevoir les connaissances comme des ensembles cohérents et interdépendants plutôt que comme des contenus isolés, et facilite la compréhension de problématiques complexes liées à l'environnement, à l'alimentation et au développement durable. En milieu rural, elle relie en outre les contenus scolaires aux réalités économiques, sociales et environnementales du quotidien des élèves.
 
 ##### b) Les jardins scolaires et la mise en œuvre des pédagogies actives
 
-Les jardins scolaires constituent également des espaces privilégiés pour la mise en œuvre des pédagogies actives. Ces approches reposent sur l'idée que les apprentissages sont plus efficaces lorsque les apprenants participent directement aux activités éducatives plutôt que de recevoir passivement des informations.
+Les pédagogies actives reposent sur l'idée que les apprentissages gagnent en efficacité lorsque les apprenants participent directement aux activités éducatives. Dewey (1916, p. 38) rappelle que l'éducation n'est pas affaire de discours reçus mais un processus actif et constructif.
 
-Cette conception trouve ses fondements dans les travaux de John Dewey, qui affirme :
+Les activités de jardinage placent les élèves dans des situations réelles exigeant résolution de problèmes, prise de décision et adaptation à des contraintes variées : observer les phénomènes naturels, expérimenter des pratiques culturales, évaluer les conséquences de ses choix. Cette participation active renforce la motivation et l'engagement.
 
-« Education is not an affair of 'telling' and being told, but an active and constructive process » (Dewey, 1916, p. 38).
+Elle développe également l'autonomie et la pensée critique : les élèves apprennent à formuler des hypothèses, à analyser des situations complexes et à rechercher des solutions adaptées.
 
-Dans cette perspective, les connaissances se construisent à travers l'action, l'expérimentation et la réflexion sur l'expérience vécue. Les jardins scolaires offrent précisément un environnement où les élèves peuvent observer, manipuler, expérimenter et analyser les résultats de leurs actions.
+##### c) La contextualisation des savoirs dans le jardin scolaire
 
-Les activités de jardinage placent les apprenants dans des situations réelles nécessitant la résolution de problèmes, la prise de décision et l'adaptation à des contraintes variées. Ils sont amenés à observer les phénomènes naturels, à expérimenter différentes pratiques culturales et à évaluer les conséquences de leurs choix. Cette participation active contribue à renforcer leur motivation et leur engagement dans les apprentissages.
+Les apprentissages sont plus signifiants lorsque les contenus enseignés sont reliés aux réalités vécues par les apprenants. Freire (1970, p. 72) rappelle que la connaissance n'émerge que par l'invention et la réinvention, en lien avec le monde.
 
-Par ailleurs, les pédagogies actives mises en œuvre dans les jardins scolaires favorisent le développement de l'autonomie et de la pensée critique. Les élèves apprennent à formuler des hypothèses, à analyser des situations complexes et à rechercher des solutions adaptées aux problèmes rencontrés. Le jardin devient ainsi un espace où les apprentissages prennent sens à travers l'expérience et l'action.
+Les activités de jardinage permettent de comprendre des phénomènes directement observables dans l'environnement immédiat et d'intégrer savoirs communautaires et connaissances traditionnelles aux processus éducatifs. Cette contextualisation favorise l'appropriation des apprentissages et renforce leur pertinence sociale.
 
-##### c) La contextualisation des apprentissages
-
-L'une des caractéristiques majeures des jardins scolaires réside dans leur capacité à contextualiser les savoirs. Les apprentissages apparaissent généralement plus significatifs lorsque les contenus enseignés sont reliés aux réalités vécues par les apprenants et aux problématiques de leur environnement.
-
-Cette idée est particulièrement bien exprimée par Paulo Freire lorsqu'il affirme que :
-
-« Knowledge emerges only through invention and re-invention linked with the world » (Freire, 1970, p. 72).
-
-Selon cette perspective, les connaissances prennent leur sens lorsqu'elles sont construites à partir de l'expérience et des interactions avec le monde. Les jardins scolaires permettent précisément d'établir cette connexion entre les savoirs académiques et les réalités locales.
-
-Les activités de jardinage offrent aux élèves l'opportunité de comprendre des phénomènes directement observables dans leur environnement. Elles permettent également d'intégrer les savoirs communautaires et les connaissances traditionnelles dans les processus éducatifs. Cette contextualisation favorise une meilleure appropriation des apprentissages et contribue à renforcer leur pertinence sociale.
-
-Dans les régions arides telles que Djibouti, cette dimension revêt une importance particulière. Les jardins scolaires peuvent servir de support à l'apprentissage de pratiques liées à la gestion durable de l'eau, à l'agriculture adaptée aux contraintes climatiques et aux stratégies locales de résilience environnementale. Les connaissances développées dans ces espaces apparaissent ainsi directement mobilisables dans la vie quotidienne des apprenants et de leurs communautés.
+Dans les régions arides telles que Djibouti, cette dimension est décisive : le jardin sert de support à l'apprentissage de la gestion durable de l'eau, de l'agriculture adaptée aux contraintes climatiques et des stratégies locales de résilience. Les connaissances développées sont directement mobilisables dans la vie quotidienne des apprenants et de leurs communautés.
 
 ##### d) Le développement des compétences transversales
 
-Les jardins scolaires contribuent également au développement de compétences transversales aujourd'hui reconnues comme essentielles dans les politiques éducatives internationales. Ces compétences dépassent les savoirs disciplinaires traditionnels et concernent les capacités nécessaires pour faire face aux défis complexes du monde contemporain.
+L'UNESCO (2017, p. 10) souligne que l'éducation doit permettre aux apprenants d'acquérir les compétences clés du développement durable. Les activités menées au jardin favorisent la coopération, la communication, la résolution de problèmes, la créativité, l'autonomie et la prise de décision. Elles apprennent également à gérer des ressources limitées, à travailler en équipe et à s'adapter à des situations changeantes.
 
-L'UNESCO souligne à cet égard que :
-
-« Education should enable learners to acquire key competencies for sustainable development » (UNESCO, 2017, p. 10).
-
-Les activités réalisées dans les jardins scolaires favorisent le développement de compétences telles que la coopération, la communication, la résolution de problèmes, la créativité, l'autonomie et la prise de décision. Elles permettent également aux élèves d'apprendre à gérer des ressources limitées, à travailler en équipe et à s'adapter à des situations changeantes.
-
-Ces compétences apparaissent particulièrement importantes dans les contextes marqués par l'incertitude environnementale et les transformations sociales rapides. Les jardins scolaires contribuent ainsi à préparer les apprenants à devenir des acteurs capables de participer activement à la résolution des problèmes auxquels leurs communautés sont confrontées.
-
-Au-delà des apprentissages académiques, ils participent à la formation de citoyens responsables, conscients des enjeux environnementaux et capables de contribuer au développement durable de leur territoire.
+Ces compétences sont déterminantes dans les contextes marqués par l'incertitude environnementale et des transformations sociales rapides. Le jardin contribue ainsi à former des citoyens responsables, conscients des enjeux environnementaux et capables de participer au développement durable de leur territoire.
 
 ##### e) Les jardins scolaires et la transformation des pratiques pédagogiques
 
-L'intégration des jardins scolaires dans les établissements éducatifs contribue également à transformer les relations pédagogiques traditionnelles. Dans ces environnements, le rôle de l'enseignant évolue progressivement d'une fonction de transmission vers une fonction d'accompagnement et de médiation des apprentissages.
+L'intégration du jardin transforme les relations pédagogiques traditionnelles : le rôle de l'enseignant évolue d'une fonction de transmission vers une fonction d'accompagnement et de médiation. Les élèves deviennent acteurs de leur formation, tandis que les enseignants facilitent les interactions, soutiennent la réflexion et accompagnent les démarches d'investigation.
 
-Les élèves deviennent davantage acteurs de leur formation, tandis que les enseignants facilitent les interactions, soutiennent la réflexion et accompagnent les démarches d'investigation. Cette évolution favorise des relations pédagogiques plus collaboratives et plus participatives.
-
-Les jardins scolaires encouragent également l'ouverture de l'école vers son environnement social. Les activités éducatives peuvent associer différents acteurs de la communauté, favorisant ainsi la circulation des savoirs et le développement de partenariats éducatifs. Cette ouverture contribue à enrichir les apprentissages et à renforcer leur ancrage dans les réalités locales.
-
-Comme le souligne Bruner :
-
-« The will to learn is an intrinsic motive » (Bruner, 1966, p. 127).
-
-Les jardins scolaires renforcent cette motivation intrinsèque en donnant aux apprentissages une dimension concrète, observable et socialement utile.
+Le jardin encourage également l'ouverture de l'école vers son environnement social, en associant différents acteurs de la communauté aux activités éducatives — ce qui enrichit les apprentissages et renforce leur ancrage local. Bruner (1966, p. 127) rappelle que la volonté d'apprendre constitue un motif intrinsèque ; le jardin renforce cette motivation en donnant aux apprentissages une dimension concrète, observable et socialement utile.
 
 ##### f) Innovation pédagogique et résilience éducative
 
-Dans les contextes caractérisés par des vulnérabilités environnementales, économiques ou sociales, les jardins scolaires peuvent également être analysés comme des dispositifs d'innovation pédagogique contribuant au renforcement de la résilience éducative. Ils permettent de développer des approches d'apprentissage adaptées aux réalités locales tout en favorisant l'acquisition de compétences nécessaires à l'adaptation aux changements.
+Dans les contextes marqués par des vulnérabilités environnementales, économiques ou sociales, le jardin scolaire peut être analysé comme un dispositif d'innovation contribuant à la **résilience éducative**. L'UNICEF (2021, p. 19) observe que les environnements d'apprentissage innovants renforcent cette résilience.
 
-Cette contribution est mise en évidence par l'UNICEF, qui affirme que :
-
-« Innovative learning environments strengthen educational resilience » (UNICEF, 2021, p. 19).
-
-Les jardins scolaires participent à cette dynamique en sensibilisant les apprenants aux enjeux liés au changement climatique, à la gestion durable des ressources naturelles et aux stratégies d'adaptation. Ils favorisent également le développement de capacités de résolution de problèmes et de prise de décision dans des contextes marqués par l'incertitude.
-
-Dans le contexte djiboutien, où les défis liés à l'aridité, au stress hydrique et aux vulnérabilités environnementales occupent une place centrale, cette dimension apparaît particulièrement pertinente. Les jardins scolaires offrent des opportunités d'apprentissage directement liées aux enjeux du territoire et contribuent à renforcer les capacités d'adaptation des élèves et des communautés éducatives.
+Le jardin y participe en sensibilisant aux enjeux climatiques, à la gestion durable des ressources et aux stratégies d'adaptation, et en développant des capacités de résolution de problèmes et de décision en situation d'incertitude. Dans le contexte djiboutien — aridité, stress hydrique, vulnérabilités environnementales — cette dimension est directement opératoire.
 
 ##### Synthèse de la section 2.3.4
 
-L'analyse des jardins scolaires comme espaces d'innovation pédagogique met en évidence leur contribution à la transformation des pratiques éducatives contemporaines. En favorisant l'interdisciplinarité, les pédagogies actives, la contextualisation des apprentissages et le développement de compétences transversales, ces dispositifs offrent des alternatives pertinentes aux approches traditionnelles centrées sur la transmission des savoirs. Leur capacité à relier les contenus scolaires aux réalités environnementales et sociales des apprenants renforce leur potentiel éducatif et contribue au développement de formes d'apprentissage plus significatives, plus inclusives et davantage orientées vers la résilience. Dans cette perspective, les jardins scolaires apparaissent comme des laboratoires d'innovation pédagogique capables de répondre simultanément aux enjeux éducatifs, environnementaux et communautaires des sociétés contemporaines.
+En favorisant l'interdisciplinarité, les pédagogies actives, la contextualisation des apprentissages et le développement de compétences transversales, le jardin scolaire offre une alternative pertinente aux approches centrées sur la transmission des savoirs. Sa capacité à relier les contenus scolaires aux réalités environnementales et sociales des apprenants en fait un **laboratoire d'innovation pédagogique** répondant simultanément aux enjeux éducatifs, environnementaux et communautaires.
 
 #### 2.3.5 Limites et critiques des jardins scolaires
 
-Malgré l'intérêt croissant accordé aux jardins scolaires dans les politiques éducatives, les programmes de développement et les initiatives internationales liées à l'éducation au développement durable, ces dispositifs ne sont pas exempts de limites ni de critiques. Si la littérature met fréquemment en avant leurs contributions potentielles aux apprentissages, à la sécurité alimentaire, à l'éducation environnementale et au développement communautaire, plusieurs travaux soulignent également les difficultés rencontrées dans leur mise en œuvre ainsi que les écarts parfois observés entre les ambitions affichées et les résultats effectivement obtenus.
+Le jardin scolaire est fréquemment présenté comme une solution polyvalente répondant à la fois à des problématiques éducatives, nutritionnelles, sociales et environnementales. Cette représentation tend à masquer les contraintes structurelles pesant sur les établissements et la diversité des contextes de mise en œuvre. La FAO (2010, p. 27) constate d'ailleurs que de nombreux programmes peinent à assurer leur durabilité et leur entretien à long terme.
 
-L'analyse critique des jardins scolaires apparaît d'autant plus nécessaire que ces dispositifs sont souvent présentés comme des solutions polyvalentes capables de répondre simultanément à des problématiques éducatives, nutritionnelles, sociales et environnementales. Une telle représentation tend parfois à masquer les contraintes structurelles auxquelles sont confrontés les établissements scolaires ainsi que la diversité des contextes dans lesquels ces projets sont mis en œuvre. Les recherches récentes montrent que l'efficacité des jardins scolaires dépend largement des ressources disponibles, de l'engagement des acteurs, du soutien institutionnel et des conditions environnementales locales.
+Le tableau ci-dessous récapitule les cinq ordres de limites identifiés dans la littérature.
 
-Cette réalité est soulignée par la FAO, qui observe que :
-
-« Many school garden programmes struggle with sustainability and long-term maintenance » (FAO, 2010, p. 27).
-
-Cette remarque met en évidence l'un des principaux défis associés aux jardins scolaires : leur capacité à être maintenus durablement au-delà des phases initiales de mise en œuvre. L'analyse de la littérature permet ainsi d'identifier plusieurs catégories de limites relatives aux conditions matérielles de fonctionnement, aux contraintes institutionnelles, aux résultats empiriques observés, aux processus de contextualisation ainsi qu'aux enjeux de durabilité.
+| Ordre de limite | Manifestation principale | Référence |
+|---|---|---|
+| **Matérielle** | Accès à l'eau, semences, outils, espaces cultivables | Desmond et al. (2004, p. 41) |
+| **Institutionnelle et pédagogique** | Formation et temps enseignant insuffisants | Blair (2009, p. 30) |
+| **Empirique** | Résultats hétérogènes, difficilement généralisables | Ohly et al. (2016, p. 2) |
+| **Contextuelle** | Tension entre modèles internationaux et réalités locales | Freire (1970, p. 95) |
+| **Politique** | Risque d'instrumentalisation et de vitrine institutionnelle | Biesta (2010, p. 14) |
 
 ##### a) Les difficultés de mise en œuvre des jardins scolaires
 
-L'une des critiques les plus fréquemment formulées concerne les difficultés concrètes associées à la création et à la gestion des jardins scolaires. Contrairement à certaines représentations idéalisées, la mise en place d'un jardin nécessite des ressources humaines, matérielles et financières qui ne sont pas toujours disponibles dans les établissements scolaires, en particulier dans les contextes caractérisés par des contraintes économiques importantes.
+Créer et gérer un jardin exige des ressources humaines, matérielles et financières qui ne sont pas toujours disponibles, en particulier dans les contextes économiquement contraints. La réussite dépend de l'accès à l'eau, aux semences, aux outils agricoles, aux espaces cultivables et aux infrastructures d'entretien.
 
-La réussite d'un jardin scolaire dépend notamment de l'accès à des ressources essentielles telles que l'eau, les semences, les outils agricoles, les espaces cultivables et les infrastructures nécessaires à l'entretien des cultures. Dans de nombreux contextes, l'insuffisance de ces ressources constitue un obstacle majeur au fonctionnement régulier des dispositifs.
+La difficulté est particulièrement aiguë en zone aride et semi-aride, confrontée à la rareté des ressources hydriques, à la dégradation des sols et à des conditions climatiques extrêmes. Desmond, Grieshop et Subramaniam (2004, p. 41) identifient d'ailleurs la **pénurie d'eau** comme l'obstacle le plus courant à la réussite des jardins scolaires — observation d'une portée directe dans le contexte djiboutien.
 
-Cette problématique apparaît particulièrement marquée dans les régions soumises à des contraintes climatiques sévères. Les zones arides et semi-arides sont confrontées à des difficultés spécifiques liées à la rareté des ressources hydriques, à la dégradation des sols et aux conditions climatiques extrêmes. À cet égard, Desmond, Grieshop et Subramaniam soulignent que :
-
-« Water scarcity is one of the most common barriers to successful school gardens » (Desmond et al., 2004, p. 41).
-
-Cette observation revêt une importance particulière dans le contexte djiboutien où les questions relatives à la disponibilité de l'eau constituent un enjeu central pour toute activité agricole ou horticole. Dans de telles conditions, la pérennité des jardins scolaires dépend fortement de la capacité des établissements à développer des solutions adaptées aux contraintes environnementales locales.
-
-Par ailleurs, plusieurs études montrent que de nombreux projets de jardins scolaires connaissent un essoufflement progressif après leur phase de lancement. L'absence de mécanismes de suivi, le manque de ressources récurrentes ou encore la faible implication des acteurs éducatifs peuvent conduire à l'abandon progressif des activités.
+Plusieurs études montrent en outre que de nombreux projets s'essoufflent après leur phase de lancement, faute de mécanismes de suivi, de ressources récurrentes ou d'implication durable des acteurs éducatifs.
 
 ##### b) Les contraintes institutionnelles et pédagogiques
 
-Les limites des jardins scolaires ne relèvent pas uniquement des conditions matérielles de mise en œuvre. Elles concernent également les cadres institutionnels dans lesquels ces dispositifs s'inscrivent.
+L'intégration effective du jardin aux pratiques pédagogiques suppose des compétences que les enseignants ne possèdent pas toujours : les approches expérientielles, interdisciplinaires et environnementales exigent des méthodes différentes de celles traditionnellement mobilisées. Blair (2009, p. 30) relève que les enseignants manquent souvent de la formation et du temps nécessaires pour intégrer pleinement le jardin au curriculum.
 
-L'intégration effective des jardins scolaires dans les pratiques pédagogiques nécessite des compétences spécifiques que les enseignants ne possèdent pas toujours. Les approches expérientielles, interdisciplinaires et environnementales mobilisées dans les jardins scolaires exigent souvent des connaissances et des méthodes de travail différentes de celles traditionnellement utilisées dans l'enseignement.
-
-Selon Blair :
-
-« Teachers often lack the training and time needed to fully integrate gardens into the curriculum » (Blair, 2009, p. 30).
-
-Cette observation met en évidence l'un des principaux obstacles à l'exploitation pédagogique des jardins scolaires. Même lorsque les infrastructures existent, leur potentiel éducatif demeure limité si les enseignants ne disposent ni du temps ni de la formation nécessaires pour les intégrer aux activités d'enseignement.
-
-Cette situation est fréquemment renforcée par les caractéristiques des systèmes éducatifs contemporains, souvent fortement orientés vers les programmes officiels, les évaluations standardisées et les exigences académiques. Dans ces contextes, les activités réalisées dans les jardins peuvent être perçues comme secondaires par rapport aux contenus considérés comme prioritaires.
-
-Il en résulte parfois une utilisation marginale du jardin scolaire, réduit à une activité occasionnelle ou périphérique sans réelle articulation avec les objectifs curriculaires. Cette situation limite considérablement son potentiel d'innovation pédagogique et sa capacité à transformer durablement les pratiques éducatives.
+Même lorsque les infrastructures existent, le potentiel éducatif demeure donc limité. La situation est aggravée par des systèmes éducatifs fortement orientés vers les programmes officiels, les évaluations standardisées et les exigences académiques, dans lesquels les activités de jardinage sont perçues comme secondaires. Il en résulte un usage marginal du dispositif — activité occasionnelle sans articulation réelle avec les objectifs curriculaires — qui en compromet le potentiel d'innovation.
 
 ##### c) Les limites empiriques des résultats observés
 
-Une autre critique importante concerne les preuves empiriques disponibles concernant les effets des jardins scolaires. Si de nombreuses publications mettent en avant leurs bénéfices potentiels, plusieurs synthèses de recherche soulignent que les résultats observés demeurent souvent hétérogènes et difficiles à généraliser.
+Si de nombreuses publications mettent en avant les bénéfices des jardins scolaires, plusieurs synthèses soulignent que les résultats demeurent hétérogènes et difficilement généralisables. Ohly et al. (2016, p. 2) concluent que les preuves d'efficacité des programmes de jardinage scolaire restent limitées et contrastées.
 
-Cette question est notamment soulevée par Ohly et ses collaborateurs, qui affirment que :
+Certaines recherches rapportent des effets positifs sur la motivation, les connaissances environnementales ou les comportements alimentaires ; d'autres relèvent des résultats plus modestes. Les effets sur les **performances académiques** apparaissent particulièrement difficiles à établir de manière systématique.
 
-« Evidence of the effectiveness of school gardening programmes remains limited and mixed » (Ohly et al., 2016, p. 2).
-
-Cette analyse met en évidence la nécessité d'adopter une approche prudente dans l'interprétation des effets attribués aux jardins scolaires. Les impacts observés varient considérablement selon les contextes d'implantation, les caractéristiques des populations concernées et les modalités de mise en œuvre des programmes.
-
-Certaines recherches rapportent des effets positifs sur la motivation des élèves, les connaissances environnementales ou les comportements alimentaires, tandis que d'autres mettent en évidence des résultats plus modestes ou peu significatifs. Les effets sur les performances académiques apparaissent notamment difficiles à établir de manière systématique.
-
-Ces constats suggèrent que les jardins scolaires ne constituent pas des solutions universelles susceptibles de résoudre automatiquement les difficultés éducatives, nutritionnelles ou sociales auxquelles les établissements scolaires sont confrontés. Leur efficacité dépend largement des conditions spécifiques dans lesquelles ils sont développés.
+Le jardin scolaire ne constitue donc pas une solution universelle : son efficacité dépend étroitement des conditions de son développement.
 
 ##### d) Les tensions entre les modèles internationaux et les réalités locales
 
-La littérature critique met également en évidence les tensions pouvant exister entre les modèles de jardins scolaires promus par les organisations internationales et les réalités locales des territoires où ces dispositifs sont implantés.
+Les programmes internationaux reposent souvent sur des référentiels généraux conçus pour s'appliquer à une grande diversité de contextes. Cette standardisation peut conduire à sous-estimer les spécificités environnementales, culturelles et socio-économiques des communautés. Freire (1970, p. 95) avertit que toute pratique éducative déconnectée du réel devient aliénante.
 
-Les programmes internationaux reposent souvent sur des référentiels généraux conçus pour être applicables dans une grande diversité de contextes. Toutefois, cette standardisation peut parfois conduire à une prise en compte insuffisante des spécificités environnementales, culturelles et socio-économiques des communautés concernées.
-
-Cette problématique rejoint les réflexions de Paulo Freire, qui rappelle que :
-
-« Any educational practice disconnected from reality becomes alienating » (Freire, 1970, p. 95).
-
-Cette affirmation souligne l'importance de concevoir les dispositifs éducatifs à partir des réalités vécues par les apprenants et leurs communautés. Lorsque les jardins scolaires sont introduits sans réelle adaptation aux contextes locaux, ils risquent d'être perçus comme des projets externes faiblement appropriés par les populations concernées.
-
-Dans le cas de Djibouti, cette question apparaît particulièrement pertinente. Les contraintes liées à l'aridité, à la rareté des ressources hydriques, aux disparités territoriales et aux capacités institutionnelles limitées rendent indispensable une forte contextualisation des projets de jardins scolaires. Leur réussite dépend largement de leur capacité à intégrer les savoirs locaux, les pratiques agricoles adaptées au milieu et les besoins réels des communautés.
+Introduits sans adaptation, les jardins scolaires risquent d'être perçus comme des projets externes faiblement appropriés. Dans le cas de Djibouti, l'aridité, la rareté de l'eau, les disparités territoriales et les capacités institutionnelles limitées rendent indispensable une forte contextualisation : la réussite dépend de la capacité à intégrer les savoirs locaux, les pratiques agricoles adaptées au milieu et les besoins réels des communautés.
 
 ##### e) Les risques d'instrumentalisation des jardins scolaires
 
-Plusieurs auteurs attirent également l'attention sur les risques d'instrumentalisation associés aux jardins scolaires. La diversité des objectifs qui leur sont attribués peut conduire à une surestimation de leurs capacités réelles et à une forme d'idéalisation de leurs effets.
+La diversité des objectifs assignés au dispositif peut conduire à une surestimation de ses capacités réelles. Dans certains discours institutionnels, le jardin est présenté comme un outil capable de résoudre simultanément des problèmes éducatifs, nutritionnels, environnementaux et sociaux — attribution de fonctions excédant ses capacités effectives.
 
-Dans certains discours institutionnels, les jardins scolaires sont présentés comme des outils capables de répondre simultanément aux problèmes éducatifs, nutritionnels, environnementaux et sociaux. Une telle vision tend à attribuer à ces dispositifs des fonctions qui dépassent parfois leurs capacités effectives.
-
-Cette critique rejoint les réflexions de Biesta lorsqu'il affirme que :
-
-« Education should not simply serve economic or technical purposes » (Biesta, 2010, p. 14).
-
-Cette perspective invite à considérer les jardins scolaires comme des outils éducatifs parmi d'autres, et non comme des solutions universelles à des problèmes complexes. Lorsque leur mise en œuvre est principalement motivée par des objectifs de visibilité institutionnelle ou de conformité aux agendas internationaux, le risque existe de voir leur fonction éducative reléguée au second plan.
-
-Les jardins scolaires peuvent alors devenir des symboles de modernisation ou des vitrines de projets de développement davantage qu'ils ne constituent de véritables espaces d'apprentissage et de participation communautaire.
+Biesta (2010, p. 14) rappelle que l'éducation ne saurait se réduire à des finalités économiques ou techniques. Le jardin scolaire doit dès lors être considéré comme un outil éducatif parmi d'autres. Lorsque sa mise en œuvre est motivée avant tout par la visibilité institutionnelle ou la conformité aux agendas internationaux, sa fonction éducative risque d'être reléguée au second plan : il devient alors une **vitrine** plutôt qu'un espace d'apprentissage et de participation.
 
 ##### f) Les enjeux de durabilité des jardins scolaires
 
-Enfin, la question de la durabilité constitue probablement l'un des défis les plus importants associés aux jardins scolaires. De nombreux projets reposent fortement sur des financements externes, sur l'appui d'organisations non gouvernementales ou sur l'engagement exceptionnel de quelques individus particulièrement investis.
+La durabilité constitue probablement le défi le plus important. De nombreux projets reposent sur des financements externes, l'appui d'organisations non gouvernementales ou l'engagement exceptionnel de quelques individus. Lorsque ces soutiens disparaissent, la continuité est compromise.
 
-Or, lorsque ces soutiens diminuent ou disparaissent, les dispositifs rencontrent fréquemment des difficultés de continuité. Cette réalité souligne l'importance de l'appropriation locale et de l'intégration institutionnelle des projets.
+La FAO (2010, p. 31) rappelle que la durabilité exige une forte appropriation communautaire et un soutien institutionnel solide. Le maintien du dispositif dépend donc non seulement des ressources matérielles, mais de l'implication durable des communautés, du soutien des autorités éducatives et de son intégration aux pratiques pédagogiques ordinaires.
 
-La FAO rappelle à cet égard que :
-
-« Sustainability requires strong community ownership and institutional support » (FAO, 2010, p. 31).
-
-Cette affirmation met en évidence les conditions essentielles de la pérennité des jardins scolaires. Leur maintien dans le temps dépend non seulement des ressources matérielles disponibles, mais également de l'implication durable des communautés, du soutien des autorités éducatives et de leur intégration dans les pratiques pédagogiques ordinaires.
-
-Dans les contextes confrontés à des contraintes environnementales importantes, tels que les zones arides de Djibouti, cette question apparaît encore plus déterminante. La durabilité des jardins scolaires ne peut être envisagée indépendamment de leur capacité à s'adapter aux réalités écologiques, sociales et institutionnelles du territoire.
+En zone aride, cette question est encore plus déterminante : la durabilité du jardin scolaire ne peut être envisagée indépendamment de sa capacité à s'adapter aux réalités écologiques, sociales et institutionnelles du territoire.
 
 ##### Synthèse de la section 2.3.5
 
-L'analyse critique des jardins scolaires révèle que, malgré leurs nombreuses potentialités éducatives, sociales et environnementales, ces dispositifs demeurent confrontés à des défis importants liés à leur mise en œuvre, à leur intégration institutionnelle, à leur durabilité et à leur contextualisation. Les résultats observés dans la littérature montrent que leurs effets ne sont ni automatiques ni uniformes et qu'ils dépendent largement des conditions locales de fonctionnement. Cette perspective critique apparaît essentielle pour éviter une vision idéalisée des jardins scolaires et pour comprendre les conditions nécessaires à leur contribution effective au développement des apprentissages, à la résilience éducative et à l'adaptation aux défis environnementaux. Elle conduit ainsi à envisager les jardins scolaires non comme des solutions universelles, mais comme des dispositifs dont la pertinence dépend de leur capacité à s'inscrire durablement dans les réalités éducatives, sociales et écologiques des communautés concernées.
+L'analyse critique révèle que, malgré leurs potentialités, les jardins scolaires demeurent confrontés à des défis de mise en œuvre, d'intégration institutionnelle, de durabilité et de contextualisation. Leurs effets ne sont ni automatiques ni uniformes et dépendent largement des conditions locales. Cette perspective critique est essentielle pour éviter une vision idéalisée du dispositif : le jardin scolaire n'est pas une solution universelle, mais un dispositif dont la pertinence dépend de sa capacité à s'inscrire durablement dans les réalités éducatives, sociales et écologiques des communautés concernées.
 
 ### 2.4 Jardins scolaires, nutrition et résilience éducative
 
-Les relations entre nutrition, santé et apprentissage occupent une place centrale dans les recherches contemporaines consacrées au développement humain et à la qualité des systèmes éducatifs. Les travaux menés dans les domaines des sciences de l'éducation, de la santé publique, de la nutrition et des neurosciences montrent que les conditions nutritionnelles influencent directement le développement cognitif des enfants, leurs performances scolaires ainsi que leur capacité à participer durablement aux apprentissages. Cette réalité apparaît particulièrement importante dans les contextes marqués par la pauvreté, l'insécurité alimentaire et les vulnérabilités environnementales, où les difficultés nutritionnelles constituent un facteur majeur de fragilisation des trajectoires éducatives.
+Les relations entre nutrition, santé et apprentissage occupent une place centrale dans les recherches consacrées au développement humain et à la qualité des systèmes éducatifs. Les travaux menés en sciences de l'éducation, en santé publique, en nutrition et en neurosciences montrent que les conditions nutritionnelles influencent directement le développement cognitif des enfants, leurs performances scolaires et leur capacité à participer durablement aux apprentissages. Ce constat prend un relief particulier dans les contextes marqués par la pauvreté, l'insécurité alimentaire et les vulnérabilités environnementales, où les difficultés nutritionnelles constituent un facteur majeur de fragilisation des trajectoires éducatives.
 
-Depuis plusieurs décennies, les organisations internationales ont progressivement reconnu l'existence d'une relation étroite entre l'alimentation, la réussite scolaire et le développement durable. Cette évolution a conduit à l'émergence de politiques éducatives intégrant davantage les dimensions nutritionnelles dans les stratégies d'amélioration de la qualité de l'éducation. Dans cette perspective, les jardins scolaires ont acquis une importance croissante en tant que dispositifs susceptibles d'articuler simultanément les objectifs éducatifs, nutritionnels, environnementaux et communautaires.
+La reconnaissance progressive de cette relation a conduit à l'émergence de politiques éducatives intégrant les dimensions nutritionnelles aux stratégies d'amélioration de la qualité de l'éducation. Le jardin scolaire y a acquis une importance croissante en tant que dispositif articulant objectifs éducatifs, nutritionnels, environnementaux et communautaires. La FAO (2010, p. 14) souligne à cet égard qu'il peut améliorer la nutrition des enfants tout en soutenant les apprentissages et la sécurité alimentaire.
 
-Cette approche est notamment soutenue par l'Organisation des Nations Unies pour l'alimentation et l'agriculture (FAO), qui souligne que :
-
-« School gardens can improve children's nutrition while supporting learning and food security » (FAO, 2010, p. 14).
-
-Cette affirmation illustre le caractère multidimensionnel des jardins scolaires. Ceux-ci ne sont plus uniquement envisagés comme des supports pédagogiques, mais également comme des instruments contribuant au bien-être des élèves, à l'amélioration de leur alimentation et au renforcement de la sécurité alimentaire des communautés éducatives.
-
-Dans les contextes ruraux et arides, cette dimension revêt une importance particulière. Les effets du changement climatique, la rareté des ressources naturelles, les inégalités socio-économiques et les difficultés d'accès à une alimentation équilibrée renforcent la nécessité de développer des approches éducatives intégrant les enjeux nutritionnels et environnementaux. Les jardins scolaires apparaissent alors comme des dispositifs susceptibles de renforcer la résilience éducative en contribuant simultanément à la qualité des apprentissages, à la sécurité alimentaire et au développement de capacités d'adaptation face aux contraintes environnementales.
+Dans les contextes ruraux et arides, cette dimension est déterminante. Effets du changement climatique, rareté des ressources naturelles, inégalités socio-économiques et difficultés d'accès à une alimentation équilibrée renforcent la nécessité d'approches éducatives intégrant les enjeux nutritionnels et environnementaux.
 
 #### 2.4.1 Nutrition et développement cognitif
 
-La littérature scientifique établit de manière largement consensuelle l'existence d'une relation étroite entre la nutrition et le développement cognitif des enfants. Les apports nutritionnels jouent un rôle fondamental dans la croissance physique, le développement cérébral et le fonctionnement des processus cognitifs mobilisés dans les apprentissages scolaires. Les recherches menées en neurosciences montrent que certaines carences nutritionnelles peuvent affecter durablement le développement intellectuel et compromettre les capacités d'apprentissage des enfants.
+La littérature scientifique établit de manière consensuelle une relation étroite entre nutrition et développement cognitif. Les apports nutritionnels conditionnent la croissance physique, le développement cérébral et le fonctionnement des processus cognitifs mobilisés dans les apprentissages. Grantham-McGregor et al. (2007, p. 60) montrent ainsi que la nutrition affecte le développement du cerveau et les performances cognitives — la nutrition n'est donc pas seulement une question de santé physique, mais un déterminant de la réussite éducative, particulièrement durant l'enfance et l'adolescence, périodes de construction des principales capacités cognitives.
 
-Cette relation est mise en évidence par Grantham-McGregor et ses collaborateurs, qui affirment que :
+Les carences alimentaires affectent plusieurs fonctions essentielles aux apprentissages : mémoire, attention, concentration, capacités de raisonnement. Les enfants concernés éprouvent davantage de difficultés à maintenir leur attention en classe, à traiter des informations complexes ou à mobiliser efficacement leurs connaissances.
 
-« Nutrition affects brain development and cognitive performance » (Grantham-McGregor et al., 2007, p. 60).
+Les conséquences dépassent toutefois la seule dimension cognitive. Les difficultés nutritionnelles entraînent également fatigue chronique, diminution de la participation scolaire et baisse de motivation. L'UNICEF (2019, p. 9) observe ainsi que la malnutrition compromet la capacité des enfants à apprendre et à s'épanouir : les politiques visant à améliorer les apprentissages ne peuvent être pleinement efficaces sans prise en compte des conditions nutritionnelles.
 
-Cette affirmation souligne que la nutrition ne constitue pas seulement une question de santé physique, mais également un facteur déterminant de la réussite éducative. Le développement du cerveau dépend fortement de la qualité des apports nutritionnels, particulièrement durant l'enfance et l'adolescence, périodes au cours desquelles se construisent les principales capacités cognitives.
-
-Les études montrent que les carences alimentaires peuvent affecter plusieurs fonctions essentielles aux apprentissages, notamment la mémoire, l'attention, la concentration et les capacités de raisonnement. Les enfants confrontés à des déficits nutritionnels présentent souvent davantage de difficultés à maintenir leur attention en classe, à traiter les informations complexes ou à mobiliser efficacement leurs connaissances dans les situations d'apprentissage.
-
-Par ailleurs, les conséquences de la malnutrition ne se limitent pas aux dimensions cognitives. Les difficultés nutritionnelles peuvent également entraîner une fatigue chronique, une diminution de la participation scolaire et une réduction de la motivation des élèves. Ces effets contribuent à fragiliser les parcours éducatifs et à accroître les risques d'échec scolaire.
-
-L'UNICEF souligne à cet égard que :
-
-« Malnutrition undermines children's ability to learn and thrive » (UNICEF, 2019, p. 9).
-
-Cette observation met en évidence l'importance de considérer la nutrition comme une composante essentielle du développement éducatif. Les politiques visant à améliorer les apprentissages ne peuvent être pleinement efficaces si elles ne prennent pas en compte les conditions nutritionnelles dans lesquelles évoluent les élèves.
-
-Dans les contextes marqués par la vulnérabilité alimentaire, les établissements scolaires sont ainsi appelés à jouer un rôle croissant dans la promotion de la santé et du bien-être des enfants. Cette évolution explique l'intérêt accordé aux dispositifs susceptibles de renforcer simultanément la qualité de l'alimentation et les conditions d'apprentissage, parmi lesquels les jardins scolaires occupent une place de plus en plus importante.
+Dans les contextes de vulnérabilité alimentaire, les établissements scolaires sont dès lors appelés à jouer un rôle croissant dans la promotion de la santé et du bien-être des enfants — ce qui explique l'intérêt porté aux dispositifs renforçant simultanément la qualité de l'alimentation et les conditions d'apprentissage.
 
 #### 2.4.2 Malnutrition, vulnérabilité et décrochage scolaire
 
-La malnutrition constitue aujourd'hui l'un des principaux facteurs de vulnérabilité affectant les trajectoires éducatives des enfants dans de nombreuses régions du monde. Les recherches montrent que les difficultés alimentaires influencent non seulement les capacités cognitives des apprenants, mais également leur participation régulière à la vie scolaire, leur motivation et leur persévérance dans les études.
+La malnutrition constitue l'un des principaux facteurs de vulnérabilité affectant les trajectoires éducatives. Les difficultés alimentaires influencent les capacités cognitives, mais aussi la participation régulière à la vie scolaire, la motivation et la persévérance. Les enfants vivant dans des ménages en difficulté d'accès à une alimentation suffisante présentent des taux plus élevés d'absentéisme, de faible performance scolaire et de décrochage.
 
-Cette problématique est particulièrement visible dans les contextes caractérisés par l'insécurité alimentaire, où les élèves sont confrontés à des conditions de vie susceptibles d'affecter durablement leur réussite scolaire. Les enfants vivant dans des ménages confrontés à des difficultés d'accès à une alimentation suffisante présentent généralement des taux plus élevés d'absentéisme, de faible performance scolaire et de décrochage éducatif.
+Le Programme alimentaire mondial (WFP, 2020, p. 12) souligne que la faim est à la fois cause et conséquence de faibles résultats éducatifs. Cette **circularité** est essentielle à comprendre : la faim compromet les apprentissages, tandis que l'échec scolaire maintient les individus dans des situations de vulnérabilité économique et sociale.
 
-Le Programme Alimentaire Mondial souligne cette relation lorsqu'il affirme que :
+En zone rurale et en contexte de pauvreté, ces difficultés sont aggravées par des facteurs structurels — inégalités socio-économiques, faiblesse des infrastructures scolaires, contraintes environnementales, effets du changement climatique — qui interagissent et se renforcent mutuellement.
 
-« Hunger is both a cause and consequence of poor educational outcomes » (WFP, 2020, p. 12).
+Le contexte djiboutien illustre nettement cette dynamique : sécheresses récurrentes, rareté des ressources hydriques et fragilités économiques de certaines régions rurales affectent directement la sécurité alimentaire des ménages, fragilisant les parcours scolaires et accentuant les inégalités éducatives.
 
-Cette affirmation met en évidence le caractère circulaire des relations entre pauvreté, insécurité alimentaire et difficultés éducatives. La faim compromet les apprentissages, tandis que l'échec scolaire contribue à maintenir les individus dans des situations de vulnérabilité économique et sociale.
-
-Dans les zones rurales et les contextes de pauvreté, ces difficultés sont souvent aggravées par d'autres facteurs structurels tels que les inégalités socio-économiques, la faiblesse des infrastructures scolaires, les contraintes environnementales et les effets du changement climatique. Ces différents éléments interagissent pour renforcer les vulnérabilités auxquelles sont confrontés les élèves et leurs familles.
-
-Dans le contexte djiboutien, cette problématique apparaît particulièrement pertinente. Les sécheresses récurrentes, la rareté des ressources hydriques et les fragilités économiques observées dans certaines régions rurales peuvent affecter directement la sécurité alimentaire des ménages. Ces contraintes contribuent à fragiliser les parcours scolaires et à accentuer les inégalités éducatives.
-
-Dans cette perspective, les jardins scolaires sont fréquemment présentés comme des dispositifs susceptibles de contribuer à la réduction de certaines formes de vulnérabilité. Leur intérêt réside dans leur capacité à associer amélioration de l'alimentation, sensibilisation nutritionnelle et participation éducative, tout en renforçant l'implication des communautés dans les activités scolaires.
+Le jardin scolaire est fréquemment présenté comme un dispositif susceptible de réduire certaines de ces vulnérabilités, en associant amélioration de l'alimentation, sensibilisation nutritionnelle et participation éducative.
 
 #### 2.4.3 Jardins scolaires et sécurité alimentaire
 
-La question de la sécurité alimentaire constitue l'une des dimensions les plus fréquemment associées aux jardins scolaires dans la littérature internationale. Les organisations de développement considèrent de plus en plus ces dispositifs comme des instruments capables de contribuer à l'amélioration de la disponibilité alimentaire tout en favorisant l'éducation nutritionnelle et le développement des compétences liées à l'alimentation durable.
+La FAO (2004, p. 11) attribue au jardin scolaire une double fonction en matière de sécurité alimentaire : contribuer à la **disponibilité alimentaire** et soutenir l'**éducation nutritionnelle**.
 
-La FAO souligne à cet égard que :
+Sur le premier plan, les productions peuvent compléter les repas servis dans les établissements et en améliorer la qualité nutritionnelle. Même lorsque les quantités demeurent modestes, ces activités permettent aux élèves de mieux comprendre l'origine des aliments qu'ils consomment.
 
-« School gardens contribute to food availability and nutrition education » (FAO, 2004, p. 11).
+Sur le second plan, les activités de jardinage font découvrir les cycles de production alimentaire, la diversité des produits cultivés localement et les principes d'une alimentation équilibrée. Cette dimension éducative est centrale dans les stratégies de prévention des vulnérabilités nutritionnelles.
 
-Cette définition met en évidence la double fonction des jardins scolaires dans les stratégies de sécurité alimentaire. D'une part, ils peuvent participer à la production de denrées alimentaires destinées à compléter les repas servis dans les établissements scolaires. D'autre part, ils constituent des espaces éducatifs permettant aux élèves d'acquérir des connaissances relatives à l'alimentation, à la nutrition et à l'agriculture.
+Les compétences acquises renforcent enfin les capacités d'adaptation des communautés face aux défis de sécurité alimentaire, en diffusant des savoirs et des pratiques susceptibles de soutenir la résilience locale.
 
-Dans certains contextes, les productions issues des jardins scolaires contribuent à diversifier les repas proposés dans les cantines et à améliorer leur qualité nutritionnelle. Même lorsque les quantités produites demeurent modestes, ces activités permettent aux élèves de mieux comprendre l'origine des aliments qu'ils consomment et de développer une plus grande sensibilité aux enjeux liés à l'alimentation.
+##### Synthèse des sections 2.4.1 à 2.4.3
 
-Au-delà de leur contribution directe à la disponibilité alimentaire, les jardins scolaires jouent également un rôle important dans l'éducation nutritionnelle. Les activités de jardinage offrent aux apprenants l'occasion de découvrir les cycles de production alimentaire, d'explorer la diversité des produits cultivés localement et de comprendre les principes d'une alimentation équilibrée.
-
-Cette dimension éducative apparaît particulièrement importante dans les stratégies de prévention des vulnérabilités nutritionnelles. En développant les connaissances des élèves relatives à l'alimentation et à la santé, les jardins scolaires contribuent à promouvoir des comportements alimentaires plus favorables au bien-être individuel et collectif.
-
-Par ailleurs, les compétences acquises à travers les activités de jardinage peuvent également renforcer les capacités d'adaptation des communautés face aux défis liés à la sécurité alimentaire. Dans les contextes confrontés aux effets du changement climatique, les jardins scolaires participent ainsi au développement de savoirs et de pratiques susceptibles de soutenir la résilience des populations locales.
-
-#### Synthèse de la section 2.4
-
-L'analyse des relations entre nutrition, développement cognitif et sécurité alimentaire met en évidence le caractère indissociable des dimensions éducatives et nutritionnelles du développement humain. Les recherches montrent que les conditions alimentaires influencent directement les capacités d'apprentissage, la participation scolaire et la réussite éducative des élèves. Dans ce contexte, les jardins scolaires apparaissent comme des dispositifs capables d'articuler les objectifs d'éducation, de nutrition et de résilience. En contribuant à l'amélioration de la sécurité alimentaire, au développement de connaissances nutritionnelles et au renforcement des capacités d'adaptation des communautés, ils participent à la construction de systèmes éducatifs plus inclusifs et plus résilients face aux défis contemporains.
+Les conditions alimentaires influencent directement les capacités d'apprentissage, la participation scolaire et la réussite éducative. Le jardin scolaire apparaît dès lors comme un dispositif capable d'articuler éducation, nutrition et résilience : en contribuant à la sécurité alimentaire, au développement de connaissances nutritionnelles et au renforcement des capacités d'adaptation, il participe à la construction de systèmes éducatifs plus inclusifs.
 
 #### 2.4.4 Les jardins scolaires comme outils d'éducation nutritionnelle
 
-Au-delà de leur contribution potentielle à la production alimentaire, les jardins scolaires constituent des espaces privilégiés d'éducation nutritionnelle. La littérature scientifique souligne que l'amélioration durable des comportements alimentaires ne dépend pas uniquement de l'accès aux aliments, mais également du développement de connaissances, d'attitudes et de pratiques favorables à une alimentation équilibrée. Dans cette perspective, les jardins scolaires offrent des opportunités d'apprentissage permettant aux élèves de mieux comprendre les relations existant entre agriculture, alimentation, santé et environnement.
+L'amélioration durable des comportements alimentaires ne dépend pas seulement de l'accès aux aliments, mais du développement de connaissances, d'attitudes et de pratiques favorables à une alimentation équilibrée. Ratcliffe, Merrigan, Rogers et Goldberg (2011, p. 42) montrent que l'apprentissage fondé sur le jardin peut influencer positivement les préférences alimentaires et les connaissances nutritionnelles des enfants.
 
-Cette dimension éducative est mise en évidence par Ratcliffe, Merrigan, Rogers et Goldberg, qui affirment que :
+En participant à la culture, à l'observation et parfois à la consommation des produits cultivés, les élèves développent une relation plus directe avec les aliments. Le jardin permet ainsi d'aborder concrètement plusieurs dimensions de l'éducation nutritionnelle : cycles de production, conditions de croissance des végétaux, liens entre diversité alimentaire, santé et bien-être.
 
-« Garden-based learning can positively influence children's food preferences and nutrition knowledge » (Ratcliffe et al., 2011, p. 42).
+L'intérêt majeur de cette approche tient à son caractère **authentique**. Contrairement aux dispositifs reposant sur la seule transmission théorique, le jardin offre des expériences concrètes favorisant une appropriation plus durable des connaissances.
 
-Cette observation suggère que les activités de jardinage peuvent contribuer à modifier positivement les représentations et les comportements alimentaires des enfants. En participant à la culture, à l'observation et parfois à la consommation des produits cultivés, les élèves développent une relation plus directe avec les aliments et acquièrent une meilleure compréhension de leur origine.
-
-Les jardins scolaires permettent ainsi d'aborder de manière concrète plusieurs dimensions de l'éducation nutritionnelle. Les apprenants découvrent les cycles de production alimentaire, les conditions nécessaires à la croissance des végétaux ainsi que les liens existant entre diversité alimentaire, santé et bien-être. Cette approche favorise une compréhension globale des systèmes alimentaires et contribue à renforcer la capacité des élèves à faire des choix alimentaires éclairés.
-
-Par ailleurs, les activités de jardinage permettent d'intégrer l'éducation nutritionnelle dans des situations d'apprentissage authentiques. Contrairement aux approches reposant uniquement sur la transmission théorique d'informations, les jardins scolaires offrent des expériences concrètes qui favorisent une appropriation plus durable des connaissances. Les élèves peuvent observer directement les processus de production des aliments, expérimenter différentes pratiques culturales et développer une meilleure compréhension des enjeux liés à la qualité de l'alimentation.
-
-Plusieurs études montrent également que la participation aux activités de jardinage favorise une plus grande acceptation des légumes, des fruits et des produits frais par les enfants. Cette évolution apparaît particulièrement importante dans les contextes où les habitudes alimentaires sont fortement influencées par les contraintes économiques, les transformations des modes de consommation ou la dépendance à l'égard des produits importés.
-
-Dans les régions confrontées à des situations de vulnérabilité alimentaire, l'éducation nutritionnelle assurée à travers les jardins scolaires peut ainsi contribuer à renforcer les connaissances des élèves tout en favorisant l'émergence de comportements alimentaires plus favorables à la santé. Les jardins deviennent alors des espaces où l'apprentissage des savoirs nutritionnels s'articule étroitement avec les réalités environnementales et socio-économiques des communautés.
+Plusieurs études montrent en outre que la participation aux activités de jardinage accroît l'acceptation des légumes, des fruits et des produits frais — évolution significative là où les habitudes alimentaires sont fortement conditionnées par les contraintes économiques, les transformations des modes de consommation ou la dépendance aux produits importés.
 
 #### 2.4.5 Jardins scolaires et maintien scolaire
 
-Au-delà de leurs effets potentiels sur la nutrition et les apprentissages, les jardins scolaires sont également associés à des dynamiques susceptibles de favoriser le maintien des élèves dans le système éducatif. Plusieurs travaux soulignent que les environnements d'apprentissage fondés sur la participation active et l'expérience concrète peuvent contribuer à renforcer l'engagement scolaire et le sentiment d'appartenance des apprenants.
+Les environnements d'apprentissage fondés sur la participation active et l'expérience concrète peuvent renforcer l'engagement scolaire et le sentiment d'appartenance. Blair (2009, p. 28) observe ainsi que les jardins scolaires accroissent l'engagement des élèves et leur attachement à l'école.
 
-Cette relation est notamment évoquée par Blair, qui affirme que :
+La responsabilité associée à l'entretien des cultures, l'observation des résultats obtenus et la participation à des projets collectifs renforcent le sentiment de compétence et l'implication dans la vie scolaire — bénéfices parfois particulièrement marqués chez les élèves en difficulté dans les formes d'apprentissage plus traditionnelles.
 
-« School gardens can increase students' engagement and attachment to school » (Blair, 2009, p. 28).
+En milieu rural, le jardin améliore également l'environnement scolaire et la valorisation de l'établissement au sein de la communauté. Lorsque ses productions alimentent la cantine ou que les familles participent aux activités, l'école apparaît davantage connectée aux réalités de la population locale.
 
-Cette affirmation met en évidence le rôle que peuvent jouer les jardins scolaires dans la création d'environnements éducatifs plus attractifs et plus motivants. Les activités réalisées dans ces espaces offrent aux élèves des occasions de participer activement aux apprentissages et de percevoir plus clairement l'utilité des connaissances acquises.
-
-Les jardins scolaires favorisent en effet une implication plus directe des apprenants dans les activités éducatives. La responsabilité associée à l'entretien des cultures, l'observation des résultats obtenus et la participation à des projets collectifs contribuent à renforcer leur sentiment de compétence et leur engagement dans la vie scolaire. Ces expériences peuvent être particulièrement bénéfiques pour les élèves qui rencontrent des difficultés dans les formes d'apprentissage plus traditionnelles.
-
-Dans certains contextes ruraux, les jardins scolaires participent également à l'amélioration de l'environnement scolaire et à la valorisation de l'établissement au sein de la communauté. Lorsque les productions du jardin contribuent aux programmes d'alimentation scolaire ou lorsque les familles participent aux activités de jardinage, l'école peut apparaître comme un espace davantage connecté aux besoins et aux réalités de la population locale.
-
-Toutefois, la littérature invite à une certaine prudence concernant les effets attribués aux jardins scolaires sur le maintien scolaire. Les recherches disponibles montrent que les impacts observés demeurent variables et dépendent fortement des contextes d'implantation, des modalités de mise en œuvre et du niveau d'implication des différents acteurs. Les effets sur l'absentéisme, la persévérance scolaire ou le décrochage éducatif restent difficiles à mesurer de manière systématique.
-
-Ces résultats suggèrent que les jardins scolaires ne constituent pas, à eux seuls, une réponse aux problèmes de décrochage scolaire. Leur contribution au maintien des élèves dans le système éducatif dépend largement de leur intégration dans des stratégies plus larges visant à améliorer la qualité des apprentissages, les conditions de vie des élèves et les relations entre l'école et la communauté.
+La littérature invite toutefois à la **prudence**. Les impacts observés varient fortement selon les contextes d'implantation, les modalités de mise en œuvre et l'implication des acteurs. Les effets sur l'absentéisme, la persévérance et le décrochage restent difficiles à mesurer systématiquement. Le jardin scolaire ne constitue donc pas à lui seul une réponse au décrochage : sa contribution dépend de son intégration à des stratégies plus larges portant sur la qualité des apprentissages, les conditions de vie des élèves et les relations école-communauté.
 
 #### 2.4.6 Jardins scolaires et résilience éducative
 
-La notion de résilience éducative occupe aujourd'hui une place croissante dans les recherches consacrées aux systèmes éducatifs confrontés aux défis environnementaux, économiques et sociaux. Elle renvoie à la capacité des établissements scolaires, des apprenants et des communautés éducatives à s'adapter aux perturbations, à maintenir les processus d'apprentissage et à développer des réponses appropriées face aux situations de vulnérabilité.
+La **résilience éducative** désigne la capacité des établissements, des apprenants et des communautés à s'adapter aux perturbations, à maintenir les processus d'apprentissage et à développer des réponses appropriées aux situations de vulnérabilité. L'UNICEF (2021, p. 21) souligne que des systèmes éducatifs résilients aident les enfants à s'adapter aux chocs environnementaux et sociaux.
 
-Dans un contexte mondial marqué par l'intensification des effets du changement climatique, les crises alimentaires et les inégalités socio-économiques, les jardins scolaires sont de plus en plus présentés comme des dispositifs susceptibles de contribuer au renforcement de cette résilience. Leur intérêt réside dans leur capacité à articuler les dimensions éducatives, environnementales et communautaires du développement.
+Le jardin scolaire y participe en offrant des situations d'apprentissage permettant de mieux comprendre les défis environnementaux et de développer des compétences pour y faire face : gestion des ressources naturelles, conservation de l'eau, biodiversité, pratiques agricoles durables, mais aussi résolution de problèmes, coopération et adaptation.
 
-Cette perspective est soutenue par l'UNICEF, qui souligne que :
+En zone aride et semi-aride, il permet d'expérimenter des pratiques ajustées aux contraintes climatiques locales — techniques de gestion de l'eau, méthodes de culture résilientes, stratégies face à la sécheresse ou à la dégradation environnementale. Cette dimension est directement pertinente pour Djibouti, marqué par une forte vulnérabilité climatique, la rareté des ressources hydriques et des défis persistants de sécurité alimentaire.
 
-« Resilient education systems help children adapt to environmental and social shocks » (UNICEF, 2021, p. 21).
-
-Cette définition met en évidence le rôle des systèmes éducatifs dans le développement des capacités d'adaptation des individus et des communautés. Les jardins scolaires participent à cette dynamique en offrant des situations d'apprentissage permettant aux élèves de mieux comprendre les défis environnementaux auxquels ils sont confrontés et de développer des compétences utiles pour y faire face.
-
-À travers les activités de jardinage, les apprenants acquièrent des connaissances relatives à la gestion des ressources naturelles, à la conservation de l'eau, à la biodiversité et aux pratiques agricoles durables. Ils développent également des capacités de résolution de problèmes, de coopération et d'adaptation qui constituent des composantes essentielles de la résilience.
-
-Dans les régions arides et semi-arides, les jardins scolaires jouent un rôle particulièrement important en permettant l'expérimentation de pratiques adaptées aux contraintes climatiques locales. Ils offrent aux élèves l'opportunité de découvrir des techniques de gestion de l'eau, des méthodes de culture résilientes et des stratégies permettant de faire face aux effets de la sécheresse ou de la dégradation environnementale.
-
-Cette dimension apparaît particulièrement pertinente dans le contexte djiboutien, caractérisé par une forte vulnérabilité climatique, une rareté des ressources hydriques et des défis persistants en matière de sécurité alimentaire. Les jardins scolaires peuvent ainsi contribuer au développement de connaissances et de compétences directement mobilisables dans les stratégies locales d'adaptation.
-
-Toutefois, leur contribution à la résilience éducative ne doit pas être envisagée uniquement sous l'angle technique ou environnemental. Les jardins scolaires favorisent également le renforcement des liens sociaux, la participation communautaire et la coopération entre les différents acteurs éducatifs. Ces dimensions sociales constituent elles aussi des composantes essentielles de la résilience des communautés face aux perturbations et aux crises.
+La contribution du jardin à la résilience ne relève cependant pas du seul registre technique ou environnemental : il renforce également les liens sociaux, la participation communautaire et la coopération entre acteurs éducatifs — composantes tout aussi essentielles de la résilience collective.
 
 #### Conclusion de la section 2.4
 
-L'analyse des relations entre jardins scolaires, nutrition et résilience éducative met en évidence le caractère multidimensionnel de ces dispositifs. Les jardins scolaires dépassent largement leur fonction initiale de production agricole pour devenir des espaces éducatifs capables d'articuler apprentissage, santé, sécurité alimentaire et adaptation environnementale. Leur contribution à l'éducation nutritionnelle favorise le développement de connaissances et de comportements alimentaires plus favorables à la santé, tandis que leur capacité à renforcer l'engagement scolaire peut contribuer à soutenir les trajectoires éducatives des élèves. Par ailleurs, leur rôle dans le développement de compétences liées à la gestion des ressources, à l'adaptation climatique et à la participation communautaire en fait des outils potentiels de résilience éducative.
+Le jardin scolaire dépasse largement sa fonction initiale de production agricole pour devenir un espace éducatif articulant apprentissage, santé, sécurité alimentaire et adaptation environnementale. Sa contribution à l'éducation nutritionnelle favorise des comportements alimentaires plus favorables à la santé, tandis que sa capacité à renforcer l'engagement scolaire peut soutenir les trajectoires éducatives. Son rôle dans le développement de compétences liées à la gestion des ressources, à l'adaptation climatique et à la participation communautaire en fait un outil potentiel de résilience éducative.
 
-Dans les contextes vulnérables, où les défis alimentaires, environnementaux et éducatifs sont étroitement imbriqués, les jardins scolaires apparaissent ainsi comme des dispositifs susceptibles de contribuer à la construction de systèmes éducatifs plus inclusifs, plus contextualisés et plus résilients. Cette articulation entre éducation, nutrition et adaptation conduit naturellement à élargir l'analyse vers les enjeux de développement durable et de changement climatique, qui constituent désormais un cadre de référence majeur pour la compréhension des fonctions contemporaines des jardins scolaires.
+Cette articulation entre éducation, nutrition et adaptation conduit à élargir l'analyse vers les enjeux de développement durable et de changement climatique, cadre de référence majeur pour comprendre les fonctions contemporaines du dispositif.
+
+---
 
 ### 2.5 Jardins scolaires, éducation au développement durable et adaptation climatique
 
-Les défis environnementaux contemporains, marqués par l'intensification du changement climatique, la dégradation des écosystèmes, la raréfaction des ressources naturelles et l'accroissement des vulnérabilités socio-économiques, ont profondément transformé les orientations des politiques éducatives internationales. Face à ces enjeux, l'éducation est désormais reconnue comme un levier essentiel permettant aux individus et aux communautés de développer les connaissances, les compétences et les valeurs nécessaires pour participer aux processus de transition écologique et de développement durable. Cette évolution a conduit à l'émergence de nouvelles approches pédagogiques cherchant à articuler les apprentissages scolaires aux problématiques environnementales contemporaines.
+L'intensification du changement climatique, la dégradation des écosystèmes, la raréfaction des ressources naturelles et l'accroissement des vulnérabilités socio-économiques ont profondément transformé les orientations des politiques éducatives internationales. L'éducation est désormais reconnue comme un levier permettant aux individus et aux communautés de développer les connaissances, compétences et valeurs nécessaires à la transition écologique.
 
-Dans ce contexte, les jardins scolaires occupent une place croissante dans les stratégies éducatives visant à renforcer la sensibilisation environnementale, à promouvoir des comportements durables et à développer des capacités d'adaptation face aux changements climatiques. Ces dispositifs permettent d'associer apprentissages théoriques, expérimentations pratiques et engagement communautaire dans un même environnement éducatif. Ils apparaissent ainsi comme des espaces privilégiés pour concrétiser les principes de l'éducation au développement durable et favoriser l'acquisition de compétences liées à la résilience environnementale.
+Le jardin scolaire occupe une place croissante dans ces stratégies : il associe apprentissages théoriques, expérimentations pratiques et engagement communautaire au sein d'un même environnement éducatif. L'UNESCO (2017, p. 12) rappelle que l'éducation constitue un agent critique dans la réponse au changement climatique. L'école ne peut plus se limiter à transmettre des connaissances académiques : elle doit développer des capacités permettant de comprendre les transformations environnementales et d'agir de manière responsable.
 
-Cette perspective est mise en avant par l'UNESCO, qui affirme que :
-
-« Education is a critical agent in addressing the issue of climate change » (UNESCO, 2017, p. 12).
-
-Cette affirmation souligne le rôle stratégique de l'éducation dans la préparation des sociétés aux défis environnementaux du XXIe siècle. L'école ne peut plus se limiter à la transmission de connaissances académiques ; elle doit également contribuer au développement de capacités permettant aux apprenants de comprendre les transformations environnementales en cours et d'agir de manière responsable dans leur environnement.
-
-Dans les régions arides et semi-arides telles que Djibouti, cette mission éducative revêt une importance particulière. Les sécheresses récurrentes, la dégradation des ressources hydriques et les effets croissants du changement climatique fragilisent les conditions de vie des populations et accentuent les vulnérabilités éducatives. Dans ces contextes, les jardins scolaires constituent des espaces d'apprentissage permettant de relier les enjeux environnementaux globaux aux réalités locales vécues par les élèves et leurs communautés.
+Dans les régions arides et semi-arides telles que Djibouti, cette mission est déterminante. Sécheresses récurrentes, dégradation des ressources hydriques et effets croissants du changement climatique fragilisent les conditions de vie et accentuent les vulnérabilités éducatives. Le jardin scolaire y devient un espace reliant les enjeux environnementaux globaux aux réalités locales.
 
 #### 2.5.1 Fondements conceptuels de l'éducation au développement durable
 
-L'éducation au développement durable (EDD) s'inscrit dans l'évolution des réflexions internationales relatives aux relations entre développement, environnement et justice sociale. Elle repose sur l'idée que les systèmes éducatifs doivent contribuer à préparer les citoyens à faire face aux défis complexes résultant des interactions entre les dimensions écologiques, économiques et sociales du développement.
+L'**éducation au développement durable (EDD)** repose sur l'idée que les systèmes éducatifs doivent préparer les citoyens à affronter des défis complexes résultant des interactions entre dimensions écologiques, économiques et sociales du développement.
 
-Le concept de développement durable trouve son origine dans le rapport de la Commission mondiale sur l'environnement et le développement, communément appelé Rapport Brundtland. Celui-ci définit le développement durable comme :
+Le concept de développement durable trouve son origine dans le *Rapport Brundtland*, qui le définit comme un développement répondant aux besoins du présent sans compromettre la capacité des générations futures à satisfaire les leurs (WCED, 1987, p. 43). Cette définition, qui articule développement économique, préservation de l'environnement et justice sociale dans une perspective de long terme, a profondément marqué les orientations éducatives contemporaines.
 
-« Development that meets the needs of the present without compromising the ability of future generations to meet their own needs » (WCED, 1987, p. 43).
+L'EDD vise à développer une **compréhension systémique** des interactions entre sociétés humaines et environnement, ainsi que des comportements responsables, des capacités de réflexion critique et des compétences d'action. L'UNESCO (2017, p. 7) en souligne la dimension transformative : il s'agit d'habiliter les apprenants à prendre des décisions éclairées et à mener des actions responsables — et non seulement à leur transmettre des connaissances.
 
-Cette définition souligne la nécessité de concilier les exigences du développement économique, la préservation de l'environnement et la justice sociale dans une perspective de long terme. Elle a profondément influencé les orientations éducatives contemporaines en mettant l'accent sur la responsabilité collective face aux défis environnementaux.
-
-L'éducation au développement durable vise ainsi à développer chez les apprenants une compréhension systémique des interactions entre les sociétés humaines et leur environnement. Elle cherche également à promouvoir des comportements responsables, des capacités de réflexion critique et des compétences permettant d'agir face aux problèmes complexes liés à la durabilité.
-
-Selon l'UNESCO :
-
-« Education for sustainable development empowers learners to take informed decisions and responsible actions » (UNESCO, 2017, p. 7).
-
-Cette définition met en évidence la dimension transformative de l'EDD. L'objectif n'est pas uniquement de transmettre des connaissances, mais également de développer la capacité des apprenants à prendre des décisions éclairées et à participer activement à la construction d'un avenir plus durable.
-
-Dans cette perspective, les jardins scolaires apparaissent comme des dispositifs particulièrement adaptés à la mise en œuvre de l'éducation au développement durable, puisqu'ils permettent d'articuler connaissances théoriques, expériences pratiques et engagement communautaire.
+Le jardin scolaire apparaît dès lors comme un dispositif particulièrement adapté à cette mise en œuvre, puisqu'il articule connaissances théoriques, expériences pratiques et engagement communautaire.
 
 #### 2.5.2 L'éducation environnementale dans les systèmes éducatifs
 
-L'éducation environnementale constitue l'un des fondements historiques de l'éducation au développement durable. Son objectif principal consiste à sensibiliser les apprenants aux interactions entre les activités humaines et les écosystèmes, tout en favorisant le développement de comportements respectueux de l'environnement.
+L'éducation environnementale constitue l'un des fondements historiques de l'EDD. Palmer (1998, p. 3) la définit comme le développement conjoint d'une **conscience**, d'une **préoccupation** et d'une **capacité d'action** relatives aux questions environnementales — elle ne se limite donc pas à l'acquisition de connaissances scientifiques, mais engage attitudes, valeurs et comportements.
 
-Palmer définit cette approche en affirmant que :
+Plusieurs recherches montrent cependant qu'elle demeure souvent très théorique. Les contenus enseignés sont parfois déconnectés des réalités locales et peinent à susciter une implication réelle des apprenants.
 
-« Environmental education is about developing awareness, concern and action regarding environmental issues » (Palmer, 1998, p. 3).
-
-Cette conception souligne que l'éducation environnementale ne se limite pas à l'acquisition de connaissances scientifiques. Elle implique également le développement d'attitudes, de valeurs et de comportements favorables à la protection de l'environnement.
-
-Cependant, plusieurs recherches montrent que l'éducation environnementale demeure souvent fortement théorique dans de nombreux systèmes éducatifs. Les contenus enseignés sont parfois déconnectés des réalités locales et peinent à susciter une véritable implication des apprenants dans les problématiques environnementales.
-
-Cette limite a conduit les chercheurs et les praticiens à rechercher des approches plus expérientielles permettant de rapprocher les apprentissages des situations concrètes vécues par les élèves. Les jardins scolaires répondent précisément à cette préoccupation en offrant des environnements éducatifs où les phénomènes environnementaux peuvent être observés, expérimentés et analysés directement.
-
-Ils permettent ainsi de transformer l'éducation environnementale en une expérience vécue plutôt qu'en un simple objet d'étude théorique.
+Cette limite a conduit à rechercher des approches plus expérientielles rapprochant les apprentissages des situations concrètes. Le jardin scolaire y répond précisément : il offre un environnement où les phénomènes environnementaux sont observés, expérimentés et analysés directement, transformant l'éducation environnementale en **expérience vécue** plutôt qu'en objet d'étude théorique.
 
 #### 2.5.3 Le jardin scolaire comme outil d'éducation environnementale
 
-Les jardins scolaires constituent aujourd'hui l'un des dispositifs les plus fréquemment mobilisés pour soutenir l'éducation environnementale dans les établissements scolaires. Leur intérêt réside dans leur capacité à offrir aux élèves un contact direct avec les processus écologiques et les dynamiques naturelles qui structurent leur environnement.
+Desmond, Grieshop et Subramaniam (2004, p. 18) qualifient les jardins scolaires de **laboratoires vivants** pour l'apprentissage environnemental — formule qui traduit leur spécificité pédagogique. Les élèves y observent les cycles biologiques, expérimentent différentes pratiques culturales et développent une compréhension concrète des relations entre les êtres vivants et leur environnement.
 
-Desmond, Grieshop et Subramaniam soulignent à cet égard que :
+Les activités favorisent une conscience écologique fondée sur l'expérience : découverte des principes de la biodiversité, des mécanismes de fonctionnement des écosystèmes, des enjeux de gestion durable des ressources. Les élèves peuvent également expérimenter le compostage, la valorisation des déchets organiques ou les techniques d'économie d'eau.
 
-« School gardens provide living laboratories for environmental learning » (Desmond et al., 2004, p. 18).
-
-Cette notion de « laboratoire vivant » traduit parfaitement la spécificité pédagogique des jardins scolaires. Les élèves y observent les cycles biologiques, expérimentent différentes pratiques culturales et développent progressivement une compréhension concrète des relations entre les êtres vivants et leur environnement.
-
-Les activités réalisées dans ces espaces favorisent le développement d'une conscience écologique fondée sur l'expérience. Les apprenants découvrent les principes de la biodiversité, les mécanismes de fonctionnement des écosystèmes et les enjeux liés à la gestion durable des ressources naturelles. Ils peuvent également expérimenter des pratiques telles que le compostage, la valorisation des déchets organiques ou les techniques d'économie d'eau.
-
-Cette approche contribue à renforcer l'engagement environnemental des élèves en transformant les savoirs abstraits en expériences directement observables. Les jardins scolaires apparaissent ainsi comme des outils particulièrement efficaces pour développer des compétences environnementales durables.
+En transformant des savoirs abstraits en expériences directement observables, le jardin renforce l'engagement environnemental des apprenants.
 
 #### 2.5.4 Changement climatique et vulnérabilités éducatives
 
-Le changement climatique constitue aujourd'hui l'un des principaux défis auxquels sont confrontés les systèmes éducatifs à l'échelle mondiale. Les phénomènes climatiques extrêmes, la dégradation des ressources naturelles et les perturbations des moyens de subsistance affectent directement les conditions d'apprentissage des enfants et des jeunes.
+L'UNICEF (2021, p. 5) constate que le changement climatique perturbe déjà l'éducation des enfants à l'échelle mondiale. Ses effets se traduisent par une augmentation de l'insécurité alimentaire, des déplacements de populations, des interruptions de scolarité et une aggravation des inégalités sociales.
 
-Selon l'UNICEF :
+En région aride, ces difficultés sont amplifiées par la rareté des ressources hydriques et les contraintes pesant sur les activités agricoles. Les ménages les plus vulnérables voient leurs capacités économiques diminuer, ce qui affecte directement la fréquentation scolaire des enfants.
 
-« Climate change is already disrupting children's education around the world » (UNICEF, 2021, p. 5).
-
-Cette affirmation met en évidence l'existence de liens étroits entre les transformations environnementales et les vulnérabilités éducatives. Les effets du changement climatique se traduisent notamment par une augmentation de l'insécurité alimentaire, des déplacements de populations, des interruptions de la scolarité et une aggravation des inégalités sociales.
-
-Dans les régions arides, ces difficultés sont souvent amplifiées par la rareté des ressources hydriques et les contraintes pesant sur les activités agricoles. Les ménages les plus vulnérables voient leurs capacités économiques diminuer, ce qui peut affecter directement la fréquentation scolaire des enfants.
-
-Le contexte djiboutien illustre particulièrement bien ces dynamiques. L'aridité du climat, les sécheresses récurrentes et la pression croissante exercée sur les ressources naturelles renforcent les vulnérabilités des communautés rurales et soulignent l'importance de développer des approches éducatives intégrant les enjeux climatiques.
+Le contexte djiboutien illustre bien ces dynamiques : aridité du climat, sécheresses récurrentes et pression croissante sur les ressources naturelles renforcent les vulnérabilités des communautés rurales.
 
 #### 2.5.5 Jardins scolaires et adaptation climatique
 
-Face à ces défis, les jardins scolaires sont de plus en plus mobilisés comme outils d'apprentissage de l'adaptation climatique. Ils permettent aux élèves de comprendre les impacts du changement climatique tout en expérimentant des pratiques susceptibles de renforcer la résilience des systèmes de production et des communautés.
+Le jardin scolaire est de plus en plus mobilisé comme outil d'apprentissage de l'adaptation climatique. La FAO (2010, p. 19) souligne qu'il peut aider les apprenants à développer des pratiques agricoles intelligentes face au climat (*climate-smart agriculture*).
 
-La FAO souligne que :
+Les élèves y découvrent des techniques de gestion durable de l'eau, expérimentent des cultures résistantes aux conditions difficiles et analysent les relations entre climat, agriculture et sécurité alimentaire. En contexte aride, ces apprentissages sont directement mobilisables dans l'environnement des apprenants.
 
-« School gardens can help learners develop climate-smart agricultural practices » (FAO, 2010, p. 19).
-
-Cette perspective met en évidence la contribution potentielle des jardins scolaires au développement de pratiques agricoles adaptées aux contraintes environnementales. Les élèves peuvent y découvrir différentes techniques de gestion durable de l'eau, expérimenter des cultures résistantes aux conditions climatiques difficiles et analyser les relations entre climat, agriculture et sécurité alimentaire.
-
-Dans les contextes arides, ces apprentissages prennent une importance particulière. Ils permettent aux jeunes générations d'acquérir des connaissances directement mobilisables dans leur environnement tout en renforçant leur capacité à faire face aux défis futurs.
-
-Les jardins scolaires deviennent ainsi des espaces privilégiés d'apprentissage de l'adaptation, où les savoirs scientifiques et les connaissances locales peuvent être mobilisés conjointement pour développer des réponses adaptées aux réalités du territoire.
+Le jardin devient ainsi un espace où savoirs scientifiques et connaissances locales sont mobilisés conjointement pour élaborer des réponses adaptées aux réalités du territoire.
 
 #### 2.5.6 Jardins scolaires et résilience environnementale
 
-La notion de résilience occupe aujourd'hui une place centrale dans les travaux consacrés à l'adaptation aux changements environnementaux. Elle renvoie à la capacité des individus, des communautés et des systèmes à absorber les perturbations, à s'adapter aux changements et à maintenir leur fonctionnement malgré les crises.
+Folke (2006, p. 259) définit la résilience comme la capacité à absorber une perturbation et à se réorganiser tout en subissant le changement — définition qui met l'accent sur les capacités d'adaptation et de transformation.
 
-Folke définit la résilience comme :
+Le jardin scolaire contribue à cette résilience à plusieurs niveaux : il renforce les capacités d'apprentissage des élèves, favorise la mobilisation communautaire et soutient la diffusion de pratiques environnementales durables. Il constitue également un espace de partage des savoirs locaux et de coopération entre acteurs de la communauté éducative.
 
-« Resilience is the capacity to absorb disturbance and reorganize while undergoing change » (Folke, 2006, p. 259).
-
-Cette définition met l'accent sur les capacités d'adaptation et de transformation nécessaires pour faire face aux perturbations environnementales.
-
-Les jardins scolaires contribuent au développement de cette résilience à plusieurs niveaux. Ils renforcent les capacités d'apprentissage des élèves, favorisent la mobilisation communautaire et soutiennent la diffusion de pratiques environnementales durables. Ils constituent également des espaces de partage des savoirs locaux et de coopération entre les différents acteurs de la communauté éducative.
-
-Dans les contextes vulnérables, ces dynamiques apparaissent particulièrement importantes. Les jardins scolaires favorisent le développement de capacités collectives permettant aux communautés de mieux répondre aux contraintes environnementales tout en renforçant les liens entre l'école, les familles et les acteurs locaux.
+En contexte vulnérable, ces dynamiques développent des capacités collectives permettant de mieux répondre aux contraintes environnementales tout en renforçant les liens entre l'école, les familles et les acteurs locaux.
 
 #### Conclusion de la section 2.5
 
-L'analyse des relations entre jardins scolaires, éducation au développement durable et adaptation climatique met en évidence le rôle croissant de ces dispositifs dans les stratégies éducatives contemporaines. Les jardins scolaires permettent de concrétiser les principes de l'éducation au développement durable en associant apprentissages expérientiels, sensibilisation environnementale et engagement communautaire. Ils favorisent le développement de connaissances écologiques, de compétences d'adaptation et de comportements durables tout en renforçant la capacité des élèves à comprendre les défis environnementaux auxquels leurs communautés sont confrontées.
+Le jardin scolaire permet de concrétiser les principes de l'éducation au développement durable en associant apprentissages expérientiels, sensibilisation environnementale et engagement communautaire. Il favorise le développement de connaissances écologiques, de compétences d'adaptation et de comportements durables, tout en renforçant la capacité des élèves à comprendre les défis auxquels leurs communautés sont confrontées.
 
-Dans les contextes arides et vulnérables tels que celui de Djibouti, cette contribution apparaît particulièrement importante. Les jardins scolaires constituent des espaces privilégiés pour développer des formes d'apprentissage contextualisées et pour soutenir la construction de capacités individuelles et collectives de résilience. Cette réflexion conduit naturellement à approfondir la conceptualisation des jardins scolaires comme laboratoires vivants d'apprentissage, d'adaptation et de résilience, qui constitue l'un des fondements théoriques de la section suivante.
+Dans les contextes arides et vulnérables tels que celui de Djibouti, cette contribution est particulièrement importante. Cette réflexion conduit à approfondir la conceptualisation du jardin scolaire comme **laboratoire vivant** d'apprentissage, d'adaptation et de résilience.
+
+---
 
 ### 2.6 Les jardins scolaires comme laboratoires vivants d'apprentissage et de résilience
 
-L'évolution récente des sciences de l'éducation témoigne d'un déplacement progressif des conceptions traditionnelles de l'apprentissage vers des approches qui reconnaissent l'importance des environnements réels, de l'expérience et de la participation active des apprenants dans la construction des connaissances. Dans cette perspective, les espaces éducatifs ne sont plus uniquement envisagés comme des lieux de transmission des savoirs, mais comme des environnements dynamiques favorisant l'expérimentation, l'innovation et la co-construction des apprentissages. Cette évolution a conduit à l'émergence de concepts tels que celui de « laboratoire vivant » (living lab), désormais mobilisé dans de nombreux domaines pour analyser les processus d'apprentissage fondés sur l'interaction entre les individus, leur environnement et les défis auxquels ils sont confrontés.
+L'évolution récente des sciences de l'éducation témoigne d'un déplacement des conceptions traditionnelles de l'apprentissage vers des approches reconnaissant l'importance des environnements réels, de l'expérience et de la participation active. Les espaces éducatifs ne sont plus seulement des lieux de transmission, mais des environnements dynamiques favorisant l'expérimentation, l'innovation et la co-construction. Cette évolution a fait émerger le concept de **laboratoire vivant** (*living lab*), aujourd'hui mobilisé pour analyser les processus d'apprentissage fondés sur l'interaction entre les individus, leur environnement et les défis auxquels ils sont confrontés.
 
-Appliqué au champ éducatif, le concept de laboratoire vivant permet d'appréhender les jardins scolaires comme des espaces dans lesquels les savoirs se construisent à travers l'expérience, l'expérimentation et la résolution de problèmes concrets. Les jardins scolaires offrent en effet des situations authentiques d'apprentissage où les élèves sont amenés à observer, tester, analyser et adapter leurs pratiques en fonction des réalités du milieu. Ils constituent ainsi des environnements éducatifs capables d'articuler apprentissage expérientiel, participation communautaire, contextualisation des savoirs et développement de compétences liées à l'adaptation et à la résilience.
-
-Dans les contextes vulnérables, cette perspective apparaît particulièrement pertinente. Les défis liés au changement climatique, à la sécurité alimentaire et aux inégalités socio-économiques exigent le développement de formes d'apprentissage permettant aux apprenants de comprendre leur environnement tout en acquérant les capacités nécessaires pour faire face aux transformations en cours. Les jardins scolaires peuvent alors être envisagés comme des laboratoires vivants dans lesquels se développent simultanément des connaissances scientifiques, des compétences pratiques et des capacités de résilience individuelle et collective.
+Appliqué au champ éducatif, ce concept permet d'appréhender le jardin scolaire comme un espace où les savoirs se construisent par l'expérience, l'expérimentation et la résolution de problèmes concrets. Dans les contextes vulnérables, cette perspective est particulièrement opératoire : les défis liés au changement climatique, à la sécurité alimentaire et aux inégalités socio-économiques exigent des formes d'apprentissage permettant de comprendre son environnement tout en acquérant les capacités d'y faire face.
 
 #### 2.6.1 Origines et conceptualisation du laboratoire vivant
 
-Le concept de laboratoire vivant trouve son origine dans les travaux consacrés à l'innovation collaborative et à la conception participative des technologies. À partir des années 1990, plusieurs chercheurs ont développé des approches visant à rapprocher les processus d'innovation des utilisateurs finaux afin de produire des solutions mieux adaptées aux réalités sociales. Dans cette perspective, les laboratoires vivants sont conçus comme des environnements dans lesquels les acteurs participent activement à la conception, à l'expérimentation et à l'amélioration de solutions élaborées en situation réelle.
+Le concept trouve son origine dans les travaux consacrés à l'innovation collaborative et à la conception participative des technologies. À partir des années 1990, plusieurs chercheurs développent des approches rapprochant les processus d'innovation des utilisateurs finaux afin de produire des solutions mieux ajustées aux réalités sociales. Mitchell (2003, p. 4) définit ainsi les laboratoires vivants comme des environnements centrés sur l'utilisateur, destinés à détecter, prototyper et valider des solutions complexes en contexte réel.
 
-Mitchell définit ainsi les laboratoires vivants comme :
+Quatre caractéristiques fondamentales s'en dégagent :
 
-« Living labs are user-centered environments for sensing, prototyping and validating complex solutions in real-life contexts » (Mitchell, 2003, p. 4).
+- l'**expérimentation en contexte réel** ;
+- la **participation active** des utilisateurs ;
+- la **production collaborative** de connaissances ;
+- l'**apprentissage fondé sur l'expérience**.
 
-Cette définition met en évidence plusieurs caractéristiques fondamentales : l'expérimentation en contexte réel, la participation active des utilisateurs, la production collaborative de connaissances et l'apprentissage fondé sur l'expérience. Progressivement, ces principes ont été transposés au domaine éducatif afin d'analyser des environnements favorisant l'engagement des apprenants dans des situations authentiques d'apprentissage.
-
-Dans cette perspective, l'école n'est plus uniquement un lieu où les connaissances sont transmises ; elle devient un espace d'expérimentation, de réflexion collective et de résolution de problèmes. Les environnements éducatifs sont alors conçus comme des systèmes ouverts où les savoirs se construisent à travers les interactions entre les apprenants, les enseignants, les communautés et les réalités du territoire.
-
-Les jardins scolaires présentent précisément ces caractéristiques. Ils constituent des espaces où les apprenants expérimentent, observent, collaborent et produisent des connaissances en interaction constante avec leur environnement. Cette proximité entre action, réflexion et apprentissage justifie leur conceptualisation comme laboratoires vivants éducatifs.
+Transposés au domaine éducatif, ces principes redéfinissent l'école comme un espace d'expérimentation, de réflexion collective et de résolution de problèmes — un système ouvert où les savoirs se construisent dans l'interaction entre apprenants, enseignants, communautés et réalités du territoire. Le jardin scolaire présente précisément ces caractéristiques.
 
 #### 2.6.2 Le jardin scolaire comme environnement expérimental
 
-L'une des caractéristiques fondamentales des laboratoires vivants réside dans leur dimension expérimentale. Les connaissances y sont construites à travers l'action et l'analyse des expériences vécues plutôt qu'à travers la seule transmission de contenus théoriques. Cette approche rejoint directement les fondements de l'apprentissage expérientiel développés par Kolb.
+Les connaissances y sont construites par l'action et l'analyse des expériences vécues plutôt que par la seule transmission de contenus théoriques — approche qui rejoint directement le modèle de Kolb examiné en [section 2.1.2](#212-le-modèle-expérientiel-de-david-kolb).
 
-Selon ce dernier :
+Les activités de jardinage placent les élèves dans des situations où ils observent des phénomènes naturels, testent différentes pratiques, analysent les résultats et ajustent leurs actions. L'apprentissage ne résulte donc pas de la seule exécution de tâches pratiques : il implique un processus continu de réflexion sur l'expérience, d'interprétation des résultats et de construction progressive de nouvelles connaissances.
 
-« Learning is the process whereby knowledge is created through the transformation of experience » (Kolb, 1984, p. 38).
-
-Le jardin scolaire offre précisément un environnement permettant cette transformation de l'expérience en connaissance. Les activités de jardinage placent les élèves dans des situations où ils doivent observer des phénomènes naturels, tester différentes pratiques, analyser les résultats obtenus et ajuster leurs actions en fonction des observations réalisées.
-
-L'apprentissage ne résulte donc pas uniquement de l'exécution de tâches pratiques. Il implique un processus continu de réflexion sur l'expérience, d'interprétation des résultats et de construction progressive de nouvelles connaissances. Les élèves développent ainsi une compréhension plus approfondie des phénomènes biologiques, écologiques et climatiques en les observant directement dans leur environnement.
-
-Cette dimension expérimentale contribue également au développement de compétences scientifiques telles que l'observation systématique, la formulation d'hypothèses, l'analyse de données et la prise de décision fondée sur des preuves. Le jardin scolaire devient alors un espace de production de connaissances où les apprenants jouent un rôle actif dans les processus d'investigation et d'apprentissage.
+Cette dimension expérimentale développe des **compétences scientifiques** : observation systématique, formulation d'hypothèses, analyse de données, prise de décision fondée sur des preuves. Le jardin devient un espace de production de connaissances où les apprenants jouent un rôle actif dans les processus d'investigation.
 
 #### 2.6.3 Observation, expérimentation et résolution de problèmes
 
-Les laboratoires vivants se distinguent également par leur capacité à confronter les apprenants à des situations complexes nécessitant des démarches de résolution de problèmes. Dans ces environnements, les problèmes ne sont pas préalablement définis ou simplifiés ; ils émergent des interactions entre les acteurs et leur environnement.
+Dans les laboratoires vivants, les problèmes ne sont ni préalablement définis ni simplifiés : ils émergent des interactions entre les acteurs et leur environnement. Schön (1983, p. 40) rappelle que dans la pratique réelle, les problèmes ne se présentent pas comme des données préétablies.
 
-Cette perspective est particulièrement bien illustrée par Schön lorsqu'il affirme :
+Les situations rencontrées au jardin reflètent exactement cette réalité : croissance des plantes, gestion de l'eau, variations climatiques, qualité des sols. Ces problèmes n'admettent pas toujours de solution immédiate et exigent observation, expérimentation et adaptation.
 
-« In real-world practice, problems do not present themselves as givens » (Schön, 1983, p. 40).
-
-Les situations rencontrées dans les jardins scolaires reflètent précisément cette réalité. Les élèves doivent faire face à des défis liés à la croissance des plantes, à la gestion de l'eau, aux variations climatiques ou à la qualité des sols. Ces problèmes ne disposent pas toujours de solutions immédiates et exigent des démarches d'observation, d'expérimentation et d'adaptation.
-
-En recherchant des réponses à ces difficultés, les apprenants développent des compétences essentielles telles que la pensée critique, l'autonomie intellectuelle et la capacité à prendre des décisions dans des contextes incertains. Ils apprennent à analyser les causes d'un problème, à tester différentes solutions et à évaluer les résultats obtenus.
-
-Cette approche apparaît particulièrement pertinente dans les contextes contemporains caractérisés par des changements environnementaux rapides et des situations d'incertitude croissante. Les jardins scolaires contribuent ainsi à préparer les apprenants à faire face à des défis complexes nécessitant créativité, adaptation et capacité de résolution de problèmes.
+En cherchant des réponses, les apprenants développent la pensée critique, l'autonomie intellectuelle et la capacité à décider en contexte incertain : analyser les causes d'un problème, tester des solutions, évaluer les résultats. Cette approche est particulièrement pertinente dans un monde marqué par des changements environnementaux rapides et une incertitude croissante.
 
 #### 2.6.4 Le jardin scolaire comme espace de contextualisation des apprentissages
 
-La contextualisation constitue une autre caractéristique essentielle des laboratoires vivants. Les apprentissages y prennent sens parce qu'ils sont directement reliés aux réalités sociales, culturelles et environnementales des apprenants.
+Les apprentissages prennent sens dès lors qu'ils sont reliés aux réalités sociales, culturelles et environnementales des apprenants — principe déjà établi en [section 2.3.4](#234-les-jardins-scolaires-comme-espaces-dinnovation-pédagogique) à partir de la pensée de Freire (1970, p. 72), pour qui la connaissance émerge de l'invention et de la réinvention en lien avec le réel.
 
-Cette idée rejoint la pensée de Paulo Freire, qui affirme que :
-
-« Knowledge emerges through invention and re-invention linked with reality » (Freire, 1970, p. 72).
-
-Selon cette perspective, les savoirs acquièrent leur signification lorsqu'ils sont construits à partir de l'expérience vécue et des réalités du contexte. Les jardins scolaires permettent précisément cette articulation entre les contenus éducatifs et les conditions locales d'existence.
-
-Dans les régions arides telles que Djibouti, les activités de jardinage offrent aux élèves l'opportunité de comprendre concrètement les enjeux liés à la gestion de l'eau, à la conservation des ressources naturelles et à l'adaptation aux contraintes climatiques. Les savoirs développés dans ces espaces apparaissent directement liés aux défis rencontrés par les communautés locales.
-
-Cette contextualisation favorise non seulement une meilleure appropriation des apprentissages, mais également leur mobilisation dans la vie quotidienne. Les élèves développent ainsi des connaissances et des compétences qui présentent une utilité immédiate pour leur environnement social et écologique.
+En régions arides telles que Djibouti, les activités de jardinage font comprendre concrètement les enjeux de gestion de l'eau, de conservation des ressources naturelles et d'adaptation aux contraintes climatiques. Les savoirs développés sont directement liés aux défis rencontrés par les communautés locales, ce qui favorise à la fois leur appropriation et leur mobilisation dans la vie quotidienne.
 
 #### 2.6.5 Participation communautaire et co-construction des savoirs
 
-Les laboratoires vivants reposent également sur une logique de participation collective dans laquelle les connaissances émergent des interactions entre différents acteurs. Cette conception rejoint les approches socioconstructivistes selon lesquelles les apprentissages se développent à travers les échanges sociaux et la collaboration.
+Les laboratoires vivants reposent sur une logique de participation collective où les connaissances émergent des interactions entre acteurs. Wenger (1998, p. 4) souligne que l'apprentissage est fondamentalement un processus de participation sociale.
 
-Wenger souligne à cet égard que :
+Le jardin scolaire réunit élèves, enseignants, familles, agriculteurs locaux et autres membres de la communauté autour d'activités communes. Les savoirs se construisent alors dans les échanges, les expériences partagées et la confrontation des points de vue.
 
-« Learning is fundamentally a social participation process » (Wenger, 1998, p. 4).
-
-Les jardins scolaires favorisent précisément cette participation sociale en réunissant élèves, enseignants, familles, agriculteurs locaux et autres membres de la communauté autour d'activités communes. Les savoirs se construisent alors à travers les échanges, les expériences partagées et la confrontation des points de vue.
-
-Cette dynamique favorise la valorisation des connaissances locales et la transmission intergénérationnelle des savoirs. Elle contribue également à renforcer les liens entre l'école et la communauté, tout en favorisant une meilleure appropriation des projets éducatifs par les acteurs locaux.
-
-Dans les contextes ruraux, cette participation apparaît particulièrement importante pour assurer la durabilité des initiatives de jardins scolaires et renforcer leur pertinence sociale. Les jardins deviennent ainsi des espaces d'innovation sociale où les connaissances scientifiques et les savoirs locaux se rencontrent et se complètent.
+Cette dynamique valorise les connaissances locales et favorise la transmission intergénérationnelle des savoirs. Elle renforce les liens entre l'école et la communauté et améliore l'appropriation des projets éducatifs par les acteurs locaux — condition importante de la durabilité des initiatives en milieu rural. Le jardin devient ainsi un espace d'**innovation sociale** où connaissances scientifiques et savoirs locaux se rencontrent et se complètent.
 
 #### 2.6.6 Jardins scolaires et résilience éducative
 
-L'approche des laboratoires vivants permet enfin d'analyser les jardins scolaires sous l'angle de la résilience éducative. Cette notion renvoie à la capacité des systèmes éducatifs, des apprenants et des communautés à s'adapter aux perturbations et à maintenir leurs fonctions malgré les contraintes environnementales, économiques ou sociales.
+L'UNICEF (2021, p. 23) souligne que les systèmes éducatifs résilients soutiennent l'adaptation en période de stress environnemental et social. Le jardin scolaire y contribue en développant des compétences adaptatives, des capacités de coopération et une meilleure compréhension des enjeux environnementaux, tout en favorisant la mobilisation communautaire et la recherche collective de solutions.
 
-L'UNICEF souligne que :
-
-« Resilient education systems support adaptation in times of environmental and social stress » (UNICEF, 2021, p. 23).
-
-Les jardins scolaires contribuent à cette résilience en développant chez les apprenants des compétences adaptatives, des capacités de coopération et une meilleure compréhension des enjeux environnementaux. Ils favorisent également la mobilisation communautaire et la recherche collective de solutions adaptées aux défis locaux.
-
-Dans les contextes caractérisés par la vulnérabilité climatique, cette fonction apparaît particulièrement importante. Les jardins scolaires permettent aux élèves et aux communautés de développer des stratégies de gestion des ressources, d'adaptation aux changements environnementaux et de renforcement des capacités locales.
-
-Ils constituent ainsi des espaces où l'apprentissage et la résilience se renforcent mutuellement, contribuant à la construction de systèmes éducatifs plus capables de faire face aux incertitudes contemporaines.
+En contexte de vulnérabilité climatique, il permet à la fois aux élèves et aux communautés de développer des stratégies de gestion des ressources et de renforcement des capacités locales. Apprentissage et résilience s'y renforcent mutuellement.
 
 #### 2.6.7 Vers un modèle conceptuel du jardin scolaire comme laboratoire vivant résilient
 
-L'ensemble des analyses précédentes permet de proposer une conceptualisation intégrée du jardin scolaire comme laboratoire vivant d'apprentissage et de résilience. Cette conceptualisation constitue le socle théorique central de la présente recherche.
+Les analyses précédentes permettent de proposer une conceptualisation intégrée du jardin scolaire comme **laboratoire vivant d'apprentissage et de résilience** — socle théorique central de la présente recherche. Le jardin y apparaît comme un espace hybride situé à l'intersection de quatre dimensions interdépendantes.
 
-Dans cette perspective, le jardin scolaire apparaît comme un espace hybride situé à l'intersection de quatre dimensions interdépendantes. La première est une dimension pédagogique fondée sur l'apprentissage expérientiel, les pédagogies actives et la contextualisation des savoirs. La deuxième est une dimension sociale reposant sur la coopération, la participation communautaire et la co-construction des connaissances. La troisième est une dimension environnementale orientée vers l'éducation écologique, la gestion durable des ressources et l'adaptation climatique. Enfin, la quatrième est une dimension de résilience caractérisée par le développement de capacités d'adaptation, de résolution de problèmes et de réponse collective aux vulnérabilités.
+| Dimension | Fondement théorique | Manifestation dans le jardin scolaire |
+|---|---|---|
+| **Pédagogique** | Apprentissage expérientiel, pédagogies actives, contextualisation | Observation, expérimentation, projets, interdisciplinarité |
+| **Sociale** | Socioconstructivisme, apprentissage collaboratif | Coopération, participation communautaire, co-construction des savoirs |
+| **Environnementale** | Éducation au développement durable, éducation environnementale | Gestion durable des ressources, biodiversité, adaptation climatique |
+| **Résilience** | Théories de la résilience éducative et territoriale | Capacités d'adaptation, résolution de problèmes, réponse collective aux vulnérabilités |
 
-L'articulation de ces différentes dimensions permet de comprendre les jardins scolaires non comme de simples espaces de production agricole ou d'activités pédagogiques complémentaires, mais comme des dispositifs complexes capables de contribuer simultanément au développement des apprentissages, à la résilience communautaire et à l'adaptation aux défis environnementaux contemporains.
+L'articulation de ces dimensions permet de comprendre le jardin scolaire non comme un simple espace de production agricole ou une activité pédagogique complémentaire, mais comme un **dispositif complexe** contribuant simultanément au développement des apprentissages, à la résilience communautaire et à l'adaptation aux défis environnementaux.
 
 #### Conclusion de la section 2.6
 
-L'analyse des jardins scolaires à travers le prisme des laboratoires vivants permet de dépasser les approches réductrices qui les considèrent uniquement comme des outils pédagogiques ou agricoles. Ces dispositifs apparaissent comme des environnements éducatifs complexes dans lesquels les apprentissages se construisent à travers l'expérience, l'expérimentation, la participation sociale et la contextualisation des savoirs. En favorisant l'apprentissage actif, la résolution de problèmes, la coopération et le développement de capacités d'adaptation, les jardins scolaires contribuent à renforcer la résilience éducative et communautaire. Cette conceptualisation constitue un fondement théorique majeur pour l'analyse des jardins scolaires dans le contexte djiboutien et prépare la transition vers l'examen des réalités territoriales, climatiques et éducatives propres au pays, qui seront abordées dans les sections suivantes du cadre théorique.
+Le prisme des laboratoires vivants permet de dépasser les approches réductrices qui limitent le jardin scolaire à un outil pédagogique ou agricole. Il apparaît comme un environnement éducatif complexe où les apprentissages se construisent par l'expérience, l'expérimentation, la participation sociale et la contextualisation des savoirs. Cette conceptualisation constitue le fondement théorique de l'analyse du contexte djiboutien, objet de la section suivante.
+
+---
 
 ### 2.7 Contextualisation des jardins scolaires dans le contexte djiboutien
 
-L'analyse des jardins scolaires dans le contexte djiboutien nécessite une prise en compte approfondie des réalités territoriales, éducatives, sociales et environnementales qui caractérisent le pays. Si les travaux internationaux présentent souvent les jardins scolaires comme des dispositifs multifonctionnels capables de soutenir les apprentissages, la sécurité alimentaire, l'éducation environnementale et la résilience communautaire, leur mise en œuvre ne peut être comprise indépendamment des conditions spécifiques dans lesquelles ils s'inscrivent. La pertinence et l'efficacité de ces dispositifs dépendent en effet étroitement des caractéristiques écologiques, institutionnelles et socio-économiques des territoires concernés.
+Si les travaux internationaux présentent le jardin scolaire comme un dispositif multifonctionnel, sa mise en œuvre ne peut être comprise indépendamment des conditions spécifiques dans lesquelles il s'inscrit. Sa pertinence et son efficacité dépendent étroitement des caractéristiques écologiques, institutionnelles et socio-économiques des territoires concernés.
 
-Djibouti se distingue par un environnement naturel particulièrement contraignant, marqué par l'aridité du climat, la rareté des ressources hydriques, la fréquence des épisodes de sécheresse et une forte exposition aux effets du changement climatique. Ces contraintes influencent non seulement les conditions de vie des populations, mais également les possibilités de développement des activités éducatives et communautaires. Dans ce contexte, les jardins scolaires apparaissent à la fois comme des dispositifs porteurs d'opportunités éducatives et comme des initiatives confrontées à des défis structurels importants.
+Djibouti se distingue par un environnement naturel particulièrement contraignant : aridité du climat, rareté des ressources hydriques, fréquence des épisodes de sécheresse, forte exposition aux effets du changement climatique. Le jardin scolaire y apparaît à la fois comme un dispositif porteur d'opportunités éducatives et comme une initiative confrontée à des défis structurels importants.
 
-Depuis plusieurs décennies, les politiques publiques djiboutiennes accordent une attention croissante à l'amélioration de la qualité de l'éducation, à la réduction des disparités territoriales et au renforcement de la résilience face aux vulnérabilités environnementales. Les jardins scolaires ont progressivement trouvé leur place dans certaines initiatives éducatives soutenues par le Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFOP), ainsi que par plusieurs partenaires internationaux tels que la FAO, l'UNICEF et le Programme Alimentaire Mondial. Toutefois, la diversité des situations observées dans les établissements scolaires montre que ces dispositifs prennent des formes variables selon les contextes locaux et les ressources disponibles.
-
-Cette contextualisation apparaît essentielle afin d'éviter une lecture uniformisée des jardins scolaires et de mieux comprendre les conditions qui influencent leur fonctionnement dans les territoires ruraux djiboutiens.
+Les jardins scolaires ont progressivement trouvé leur place dans certaines initiatives soutenues par le **MENFOP** et par des partenaires internationaux — FAO, UNICEF, Programme alimentaire mondial. La diversité des situations observées montre toutefois que ces dispositifs prennent des formes variables selon les contextes locaux et les ressources disponibles. Cette contextualisation est essentielle pour éviter une lecture uniformisée du dispositif.
 
 #### 2.7.1 Évolution des politiques éducatives et environnementales à Djibouti
 
-Depuis son accession à l'indépendance en 1977, Djibouti a engagé plusieurs réformes visant à améliorer l'accès à l'éducation et à renforcer la qualité des apprentissages. Ces réformes se sont progressivement accompagnées d'une réflexion sur la nécessité d'adapter les contenus éducatifs aux réalités économiques, sociales et environnementales du pays.
+Depuis l'indépendance en 1977, Djibouti a engagé plusieurs réformes visant à améliorer l'accès à l'éducation et la qualité des apprentissages, accompagnées d'une réflexion sur l'adaptation des contenus éducatifs aux réalités du pays.
 
-Les transformations engagées à partir des années 2000 ont notamment mis l'accent sur l'approche par compétences, la modernisation des pratiques pédagogiques et la promotion d'apprentissages davantage contextualisés. Cette orientation est clairement exprimée dans les documents stratégiques du MENFOP, qui soulignent que :
+Les transformations engagées à partir des années 2000 ont mis l'accent sur l'approche par compétences, la modernisation des pratiques pédagogiques et la contextualisation des apprentissages. Les documents stratégiques du MENFOP (2019, p. 34) affirment ainsi que l'école doit développer des compétences adaptées aux réalités sociales et environnementales du pays — orientation qui ouvre la voie à des dispositifs reliant contenus scolaires et enjeux du territoire.
 
-« L'école doit développer des compétences adaptées aux réalités sociales et environnementales du pays » (MENFOP, 2019, p. 34).
-
-Cette vision éducative ouvre la voie à l'intégration de dispositifs pédagogiques capables de relier les contenus scolaires aux enjeux du territoire. Les jardins scolaires apparaissent ainsi comme des outils susceptibles de contribuer à la mise en œuvre d'approches éducatives plus contextualisées et davantage ancrées dans les réalités locales.
-
-Parallèlement aux réformes éducatives, les politiques environnementales nationales ont progressivement intégré les préoccupations liées au changement climatique, à la gestion durable des ressources naturelles et au renforcement des capacités d'adaptation des populations. Les sécheresses récurrentes, le stress hydrique et la vulnérabilité croissante des écosystèmes ont conduit les autorités nationales et les partenaires internationaux à promouvoir des stratégies de résilience territoriale dans lesquelles l'éducation occupe une place importante.
-
-Dans ce cadre, les jardins scolaires sont fréquemment présentés comme des dispositifs permettant d'articuler éducation environnementale, sensibilisation climatique, sécurité alimentaire et développement communautaire. Leur intégration dans certaines politiques publiques traduit ainsi la volonté de renforcer les liens entre éducation, environnement et développement durable.
+Parallèlement, les politiques environnementales nationales ont intégré les préoccupations liées au changement climatique, à la gestion durable des ressources et au renforcement des capacités d'adaptation. Sécheresses récurrentes, stress hydrique et vulnérabilité croissante des écosystèmes ont conduit autorités nationales et partenaires internationaux à promouvoir des stratégies de résilience territoriale dans lesquelles l'éducation occupe une place importante.
 
 #### 2.7.2 Développement des jardins scolaires dans les écoles rurales
 
-Le développement des jardins scolaires à Djibouti s'est principalement effectué dans les zones rurales à travers des projets soutenus par des organisations internationales et des programmes de coopération. Ces initiatives s'inscrivent généralement dans une perspective visant à améliorer simultanément les conditions d'apprentissage, la sécurité alimentaire et la sensibilisation environnementale.
+Le développement des jardins scolaires s'est principalement effectué en zone rurale, à travers des projets soutenus par des organisations internationales et des programmes de coopération, visant à améliorer conjointement les conditions d'apprentissage, la sécurité alimentaire et la sensibilisation environnementale. La FAO (2010, p. 18) souligne que les jardins scolaires en milieu rural peuvent soutenir à la fois les apprentissages et la sécurité alimentaire.
 
-La FAO souligne à cet égard que :
+Dans certains établissements, ils fonctionnent comme des laboratoires pédagogiques permettant d'observer les phénomènes naturels, d'expérimenter des techniques de culture et de développer des compétences pratiques de gestion environnementale. Ils favorisent également la participation à des projets collectifs et l'implication des acteurs de la communauté éducative.
 
-« School gardens in rural areas can support both learning and food security » (FAO, 2010, p. 18).
-
-Cette approche correspond largement aux objectifs poursuivis dans plusieurs établissements ruraux djiboutiens. Les jardins scolaires y sont souvent mobilisés comme supports pédagogiques destinés à enrichir les activités d'enseignement et à favoriser des formes d'apprentissage plus actives et plus contextualisées.
-
-Dans certains établissements, les jardins servent de laboratoires pédagogiques permettant aux élèves d'observer les phénomènes naturels, d'expérimenter différentes techniques de culture et de développer des compétences pratiques liées à la gestion de l'environnement. Ils constituent également des espaces favorisant la participation à des projets collectifs et l'implication de différents acteurs de la communauté éducative.
-
-Toutefois, le développement des jardins scolaires demeure inégal selon les régions et les établissements. Les écarts observés reflètent les différences de ressources disponibles, de soutien institutionnel et de capacités locales à assurer la mise en œuvre et la maintenance des dispositifs.
+Le développement demeure toutefois **inégal** selon les régions et les établissements, reflétant les différences de ressources disponibles, de soutien institutionnel et de capacités locales de maintenance.
 
 #### 2.7.3 Contraintes climatiques et vulnérabilités environnementales
 
-L'une des principales spécificités du contexte djiboutien réside dans le poids des contraintes environnementales qui affectent directement les initiatives de jardins scolaires. Le territoire national est caractérisé par un climat aride marqué par de faibles précipitations, une forte évaporation et une disponibilité limitée des ressources hydriques.
+Le territoire national se caractérise par un climat aride marqué par de faibles précipitations, une forte évaporation et une disponibilité limitée des ressources hydriques. Ces conditions constituent des défis majeurs pour toute activité horticole, y compris en milieu scolaire : difficultés d'accès à l'eau, coûts d'irrigation, dégradation des ressources naturelles représentent des obstacles récurrents à la pérennisation des dispositifs.
 
-Ces conditions constituent des défis majeurs pour le développement des activités agricoles et horticoles, y compris dans les établissements scolaires. Les difficultés d'accès à l'eau, les coûts associés à l'irrigation et la dégradation des ressources naturelles représentent des obstacles récurrents à la pérennisation des jardins scolaires.
+L'UNICEF (2021, p. 17) souligne que la vulnérabilité climatique affecte l'éducation et le bien-être des enfants dans les régions arides. Ces vulnérabilités ne se limitent pas aux dimensions agricoles : elles influencent les conditions d'apprentissage, la santé des élèves, les capacités économiques des familles et les ressources des établissements.
 
-Cette situation rejoint les préoccupations exprimées par l'UNICEF, qui souligne que :
-
-« Climate vulnerability affects children's education and well-being in arid regions » (UNICEF, 2021, p. 17).
-
-Les vulnérabilités environnementales ne se limitent pas aux dimensions agricoles. Elles influencent également les conditions d'apprentissage, la santé des élèves, les capacités économiques des familles et les ressources disponibles pour les établissements scolaires.
-
-Dans plusieurs écoles rurales, les jardins scolaires rencontrent ainsi des difficultés de continuité liées à l'insuffisance des financements, aux contraintes climatiques ou à la faiblesse des infrastructures. Ces réalités montrent que l'analyse des jardins scolaires doit nécessairement intégrer les conditions écologiques spécifiques dans lesquelles ils sont implantés.
+Plusieurs écoles rurales rencontrent ainsi des difficultés de continuité liées à l'insuffisance des financements, aux contraintes climatiques ou à la faiblesse des infrastructures.
 
 #### 2.7.4 Jardins scolaires et adaptation climatique
 
-Paradoxalement, les contraintes environnementales qui compliquent la mise en œuvre des jardins scolaires constituent également l'une des principales raisons de leur intérêt dans le contexte djiboutien. En effet, ces dispositifs offrent des opportunités importantes pour développer des apprentissages liés à l'adaptation climatique et à la gestion durable des ressources naturelles.
+Paradoxalement, les contraintes qui compliquent la mise en œuvre du dispositif constituent aussi la principale raison de son intérêt dans le contexte djiboutien : il offre des occasions d'apprentissage directement liées à l'adaptation climatique et à la gestion durable des ressources. La FAO (2010, p. 21) souligne que les jardins scolaires peuvent promouvoir des pratiques agricoles résilientes au climat.
 
-Selon la FAO :
+Dans un pays confronté à la rareté de l'eau et aux effets du changement climatique, le jardin sert de support à l'apprentissage de techniques d'économie d'eau, à l'expérimentation de pratiques agricoles adaptées aux conditions arides et à la sensibilisation aux enjeux environnementaux. Il permet d'aborder concrètement les relations entre climat, agriculture, alimentation et développement durable.
 
-« School gardens can promote climate-resilient agricultural practices » (FAO, 2010, p. 21).
-
-Cette perspective apparaît particulièrement pertinente dans un pays confronté à des défis croissants liés à la rareté de l'eau et aux effets du changement climatique. Les jardins scolaires peuvent servir de supports à l'apprentissage de techniques d'économie d'eau, à l'expérimentation de pratiques agricoles adaptées aux conditions arides et à la sensibilisation des élèves aux enjeux environnementaux.
-
-Ils permettent également d'aborder concrètement les relations entre climat, agriculture, alimentation et développement durable. Les élèves peuvent ainsi développer des connaissances et des compétences directement mobilisables dans leur environnement quotidien.
-
-Cette dimension confère aux jardins scolaires une fonction qui dépasse largement le cadre pédagogique traditionnel. Ils deviennent des espaces où s'élaborent des savoirs et des pratiques susceptibles de contribuer à la résilience environnementale des communautés locales.
+Cette dimension confère au dispositif une fonction qui dépasse le cadre pédagogique traditionnel : il devient un espace où s'élaborent des savoirs et des pratiques susceptibles de contribuer à la résilience environnementale des communautés.
 
 #### 2.7.5 Participation communautaire et dynamiques locales
 
-La participation communautaire constitue une autre dimension importante des jardins scolaires dans plusieurs régions de Djibouti. La réussite et la durabilité de ces projets dépendent souvent de l'implication des familles, des associations locales, des autorités communautaires et des partenaires institutionnels.
+La réussite et la durabilité de ces projets dépendent largement de l'implication des familles, des associations locales, des autorités communautaires et des partenaires institutionnels. Wenger (1998, p. 7) rappelle que l'apprentissage implique la participation à des communautés sociales.
 
-Cette dynamique rejoint les travaux de Wenger, qui affirme que :
+Le jardin scolaire crée des espaces de collaboration où les apprentissages se développent dans l'interaction entre acteurs. Il favorise la circulation des savoirs, la valorisation des connaissances locales et le renforcement des liens entre l'école et son environnement social.
 
-« Learning implies participation in social communities » (Wenger, 1998, p. 7).
-
-Les jardins scolaires créent des espaces de collaboration où les apprentissages se développent à travers les interactions entre les différents acteurs. Ils favorisent la circulation des savoirs, la valorisation des connaissances locales et le renforcement des liens entre l'école et son environnement social.
-
-Dans les zones rurales, cette participation communautaire contribue également à renforcer l'appropriation locale des projets et à soutenir les activités de maintenance. Les savoirs agricoles traditionnels peuvent être mobilisés aux côtés des connaissances scolaires, favorisant ainsi des formes d'apprentissage davantage contextualisées.
-
-Toutefois, l'intensité de cette participation varie fortement selon les contextes. Certaines écoles bénéficient d'un soutien communautaire important, tandis que d'autres rencontrent davantage de difficultés à mobiliser durablement les acteurs locaux.
+En zone rurale, cette participation renforce l'appropriation locale des projets et soutient les activités de maintenance ; les savoirs agricoles traditionnels peuvent être mobilisés aux côtés des connaissances scolaires. L'intensité de cette participation varie toutefois fortement : certaines écoles bénéficient d'un soutien communautaire important, d'autres peinent à mobiliser durablement les acteurs locaux.
 
 #### 2.7.6 Tensions entre discours institutionnels et réalités de terrain
 
-L'analyse du contexte djiboutien révèle enfin l'existence de tensions importantes entre les représentations institutionnelles des jardins scolaires et les réalités observées sur le terrain. Les discours officiels et les programmes internationaux présentent fréquemment les jardins scolaires comme des outils innovants capables de répondre simultanément aux défis éducatifs, nutritionnels, environnementaux et climatiques.
+L'analyse du contexte djiboutien révèle enfin des tensions entre les représentations institutionnelles du jardin scolaire et les réalités de terrain. Les discours officiels et les programmes internationaux le présentent fréquemment comme un outil innovant répondant simultanément aux défis éducatifs, nutritionnels, environnementaux et climatiques.
 
-Cependant, les observations réalisées dans différents contextes montrent des situations souvent plus contrastées. Certains jardins sont insuffisamment entretenus, disposent de ressources limitées ou rencontrent des difficultés d'intégration dans les pratiques pédagogiques quotidiennes. Dans plusieurs cas, leur fonctionnement dépend fortement des financements extérieurs ou de l'engagement de quelques acteurs particulièrement investis.
+Les observations montrent des situations plus contrastées : jardins insuffisamment entretenus, ressources limitées, difficultés d'intégration dans les pratiques pédagogiques quotidiennes. Dans plusieurs cas, le fonctionnement dépend fortement de financements extérieurs ou de l'engagement de quelques acteurs particulièrement investis.
 
-Cette situation rappelle la réflexion formulée par Freire lorsqu'il affirme que :
-
-« Any educational practice disconnected from reality becomes alienating » (Freire, 1970, p. 95).
-
-Cette critique apparaît particulièrement pertinente dans le contexte djiboutien. Elle souligne la nécessité d'éviter les approches normatives ou idéalistes et d'analyser les jardins scolaires à partir des réalités concrètes dans lesquelles ils s'inscrivent.
+Cette situation rappelle l'avertissement de Freire (1970, p. 95) : toute pratique éducative déconnectée du réel devient aliénante. Il convient donc d'éviter les approches normatives ou idéalistes et d'analyser le dispositif à partir des réalités concrètes dans lesquelles il s'inscrit.
 
 #### Conclusion de la section 2.7
 
-La contextualisation des jardins scolaires dans le contexte djiboutien met en évidence la complexité des dynamiques éducatives, sociales et environnementales qui structurent ces dispositifs. Les jardins scolaires apparaissent simultanément comme des espaces d'apprentissage expérientiel, des outils d'éducation environnementale, des supports potentiels d'adaptation climatique et des lieux de participation communautaire. Toutefois, leur fonctionnement demeure fortement conditionné par les contraintes climatiques, les ressources institutionnelles disponibles, les capacités locales et les réalités socio-économiques des territoires.
+Le jardin scolaire djiboutien apparaît simultanément comme un espace d'apprentissage expérientiel, un outil d'éducation environnementale, un support potentiel d'adaptation climatique et un lieu de participation communautaire. Son fonctionnement demeure toutefois fortement conditionné par les contraintes climatiques, les ressources institutionnelles disponibles, les capacités locales et les réalités socio-économiques des territoires.
 
-Cette analyse montre que les jardins scolaires ne peuvent être compris uniquement à travers les discours institutionnels qui les présentent comme des solutions multifonctionnelles. Leur pertinence et leur efficacité doivent être examinées à partir des pratiques concrètes, des interactions entre acteurs et des contextes locaux dans lesquels ils sont développés. Cette perspective critique constitue un élément fondamental pour comprendre les conditions de développement des jardins scolaires dans les écoles rurales djiboutiennes et prépare la synthèse générale du cadre théorique qui servira de fondement à l'analyse empirique de la présente recherche.
+Le dispositif ne peut donc être compris à travers les seuls discours institutionnels qui le présentent comme une solution multifonctionnelle. Sa pertinence et son efficacité doivent être examinées à partir des pratiques concrètes, des interactions entre acteurs et des contextes locaux. Cette perspective critique fonde l'analyse empirique développée dans les chapitres suivants.
+
+---
+
+### Note de vérification bibliographique du chapitre II
+
+Le chapitre II mobilise **seize références absentes de la bibliographie** du document. Elles doivent être ajoutées, corrigées ou supprimées avant dépôt : un écart entre les citations du texte et la liste de références est systématiquement relevé en jury.
+
+| Référence citée | Sections concernées | Nature du problème |
+|---|---|---|
+| Johnson & Johnson (1999) | 2.2.4 | Référence absente |
+| Desmond, Grieshop & Subramaniam (2004) | 2.3.1, 2.3.5, 2.5.3 | Référence absente |
+| Blair (2009) | 2.3.3, 2.3.5, 2.4.5 | Référence absente |
+| Drake & Burns (2004) | 2.3.4 | Référence absente |
+| Ohly et al. (2016) | 2.3.5 | Référence absente |
+| Grantham-McGregor et al. (2007) | 2.4.1 | Référence absente |
+| Ratcliffe et al. (2011) | 2.4.4 | Référence absente |
+| WCED (1987) | 2.5.1 | Référence absente (*Rapport Brundtland*) |
+| Palmer (1998) | 2.5.2 | Référence absente |
+| Folke (2006) | 2.5.6 | Référence absente |
+| Mitchell (2003) | 2.6.1 | Référence absente |
+| Wenger (1998) | 2.6.5, 2.7.5 | Référence absente |
+| UNICEF (2019) | 2.4.1 | Millésime absent ; seul UNICEF (2021) est référencé |
+| Dewey (1916) | 2.3.4 | Millésime absent ; seul Dewey (1938) est référencé |
+| Freire (1970) | 2.3.5, 2.6.4, 2.7.6 | Millésime absent ; seul Freire (1985) est référencé |
+| Bruner (1966) | 2.3.4 | Millésime absent ; seul Bruner (1996) est référencé |
+
+**Distinction importante.** Les douze premières lignes signalent des auteurs entièrement absents de la bibliographie. Les quatre dernières relèvent d'un cas différent : l'auteur est bien référencé, mais sous un autre millésime. Deux hypothèses s'imposent alors, à trancher au cas par cas — soit il s'agit d'ouvrages distincts qu'il convient d'ajouter (*Democracy and Education*, 1916 ; *Pedagogy of the Oppressed*, 1970 ; *Toward a Theory of Instruction*, 1966), soit d'erreurs de date renvoyant aux éditions déjà listées. Les numéros de page cités permettent généralement de lever le doute.
 
 ---
 
@@ -2271,833 +1998,743 @@ Cette analyse montre que les jardins scolaires ne peuvent être compris uniqueme
 
 ### Introduction du chapitre III
 
-Ce chapitre présente la démarche méthodologique adoptée pour examiner le rôle des jardins scolaires en tant que leviers de résilience éducative, communautaire et d'adaptation aux changements climatiques dans les écoles rurales djiboutiennes. En cohérence avec les objectifs de la recherche, cette étude vise à comprendre la manière dont les jardins scolaires contribuent aux transformations pédagogiques, au renforcement de la résilience communautaire, à l'éducation environnementale ainsi qu'aux dynamiques locales d'adaptation climatique.
+Ce chapitre expose la démarche méthodologique adoptée pour examiner le rôle des jardins scolaires comme leviers de résilience éducative, communautaire et d'adaptation climatique dans les écoles rurales djiboutiennes. Conformément aux objectifs de la recherche, l'étude vise à comprendre comment ces dispositifs contribuent aux transformations pédagogiques, au renforcement de la résilience communautaire, à l'éducation environnementale et aux dynamiques locales d'adaptation.
 
-Compte tenu de la nature exploratoire de cette problématique et de la volonté de saisir les significations attribuées aux jardins scolaires par les différents acteurs concernés, la recherche s'inscrit dans une approche qualitative interprétative fondée sur la méthodologie de la théorisation ancrée (Grounded Theory). Ce choix méthodologique permet d'explorer les expériences vécues, d'analyser les pratiques effectives observées sur le terrain et de faire émerger progressivement des catégories analytiques directement issues des données empiriques afin de construire un modèle théorique contextualisé.
+Compte tenu du caractère exploratoire de la problématique et de la volonté de saisir les significations que les acteurs attribuent aux jardins scolaires, la recherche s'inscrit dans une **approche qualitative interprétative fondée sur la théorisation ancrée** (*Grounded Theory*). Ce choix permet d'explorer les expériences vécues, d'analyser les pratiques effectivement observées et de faire émerger progressivement des catégories analytiques issues des données empiriques, en vue de construire un modèle théorique contextualisé.
 
-La démarche méthodologique repose sur la mobilisation de plusieurs techniques complémentaires de collecte et d'analyse des données, notamment l'analyse documentaire, les entretiens semi-directifs, l'observation participante, l'analyse visuelle et audiovisuelle ainsi que l'analyse qualitative assistée par le logiciel NVivo 15.
+Le dispositif méthodologique mobilise plusieurs techniques complémentaires : analyse documentaire, entretiens semi-directifs, observation participante, analyse visuelle et audiovisuelle, et analyse qualitative assistée par le logiciel **NVivo 15**.
 
-Le chapitre est structuré autour de plusieurs sections portant respectivement sur le positionnement épistémologique de la recherche, le choix méthodologique, la présentation du terrain d'étude, les techniques de collecte des données, la constitution du corpus documentaire, les outils d'analyse, la démarche de théorisation ancrée, les considérations éthiques ainsi que les limites méthodologiques de l'étude.
+Le chapitre traite successivement du positionnement épistémologique, du choix méthodologique, du terrain d'étude, de la population enquêtée, des techniques de collecte, de la constitution du corpus documentaire, des outils d'analyse, du processus de codage, de la triangulation, des considérations éthiques et des limites de l'étude.
 
 ### 3.1 Positionnement épistémologique de la recherche
 
-Cette recherche s'inscrit dans un paradigme interprétatif à orientation constructiviste. Selon cette perspective, les réalités éducatives observées dans les écoles rurales djiboutiennes ne constituent pas des phénomènes fixes et objectivement mesurables indépendamment de leur contexte, mais des constructions sociales produites et continuellement reconstruites à travers les interactions entre les acteurs, les pratiques éducatives, les dynamiques communautaires et les conditions environnementales dans lesquelles elles s'inscrivent.
+Cette recherche s'inscrit dans un **paradigme interprétatif à orientation constructiviste**. Dans cette perspective, les réalités éducatives observées dans les écoles rurales djiboutiennes ne constituent pas des phénomènes fixes et objectivement mesurables indépendamment de leur contexte, mais des constructions sociales continuellement produites et reconstruites à travers les interactions entre acteurs, pratiques éducatives, dynamiques communautaires et conditions environnementales.
 
-L'objectif de cette étude ne consiste donc pas uniquement à mesurer les effets des jardins scolaires à partir d'indicateurs quantifiables, mais à comprendre les significations que les différents acteurs attribuent à ces dispositifs, les logiques d'action qu'ils développent dans leur mise en œuvre ainsi que les mécanismes de résilience éducative, communautaire et environnementale qui émergent dans les contextes ruraux étudiés.
+L'objectif n'est donc pas de mesurer les effets des jardins scolaires à partir d'indicateurs quantifiables, mais de comprendre les **significations** que les acteurs leur attribuent, les **logiques d'action** qu'ils développent et les **mécanismes de résilience** qui émergent dans les contextes ruraux étudiés. Cette posture accorde une attention particulière aux expériences vécues, aux représentations sociales et aux contextes locaux dans lesquels se construisent les pratiques éducatives.
 
-Cette posture interprétative accorde une attention particulière aux expériences vécues, aux représentations sociales, aux interactions entre les acteurs et aux contextes locaux dans lesquels se construisent les pratiques éducatives. Elle repose sur l'idée que la compréhension des phénomènes sociaux nécessite l'analyse des significations produites par les individus dans leurs situations d'action.
+Trois ancrages théoriques structurent ce positionnement.
 
-Cette orientation trouve un fondement théorique dans les travaux constructivistes de Piaget (1970), selon lesquels la connaissance résulte d'un processus continu de construction par le sujet en interaction avec son environnement. Dans cette perspective, les savoirs et les pratiques éducatives ne sont pas simplement transmis, mais élaborés progressivement à travers l'expérience, l'action et la réflexion.
+Le **constructivisme** de Piaget (1970) fonde l'idée que la connaissance résulte d'un processus continu de construction par le sujet en interaction avec son environnement : savoirs et pratiques éducatives ne sont pas simplement transmis, mais élaborés progressivement à travers l'expérience, l'action et la réflexion.
 
-La recherche s'appuie également sur les apports du socioconstructivisme, qui souligne le rôle déterminant des interactions sociales dans les processus d'apprentissage et de développement. Vygotski (1985) soutient que les fonctions psychologiques supérieures émergent d'abord au niveau social avant d'être intériorisées par l'individu. Cette perspective apparaît particulièrement pertinente pour analyser les jardins scolaires comme des espaces d'apprentissage collaboratif favorisant la coopération, les interactions pédagogiques et la participation communautaire.
+Le **socioconstructivisme** souligne le rôle déterminant des interactions sociales dans les processus d'apprentissage et de développement. Vygotsky (1985) établit que les fonctions psychologiques supérieures émergent d'abord au niveau social avant d'être intériorisées — perspective directement pertinente pour analyser les jardins scolaires comme espaces d'apprentissage collaboratif favorisant la coopération, les interactions pédagogiques et la participation communautaire.
 
-Par ailleurs, l'étude mobilise une sensibilité interactionniste permettant d'examiner les jardins scolaires comme des espaces sociaux construits à travers les relations entre les enseignants, les élèves, les directeurs d'école, les parents, les jardiniers communautaires et les institutions éducatives. Dans la tradition de l'interactionnisme symbolique, Blumer (1969) souligne que les individus agissent à l'égard des objets et des situations en fonction des significations qu'ils leur attribuent. Ainsi, les jardins scolaires sont appréhendés non seulement comme des infrastructures matérielles, mais également comme des espaces investis de significations pédagogiques, sociales, environnementales et culturelles produites par les acteurs eux-mêmes.
+L'**interactionnisme symbolique** permet enfin d'examiner les jardins scolaires comme des espaces sociaux construits à travers les relations entre enseignants, élèves, directeurs, parents, jardiniers communautaires et institutions éducatives. Blumer (1969) rappelle que les individus agissent à l'égard des objets et des situations en fonction des significations qu'ils leur attribuent. Le jardin scolaire est ainsi appréhendé non comme une simple infrastructure matérielle, mais comme un espace **investi de significations** pédagogiques, sociales, environnementales et culturelles produites par les acteurs eux-mêmes.
 
-L'adoption de cette posture épistémologique permet de privilégier une compréhension contextualisée des réalités rurales, de prendre en considération la complexité des situations éducatives observées et d'explorer les relations qui se développent entre l'école, la communauté et l'environnement. Elle favorise également l'analyse des pratiques effectives plutôt que celle des seules prescriptions institutionnelles.
-
-Cette orientation est pleinement cohérente avec la logique de la théorisation ancrée (Grounded Theory), qui repose sur une démarche inductive visant à produire des conceptualisations théoriques directement enracinées dans les données empiriques. Selon Charmaz (2006), la théorisation ancrée constitue un ensemble de lignes directrices systématiques et flexibles permettant de collecter et d'analyser des données qualitatives dans le but de construire des interprétations théoriques fondées sur l'expérience des participants.
-
-Dans cette perspective, l'approche interprétative et constructiviste retenue apparaît particulièrement adaptée pour comprendre les jardins scolaires comme des espaces pédagogiques, des dispositifs de résilience communautaire, des vecteurs d'éducation environnementale et des laboratoires vivants d'adaptation aux changements climatiques dans les écoles rurales djiboutiennes.
+Cette posture privilégie une compréhension contextualisée des réalités rurales et l'analyse des **pratiques effectives** plutôt que des seules prescriptions institutionnelles. Elle est pleinement cohérente avec la logique de la théorisation ancrée, démarche inductive visant à produire des conceptualisations enracinées dans les données empiriques. Selon Charmaz (2006), celle-ci constitue un ensemble de lignes directrices systématiques et flexibles permettant de collecter et d'analyser des données qualitatives en vue de construire des interprétations théoriques fondées sur l'expérience des participants.
 
 ### 3.2 Choix de l'approche méthodologique : la théorisation ancrée
 
-La présente recherche adopte la théorisation ancrée (Grounded Theory) comme approche méthodologique principale. Ce choix s'explique par la nature exploratoire de l'objet d'étude ainsi que par la complexité des phénomènes éducatifs, sociaux et environnementaux associés aux jardins scolaires dans les écoles rurales djiboutiennes. Dans un contexte où les travaux scientifiques consacrés à cette thématique demeurent limités, particulièrement à Djibouti, la théorisation ancrée offre un cadre méthodologique pertinent pour produire une compréhension approfondie et contextualisée des réalités observées sur le terrain.
+Le recours à la théorisation ancrée s'explique par le caractère exploratoire de l'objet d'étude et par la complexité des phénomènes éducatifs, sociaux et environnementaux associés aux jardins scolaires. Dans un contexte où les travaux scientifiques consacrés à cette thématique demeurent limités, particulièrement à Djibouti, cette approche offre un cadre pertinent pour produire une compréhension approfondie et contextualisée des réalités de terrain.
 
-Développée initialement par Glaser et Strauss (1967), la théorisation ancrée vise à élaborer des conceptualisations théoriques directement issues des données empiriques plutôt qu'à vérifier des hypothèses préalablement formulées. Cette approche repose sur le principe selon lequel la théorie doit émerger progressivement de l'analyse systématique des données recueillies auprès des acteurs concernés. Comme le soulignent Glaser et Strauss (1967), la théorisation ancrée consiste en un processus de génération théorique fondé sur les données elles-mêmes.
+Développée par Glaser et Strauss (1967), la théorisation ancrée vise à élaborer des conceptualisations théoriques directement issues des données empiriques plutôt qu'à vérifier des hypothèses préalablement formulées : la théorie doit **émerger** de l'analyse systématique des données recueillies auprès des acteurs concernés.
 
-Cette démarche méthodologique se caractérise par plusieurs principes fondamentaux, notamment l'induction analytique, la comparaison constante des données, l'émergence progressive des catégories conceptuelles, le codage évolutif ainsi que l'articulation continue entre les phases de collecte et d'analyse des données. Contrairement aux approches hypothético-déductives qui cherchent à tester des modèles théoriques préexistants, la théorisation ancrée privilégie une démarche inductive permettant de faire émerger progressivement les concepts, les relations et les processus à partir des expériences vécues, des pratiques observées et des interactions sociales situées dans leur contexte.
+Cinq principes fondamentaux la caractérisent :
 
-L'adoption de cette approche apparaît particulièrement pertinente dans le cadre de cette recherche, dans la mesure où les jardins scolaires constituent des dispositifs complexes situés à l'intersection de plusieurs dimensions complémentaires : l'éducation, la sécurité alimentaire et nutritionnelle, la gestion de l'environnement, la participation communautaire et l'adaptation aux changements climatiques. La compréhension de ces interactions nécessite une démarche méthodologique capable de saisir la richesse et la complexité des réalités locales sans les réduire à des variables prédéterminées.
+- l'**induction analytique** ;
+- la **comparaison constante** des données ;
+- l'**émergence progressive** des catégories conceptuelles ;
+- le **codage évolutif** ;
+- l'**articulation continue** entre collecte et analyse.
 
-La théorisation ancrée permet ainsi d'explorer les modes de fonctionnement des jardins scolaires, d'identifier les processus de résilience éducative et communautaire qui s'y développent, d'analyser les pratiques pédagogiques mises en œuvre ainsi que de comprendre les mécanismes d'appropriation locale et les stratégies d'adaptation climatique mobilisées dans les écoles rurales étudiées.
+Contrairement aux approches hypothético-déductives qui testent des modèles préexistants, cette démarche fait émerger concepts, relations et processus à partir des expériences vécues, des pratiques observées et des interactions sociales situées.
 
-Le choix de cette approche repose également sur la volonté d'accorder une place centrale à la parole et à l'expérience des différents acteurs impliqués dans les projets de jardins scolaires, notamment les enseignants, les élèves, les directeurs d'établissement, les parents d'élèves, les jardiniers communautaires ainsi que les responsables institutionnels. Dans cette perspective, les connaissances produites émergent de l'interaction entre le chercheur et les participants, ce qui permet d'accéder aux significations attribuées aux pratiques observées et aux réalités vécues sur le terrain.
+Son adoption est particulièrement justifiée ici : les jardins scolaires constituent des dispositifs complexes situés à l'intersection de l'éducation, de la sécurité alimentaire et nutritionnelle, de la gestion environnementale, de la participation communautaire et de l'adaptation climatique. Comprendre ces interactions exige une démarche capable de saisir la richesse des réalités locales sans les réduire à des variables prédéterminées.
 
-La présente recherche s'inscrit plus particulièrement dans la version constructiviste de la théorisation ancrée développée par Charmaz (2006). Cette approche considère que les données ne sont pas simplement découvertes ou recueillies de manière neutre, mais qu'elles sont co-construites à travers les interactions entre le chercheur, les participants et le contexte d'étude. Selon Charmaz (2006), les méthodes de la théorisation ancrée reposent sur des procédures systématiques et flexibles de collecte et d'analyse des données qualitatives permettant la construction de théories enracinées dans les données empiriques.
+Ce choix traduit également la volonté d'accorder une place centrale à la parole et à l'expérience des acteurs impliqués — enseignants, élèves, directeurs, parents, jardiniers communautaires, responsables institutionnels. Les connaissances produites émergent de l'interaction entre le chercheur et les participants.
 
-Cette posture constructiviste favorise l'intégration de la subjectivité des acteurs, la prise en compte des contextes socioculturels et territoriaux ainsi que l'analyse des significations attribuées aux jardins scolaires par les différents participants. Elle permet également d'interpréter les dynamiques éducatives observées à partir des réalités locales et des conditions spécifiques dans lesquelles elles se développent.
+La recherche s'inscrit plus précisément dans la **version constructiviste** de la théorisation ancrée développée par Charmaz (2006), selon laquelle les données ne sont pas découvertes de manière neutre mais **co-construites** à travers les interactions entre chercheur, participants et contexte. Cette posture favorise l'intégration de la subjectivité des acteurs, la prise en compte des contextes socioculturels et territoriaux, et l'analyse des significations attribuées aux jardins scolaires.
 
-Sur le plan opérationnel, la démarche de théorisation ancrée mise en œuvre dans cette recherche s'est articulée autour de plusieurs étapes analytiques successives. Celles-ci comprennent le codage ouvert visant à identifier les concepts émergents, le codage axial permettant d'établir des relations entre les catégories, le codage sélectif destiné à intégrer les catégories autour d'un phénomène central, ainsi que la rédaction de mémos analytiques et la réalisation de comparaisons constantes entre les différentes sources de données.
+Sur le plan opérationnel, la démarche s'est articulée autour de quatre étapes analytiques : le **codage ouvert** (identification des concepts émergents), le **codage axial** (établissement de relations entre catégories), le **codage sélectif** (intégration autour d'un phénomène central), ainsi que la rédaction de **mémos analytiques** et la conduite de comparaisons constantes entre sources de données. L'ensemble du processus a été soutenu par NVivo 15, qui a facilité l'organisation du corpus, le codage systématique, la gestion des catégories, la production de cartes conceptuelles et l'exploration des relations entre concepts — renforçant ainsi la rigueur, la traçabilité et la transparence de l'analyse.
 
-L'ensemble du processus d'analyse a été soutenu par l'utilisation du logiciel NVivo 15, qui a facilité l'organisation du corpus documentaire, le codage systématique des données, la gestion des catégories analytiques, la production de cartes conceptuelles et l'exploration des relations entre les concepts émergents. L'utilisation de cet outil a contribué à renforcer la rigueur, la traçabilité et la transparence du processus analytique.
+Le processus de codage a fait émerger sept catégories analytiques majeures : **pédagogie active**, **apprentissage expérientiel**, **résilience communautaire**, **adaptation climatique**, **participation locale**, **vulnérabilité environnementale** et **nutrition scolaire**. Leur mise en relation progressive a conduit à l'identification d'une **catégorie centrale** synthétisant les principaux processus observés :
 
-Conformément aux principes de la théorisation ancrée, le processus de codage a permis l'émergence progressive de plusieurs catégories analytiques majeures, notamment la pédagogie active, l'apprentissage expérientiel, la résilience communautaire, l'adaptation climatique, la participation locale, la vulnérabilité environnementale et la nutrition scolaire. Ces catégories ont été progressivement affinées et mises en relation au cours de l'analyse afin de construire une compréhension intégrée du phénomène étudié.
+> **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes. »**
 
-L'analyse comparative constante des données a conduit à l'identification d'une catégorie centrale synthétisant les principaux processus observés sur le terrain : **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes »**. Cette catégorie constitue le noyau conceptuel autour duquel s'organise le modèle théorique émergent élaboré dans le cadre de cette recherche.
-
-Ainsi, la théorisation ancrée apparaît comme une approche particulièrement adaptée pour appréhender la complexité des réalités éducatives rurales, analyser les interactions entre les acteurs scolaires et communautaires, comprendre les mécanismes locaux d'adaptation aux changements climatiques et construire un modèle théorique solidement enraciné dans les expériences et les pratiques observées au sein des écoles rurales djiboutiennes.
+Cette catégorie constitue le noyau conceptuel autour duquel s'organise le modèle théorique émergent élaboré dans cette recherche.
 
 ### 3.3 Terrain de recherche
 
 #### 3.3.1 Contexte général du terrain d'étude
 
-Le terrain de cette recherche est constitué d'écoles rurales djiboutiennes engagées dans la mise en œuvre de projets de jardins scolaires au sein de plusieurs régions du pays. Ces établissements scolaires représentent des espaces d'observation privilégiés pour analyser les interactions entre l'éducation, la résilience communautaire, l'adaptation aux changements climatiques, la sécurité alimentaire et le développement local. Ils offrent un cadre particulièrement pertinent pour comprendre comment les jardins scolaires contribuent à la transformation des pratiques éducatives et au renforcement des capacités d'adaptation des communautés rurales.
+Le terrain est constitué d'écoles rurales djiboutiennes engagées dans la mise en œuvre de projets de jardins scolaires. Ces établissements offrent un cadre d'observation privilégié pour analyser les interactions entre éducation, résilience communautaire, adaptation climatique, sécurité alimentaire et développement local.
 
-L'étude a été menée principalement dans les régions d'Ali-Sabieh, d'Arta, de Dikhil, d'Obock et de Tadjourah. Ces territoires se caractérisent par des conditions environnementales marquées par l'aridité, des températures élevées, une faible pluviométrie et des épisodes récurrents de sécheresse. À ces contraintes climatiques s'ajoutent des difficultés d'accès aux ressources hydriques, des vulnérabilités socio-économiques importantes et des disparités territoriales qui affectent les conditions de vie des populations ainsi que le fonctionnement des institutions éducatives.
+L'étude a été menée dans cinq régions : **Ali-Sabieh**, **Arta**, **Dikhil**, **Obock** et **Tadjourah**. Ces territoires se caractérisent par l'aridité, des températures élevées, une faible pluviométrie et des épisodes récurrents de sécheresse, auxquels s'ajoutent des difficultés d'accès aux ressources hydriques, des vulnérabilités socio-économiques importantes et des disparités territoriales marquées.
 
-Dans ce contexte, les écoles rurales sont particulièrement exposées aux effets des changements climatiques, lesquels influencent directement les conditions d'apprentissage, la fréquentation scolaire, la sécurité alimentaire des ménages et la disponibilité des ressources nécessaires au fonctionnement des établissements. Comme le souligne l'UNICEF (2021), les chocs climatiques perturbent de manière croissante la continuité éducative et les opportunités d'apprentissage des enfants dans les contextes vulnérables.
+Les écoles rurales y sont particulièrement exposées aux effets des changements climatiques, qui influencent les conditions d'apprentissage, la fréquentation scolaire, la sécurité alimentaire des ménages et la disponibilité des ressources nécessaires au fonctionnement des établissements. L'UNICEF (2021) souligne à cet égard que les chocs climatiques perturbent de manière croissante la continuité éducative et les occasions d'apprentissage des enfants en contexte vulnérable.
 
-Les jardins scolaires se développent ainsi dans des environnements caractérisés par de multiples défis éducatifs, sociaux et environnementaux. Leur étude permet d'examiner la manière dont les communautés scolaires mobilisent des ressources locales pour répondre aux enjeux de résilience, de sécurité alimentaire et d'adaptation climatique.
+L'étude de ces jardins permet ainsi d'examiner comment les communautés scolaires mobilisent des ressources locales pour répondre aux enjeux de résilience, de sécurité alimentaire et d'adaptation.
 
 #### 3.3.2 Les écoles rurales comme espaces de résilience éducative
 
-Les écoles rurales étudiées ne constituent pas uniquement des lieux dédiés à la transmission des savoirs formels. Elles jouent également un rôle central dans la vie sociale et communautaire des territoires où elles sont implantées. Dans plusieurs localités rurales, l'école représente un espace de socialisation, de mobilisation collective et de diffusion des savoirs liés au développement local et à la gestion durable des ressources.
+Les écoles rurales étudiées ne sont pas uniquement des lieux de transmission des savoirs formels : elles occupent une place centrale dans la vie sociale et communautaire de leur territoire. Dans plusieurs localités, l'école constitue un espace de socialisation, de mobilisation collective et de diffusion des savoirs liés au développement local et à la gestion durable des ressources.
 
-Les projets de jardins scolaires renforcent cette dimension territoriale de l'institution scolaire en favorisant l'apprentissage par l'expérience, la coopération entre les acteurs locaux et la participation communautaire. Ils contribuent à créer des espaces d'échanges où les savoirs scolaires, les connaissances locales et les préoccupations environnementales peuvent être articulés au service du développement de la communauté.
+Les projets de jardins scolaires renforcent cette dimension territoriale en favorisant l'apprentissage par l'expérience, la coopération entre acteurs locaux et la participation communautaire. Ils créent des espaces d'échange où savoirs scolaires, connaissances locales et préoccupations environnementales s'articulent au service du développement de la communauté.
 
-Cette perspective rejoint les travaux de Perrenoud (1994), qui soulignent que les pratiques éducatives ne peuvent être dissociées des contextes sociaux et territoriaux dans lesquels elles s'inscrivent. Dans cette optique, les jardins scolaires apparaissent comme des dispositifs favorisant l'intégration de l'école dans son environnement local tout en renforçant les capacités collectives de résilience face aux défis contemporains.
+Cette perspective rejoint les travaux de Perrenoud (1994), pour qui les pratiques éducatives ne peuvent être dissociées des contextes sociaux et territoriaux dans lesquels elles s'inscrivent.
 
 #### 3.3.3 Justification du choix des régions étudiées
 
-Le choix des régions retenues repose sur des considérations à la fois méthodologiques et scientifiques. Les territoires sélectionnés présentent une diversité de contextes environnementaux, éducatifs et communautaires permettant d'explorer les différentes modalités de mise en œuvre des jardins scolaires dans les zones rurales djiboutiennes.
+Le choix des régions repose sur des considérations méthodologiques et scientifiques. Les territoires retenus présentent une **diversité de contextes** environnementaux, éducatifs et communautaires permettant d'explorer différentes modalités de mise en œuvre du dispositif.
 
-Les régions étudiées se distinguent par la présence effective de projets de jardins scolaires, des degrés variables de vulnérabilité climatique, des niveaux différenciés d'accès aux ressources naturelles ainsi que des formes diverses de participation communautaire. Cette diversité constitue un atout méthodologique important puisqu'elle favorise la comparaison des expériences locales et l'identification des facteurs susceptibles d'influencer la réussite ou les difficultés rencontrées dans la mise en œuvre des projets.
+Ils se distinguent par la présence effective de projets de jardins scolaires, des degrés variables de vulnérabilité climatique, des niveaux différenciés d'accès aux ressources naturelles et des formes diverses de participation communautaire. Cette diversité constitue un atout méthodologique : elle favorise la comparaison des expériences locales et l'identification des facteurs influençant la réussite ou les difficultés des projets.
 
-Par ailleurs, les écoles sélectionnées présentent des caractéristiques contrastées en matière d'infrastructures, de disponibilité de l'eau, de ressources pédagogiques et de capacités organisationnelles. Cette variation des contextes contribue à enrichir l'analyse comparative et s'inscrit pleinement dans la logique de la théorisation ancrée, qui vise à faire émerger des catégories conceptuelles à partir de la diversité des situations observées.
+Les écoles sélectionnées présentent en outre des caractéristiques contrastées en matière d'infrastructures, de disponibilité de l'eau, de ressources pédagogiques et de capacités organisationnelles. Cette variation s'inscrit pleinement dans la logique de la théorisation ancrée, qui vise à faire émerger des catégories conceptuelles à partir de la diversité des situations observées.
 
 #### 3.3.4 Critères de sélection des écoles
 
-La sélection des établissements scolaires a été réalisée selon une stratégie d'échantillonnage raisonné, cohérente avec les principes de la recherche qualitative et de la théorisation ancrée. Plusieurs critères ont guidé ce processus de sélection.
+La sélection repose sur une stratégie d'**échantillonnage raisonné**, cohérente avec les principes de la recherche qualitative. Trois critères principaux ont guidé ce processus : disposer d'un jardin scolaire fonctionnel ou partiellement fonctionnel ; être localisé en milieu rural ; participer, directement ou indirectement, à des programmes soutenus par le Ministère de l'Éducation nationale et de la Formation professionnelle (MENFOP) ou par des partenaires techniques et financiers.
 
-Les écoles retenues devaient disposer d'un jardin scolaire fonctionnel ou partiellement fonctionnel, être localisées en milieu rural et participer, directement ou indirectement, à des programmes soutenus par le ministère de l'Éducation nationale et de la Formation professionnelle ou par des partenaires techniques et financiers impliqués dans le développement des jardins scolaires.
-
-La diversité géographique des établissements, l'accessibilité du terrain ainsi que le niveau d'engagement des acteurs éducatifs et communautaires ont également été pris en considération. Certaines écoles ont été choisies en raison de leur caractère innovant ou exemplaire dans la mise en œuvre des jardins scolaires, notamment lorsqu'elles présentaient des initiatives remarquables en matière de pédagogie active, de gestion durable des ressources ou d'implication communautaire.
-
-L'intégration de ces établissements dits « modèles » a permis d'identifier les facteurs de réussite, les mécanismes favorisant la pérennisation des projets ainsi que les stratégies locales développées pour faire face aux contraintes environnementales.
+La diversité géographique, l'accessibilité du terrain et le niveau d'engagement des acteurs éducatifs et communautaires ont également été pris en compte. Certaines écoles ont été retenues pour leur caractère **innovant ou exemplaire** — initiatives remarquables en matière de pédagogie active, de gestion durable des ressources ou d'implication communautaire. L'intégration de ces établissements « modèles » a permis d'identifier les facteurs de réussite, les mécanismes de pérennisation et les stratégies locales développées face aux contraintes environnementales.
 
 #### 3.3.5 Caractéristiques socio-environnementales du terrain
 
-Les territoires ruraux étudiés présentent plusieurs caractéristiques socio-environnementales communes. Ils sont notamment marqués par la faiblesse des précipitations, la fréquence des sécheresses, la rareté des ressources hydriques et une forte dépendance aux activités agro-pastorales pour la subsistance des ménages.
+Les territoires étudiés partagent plusieurs caractéristiques : faiblesse des précipitations, fréquence des sécheresses, rareté des ressources hydriques et forte dépendance aux activités agro-pastorales pour la subsistance des ménages.
 
-Ces conditions contribuent à accroître les vulnérabilités alimentaires et économiques des populations rurales et influencent directement les conditions de scolarisation des enfants. Les difficultés liées à l'accès à l'eau, à la sécurité alimentaire et aux moyens de subsistance peuvent affecter la fréquentation scolaire, les performances éducatives ainsi que la participation des familles aux activités de l'école.
+Ces conditions accroissent les vulnérabilités alimentaires et économiques des populations rurales et influencent directement les conditions de scolarisation. Les difficultés d'accès à l'eau, de sécurité alimentaire et de moyens de subsistance affectent la fréquentation scolaire, les performances éducatives et la participation des familles aux activités de l'école. Le Programme alimentaire mondial (WFP, 2020) souligne que l'insécurité alimentaire exerce une influence directe sur la participation scolaire et les performances des élèves.
 
-Dans ce contexte, les jardins scolaires apparaissent comme des dispositifs multifonctionnels permettant de répondre simultanément à plusieurs enjeux éducatifs et sociaux. Ils constituent des supports pédagogiques favorisant l'apprentissage expérientiel, des espaces de sensibilisation environnementale et des mécanismes susceptibles de contribuer au renforcement de la sécurité alimentaire et de la résilience communautaire. Comme le souligne le Programme alimentaire mondial (WFP, 2020), l'insécurité alimentaire exerce une influence directe sur la participation scolaire et les performances des élèves.
+Dans ce contexte, le jardin scolaire apparaît comme un dispositif multifonctionnel : support pédagogique favorisant l'apprentissage expérientiel, espace de sensibilisation environnementale et mécanisme susceptible de contribuer à la sécurité alimentaire et à la résilience communautaire.
 
 #### 3.3.6 Les acteurs du terrain de recherche
 
-Le terrain de recherche mobilise une pluralité d'acteurs impliqués à différents niveaux dans la conception, la mise en œuvre ou l'accompagnement des projets de jardins scolaires. Parmi eux figurent les enseignants, les directeurs d'école, les élèves, les parents d'élèves, les jardiniers communautaires, les inspecteurs de l'éducation, les formateurs, les responsables institutionnels ainsi que les représentants des partenaires techniques et financiers.
+Le terrain mobilise une pluralité d'acteurs impliqués à différents niveaux dans la conception, la mise en œuvre ou l'accompagnement des projets : enseignants, directeurs d'école, élèves, parents, jardiniers communautaires, inspecteurs de l'éducation, formateurs, responsables institutionnels et représentants des partenaires techniques et financiers.
 
-La prise en compte de cette diversité d'acteurs répond à la volonté de recueillir des perspectives multiples sur les fonctions, les usages et les effets des jardins scolaires. Elle permet également d'analyser les interactions qui se développent entre les différentes parties prenantes et d'explorer les mécanismes de gouvernance locale associés à ces projets.
-
-Cette approche s'inscrit dans une perspective interactionniste selon laquelle la compréhension d'un phénomène social nécessite l'étude des relations et des significations construites par les acteurs engagés dans l'action collective (Becker, 2002). La diversité des profils rencontrés constitue ainsi un élément essentiel pour appréhender la complexité des dynamiques éducatives, communautaires et environnementales observées dans les écoles rurales djiboutiennes.
+Cette diversité répond à la volonté de recueillir des perspectives multiples sur les fonctions, les usages et les effets des jardins scolaires, et d'analyser les interactions entre parties prenantes ainsi que les mécanismes de gouvernance locale. Elle s'inscrit dans une perspective interactionniste selon laquelle la compréhension d'un phénomène social exige l'étude des relations et des significations construites par les acteurs engagés dans l'action collective (Becker, 2002).
 
 #### 3.3.7 Le terrain comme espace de co-construction des connaissances
 
-Dans une perspective de théorisation ancrée constructiviste, le terrain de recherche ne peut être réduit à un simple espace de collecte de données. Il constitue un lieu dynamique d'interactions où les connaissances se construisent progressivement à travers les échanges entre le chercheur, les acteurs scolaires, les communautés locales et les institutions impliquées dans les projets de jardins scolaires. Cette conception du terrain s'inscrit dans une approche interprétative qui considère les données comme le résultat d'un processus de co-construction plutôt que comme des réalités objectives préexistantes à la recherche.
+Dans une perspective de théorisation ancrée constructiviste, le terrain ne se réduit pas à un espace de collecte : il constitue un lieu dynamique d'interactions où les connaissances se construisent progressivement à travers les échanges entre le chercheur, les acteurs scolaires, les communautés et les institutions.
 
-Les données mobilisées dans cette étude ont émergé progressivement à partir des interactions avec les participants, des observations réalisées sur le terrain, des entretiens menés auprès des différents acteurs ainsi que de l'analyse des documents institutionnels et communautaires. Les expériences vécues, les pratiques observées et les significations attribuées aux jardins scolaires ont ainsi constitué des sources essentielles dans le processus de construction des connaissances.
+Les données mobilisées ont émergé des interactions avec les participants, des observations réalisées, des entretiens conduits et de l'analyse des documents institutionnels et communautaires. Les expériences vécues, les pratiques observées et les significations attribuées au dispositif ont ainsi constitué les sources essentielles du processus de construction des connaissances.
 
-Dans cette perspective, les données qualitatives ne sont pas simplement découvertes, mais produites à travers les relations établies entre le chercheur et les participants (Charmaz, 2006). Cette posture méthodologique permet de prendre en considération la subjectivité des acteurs, la complexité des contextes locaux, les dynamiques sociales observées ainsi que les multiples significations associées aux jardins scolaires dans les différents territoires étudiés.
+Les données qualitatives ne sont donc pas simplement découvertes, mais **produites** à travers la relation établie entre le chercheur et les participants (Charmaz, 2006) — posture qui permet de prendre en considération la subjectivité des acteurs, la complexité des contextes locaux et la pluralité des significations associées aux jardins scolaires.
 
 #### 3.3.8 Importance stratégique du terrain dans la recherche
 
-Le terrain rural djiboutien constitue un espace d'investigation particulièrement pertinent pour analyser les interactions entre les dimensions éducatives, environnementales et communautaires du développement local. Les défis liés aux changements climatiques, à la sécurité alimentaire et aux vulnérabilités socio-économiques offrent un contexte privilégié pour examiner les mécanismes de résilience développés par les communautés éducatives.
+Le terrain rural djiboutien constitue un espace d'investigation particulièrement pertinent pour analyser les interactions entre dimensions éducatives, environnementales et communautaires du développement local. Les défis liés aux changements climatiques, à la sécurité alimentaire et aux vulnérabilités socio-économiques offrent un contexte privilégié pour examiner les mécanismes de résilience développés par les communautés éducatives.
 
-Dans ce cadre, les jardins scolaires apparaissent comme des dispositifs multifonctionnels qui dépassent largement leur vocation agricole initiale. Ils constituent à la fois des espaces d'apprentissage expérientiel, des lieux d'innovation pédagogique, des mécanismes de renforcement de la résilience communautaire et des supports d'éducation à l'environnement et au développement durable.
-
-L'étude de ces contextes ruraux permet ainsi de mieux comprendre comment les établissements scolaires développent localement des réponses éducatives adaptées aux contraintes environnementales, aux défis nutritionnels et aux vulnérabilités territoriales. Le terrain contribue dès lors à éclairer les processus par lesquels les jardins scolaires participent à la construction de capacités collectives d'adaptation face aux changements climatiques.
+Le jardin scolaire y dépasse largement sa vocation agricole initiale : il est à la fois espace d'apprentissage expérientiel, lieu d'innovation pédagogique, mécanisme de renforcement de la résilience communautaire et support d'éducation à l'environnement. L'étude de ces contextes éclaire ainsi les processus par lesquels les établissements élaborent localement des réponses éducatives adaptées aux contraintes environnementales, aux défis nutritionnels et aux vulnérabilités territoriales.
 
 ### 3.4 Population cible et acteurs enquêtés
 
 #### 3.4.1 Population cible de la recherche
 
-La présente recherche s'intéresse à une diversité d'acteurs impliqués directement ou indirectement dans les projets de jardins scolaires mis en œuvre dans les écoles rurales djiboutiennes. Cette diversité répond à la nécessité de saisir la complexité des dynamiques éducatives, environnementales et communautaires qui caractérisent ces dispositifs.
+La recherche s'intéresse à une diversité d'acteurs impliqués directement ou indirectement dans les projets de jardins scolaires. Le tableau ci-dessous en présente la composition et la contribution analytique.
 
-La population cible comprend principalement les enseignants, les directeurs d'école, les élèves, les parents d'élèves, les jardiniers communautaires, les inspecteurs pédagogiques, les formateurs, les responsables institutionnels ainsi que les représentants des partenaires techniques et financiers engagés dans le soutien aux jardins scolaires.
+| Catégorie d'acteurs | Rôle dans le dispositif | Apport pour la recherche |
+|---|---|---|
+| **Enseignants** | Intégration pédagogique du jardin, planification des activités, mobilisation des élèves | Modalités d'appropriation pédagogique, contextualisation des contenus |
+| **Directeurs d'école** | Gouvernance, coordination, mobilisation des ressources, partenariats | Organisation des projets, contraintes institutionnelles, stratégies de mobilisation |
+| **Élèves** | Bénéficiaires et participants aux activités | Apprentissages réalisés, perceptions, motivation, pratiques environnementales |
+| **Parents et communautés** | Participation, entretien, appui bénévole | Formes de coopération école-communauté, dynamiques de résilience locale |
+| **Jardiniers communautaires** | Savoir-faire technique, entretien, transmission | Savoirs agricoles locaux, pérennisation des activités |
+| **Acteurs institutionnels** | Pilotage, formation, suivi-évaluation | Orientations stratégiques, dispositifs d'accompagnement |
+| **Partenaires techniques et financiers** | Financement, appui technique | Modalités de soutien, conditions de durabilité |
 
-Le recours à cette pluralité d'acteurs vise à croiser les expériences, confronter les perceptions et analyser les interactions qui structurent le fonctionnement des jardins scolaires. Cette approche permet d'appréhender ces dispositifs comme des constructions collectives résultant de la participation de multiples parties prenantes. Dans cette perspective, Becker (2002) souligne que la compréhension des phénomènes sociaux nécessite l'étude des interactions entre les acteurs qui contribuent à leur production et à leur transformation.
+Le recours à cette pluralité vise à croiser les expériences, confronter les perceptions et analyser les interactions qui structurent le fonctionnement du dispositif, appréhendé comme une **construction collective**. Becker (2002) souligne à cet égard que la compréhension des phénomènes sociaux exige l'étude des interactions entre les acteurs qui contribuent à leur production et à leur transformation.
 
 #### 3.4.2 Stratégie d'échantillonnage
 
-Conformément aux principes de la recherche qualitative et de la théorisation ancrée, cette étude repose sur un échantillonnage raisonné (purposive sampling). L'objectif n'est pas de rechercher une représentativité statistique de la population, mais d'identifier des participants et des situations particulièrement riches en informations susceptibles d'éclairer les phénomènes étudiés.
+Conformément aux principes de la recherche qualitative et de la théorisation ancrée, l'étude repose sur un **échantillonnage raisonné** (*purposive sampling*). L'objectif n'est pas la représentativité statistique, mais l'identification de participants et de situations riches en informations.
 
-Cette stratégie permet de sélectionner des acteurs possédant une expérience significative des jardins scolaires et capables d'apporter des informations pertinentes sur les pratiques pédagogiques, les mécanismes de résilience communautaire, les processus d'adaptation climatique et les dynamiques de participation locale.
-
-Comme le souligne Patton (2002), la force de l'échantillonnage raisonné réside dans la sélection de cas riches en informations permettant une compréhension approfondie du phénomène étudié. Les participants ont ainsi été choisis en fonction de leur niveau d'implication dans les projets, de leur expérience du terrain, de la diversité de leurs profils et de leur capacité à fournir des données significatives pour l'analyse.
+Patton (2002) rappelle que la force de cette stratégie réside précisément dans la sélection de cas riches permettant une compréhension approfondie du phénomène étudié. Les participants ont donc été choisis en fonction de leur niveau d'implication dans les projets, de leur expérience du terrain, de la diversité de leurs profils et de leur capacité à fournir des données significatives.
 
 #### 3.4.3 Les enseignants
 
-Les enseignants occupent une place centrale dans cette recherche en raison de leur rôle dans l'intégration pédagogique des jardins scolaires au sein des activités d'enseignement et d'apprentissage. Ils interviennent directement dans la planification des activités, la mobilisation des élèves et la contextualisation des contenus pédagogiques.
+Les enseignants occupent une place centrale en raison de leur rôle dans l'intégration pédagogique du jardin aux activités d'enseignement. Ils interviennent dans la planification des activités, la mobilisation des élèves et la contextualisation des contenus.
 
-Les enseignants sélectionnés présentent des profils variés en termes d'ancienneté professionnelle, de niveau d'enseignement, d'expérience des jardins scolaires et de contexte régional d'exercice. Cette diversité permet d'analyser différentes modalités d'appropriation pédagogique des jardins scolaires ainsi que les représentations des enjeux environnementaux et éducatifs associés à ces dispositifs.
+Les profils retenus varient en ancienneté professionnelle, niveau d'enseignement, expérience des jardins scolaires et contexte régional d'exercice — diversité permettant d'analyser différentes modalités d'appropriation pédagogique ainsi que les représentations des enjeux environnementaux et éducatifs associés au dispositif.
 
 #### 3.4.4 Les directeurs d'école
 
-Les directeurs d'école ont été intégrés à l'étude en raison de leur rôle stratégique dans la gouvernance et la gestion des jardins scolaires. Ils interviennent dans la coordination des activités, la mobilisation des ressources, le développement des partenariats et les relations avec les communautés locales.
+Les directeurs ont été intégrés en raison de leur rôle stratégique dans la gouvernance et la gestion du jardin : coordination des activités, mobilisation des ressources, développement des partenariats, relations avec les communautés locales.
 
-Les entretiens réalisés avec les directeurs permettent d'explorer les modalités d'organisation des projets, les contraintes institutionnelles rencontrées, les stratégies de mobilisation communautaire ainsi que les formes de soutien apportées par les structures administratives et les partenaires de développement.
+Les entretiens conduits auprès d'eux permettent d'explorer les modalités d'organisation des projets, les contraintes institutionnelles, les stratégies de mobilisation communautaire et les formes de soutien apportées par les structures administratives et les partenaires.
 
 #### 3.4.5 Les élèves
 
-Les élèves constituent les principaux bénéficiaires des activités mises en œuvre dans les jardins scolaires. Leur participation à la recherche vise à comprendre les apprentissages réalisés, les perceptions développées à l'égard des jardins scolaires et les expériences vécues dans le cadre des activités pédagogiques associées.
+Principaux bénéficiaires des activités, les élèves ont été associés à la recherche pour comprendre les apprentissages réalisés, les perceptions développées et les expériences vécues.
 
-La sélection des élèves repose sur leur participation effective aux activités du jardin scolaire, leur implication dans les clubs ou projets environnementaux ainsi que la diversité des niveaux scolaires représentés. Les données recueillies permettent notamment d'analyser les effets perçus des jardins scolaires sur les apprentissages, la motivation scolaire et le développement de pratiques environnementales.
-
-Cette perspective rejoint la conception de Dewey (1938), selon laquelle l'apprentissage résulte avant tout de l'expérience vécue et de l'interaction active avec l'environnement.
+Leur sélection repose sur leur participation effective aux activités, leur implication dans les clubs ou projets environnementaux et la diversité des niveaux scolaires représentés. Les données recueillies permettent d'analyser les effets perçus du jardin sur les apprentissages, la motivation scolaire et le développement de pratiques environnementales — perspective cohérente avec la conception de Dewey (1938), pour qui l'apprentissage résulte avant tout de l'expérience vécue et de l'interaction active avec l'environnement.
 
 #### 3.4.6 Les parents et les communautés locales
 
-Les parents d'élèves et les membres des communautés locales ont été intégrés à la recherche afin d'examiner les formes de participation communautaire associées aux jardins scolaires. Leur implication permet d'analyser les mécanismes de coopération entre l'école et son environnement social ainsi que les dynamiques de résilience développées à l'échelle locale.
+Parents d'élèves et membres des communautés ont été intégrés afin d'examiner les formes de participation communautaire et d'analyser les mécanismes de coopération entre l'école et son environnement social.
 
-Dans plusieurs établissements, les jardins scolaires mobilisent des jardiniers communautaires, des associations locales, des comités scolaires et des parents bénévoles qui contribuent à la mise en œuvre et à la pérennisation des activités. Cette participation constitue un facteur essentiel de durabilité et de réussite des projets.
+Dans plusieurs établissements, les jardins mobilisent jardiniers communautaires, associations locales, comités scolaires et parents bénévoles qui contribuent à la mise en œuvre et à la pérennisation des activités — participation qui constitue un facteur essentiel de durabilité.
 
 #### 3.4.7 Les acteurs institutionnels
 
-La recherche inclut également plusieurs catégories d'acteurs institutionnels, notamment les inspecteurs pédagogiques, les responsables du ministère de l'Éducation nationale et de la Formation professionnelle, les formateurs du CFEEF, les responsables des programmes de restauration scolaire ainsi que les représentants des partenaires techniques et financiers.
-
-Ces acteurs apportent un éclairage complémentaire sur les orientations stratégiques, les politiques éducatives, les dispositifs d'accompagnement et les mécanismes de suivi-évaluation associés aux jardins scolaires.
+La recherche inclut également inspecteurs pédagogiques, responsables du MENFOP, formateurs du **Centre de formation des enseignants de l'enseignement fondamental (CFEEF)**, responsables des programmes de restauration scolaire et représentants des partenaires techniques et financiers. Ces acteurs éclairent les orientations stratégiques, les politiques éducatives, les dispositifs d'accompagnement et les mécanismes de suivi-évaluation.
 
 #### 3.4.8 Saturation théorique
 
-Conformément aux principes de la théorisation ancrée, le nombre de participants n'a pas été fixé de manière définitive avant le début de la collecte des données. Le processus de recrutement s'est poursuivi jusqu'à l'atteinte de la saturation théorique, c'est-à-dire jusqu'au moment où les nouvelles données recueillies n'apportaient plus d'éléments conceptuels significativement nouveaux.
+Conformément aux principes de la théorisation ancrée, le nombre de participants n'a pas été fixé avant le début de la collecte. Le recrutement s'est poursuivi jusqu'à l'atteinte de la **saturation théorique**, c'est-à-dire jusqu'au moment où les nouvelles données n'apportaient plus d'éléments conceptuels significativement nouveaux.
 
-La saturation théorique correspond à une stabilisation progressive des catégories analytiques et des relations conceptuelles émergentes (Glaser & Strauss, 1967). Elle constitue un critère essentiel garantissant la profondeur analytique et la solidité du modèle théorique élaboré.
+La saturation correspond à une stabilisation progressive des catégories analytiques et des relations conceptuelles émergentes (Glaser & Strauss, 1967). Elle constitue un critère essentiel garantissant la profondeur analytique et la solidité du modèle théorique élaboré.
 
 #### 3.4.9 Diversité des acteurs et triangulation des perspectives
 
-La diversité des participants contribue directement à la triangulation des données et au renforcement de la crédibilité des analyses produites. La confrontation de points de vue multiples permet d'identifier les convergences, les divergences et les complémentarités entre les expériences des différents groupes d'acteurs.
-
-Cette triangulation favorise une compréhension plus nuancée des jardins scolaires en tant qu'espaces pédagogiques, dispositifs communautaires, mécanismes de résilience et outils d'adaptation aux changements climatiques.
+La diversité des participants contribue directement à la triangulation des données et à la crédibilité des analyses. La confrontation de points de vue multiples permet d'identifier convergences, divergences et complémentarités entre les expériences des différents groupes, et favorise une compréhension nuancée du jardin scolaire comme espace pédagogique, dispositif communautaire, mécanisme de résilience et outil d'adaptation climatique.
 
 ### 3.5 Techniques de collecte des données
 
-La présente recherche mobilise plusieurs techniques complémentaires de collecte des données afin d'appréhender la complexité des jardins scolaires dans les écoles rurales djiboutiennes. Cette diversité méthodologique s'inscrit dans une logique de triangulation visant à croiser les sources d'information, les points de vue des acteurs, les expériences vécues, les pratiques observées ainsi que les discours institutionnels. Une telle stratégie permet de produire une compréhension approfondie et contextualisée des dynamiques éducatives, communautaires et environnementales associées aux jardins scolaires.
+La recherche mobilise quatre techniques complémentaires, dans une logique de **triangulation** visant à croiser sources d'information, points de vue, expériences vécues, pratiques observées et discours institutionnels. Denzin (1978) rappelle que la triangulation repose sur la combinaison de différentes méthodes appliquées à un même phénomène afin d'en renforcer la compréhension et la crédibilité analytique.
 
-Selon Denzin (1978), la triangulation repose sur la combinaison de différentes méthodes d'investigation appliquées à un même phénomène afin d'en renforcer la compréhension et la crédibilité analytique. Dans cette perspective, la collecte des données s'est appuyée principalement sur l'analyse documentaire, les entretiens semi-directifs, les observations participantes ainsi que l'exploitation de données visuelles et audiovisuelles.
+| Technique | Objet | Apport spécifique |
+|---|---|---|
+| **Analyse documentaire** | Rapports, projets d'établissement, fiches pédagogiques, guides techniques, littérature grise | Représentations institutionnelles et pratiques déclarées |
+| **Entretiens semi-directifs** | Enseignants, directeurs, élèves, parents, jardiniers, responsables | Significations, représentations, logiques d'action |
+| **Observation participante** | Activités pédagogiques, travaux culturaux, interactions, infrastructures | Pratiques effectives, écarts entre discours et action |
+| **Données visuelles et audiovisuelles** | Photographies, vidéos, affiches techniques, schémas | Dimensions matérielles et spatiales peu verbalisées |
 
 #### 3.5.1 L'analyse documentaire
 
-L'analyse documentaire constitue la première phase empirique de cette recherche. Elle occupe une place centrale dans la démarche méthodologique puisqu'elle permet d'explorer les représentations institutionnelles des jardins scolaires, les pratiques pédagogiques qui leur sont associées, les dispositifs de suivi et d'évaluation mis en œuvre ainsi que les dynamiques territoriales dans lesquelles ces projets s'inscrivent.
+L'analyse documentaire constitue la première phase empirique. Elle permet d'explorer les représentations institutionnelles des jardins scolaires, les pratiques pédagogiques associées, les dispositifs de suivi-évaluation et les dynamiques territoriales dans lesquelles ces projets s'inscrivent.
 
-La collecte documentaire a été réalisée auprès de plusieurs institutions nationales impliquées dans la conception, la mise en œuvre ou l'accompagnement des jardins scolaires, notamment le Ministère de l'Éducation nationale et de la Formation professionnelle (MENFOP), le Centre de formation des enseignants de l'enseignement fondamental (CFEEF), le Centre de recherche, d'information et de production de l'éducation nationale (CRIPEN), les services de restauration scolaire, les inspections régionales ainsi que différents partenaires techniques et financiers.
+La collecte a été réalisée auprès de plusieurs institutions nationales : MENFOP, CFEEF, **Centre de recherche, d'information et de production de l'éducation nationale (CRIPEN)**, services de restauration scolaire, inspections régionales et partenaires techniques et financiers.
 
-Cette démarche a permis de constituer un corpus documentaire diversifié comprenant des rapports institutionnels, des projets d'établissement, des fiches pédagogiques, des guides techniques, des rapports de formation, des outils de suivi-évaluation, des photographies, des vidéos pédagogiques ainsi que des archives relatives aux initiatives de jardins scolaires.
+Le corpus constitué comprend rapports institutionnels, projets d'établissement, fiches pédagogiques, guides techniques, rapports de formation, outils de suivi-évaluation, photographies, vidéos pédagogiques et archives relatives aux initiatives de jardins scolaires.
 
-Une part importante de ce corpus relève de la littérature grise produite directement par les acteurs du terrain, notamment les enseignants, les directeurs d'école, les inspecteurs, les formateurs et les jardiniers communautaires. Ces documents présentent un intérêt particulier dans la mesure où ils rendent compte des pratiques réelles, des expériences vécues et des modalités concrètes de mise en œuvre des projets.
+Une part importante relève de la **littérature grise** produite directement par les acteurs de terrain — enseignants, directeurs, inspecteurs, formateurs, jardiniers communautaires. Ces documents présentent un intérêt particulier : ils rendent compte des pratiques réelles, des expériences vécues et des modalités concrètes de mise en œuvre.
 
-Dans une perspective qualitative, les documents sont considérés comme des productions sociales reflétant les contextes, les pratiques et les significations développés par les acteurs (Flick, 2014). Leur analyse a permis d'accéder à la fois aux logiques institutionnelles et aux réalités opérationnelles des jardins scolaires dans les contextes ruraux étudiés.
+Dans une perspective qualitative, les documents sont considérés comme des **productions sociales** reflétant les contextes, les pratiques et les significations développées par les acteurs (Flick, 2014). Leur analyse a permis d'accéder à la fois aux logiques institutionnelles et aux réalités opérationnelles.
 
 #### 3.5.2 Les entretiens semi-directifs
 
-Les entretiens semi-directifs constituent la deuxième technique principale de collecte des données. Ils ont été mobilisés afin de recueillir les expériences, les perceptions, les représentations et les pratiques des différents acteurs impliqués dans les projets de jardins scolaires.
+Les entretiens semi-directifs ont été mobilisés pour recueillir expériences, perceptions, représentations et pratiques des acteurs. Cette méthode convient particulièrement à une approche interprétative centrée sur la compréhension des significations : elle laisse aux participants la liberté d'exprimer leur point de vue tout en offrant un cadre suffisamment structuré.
 
-Cette méthode apparaît particulièrement adaptée à une approche interprétative centrée sur la compréhension des significations attribuées aux phénomènes étudiés. Elle permet aux participants d'exprimer librement leurs points de vue tout en offrant au chercheur un cadre suffisamment structuré pour explorer les thèmes en lien avec les objectifs de la recherche.
+Kaufmann (2011) rappelle que l'entretien compréhensif vise à accéder à l'univers de sens des acteurs et aux logiques qui orientent leurs pratiques. Les guides d'entretien ont été élaborés progressivement à partir des résultats de l'analyse documentaire, des premières catégories émergentes et des mémos analytiques — démarche cohérente avec le caractère **itératif** de la théorisation ancrée.
 
-Selon Kaufmann (2011), l'entretien compréhensif vise à accéder à l'univers de sens des acteurs et à comprendre les logiques qui orientent leurs pratiques. Dans cette recherche, les guides d'entretien ont été élaborés de manière progressive à partir des résultats de l'analyse documentaire, des premières catégories émergentes et des mémos analytiques produits au cours du processus de codage.
-
-Cette démarche est cohérente avec les principes de la théorisation ancrée, selon lesquels la collecte, l'analyse et l'interprétation des données évoluent simultanément dans un processus itératif. Les entretiens ont été réalisés auprès des enseignants, des directeurs d'école, des élèves, des parents d'élèves, des jardiniers communautaires ainsi que des responsables institutionnels.
-
-Les principaux thèmes abordés concernaient les usages pédagogiques des jardins scolaires, les apprentissages des élèves, les formes de participation communautaire, les contraintes environnementales rencontrées, les mécanismes de résilience locale et les pratiques d'adaptation aux changements climatiques.
+Les thèmes abordés portaient sur les usages pédagogiques des jardins, les apprentissages des élèves, les formes de participation communautaire, les contraintes environnementales, les mécanismes de résilience locale et les pratiques d'adaptation climatique.
 
 #### 3.5.3 Les observations participantes
 
-Les observations participantes constituent une troisième technique essentielle de collecte des données. Elles permettent d'accéder directement aux pratiques et aux interactions qui structurent le fonctionnement quotidien des jardins scolaires.
+L'observation participante permet d'accéder directement aux pratiques et aux interactions structurant le fonctionnement quotidien des jardins scolaires. Elle offre la possibilité d'observer les comportements dans leur contexte naturel d'action et de documenter les **écarts éventuels entre discours et pratiques**.
 
-Cette méthode offre la possibilité d'observer les comportements des acteurs dans leur contexte naturel d'action et de documenter les écarts éventuels entre les discours recueillis lors des entretiens et les pratiques effectivement observées sur le terrain.
+Dans la tradition ethnographique, l'observation vise à comprendre les phénomènes sociaux du point de vue des acteurs eux-mêmes (Malinowski, 1922). Les observations ont porté sur les activités pédagogiques organisées au jardin, les travaux de plantation et de récolte, les techniques d'irrigation, les interactions entre enseignants et élèves et les formes de participation communautaire.
 
-Dans la tradition ethnographique, l'observation vise à comprendre les phénomènes sociaux à partir du point de vue des acteurs eux-mêmes (Malinowski, 1922). Dans le cadre de cette recherche, les observations ont porté sur les activités pédagogiques organisées dans les jardins scolaires, les travaux de plantation et de récolte, les techniques d'irrigation utilisées, les interactions entre enseignants et élèves ainsi que les formes de participation communautaire.
-
-Les observations ont également permis d'examiner les infrastructures disponibles, les contraintes matérielles rencontrées, l'état de fonctionnement des jardins et les pratiques environnementales développées dans les établissements étudiés. Elles ont ainsi contribué à une compréhension fine et contextualisée des réalités observées.
+Elles ont également documenté les infrastructures disponibles, les contraintes matérielles, l'état de fonctionnement des jardins et les pratiques environnementales développées.
 
 #### 3.5.4 Les données visuelles et audiovisuelles
 
-Afin d'enrichir l'analyse qualitative, la recherche a également mobilisé diverses données visuelles et audiovisuelles, notamment des photographies, des vidéos pédagogiques, des supports visuels, des affiches techniques et des schémas produits dans le cadre des activités scolaires.
+La recherche a mobilisé photographies, vidéos pédagogiques, supports visuels, affiches techniques et schémas produits dans le cadre des activités scolaires. Ces matériaux documentent les environnements éducatifs, les aménagements réalisés et les pratiques développées par les acteurs.
 
-L'utilisation de ces matériaux permet de documenter les environnements éducatifs, les aménagements réalisés dans les jardins scolaires et les pratiques développées par les différents acteurs. Les données visuelles constituent également une source complémentaire d'information permettant de saisir certaines dimensions de la réalité sociale qui demeurent difficilement accessibles à travers les seuls entretiens.
-
-Comme le souligne Pink (2013), les matériaux visuels offrent un accès privilégié à des aspects de la vie sociale qui ne sont pas toujours explicités dans les discours des participants. Dans cette étude, ces données ont notamment permis d'observer les systèmes d'irrigation, l'organisation des parcelles, les techniques culturales employées, les activités pédagogiques réalisées dans les jardins et les contraintes environnementales auxquelles les écoles sont confrontées.
+Pink (2013) souligne que les matériaux visuels offrent un accès privilégié à des aspects de la vie sociale qui ne sont pas toujours explicités dans les discours. Ils ont ici permis d'observer les systèmes d'irrigation, l'organisation des parcelles, les techniques culturales, les activités pédagogiques et les contraintes environnementales auxquelles les écoles sont confrontées.
 
 #### 3.5.5 Triangulation des techniques de collecte
 
-L'utilisation combinée de plusieurs techniques de collecte des données répond à une logique de triangulation méthodologique visant à renforcer la robustesse des analyses produites. Cette stratégie permet de confronter différentes sources d'information, de comparer les discours aux pratiques observées et d'identifier les convergences ou les divergences entre les données recueillies.
+L'articulation de ces quatre techniques renforce la robustesse des analyses : elle permet de confronter les sources, de comparer les discours aux pratiques observées et d'identifier convergences et divergences. Denzin (1978) souligne que la triangulation accroît la validité et la crédibilité des recherches qualitatives.
 
-Selon Denzin (1978), la triangulation contribue à accroître la validité et la crédibilité des recherches qualitatives en combinant plusieurs méthodes d'investigation. Dans cette étude, elle repose sur l'articulation entre l'analyse documentaire, les entretiens semi-directifs, les observations participantes et les données visuelles.
-
-La complémentarité de ces techniques a permis d'appréhender les jardins scolaires sous plusieurs angles : comme espaces pédagogiques, dispositifs de soutien nutritionnel, mécanismes de résilience communautaire et outils d'adaptation aux changements climatiques.
+Cette complémentarité a permis d'appréhender les jardins scolaires sous plusieurs angles : espaces pédagogiques, dispositifs de soutien nutritionnel, mécanismes de résilience communautaire et outils d'adaptation climatique.
 
 #### 3.5.6 Logique évolutive de la collecte des données
 
-Conformément aux principes de la théorisation ancrée, la collecte des données n'a pas suivi une progression strictement linéaire. Elle s'est développée de manière itérative et évolutive en fonction des catégories émergentes, des résultats intermédiaires et des besoins d'approfondissement identifiés au cours de l'analyse.
+Conformément aux principes de la théorisation ancrée, la collecte n'a pas suivi une progression linéaire : elle s'est développée de manière **itérative**, en fonction des catégories émergentes, des résultats intermédiaires et des besoins d'approfondissement.
 
-Les premières analyses documentaires ont notamment orienté l'élaboration des guides d'entretien, la définition des situations à observer ainsi que la construction progressive des catégories de codage. Les résultats issus des entretiens et des observations ont, à leur tour, conduit à la recherche de nouvelles sources documentaires et à l'affinement des pistes d'investigation.
+Les premières analyses documentaires ont orienté l'élaboration des guides d'entretien, la définition des situations à observer et la construction des catégories de codage. Les résultats des entretiens et des observations ont à leur tour conduit à la recherche de nouvelles sources documentaires et à l'affinement des pistes d'investigation.
 
-Cette interaction permanente entre collecte et analyse constitue un principe fondamental de la théorisation ancrée. Comme le soulignent Strauss et Corbin (1998), ces deux processus se développent simultanément et s'alimentent mutuellement tout au long de la recherche. Cette dynamique circulaire a contribué à renforcer la rigueur méthodologique de l'étude et à favoriser l'émergence progressive du modèle théorique élaboré à partir des données du terrain.
+Cette interaction permanente entre collecte et analyse constitue un principe fondamental de la démarche. Strauss et Corbin (1998) soulignent que ces deux processus se développent simultanément et s'alimentent mutuellement tout au long de la recherche — dynamique circulaire qui a renforcé la rigueur méthodologique de l'étude et favorisé l'émergence progressive du modèle théorique.
 
 ### 3.6 Constitution du corpus documentaire
 
 #### 3.6.1 Importance du corpus documentaire dans la recherche
 
-Le corpus documentaire constitue l'un des fondements empiriques de cette recherche doctorale. Dans une perspective de théorisation ancrée, les documents ne sont pas considérés comme de simples sources d'information secondaires, mais comme des matériaux empiriques à part entière permettant d'accéder aux pratiques éducatives, aux représentations institutionnelles, aux dynamiques communautaires ainsi qu'aux processus de résilience associés aux jardins scolaires dans les écoles rurales djiboutiennes.
+Le corpus documentaire constitue l'un des fondements empiriques de cette recherche. Dans une perspective de théorisation ancrée, les documents ne sont pas de simples sources secondaires, mais des **matériaux empiriques à part entière** donnant accès aux pratiques éducatives, aux représentations institutionnelles, aux dynamiques communautaires et aux processus de résilience associés aux jardins scolaires.
 
-L'analyse documentaire offre la possibilité d'explorer la manière dont les jardins scolaires sont conçus, organisés, mis en œuvre et évalués par les différents acteurs impliqués dans leur développement. Elle permet également de retracer l'évolution historique des initiatives, d'identifier les orientations institutionnelles qui les encadrent et de comprendre les formes d'appropriation locale qui caractérisent leur mise en œuvre.
+L'analyse documentaire permet d'explorer la manière dont ces dispositifs sont conçus, organisés, mis en œuvre et évalués, de retracer l'évolution historique des initiatives, d'identifier les orientations institutionnelles qui les encadrent et de comprendre les formes d'appropriation locale.
 
-Conformément à l'approche défendue par Flick (2014), les documents peuvent être appréhendés comme des productions sociales qui reflètent les pratiques, les valeurs, les représentations et les modes d'organisation des acteurs. Dans le cadre de cette étude, le corpus documentaire a constitué la première source d'investigation empirique et a joué un rôle déterminant dans l'identification des premières catégories analytiques, l'élaboration des guides d'entretien ainsi que la construction des nœuds de codage et des mémos analytiques dans NVivo 15.
+Conformément à l'approche de Flick (2014), les documents sont appréhendés comme des **productions sociales** reflétant pratiques, valeurs, représentations et modes d'organisation des acteurs. Le corpus a constitué la première source d'investigation empirique et a joué un rôle déterminant dans l'identification des premières catégories analytiques, l'élaboration des guides d'entretien et la construction des nœuds de codage et des mémos dans NVivo 15.
 
 #### 3.6.2 Processus de collecte documentaire
 
-La constitution du corpus documentaire a nécessité un travail approfondi de recherche, d'identification et de collecte auprès des principales institutions impliquées dans les projets de jardins scolaires à Djibouti. Les documents ont été recueillis auprès du Ministère de l'Éducation nationale et de la Formation professionnelle (MENFOP), du Centre de formation des enseignants de l'enseignement fondamental (CFEEF), du Centre de recherche, d'information et de production de l'éducation nationale (CRIPEN), des services de restauration scolaire, des inspections régionales de l'éducation ainsi que de plusieurs partenaires techniques et financiers intervenant dans le domaine éducatif et environnemental.
+La constitution du corpus a nécessité un travail approfondi de recherche, d'identification et de collecte auprès des institutions impliquées : MENFOP, CFEEF, CRIPEN, services de restauration scolaire, inspections régionales de l'éducation, ainsi que plusieurs partenaires techniques et financiers.
 
-La collecte documentaire a également mobilisé des archives administratives, des ressources pédagogiques, des productions scolaires, des supports audiovisuels et diverses ressources numériques produites dans le cadre des projets de jardins scolaires.
+La collecte a également mobilisé archives administratives, ressources pédagogiques, productions scolaires, supports audiovisuels et ressources numériques produites dans le cadre des projets.
 
-Cette démarche a permis de réunir un ensemble de documents souvent dispersés et parfois difficilement accessibles en raison de l'absence de systèmes centralisés d'archivage, de la fragilité de certains supports matériels et du caractère non publié d'une part importante des ressources disponibles. Selon Cellard (1997), les documents constituent des traces sociales permettant de reconstituer les pratiques, les représentations et les contextes dans lesquels elles prennent forme.
+Cette démarche a permis de réunir un ensemble de documents souvent dispersés et parfois difficilement accessibles, en raison de l'absence de systèmes centralisés d'archivage, de la fragilité de certains supports matériels et du caractère non publié d'une part importante des ressources. Cellard (1997) rappelle que les documents constituent des **traces sociales** permettant de reconstituer les pratiques, les représentations et les contextes dans lesquels elles prennent forme.
 
 #### 3.6.3 Nature des documents collectés
 
-Le corpus documentaire est composé de documents de nature variée produits par différents acteurs institutionnels, éducatifs et communautaires. Cette diversité répond à la volonté de saisir les multiples dimensions des jardins scolaires et de croiser différentes perspectives d'analyse.
+Le corpus rassemble des documents de nature variée produits par différents acteurs institutionnels, éducatifs et communautaires : rapports institutionnels, rapports de suivi-évaluation, projets d'établissement, fiches pédagogiques, guides techniques, rapports de formation, outils de suivi, photographies de terrain, vidéos pédagogiques, affiches techniques et archives pédagogiques historiques.
 
-Les documents collectés comprennent notamment des rapports institutionnels, des rapports de suivi-évaluation, des projets d'établissement, des fiches pédagogiques, des guides techniques, des rapports de formation, des outils de suivi, des photographies de terrain, des vidéos pédagogiques, des affiches techniques ainsi que des archives pédagogiques historiques.
+Une part importante relève de la **littérature grise** produite directement par les acteurs de terrain — enseignants, directeurs, inspecteurs, jardiniers communautaires, formateurs, responsables institutionnels. Ces documents offrent un accès privilégié aux pratiques quotidiennes, aux expériences locales et aux réalités concrètes peu visibles dans les publications officielles.
 
-Une part importante du corpus est constituée de littérature grise produite directement par les acteurs du terrain, notamment les enseignants, les directeurs d'école, les inspecteurs pédagogiques, les jardiniers communautaires, les formateurs et les responsables institutionnels. Ces documents offrent un accès privilégié aux pratiques quotidiennes, aux expériences locales et aux réalités concrètes souvent peu visibles dans les publications officielles.
-
-Comme le souligne Combessie (2007), les documents de terrain permettent d'appréhender les pratiques ordinaires et les mécanismes d'action qui échappent fréquemment aux sources institutionnelles formelles. Leur analyse contribue ainsi à enrichir la compréhension des dynamiques éducatives et communautaires associées aux jardins scolaires.
+Combessie (2007) souligne à cet égard que les documents de terrain permettent d'appréhender les pratiques ordinaires et les mécanismes d'action qui échappent fréquemment aux sources institutionnelles formelles.
 
 #### 3.6.4 La place de la littérature grise dans le corpus
 
-La littérature grise occupe une place particulièrement importante dans le corpus documentaire constitué pour cette recherche. Elle regroupe l'ensemble des documents produits en dehors des circuits classiques de publication scientifique ou institutionnelle et comprend notamment des projets pédagogiques élaborés par les écoles, des fiches pédagogiques conçues par les enseignants, des rapports internes de suivi, des documents de formation, des photographies de terrain ainsi que des supports techniques utilisés dans les activités de sensibilisation et d'accompagnement.
+La littérature grise regroupe l'ensemble des documents produits en dehors des circuits classiques de publication : projets pédagogiques élaborés par les écoles, fiches conçues par les enseignants, rapports internes de suivi, documents de formation, photographies de terrain, supports techniques de sensibilisation.
 
-Ces ressources présentent un intérêt scientifique majeur dans la mesure où elles permettent d'accéder aux pratiques effectives des acteurs, aux adaptations locales développées sur le terrain et aux formes concrètes d'appropriation des jardins scolaires. Selon Maingueneau (2014), les documents non publiés constituent des matériaux particulièrement précieux pour comprendre les réalités sociales dans leur fonctionnement quotidien.
+Ces ressources présentent un intérêt scientifique majeur : elles donnent accès aux **pratiques effectives**, aux adaptations locales et aux formes concrètes d'appropriation du dispositif. Maingueneau (2014) considère que les documents non publiés constituent des matériaux particulièrement précieux pour comprendre les réalités sociales dans leur fonctionnement quotidien.
 
-L'analyse de cette littérature grise a permis d'identifier des informations rarement présentes dans les documents officiels, notamment en ce qui concerne les innovations pédagogiques, les difficultés opérationnelles et les stratégies locales de résilience développées par les communautés scolaires.
+Leur analyse a permis d'identifier des informations rarement présentes dans les documents officiels, notamment sur les innovations pédagogiques, les difficultés opérationnelles et les stratégies locales de résilience.
 
 #### 3.6.5 Critères de sélection des documents
 
-La sélection des documents a reposé sur plusieurs critères méthodologiques visant à garantir la pertinence et la qualité du corpus. Les documents retenus devaient présenter un lien direct avec les jardins scolaires, les écoles rurales ou les thématiques associées à l'éducation environnementale, à la résilience communautaire, à la sécurité alimentaire ou à l'adaptation aux changements climatiques.
+La sélection a reposé sur des critères visant à garantir la pertinence et la qualité du corpus. Les documents retenus devaient présenter un lien direct avec les jardins scolaires, les écoles rurales ou les thématiques associées — éducation environnementale, résilience communautaire, sécurité alimentaire, adaptation climatique.
 
-Une attention particulière a été accordée à la richesse informationnelle des documents, à leur intérêt analytique, à la diversité des acteurs représentés ainsi qu'à la couverture territoriale des différentes régions étudiées.
-
-Les documents sélectionnés devaient permettre d'éclairer les pratiques pédagogiques mises en œuvre dans les jardins scolaires, les dispositifs institutionnels de soutien, les mécanismes de participation communautaire, les contraintes environnementales rencontrées et les stratégies locales développées pour renforcer la résilience des écoles rurales.
+Une attention particulière a été accordée à la richesse informationnelle des documents, à leur intérêt analytique, à la diversité des acteurs représentés et à la couverture territoriale des régions étudiées. Les documents devaient éclairer les pratiques pédagogiques, les dispositifs institutionnels de soutien, les mécanismes de participation communautaire, les contraintes environnementales et les stratégies locales de résilience.
 
 #### 3.6.6 Organisation et classification du corpus documentaire
 
-Après leur collecte, les documents ont été numérisés, codifiés, classés et intégrés dans le logiciel NVivo 15 afin de faciliter leur gestion et leur analyse. Chaque document a reçu un identifiant unique accompagné d'un ensemble d'attributs descriptifs permettant son repérage et sa classification.
+Après collecte, les documents ont été numérisés, codifiés, classés et intégrés dans NVivo 15. Chaque document a reçu un **identifiant unique** accompagné d'attributs descriptifs permettant son repérage et sa classification.
 
-Le système de codification mis en place distingue plusieurs catégories documentaires, notamment les rapports institutionnels (RI), les fiches pédagogiques (FP), les supports techniques (ST), les photographies (PH), les vidéos pédagogiques (VD) et les archives historiques (AH).
+Le système de codification distingue six catégories documentaires :
 
-Par ailleurs, des métadonnées relatives à l'origine du document, à sa date de production, à son auteur, à sa localisation géographique et à sa thématique principale ont été intégrées dans la base de données documentaire. Cette organisation a facilité le codage qualitatif, les requêtes thématiques, les analyses comparatives et la construction progressive des catégories analytiques.
+| Code | Catégorie documentaire |
+|---|---|
+| **RI** | Rapports institutionnels |
+| **FP** | Fiches pédagogiques |
+| **ST** | Supports techniques |
+| **PH** | Photographies |
+| **VD** | Vidéos pédagogiques |
+| **AH** | Archives historiques |
+
+Des métadonnées relatives à l'origine du document, à sa date de production, à son auteur, à sa localisation géographique et à sa thématique principale ont été intégrées à la base documentaire — organisation qui a facilité le codage qualitatif, les requêtes thématiques, les analyses comparatives et la construction progressive des catégories.
 
 #### 3.6.7 Volume et composition du corpus documentaire
 
-Au terme du processus de collecte, le corpus documentaire comprenait six rapports institutionnels, huit guides pédagogiques historiques, cinq fiches pédagogiques, douze supports techniques, dix photographies de terrain, trois vidéos pédagogiques ainsi que plusieurs outils de suivi-évaluation et documents complémentaires.
+Au terme du processus de collecte, le corpus se composait comme suit.
 
-Toutefois, l'ensemble des ressources recensées n'a pas pu être exploité de manière exhaustive. Certaines archives présentaient des problèmes de conservation, de lisibilité ou de numérisation limitant leur intégration dans le processus analytique. L'analyse approfondie a donc porté principalement sur les documents ayant pu être numérisés, classés et intégrés dans NVivo 15 dans des conditions satisfaisantes de qualité et de traçabilité.
+| Type de document | Nombre |
+|---|---|
+| Rapports institutionnels et documents de suivi-évaluation | 6 |
+| Guides pédagogiques historiques | 8 |
+| Fiches pédagogiques | 5 |
+| Affiches et supports techniques | 12 |
+| Articles et documents scientifiques | 4 |
+| Fiches de suivi et outils d'évaluation | 2 |
+| Projet pédagogique d'établissement | 1 |
+| Photographies de terrain | 10 |
+| Vidéos pédagogiques | 3 |
+| **Total** | **51** |
+
+L'ensemble des ressources recensées n'a toutefois pas pu être exploité de manière exhaustive : certaines archives présentaient des problèmes de conservation, de lisibilité ou de numérisation limitant leur intégration. L'analyse approfondie a donc porté sur les documents ayant pu être numérisés, classés et intégrés dans NVivo 15 dans des conditions satisfaisantes de qualité et de traçabilité.
 
 #### 3.6.8 Préparation du corpus pour l'analyse dans NVivo 15
 
-Avant leur traitement analytique, les documents ont fait l'objet d'un ensemble d'opérations préalables comprenant la numérisation, l'organisation des fichiers, la codification, l'anonymisation lorsque cela était nécessaire, l'indexation thématique et l'importation dans NVivo 15.
+Avant traitement analytique, les documents ont fait l'objet d'opérations préalables : numérisation, organisation des fichiers, codification, anonymisation lorsque nécessaire, indexation thématique et importation dans NVivo 15.
 
-Chaque document a ensuite été associé à des attributs descriptifs, à des catégories documentaires spécifiques et à des mémos méthodologiques permettant de consigner les observations du chercheur tout au long du processus d'analyse.
+Chaque document a été associé à des attributs descriptifs, à une catégorie documentaire et à des mémos méthodologiques consignant les observations du chercheur. Cette préparation méthodique a assuré la traçabilité des données, facilité le codage et renforcé la rigueur de l'analyse.
 
-Cette préparation méthodique du corpus a permis d'assurer la traçabilité des données, de faciliter les opérations de codage et de renforcer la rigueur de l'analyse qualitative.
+#### 3.6.9 Fonctions analytiques du corpus documentaire
 
-#### 3.6.9 Fonction analytique du corpus documentaire
+Le corpus remplit quatre fonctions complémentaires :
 
-Le corpus documentaire remplit plusieurs fonctions complémentaires dans cette recherche. Il joue d'abord une fonction descriptive en permettant de caractériser les contextes éducatifs, institutionnels et environnementaux dans lesquels les jardins scolaires se développent. Il remplit également une fonction historique en documentant l'évolution des projets et des politiques associées.
-
-Sur le plan analytique, les documents contribuent à l'identification des pratiques pédagogiques, des mécanismes de participation communautaire, des contraintes environnementales et des dispositifs institutionnels de soutien. Ils constituent également une source importante de comparaison entre les différentes situations observées sur le terrain.
-
-Enfin, le corpus joue une fonction interprétative essentielle en alimentant le processus de construction théorique caractéristique de la théorisation ancrée.
+- une fonction **descriptive**, en caractérisant les contextes éducatifs, institutionnels et environnementaux ;
+- une fonction **historique**, en documentant l'évolution des projets et des politiques associées ;
+- une fonction **analytique**, en contribuant à l'identification des pratiques pédagogiques, des mécanismes de participation, des contraintes environnementales et des dispositifs de soutien ;
+- une fonction **interprétative**, en alimentant le processus de construction théorique.
 
 #### 3.6.10 Le corpus documentaire comme fondement de l'émergence théorique
 
-Dans cette recherche, le corpus documentaire ne constitue pas uniquement une source descriptive ou contextuelle. Il représente un véritable point de départ dans la construction progressive du modèle théorique émergent.
+Le corpus ne constitue pas seulement une source descriptive ou contextuelle : il représente le **point de départ** de la construction progressive du modèle théorique émergent.
 
-L'analyse systématique des documents a permis d'identifier des récurrences thématiques, des relations entre catégories et des phénomènes significatifs qui ont progressivement donné lieu à la formulation de premières hypothèses interprétatives. Ces analyses ont été enrichies par la rédaction de mémos analytiques et par l'application du principe de comparaison constante propre à la théorisation ancrée.
+Son analyse systématique a permis d'identifier des récurrences thématiques, des relations entre catégories et des phénomènes significatifs ayant donné lieu aux premières hypothèses interprétatives, enrichies par la rédaction de mémos et l'application du principe de comparaison constante.
 
-Les premières catégories émergentes identifiées à partir du corpus documentaire concernaient notamment la pédagogie active, l'apprentissage expérientiel, la résilience communautaire, l'adaptation aux changements climatiques, la vulnérabilité environnementale et la participation locale. Ces catégories ont ensuite orienté l'élaboration des guides d'entretien, la conduite des observations de terrain ainsi que les analyses subséquentes.
+Les premières catégories émergentes concernaient la pédagogie active, l'apprentissage expérientiel, la résilience communautaire, l'adaptation climatique, la vulnérabilité environnementale et la participation locale. Elles ont ensuite orienté l'élaboration des guides d'entretien, la conduite des observations et les analyses subséquentes.
 
-Ainsi, le corpus documentaire a joué un rôle structurant dans l'ensemble du processus de recherche en constituant à la fois une source empirique majeure et un levier essentiel dans l'émergence progressive de la conceptualisation théorique développée au cours de l'étude.
+### 3.7 L'analyse assistée par NVivo 15 : justification et mise en œuvre
 
-### 3.7 Analyse des données avec NVivo 15
+Cette section présente l'**outil** d'analyse et les opérations de préparation et d'organisation du corpus. Le processus de codage proprement dit, qui relève de la démarche de théorisation ancrée, est traité en [section 3.8](#38-le-processus-de-codage-dans-la-théorisation-ancrée).
 
 #### 3.7.1 Justification du choix de NVivo 15
 
-L'analyse des données qualitatives produites dans le cadre de cette recherche a été réalisée à l'aide du logiciel NVivo 15. Le recours à cet outil s'inscrit dans une démarche visant à assurer une gestion rigoureuse, systématique et transparente de l'ensemble des données recueillies au cours de l'étude.
+Le recours à NVivo 15 s'inscrit dans une démarche visant à assurer une gestion rigoureuse, systématique et transparente des données recueillies. Ce choix se justifie par la **diversité des matériaux empiriques** — documents institutionnels, entretiens semi-directifs, observations de terrain, données visuelles et audiovisuelles — ainsi que par l'ampleur du corpus et la multiplicité des sources.
 
-Le choix de NVivo 15 se justifie par la diversité des matériaux empiriques mobilisés, comprenant des documents institutionnels, des entretiens semi-directifs, des observations de terrain ainsi que des données visuelles et audiovisuelles. L'ampleur du corpus documentaire et la multiplicité des sources rendaient nécessaire l'utilisation d'un outil capable de faciliter l'organisation, le codage et l'analyse des données qualitatives.
+Le logiciel permet de centraliser les sources, de structurer le processus de codage, de produire des matrices analytiques, de développer des cartes conceptuelles et de visualiser les relations entre catégories émergentes. Bazeley et Jackson (2013) soulignent que les logiciels d'analyse qualitative assistée par ordinateur favorisent une gestion plus rigoureuse et plus transparente des données tout en renforçant la traçabilité du processus analytique.
 
-NVivo permet notamment de centraliser les différentes sources d'information, de structurer le processus de codage, de produire des matrices analytiques, de développer des cartes conceptuelles et de visualiser les relations entre les catégories émergentes. Selon Bazeley et Jackson (2013), les logiciels d'analyse qualitative assistée par ordinateur favorisent une gestion plus rigoureuse et plus transparente des données tout en renforçant la traçabilité du processus analytique.
+Son usage est particulièrement cohérent avec les principes de la théorisation ancrée : il facilite la comparaison constante, l'évolution progressive des catégories conceptuelles et la construction graduelle du modèle théorique émergent.
 
-L'utilisation de NVivo 15 apparaît particulièrement cohérente avec les principes de la théorisation ancrée puisqu'elle facilite la comparaison constante des données, l'évolution progressive des catégories conceptuelles et la construction graduelle du modèle théorique émergent.
+#### 3.7.2 Préparation des données avant importation
 
-#### 3.7.2 Préparation des données avant l'importation dans NVivo 15
+L'ensemble des données a fait l'objet d'un processus de préparation garantissant qualité, cohérence et traçabilité : numérisation des documents papier, classement thématique, indexation, anonymisation lorsque nécessaire et codification selon un système standardisé.
 
-Avant leur intégration dans le logiciel, l'ensemble des données a fait l'objet d'un processus de préparation visant à garantir leur qualité, leur cohérence et leur traçabilité. Cette phase comprenait la numérisation des documents papier, leur classement thématique, leur indexation, leur anonymisation lorsque cela était nécessaire ainsi que leur codification selon un système standardisé.
+Les documents physiques ont été numérisés puis convertis dans des formats compatibles. Photographies, vidéos et autres fichiers multimédias ont été préparés, organisés et renommés selon une nomenclature uniforme. Chaque document a été associé à un identifiant unique et à des métadonnées descriptives précisant origine, date de production, type, contexte d'utilisation et thématique principale.
 
-Les documents physiques ont été numérisés puis convertis dans des formats compatibles avec NVivo. Les photographies, vidéos et autres fichiers multimédias ont également été préparés, organisés et renommés selon une nomenclature uniforme facilitant leur repérage au sein du corpus.
+#### 3.7.3 Organisation du corpus dans le logiciel
 
-Chaque document a été associé à un identifiant unique ainsi qu'à un ensemble de métadonnées descriptives permettant de préciser son origine, sa date de production, son type, son contexte d'utilisation et sa thématique principale. Cette préparation préalable a contribué à assurer la cohérence du corpus et à renforcer la rigueur du processus analytique.
+Après importation, les données ont été organisées selon une **structure hiérarchique** distinguant les catégories documentaires, regroupées selon leur nature, leur provenance institutionnelle, leur localisation géographique et leur contenu thématique.
 
-#### 3.7.3 Organisation du corpus documentaire dans NVivo 15
-
-Après leur importation dans le logiciel, les données ont été organisées selon une structure hiérarchique permettant de distinguer les différentes catégories documentaires. Les documents ont été regroupés en fonction de leur nature, de leur provenance institutionnelle, de leur localisation géographique et de leur contenu thématique.
-
-Les principales catégories documentaires comprenaient les rapports institutionnels, les guides pédagogiques, les fiches pédagogiques, les supports techniques, les outils de suivi-évaluation, les photographies de terrain, les vidéos pédagogiques ainsi que les archives historiques relatives aux jardins scolaires.
-
-Cette organisation a facilité la navigation dans le corpus, les opérations de codage et la réalisation de requêtes analytiques. Elle a également permis de comparer les données selon différents critères tels que la région, le type d'établissement, la période de production ou encore la thématique abordée.
-
-Conformément à l'approche proposée par Saldaña (2016), cette structuration initiale constitue une étape essentielle dans le processus d'analyse qualitative puisqu'elle favorise l'organisation des données et leur interprétation progressive.
+Cette organisation a facilité la navigation dans le corpus, les opérations de codage et la réalisation de requêtes analytiques. Elle a permis de comparer les données selon différents critères — région, type d'établissement, période de production, thématique. Saldaña (2016) rappelle que cette structuration initiale constitue une étape essentielle de l'analyse qualitative, en ce qu'elle favorise l'organisation des données et leur interprétation progressive.
 
 #### 3.7.4 Création des attributs descriptifs
 
-Afin de faciliter les analyses comparatives, plusieurs attributs descriptifs ont été créés dans NVivo 15. Ces attributs ont permis d'associer à chaque document ou source de données des informations contextuelles utiles à l'analyse.
+Plusieurs attributs descriptifs ont été créés afin de faciliter les analyses comparatives : type de document, région d'origine, année de production, niveau scolaire concerné, institution productrice, thématique principale, statut analytique.
 
-Les principaux attributs retenus concernaient le type de document, la région d'origine, l'année de production, le niveau scolaire concerné, l'institution productrice, la thématique principale ainsi que le statut analytique du document.
+Leur intégration a permis de conduire des analyses croisées entre catégories de données et de mieux comprendre les variations observées selon les contextes territoriaux, institutionnels ou pédagogiques.
 
-L'intégration de ces attributs a permis de réaliser des analyses croisées entre différentes catégories de données et de mieux comprendre les variations observées selon les contextes territoriaux, institutionnels ou pédagogiques.
+#### 3.7.5 Cartes conceptuelles et matrices analytiques
 
-#### 3.7.5 Le codage ouvert
+NVivo 15 a également servi à produire des représentations graphiques facilitant l'analyse : cartes conceptuelles, matrices de codage, diagrammes relationnels et autres formes de visualisation.
 
-La première étape du processus d'analyse correspond au codage ouvert. Cette phase vise à examiner les données de manière détaillée afin d'identifier les unités de sens significatives et de faire émerger les premiers concepts à partir du matériau empirique.
+Ces représentations ont permis d'identifier les relations entre catégories émergentes, de visualiser les interactions entre acteurs et de structurer progressivement le modèle théorique. Les cartes conceptuelles ont notamment mis en évidence les liens entre pratiques pédagogiques, résilience communautaire, contraintes environnementales et mécanismes locaux d'adaptation.
 
-Selon Strauss et Corbin (1998), le codage ouvert consiste à fragmenter les données afin de repérer les concepts et les catégories qui émergent directement du terrain. Dans cette recherche, cette étape a conduit à la création de nombreux nœuds analytiques correspondant aux thèmes récurrents observés dans les documents, les entretiens et les observations.
+#### 3.7.6 Apports méthodologiques de l'outil
 
-Parmi les premiers concepts identifiés figurent notamment la pédagogie active, l'apprentissage expérientiel, la gestion de l'eau, la participation communautaire, la résilience locale, l'adaptation climatique, la nutrition scolaire et la vulnérabilité environnementale.
+L'utilisation de NVivo 15 a constitué un soutien méthodologique majeur : organisation rigoureuse du corpus, traçabilité systématique des opérations analytiques, gestion transparente des étapes du codage.
 
-Cette phase exploratoire a permis de respecter la logique inductive de la théorisation ancrée en laissant les catégories émerger progressivement des données plutôt qu'en imposant un cadre théorique prédéfini.
+Le logiciel a facilité la mise en œuvre des principes fondamentaux de la théorisation ancrée — comparaison constante, évolution progressive des catégories, saturation théorique, construction graduelle du modèle conceptuel. Ses fonctionnalités de visualisation et de requêtes ont renforcé la profondeur de l'analyse et la crédibilité des interprétations.
 
-#### 3.7.6 Le codage axial
+NVivo 15 apparaît ainsi non seulement comme un outil de gestion des données, mais comme un **support à la construction théorique** fondée sur les données empiriques.
 
-La deuxième étape de l'analyse correspond au codage axial. Cette phase vise à établir des liens entre les catégories identifiées lors du codage ouvert afin de mieux comprendre les relations qui structurent le phénomène étudié.
+### 3.8 Le processus de codage dans la théorisation ancrée
 
-Le codage axial permet d'organiser les catégories autour de dimensions plus larges, d'identifier les conditions d'apparition des phénomènes observés et de mettre en évidence les relations de causalité, de dépendance ou d'interaction entre les différents concepts émergents.
+#### 3.8.1 Fondements analytiques de la démarche
 
-Selon Strauss et Corbin (1998), cette étape consiste à relier systématiquement les catégories à leurs sous-catégories afin de construire une compréhension plus intégrée du phénomène étudié.
+L'analyse repose sur les principes de la théorisation ancrée, qui vise à construire progressivement une compréhension théorique enracinée dans les données plutôt qu'à vérifier des hypothèses formulées *a priori*. Concepts, catégories analytiques et relations théoriques émergent de l'interaction entre les données, le chercheur et le terrain.
 
-L'analyse menée dans NVivo a notamment permis de mettre en évidence les relations entre la pédagogie active et l'apprentissage expérientiel, entre la gestion de l'eau et l'adaptation climatique, entre la participation communautaire et la résilience locale ainsi qu'entre la nutrition scolaire et la fréquentation des élèves.
+Glaser et Strauss (1967) décrivent cette démarche comme un processus systématique de génération, de développement et de vérification provisoire d'une théorie à partir de la collecte et de l'analyse des données. Son adéquation à l'étude des jardins scolaires djiboutiens tient à la complexité des phénomènes observés, à la diversité des acteurs impliqués et au caractère encore peu exploré de la thématique dans le contexte national.
 
-Ces regroupements ont contribué à structurer progressivement le modèle interprétatif émergent.
-
-#### 3.7.7 Le codage sélectif et l'émergence de la catégorie centrale
-
-La dernière étape du processus analytique correspond au codage sélectif. Cette phase vise à intégrer les catégories précédemment développées autour d'un phénomène central capable de rendre compte de l'ensemble des relations identifiées dans les données.
-
-Selon Glaser (1978), le codage sélectif consiste à concentrer progressivement l'analyse sur les catégories directement reliées à la variable ou catégorie centrale. Cette démarche permet de consolider la cohérence théorique du modèle en construction.
-
-À partir des analyses réalisées dans NVivo 15, une catégorie centrale a progressivement émergé :
-
-**« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes ».**
-
-Cette catégorie synthétise les principales dimensions observées au cours de la recherche et met en évidence les interactions entre l'éducation, l'environnement, la sécurité alimentaire, la participation communautaire et l'adaptation aux changements climatiques.
-
-#### 3.7.8 Les mémos analytiques
-
-Les mémos analytiques ont constitué un outil essentiel tout au long du processus de recherche. Ils ont permis de consigner les réflexions du chercheur, de documenter l'évolution des catégories émergentes et de formuler progressivement des interprétations théoriques à partir des données.
-
-Selon Charmaz (2006), la rédaction de mémos représente une étape intermédiaire fondamentale entre la collecte des données et la construction théorique. Elle favorise le développement de la sensibilité théorique du chercheur et contribue à approfondir l'analyse des phénomènes observés.
-
-Dans cette recherche, les mémos ont porté notamment sur les mécanismes de résilience communautaire, les pratiques pédagogiques associées aux jardins scolaires, les contraintes liées à la gestion de l'eau, les dynamiques territoriales et les formes d'apprentissage expérientiel observées dans les écoles rurales.
-
-#### 3.7.9 Les cartes conceptuelles et matrices analytiques
-
-NVivo 15 a également été utilisé pour produire diverses représentations graphiques facilitant l'analyse et l'interprétation des données. Ces outils comprenaient notamment des cartes conceptuelles, des matrices de codage, des diagrammes relationnels et d'autres formes de visualisation analytique.
-
-Ces représentations ont permis d'identifier les relations entre les catégories émergentes, de visualiser les interactions entre les acteurs et de structurer progressivement le modèle théorique développé dans la recherche.
-
-Les cartes conceptuelles ont notamment mis en évidence les liens entre les pratiques pédagogiques, la résilience communautaire, les contraintes environnementales et les mécanismes locaux d'adaptation aux changements climatiques.
-
-#### 3.7.10 Apports méthodologiques de NVivo 15
-
-L'utilisation de NVivo 15 a constitué un soutien méthodologique majeur dans la conduite de cette recherche. Le logiciel a permis d'assurer une organisation rigoureuse du corpus, une traçabilité systématique des opérations analytiques et une gestion transparente des différentes étapes du codage.
-
-Par ailleurs, il a facilité la mise en œuvre des principes fondamentaux de la théorisation ancrée, notamment la comparaison constante, l'évolution progressive des catégories, la saturation théorique et la construction graduelle du modèle conceptuel émergent.
-
-Enfin, les fonctionnalités de visualisation et de requêtes analytiques ont contribué à renforcer la profondeur de l'analyse et la crédibilité des interprétations produites. Dans cette perspective, NVivo 15 apparaît non seulement comme un outil de gestion des données, mais également comme un véritable support à la construction théorique fondée sur les données empiriques recueillies sur le terrain.
-
-##
-
-### 3.8 Processus de codage dans la théorisation ancrée
-
-#### 3.8.1 Fondements analytiques de la théorisation ancrée
-
-L'analyse des données dans cette recherche repose sur les principes méthodologiques de la théorisation ancrée (Grounded Theory), approche qui vise à construire progressivement une compréhension théorique enracinée dans les données empiriques plutôt qu'à vérifier des hypothèses formulées a priori. Cette démarche s'inscrit dans une logique inductive et interprétative selon laquelle les concepts, les catégories analytiques et les relations théoriques émergent progressivement de l'interaction entre les données, le chercheur et le terrain.
-
-Selon Glaser et Strauss (1967), la théorisation ancrée consiste à générer, développer et vérifier provisoirement une théorie à partir d'un processus systématique de collecte et d'analyse des données. Cette approche apparaît particulièrement adaptée à l'étude des jardins scolaires dans les écoles rurales djiboutiennes en raison de la complexité des phénomènes observés, de la diversité des acteurs impliqués et du caractère encore peu exploré de cette thématique dans le contexte national.
-
-Dans cette recherche, la théorisation ancrée a permis d'explorer les pratiques pédagogiques associées aux jardins scolaires, d'analyser les dynamiques de participation communautaire, de comprendre les mécanismes locaux de résilience et d'identifier les processus d'adaptation aux changements climatiques développés dans les contextes ruraux étudiés.
-
-L'ensemble du processus analytique repose sur plusieurs principes fondamentaux : l'induction analytique, la comparaison constante, l'émergence progressive des catégories, le codage évolutif, la rédaction de mémos analytiques et l'interaction continue entre collecte et analyse des données.
+Six principes structurent le processus analytique : induction analytique, comparaison constante, émergence progressive des catégories, codage évolutif, rédaction de mémos et interaction continue entre collecte et analyse.
 
 #### 3.8.2 La logique inductive de l'analyse
 
-La présente étude adopte une démarche inductive dans laquelle les catégories analytiques ne sont pas définies préalablement à la collecte des données. Elles émergent progressivement à partir de l'analyse des documents, des entretiens, des observations de terrain et des interactions avec les participants.
+Les catégories analytiques n'ont pas été définies préalablement à la collecte : elles émergent de l'analyse des documents, des entretiens, des observations et des interactions avec les participants.
 
-Cette posture méthodologique permet de maintenir une ouverture constante aux réalités du terrain et d'éviter l'imposition de cadres conceptuels préétablis susceptibles de limiter la compréhension du phénomène étudié. Comme le souligne Charmaz (2006), la théorisation ancrée repose sur des lignes directrices systématiques mais flexibles permettant de construire des interprétations directement enracinées dans les données empiriques.
+Cette posture maintient une **ouverture constante aux réalités du terrain** et évite l'imposition de cadres conceptuels préétablis susceptibles de limiter la compréhension du phénomène. Charmaz (2006) souligne que la théorisation ancrée repose sur des lignes directrices systématiques mais flexibles permettant de construire des interprétations directement enracinées dans les données.
 
-L'analyse inductive a ainsi conduit à l'émergence progressive de plusieurs catégories conceptuelles majeures, notamment la pédagogie active, l'apprentissage expérientiel, la résilience communautaire, l'adaptation climatique, la participation locale et la vulnérabilité environnementale. Ces catégories ont été progressivement affinées et enrichies tout au long du processus de recherche.
+L'analyse inductive a fait émerger six catégories conceptuelles majeures : pédagogie active, apprentissage expérientiel, résilience communautaire, adaptation climatique, participation locale et vulnérabilité environnementale — progressivement affinées tout au long de la recherche.
 
 #### 3.8.3 Le principe de comparaison constante
 
-La comparaison constante constitue l'un des mécanismes centraux de la théorisation ancrée. Elle consiste à confronter continuellement les données entre elles afin d'identifier les similitudes, les différences, les régularités et les variations observées dans les situations étudiées.
+La comparaison constante consiste à confronter continuellement les données afin d'identifier similitudes, différences, régularités et variations. Glaser et Strauss (1967) y voient le moyen de développer les catégories théoriques de manière systématique tout en assurant leur enracinement empirique.
 
-Selon Glaser et Strauss (1967), cette méthode permet de développer les catégories théoriques de manière systématique tout en assurant leur enracinement dans les données. Dans cette recherche, la comparaison constante a été appliquée à différents niveaux : entre les documents du corpus, entre les entretiens réalisés auprès des différents groupes d'acteurs, entre les observations de terrain ainsi qu'entre les catégories émergentes elles-mêmes.
+Elle a été appliquée à quatre niveaux : entre les documents du corpus, entre les entretiens conduits auprès des différents groupes d'acteurs, entre les observations de terrain, et entre les catégories émergentes elles-mêmes.
 
-Cette démarche comparative a permis de mettre en évidence des régularités concernant les usages pédagogiques des jardins scolaires, tout en révélant des variations importantes liées aux contextes territoriaux, aux ressources disponibles, aux formes de participation communautaire et aux contraintes environnementales rencontrées dans les différentes régions étudiées.
+Cette démarche a mis en évidence des **régularités** concernant les usages pédagogiques des jardins, tout en révélant d'importantes **variations** liées aux contextes territoriaux, aux ressources disponibles, aux formes de participation communautaire et aux contraintes environnementales propres à chaque région.
 
 #### 3.8.4 Le codage ouvert
 
-Le codage ouvert constitue la première étape du processus analytique. Il consiste à examiner minutieusement les données afin d'identifier les unités de sens significatives et de faire émerger les premiers concepts à partir du matériau empirique.
+Première étape du processus, le codage ouvert consiste à examiner minutieusement les données afin d'identifier les unités de sens significatives et de faire émerger les premiers concepts.
 
-Selon Strauss et Corbin (1998), cette étape vise à fragmenter les données pour repérer les phénomènes, les actions, les interactions et les processus qui apparaissent dans les discours et les documents analysés. Le codage ouvert permet ainsi de développer une compréhension initiale du phénomène étudié sans recourir à des catégories préétablies.
+Strauss et Corbin (1998) le décrivent comme une fragmentation des données destinée à repérer phénomènes, actions, interactions et processus apparaissant dans les discours et les documents analysés — sans recourir à des catégories préétablies.
 
-Dans le cadre de cette recherche, cette phase a conduit à l'identification de nombreux codes relatifs notamment à la gestion de l'eau, aux activités pratiques, à la participation des élèves, aux contraintes d'irrigation, à la nutrition scolaire, à l'implication communautaire et aux apprentissages expérientiels.
-
-Ces premiers codes ont été progressivement regroupés dans NVivo 15 sous forme de nœuds analytiques constituant les bases de la conceptualisation émergente.
+Cette phase a conduit à l'identification de nombreux codes relatifs à la gestion de l'eau, aux activités pratiques, à la participation des élèves, aux contraintes d'irrigation, à la nutrition scolaire, à l'implication communautaire et aux apprentissages expérientiels. Ces codes ont été regroupés dans NVivo 15 sous forme de **nœuds analytiques** constituant les bases de la conceptualisation émergente.
 
 #### 3.8.5 Le codage axial
 
-Le codage axial représente la deuxième phase du processus d'analyse. Il vise à établir des relations entre les catégories issues du codage ouvert afin de construire une compréhension plus intégrée du phénomène étudié.
+Le codage axial établit des relations entre les catégories issues du codage ouvert afin de construire une compréhension plus intégrée du phénomène. Strauss et Corbin (1998) le définissent comme la mise en relation systématique des catégories et de leurs sous-catégories, permettant d'explorer conditions, interactions, conséquences et processus.
 
-Selon Strauss et Corbin (1998), cette étape consiste à relier les catégories à leurs sous-catégories et à identifier les relations qui les unissent. Le codage axial permet ainsi d'explorer les conditions, les interactions, les conséquences et les processus associés aux phénomènes observés.
+Cinq relations structurantes ont été mises en évidence :
 
-Dans cette recherche, cette phase a permis de mettre en évidence plusieurs relations structurantes, notamment entre la pédagogie active et la motivation des élèves, entre la gestion de l'eau et la durabilité des jardins scolaires, entre la participation communautaire et la résilience locale, entre la nutrition scolaire et la fréquentation des élèves ainsi qu'entre l'apprentissage expérientiel et la contextualisation des savoirs.
+| Catégorie | Relation identifiée | Catégorie associée |
+|---|---|---|
+| Pédagogie active | ↔ | Motivation des élèves |
+| Gestion de l'eau | ↔ | Durabilité des jardins scolaires |
+| Participation communautaire | ↔ | Résilience locale |
+| Nutrition scolaire | ↔ | Fréquentation des élèves |
+| Apprentissage expérientiel | ↔ | Contextualisation des savoirs |
 
-Cette étape a contribué à organiser les catégories émergentes, à enrichir les mémos analytiques et à élaborer les premières représentations conceptuelles du phénomène étudié.
+Cette étape a contribué à organiser les catégories émergentes, à enrichir les mémos analytiques et à élaborer les premières représentations conceptuelles du phénomène.
 
 #### 3.8.6 Le codage sélectif et l'identification de la catégorie centrale
 
-Le codage sélectif constitue l'étape finale du processus de théorisation ancrée. Son objectif est d'intégrer les différentes catégories développées au cours de l'analyse autour d'une catégorie centrale capable de rendre compte de l'ensemble des relations observées dans les données.
+Étape finale, le codage sélectif intègre les catégories développées autour d'un **phénomène central** capable de rendre compte de l'ensemble des relations observées. Glaser (1978) le décrit comme une concentration progressive de l'analyse sur les catégories directement reliées à la catégorie centrale, consolidant ainsi la cohérence théorique du modèle.
 
-Selon Glaser (1978), cette phase consiste à concentrer progressivement l'analyse sur les catégories directement reliées au phénomène central de la recherche. Elle permet de consolider la cohérence théorique du modèle émergent et d'assurer l'intégration des différentes dimensions du phénomène étudié.
+L'analyse a conduit à l'émergence de la catégorie centrale suivante :
 
-L'analyse progressive réalisée dans cette étude a conduit à l'émergence de la catégorie centrale suivante :
+> **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes. »**
 
-**« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes ».**
-
-Cette catégorie centrale synthétise les principales dimensions mises en évidence par l'analyse et relie les pratiques pédagogiques, les mécanismes de participation communautaire, les enjeux nutritionnels, les contraintes environnementales et les stratégies locales d'adaptation aux changements climatiques.
+Cette catégorie relie les pratiques pédagogiques, les mécanismes de participation communautaire, les enjeux nutritionnels, les contraintes environnementales et les stratégies locales d'adaptation aux changements climatiques.
 
 #### 3.8.7 Les mémos analytiques
 
-Les mémos analytiques occupent une place essentielle dans la théorisation ancrée. Ils constituent un espace réflexif permettant au chercheur de documenter l'évolution de sa pensée analytique, de formuler des hypothèses interprétatives et de suivre le développement progressif des catégories émergentes.
+Les mémos constituent un espace réflexif permettant de documenter l'évolution de la pensée analytique, de formuler des hypothèses interprétatives et de suivre le développement des catégories émergentes.
 
-Charmaz (2006) considère la rédaction de mémos comme l'étape intermédiaire fondamentale entre la collecte des données et la construction théorique. Ces écrits analytiques favorisent le développement de la sensibilité théorique et permettent d'explorer les relations entre les concepts émergents.
+Charmaz (2006) y voit l'étape intermédiaire fondamentale entre la collecte des données et la construction théorique : ces écrits favorisent le développement de la **sensibilité théorique** et permettent d'explorer les relations entre concepts.
 
-Dans cette recherche, les mémos ont porté notamment sur les usages pédagogiques des jardins scolaires, les contraintes liées à l'accès à l'eau, les mécanismes de résilience communautaire, les pratiques environnementales, les dynamiques territoriales et les formes d'apprentissage expérientiel observées sur le terrain.
-
-Ces mémos ont joué un rôle déterminant dans la structuration des catégories, l'identification des liens conceptuels et la construction progressive du modèle théorique.
+Les mémos rédigés dans cette recherche ont porté sur les usages pédagogiques des jardins, les contraintes d'accès à l'eau, les mécanismes de résilience communautaire, les pratiques environnementales, les dynamiques territoriales et les formes d'apprentissage expérientiel observées. Ils ont joué un rôle déterminant dans la structuration des catégories, l'identification des liens conceptuels et la construction progressive du modèle.
 
 #### 3.8.8 La saturation théorique
 
-Conformément aux principes de la théorisation ancrée, la collecte et l'analyse des données se sont poursuivies jusqu'à l'atteinte de la saturation théorique. Cette notion désigne le moment où les nouvelles données n'apportent plus d'informations conceptuellement significatives permettant d'enrichir les catégories existantes.
+La collecte et l'analyse se sont poursuivies jusqu'à l'atteinte de la **saturation théorique** — moment où les nouvelles données n'apportent plus d'informations conceptuellement significatives. Glaser et Strauss (1967) la définissent comme le point où l'analyse de nouvelles données ne contribue plus au développement des propriétés des catégories ni à la compréhension des relations théoriques déjà identifiées.
 
-Selon Glaser et Strauss (1967), la saturation est atteinte lorsque l'analyse de nouvelles données ne contribue plus au développement des propriétés des catégories ou à la compréhension des relations théoriques déjà identifiées.
-
-Dans cette recherche, la saturation théorique a été observée progressivement pour plusieurs catégories majeures, notamment la pédagogie active, la participation communautaire, l'adaptation climatique et la vulnérabilité environnementale. Les données recueillies devenaient alors redondantes et confirmaient les structures analytiques déjà établies.
-
-L'atteinte de la saturation a constitué un indicateur important de la robustesse du modèle théorique émergent.
+La saturation a été observée progressivement pour quatre catégories majeures : pédagogie active, participation communautaire, adaptation climatique et vulnérabilité environnementale. Les données recueillies devenaient alors redondantes et confirmaient les structures analytiques établies. Son atteinte constitue un indicateur important de la robustesse du modèle théorique émergent.
 
 #### 3.8.9 Construction progressive du modèle théorique
 
-L'ensemble du processus de codage a conduit à la construction progressive d'un modèle théorique intégrant les principales dimensions observées dans les écoles rurales étudiées. Ce modèle met en relation les pratiques éducatives, les dynamiques environnementales, les enjeux nutritionnels, les formes de participation communautaire et les mécanismes de résilience territoriale.
+L'ensemble du processus de codage a conduit à la construction d'un modèle intégrant les principales dimensions observées : pratiques éducatives, dynamiques environnementales, enjeux nutritionnels, formes de participation communautaire et mécanismes de résilience territoriale.
 
-L'analyse révèle que les jardins scolaires ne peuvent être réduits à de simples espaces de production agricole ou à des outils pédagogiques isolés. Ils apparaissent comme des dispositifs multidimensionnels favorisant simultanément l'apprentissage expérientiel, le renforcement des liens entre l'école et la communauté, le développement de capacités locales de résilience et l'adaptation aux contraintes environnementales.
+L'analyse révèle que les jardins scolaires ne peuvent être réduits à des espaces de production agricole ou à des outils pédagogiques isolés. Ils apparaissent comme des **dispositifs multidimensionnels** favorisant simultanément l'apprentissage expérientiel, le renforcement des liens entre l'école et la communauté, le développement de capacités locales de résilience et l'adaptation aux contraintes environnementales.
 
-Cette conceptualisation théorique est directement issue des données empiriques recueillies à travers l'analyse documentaire, les entretiens, les observations de terrain et les comparaisons constantes réalisées au moyen de NVivo 15. Elle constitue l'aboutissement du processus de théorisation ancrée mis en œuvre dans cette recherche et fournit un cadre interprétatif permettant de comprendre le rôle des jardins scolaires dans les écoles rurales djiboutiennes.
+Cette conceptualisation est directement issue des données empiriques recueillies par l'analyse documentaire, les entretiens, les observations de terrain et les comparaisons constantes réalisées au moyen de NVivo 15. Elle constitue l'aboutissement du processus de théorisation ancrée mis en œuvre et fournit le cadre interprétatif mobilisé au chapitre suivant.
 
 ### 3.9 Triangulation des données, crédibilité scientifique et validité qualitative
 
 #### 3.9.1 La question de la validité en recherche qualitative
 
-Dans les recherches qualitatives interprétatives fondées sur la théorisation ancrée, la qualité scientifique ne repose pas principalement sur la généralisation statistique des résultats, mais sur la crédibilité, la cohérence et la profondeur des interprétations produites à partir des données empiriques. La validité est ainsi envisagée comme la capacité du chercheur à rendre compte de manière rigoureuse, transparente et contextualisée des phénomènes étudiés.
+Dans les recherches qualitatives interprétatives fondées sur la théorisation ancrée, la qualité scientifique ne repose pas sur la généralisation statistique des résultats, mais sur la **crédibilité**, la **cohérence** et la **profondeur** des interprétations produites. La validité y est envisagée comme la capacité du chercheur à rendre compte de manière rigoureuse, transparente et contextualisée des phénomènes étudiés.
 
-Selon Lincoln et Guba (1985), la question centrale de la qualité scientifique en recherche qualitative réside dans la confiance que les lecteurs peuvent accorder aux résultats et aux interprétations proposées. Dans cette perspective, plusieurs critères ont été mobilisés afin de renforcer la crédibilité de cette étude, notamment la triangulation des données, la diversité des sources d'information, la saturation théorique, la traçabilité analytique, la réflexivité du chercheur ainsi que la transparence du processus méthodologique.
+Lincoln et Guba (1985) situent la question centrale de la qualité scientifique dans la confiance que les lecteurs peuvent accorder aux résultats et aux interprétations proposées. Six critères ont été mobilisés à cette fin.
 
-L'ensemble de ces dispositifs vise à garantir la robustesse des analyses et à assurer la cohérence entre les données recueillies, les procédures analytiques mises en œuvre et les interprétations théoriques produites.
+| Critère de crédibilité | Mise en œuvre dans la recherche |
+|---|---|
+| **Triangulation** | Croisement de quatre types de sources, d'acteurs et de méthodes |
+| **Diversité des sources** | Corpus documentaire varié, sept catégories d'acteurs |
+| **Saturation théorique** | Poursuite de la collecte jusqu'à redondance conceptuelle |
+| **Traçabilité analytique** | Documentation systématique des opérations dans NVivo 15 |
+| **Réflexivité** | Mémos méthodologiques réguliers, objectivation de la position du chercheur |
+| **Transparence méthodologique** | Explicitation des choix, procédures et limites |
 
 #### 3.9.2 La triangulation des données
 
-La triangulation constitue l'un des principaux mécanismes mobilisés pour renforcer la crédibilité des résultats de cette recherche. Elle consiste à croiser différentes sources d'information, différents types de données et différentes perspectives analytiques afin d'obtenir une compréhension plus complète du phénomène étudié.
+La triangulation consiste à croiser sources d'information, types de données et perspectives analytiques afin d'obtenir une compréhension plus complète du phénomène. Denzin (1978) la fonde sur la combinaison de plusieurs approches méthodologiques appliquées à un même objet, ce qui permet de confronter les données, de vérifier la cohérence des résultats et de limiter les risques d'interprétations partielles ou biaisées.
 
-Selon Denzin (1978), la triangulation repose sur la combinaison de plusieurs approches méthodologiques appliquées à un même objet de recherche. Cette stratégie permet de confronter les données, de vérifier la cohérence des résultats obtenus et de limiter les risques d'interprétations partielles ou biaisées.
-
-Dans cette étude, la triangulation a été mobilisée à travers quatre dimensions complémentaires : la triangulation des sources documentaires, la triangulation des acteurs, la triangulation méthodologique et la triangulation des données visuelles et textuelles. Cette diversité a permis de croiser les informations recueillies et d'approfondir l'analyse des jardins scolaires dans leurs dimensions éducatives, communautaires et environnementales.
+Quatre formes complémentaires ont été mobilisées : triangulation des **sources documentaires**, des **acteurs**, des **méthodes** et des **données visuelles et textuelles**.
 
 #### 3.9.3 Triangulation des sources documentaires
 
-La première forme de triangulation repose sur la diversité des documents intégrés au corpus documentaire. Les données analysées proviennent de multiples sources institutionnelles, pédagogiques et communautaires, comprenant notamment des rapports institutionnels, des projets d'école, des fiches pédagogiques, des guides techniques, des rapports de formation, des outils de suivi-évaluation, des photographies, des vidéos pédagogiques et des archives historiques.
+La première forme repose sur la diversité des documents intégrés au corpus : rapports institutionnels, projets d'école, fiches pédagogiques, guides techniques, rapports de formation, outils de suivi-évaluation, photographies, vidéos et archives historiques.
 
-Cette diversité documentaire a permis de confronter différents niveaux de discours et d'analyse, allant des orientations institutionnelles aux pratiques pédagogiques effectivement observées sur le terrain. Elle a également favorisé l'identification des écarts éventuels entre les prescriptions officielles et les modalités concrètes de mise en œuvre des jardins scolaires.
-
-Comme le souligne Flick (2014), la triangulation consiste à examiner un phénomène à partir de perspectives multiples afin d'en enrichir la compréhension. L'exploitation de sources documentaires variées a ainsi contribué à renforcer la profondeur analytique de la recherche.
+Cette diversité a permis de confronter différents niveaux de discours — des orientations institutionnelles aux pratiques effectivement observées — et de repérer les **écarts entre prescriptions officielles et modalités concrètes** de mise en œuvre. Flick (2014) rappelle que la triangulation consiste précisément à examiner un phénomène à partir de perspectives multiples afin d'en enrichir la compréhension.
 
 #### 3.9.4 Triangulation des acteurs
 
-La recherche repose également sur la diversité des acteurs impliqués dans les projets de jardins scolaires. Les données ont été recueillies auprès d'enseignants, de directeurs d'école, d'élèves, de parents d'élèves, de jardiniers communautaires, d'inspecteurs pédagogiques, de responsables institutionnels ainsi que de représentants des partenaires techniques et financiers.
+Les données ont été recueillies auprès d'enseignants, de directeurs, d'élèves, de parents, de jardiniers communautaires, d'inspecteurs pédagogiques, de responsables institutionnels et de représentants des partenaires techniques et financiers.
 
-Cette pluralité de participants a permis de comparer les perceptions, les expériences et les logiques d'action des différentes catégories d'acteurs concernées. Elle a également contribué à mieux comprendre les interactions qui structurent le fonctionnement des jardins scolaires et les mécanismes de gouvernance qui les soutiennent.
-
-La confrontation de ces différents points de vue a permis d'enrichir l'analyse et de mettre en évidence la dimension collective et multidimensionnelle des jardins scolaires dans les contextes ruraux étudiés.
+Cette pluralité a permis de comparer perceptions, expériences et logiques d'action des différentes catégories d'acteurs, de mieux comprendre les interactions structurant le fonctionnement des jardins scolaires et les mécanismes de gouvernance qui les soutiennent. La confrontation de ces points de vue met en évidence la **dimension collective et multidimensionnelle** du dispositif.
 
 #### 3.9.5 Triangulation méthodologique
 
-La crédibilité des résultats repose également sur la combinaison de plusieurs techniques de collecte des données. Cette triangulation méthodologique associe l'analyse documentaire, les entretiens semi-directifs, les observations participantes ainsi que l'analyse de données visuelles et audiovisuelles.
+La combinaison de l'analyse documentaire, des entretiens semi-directifs, des observations participantes et de l'analyse de données visuelles répond à une logique de complémentarité. Creswell (2013) souligne que le recours à des méthodes multiples renforce la validité des recherches qualitatives en offrant des perspectives complémentaires.
 
-Selon Creswell (2013), l'utilisation de méthodes multiples permet de renforcer la validité des recherches qualitatives en offrant des perspectives complémentaires sur le phénomène étudié. Dans cette recherche, les différentes méthodes ont permis d'accéder à des dimensions distinctes mais complémentaires des jardins scolaires.
-
-Les entretiens ont permis de recueillir les perceptions et les expériences des acteurs, tandis que les observations participantes ont offert un accès direct aux pratiques réelles. L'analyse documentaire a apporté un éclairage institutionnel et historique, alors que les données visuelles ont permis de documenter les contextes matériels et environnementaux dans lesquels se déroulent les activités observées.
-
-Cette complémentarité méthodologique a contribué à renforcer la cohérence des interprétations produites.
+Chaque méthode donne accès à une dimension distincte : les entretiens recueillent perceptions et expériences ; les observations offrent un accès direct aux pratiques réelles ; l'analyse documentaire apporte un éclairage institutionnel et historique ; les données visuelles documentent les contextes matériels et environnementaux.
 
 #### 3.9.6 Triangulation des données visuelles et textuelles
 
-Les photographies, vidéos pédagogiques et autres supports visuels ont constitué une source complémentaire d'information particulièrement utile pour documenter les environnements scolaires et les pratiques observées.
+Photographies, vidéos pédagogiques et supports visuels ont permis d'examiner les infrastructures des jardins, les techniques agricoles, les systèmes d'irrigation, les activités pédagogiques et les interactions entre acteurs.
 
-Ces données ont permis d'examiner les infrastructures des jardins scolaires, les techniques agricoles utilisées, les systèmes d'irrigation, les activités pédagogiques réalisées ainsi que les interactions entre les différents acteurs impliqués dans les projets.
-
-Selon Pink (2013), les méthodes visuelles permettent d'accéder à certaines dimensions de l'expérience sociale qui demeurent difficilement observables à travers les seules données verbales. Dans cette recherche, elles ont contribué à enrichir les descriptions, à contextualiser les analyses et à renforcer la crédibilité des interprétations.
-
-La confrontation des données visuelles avec les informations issues des documents, des entretiens et des observations a constitué un élément important du processus de validation analytique.
+Pink (2013) rappelle que les méthodes visuelles donnent accès à des dimensions de l'expérience sociale difficilement observables à travers les seules données verbales. Leur confrontation avec les documents, les entretiens et les observations a constitué un élément important du processus de validation analytique.
 
 #### 3.9.7 La saturation théorique comme critère de crédibilité
 
-La saturation théorique constitue un autre critère fondamental de qualité dans les recherches fondées sur la théorisation ancrée. Elle correspond au moment où les nouvelles données recueillies n'apportent plus d'informations significativement nouvelles permettant d'enrichir les catégories analytiques déjà construites.
-
-Selon Glaser et Strauss (1967), la saturation est atteinte lorsque les propriétés des catégories sont suffisamment développées et que les nouvelles données deviennent essentiellement redondantes.
-
-Dans cette recherche, la saturation a été observée progressivement pour plusieurs catégories centrales, notamment la pédagogie active, l'adaptation climatique, la résilience communautaire, la participation locale et la vulnérabilité environnementale. L'atteinte de ce seuil a constitué un indicateur important de la stabilité et de la robustesse des interprétations produites.
+La saturation théorique, dont le processus est détaillé en [section 3.8.8](#388-la-saturation-théorique), constitue également un critère de qualité. Glaser et Strauss (1967) la situent au point où les propriétés des catégories sont suffisamment développées et où les nouvelles données deviennent essentiellement redondantes. Son atteinte pour les catégories centrales de la recherche constitue un indicateur de la **stabilité** des interprétations produites.
 
 #### 3.9.8 La traçabilité analytique
 
-La traçabilité analytique constitue un élément essentiel de la rigueur scientifique de cette recherche. Elle renvoie à la possibilité de retracer l'ensemble du cheminement ayant conduit à la production des résultats et des interprétations théoriques.
+La traçabilité renvoie à la possibilité de retracer l'ensemble du cheminement ayant conduit aux résultats. NVivo 15 a facilité cette démarche en permettant l'organisation systématique du corpus, le suivi du codage, la gestion des mémos, la construction des catégories et la conservation des étapes du raisonnement.
 
-L'utilisation du logiciel NVivo 15 a facilité cette démarche en permettant l'organisation systématique du corpus documentaire, le suivi du processus de codage, la gestion des mémos analytiques, la construction des catégories émergentes et la conservation des différentes étapes du raisonnement analytique.
-
-Chaque phase de l'analyse a été documentée à travers les nœuds de codage, les matrices analytiques, les cartes conceptuelles et les mémos réflexifs produits tout au long de la recherche. Cette documentation contribue à renforcer la transparence méthodologique et la cohérence du processus interprétatif.
+Chaque phase de l'analyse a été documentée par les nœuds de codage, les matrices analytiques, les cartes conceptuelles et les mémos réflexifs — documentation qui renforce la transparence méthodologique et la cohérence du processus interprétatif.
 
 #### 3.9.9 Réflexivité du chercheur
 
-Dans une approche qualitative interprétative, le chercheur constitue lui-même un instrument central de production et d'analyse des données. Cette position implique une vigilance constante à l'égard des effets potentiels de la subjectivité sur le processus de recherche.
+Dans une approche qualitative interprétative, le chercheur constitue lui-même un **instrument** de production et d'analyse des données, ce qui impose une vigilance constante à l'égard des effets de sa subjectivité.
 
-La présente étude intègre ainsi une démarche réflexive visant à interroger les interactions entre le chercheur et le terrain, les choix méthodologiques effectués, les interprétations produites ainsi que les présupposés susceptibles d'influencer l'analyse.
-
-Selon Bourdieu (2001), le chercheur doit objectiver sa propre relation à l'objet étudié afin de limiter les biais liés à sa position sociale, intellectuelle ou institutionnelle. Dans cette recherche, la réflexivité a été encouragée à travers la rédaction régulière de mémos méthodologiques et analytiques permettant de documenter les questionnements, les ajustements méthodologiques et les évolutions interprétatives observées au cours du travail de terrain.
-
-Cette posture a contribué à renforcer la cohérence scientifique et la qualité des analyses produites.
+Bourdieu (2001) soutient que le chercheur doit objectiver sa propre relation à l'objet étudié afin de limiter les biais liés à sa position sociale, intellectuelle ou institutionnelle. Cette réflexivité a été entretenue par la rédaction régulière de mémos méthodologiques documentant questionnements, ajustements et évolutions interprétatives survenus au cours du travail de terrain. Sa dimension proprement éthique est développée en [section 3.10.6](#3106-la-dimension-éthique-de-la-réflexivité).
 
 #### 3.9.10 Limites de la validité qualitative
 
-Malgré les précautions méthodologiques mises en œuvre, certaines limites doivent être reconnues. Elles concernent notamment les difficultés d'accès à certains documents institutionnels, l'incomplétude de certaines archives, les contraintes logistiques liées aux déplacements sur le terrain ainsi que l'hétérogénéité des contextes régionaux étudiés.
+Certaines limites doivent être reconnues : difficultés d'accès à des documents institutionnels, incomplétude de certaines archives, contraintes logistiques de déplacement, hétérogénéité des contextes régionaux.
 
-Par ailleurs, comme toute recherche qualitative interprétative, cette étude demeure influencée par les choix analytiques du chercheur et par les interactions établies avec les participants. Les interprétations produites doivent donc être comprises comme des constructions contextualisées plutôt que comme des représentations exhaustives ou universellement généralisables.
+Comme toute recherche qualitative interprétative, l'étude demeure en outre influencée par les choix analytiques du chercheur et par les interactions établies avec les participants. Les interprétations produites doivent donc être comprises comme des **constructions contextualisées** plutôt que comme des représentations exhaustives ou universellement généralisables.
 
-Néanmoins, la combinaison de plusieurs sources de données, la triangulation méthodologique, la saturation théorique, la traçabilité analytique et la réflexivité du chercheur contribuent à renforcer la crédibilité, la cohérence et la robustesse scientifique des résultats présentés dans cette recherche.
+La combinaison des dispositifs présentés — triangulation, saturation, traçabilité, réflexivité — contribue néanmoins à renforcer la crédibilité, la cohérence et la robustesse scientifique des résultats.
 
 ### 3.10 Considérations éthiques de la recherche
 
 #### 3.10.1 L'importance de l'éthique dans la recherche qualitative
 
-Les considérations éthiques occupent une place fondamentale dans toute recherche impliquant des êtres humains. Dans le cadre de cette étude doctorale portant sur les jardins scolaires dans les écoles rurales djiboutiennes, la démarche qualitative interprétative adoptée implique des interactions directes avec différents acteurs du système éducatif et des communautés locales, notamment les enseignants, les élèves, les directeurs d'école, les parents d'élèves, les jardiniers communautaires et les responsables institutionnels.
+La démarche qualitative adoptée implique des interactions directes avec des acteurs du système éducatif et des communautés locales — enseignants, élèves, directeurs, parents, jardiniers communautaires, responsables institutionnels. Cette proximité impose une attention particulière au respect de la dignité des participants, à la protection de leurs droits et à la préservation de leur intégrité physique, psychologique et sociale.
 
-Cette proximité avec le terrain impose une attention particulière au respect de la dignité des participants, à la protection de leurs droits ainsi qu'à la préservation de leur intégrité physique, psychologique et sociale. Selon l'American Psychological Association (APA, 2020), les principes éthiques visent avant tout à protéger le bien-être, la dignité et les droits des personnes participant à une recherche.
-
-Dans cette perspective, l'ensemble du processus de recherche a été conduit dans le respect des principes de consentement éclairé, de confidentialité, d'anonymat, de respect des personnes, d'intégrité scientifique et de protection des données.
+L'American Psychological Association (APA, 2020) rappelle que les principes éthiques visent avant tout à protéger le bien-être, la dignité et les droits des personnes participant à une recherche. L'ensemble du processus a été conduit dans le respect des principes de consentement éclairé, de confidentialité, d'anonymat, de respect des personnes, d'intégrité scientifique et de protection des données.
 
 #### 3.10.2 Le consentement libre et éclairé
 
-Le respect du consentement libre et éclairé constitue l'un des principes fondamentaux ayant guidé la réalisation de cette recherche. Avant toute collecte de données, les participants ont été informés de manière claire et accessible des objectifs de l'étude, des modalités de participation, de la nature des activités prévues ainsi que des conditions d'utilisation des données recueillies.
+Avant toute collecte, les participants ont été informés de manière claire et accessible des objectifs de l'étude, des modalités de participation, de la nature des activités prévues et des conditions d'utilisation des données. Ils ont également été informés de leur droit de refuser de participer ou de se retirer à tout moment sans conséquence.
 
-Les participants ont également été informés de leur droit de refuser de participer à la recherche ou de se retirer à tout moment sans conséquence particulière. Cette démarche visait à garantir que leur participation repose sur une décision volontaire et pleinement éclairée.
-
-Conformément aux principes énoncés par l'UNESCO (2015), le consentement libre et éclairé constitue une condition essentielle de toute recherche impliquant des personnes. Une attention particulière a été accordée aux élèves mineurs participant aux activités observées. Dans ces situations, les autorisations nécessaires ont été obtenues auprès des autorités éducatives compétentes, des responsables d'établissement et, lorsque cela était requis, des parents ou représentants légaux.
+L'UNESCO (2015) fait du consentement libre et éclairé une condition essentielle de toute recherche impliquant des personnes. Une attention particulière a été accordée aux **élèves mineurs** : les autorisations nécessaires ont été obtenues auprès des autorités éducatives compétentes, des responsables d'établissement et, lorsque requis, des parents ou représentants légaux.
 
 #### 3.10.3 Confidentialité et anonymat des participants
 
-La protection de la confidentialité des informations recueillies constitue une exigence essentielle de la recherche qualitative. Afin de préserver l'identité des participants, plusieurs mesures ont été mises en œuvre tout au long du processus de recherche.
+Les noms des personnes interrogées, des établissements et des autres acteurs ont été remplacés par des codes ou des pseudonymes dans les transcriptions, les analyses et les extraits cités. Les informations permettant une identification directe ou indirecte ont été supprimées ou modifiées lorsque nécessaire.
 
-Les noms des personnes interrogées, des établissements scolaires et des autres acteurs impliqués ont été remplacés par des codes ou des pseudonymes dans les transcriptions, les analyses et les extraits cités dans la thèse. Les informations susceptibles de permettre l'identification directe ou indirecte des participants ont été supprimées ou modifiées lorsque cela était nécessaire.
-
-Selon Miles, Huberman et Saldaña (2014), la protection de la confidentialité représente l'une des responsabilités éthiques majeures du chercheur. Dans cette étude, une vigilance particulière a été accordée aux documents institutionnels et aux données sensibles afin d'éviter toute divulgation susceptible de porter préjudice aux personnes ou aux établissements concernés.
+Miles, Huberman et Saldaña (2014) comptent la protection de la confidentialité parmi les responsabilités éthiques majeures du chercheur. Une vigilance particulière a été accordée aux documents institutionnels et aux données sensibles, afin d'éviter toute divulgation susceptible de porter préjudice aux personnes ou aux établissements.
 
 #### 3.10.4 Respect des personnes et des contextes locaux
 
-La conduite de cette recherche a reposé sur une démarche respectueuse des réalités sociales, culturelles et institutionnelles propres aux communautés rurales djiboutiennes. Une posture d'écoute, de dialogue et de considération a été privilégiée afin de favoriser l'établissement d'une relation de confiance avec les participants.
+La conduite de la recherche a reposé sur une posture d'écoute, de dialogue et de considération, respectueuse des réalités sociales, culturelles et institutionnelles des communautés rurales djiboutiennes. Spécificités culturelles, normes sociales locales et contraintes institutionnelles ont été prises en compte tout au long du travail de terrain.
 
-Cette attention portée au respect des personnes concernait non seulement les individus rencontrés, mais également les contextes communautaires dans lesquels les données ont été produites. Les spécificités culturelles, les normes sociales locales ainsi que les contraintes institutionnelles ont été prises en compte tout au long du travail de terrain.
+Becker (2002) souligne que le chercheur doit maintenir des relations respectueuses avec les participants à chaque étape — exigence d'autant plus importante en milieu rural, où les dynamiques communautaires conditionnent l'accès au terrain et la qualité des données recueillies.
 
-Comme le souligne Becker (2002), le chercheur doit maintenir des relations respectueuses avec les participants à chaque étape du processus de recherche. Cette exigence apparaît particulièrement importante dans les contextes ruraux où les dynamiques communautaires et les relations sociales jouent un rôle déterminant dans l'accès au terrain et dans la qualité des données recueillies.
+#### 3.10.5 Éthique de l'observation et des données visuelles
 
-#### 3.10.5 Éthique de l'observation et de l'utilisation des données visuelles
+Les personnes concernées ont été informées des objectifs des enregistrements et des conditions d'utilisation des supports visuels. Photographies et vidéos ont été exploitées exclusivement à des fins scientifiques et analytiques ; aucune diffusion publique susceptible d'identifier les participants n'a été effectuée sans autorisation préalable.
 
-Les observations de terrain ainsi que l'utilisation de photographies et de vidéos ont été réalisées dans le respect des principes éthiques applicables à la recherche qualitative. Les personnes concernées ont été informées des objectifs de ces enregistrements et des conditions dans lesquelles les supports visuels seraient utilisés.
+Pink (2013) rappelle que la recherche visuelle exige une attention particulière aux questions de consentement, de représentation et de confidentialité. Une vigilance accrue a été accordée à la **protection de l'image des enfants**, au respect de la vie privée et à l'usage responsable des données recueillies dans les écoles.
 
-Les photographies et les vidéos ont été exploitées exclusivement à des fins scientifiques et analytiques dans le cadre de cette recherche. Aucune diffusion publique susceptible d'identifier les participants n'a été effectuée sans autorisation préalable.
+#### 3.10.6 La dimension éthique de la réflexivité
 
-Selon Pink (2013), la recherche visuelle exige une attention particulière aux questions de consentement, de représentation et de confidentialité. Une vigilance accrue a donc été accordée à la protection de l'image des enfants, au respect de la vie privée des participants et à l'utilisation responsable des données visuelles recueillies dans les écoles.
+Au-delà de sa fonction méthodologique traitée en [section 3.9.9](#399-réflexivité-du-chercheur), la réflexivité comporte une dimension proprement éthique. La présence du chercheur dans les établissements modifie les situations observées et crée une asymétrie de position avec les participants — élèves et personnels scolaires en particulier.
 
-#### 3.10.6 Réflexivité éthique du chercheur
-
-Dans une approche qualitative interprétative, le chercheur participe activement à la production et à l'interprétation des données. Cette implication nécessite une réflexion constante sur sa propre position, sur les effets potentiels de sa présence sur le terrain et sur les influences susceptibles d'affecter le processus d'analyse.
-
-La présente recherche intègre ainsi une dimension réflexive visant à examiner de manière critique les interactions entre le chercheur et les participants, les choix méthodologiques effectués ainsi que les conditions de production des connaissances.
-
-Selon Bourdieu (2001), le chercheur doit objectiver sa propre relation à l'objet étudié afin de mieux comprendre les effets de sa position sociale et intellectuelle sur la recherche. Cette réflexivité a été entretenue tout au long de l'étude à travers la rédaction de mémos méthodologiques et analytiques permettant de documenter les questionnements, les ajustements et les décisions prises au cours du travail de terrain.
+Cette recherche a donc intégré un examen critique des conditions de production des connaissances : effets de la présence du chercheur sur le terrain, rapports de pouvoir implicites dans la relation d'enquête, responsabilité vis-à-vis de la représentation faite des acteurs et des établissements. Les mémos méthodologiques ont servi de support à cet examen tout au long de l'étude.
 
 #### 3.10.7 Protection et sécurisation des données
 
-Des mesures spécifiques ont été mises en place afin d'assurer la sécurité et la confidentialité des données collectées. Les documents numériques, les enregistrements d'entretiens, les photographies, les vidéos et les transcriptions ont été conservés dans des espaces de stockage sécurisés et protégés par des dispositifs d'accès restreint.
-
-L'accès aux données a été limité au chercheur et aux usages strictement liés à la réalisation de cette recherche. Les fichiers intégrés dans le logiciel NVivo 15 ont également fait l'objet de mesures de protection visant à prévenir toute perte, divulgation ou utilisation non autorisée.
-
-Cette gestion sécurisée des données contribue à garantir la confidentialité des informations recueillies et à protéger les participants contre tout risque lié à leur participation à l'étude.
+Documents numériques, enregistrements d'entretiens, photographies, vidéos et transcriptions ont été conservés dans des espaces de stockage sécurisés protégés par des dispositifs d'accès restreint. L'accès aux données a été limité au chercheur et aux usages strictement liés à la réalisation de la recherche. Les fichiers intégrés dans NVivo 15 ont fait l'objet de mesures de protection contre toute perte, divulgation ou utilisation non autorisée.
 
 #### 3.10.8 Intégrité scientifique de la recherche
 
-L'intégrité scientifique constitue un principe fondamental de cette recherche doctorale. Elle repose sur le respect des exigences d'honnêteté intellectuelle, de transparence méthodologique, de fidélité aux données empiriques et de rigueur dans la production des résultats.
+L'intégrité scientifique repose sur l'honnêteté intellectuelle, la transparence méthodologique, la fidélité aux données empiriques et la rigueur dans la production des résultats.
 
-Les interprétations présentées dans cette étude sont fondées sur les données effectivement recueillies sur le terrain, sur les analyses réalisées à l'aide de NVivo 15 ainsi que sur les principes de comparaison constante caractéristiques de la théorisation ancrée. Les conclusions formulées reposent sur des preuves empiriques clairement identifiées et documentées.
-
-Par ailleurs, l'ensemble des sources bibliographiques mobilisées a été cité conformément aux normes scientifiques en vigueur afin de garantir le respect des principes relatifs à la propriété intellectuelle et à l'éthique académique.
+Les interprétations présentées sont fondées sur les données effectivement recueillies, sur les analyses réalisées dans NVivo 15 et sur le principe de comparaison constante. Les conclusions reposent sur des preuves empiriques clairement identifiées et documentées. L'ensemble des sources bibliographiques a été cité conformément aux normes scientifiques en vigueur.
 
 #### 3.10.9 Difficultés et enjeux éthiques rencontrés sur le terrain
 
-Comme toute recherche de terrain, cette étude a été confrontée à certaines difficultés d'ordre éthique et méthodologique. Celles-ci concernaient notamment l'accès limité à certains documents institutionnels, la sensibilité de certaines informations relatives aux établissements scolaires, la réticence de certains acteurs à partager certaines données ainsi que les contraintes liées à l'utilisation des supports visuels.
+L'étude a rencontré plusieurs difficultés d'ordre éthique : accès limité à certains documents institutionnels, sensibilité de certaines informations relatives aux établissements, réticence de certains acteurs à partager des données, contraintes liées à l'utilisation des supports visuels.
 
-Ces situations ont nécessité des ajustements méthodologiques ainsi qu'un dialogue constant avec les participants et les institutions concernées. Une attention particulière a été portée à la négociation des conditions d'accès aux données et à la protection des informations sensibles tout au long du processus de recherche.
+Ces situations ont nécessité des ajustements méthodologiques et un dialogue constant avec les participants et les institutions, avec une attention particulière portée à la négociation des conditions d'accès et à la protection des informations sensibles.
 
 #### 3.10.10 L'éthique comme composante de la rigueur méthodologique
 
-Dans cette recherche, l'éthique ne se limite pas à un ensemble d'obligations administratives ou réglementaires. Elle constitue une composante essentielle de la qualité scientifique et de la rigueur méthodologique de l'étude.
-
-Le respect des principes éthiques a contribué à instaurer un climat de confiance avec les participants, à favoriser l'accès à des données riches et authentiques et à renforcer la crédibilité des résultats obtenus. L'éthique apparaît ainsi comme une condition indispensable à la production de connaissances scientifiquement fondées et socialement responsables.
-
-Dans le contexte de cette recherche portant sur les pratiques éducatives, les dynamiques communautaires et les mécanismes de résilience dans les écoles rurales djiboutiennes, elle constitue un principe transversal ayant guidé l'ensemble des choix méthodologiques et analytiques réalisés tout au long de l'étude.
+L'éthique ne se limite pas ici à un ensemble d'obligations administratives : elle constitue une **composante de la qualité scientifique** de l'étude. Le respect des principes éthiques a instauré un climat de confiance avec les participants, favorisé l'accès à des données riches et authentiques et renforcé la crédibilité des résultats. Elle apparaît ainsi comme un principe transversal ayant guidé l'ensemble des choix méthodologiques et analytiques.
 
 ### 3.11 Limites méthodologiques de la recherche
 
-#### 3.11.1 Importance de l'analyse des limites méthodologiques
+#### 3.11.1 Importance de l'analyse des limites
 
-L'identification et la discussion des limites méthodologiques constituent une étape essentielle de toute démarche scientifique rigoureuse. Loin de remettre en cause la valeur des résultats obtenus, cette réflexion critique permet de contextualiser les conclusions de la recherche, de préciser les conditions de production des données et de délimiter la portée des interprétations proposées.
-
-Selon Creswell (2013), la reconnaissance explicite des limites méthodologiques contribue au renforcement de la crédibilité et de la transparence scientifique d'une étude. Dans cette perspective, la présente recherche doctorale, consacrée à l'analyse des jardins scolaires comme dispositifs de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes, comporte plusieurs limites inhérentes aux conditions de terrain, aux choix méthodologiques effectués et aux caractéristiques du contexte étudié.
+L'identification des limites méthodologiques ne remet pas en cause la valeur des résultats : elle permet de contextualiser les conclusions, de préciser les conditions de production des données et de délimiter la portée des interprétations. Creswell (2013) souligne que la reconnaissance explicite des limites contribue au renforcement de la crédibilité et de la transparence scientifique.
 
 #### 3.11.2 Contraintes d'accès au terrain
 
-L'une des principales difficultés rencontrées au cours de la recherche concerne l'accès à certaines écoles rurales situées dans des zones géographiquement éloignées ou difficiles d'accès. Les déplacements sur le terrain ont été influencés par plusieurs facteurs, notamment l'état des infrastructures routières, les distances importantes entre les localités, les contraintes climatiques ainsi que la disponibilité variable des acteurs sollicités.
+L'accès à certaines écoles rurales éloignées a été conditionné par l'état des infrastructures routières, les distances entre localités, les contraintes climatiques et la disponibilité variable des acteurs sollicités.
 
-Dans certaines régions, les conditions environnementales, notamment les fortes chaleurs et les périodes de sécheresse, ont limité la fréquence des visites et la durée des observations. Par ailleurs, certaines communautés connaissent des formes de mobilité saisonnière susceptibles d'affecter la continuité du suivi des activités scolaires et communautaires.
-
-Ces contraintes logistiques ont parfois réduit les possibilités d'observation prolongée de certaines situations et limité la collecte de données dans certains établissements.
+Dans certaines régions, fortes chaleurs et périodes de sécheresse ont limité la fréquence des visites et la durée des observations. Certaines communautés connaissent en outre des formes de **mobilité saisonnière** affectant la continuité du suivi des activités scolaires et communautaires. Ces contraintes ont réduit les possibilités d'observation prolongée dans certains établissements.
 
 #### 3.11.3 Limites liées à la constitution du corpus documentaire
 
-La constitution du corpus documentaire a également présenté plusieurs défis méthodologiques. Une part importante des documents relatifs aux jardins scolaires appartient à la littérature grise produite localement par les établissements scolaires, les services administratifs ou les partenaires techniques.
+Une part importante des documents relève de la littérature grise produite localement. L'absence de système centralisé d'archivage, la dispersion des ressources entre institutions, la dégradation de certains supports et les difficultés de numérisation ont limité l'accès à des sources potentiellement pertinentes.
 
-L'absence d'un système centralisé d'archivage, la dispersion des ressources documentaires entre plusieurs institutions, la dégradation de certains supports ainsi que les difficultés de numérisation ont limité l'accès à certaines sources potentiellement pertinentes.
-
-Comme le souligne Cellard (1997), les documents disponibles dans les contextes institutionnels sont souvent fragmentaires et inégalement conservés. Par conséquent, malgré les efforts déployés pour constituer un corpus diversifié et représentatif, certains documents n'ont pu être intégrés à l'analyse en raison de leur état de conservation ou de leur accessibilité limitée.
+Cellard (1997) rappelle que les documents disponibles dans les contextes institutionnels sont souvent fragmentaires et inégalement conservés. Malgré les efforts déployés, certains documents n'ont donc pu être intégrés à l'analyse.
 
 #### 3.11.4 Limites inhérentes à l'approche qualitative
 
-La présente recherche s'inscrit dans une démarche qualitative interprétative fondée sur la théorisation ancrée. Si cette approche permet une compréhension approfondie des phénomènes étudiés, elle comporte également certaines limites inhérentes à sa nature même.
+Les résultats reposent sur des interprétations construites à partir de données contextualisées et ne visent pas une généralisation statistique à l'ensemble des établissements du pays. Denzin et Lincoln (2011) rappellent que la recherche qualitative est fondamentalement interprétative et repose sur la compréhension des significations attribuées aux expériences sociales par les acteurs.
 
-Les résultats produits reposent sur des interprétations construites à partir de données contextualisées et ne visent pas une généralisation statistique à l'ensemble des établissements scolaires du pays. Comme le rappellent Denzin et Lincoln (2011), la recherche qualitative est fondamentalement interprétative et repose sur la compréhension des significations attribuées aux expériences sociales par les acteurs concernés.
-
-Les résultats présentés doivent donc être compris comme des connaissances situées, produites dans un contexte spécifique et éclairant les réalités observées plutôt que comme des conclusions universellement généralisables.
+Les résultats doivent donc être compris comme des **connaissances situées**, éclairant les réalités observées plutôt que comme des conclusions universellement généralisables.
 
 #### 3.11.5 Subjectivité et implication du chercheur
 
-Dans la perspective constructiviste de la théorisation ancrée adoptée dans cette étude, le chercheur participe activement à la production, à l'interprétation et à la construction des données. Cette implication constitue à la fois une richesse analytique et une source potentielle de biais.
+Dans la perspective constructiviste retenue, le chercheur participe activement à la production et à l'interprétation des données — richesse analytique autant que source potentielle de biais. Charmaz (2006) rappelle que les données qualitatives émergent des interactions entre le chercheur et les participants.
 
-Comme le souligne Charmaz (2006), les données qualitatives émergent des interactions entre le chercheur et les participants. Les expériences personnelles, les choix interprétatifs et les positions du chercheur peuvent ainsi influencer certaines dimensions du processus analytique.
-
-Afin de limiter ces effets, plusieurs stratégies ont été mobilisées, notamment la triangulation des données, la comparaison constante des catégories, la rédaction de mémos réflexifs, la confrontation systématique des sources et la traçabilité analytique assurée par l'utilisation de NVivo 15. Malgré ces précautions, une part de subjectivité demeure inhérente à toute démarche qualitative interprétative.
+Cinq stratégies ont été mobilisées pour limiter ces effets : triangulation, comparaison constante, mémos réflexifs, confrontation systématique des sources, traçabilité assurée par NVivo 15. Une part de subjectivité demeure néanmoins inhérente à toute démarche interprétative.
 
 #### 3.11.6 Hétérogénéité des contextes régionaux
 
-Les écoles rurales étudiées présentent des caractéristiques très diverses en matière d'infrastructures, de ressources disponibles, de participation communautaire, de conditions climatiques et de soutien institutionnel. Cette diversité constitue un atout majeur pour la richesse analytique de la recherche, mais elle représente également une limite dans la mesure où elle rend difficile l'établissement de comparaisons parfaitement homogènes entre les différents contextes étudiés.
+Les écoles étudiées présentent des caractéristiques très diverses — infrastructures, ressources, participation communautaire, conditions climatiques, soutien institutionnel. Cette diversité constitue un atout analytique, mais complique l'établissement de comparaisons homogènes.
 
-Certaines écoles bénéficient d'un accès relativement favorable à l'eau, d'un accompagnement institutionnel plus soutenu ou d'infrastructures mieux développées, tandis que d'autres évoluent dans des conditions beaucoup plus contraignantes. Cette hétérogénéité complique l'identification de relations causales simples et invite à privilégier une lecture contextualisée des résultats.
+Certaines écoles bénéficient d'un accès relativement favorable à l'eau, d'un accompagnement institutionnel soutenu ou d'infrastructures développées, tandis que d'autres évoluent dans des conditions bien plus contraignantes. Cette hétérogénéité rend difficile l'identification de relations causales simples et invite à privilégier une **lecture contextualisée** des résultats.
 
 #### 3.11.7 Limites des observations de terrain
 
-Les observations participantes ont constitué une source importante de données empiriques. Toutefois, plusieurs limites doivent être prises en considération. La durée relativement limitée des périodes d'observation dans certains établissements n'a pas toujours permis de saisir l'ensemble des dynamiques éducatives et communautaires sur le long terme.
+La durée limitée des périodes d'observation dans certains établissements n'a pas toujours permis de saisir les dynamiques éducatives et communautaires sur le long terme. La présence du chercheur peut par ailleurs avoir influencé certains comportements observés — phénomène classique en recherche de terrain, sur lequel Becker (1963) souligne que l'observateur exerce inévitablement une influence sur les situations sociales qu'il étudie.
 
-Par ailleurs, la présence du chercheur peut avoir influencé certains comportements observés, phénomène fréquemment identifié dans les recherches de terrain. Becker (1963) souligne que l'observateur exerce inévitablement une influence sur les situations sociales qu'il étudie.
-
-Les activités agricoles et pédagogiques observées sont également susceptibles de varier selon les saisons, les conditions climatiques et les calendriers scolaires, ce qui limite parfois la représentativité temporelle des observations réalisées.
+Les activités agricoles et pédagogiques varient enfin selon les saisons, les conditions climatiques et les calendriers scolaires, ce qui limite la représentativité temporelle des observations.
 
 #### 3.11.8 Limites liées aux données visuelles et audiovisuelles
 
-Les photographies et les vidéos ont constitué une source complémentaire précieuse pour documenter les jardins scolaires et leurs usages pédagogiques. Toutefois, ces supports présentent certaines limites méthodologiques.
+Les images disponibles ne reflètent pas nécessairement l'ensemble des situations observées et peuvent résulter d'une **sélection préalable** opérée par les institutions ou les acteurs. Certaines productions visuelles mettent davantage en avant les réussites que les difficultés rencontrées.
 
-Les images disponibles ne reflètent pas nécessairement l'ensemble des situations observées et peuvent parfois résulter d'une sélection préalable opérée par les institutions ou les acteurs impliqués dans les projets. Certaines productions visuelles peuvent ainsi mettre davantage en avant les réussites ou les aspects valorisants des jardins scolaires que les difficultés rencontrées sur le terrain.
-
-Une lecture critique et contextualisée de ces données a donc été systématiquement privilégiée afin d'éviter toute interprétation réductrice ou idéalisée des situations observées.
+Une lecture critique et contextualisée de ces données a donc été systématiquement privilégiée afin d'éviter toute interprétation idéalisée des situations observées.
 
 #### 3.11.9 Limites temporelles de la recherche
 
-Cette étude s'inscrit dans une temporalité de recherche définie qui ne permet pas d'observer l'ensemble des évolutions des jardins scolaires sur le long terme. Certaines dimensions importantes, telles que la pérennité des projets, l'évolution des pratiques pédagogiques, les effets durables sur les apprentissages ou encore le développement progressif des mécanismes de résilience communautaire, nécessiteraient un suivi longitudinal dépassant le cadre temporel de la présente recherche.
+L'étude s'inscrit dans une temporalité définie qui ne permet pas d'observer l'ensemble des évolutions sur le long terme. La pérennité des projets, l'évolution des pratiques pédagogiques, les effets durables sur les apprentissages et le développement progressif des mécanismes de résilience communautaire nécessiteraient un **suivi longitudinal** dépassant le cadre de cette recherche.
 
-Les résultats obtenus doivent ainsi être interprétés comme une photographie analytique d'un processus en évolution, réalisée à un moment donné de son développement.
+Les résultats doivent ainsi être interprétés comme une photographie analytique d'un processus en évolution, réalisée à un moment donné de son développement.
 
 #### 3.11.10 Portée scientifique des résultats
 
-Malgré les limites identifiées, plusieurs éléments contribuent à renforcer la robustesse scientifique de cette recherche. La diversité du corpus documentaire, la multiplicité des acteurs interrogés, la triangulation des données, la saturation théorique, le recours à la comparaison constante ainsi que la rigueur du processus de codage réalisé à l'aide de NVivo 15 ont permis de consolider la crédibilité des résultats obtenus.
+Malgré ces limites, la diversité du corpus, la multiplicité des acteurs interrogés, la triangulation, la saturation théorique, la comparaison constante et la rigueur du codage réalisé dans NVivo 15 consolident la crédibilité des résultats.
 
-Cette recherche apporte ainsi une compréhension approfondie et contextualisée du rôle des jardins scolaires dans les écoles rurales djiboutiennes. Elle contribue au développement des connaissances relatives à l'éducation rurale, à la résilience éducative, aux dynamiques communautaires et aux stratégies locales d'adaptation aux changements climatiques.
-
-Les résultats présentés doivent être considérés comme une contribution théorique et empirique permettant de mieux comprendre les interactions entre l'école, la communauté et l'environnement dans les contextes ruraux vulnérables.
+La recherche apporte une compréhension approfondie et contextualisée du rôle des jardins scolaires dans les écoles rurales djiboutiennes et contribue au développement des connaissances relatives à l'éducation rurale, à la résilience éducative, aux dynamiques communautaires et aux stratégies locales d'adaptation climatique.
 
 ### 3.12 Synthèse méthodologique du dispositif de recherche
 
-#### 3.12.1 Cohérence globale de la démarche méthodologique
+#### 3.12.1 Cohérence globale de la démarche
 
-Le dispositif méthodologique élaboré dans cette recherche repose sur une articulation cohérente entre le positionnement épistémologique constructiviste, l'approche qualitative interprétative, la théorisation ancrée et l'utilisation de techniques diversifiées de collecte et d'analyse des données. Cette cohérence méthodologique a permis d'appréhender les jardins scolaires comme des phénomènes complexes situés à l'intersection des pratiques pédagogiques, des dynamiques communautaires, des vulnérabilités environnementales et des mécanismes de résilience territoriale.
+Le dispositif repose sur une articulation cohérente entre positionnement épistémologique constructiviste, approche qualitative interprétative, théorisation ancrée et techniques diversifiées de collecte et d'analyse. Cette cohérence a permis d'appréhender les jardins scolaires comme des phénomènes complexes situés à l'intersection des pratiques pédagogiques, des dynamiques communautaires, des vulnérabilités environnementales et des mécanismes de résilience territoriale.
 
-Conformément à la perspective proposée par Maxwell (2013), la qualité d'une recherche qualitative repose sur l'intégration harmonieuse des objectifs de recherche, du cadre conceptuel, des méthodes mobilisées et des stratégies de validation. Dans cette étude, chaque choix méthodologique a été guidé par les questions de recherche et par la volonté de comprendre les réalités vécues par les acteurs impliqués dans les projets de jardins scolaires.
+Maxwell (2013) fait dépendre la qualité d'une recherche qualitative de l'intégration harmonieuse entre objectifs, cadre conceptuel, méthodes et stratégies de validation. Le tableau ci-dessous récapitule cette architecture.
+
+| Composante | Choix retenu | Justification |
+|---|---|---|
+| **Paradigme** | Interprétatif constructiviste | Comprendre les significations attribuées par les acteurs |
+| **Approche** | Théorisation ancrée constructiviste (Charmaz) | Objet peu exploré ; construction théorique inductive |
+| **Terrain** | 5 régions rurales, échantillonnage raisonné | Diversité des contextes environnementaux et institutionnels |
+| **Collecte** | 4 techniques complémentaires | Triangulation méthodologique |
+| **Analyse** | Codage ouvert, axial, sélectif sous NVivo 15 | Rigueur, traçabilité, comparaison constante |
+| **Validation** | Triangulation, saturation, traçabilité, réflexivité | Crédibilité et cohérence des interprétations |
 
 #### 3.12.2 Articulation entre théorie et terrain
 
-L'un des principaux apports de la théorisation ancrée réside dans l'interaction permanente entre la collecte des données, l'analyse empirique et la construction théorique. Contrairement aux démarches fondées sur l'application d'un cadre conceptuel préexistant, cette recherche a privilégié une approche inductive permettant aux catégories analytiques d'émerger progressivement des données recueillies sur le terrain.
+L'apport principal de la théorisation ancrée réside dans l'interaction permanente entre collecte, analyse et construction théorique. Plutôt que d'appliquer un cadre conceptuel préexistant, la recherche a laissé les catégories analytiques **émerger progressivement** des données.
 
-Les documents institutionnels, les entretiens, les observations participantes et les données visuelles ont alimenté un processus continu de comparaison constante ayant conduit à l'élaboration progressive d'un modèle interprétatif enraciné dans les réalités des écoles rurales djiboutiennes. Cette dynamique a favorisé l'ajustement des catégories émergentes et l'approfondissement des dimensions significatives du phénomène étudié.
+Documents institutionnels, entretiens, observations et données visuelles ont alimenté un processus continu de comparaison constante ayant conduit à l'élaboration d'un modèle interprétatif enraciné dans les réalités des écoles rurales djiboutiennes.
 
 #### 3.12.3 Contribution de l'analyse documentaire et de la triangulation
 
-L'analyse documentaire a constitué le point de départ du processus empirique. Elle a permis d'identifier les premières catégories émergentes, de comprendre les représentations institutionnelles des jardins scolaires et de structurer les outils de collecte utilisés dans les phases ultérieures de la recherche.
+L'analyse documentaire a constitué le point de départ du processus empirique : elle a permis d'identifier les premières catégories, de comprendre les représentations institutionnelles et de structurer les outils de collecte des phases ultérieures.
 
-La complémentarité entre les documents, les entretiens, les observations participantes et les données visuelles a favorisé une triangulation méthodologique renforçant la crédibilité et la profondeur des analyses. Cette diversité des sources a permis de confronter les discours institutionnels aux pratiques observées, d'explorer les expériences des acteurs et de contextualiser les phénomènes étudiés dans leurs réalités territoriales et environnementales.
+La complémentarité entre documents, entretiens, observations et données visuelles a favorisé une triangulation renforçant la crédibilité des analyses, en confrontant les discours institutionnels aux pratiques observées.
 
-#### 3.12.4 Apports de l'analyse assistée par NVivo 15
+#### 3.12.4 Apports et limites de l'analyse assistée par NVivo 15
 
-L'utilisation du logiciel NVivo 15 a constitué un appui méthodologique important tout au long du processus analytique. Le logiciel a facilité l'organisation du corpus, la gestion des données, le codage systématique, la rédaction des mémos analytiques ainsi que la production de représentations conceptuelles.
+Le logiciel a facilité l'organisation du corpus, la gestion des données, le codage systématique, la rédaction des mémos et la production de représentations conceptuelles.
 
-Toutefois, conformément à l'analyse de Bazeley et Jackson (2013), NVivo ne remplace pas le travail interprétatif du chercheur ; il constitue un outil permettant de renforcer la rigueur, la transparence et la traçabilité du processus d'analyse qualitative. Son utilisation a favorisé la structuration progressive des catégories et la visualisation des relations entre les concepts émergents.
+Bazeley et Jackson (2013) rappellent toutefois que NVivo **ne remplace pas le travail interprétatif** du chercheur : il constitue un outil renforçant la rigueur, la transparence et la traçabilité du processus d'analyse.
 
 #### 3.12.5 Émergence de la catégorie centrale
 
-L'ensemble du dispositif méthodologique a conduit à l'identification progressive de plusieurs catégories analytiques majeures, notamment la pédagogie active, l'apprentissage expérientiel, la participation communautaire, la résilience locale, la nutrition scolaire, l'adaptation climatique et la vulnérabilité environnementale.
+L'intégration progressive des sept catégories analytiques majeures — pédagogie active, apprentissage expérientiel, participation communautaire, résilience locale, nutrition scolaire, adaptation climatique, vulnérabilité environnementale — a conduit à l'émergence de la catégorie centrale :
 
-L'intégration de ces catégories a permis de faire émerger la catégorie centrale suivante :
+> **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes. »**
 
-**« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes ».**
-
-Cette catégorie constitue le noyau conceptuel du modèle théorique élaboré dans cette recherche. Elle met en évidence le caractère multidimensionnel des jardins scolaires et leur rôle dans l'articulation entre les apprentissages, les dynamiques communautaires et les stratégies locales d'adaptation aux changements climatiques.
+Elle constitue le noyau conceptuel du modèle théorique et met en évidence le caractère multidimensionnel du dispositif ainsi que son rôle dans l'articulation entre apprentissages, dynamiques communautaires et stratégies locales d'adaptation.
 
 #### 3.12.6 Contribution scientifique du dispositif méthodologique
 
-Au-delà de son apport empirique, le dispositif méthodologique développé dans cette étude contribue à enrichir les recherches portant sur l'éducation rurale, l'éducation environnementale, les approches de résilience éducative et les stratégies d'adaptation climatique dans les contextes vulnérables.
+Au-delà de son apport empirique, le dispositif contribue à enrichir les recherches portant sur l'éducation rurale, l'éducation environnementale, la résilience éducative et les stratégies d'adaptation climatique en contexte vulnérable.
 
-Cette démarche permet de valoriser les savoirs locaux, de mieux comprendre les interactions entre l'école et la communauté et de proposer un cadre d'analyse adapté aux réalités rurales djiboutiennes. Elle offre également des perspectives méthodologiques pour l'étude de dispositifs éducatifs intégrant simultanément des dimensions pédagogiques, environnementales et communautaires.
+Il valorise les savoirs locaux, éclaire les interactions entre l'école et la communauté et propose un cadre d'analyse adapté aux réalités rurales djiboutiennes, transposable à l'étude d'autres dispositifs éducatifs intégrant simultanément des dimensions pédagogiques, environnementales et communautaires.
 
 ### Conclusion du chapitre III
 
-Ce chapitre a présenté l'ensemble du dispositif méthodologique mobilisé dans le cadre de cette recherche doctorale consacrée aux jardins scolaires dans les écoles rurales djiboutiennes. L'étude s'est inscrite dans une approche qualitative interprétative fondée sur la théorisation ancrée constructiviste, particulièrement adaptée à l'exploration des phénomènes complexes impliquant des dimensions éducatives, sociales, environnementales et territoriales.
+Ce chapitre a présenté l'ensemble du dispositif méthodologique mobilisé dans cette recherche. L'étude s'inscrit dans une approche qualitative interprétative fondée sur la **théorisation ancrée constructiviste**, particulièrement adaptée à l'exploration de phénomènes complexes articulant dimensions éducatives, sociales, environnementales et territoriales.
 
-La démarche méthodologique a reposé sur la combinaison de plusieurs techniques complémentaires de collecte des données, notamment l'analyse documentaire, les entretiens semi-directifs, les observations participantes et l'exploitation de données visuelles et audiovisuelles. L'ensemble de ces données a été organisé et analysé à l'aide du logiciel NVivo 15 selon un processus rigoureux de codage ouvert, axial et sélectif conforme aux principes de la théorisation ancrée.
+La démarche repose sur la combinaison de quatre techniques complémentaires — analyse documentaire, entretiens semi-directifs, observations participantes, exploitation de données visuelles et audiovisuelles — dont l'ensemble a été organisé et analysé sous NVivo 15 selon un processus rigoureux de codage ouvert, axial et sélectif.
 
-Le chapitre a également mis en évidence l'importance de la triangulation des données, de la saturation théorique, des mémos analytiques, de la comparaison constante et de la réflexivité du chercheur dans la construction progressive du modèle théorique émergent. Les considérations éthiques ont occupé une place centrale tout au long de la recherche afin de garantir le respect des participants, la confidentialité des données et l'intégrité scientifique du processus de recherche.
+Le chapitre a mis en évidence l'importance de la triangulation, de la saturation théorique, des mémos analytiques, de la comparaison constante et de la réflexivité du chercheur dans la construction progressive du modèle théorique émergent. Les considérations éthiques ont occupé une place centrale afin de garantir le respect des participants, la confidentialité des données et l'intégrité scientifique du processus.
 
-L'analyse méthodologique a finalement conduit à l'émergence de la catégorie centrale suivante : **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes »**. Cette catégorie constitue le noyau conceptuel autour duquel s'organisent les différentes dimensions analysées dans la recherche.
+Malgré certaines contraintes — accès au terrain, disponibilité des archives, hétérogénéité des contextes régionaux, temporalité de l'étude — la diversité des données recueillies et la rigueur du processus analytique renforcent la robustesse des résultats.
 
-Le chapitre suivant est consacré à la présentation, à l'analyse et à l'interprétation des résultats empiriques issus du terrain. Il mettra en évidence les catégories émergentes, les processus identifiés ainsi que les mécanismes par lesquels les jardins scolaires contribuent au développement de formes de résilience éducative, communautaire et environnementale dans les contextes ruraux djiboutiens.
+L'analyse a conduit à l'émergence de la catégorie centrale suivante : **« Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique dans les écoles rurales djiboutiennes »**, noyau conceptuel autour duquel s'organisent les différentes dimensions étudiées.
 
-Ce chapitre a présenté l'ensemble du cadre méthodologique mobilisé dans cette recherche doctorale consacrée au jardin scolaire comme levier de résilience éducative, communautaire et d'adaptation climatique dans les écoles rurales djiboutiennes. L'approche qualitative interprétative fondée sur la théorisation ancrée a permis de construire un dispositif méthodologique cohérent, adapté à la complexité du phénomène étudié et aux spécificités du contexte rural djiboutien.
+Le chapitre suivant est consacré à l'analyse documentaire du corpus constitué. Il présentera les premières catégories émergentes issues du traitement des données dans NVivo 15 et examinera les représentations institutionnelles, pédagogiques, environnementales et territoriales associées aux jardins scolaires — point de départ de la construction empirique du modèle théorique.
 
-La combinaison de l'analyse documentaire, des entretiens semi-directifs, des observations participantes et des données visuelles, associée à une analyse qualitative assistée par NVivo 15, a favorisé l'émergence progressive d'un modèle théorique enraciné dans les données empiriques. Cette démarche a également mis en évidence l'importance de la triangulation méthodologique, de la réflexivité du chercheur, de la saturation théorique et du respect des principes éthiques dans la production de connaissances scientifiques crédibles et contextualisées.
+### Note de vérification bibliographique du chapitre III
 
-Malgré certaines contraintes liées à l'accès au terrain, à la disponibilité des archives et à l'hétérogénéité des contextes régionaux, la diversité des données recueillies et la rigueur du processus analytique ont permis de renforcer la robustesse des résultats obtenus.
+Le chapitre III mobilise un appareil méthodologique substantiel dont **aucune référence ne figure dans la bibliographie du document**. Il ne s'agit pas d'oublis ponctuels : la bibliographie couvre les champs éducation, développement et environnement, mais **pas la méthodologie qualitative**. Une thèse conduite en théorisation ancrée dont la bibliographie ne cite ni Glaser et Strauss ni Charmaz pose un problème immédiat de recevabilité.
 
-Le chapitre suivant sera consacré à l'analyse documentaire du corpus constitué dans le cadre de cette recherche. Il présentera les premières catégories émergentes issues du traitement des données dans NVivo 15 et examinera les représentations institutionnelles, pédagogiques, environnementales et territoriales associées aux jardins scolaires dans les écoles rurales djiboutiennes. Cette étape constituera le point de départ de la construction empirique du modèle théorique développé dans les chapitres analytiques suivants.
+| Domaine | Références citées absentes de la bibliographie |
+|---|---|
+| **Théorisation ancrée** | Glaser & Strauss (1967) ; Glaser (1978) ; Strauss & Corbin (1998) ; Charmaz (2006) |
+| **Méthodologie qualitative générale** | Creswell (2013) ; Denzin (1978) ; Denzin & Lincoln (2011) ; Lincoln & Guba (1985) ; Maxwell (2013) ; Patton (2002) ; Flick (2014) ; Miles, Huberman & Saldaña (2014) ; Saldaña (2016) |
+| **Analyse documentaire** | Cellard (1997) ; Combessie (2007) ; Maingueneau (2014) |
+| **Entretien et observation** | Kaufmann (2011) ; Malinowski (1922) ; Becker (1963) ; Becker (2002) |
+| **Méthodes visuelles** | Pink (2013) |
+| **Analyse assistée par ordinateur** | Bazeley & Jackson (2013) |
+| **Interactionnisme et réflexivité** | Blumer (1969) ; Bourdieu (2001) |
+| **Cadres éthiques** | APA (2020) ; UNESCO (2015) |
+
+**Millésimes divergents à arbitrer.** Deux citations renvoient à des années absentes de la bibliographie, alors que l'auteur y figure sous un autre millésime :
+
+| Citation dans le texte | Référence présente dans la bibliographie |
+|---|---|
+| Vygotski (1985) — section 3.1 | Vygotsky (1978) |
+| Perrenoud (1994) — section 3.3.2 | Perrenoud (1996) |
+
+Il convient de vérifier s'il s'agit d'éditions distinctes à ajouter ou d'erreurs de date. L'orthographe du patronyme **Vygotsky** a par ailleurs été harmonisée dans l'ensemble du document, conformément à la graphie retenue dans la bibliographie.
 
 ---
 
@@ -3105,583 +2742,521 @@ Le chapitre suivant sera consacré à l'analyse documentaire du corpus constitu�
 
 ### Introduction du chapitre IV
 
-Ce quatrième chapitre présente les résultats de l'analyse documentaire réalisée dans le cadre de cette recherche doctorale consacrée aux jardins scolaires comme leviers potentiels de résilience éducative, communautaire et d'adaptation climatique dans les écoles rurales djiboutiennes. Cette phase d'investigation constitue la première étape empirique de la recherche et occupe une place centrale dans le processus de construction progressive des connaissances relatives au phénomène étudié. L'analyse documentaire permet en effet d'explorer les représentations institutionnelles, les orientations pédagogiques, les dispositifs techniques ainsi que les dynamiques territoriales qui structurent la mise en œuvre des jardins scolaires dans le contexte éducatif djiboutien.
+Ce chapitre présente les résultats de l'analyse documentaire conduite dans le cadre de cette recherche. Première étape empirique de l'étude, cette phase occupe une place centrale dans la construction progressive des connaissances relatives au phénomène étudié : elle permet d'explorer les représentations institutionnelles, les orientations pédagogiques, les dispositifs techniques et les dynamiques territoriales qui structurent la mise en œuvre des jardins scolaires dans le contexte éducatif djiboutien.
 
-Dans une perspective qualitative inspirée de la théorisation ancrée, les documents mobilisés ne sont pas considérés comme de simples sources secondaires destinées à compléter d'autres formes de collecte de données. Ils constituent au contraire des matériaux empiriques à part entière, porteurs de significations, de représentations et de logiques d'action qui permettent d'accéder aux discours institutionnels, aux pratiques pédagogiques et aux mécanismes organisationnels entourant les projets de jardins scolaires. Cette posture méthodologique repose sur l'idée que les documents produits par les institutions éducatives, les organisations internationales ou les acteurs de terrain reflètent des conceptions particulières de l'éducation, du développement local, de la résilience et de l'adaptation climatique. Leur analyse contribue ainsi à la compréhension des cadres de référence qui orientent les pratiques observées dans les établissements scolaires.
+Dans une perspective de théorisation ancrée, les documents mobilisés ne sont pas des sources secondaires destinées à compléter d'autres formes de collecte : ils constituent des **matériaux empiriques à part entière**, porteurs de significations, de représentations et de logiques d'action. Les documents produits par les institutions éducatives, les organisations internationales ou les acteurs de terrain reflètent en effet des conceptions particulières de l'éducation, du développement local, de la résilience et de l'adaptation climatique. Leur analyse éclaire ainsi les cadres de référence qui orientent les pratiques observées dans les établissements.
 
-La constitution du corpus documentaire a nécessité un important travail de repérage, de collecte, de sélection et d'archivage auprès de différentes institutions nationales et partenaires techniques impliqués dans la conception, la mise en œuvre ou le suivi des projets de jardins scolaires à Djibouti. Les principales structures consultées comprennent notamment le Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFOP), le Centre de Formation des Enseignants de l'Enseignement Fondamental (CFEEF), le Service de la Restauration Scolaire, le Centre de Recherche, d'Information et de Production de l'Éducation Nationale (CRIPEN), les inspections régionales de l'éducation ainsi que plusieurs établissements scolaires ruraux engagés dans des initiatives de jardins scolaires. Cette collecte a également été enrichie par les contributions de partenaires internationaux tels que l'Organisation des Nations Unies pour l'alimentation et l'agriculture (FAO), le Fonds des Nations Unies pour l'enfance (UNICEF) et le Programme Alimentaire Mondial (PAM).
+La constitution du corpus a nécessité un travail approfondi de repérage, de collecte, de sélection et d'archivage auprès des institutions nationales et des partenaires techniques : MENFOP, CFEEF, Service de la restauration scolaire, CRIPEN, inspections régionales et établissements scolaires ruraux engagés dans des initiatives de jardins scolaires. La collecte a été enrichie par les contributions de la FAO, de l'UNICEF et du Programme alimentaire mondial.
 
-Le corpus documentaire constitué présente une grande diversité de formats et de contenus. Il comprend des rapports de suivi-évaluation, des guides pédagogiques, des fiches d'activités éducatives, des projets d'établissement, des supports techniques de jardinage scolaire, des documents de formation des enseignants, des affiches de sensibilisation, des photographies, des vidéos pédagogiques, des archives institutionnelles ainsi que des publications scientifiques portant sur les jardins scolaires, l'éducation environnementale ou la résilience communautaire. Une part importante de ces matériaux appartient à ce que la littérature méthodologique désigne sous le terme de littérature grise, c'est-à-dire des documents produits par des institutions, des administrations ou des organisations de développement qui circulent en dehors des canaux traditionnels de publication scientifique. Bien que souvent peu accessibles dans les bases de données académiques, ces documents présentent une valeur scientifique considérable puisqu'ils permettent d'accéder aux pratiques effectives, aux outils opérationnels et aux réalités de terrain qui structurent les projets éducatifs.
+Le corpus présente une grande diversité de formats et de contenus : rapports de suivi-évaluation, guides pédagogiques, fiches d'activités, projets d'établissement, supports techniques, documents de formation, affiches de sensibilisation, photographies, vidéos pédagogiques, archives institutionnelles et publications scientifiques. Une part importante relève de la **littérature grise** — documents produits par des institutions, administrations ou organisations de développement circulant en dehors des canaux traditionnels de publication scientifique. Souvent absents des bases de données académiques, ces matériaux présentent une valeur scientifique considérable : ils donnent accès aux pratiques effectives, aux outils opérationnels et aux réalités de terrain qui structurent les projets éducatifs.
 
-L'analyse de ce corpus a été conduite selon les principes méthodologiques de la théorisation ancrée (Grounded Theory). Conformément à cette approche, les catégories analytiques n'ont pas été définies à partir d'un cadre conceptuel préétabli ou d'hypothèses rigides. Elles ont émergé progressivement des données elles-mêmes à travers un processus itératif de lecture approfondie, de codage, de comparaison constante et d'interprétation. Cette démarche inductive permet de construire une compréhension contextualisée du phénomène étudié tout en préservant la complexité des réalités observées. Elle favorise également l'émergence de catégories conceptuelles directement enracinées dans les données recueillies, conformément aux principes formulés par Glaser et Strauss (1967) puis développés par Charmaz (2014).
+L'analyse a été conduite selon les principes de la théorisation ancrée. Les catégories analytiques n'ont pas été définies à partir d'un cadre conceptuel préétabli : elles ont émergé progressivement des données à travers un processus itératif de lecture approfondie, de codage, de comparaison constante et d'interprétation — démarche inductive conforme aux principes formulés par Glaser et Strauss (1967) puis développés par Charmaz (2014).
 
-Afin de soutenir ce processus analytique, le logiciel NVivo 15 a été mobilisé comme outil d'organisation, de codage et d'interprétation des données. Son utilisation a permis de structurer l'ensemble du corpus documentaire, d'identifier les régularités thématiques, de comparer les différentes catégories de documents et d'explorer les relations existant entre les concepts émergents. Le logiciel a également facilité l'intégration simultanée de données textuelles, visuelles et audiovisuelles, offrant ainsi la possibilité d'analyser conjointement des rapports institutionnels, des photographies, des vidéos pédagogiques et divers supports éducatifs. Cette diversité documentaire contribue à renforcer la richesse interprétative de la recherche et participe à une forme de triangulation méthodologique susceptible d'améliorer la crédibilité et la profondeur de l'analyse.
+Le logiciel **NVivo 15** a soutenu ce processus en permettant de structurer le corpus, d'identifier les régularités thématiques, de comparer les catégories de documents et d'explorer les relations entre concepts émergents. Il a notamment facilité l'intégration simultanée de données textuelles, visuelles et audiovisuelles, autorisant l'analyse conjointe de rapports institutionnels, de photographies, de vidéos pédagogiques et de supports éducatifs — diversité qui participe d'une forme de triangulation renforçant la crédibilité de l'analyse.
 
-Ce chapitre s'inscrit dans le prolongement logique des développements présentés dans les chapitres précédents. Le premier chapitre a permis de situer la recherche dans le contexte éducatif, territorial et environnemental de Djibouti. Le deuxième chapitre a établi les fondements théoriques mobilisés pour comprendre les relations entre apprentissage expérientiel, pédagogies actives, jardins scolaires, résilience éducative et adaptation climatique. Le troisième chapitre a présenté les choix épistémologiques, méthodologiques et analytiques qui orientent la démarche de recherche. Le présent chapitre constitue dès lors la première phase empirique du travail doctoral et vise à faire émerger les principales catégories analytiques qui guideront ensuite les entretiens semi-directifs, les observations de terrain et l'interprétation globale des résultats.
+Ce chapitre s'inscrit dans le prolongement des développements précédents : le chapitre I a situé la recherche dans le contexte éducatif, territorial et environnemental de Djibouti ; le chapitre II a établi les fondements théoriques ; le chapitre III a présenté les choix épistémologiques et méthodologiques. Le présent chapitre constitue la **première phase empirique** du travail et vise à faire émerger les catégories analytiques qui guideront ensuite les entretiens semi-directifs, les observations de terrain et l'interprétation globale des résultats.
 
-L'objectif principal de cette analyse documentaire est de mettre en évidence la manière dont les jardins scolaires sont construits, représentés et mobilisés dans les différents documents étudiés. Plus précisément, il s'agit d'examiner comment ces dispositifs apparaissent progressivement comme des espaces pédagogiques contextualisés, des laboratoires vivants d'apprentissage, des outils de nutrition scolaire, des mécanismes locaux d'adaptation climatique, des dispositifs de résilience communautaire et, plus largement, des leviers potentiels de transformation éducative dans les écoles rurales djiboutiennes.
-
-À travers cette analyse, le chapitre cherche ainsi à comprendre comment les acteurs institutionnels et éducatifs conçoivent les fonctions attribuées aux jardins scolaires, quelles pratiques sont effectivement promues et quelles tensions émergent entre les discours, les objectifs et les réalités de mise en œuvre. L'enjeu est de faire émerger, à partir des données documentaires elles-mêmes, une compréhension fine des dynamiques qui structurent les jardins scolaires dans le contexte djiboutien et qui constitueront le socle interprétatif des analyses empiriques développées dans les sections suivantes.
-
-Cette version est davantage conforme au style doctoral attendu : plus analytique, moins descriptive, mieux articulée avec la théorisation ancrée, et conforme aux exigences rédactionnelles de l'APA 7 pour une thèse de doctorat.
+L'objectif est de mettre en évidence la manière dont les jardins scolaires sont construits, représentés et mobilisés dans les documents étudiés : comment ils apparaissent progressivement comme des espaces pédagogiques contextualisés, des laboratoires vivants d'apprentissage, des outils de nutrition scolaire, des mécanismes locaux d'adaptation climatique et des dispositifs de résilience communautaire. Il s'agit également de comprendre quelles pratiques sont effectivement promues et quelles **tensions émergent entre les discours, les objectifs et les réalités de mise en œuvre**.
 
 ### 4.1 Objectifs de l'analyse documentaire
 
-Dans le cadre de cette recherche doctorale, l'analyse documentaire constitue une étape fondamentale du processus d'investigation empirique. Elle vise à explorer de manière approfondie les dimensions éducatives, institutionnelles, communautaires, environnementales et territoriales qui structurent les projets de jardins scolaires dans les écoles rurales djiboutiennes. Cette démarche permet d'accéder aux discours produits par les institutions éducatives, aux outils pédagogiques utilisés dans les établissements scolaires, aux mécanismes de gouvernance des projets ainsi qu'aux modalités concrètes de leur mise en œuvre. Au-delà d'une simple fonction descriptive, l'analyse documentaire contribue à la construction progressive des catégories interprétatives qui serviront de fondement à l'ensemble du processus de théorisation ancrée.
+L'analyse documentaire vise à explorer les dimensions éducatives, institutionnelles, communautaires, environnementales et territoriales qui structurent les projets de jardins scolaires. Elle donne accès aux discours produits par les institutions éducatives, aux outils pédagogiques utilisés dans les établissements, aux mécanismes de gouvernance des projets et aux modalités concrètes de leur mise en œuvre. Au-delà d'une fonction descriptive, elle contribue à la construction progressive des catégories interprétatives qui fondent le processus de théorisation ancrée.
 
-Conformément aux principes de la Grounded Theory développés par Glaser et Strauss (1967) puis approfondis par Charmaz (2014), les documents analysés sont considérés comme des matériaux empiriques à part entière. Ils permettent de mettre au jour les représentations, les pratiques, les normes et les logiques d'action qui orientent le développement des jardins scolaires dans les contextes ruraux djiboutiens. L'objectif n'est donc pas uniquement de décrire le contenu des documents collectés, mais de comprendre les significations qu'ils véhiculent et les dynamiques sociales qu'ils contribuent à produire.
+Conformément aux principes de la *Grounded Theory* (Glaser & Strauss, 1967 ; Charmaz, 2014), les documents sont traités comme des matériaux empiriques révélant représentations, pratiques, normes et logiques d'action. L'objectif n'est pas de décrire leur contenu, mais de comprendre les **significations qu'ils véhiculent** et les dynamiques sociales qu'ils contribuent à produire.
+
+Six objectifs spécifiques structurent cette analyse.
 
 #### 4.1.1 Identifier les représentations institutionnelles des jardins scolaires
 
-Le premier objectif de l'analyse documentaire consiste à examiner la manière dont les jardins scolaires sont représentés et légitimés dans les politiques éducatives, les programmes de développement et les documents institutionnels produits par les différentes parties prenantes. Les rapports du Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFOP), du Programme Alimentaire Mondial (PAM), de l'UNICEF et de la FAO permettent notamment d'analyser les finalités attribuées à ces dispositifs ainsi que les discours qui accompagnent leur diffusion dans les établissements scolaires.
+Le premier objectif consiste à examiner comment les jardins scolaires sont représentés et légitimés dans les politiques éducatives, les programmes de développement et les documents institutionnels. Les rapports du MENFOP, du Programme alimentaire mondial, de l'UNICEF et de la FAO permettent d'analyser les finalités attribuées à ces dispositifs et les discours qui accompagnent leur diffusion.
 
-Cette analyse vise à comprendre comment les jardins scolaires sont progressivement intégrés aux stratégies éducatives nationales et aux programmes internationaux de développement. Elle permet également d'identifier les représentations institutionnelles associées à l'éducation rurale, à la résilience éducative, à la sécurité alimentaire, à l'éducation environnementale et au développement durable. L'examen de ces discours contribue à mettre en évidence les conceptions de l'école rurale qui sous-tendent les projets de jardins scolaires ainsi que les attentes institutionnelles qui leur sont associées.
+Cette analyse éclaire leur intégration progressive aux stratégies éducatives nationales et aux programmes internationaux, et identifie les représentations associées à l'éducation rurale, à la résilience éducative, à la sécurité alimentaire, à l'éducation environnementale et au développement durable. Elle met ainsi en évidence les **conceptions de l'école rurale** qui sous-tendent les projets et les attentes institutionnelles qui leur sont associées.
 
 #### 4.1.2 Analyser les usages pédagogiques des jardins scolaires
 
-Un second objectif consiste à étudier les pratiques pédagogiques développées autour des jardins scolaires dans les écoles rurales. Les guides pédagogiques, les fiches d'activités, les documents de formation et les supports éducatifs offrent un accès privilégié aux modalités d'intégration du jardin dans les processus d'enseignement et d'apprentissage.
+Le second objectif porte sur les pratiques pédagogiques développées autour du jardin. Guides pédagogiques, fiches d'activités, documents de formation et supports éducatifs offrent un accès privilégié aux modalités d'intégration du dispositif dans les processus d'enseignement.
 
-L'analyse cherche à comprendre comment les jardins scolaires sont mobilisés comme supports pédagogiques dans différentes disciplines et comment ils contribuent à la mise en œuvre de pédagogies actives et contextualisées. Une attention particulière est accordée aux formes d'apprentissage expérientiel, aux approches interdisciplinaires ainsi qu'aux stratégies de contextualisation des savoirs. Cette dimension permet d'examiner dans quelle mesure les jardins scolaires fonctionnent comme des laboratoires vivants d'apprentissage favorisant l'expérimentation, l'observation directe, la résolution de problèmes et la participation active des élèves.
+L'analyse cherche à comprendre comment le jardin est mobilisé comme support pédagogique dans différentes disciplines et comment il contribue à la mise en œuvre de pédagogies actives et contextualisées. Une attention particulière est portée aux formes d'apprentissage expérientiel, aux approches interdisciplinaires et aux stratégies de contextualisation des savoirs — soit la mesure dans laquelle le jardin fonctionne effectivement comme **laboratoire vivant d'apprentissage**.
 
-Les documents analysés montrent notamment que les activités de jardinage sont fréquemment mobilisées dans l'enseignement des sciences, des mathématiques, des langues, de l'éducation nutritionnelle et de l'éducation environnementale. L'analyse vise ainsi à mettre en évidence les processus par lesquels les jardins scolaires contribuent à transformer les pratiques pédagogiques traditionnelles et à renforcer le caractère concret des apprentissages.
+Les documents montrent que les activités de jardinage sont fréquemment mobilisées dans l'enseignement des sciences, des mathématiques, des langues, de l'éducation nutritionnelle et de l'éducation environnementale.
 
 #### 4.1.3 Comprendre les logiques de mise en œuvre territoriale
 
-L'analyse documentaire poursuit également un objectif de compréhension des modalités territoriales de mise en œuvre des jardins scolaires. Les rapports de suivi, les projets d'établissement, les documents de planification et les outils de gestion permettent d'examiner les formes d'organisation qui soutiennent le fonctionnement de ces dispositifs dans les différentes régions du pays.
+Rapports de suivi, projets d'établissement, documents de planification et outils de gestion permettent d'examiner les formes d'organisation qui soutiennent le fonctionnement des dispositifs dans les différentes régions.
 
-Cette analyse met l'accent sur les dynamiques locales de gouvernance, les mécanismes de participation communautaire et les capacités institutionnelles qui influencent le développement des projets. Elle cherche à identifier les facteurs favorisant ou limitant la pérennité des jardins scolaires dans des contextes caractérisés par de fortes disparités territoriales, des contraintes environnementales importantes et des niveaux variables de disponibilité des ressources.
+L'analyse porte sur les dynamiques locales de gouvernance, les mécanismes de participation communautaire et les capacités institutionnelles qui influencent le développement des projets. Elle cherche à identifier les facteurs favorisant ou limitant leur pérennité dans des contextes marqués par de fortes disparités territoriales, des contraintes environnementales importantes et des niveaux variables de ressources — et à éclairer les **interactions entre politiques nationales et réalités locales**.
 
-L'étude de ces dimensions permet de mieux comprendre comment les caractéristiques locales influencent l'appropriation des jardins scolaires et la diversité des pratiques observées d'un territoire à l'autre. Elle contribue également à mettre en évidence les interactions entre les politiques éducatives nationales et les réalités spécifiques des communautés rurales.
+#### 4.1.4 Examiner les dimensions environnementales et climatiques
 
-#### 4.1.4 Examiner les dimensions environnementales et climatiques des jardins scolaires
+Documents techniques, rapports institutionnels et outils pédagogiques accordent une place importante aux enjeux liés à la sécheresse, à la rareté des ressources hydriques, à l'aridité du climat et aux vulnérabilités environnementales du territoire djiboutien.
 
-Un autre objectif majeur de cette analyse documentaire consiste à explorer les relations entre les jardins scolaires, l'environnement et les processus d'adaptation climatique. Les documents techniques, les rapports institutionnels et les outils pédagogiques accordent une place importante aux enjeux liés à la sécheresse, à la rareté des ressources hydriques, à l'aridité du climat et aux vulnérabilités environnementales qui caractérisent le territoire djiboutien.
-
-L'analyse cherche à comprendre comment les jardins scolaires sont mobilisés comme instruments d'éducation environnementale et comme espaces d'apprentissage de pratiques adaptées aux contraintes écologiques locales. Elle permet d'examiner la manière dont les dispositifs encouragent l'adoption de techniques telles que l'irrigation économe en eau, le compostage, l'utilisation de cultures adaptées aux conditions arides ou encore la gestion durable des ressources naturelles.
-
-Cette dimension apparaît particulièrement importante dans le contexte djiboutien où les défis climatiques constituent un enjeu majeur pour les communautés rurales. Les jardins scolaires sont ainsi analysés non seulement comme des outils pédagogiques, mais également comme des dispositifs susceptibles de contribuer au développement de capacités locales d'adaptation et de résilience environnementale.
+L'analyse examine comment le jardin est mobilisé comme instrument d'éducation environnementale et comme espace d'apprentissage de pratiques adaptées aux contraintes écologiques locales : irrigation économe en eau, compostage, cultures adaptées aux conditions arides, gestion durable des ressources naturelles. Le jardin est ainsi analysé non seulement comme outil pédagogique, mais comme dispositif susceptible de contribuer au développement de **capacités locales d'adaptation**.
 
 #### 4.1.5 Identifier les contraintes et les limites de fonctionnement
 
-L'analyse documentaire vise également à mettre en évidence les difficultés rencontrées dans la mise en œuvre des jardins scolaires. Une approche rigoureuse de la recherche impose en effet de dépasser les représentations parfois idéalisées de ces dispositifs afin d'examiner les obstacles qui limitent leur efficacité ou leur durabilité.
+Une approche rigoureuse impose de dépasser les représentations parfois idéalisées du dispositif pour examiner les obstacles qui limitent son efficacité ou sa durabilité.
 
-Les rapports de terrain, les documents de suivi-évaluation et les bilans de projets révèlent plusieurs contraintes récurrentes liées notamment à l'insuffisance des ressources hydriques, au manque d'équipements, aux difficultés de maintenance, à l'irrégularité du suivi pédagogique ou encore à la faiblesse des financements disponibles. Ces éléments permettent de comprendre les conditions réelles dans lesquelles les projets se développent et les facteurs susceptibles d'affecter leur pérennité.
-
-L'identification de ces contraintes constitue un aspect essentiel de l'analyse puisqu'elle contribue à une compréhension nuancée des jardins scolaires, prenant en compte à la fois leurs potentialités et leurs limites structurelles.
+Rapports de terrain, documents de suivi-évaluation et bilans de projets révèlent plusieurs contraintes récurrentes : insuffisance des ressources hydriques, manque d'équipements, difficultés de maintenance, irrégularité du suivi pédagogique, faiblesse des financements. Leur identification permet une **compréhension nuancée** prenant en compte à la fois les potentialités et les limites structurelles du dispositif.
 
 #### 4.1.6 Faire émerger les catégories analytiques de la recherche
 
-L'un des objectifs centraux de cette phase documentaire consiste enfin à faire émerger progressivement les catégories analytiques qui serviront de fondement à l'ensemble de la recherche. Dans la logique de la théorisation ancrée, ces catégories ne sont pas imposées à partir d'un modèle théorique préétabli ; elles sont construites à partir des données elles-mêmes grâce à un processus continu de codage, de comparaison et d'interprétation.
+L'objectif central de cette phase est de faire émerger les catégories analytiques fondant l'ensemble de la recherche. Dans la logique de la théorisation ancrée, ces catégories ne sont pas imposées depuis un modèle préétabli : elles sont construites à partir des données par un processus continu de codage, de comparaison et d'interprétation.
 
-Le codage ouvert permet d'identifier les premiers concepts présents dans les documents. Le codage axial contribue ensuite à établir des relations entre ces concepts, tandis que le codage sélectif favorise l'émergence de catégories plus intégratrices susceptibles d'expliquer le phénomène étudié dans sa globalité. Ce processus itératif de comparaison constante constitue le cœur de la démarche de théorisation ancrée et permet de développer progressivement un modèle interprétatif enraciné dans les données empiriques.
+Le codage ouvert identifie les premiers concepts ; le codage axial établit des relations entre eux ; le codage sélectif fait émerger des catégories plus intégratrices susceptibles d'expliquer le phénomène dans sa globalité.
 
-**Vers une compréhension multidimensionnelle du jardin scolaire**
+##### Vers une compréhension multidimensionnelle du jardin scolaire
 
-Au-delà de ces objectifs spécifiques, l'analyse documentaire poursuit une ambition plus globale : comprendre comment les jardins scolaires sont progressivement construits comme des dispositifs multidimensionnels au sein des écoles rurales djiboutiennes. Les documents analysés montrent que ces espaces ne peuvent être réduits à leur seule fonction agricole ou pédagogique. Ils apparaissent simultanément comme des environnements d'apprentissage contextualisé, des dispositifs de nutrition scolaire, des outils d'éducation environnementale, des mécanismes de résilience communautaire et des espaces d'expérimentation favorisant l'adaptation aux contraintes climatiques.
+Au-delà de ces objectifs spécifiques, l'analyse poursuit une ambition plus globale : comprendre comment les jardins scolaires sont progressivement construits comme des **dispositifs multidimensionnels**. Les documents montrent qu'ils ne peuvent être réduits à leur seule fonction agricole ou pédagogique : ils apparaissent simultanément comme des environnements d'apprentissage contextualisé, des dispositifs de nutrition scolaire, des outils d'éducation environnementale, des mécanismes de résilience communautaire et des espaces d'expérimentation favorisant l'adaptation climatique.
 
-Cette pluralité de fonctions révèle la complexité des jardins scolaires et justifie l'intérêt scientifique qu'ils présentent pour l'étude des transformations contemporaines de l'école rurale. L'analyse documentaire cherche ainsi à mettre en évidence les interactions entre les dimensions éducatives, sociales, environnementales et territoriales qui caractérisent ces dispositifs. Cette compréhension multidimensionnelle constituera le socle interprétatif des analyses empiriques développées dans les sections suivantes du présent chapitre.
+Cette pluralité de fonctions révèle la complexité du dispositif et justifie l'intérêt scientifique qu'il présente pour l'étude des transformations contemporaines de l'école rurale.
 
 ### 4.2 Constitution et organisation du corpus documentaire
 
 #### 4.2.1 Démarche de collecte documentaire
 
-La constitution du corpus documentaire représente une étape fondamentale du processus de recherche entrepris dans le cadre de cette étude doctorale. Cette phase a nécessité un travail systématique de repérage, de collecte, de sélection, de consultation, de numérisation et d'archivage de documents relatifs aux jardins scolaires dans les écoles rurales djiboutiennes. Dans une démarche de théorisation ancrée, la collecte documentaire ne vise pas uniquement à réunir des informations contextuelles, mais à constituer un ensemble de matériaux empiriques susceptibles de contribuer directement à la compréhension du phénomène étudié.
+La constitution du corpus a nécessité un travail systématique de repérage, de collecte, de sélection, de consultation, de numérisation et d'archivage. Dans une démarche de théorisation ancrée, cette collecte ne vise pas à réunir des informations contextuelles, mais à constituer un ensemble de matériaux contribuant directement à la compréhension du phénomène.
 
-La recherche documentaire a été réalisée auprès de plusieurs institutions nationales et partenaires techniques impliqués dans la conception, la mise en œuvre ou le suivi des projets de jardins scolaires. Parmi les principales structures consultées figurent le Ministère de l'Éducation Nationale et de la Formation Professionnelle (MENFOP), le Centre de Formation des Enseignants de l'Enseignement Fondamental (CFEEF), le Service de la Restauration Scolaire, le Centre de Recherche, d'Information et de Production de l'Éducation Nationale (CRIPEN), les inspections régionales ainsi que plusieurs écoles rurales engagées dans des projets de jardins scolaires. Cette collecte a également été enrichie par les contributions des principaux partenaires techniques et financiers intervenant dans le domaine de l'éducation et de la sécurité alimentaire, notamment le Programme Alimentaire Mondial (PAM), l'UNICEF et la FAO.
+La recherche documentaire a été menée auprès du MENFOP, du CFEEF, du Service de la restauration scolaire, du CRIPEN, des inspections régionales et de plusieurs écoles rurales engagées dans des projets de jardins scolaires. Elle a été enrichie par les contributions du Programme alimentaire mondial, de l'UNICEF et de la FAO.
 
-Cette démarche a permis d'accéder à un ensemble documentaire particulièrement riche et diversifié, dont une part importante relève de la littérature grise. Selon Paillé et Mucchielli (2021), la littérature grise regroupe les documents produits par des institutions, administrations ou organisations qui ne sont généralement pas diffusés par les canaux traditionnels de publication scientifique. Bien que souvent absents des bases de données académiques, ces documents constituent des sources empiriques précieuses dans la mesure où ils offrent un accès direct aux pratiques, aux dispositifs opérationnels et aux réalités de terrain.
+Une part importante du corpus relève de la **littérature grise**. Paillé et Mucchielli (2021) désignent ainsi les documents produits par des institutions, administrations ou organisations qui ne sont généralement pas diffusés par les canaux traditionnels de publication scientifique. Bien qu'absents des bases de données académiques, ils constituent des sources empiriques précieuses en ce qu'ils offrent un accès direct aux pratiques, aux dispositifs opérationnels et aux réalités de terrain.
 
-Les matériaux recueillis comprennent des rapports de suivi-évaluation, des rapports de formation, des projets pédagogiques d'établissement, des fiches pédagogiques, des outils de suivi des cultures maraîchères, des guides techniques, des affiches éducatives, des photographies de terrain, des vidéos pédagogiques, des archives historiques relatives aux jardins scolaires ainsi que plusieurs publications scientifiques portant sur l'éducation, l'environnement et le développement communautaire.
-
-L'une des particularités de ce corpus réside dans la diversité de ses producteurs. Les documents analysés ne proviennent pas uniquement des institutions nationales ou des organisations internationales ; ils incluent également des productions élaborées directement par les acteurs de terrain, notamment les enseignants, les directeurs d'école, les jardiniers communautaires, les inspecteurs pédagogiques, les conseillers techniques et les responsables du suivi-évaluation. Cette pluralité des sources contribue à enrichir l'analyse en permettant de confronter les discours institutionnels aux pratiques effectives observées dans les établissements scolaires.
-
-Dans une perspective de théorisation ancrée, cette diversité documentaire favorise la triangulation des données et permet de croiser plusieurs niveaux d'analyse. Elle offre la possibilité d'explorer simultanément les dimensions pédagogiques, institutionnelles, sociales, communautaires et environnementales qui structurent les projets de jardins scolaires dans les contextes ruraux djiboutiens.
+La particularité de ce corpus réside dans la **diversité de ses producteurs** : institutions nationales et organisations internationales, mais aussi acteurs de terrain — enseignants, directeurs d'école, jardiniers communautaires, inspecteurs pédagogiques, conseillers techniques, responsables du suivi-évaluation. Cette pluralité permet de confronter les discours institutionnels aux pratiques effectivement observées.
 
 #### 4.2.2 Typologie du corpus documentaire
 
-Le corpus documentaire final se compose de plusieurs catégories complémentaires de documents, chacune apportant un éclairage spécifique sur les différentes dimensions du phénomène étudié.
+Cinq catégories complémentaires composent le corpus, chacune apportant un éclairage spécifique.
 
-Une première catégorie regroupe les rapports institutionnels et les documents de suivi-évaluation. Ces documents constituent une source privilégiée d'information sur les orientations politiques, les objectifs assignés aux jardins scolaires, les modalités de mise en œuvre des projets ainsi que les mécanismes de gouvernance et d'évaluation. Ils permettent notamment d'examiner les stratégies développées par le MENFOP et les partenaires internationaux pour intégrer les jardins scolaires dans les politiques éducatives, nutritionnelles et environnementales. Parmi les documents les plus significatifs figurent les rapports de l'UNICEF consacrés aux jardins scolaires et aux cultures hydroponiques, les rapports consolidés de suivi des cinq régions administratives, les rapports de formation des jardiniers communautaires ainsi que les évaluations des projets pédagogiques d'établissement.
+**Les rapports institutionnels et documents de suivi-évaluation** informent sur les orientations politiques, les objectifs assignés au dispositif, les modalités de mise en œuvre et les mécanismes de gouvernance. Ils permettent d'examiner les stratégies développées par le MENFOP et les partenaires internationaux pour intégrer les jardins scolaires dans les politiques éducatives, nutritionnelles et environnementales. Figurent notamment parmi eux les rapports de l'UNICEF consacrés aux jardins scolaires et aux cultures hydroponiques, les rapports consolidés de suivi des cinq régions administratives, les rapports de formation des jardiniers communautaires et les évaluations des projets pédagogiques d'établissement.
 
-Une deuxième catégorie est constituée des documents pédagogiques utilisés dans les établissements scolaires. Elle comprend les fiches pédagogiques, les préparations de leçons, les séquences d'apprentissage et divers supports élaborés par les enseignants. Ces documents permettent d'analyser les usages pédagogiques des jardins scolaires, leur intégration dans les disciplines scolaires ainsi que les approches d'apprentissage mobilisées. Ils mettent notamment en évidence l'utilisation des jardins dans l'enseignement des sciences, des mathématiques, du langage, de l'éducation nutritionnelle et de l'Éveil aux Milieux et Techniques (EMT).
+**Les documents pédagogiques** — fiches pédagogiques, préparations de leçons, séquences d'apprentissage, supports élaborés par les enseignants — permettent d'analyser les usages du jardin, son intégration disciplinaire et les approches d'apprentissage mobilisées. Ils mettent en évidence son utilisation en sciences, en mathématiques, en langage, en éducation nutritionnelle et en **Éveil aux milieux et techniques (EMT)**.
 
-Une troisième catégorie rassemble les supports techniques destinés à l'aménagement et à la gestion des jardins scolaires. Ces documents comprennent des guides de compostage, des manuels sur l'irrigation goutte-à-goutte, des schémas de pépinières, des affiches éducatives consacrées aux cultures maraîchères ainsi que divers supports relatifs à l'aménagement des potagers scolaires. Ils permettent d'explorer les dimensions techniques et environnementales des jardins scolaires et mettent en évidence les pratiques agroécologiques adaptées aux conditions arides.
+**Les supports techniques** destinés à l'aménagement et à la gestion du jardin comprennent guides de compostage, manuels d'irrigation goutte-à-goutte, schémas de pépinières et affiches consacrées aux cultures maraîchères. Ils éclairent les dimensions techniques et environnementales du dispositif et révèlent les pratiques agroécologiques adaptées aux conditions arides.
 
-Le corpus comprend également un ensemble de données visuelles et audiovisuelles constitué de photographies, de vidéos pédagogiques, de supports visuels de formation et d'images de suivi de terrain. Ces matériaux offrent un accès direct aux réalités observées dans les établissements scolaires et permettent d'examiner les infrastructures, les pratiques pédagogiques, les techniques agricoles ainsi que les interactions entre les différents acteurs impliqués dans les projets.
+**Les données visuelles et audiovisuelles** — photographies, vidéos pédagogiques, supports visuels de formation, images de suivi de terrain — donnent un accès direct aux réalités observées : infrastructures, pratiques pédagogiques, techniques agricoles, interactions entre acteurs.
 
-Enfin, une dernière catégorie est constituée d'archives pédagogiques historiques datant principalement des années 1978 à 1979. Ces documents témoignent de l'ancienneté des jardins scolaires dans le système éducatif djiboutien et permettent de retracer l'évolution des conceptions pédagogiques associées à ces dispositifs. Leur analyse contribue à inscrire la présente recherche dans une perspective historique et à mettre en évidence les continuités ainsi que les transformations intervenues dans les représentations du jardin scolaire au fil du temps.
+**Les archives pédagogiques historiques**, datant principalement des **années 1978-1979**, témoignent de l'ancienneté du dispositif dans le système éducatif djiboutien. Leur analyse inscrit la recherche dans une perspective historique et met en évidence continuités et transformations dans les représentations du jardin scolaire.
 
-#### 4.2.3 Répartition statistique du corpus documentaire
+#### 4.2.3 Répartition du corpus documentaire
 
-Le corpus documentaire retenu pour cette recherche comprend au total cinquante-et-une (51) unités documentaires. Cette diversité de sources constitue un élément central de la stratégie méthodologique adoptée, puisqu'elle permet de multiplier les perspectives d'analyse, de confronter différents types de discours et de croiser les représentations institutionnelles avec les pratiques observées sur le terrain.
+Le corpus retenu comprend **51 unités documentaires**. Cette diversité permet de multiplier les perspectives d'analyse, de confronter différents types de discours et de croiser les représentations institutionnelles avec les pratiques observées.
 
-La répartition du corpus documentaire est présentée dans le Tableau 4.1.
+**Tableau 4.1** — *Répartition du corpus documentaire analysé*
 
-**Tableau 4.1**
+| Catégorie documentaire | Code | Nombre d'unités |
+|---|---|---|
+| Rapports institutionnels et documents de suivi-évaluation | RI | 6 |
+| Guides pédagogiques historiques | AH | 8 |
+| Fiches pédagogiques | FP | 5 |
+| Affiches et supports techniques | ST | 12 |
+| Articles et documents scientifiques | — | 4 |
+| Fiches de suivi et outils d'évaluation | — | 2 |
+| Projet pédagogique d'établissement | — | 1 |
+| Photographies de terrain | PH | 10 |
+| Vidéos pédagogiques | VD | 3 |
+| **Total** | | **51** |
 
-*Répartition du corpus documentaire analysé*
+*Note.* Le corpus comprend des données textuelles, visuelles et audiovisuelles provenant d'institutions nationales, d'organisations internationales, d'établissements scolaires ruraux et d'acteurs locaux impliqués dans les projets de jardins scolaires.
 
-  ———————————————————————————
-  **Catégorie documentaire**                                  **Nombre d'unités**
-  ———————————————————– ———————
-  Rapports institutionnels et documents de suivi-évaluation   6
+Les affiches et supports techniques constituent la catégorie la plus représentée (*n* = 12), suivies des photographies de terrain (*n* = 10) et des guides pédagogiques historiques (*n* = 8). Cette répartition témoigne de l'importance accordée aux dimensions pratiques, techniques et pédagogiques. Les rapports institutionnels et de suivi-évaluation (*n* = 6) permettent d'explorer les orientations politiques, les mécanismes de gouvernance et les stratégies de mise en œuvre.
 
-  Guides pédagogiques historiques                             8
-
-  Fiches pédagogiques                                         5
-
-  Affiches et supports techniques                             12
-
-  Articles et documents scientifiques                         4
-
-  Fiches de suivi et outils d'évaluation                      2
-
-  Projet pédagogique d'établissement                          1
-
-  Photographies de terrain                                    10
-
-  Vidéos pédagogiques                                         3
-
-  **Total**                                                   **51**
-  ———————————————————————————
-
-*Note.* Le corpus documentaire comprend des données textuelles, visuelles et audiovisuelles provenant d'institutions nationales, d'organisations internationales, d'établissements scolaires ruraux et d'acteurs locaux impliqués dans les projets de jardins scolaires.
-
-L'examen du tableau montre que les affiches et supports techniques constituent la catégorie documentaire la plus représentée (n = 12), suivie des photographies de terrain (n = 10) et des guides pédagogiques historiques (n = 8). Cette répartition témoigne de l'importance accordée aux dimensions pratiques, techniques et pédagogiques des jardins scolaires dans les documents collectés. Les rapports institutionnels et de suivi-évaluation représentent également une part importante du corpus (n = 6), permettant d'explorer les orientations politiques, les mécanismes de gouvernance et les stratégies de mise en œuvre des projets.
-
-Par ailleurs, la présence de données visuelles et audiovisuelles enrichit considérablement l'analyse en donnant accès à des dimensions difficilement observables dans les documents textuels. Les photographies et les vidéos permettent notamment d'examiner les pratiques pédagogiques, les techniques agricoles, les interactions entre les acteurs et les réalités matérielles des jardins scolaires. Cette diversité documentaire contribue à renforcer la profondeur analytique de la recherche et la crédibilité des interprétations produites.
+La présence de données visuelles et audiovisuelles enrichit l'analyse en donnant accès à des dimensions difficilement observables dans les documents textuels : pratiques pédagogiques, techniques agricoles, interactions entre acteurs, réalités matérielles des jardins.
 
 #### 4.2.4 Organisation du corpus dans NVivo 15
 
-À l'issue de la phase de collecte, l'ensemble des documents a été numérisé, classé et importé dans le logiciel NVivo 15 afin d'assurer une gestion rigoureuse et systématique des données. Cette étape constitue une composante essentielle du dispositif méthodologique dans la mesure où elle garantit la traçabilité du processus analytique et facilite l'organisation du corpus.
+L'ensemble des documents a été numérisé, classé et importé dans NVivo 15 afin d'assurer une gestion rigoureuse des données et de garantir la traçabilité du processus analytique.
 
-Les documents ont été regroupés au sein de différents dossiers correspondant aux principales catégories documentaires identifiées lors de la phase préparatoire. Cette structuration a permis de distinguer les rapports institutionnels, les documents pédagogiques, les supports techniques, les données visuelles, les vidéos pédagogiques, les outils de suivi ainsi que les archives historiques.
+Les documents ont été regroupés dans des dossiers correspondant aux catégories documentaires identifiées : rapports institutionnels, documents pédagogiques, supports techniques, données visuelles, vidéos pédagogiques, outils de suivi, archives historiques.
 
-Chaque document a ensuite été associé à plusieurs attributs descriptifs, notamment le type de document, l'institution productrice, l'année de production, la région concernée, la catégorie thématique principale ainsi que la nature pédagogique, technique ou institutionnelle du contenu. Cette organisation a facilité les opérations de codage, les comparaisons entre catégories documentaires et les requêtes analytiques réalisées au cours du processus d'interprétation.
+Chaque document a été associé à plusieurs attributs descriptifs — type de document, institution productrice, année de production, région concernée, catégorie thématique principale, nature pédagogique, technique ou institutionnelle du contenu. Cette organisation a facilité les opérations de codage, les comparaisons entre catégories et les requêtes analytiques.
 
-L'utilisation de NVivo 15 a également permis l'intégration simultanée de données textuelles, visuelles et audiovisuelles au sein d'un même environnement analytique. Cette fonctionnalité a favorisé le développement d'une analyse transversale capable d'articuler les différents niveaux d'information présents dans le corpus. Ainsi structuré, le corpus documentaire constitue le socle empirique sur lequel repose l'ensemble des analyses présentées dans les sections suivantes de ce chapitre.
+L'intégration simultanée de données textuelles, visuelles et audiovisuelles au sein d'un même environnement a favorisé une **analyse transversale** articulant les différents niveaux d'information présents dans le corpus.
 
 ### 4.3 Préparation et traitement du corpus documentaire dans NVivo 15
 
-#### 4.3.1 Préparation du corpus documentaire
+#### 4.3.1 Préparation du corpus
 
-À l'issue de la phase de collecte, l'ensemble des documents recensés a fait l'objet d'un processus rigoureux de préparation méthodologique préalable à leur intégration dans le logiciel NVivo 15. Cette étape constitue une condition essentielle à la qualité de l'analyse qualitative puisqu'elle vise à assurer l'organisation du corpus, la cohérence du codage, la traçabilité des données ainsi que la fiabilité de l'ensemble du processus analytique.
+Les documents collectés provenaient de sources variées et se présentaient sous des formats hétérogènes : rapports institutionnels en PDF, fiches pédagogiques manuscrites ou numérisées, photographies de terrain, affiches éducatives, vidéos pédagogiques, tableaux de suivi, manuels historiques numérisés, documents bureautiques. L'ensemble a été soumis à un travail systématique de tri, de classement, de renommage, de numérisation et de conversion vers des formats compatibles.
 
-Les documents collectés provenaient de sources variées et se présentaient sous des formats hétérogènes comprenant des rapports institutionnels au format PDF, des fiches pédagogiques manuscrites ou numérisées, des photographies de terrain, des affiches éducatives, des vidéos pédagogiques, des tableaux de suivi, des manuels historiques numérisés ainsi que divers documents bureautiques élaborés sous formats Word ou PowerPoint. Afin de garantir leur exploitation dans un environnement analytique unique, l'ensemble de ces données a été soumis à un travail systématique de tri, de classement, de renommage, de numérisation et de conversion vers des formats compatibles avec NVivo 15.
+Chaque document a reçu un **identifiant unique**, selon le système de codification documentaire présenté en [section 3.6.6](#366-organisation-et-classification-du-corpus-documentaire) : RI pour les rapports institutionnels, FP pour les fiches pédagogiques, ST pour les supports techniques, VD pour les vidéos pédagogiques, PH pour les photographies et AH pour les archives historiques.
 
-Chaque document a reçu un identifiant unique facilitant son repérage et son suivi tout au long du processus d'analyse. Un système de codification documentaire a été élaboré afin de distinguer les différentes catégories de sources. Les rapports institutionnels ont été identifiés sous le préfixe « RI », les fiches pédagogiques sous le code « FP », les supports techniques sous le code « ST », les vidéos pédagogiques sous le code « VD », les photographies sous le code « PH » et les archives historiques sous le code « AR ». Cette classification a permis de structurer le corpus de manière cohérente tout en facilitant les opérations ultérieures de codage, de comparaison et de recherche documentaire.
+#### 4.3.2 Importation des données
 
-#### 4.3.2 Importation des données dans NVivo 15
+Les documents ont été importés dans NVivo 15 pour constituer la base de données qualitative de la recherche. Le logiciel a permis l'intégration simultanée de données textuelles, visuelles et audiovisuelles au sein d'un même environnement, favorisant une **approche multimodale** de l'analyse documentaire.
 
-Une fois préparés, les documents ont été importés dans NVivo 15 afin de constituer la base de données qualitative de la recherche. Le logiciel a permis l'intégration simultanée de données textuelles, visuelles et audiovisuelles au sein d'un même environnement analytique, favorisant ainsi une approche multimodale de l'analyse documentaire.
+Six dossiers thématiques ont été constitués :
 
-Pour faciliter la gestion du corpus, les documents ont été organisés en plusieurs dossiers thématiques correspondant aux principales catégories documentaires identifiées lors de la phase de préparation. Un premier dossier regroupait les rapports institutionnels produits par le MENFOP, le PAM, l'UNICEF, la FAO ainsi que les différents rapports de suivi-évaluation et de formation. Un second dossier était consacré aux documents pédagogiques, incluant les fiches pédagogiques, les préparations de leçons, les supports EMT et les séquences d'apprentissage mobilisant les jardins scolaires.
+- les **rapports institutionnels** produits par le MENFOP, le Programme alimentaire mondial, l'UNICEF et la FAO, ainsi que les rapports de suivi-évaluation et de formation ;
+- les **documents pédagogiques** : fiches, préparations de leçons, supports EMT, séquences d'apprentissage mobilisant le jardin ;
+- les **supports techniques** : guides de compostage, schémas d'irrigation, documents relatifs aux pépinières ;
+- les **données visuelles** : photographies des jardins, images de terrain, photographies des récoltes, illustrations des infrastructures d'irrigation ;
+- les **documents audiovisuels** : vidéos pédagogiques, séquences de formation, démonstrations agricoles ;
+- les **archives historiques** : anciens manuels de jardin scolaire et documents pédagogiques de 1978-1979.
 
-Les supports techniques ont été regroupés dans un dossier spécifique comprenant notamment les guides de compostage, les schémas d'irrigation, les documents consacrés aux pépinières et les différents supports agricoles. Les données visuelles ont été classées dans un dossier distinct réunissant les photographies des jardins scolaires, les images de terrain, les photographies des récoltes et les illustrations relatives aux infrastructures d'irrigation. Les vidéos pédagogiques, les séquences de formation et les démonstrations agricoles réalisées dans les écoles ont été regroupées dans un dossier audiovisuel spécifique. Enfin, les archives historiques ont été rassemblées dans une catégorie distincte comprenant les anciens manuels de jardin scolaire et les documents pédagogiques datant des années 1978 à 1979.
-
-Cette organisation documentaire a considérablement facilité les opérations de repérage, les comparaisons entre catégories de documents, les requêtes thématiques ainsi que les analyses transversales réalisées au cours de la recherche.
+Cette organisation a facilité le repérage, les comparaisons entre catégories, les requêtes thématiques et les analyses transversales.
 
 #### 4.3.3 Création des attributs descriptifs
 
-Afin de renforcer la précision analytique du corpus, chaque document importé dans NVivo 15 a été associé à un ensemble d'attributs descriptifs permettant d'effectuer des analyses comparatives et des requêtes ciblées. Ces attributs comprenaient notamment le type de document, l'année de production, l'institution productrice, la région concernée, le niveau scolaire ciblé, la nature pédagogique ou technique du document, la thématique dominante ainsi que son format de diffusion.
+Chaque document a été associé à des attributs permettant analyses comparatives et requêtes ciblées : type de document, année de production, institution productrice, région concernée, niveau scolaire visé, nature pédagogique ou technique, thématique dominante, format de diffusion.
 
-L'attribution de ces métadonnées a permis de réaliser des comparaisons entre régions, entre institutions productrices ou encore entre catégories documentaires. Elle a également facilité la production de matrices analytiques et l'exploration de relations entre différents paramètres tels que les usages pédagogiques des jardins scolaires, les contraintes environnementales rencontrées ou les modalités locales de mise en œuvre des projets.
-
-Cette étape s'est révélée particulièrement utile dans la mesure où elle a permis d'examiner les variations observées entre les différentes régions rurales djiboutiennes et d'identifier certaines spécificités territoriales dans les discours et les pratiques associées aux jardins scolaires.
+Ces métadonnées ont permis de comparer régions, institutions productrices et catégories documentaires, de produire des matrices analytiques et d'explorer les relations entre usages pédagogiques, contraintes environnementales et modalités locales de mise en œuvre. Elles ont notamment permis d'examiner les **variations interrégionales** et d'identifier certaines spécificités territoriales dans les discours et les pratiques.
 
 #### 4.3.4 Pré-analyse exploratoire du corpus
 
-Avant le démarrage du processus de codage, une phase de lecture exploratoire approfondie a été réalisée afin de permettre une familiarisation progressive avec les données. Cette étape correspond à ce que Strauss et Corbin (1998) désignent comme une phase de sensibilisation théorique, au cours de laquelle le chercheur développe une compréhension initiale des phénomènes observés sans imposer prématurément des catégories d'analyse préétablies.
+Une phase de lecture exploratoire approfondie a précédé le codage, permettant une familiarisation progressive avec les données. Strauss et Corbin (1998) désignent cette étape comme une phase de **sensibilisation théorique**, au cours de laquelle le chercheur développe une compréhension initiale des phénomènes sans imposer prématurément des catégories préétablies.
 
-La lecture exploratoire a permis de repérer plusieurs thèmes récurrents traversant l'ensemble du corpus documentaire. Parmi les éléments les plus fréquemment évoqués figuraient les questions relatives à la gestion de l'eau, à la nutrition scolaire, aux pédagogies actives, aux apprentissages pratiques, à la résilience communautaire, aux contraintes climatiques, aux cultures maraîchères, à la participation communautaire et aux pratiques environnementales.
+Cette lecture a fait apparaître plusieurs thèmes récurrents traversant le corpus : gestion de l'eau, nutrition scolaire, pédagogies actives, apprentissages pratiques, résilience communautaire, contraintes climatiques, cultures maraîchères, participation communautaire, pratiques environnementales.
 
-Ces premières observations ont constitué un point de départ essentiel pour l'élaboration du système de codage ouvert développé dans les phases ultérieures de l'analyse. Elles ont également permis d'identifier les premières relations entre les différents thèmes et d'orienter les investigations analytiques vers les dimensions les plus significatives du phénomène étudié.
+Ces observations ont constitué le point de départ du système de codage ouvert et ont orienté les investigations vers les dimensions les plus significatives du phénomène.
 
 #### 4.3.5 Intégration des données visuelles et audiovisuelles
 
-L'un des principaux avantages méthodologiques de NVivo 15 réside dans sa capacité à intégrer des données multimodales au sein d'un même dispositif d'analyse. Dans le cadre de cette recherche, les photographies et les vidéos n'ont pas été utilisées comme de simples illustrations destinées à compléter les données textuelles. Elles ont été considérées comme des matériaux empiriques à part entière, susceptibles de fournir des informations complémentaires sur les pratiques observées.
+Photographies et vidéos n'ont pas été utilisées comme illustrations complétant les données textuelles, mais comme **matériaux empiriques à part entière**.
 
-L'analyse des photographies a permis d'examiner l'organisation spatiale des jardins scolaires, les dispositifs d'irrigation, les techniques de compostage, les productions agricoles, les activités réalisées par les élèves ainsi que les caractéristiques des infrastructures scolaires. Ces données ont également fourni des indications précieuses sur les contraintes environnementales auxquelles sont confrontés les établissements scolaires situés dans les régions rurales.
+L'analyse des photographies a permis d'examiner l'organisation spatiale des jardins, les dispositifs d'irrigation, les techniques de compostage, les productions agricoles, les activités des élèves et les caractéristiques des infrastructures scolaires. Elle a également fourni des indications sur les contraintes environnementales pesant sur les établissements ruraux.
 
-Les vidéos pédagogiques ont offert un accès direct aux interactions entre enseignants et élèves, aux gestes techniques associés aux activités de jardinage, aux formes d'apprentissage collaboratif ainsi qu'aux démarches pédagogiques mobilisées sur le terrain. Elles ont notamment permis d'observer la manière dont les activités pratiques étaient intégrées aux apprentissages scolaires et comment les élèves participaient concrètement aux différentes étapes de gestion du jardin scolaire.
+Les vidéos pédagogiques ont donné un accès direct aux interactions entre enseignants et élèves, aux gestes techniques associés au jardinage, aux formes d'apprentissage collaboratif et aux démarches pédagogiques mobilisées — notamment à la manière dont les activités pratiques sont intégrées aux apprentissages scolaires et dont les élèves participent aux différentes étapes de gestion du jardin.
 
-L'intégration de ces données visuelles et audiovisuelles a ainsi enrichi l'analyse documentaire en apportant des dimensions spatiales, matérielles et comportementales difficilement accessibles à travers les seuls documents écrits.
+Ces données ont ainsi apporté des dimensions spatiales, matérielles et comportementales difficilement accessibles à travers les seuls documents écrits.
 
 #### 4.3.6 Construction de l'arborescence analytique initiale
 
-À partir de la lecture exploratoire du corpus et des premières récurrences identifiées, une arborescence analytique initiale a été construite dans NVivo 15. Cette première structuration reposait sur un ensemble de nœuds thématiques correspondant aux principaux concepts émergents observés dans les documents.
+À partir de la lecture exploratoire, une arborescence analytique initiale a été construite dans NVivo 15, reposant sur des nœuds thématiques correspondant aux principaux concepts émergents : pédagogie active, apprentissage expérientiel, nutrition scolaire, irrigation, compostage, résilience communautaire, adaptation climatique, participation parentale, implication des directeurs d'école, suivi-évaluation, contraintes techniques, production maraîchère, interdisciplinarité, pratiques environnementales, gestion de l'eau, gouvernance locale.
 
-Parmi les catégories initialement créées figuraient notamment les notions de pédagogie active, d'apprentissage expérientiel, de nutrition scolaire, d'irrigation, de compostage, de résilience communautaire, d'adaptation climatique, de participation parentale, d'implication des directeurs d'école, de suivi-évaluation, de contraintes techniques, de production maraîchère, d'interdisciplinarité, de pratiques environnementales, de gestion de l'eau et de gouvernance locale.
+Conformément aux principes de la théorisation ancrée, cette structure n'a jamais été considérée comme définitive : les catégories ont été enrichies, reformulées, fusionnées ou subdivisées au fil des comparaisons constantes, assurant une **adéquation permanente** entre catégories construites et réalités empiriques observées.
 
-Conformément aux principes de la théorisation ancrée, cette structure n'a jamais été considérée comme définitive. Au fur et à mesure de l'avancement de l'analyse, les catégories ont été enrichies, reformulées, fusionnées ou subdivisées en fonction des nouvelles données et des comparaisons constantes effectuées entre les différents documents. Cette flexibilité analytique a permis d'assurer une adéquation permanente entre les catégories construites et les réalités empiriques observées.
+#### 4.3.7 Portée et limites de l'outil dans le traitement documentaire
 
-#### 4.3.7 Importance méthodologique de NVivo 15 dans la recherche
+NVivo 15 a permis d'organiser un corpus volumineux et hétérogène, de gérer simultanément données textuelles, visuelles et audiovisuelles, de structurer le codage, de soutenir les comparaisons analytiques et de renforcer la traçabilité des interprétations.
 
-L'utilisation de NVivo 15 a joué un rôle central dans la conduite de cette recherche doctorale. Le logiciel a permis d'organiser efficacement un corpus documentaire volumineux et hétérogène tout en facilitant la gestion simultanée de données textuelles, visuelles et audiovisuelles. Il a également contribué à structurer le processus de codage, à soutenir les comparaisons analytiques et à renforcer la traçabilité des interprétations produites.
+Ses fonctionnalités ont facilité l'identification des récurrences thématiques, l'exploration des relations entre catégories, les comparaisons interrégionales et la production de visualisations soutenant le raisonnement interprétatif.
 
-Les fonctionnalités du logiciel ont facilité l'identification des récurrences thématiques, l'exploration des relations entre catégories émergentes, la réalisation de comparaisons interrégionales ainsi que la production de visualisations analytiques destinées à soutenir le raisonnement interprétatif. Toutefois, conformément aux principes de la recherche qualitative interprétative, NVivo 15 n'a pas été considéré comme un outil produisant automatiquement les résultats de l'analyse. Son rôle a consisté essentiellement à soutenir le travail analytique du chercheur en offrant un environnement structuré permettant d'organiser les données, de documenter les décisions analytiques et de renforcer la rigueur méthodologique du processus de théorisation.
+Le logiciel n'a toutefois pas été considéré comme un outil produisant automatiquement les résultats : son rôle a consisté à **soutenir le travail analytique du chercheur** en offrant un environnement structuré permettant d'organiser les données, de documenter les décisions et de renforcer la rigueur du processus de théorisation.
 
-Ainsi, cette phase de préparation, de structuration et de traitement du corpus documentaire constitue le fondement méthodologique sur lequel repose l'ensemble des analyses présentées dans les sections suivantes consacrées au codage ouvert, au codage axial et au codage sélectif.
+Cette phase de préparation, de structuration et de traitement constitue le fondement méthodologique des analyses présentées dans les sections suivantes, consacrées au codage ouvert, au codage axial et au codage sélectif.
 
 ### 4.4 Le codage ouvert : émergence des premières catégories analytiques
 
-#### 4.4.1 Le principe du codage ouvert dans la théorisation ancrée
+#### 4.4.1 Le principe du codage ouvert
 
-Le codage ouvert constitue la première phase analytique de la théorisation ancrée. Selon Strauss et Corbin (1998), cette étape consiste à examiner minutieusement les données afin d'identifier, de nommer et de conceptualiser les phénomènes présents dans le corpus. Il s'agit d'un processus de fragmentation analytique permettant de faire émerger progressivement les premières unités de sens sans imposer de catégories théoriques préalablement définies. L'objectif est de laisser les concepts émerger des données elles-mêmes à travers un processus itératif de lecture, de comparaison et d'interprétation.
+Strauss et Corbin (1998) définissent le codage ouvert comme l'examen minutieux des données visant à identifier, nommer et conceptualiser les phénomènes présents dans le corpus. Ce processus de **fragmentation analytique** fait émerger les premières unités de sens sans imposer de catégories théoriques préalables.
 
-Dans le cadre de cette recherche, le codage ouvert a été réalisé directement dans le logiciel NVivo 15 à partir de l'ensemble des documents constituant le corpus documentaire. Celui-ci comprenait des rapports institutionnels, des fiches pédagogiques, des supports techniques, des archives historiques, des photographies de terrain, des vidéos pédagogiques ainsi que des outils de suivi et d'évaluation. Chaque document a fait l'objet de plusieurs lectures successives afin de repérer les expressions récurrentes, les pratiques décrites, les actions observées, les contraintes identifiées ainsi que les représentations institutionnelles et les dynamiques territoriales associées aux jardins scolaires.
+Le codage a été réalisé dans NVivo 15 sur l'ensemble du corpus. Chaque document a fait l'objet de plusieurs lectures successives afin de repérer expressions récurrentes, pratiques décrites, actions observées, contraintes identifiées, représentations institutionnelles et dynamiques territoriales.
 
-Conformément aux principes de la théorisation ancrée, l'analyse a reposé sur une logique de comparaison constante. Les données ont été continuellement comparées entre elles, entre les différentes régions concernées, entre les catégories documentaires ainsi qu'entre les discours institutionnels et les pratiques observées sur le terrain. Ce processus a permis de déconstruire progressivement les données afin d'identifier les premiers concepts susceptibles de rendre compte des réalités observées dans les écoles rurales djiboutiennes.
+Conformément aux principes de la théorisation ancrée, l'analyse a reposé sur la **comparaison constante** : les données ont été confrontées entre elles, entre régions, entre catégories documentaires, et surtout entre discours institutionnels et pratiques de terrain.
 
 #### 4.4.2 Émergence des premiers concepts analytiques
 
-L'analyse exploratoire du corpus documentaire a conduit à l'émergence d'un ensemble important de concepts récurrents qui ont constitué les premiers nœuds de codage dans NVivo 15. Ces concepts concernent à la fois les dimensions pédagogiques, nutritionnelles, environnementales, communautaires et institutionnelles des jardins scolaires.
+L'analyse exploratoire a fait émerger un ensemble de concepts récurrents constituant les premiers nœuds de codage, répartis en cinq domaines.
 
-Parmi les notions les plus fréquemment rencontrées figurent notamment le jardin scolaire, l'irrigation, le déficit hydrique, le compostage, les pépinières, les semis, les récoltes, la production maraîchère, la nutrition scolaire, les cantines scolaires, l'apprentissage pratique, l'expérimentation, les pédagogies actives, l'interdisciplinarité, l'éducation environnementale, la résilience, l'adaptation climatique, la participation communautaire, l'implication des directeurs d'école, les clubs scolaires, le suivi-évaluation, les contraintes techniques, la formation des jardiniers et les mécanismes de gouvernance locale.
+| Domaine | Concepts émergents |
+|---|---|
+| **Technique et agronomique** | Irrigation, déficit hydrique, compostage, pépinières, semis, récoltes, production maraîchère |
+| **Nutritionnel** | Nutrition scolaire, cantines scolaires, diversification alimentaire |
+| **Pédagogique** | Apprentissage pratique, expérimentation, pédagogies actives, interdisciplinarité |
+| **Environnemental** | Éducation environnementale, résilience, adaptation climatique |
+| **Institutionnel et communautaire** | Participation communautaire, implication des directeurs, clubs scolaires, suivi-évaluation, formation des jardiniers, gouvernance locale, contraintes techniques |
 
-L'émergence simultanée de ces concepts révèle d'emblée le caractère multidimensionnel du jardin scolaire dans le contexte djiboutien. Les données montrent que celui-ci ne peut être appréhendé comme une simple activité agricole développée dans l'espace scolaire. Au contraire, il apparaît comme un dispositif complexe situé à l'intersection des enjeux éducatifs, nutritionnels, environnementaux et communautaires. Cette pluralité de fonctions constitue l'un des premiers résultats significatifs du codage ouvert.
+L'émergence **simultanée** de ces concepts constitue en soi un premier résultat significatif : le jardin scolaire ne peut être appréhendé comme une simple activité agricole développée dans l'espace scolaire. Il apparaît d'emblée comme un dispositif complexe situé à l'intersection d'enjeux éducatifs, nutritionnels, environnementaux et communautaires.
 
 #### 4.4.3 Le jardin scolaire comme espace pédagogique
 
-L'une des catégories les plus fortement représentées dans le corpus concerne la dimension pédagogique des jardins scolaires. Les fiches pédagogiques, les séquences d'apprentissage et les rapports institutionnels mettent en évidence l'utilisation du jardin comme support d'enseignement dans plusieurs disciplines scolaires. Les activités recensées concernent notamment les sciences, les mathématiques, le langage, l'éveil scientifique ainsi que l'éducation nutritionnelle.
+La dimension pédagogique constitue l'une des catégories les plus fortement représentées. Fiches pédagogiques, séquences d'apprentissage et rapports institutionnels attestent de l'utilisation du jardin comme support d'enseignement en sciences, en mathématiques, en langage, en éveil scientifique et en éducation nutritionnelle.
 
-L'analyse documentaire révèle que les enseignants mobilisent fréquemment le jardin scolaire pour contextualiser les apprentissages et favoriser l'acquisition de compétences à travers l'expérience. Les élèves sont amenés à effectuer des calculs à partir des récoltes, à mesurer les parcelles cultivées, à observer les processus de germination, à décrire les caractéristiques des plantes ou encore à participer à des activités d'expression orale liées aux pratiques de jardinage.
+Les enseignants mobilisent fréquemment le jardin pour contextualiser les apprentissages : les élèves effectuent des calculs à partir des récoltes, mesurent les parcelles cultivées, observent les processus de germination, décrivent les caractéristiques des plantes ou participent à des activités d'expression orale liées aux pratiques de jardinage.
 
-Le concept de pédagogie active apparaît de manière particulièrement récurrente dans les documents analysés. Les élèves participent directement aux différentes étapes du cycle de production, notamment les semis, l'arrosage, l'entretien des cultures, les récoltes, la préparation du compost et les observations scientifiques. Cette implication directe dans l'action constitue une illustration concrète des principes de l'apprentissage expérientiel développés dans le cadre théorique de cette recherche.
-
-Les jardins scolaires apparaissent ainsi comme des espaces pédagogiques contextualisés dans lesquels les savoirs scolaires sont reliés aux réalités vécues par les apprenants. Ils favorisent une approche active de l'apprentissage et contribuent à renforcer la signification des contenus enseignés.
+Le concept de **pédagogie active** apparaît de manière particulièrement récurrente. Les élèves participent directement aux étapes du cycle de production — semis, arrosage, entretien, récoltes, préparation du compost, observations scientifiques —, illustration concrète des principes de l'apprentissage expérientiel exposés au chapitre II.
 
 #### 4.4.4 Le jardin scolaire comme dispositif nutritionnel
 
-Une deuxième catégorie majeure émergente concerne la fonction nutritionnelle des jardins scolaires. Les rapports institutionnels, les documents de suivi-évaluation et les projets soutenus par les partenaires internationaux accordent une place importante aux questions liées à l'alimentation et à la sécurité alimentaire.
+Rapports institutionnels, documents de suivi-évaluation et projets soutenus par les partenaires internationaux accordent une place importante à l'alimentation et à la sécurité alimentaire : diversification alimentaire, amélioration de la nutrition des élèves, approvisionnement des cantines, production de légumes frais complétant les repas.
 
-Les données soulignent l'importance accordée à la diversification alimentaire, à l'amélioration de la nutrition des élèves, à l'approvisionnement des cantines scolaires et à la production de légumes frais destinés à compléter les repas servis dans les établissements. Les cultures recensées dans les documents comprennent notamment les tomates, les oignons, les gombos, les piments, les betteraves, les carottes, les melons et les pastèques.
+Les cultures recensées dans le corpus comprennent tomates, oignons, gombos, piments, betteraves, carottes, melons et pastèques.
 
-L'analyse du codage met en évidence une forte association entre les notions de jardin scolaire, alimentation, santé, fréquentation scolaire et motivation des élèves. Cette convergence suggère que les jardins scolaires sont perçus par les institutions comme des outils susceptibles de contribuer simultanément à l'amélioration des conditions nutritionnelles et à la réussite éducative.
-
-Les données documentaires révèlent ainsi que la fonction nutritionnelle constitue l'une des dimensions structurantes des projets de jardins scolaires développés dans les écoles rurales djiboutiennes.
+Le codage met en évidence une **forte association** entre jardin scolaire, alimentation, santé, fréquentation scolaire et motivation des élèves — convergence suggérant que les institutions perçoivent le dispositif comme un outil contribuant simultanément aux conditions nutritionnelles et à la réussite éducative.
 
 #### 4.4.5 Le jardin scolaire comme réponse aux vulnérabilités climatiques
 
-L'analyse documentaire fait également émerger de manière récurrente les questions relatives aux contraintes environnementales et climatiques. Les notions de sécheresse, d'aridité, de déficit hydrique, de gestion de l'eau et d'adaptation climatique apparaissent dans une grande diversité de documents, notamment les rapports régionaux, les supports techniques et les évaluations institutionnelles.
+Les notions de sécheresse, d'aridité, de déficit hydrique, de gestion de l'eau et d'adaptation climatique apparaissent dans une grande diversité de documents : rapports régionaux, supports techniques, évaluations institutionnelles.
 
-Les données montrent que de nombreux jardins scolaires sont confrontés à des difficultés liées au manque d'eau, aux températures élevées, à la qualité des sols et aux contraintes environnementales caractéristiques des régions rurales djiboutiennes. Face à ces défis, plusieurs stratégies d'adaptation sont documentées dans le corpus. Parmi celles-ci figurent l'utilisation de systèmes d'irrigation goutte-à-goutte, le recours au compostage, l'installation de pépinières protégées, la sélection de cultures adaptées aux conditions climatiques locales ainsi que différentes pratiques d'économie d'eau.
+De nombreux jardins sont confrontés au manque d'eau, aux températures élevées, à la qualité des sols et aux contraintes environnementales caractéristiques des régions rurales. Le corpus documente plusieurs **stratégies d'adaptation** : irrigation goutte-à-goutte, compostage, pépinières protégées, sélection de cultures adaptées aux conditions locales, pratiques d'économie d'eau.
 
-Ces observations mettent en évidence le rôle croissant des jardins scolaires comme espaces d'apprentissage écologique et environnemental. Les activités développées dans ces espaces permettent aux élèves d'expérimenter concrètement des pratiques adaptées aux contraintes du milieu et de développer des compétences liées à la gestion durable des ressources naturelles.
-
-À ce stade de l'analyse, le concept de résilience commence à apparaître comme une catégorie centrale reliant les dimensions éducatives, environnementales et communautaires du phénomène étudié.
+À ce stade de l'analyse, le concept de **résilience** commence à apparaître comme une catégorie susceptible de relier les dimensions éducatives, environnementales et communautaires du phénomène.
 
 #### 4.4.6 Le jardin scolaire comme espace communautaire
 
-Le codage ouvert met également en évidence une forte dimension communautaire des jardins scolaires. Les documents analysés mentionnent fréquemment l'implication des parents d'élèves, des jardiniers communautaires, des cantinières, des enseignants, des directeurs d'école et des comités de gestion scolaire.
+Les documents mentionnent fréquemment l'implication des parents d'élèves, des jardiniers communautaires, des cantinières, des enseignants, des directeurs et des comités de gestion scolaire.
 
-Plusieurs établissements développent des initiatives favorisant la participation collective, telles que les clubs de jardins scolaires, les activités communautaires, les journées de sensibilisation ou les travaux collectifs réalisés au bénéfice des projets. Ces dispositifs contribuent à renforcer les liens entre l'école et son environnement social.
+Plusieurs établissements développent des initiatives de participation collective : clubs de jardins scolaires, activités communautaires, journées de sensibilisation, travaux collectifs. Ces dispositifs renforcent les liens entre l'école et son environnement social.
 
-L'analyse montre que le jardin scolaire constitue un espace privilégié de coopération entre les différents acteurs éducatifs et communautaires. Les projets les plus durables semblent être ceux qui bénéficient d'une forte implication locale et d'une appropriation collective des activités développées.
-
-Cette dimension communautaire apparaît ainsi comme un facteur déterminant de la pérennité des jardins scolaires et de leur capacité à produire des effets durables au sein des communautés rurales.
+L'analyse suggère que **les projets les plus durables sont ceux qui bénéficient d'une forte implication locale** et d'une appropriation collective des activités.
 
 #### 4.4.7 Les contraintes de fonctionnement émergentes
 
-Au-delà des dimensions positives associées aux jardins scolaires, le codage ouvert a également permis d'identifier plusieurs contraintes structurelles récurrentes. Les documents analysés font état de difficultés liées au manque d'eau, à l'insuffisance des équipements, aux problèmes de maintenance, aux déficits de formation, à la faiblesse du suivi-évaluation ainsi qu'au manque de ressources techniques et financières.
+Le codage ouvert a également fait apparaître des contraintes structurelles récurrentes : manque d'eau, insuffisance des équipements, problèmes de maintenance, déficits de formation, faiblesse du suivi-évaluation, manque de ressources techniques et financières.
 
-Ces contraintes apparaissent de manière particulièrement fréquente dans les rapports régionaux, les fiches de suivi et les évaluations institutionnelles. Elles révèlent les limites auxquelles sont confrontés les établissements scolaires dans la mise en œuvre des projets de jardins scolaires.
+Ces contraintes figurent de manière particulièrement fréquente dans les rapports régionaux, les fiches de suivi et les évaluations institutionnelles. La durabilité des dispositifs dépend ainsi largement des ressources disponibles, de l'accompagnement institutionnel, de l'organisation communautaire et des capacités locales d'adaptation.
 
-L'analyse montre que la durabilité des dispositifs dépend largement des ressources disponibles, de l'accompagnement institutionnel, de l'organisation communautaire et des capacités locales d'adaptation. Ces résultats soulignent l'importance d'une approche contextualisée tenant compte des réalités matérielles et environnementales propres aux écoles rurales djiboutiennes.
+#### 4.4.8 Mise en œuvre du codage dans NVivo 15
 
-#### 4.4.8 Utilisation de NVivo 15 dans le codage ouvert
+NVivo 15 a permis la création des premiers nœuds thématiques, le codage systématique des segments de texte et l'intégration des données visuelles et audiovisuelles au processus analytique.
 
-Le logiciel NVivo 15 a joué un rôle central dans la réalisation du codage ouvert. Il a permis la création des premiers nœuds thématiques, le codage systématique des segments de texte ainsi que l'intégration des données visuelles et audiovisuelles dans le processus analytique.
+Chaque extrait significatif a été associé à une ou plusieurs catégories émergentes : les passages relatifs aux systèmes d'irrigation ont été codés sous « gestion de l'eau », les activités réalisées par les élèves sous « apprentissage expérientiel », les productions agricoles sous « nutrition scolaire », les difficultés environnementales sous « vulnérabilité climatique ».
 
-Chaque extrait significatif du corpus a été associé à une ou plusieurs catégories émergentes. Les passages relatifs aux systèmes d'irrigation ont par exemple été codés sous la catégorie « gestion de l'eau », tandis que les activités réalisées par les élèves ont été associées à la catégorie « apprentissage expérientiel ». Les productions agricoles ont été reliées à la catégorie « nutrition scolaire » et les difficultés environnementales à la catégorie « vulnérabilité climatique ».
-
-Les fonctionnalités du logiciel ont également facilité l'identification des mots les plus fréquents, l'analyse des cooccurrences thématiques, la réalisation de requêtes analytiques et la production de visualisations permettant d'explorer les relations entre les catégories émergentes.
+Les fonctionnalités du logiciel ont facilité l'identification des occurrences les plus fréquentes, l'analyse des cooccurrences thématiques et la production de visualisations exploratoires.
 
 #### 4.4.9 Premières interprétations issues du codage ouvert
 
-L'analyse réalisée au cours du codage ouvert révèle que les jardins scolaires constituent des dispositifs particulièrement complexes dans le contexte rural djiboutien. Les données montrent l'existence d'une articulation permanente entre les dimensions pédagogiques, nutritionnelles, environnementales, territoriales, communautaires et résilientes.
+L'analyse révèle une articulation permanente entre les dimensions pédagogiques, nutritionnelles, environnementales, territoriales, communautaires et résilientes du dispositif. Le jardin scolaire apparaît progressivement comme un espace pédagogique contextualisé, un outil de sécurité alimentaire, un dispositif d'éducation environnementale et un mécanisme de résilience communautaire.
 
-À travers les différents documents analysés, le jardin scolaire apparaît progressivement comme un espace pédagogique contextualisé favorisant les apprentissages expérientiels, un laboratoire vivant d'apprentissage, un outil de sécurité alimentaire, un dispositif d'éducation environnementale ainsi qu'un mécanisme de résilience communautaire et d'adaptation climatique.
+Les données mettent toutefois en évidence une **tension récurrente entre les ambitions institutionnelles portées par les politiques éducatives et les réalités concrètes du terrain**. Les contraintes de ressources, les conditions environnementales et les capacités locales limitent la réalisation des objectifs assignés.
 
-Toutefois, les données mettent également en évidence une tension récurrente entre les ambitions institutionnelles portées par les politiques éducatives et les réalités concrètes observées sur le terrain. Les contraintes liées aux ressources, aux conditions environnementales et aux capacités locales limitent parfois la réalisation des objectifs assignés aux jardins scolaires.
-
-Cette tension entre les intentions institutionnelles et les conditions effectives de mise en œuvre constitue l'un des premiers résultats majeurs de l'analyse documentaire. Elle servira de point d'appui au codage axial présenté dans la section suivante, dont l'objectif sera d'explorer les relations entre les catégories émergentes et de construire progressivement un modèle explicatif du phénomène étudié.
+Cette tension constitue le premier résultat majeur de l'analyse documentaire et sert de point d'appui au codage axial.
 
 ### 4.5 Le codage axial : structuration et mise en relation des catégories émergentes
 
-#### 4.5.1 Le rôle du codage axial dans la théorisation ancrée
+#### 4.5.1 Le rôle du codage axial
 
-À l'issue du codage ouvert, l'analyse documentaire a progressé vers une phase de structuration conceptuelle à travers le codage axial. Cette étape constitue un moment déterminant dans la démarche de théorisation ancrée puisqu'elle permet de dépasser la fragmentation initiale des données afin de reconstruire progressivement les relations existant entre les concepts émergents. Selon Strauss et Corbin (1998), le codage axial consiste à regrouper, organiser et articuler les catégories identifiées lors du codage ouvert afin de comprendre les conditions, les interactions, les stratégies et les conséquences associées aux phénomènes étudiés.
+Le codage axial permet de dépasser la fragmentation initiale des données afin de **reconstruire les relations** entre concepts émergents. Strauss et Corbin (1998) le définissent comme le regroupement et l'articulation des catégories issues du codage ouvert, en vue de comprendre les conditions, les interactions, les stratégies et les conséquences associées aux phénomènes étudiés.
 
-Dans cette recherche, le codage axial a été réalisé à l'aide du logiciel NVivo 15. Les concepts issus du codage ouvert ont été comparés, regroupés et hiérarchisés afin de faire émerger des catégories analytiques plus larges capables de rendre compte de la complexité des jardins scolaires dans les écoles rurales djiboutiennes. Cette étape a permis d'identifier les liens existant entre les dimensions pédagogiques, nutritionnelles, environnementales, communautaires et institutionnelles observées dans le corpus documentaire.
+Alors que la section précédente a exposé l'**émergence** des catégories, la présente section s'attache à leur **mise en système**. Les catégories n'y sont pas considérées comme indépendantes, mais comme des dimensions interdépendantes participant à la construction sociale et éducative du jardin scolaire.
 
-L'analyse a ainsi conduit à la structuration progressive de plusieurs catégories centrales qui organisent désormais la compréhension du phénomène étudié. Ces catégories ne sont pas considérées comme indépendantes les unes des autres, mais comme des dimensions interdépendantes participant à la construction sociale et éducative du jardin scolaire.
+#### 4.5.2 Structuration des catégories selon le modèle paradigmatique
 
-#### 4.5.2 Le jardin scolaire comme support pédagogique contextualisé
+L'application du modèle paradigmatique de Strauss et Corbin permet d'organiser les catégories selon leurs conditions d'apparition, les stratégies d'action qu'elles suscitent et leurs conséquences observables.
 
-La première catégorie majeure issue du codage axial concerne la fonction pédagogique du jardin scolaire. Les documents analysés montrent que les jardins sont progressivement intégrés aux activités d'enseignement-apprentissage dans différentes disciplines, notamment les sciences, les mathématiques, le langage, l'éducation environnementale, les activités pratiques et l'enseignement des compétences de vie.
+| Catégorie structurante | Conditions | Stratégies d'action documentées | Conséquences observées |
+|---|---|---|---|
+| **Support pédagogique contextualisé** | Réformes curriculaires, approche par compétences | Intégration du jardin aux disciplines, activités de mesure, d'observation, d'expression | Contextualisation des savoirs, transformation des pratiques d'enseignement |
+| **Dispositif d'apprentissage expérientiel** | Disponibilité d'un espace cultivable, encadrement enseignant | Participation directe des élèves au cycle de production | Autonomie, coopération, résolution de problèmes |
+| **Dispositif nutritionnel** | Insécurité alimentaire, existence d'une cantine | Production maraîchère, approvisionnement des repas, éducation alimentaire | Diversification des repas, lien avec la fréquentation scolaire |
+| **Espace de résilience communautaire** | Proximité école-communauté, existence de comités | Journées communautaires, clubs scolaires, travaux collectifs | Appropriation locale, durabilité accrue des projets |
+| **Mécanisme d'adaptation climatique** | Aridité, déficit hydrique, températures élevées | Irrigation goutte-à-goutte, compostage, pépinières protégées, cultures adaptées | Compétences de gestion durable, apprentissage écologique |
+| **Contraintes structurelles** | Ressources limitées, disparités territoriales | Ajustements locaux, sollicitation de partenaires | Fragilité des dispositifs, écarts entre établissements |
 
-Les fiches pédagogiques révèlent une volonté récurrente de relier les contenus scolaires aux réalités du milieu local. Les récoltes servent fréquemment de support aux activités mathématiques, tandis que l'observation des plantes et des cycles biologiques alimente les apprentissages scientifiques. Les activités agricoles sont également mobilisées dans le développement des compétences langagières à travers des exercices de description, de narration et d'expression orale.
+#### 4.5.3 Le jardin scolaire comme support pédagogique contextualisé
 
-L'analyse met en évidence une transformation progressive des pratiques pédagogiques. Les jardins scolaires permettent de dépasser une approche centrée sur la transmission magistrale des savoirs en favorisant l'observation, la manipulation, l'expérimentation et la participation active des élèves. Le jardin devient ainsi un espace pédagogique contextualisé dans lequel les apprentissages prennent sens à partir de situations réelles et significatives pour les apprenants.
+Les fiches pédagogiques révèlent une volonté récurrente de relier les contenus scolaires aux réalités du milieu local : les récoltes servent de support aux activités mathématiques, l'observation des plantes et des cycles biologiques alimente les apprentissages scientifiques, les activités agricoles nourrissent le développement des compétences langagières.
 
-Cette catégorie confirme les fondements théoriques développés dans le chapitre II concernant les pédagogies actives, la contextualisation des savoirs et l'apprentissage situé.
+L'analyse met en évidence une **transformation progressive des pratiques** : le jardin permet de dépasser une approche centrée sur la transmission magistrale en favorisant observation, manipulation, expérimentation et participation active. Cette catégorie confirme empiriquement les fondements théoriques du chapitre II relatifs aux pédagogies actives et à la contextualisation des savoirs.
 
-#### 4.5.3 Le jardin scolaire comme dispositif d'apprentissage expérientiel
+#### 4.5.4 Le jardin scolaire comme dispositif d'apprentissage expérientiel
 
-Une seconde catégorie fortement structurante concerne l'apprentissage expérientiel. Les données documentaires montrent que les élèves participent directement aux différentes activités de jardinage, notamment les semis, l'arrosage, le compostage, l'entretien des cultures, les récoltes ainsi que diverses observations scientifiques réalisées sur le terrain.
+Les vidéos pédagogiques analysées montrent des élèves engagés dans des activités concrètes : utilisation d'outils agricoles, réalisation d'expériences, résolution de problèmes liés aux cultures, échanges collectifs autour des observations effectuées.
 
-Les vidéos pédagogiques analysées montrent des élèves engagés dans des activités concrètes impliquant l'utilisation d'outils agricoles, la réalisation d'expériences, la résolution de problèmes liés aux cultures et des échanges collectifs autour des observations effectuées. Ces situations illustrent clairement une logique d'apprentissage fondée sur l'action et l'expérience.
+Ces situations correspondent au *learning by doing* de Dewey (1938) et au cycle expérientiel de Kolb (1984) : les élèves construisent leurs connaissances à partir de l'observation, de l'expérimentation et de la réflexion sur leurs propres actions. Le corpus confirme ainsi empiriquement la pertinence de la notion de **laboratoire vivant d'apprentissage** développée au chapitre II.
 
-Les pratiques observées s'inscrivent dans les principes du « learning by doing » développés par Dewey (1938) et dans le modèle expérientiel proposé par Kolb (1984). Les élèves construisent progressivement leurs connaissances à partir de l'observation, de l'expérimentation et de la réflexion sur leurs propres actions. Le jardin scolaire apparaît ainsi comme un environnement d'apprentissage favorisant simultanément l'autonomie, la coopération, la résolution de problèmes et la contextualisation des savoirs.
+#### 4.5.5 Le jardin scolaire comme dispositif nutritionnel et alimentaire
 
-Cette catégorie renforce l'idée selon laquelle les jardins scolaires constituent de véritables laboratoires vivants d'apprentissage où les connaissances émergent de l'interaction entre les apprenants et leur environnement.
+Les productions maraîchères — tomates, oignons, piments, gombos, carottes, betteraves, melons, pastèques — sont généralement utilisées pour enrichir les repas des cantines ou pour soutenir des activités pédagogiques liées à l'alimentation et à la santé.
 
-#### 4.5.4 Le jardin scolaire comme dispositif nutritionnel et alimentaire
+L'analyse relationnelle met en évidence une **chaîne causale documentée** : productivité agricole → qualité de la nutrition scolaire → fréquentation des élèves → engagement dans les activités éducatives. Cette articulation confirme que la fonction nutritionnelle constitue l'un des piliers des politiques de jardins scolaires à Djibouti.
 
-L'analyse axiale a également fait émerger une catégorie importante relative aux dimensions nutritionnelles et alimentaires des jardins scolaires. Les rapports institutionnels, les documents de suivi et les projets soutenus par les partenaires internationaux accordent une place centrale à la contribution des jardins scolaires à la sécurité alimentaire et à l'amélioration de la nutrition des élèves.
+#### 4.5.6 Le jardin scolaire comme espace de résilience communautaire
 
-Les données montrent que les productions maraîchères réalisées dans les établissements concernent principalement les tomates, les oignons, les piments, les gombos, les carottes, les betteraves, les melons et les pastèques. Ces productions sont généralement utilisées pour enrichir les repas servis dans les cantines scolaires ou pour soutenir certaines activités pédagogiques liées à l'alimentation et à la santé.
+Les documents révèlent l'implication de multiples acteurs : directeurs, enseignants, parents, jardiniers communautaires, cantinières, comités scolaires, partenaires institutionnels. Les rapports mentionnent régulièrement journées communautaires, campagnes de sensibilisation, travaux collectifs et clubs scolaires dédiés au jardinage.
 
-L'analyse met en évidence une relation étroite entre la production agricole, la nutrition scolaire, la fréquentation des élèves et leur engagement dans les activités éducatives. Les jardins scolaires apparaissent ainsi comme des dispositifs multifonctionnels contribuant simultanément à l'éducation nutritionnelle, à la sensibilisation alimentaire et au renforcement de la sécurité alimentaire dans les écoles rurales.
+Ces initiatives renforcent les liens entre l'école et la communauté, favorisent l'appropriation locale et soutiennent la durabilité des projets. La résilience du dispositif repose ainsi largement sur la **capacité des communautés éducatives à coopérer** autour d'objectifs communs.
 
-Cette catégorie confirme que la fonction nutritionnelle constitue l'un des piliers des politiques de jardins scolaires développées à Djibouti.
+#### 4.5.7 Le jardin scolaire comme mécanisme d'adaptation climatique
 
-#### 4.5.5 Le jardin scolaire comme espace de résilience communautaire
+Face à l'aridité, aux sécheresses récurrentes, au déficit hydrique et aux fortes températures, les établissements développent des stratégies d'adaptation : irrigation goutte-à-goutte, compostage, pépinières protégées, techniques d'économie d'eau, culture d'espèces adaptées.
 
-Une autre catégorie structurante concerne la dimension communautaire des jardins scolaires. Les documents analysés révèlent l'implication de multiples acteurs dans la mise en œuvre et le fonctionnement des projets : directeurs d'école, enseignants, parents d'élèves, jardiniers communautaires, cantinières, comités scolaires et partenaires institutionnels.
+Le jardin devient un espace d'éducation environnementale où les élèves développent des compétences de gestion durable des ressources, de compréhension des phénomènes climatiques et d'adoption de pratiques agricoles adaptées aux milieux arides — contribuant au développement de **capacités locales d'adaptation**.
 
-Dans plusieurs établissements ruraux, les jardins scolaires fonctionnent comme des projets collectifs favorisant la coopération et la participation locale. Les rapports mentionnent régulièrement l'organisation de journées communautaires, de campagnes de sensibilisation, de travaux collectifs ainsi que la création de clubs scolaires dédiés aux activités de jardinage.
+#### 4.5.8 Les contraintes structurelles et institutionnelles
 
-L'analyse montre que ces initiatives contribuent au renforcement des liens entre l'école et la communauté. Elles favorisent également l'appropriation locale des projets et soutiennent leur durabilité. Le jardin scolaire apparaît ainsi comme un espace social structurant permettant de développer des formes de solidarité, de participation citoyenne et de mobilisation collective.
+Les difficultés les plus fréquemment mentionnées concernent le manque d'eau, l'insuffisance des équipements, les problèmes de maintenance, le vieillissement des infrastructures, l'insuffisance des formations et les difficultés de suivi-évaluation.
 
-Cette catégorie révèle que la résilience des jardins scolaires repose largement sur la capacité des communautés éducatives à coopérer autour d'objectifs communs.
+Les rapports régionaux mettent en évidence d'importantes **disparités entre établissements** selon les ressources disponibles, les capacités locales de gestion et l'implication des acteurs. Ces écarts influencent directement la qualité et la durabilité des projets, et révèlent une tension constante entre les ambitions affichées dans les politiques éducatives et les réalités du terrain.
 
-#### 4.5.6 Le jardin scolaire comme mécanisme d'adaptation climatique
+#### 4.5.9 Le système d'interactions entre catégories
 
-L'une des catégories les plus significatives issues du codage axial concerne les dimensions environnementales et climatiques. Les documents analysés montrent que les jardins scolaires évoluent dans un contexte fortement marqué par l'aridité, les sécheresses récurrentes, le déficit hydrique et les fortes températures caractéristiques du territoire djiboutien.
+L'apport majeur du codage axial réside dans l'identification des **interdépendances** entre catégories. Quatre relations structurantes se dégagent :
 
-Face à ces contraintes, les établissements développent différentes stratégies d'adaptation. Les pratiques les plus fréquemment observées concernent l'irrigation goutte-à-goutte, le compostage, les pépinières protégées, les techniques d'économie d'eau ainsi que la culture d'espèces adaptées aux conditions climatiques locales.
+- les **pratiques pédagogiques** dépendent des ressources environnementales disponibles — sans eau, pas d'activité au jardin ;
+- la **qualité de la nutrition scolaire** est directement liée à la productivité agricole du jardin ;
+- la **participation communautaire** conditionne fortement la durabilité des projets ;
+- les **capacités institutionnelles** déterminent la pérennité et le développement des dispositifs.
 
-Les jardins scolaires deviennent ainsi des espaces privilégiés d'éducation environnementale et d'apprentissage écologique. Les élèves y développent des compétences liées à la gestion durable des ressources, à la compréhension des phénomènes climatiques et à l'adoption de pratiques agricoles adaptées aux milieux arides.
+Ces interactions révèlent que les jardins scolaires fonctionnent comme des **systèmes complexes** dont les composantes s'influencent mutuellement. Éducation, alimentation, environnement, communauté, territoire et résilience constituent les dimensions interdépendantes d'un même dispositif éducatif — et non des fonctions juxtaposées.
 
-Cette catégorie montre que les jardins scolaires jouent un rôle important dans le développement des capacités locales d'adaptation et dans la construction d'une résilience environnementale au sein des communautés scolaires.
+#### 4.5.10 Mise en œuvre du codage axial dans NVivo 15
 
-#### 4.5.7 Les contraintes structurelles et institutionnelles
+Les fonctionnalités de hiérarchisation des nœuds, les matrices de codage, les requêtes croisées, les cartes conceptuelles et les diagrammes relationnels ont permis de visualiser les liens entre dimensions.
 
-Le codage axial a également permis de structurer une catégorie consacrée aux contraintes qui limitent le fonctionnement et la pérennité des jardins scolaires. Les difficultés les plus fréquemment mentionnées dans les documents concernent le manque d'eau, l'insuffisance des équipements, les problèmes de maintenance, le vieillissement des infrastructures, l'insuffisance des formations ainsi que les difficultés de suivi-évaluation.
+Les nœuds issus du codage ouvert ont été progressivement regroupés, fusionnés et organisés autour de catégories plus larges : les concepts liés à l'eau, à la sécheresse, à l'aridité et à l'irrigation ont été réunis sous « adaptation climatique » ; ceux relatifs aux récoltes, aux cantines et à l'alimentation sous « nutrition scolaire ».
 
-Les rapports régionaux mettent également en évidence des disparités importantes entre les établissements selon les ressources disponibles, les capacités locales de gestion et l'implication des différents acteurs. Ces différences influencent directement la qualité et la durabilité des projets.
+Les visualisations produites ont facilité la compréhension des interactions entre apprentissage, nutrition, résilience, climat, participation communautaire et gouvernance locale.
 
-L'analyse révèle une tension constante entre les ambitions affichées dans les politiques éducatives et les réalités concrètes observées sur le terrain. Les objectifs pédagogiques, nutritionnels et environnementaux attribués aux jardins scolaires se heurtent souvent à des contraintes matérielles et institutionnelles qui limitent leur pleine réalisation.
+#### 4.5.11 Interprétations issues du codage axial
 
-Cette catégorie souligne l'importance du soutien institutionnel, des ressources techniques et des mécanismes de gouvernance locale dans la réussite des projets de jardins scolaires.
+L'analyse confirme que les jardins scolaires remplissent simultanément des fonctions pédagogiques, nutritionnelles, environnementales, communautaires et résilientes, et que ces fonctions sont **systémiquement liées**.
 
-#### 4.5.8 Les relations entre les catégories émergentes
+Les données soulignent toutefois la fragilité des dispositifs face aux contraintes environnementales, institutionnelles et techniques. Cette **tension entre potentiel transformateur et vulnérabilités structurelles** constitue un résultat central de l'analyse documentaire.
 
-L'un des apports majeurs du codage axial réside dans l'identification des relations existant entre les différentes catégories émergentes. L'analyse montre que les dimensions pédagogiques, nutritionnelles, environnementales, communautaires et institutionnelles sont étroitement imbriquées.
-
-Les pratiques pédagogiques dépendent largement des ressources environnementales disponibles, tandis que la qualité de la nutrition scolaire est directement liée à la productivité agricole des jardins. De même, la participation communautaire influence fortement la durabilité des projets, alors que les capacités institutionnelles conditionnent leur pérennité et leur développement.
-
-Ces interactions révèlent que les jardins scolaires fonctionnent comme des systèmes complexes dans lesquels les différentes dimensions s'influencent mutuellement. L'éducation, l'alimentation, l'environnement, la communauté, le territoire et la résilience apparaissent ainsi comme les composantes interdépendantes d'un même dispositif éducatif.
-
-#### 4.5.9 Utilisation de NVivo 15 dans le codage axial
-
-Le logiciel NVivo 15 a joué un rôle essentiel dans la structuration des catégories analytiques et dans l'identification des relations entre celles-ci. Les fonctionnalités de hiérarchisation des nœuds, les matrices de codage, les requêtes croisées, les cartes conceptuelles et les diagrammes relationnels ont permis de visualiser les liens existant entre les différentes dimensions du phénomène étudié.
-
-Les nœuds créés lors du codage ouvert ont progressivement été regroupés, fusionnés et organisés autour de catégories plus larges. Ainsi, les concepts liés à l'eau, à la sécheresse, à l'aridité et à l'irrigation ont été réunis sous la catégorie « adaptation climatique », tandis que les notions relatives aux récoltes, aux cantines et à l'alimentation ont été regroupées sous la catégorie « nutrition scolaire ».
-
-Les visualisations produites dans NVivo 15 ont facilité la compréhension des interactions complexes entre apprentissage, nutrition, résilience, climat, participation communautaire et gouvernance locale. Elles ont également contribué à renforcer la rigueur analytique du processus interprétatif.
-
-#### 4.5.10 Premières interprétations issues du codage axial
-
-L'analyse réalisée à travers le codage axial montre que les jardins scolaires constituent des dispositifs multidimensionnels particulièrement adaptés aux réalités des écoles rurales djiboutiennes. Les données documentaires révèlent qu'ils remplissent simultanément des fonctions pédagogiques, nutritionnelles, environnementales, communautaires et résilientes.
-
-Les jardins scolaires apparaissent ainsi comme des espaces pédagogiques contextualisés favorisant l'apprentissage expérientiel, comme des dispositifs contribuant à la sécurité alimentaire, comme des mécanismes de mobilisation communautaire et comme des laboratoires d'adaptation climatique.
-
-Cependant, les données soulignent également la fragilité de ces dispositifs face aux contraintes environnementales, institutionnelles et techniques qui caractérisent les contextes ruraux étudiés. Cette tension entre potentiel transformateur et vulnérabilités structurelles constitue un résultat central de l'analyse documentaire.
-
-Le codage axial a ainsi permis de mettre en évidence les principales dynamiques qui structurent les jardins scolaires à Djibouti et prépare la phase suivante de l'analyse consacrée au codage sélectif. Cette dernière visera à identifier la catégorie centrale capable d'intégrer l'ensemble des dimensions observées et de construire progressivement le modèle théorique émergent de la recherche.
+Le codage axial prépare ainsi la phase suivante, consacrée à l'identification de la catégorie centrale capable d'intégrer l'ensemble des dimensions observées.
 
 ### 4.6 Le codage sélectif : émergence de la catégorie centrale et construction du modèle théorique
 
-#### 4.6.1 Le rôle du codage sélectif dans la théorisation ancrée
+#### 4.6.1 Le rôle du codage sélectif
 
-Après les étapes de codage ouvert et de codage axial, l'analyse documentaire a évolué vers une phase d'intégration théorique correspondant au codage sélectif. Dans la démarche de théorisation ancrée, cette étape vise à identifier la catégorie centrale capable de relier et d'expliquer l'ensemble des catégories précédemment construites. Elle constitue le niveau le plus élevé d'abstraction analytique et permet de transformer les résultats descriptifs et catégoriels en une conceptualisation théorique cohérente du phénomène étudié.
+Le codage sélectif constitue le niveau le plus élevé d'abstraction analytique. Il vise à identifier la **catégorie centrale** capable de relier et d'expliquer l'ensemble des catégories précédemment construites, transformant ainsi les résultats catégoriels en une conceptualisation théorique cohérente.
 
-Le codage sélectif consiste à intégrer systématiquement les catégories émergentes autour d'un phénomène principal afin de produire une interprétation globale des données. À cette étape, l'analyse ne cherche plus uniquement à décrire les caractéristiques du terrain ou à identifier des relations entre catégories, mais à comprendre comment ces différentes dimensions s'articulent pour former un système explicatif cohérent.
+À cette étape, l'analyse ne cherche plus à décrire les caractéristiques du terrain ni à identifier des relations entre catégories, mais à comprendre comment ces dimensions s'articulent pour former un **système explicatif**.
 
-L'utilisation de NVivo 15 a facilité ce processus en permettant l'examen des relations entre les catégories, l'identification des concepts les plus récurrents, la visualisation des réseaux thématiques ainsi que la construction progressive de schémas conceptuels. Les matrices de codage, les diagrammes relationnels et les cartes conceptuelles générés par le logiciel ont contribué à mettre en évidence les liens structurants entre les dimensions pédagogiques, nutritionnelles, environnementales, communautaires et climatiques observées dans le corpus documentaire.
+NVivo 15 a soutenu ce processus par l'examen des relations entre catégories, l'identification des concepts les plus récurrents, la visualisation des réseaux thématiques et la construction progressive de schémas conceptuels.
 
 #### 4.6.2 Émergence de la catégorie centrale
 
-L'ensemble des analyses réalisées conduit à l'émergence d'une catégorie centrale qui apparaît comme le noyau explicatif du phénomène étudié :
+L'ensemble des analyses conduit à l'émergence d'une catégorie centrale constituant le noyau explicatif du phénomène :
 
-**Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique.**
+> **Le jardin scolaire comme laboratoire vivant de résilience éducative, communautaire et climatique.**
 
-Cette catégorie centrale permet d'intégrer les différentes dimensions identifiées lors des phases précédentes d'analyse. Elle révèle que le jardin scolaire ne peut être réduit à une simple infrastructure agricole destinée à la production maraîchère. Il constitue plutôt un dispositif éducatif complexe situé à l'intersection de plusieurs champs d'action, notamment l'éducation, la nutrition, l'environnement, le développement communautaire et l'adaptation climatique.
+Cette catégorie intègre les dimensions identifiées lors des phases précédentes. Elle établit que le jardin scolaire ne peut être réduit à une infrastructure agricole destinée à la production maraîchère : il constitue un **dispositif éducatif complexe** situé à l'intersection de l'éducation, de la nutrition, de l'environnement, du développement communautaire et de l'adaptation climatique.
 
-L'analyse documentaire montre que cette représentation du jardin scolaire apparaît de manière récurrente dans les rapports institutionnels, les fiches pédagogiques, les outils techniques, les documents de suivi-évaluation ainsi que dans les données visuelles et audiovisuelles. Les jardins scolaires sont systématiquement associés à des fonctions multiples qui dépassent largement leur vocation agricole initiale.
+Cette représentation apparaît de manière récurrente à travers l'ensemble du corpus — rapports institutionnels, fiches pédagogiques, outils techniques, documents de suivi-évaluation, données visuelles et audiovisuelles. Les jardins scolaires y sont systématiquement associés à des fonctions multiples dépassant leur vocation agricole initiale.
 
-Cette catégorie centrale offre ainsi un cadre interprétatif capable de rendre compte de la complexité des jardins scolaires dans les écoles rurales djiboutiennes et d'expliquer les interactions observées entre les différentes dimensions du phénomène.
+Un point mérite d'être souligné : cette catégorie centrale **converge avec la conceptualisation théorique** élaborée au chapitre II à partir de la littérature internationale ([section 2.6.7](#267-vers-un-modèle-conceptuel-du-jardin-scolaire-comme-laboratoire-vivant-résilient)). Cette convergence entre construction théorique et émergence empirique renforce la validité du modèle, tout en confirmant sa pertinence spécifique pour le contexte djiboutien.
 
-#### 4.6.3 Le jardin scolaire comme laboratoire pédagogique vivant
+#### 4.6.3 Le modèle théorique émergent
 
-L'analyse documentaire révèle que les jardins scolaires fonctionnent progressivement comme de véritables laboratoires pédagogiques vivants. Les activités qui y sont développées permettent aux élèves d'acquérir des connaissances disciplinaires tout en développant des compétences pratiques, scientifiques et sociales.
+L'intégration progressive des catégories analytiques permet d'élaborer un modèle expliquant le fonctionnement des jardins scolaires dans les écoles rurales djiboutiennes. Ce modèle s'organise en quatre niveaux.
 
-Les documents analysés montrent que les jardins scolaires favorisent la contextualisation des apprentissages en reliant les contenus scolaires aux réalités du milieu local. Les activités de jardinage mobilisent l'observation, l'expérimentation, la manipulation et la résolution de problèmes concrets. Les élèves sont amenés à participer directement aux semis, à l'entretien des cultures, aux récoltes ainsi qu'à diverses activités d'analyse et de suivi.
+| Niveau | Composantes |
+|---|---|
+| **Contexte** | Vulnérabilités éducatives, contraintes climatiques, inégalités territoriales, insécurité alimentaire |
+| **Dispositif central** | Le jardin scolaire comme laboratoire vivant |
+| **Processus interdépendants** | Apprentissage expérientiel, pédagogies actives, participation communautaire, pratiques agroécologiques, éducation nutritionnelle, adaptation climatique, coopération locale |
+| **Effets observables** | Motivation scolaire, contextualisation des apprentissages, diversification alimentaire, compétences pratiques, liens école-communauté, capacités locales de résilience |
 
-Ces pratiques traduisent une évolution vers des pédagogies actives fondées sur l'apprentissage expérientiel. Les jardins scolaires apparaissent ainsi comme des environnements éducatifs permettant aux apprenants de construire leurs connaissances à partir de situations authentiques et de développer une compréhension concrète des phénomènes observés.
+Le modèle identifie en outre six **conditions facilitatrices** dont dépend la durabilité du dispositif :
 
-Cette dimension pédagogique constitue l'un des fondements du modèle théorique émergent, dans la mesure où elle relie directement les activités de jardinage aux processus d'apprentissage et à la transformation des pratiques éducatives.
+- l'accès à l'eau ;
+- l'accompagnement institutionnel ;
+- la formation des acteurs ;
+- la maintenance des infrastructures ;
+- l'intégration pédagogique des activités de jardinage ;
+- la participation active des communautés locales.
 
-#### 4.6.4 Le jardin scolaire comme espace de résilience communautaire
+Le jardin scolaire apparaît ainsi comme un **système socio-éducatif** dans lequel les dimensions pédagogiques, environnementales, nutritionnelles et communautaires sont étroitement articulées — et non comme une somme de fonctions juxtaposées.
 
-L'analyse met également en évidence l'importance de la dimension communautaire dans le fonctionnement des jardins scolaires. Les documents révèlent l'implication de nombreux acteurs, notamment les enseignants, les directeurs d'école, les parents d'élèves, les jardiniers communautaires, les cantinières ainsi que différents partenaires institutionnels.
+#### 4.6.4 Les trois piliers du modèle
 
-Dans plusieurs établissements ruraux, les jardins scolaires prennent la forme de projets collectifs mobilisant l'ensemble de la communauté éducative. Les activités de jardinage favorisent la coopération, le partage des responsabilités et le développement de formes locales de solidarité. Les données montrent que ces dynamiques participatives renforcent les liens entre l'école et son environnement social.
+Le modèle repose sur trois piliers documentés par l'analyse.
 
-Les jardins scolaires apparaissent ainsi comme des espaces favorisant la mobilisation communautaire et le développement d'une résilience collective face aux contraintes éducatives, économiques et environnementales. La participation des familles et des acteurs locaux contribue non seulement à la durabilité des projets, mais également à leur appropriation par les communautés concernées.
+**Le pilier pédagogique.** Les activités du jardin permettent aux élèves d'acquérir des connaissances disciplinaires tout en développant des compétences pratiques, scientifiques et sociales. La contextualisation relie les contenus scolaires aux réalités du milieu local ; l'observation, l'expérimentation, la manipulation et la résolution de problèmes concrets structurent les situations d'apprentissage. Cette dimension relie directement les activités de jardinage aux processus d'apprentissage et à la transformation des pratiques éducatives.
 
-Cette fonction sociale et communautaire constitue une composante essentielle du modèle théorique émergent.
+**Le pilier communautaire.** L'implication des enseignants, directeurs, parents, jardiniers communautaires, cantinières et partenaires institutionnels transforme le jardin en projet collectif. Coopération, partage des responsabilités et solidarités locales renforcent les liens entre l'école et son environnement social. La participation des familles conditionne à la fois la durabilité des projets et leur appropriation par les communautés.
 
-#### 4.6.5 Le jardin scolaire comme mécanisme d'adaptation climatique
+**Le pilier environnemental et climatique.** Face à l'aridité, aux sécheresses et au déficit hydrique, le jardin devient un espace d'apprentissage écologique et d'expérimentation : irrigation goutte-à-goutte, compostage, cultures adaptées, stratégies d'économie d'eau. Les élèves y développent des compétences de gestion durable des ressources, contribuant à la construction de capacités locales de résilience climatique.
 
-L'une des dimensions les plus marquantes de l'analyse concerne la place des vulnérabilités climatiques dans les discours et les pratiques observés. Les documents analysés mettent en évidence la récurrence des problématiques liées à l'aridité, aux sécheresses, au déficit hydrique et aux fortes températures qui caractérisent les régions rurales de Djibouti.
+#### 4.6.5 Les tensions entre ambitions institutionnelles et réalités du terrain
 
-Face à ces contraintes, les jardins scolaires deviennent progressivement des espaces d'apprentissage écologique et d'expérimentation environnementale. Les pratiques observées comprennent notamment l'irrigation goutte-à-goutte, le compostage, l'utilisation de cultures adaptées aux conditions climatiques locales ainsi que différentes stratégies d'économie d'eau.
+Les documents institutionnels présentent fréquemment le jardin scolaire comme un levier de transformation pédagogique, un outil de sécurité alimentaire et un dispositif de résilience environnementale. Les données de terrain révèlent cependant de nombreuses contraintes limitant son efficacité : manque d'eau, insuffisance des équipements, problèmes de maintenance, disparités territoriales, déficit de formation, faiblesse des mécanismes de suivi-évaluation.
 
-Les élèves y développent des compétences liées à la gestion durable des ressources naturelles et à l'adaptation aux changements environnementaux. Les jardins scolaires contribuent ainsi à la construction de capacités locales de résilience climatique et à la diffusion de pratiques agroécologiques adaptées aux réalités du territoire.
+Cette **tension entre potentiel transformateur et vulnérabilités structurelles** constitue une caractéristique centrale du phénomène étudié. Elle explique pourquoi certains projets se maintiennent dans le temps tandis que d'autres connaissent des difficultés de pérennisation, et montre que la réussite dépend étroitement des ressources disponibles, du soutien institutionnel, des capacités techniques locales et de l'implication des communautés.
 
-Cette dimension environnementale apparaît comme un élément structurant du modèle théorique construit à partir des données documentaires.
+#### 4.6.6 Mise en œuvre du codage sélectif dans NVivo 15
 
-#### 4.6.6 Les tensions entre ambitions institutionnelles et réalités du terrain
+Les fonctionnalités de visualisation, de cartographie conceptuelle et d'analyse relationnelle ont permis d'identifier les catégories centrales et de mettre en évidence les interactions entre concepts.
 
-L'analyse documentaire met également en lumière une tension récurrente entre les ambitions portées par les politiques éducatives et les conditions concrètes de mise en œuvre des jardins scolaires. Les documents institutionnels présentent fréquemment les jardins scolaires comme des leviers de transformation pédagogique, des outils de sécurité alimentaire et des dispositifs de résilience environnementale.
+Les cartes conceptuelles générées ont révélé la forte interconnexion entre pédagogie active, nutrition scolaire, participation communautaire, adaptation climatique, gouvernance locale et résilience. Ces représentations ont facilité la compréhension globale du phénomène et renforcé la cohérence du processus interprétatif, tout en assurant la traçabilité des analyses.
 
-Cependant, les données de terrain révèlent l'existence de nombreuses contraintes susceptibles de limiter leur efficacité. Parmi les difficultés les plus souvent mentionnées figurent le manque d'eau, l'insuffisance des équipements, les problèmes de maintenance, les disparités territoriales, le déficit de formation des acteurs ainsi que les faiblesses des mécanismes de suivi-évaluation.
+#### 4.6.7 Transition vers les analyses de terrain
 
-Cette tension entre potentiel transformateur et vulnérabilités structurelles apparaît comme une caractéristique centrale du phénomène étudié. Elle montre que la réussite et la durabilité des jardins scolaires dépendent fortement des ressources disponibles, du soutien institutionnel, des capacités techniques locales et du niveau d'implication des communautés.
+Les catégories émergentes identifiées à travers le codage sélectif seront approfondies dans les phases ultérieures de la recherche, consacrées aux entretiens semi-directifs, aux observations participantes et aux pratiques effectives des enseignants, des élèves et des communautés.
 
-#### 4.6.7 Construction du modèle théorique émergent
+Cette triangulation permettra de confronter les **représentations documentaires** aux **réalités du terrain** et de consolider progressivement le modèle théorique construit au cours de cette première phase empirique.
 
-L'intégration progressive des catégories analytiques a permis l'élaboration d'un modèle théorique émergent expliquant le fonctionnement des jardins scolaires dans les écoles rurales djiboutiennes.
+### 4.7 Discussion interprétative des résultats
 
-Le modèle montre que les jardins scolaires se développent dans un contexte caractérisé par des vulnérabilités éducatives, des contraintes climatiques, des inégalités territoriales et des enjeux liés à la sécurité alimentaire. Dans ce contexte, le jardin scolaire agit comme un dispositif central autour duquel s'organisent plusieurs processus interdépendants.
+Cette section confronte les résultats de l'analyse documentaire aux cadres théoriques mobilisés au chapitre II, afin d'évaluer leur portée explicative dans le contexte djiboutien.
 
-Ces processus comprennent l'apprentissage expérientiel, les pédagogies actives, la participation communautaire, les pratiques agroécologiques, l'éducation nutritionnelle, l'adaptation climatique et la coopération locale. Leur interaction produit différents effets observables, notamment l'amélioration de la motivation scolaire, la contextualisation des apprentissages, la diversification alimentaire, le développement de compétences pratiques, le renforcement des liens entre l'école et la communauté ainsi que l'émergence de capacités locales de résilience.
+#### 4.7.1 Convergence avec les théories de l'apprentissage expérientiel
 
-Le modèle met également en évidence que la durabilité des jardins scolaires dépend d'un ensemble de conditions facilitatrices, parmi lesquelles figurent l'accès à l'eau, l'accompagnement institutionnel, la formation des acteurs, la maintenance des infrastructures, l'intégration pédagogique des activités de jardinage et la participation active des communautés locales.
+Les pratiques documentées corroborent nettement les fondements théoriques exposés en [section 2.1](#21-fondements-théoriques-de-lapprentissage-expérientiel-et-des-pédagogies-actives). Les activités de jardinage placent les élèves dans des situations où les connaissances se construisent par l'expérience, les interactions sociales et l'engagement dans des tâches concrètes.
 
-Ainsi, le jardin scolaire apparaît comme un système socio-éducatif complexe dans lequel les dimensions pédagogiques, environnementales, nutritionnelles et communautaires sont étroitement articulées.
+Le cycle décrit par Kolb (1984) est directement observable dans le corpus : expérience concrète (semis, arrosage, entretien), observation réflexive (suivi de la croissance, analyse des échecs de culture), conceptualisation (compréhension des besoins des plantes), expérimentation active (ajustement des techniques). Le *learning by doing* de Dewey (1938) trouve ainsi une traduction empirique dans les documents analysés.
 
-#### 4.6.8 Apports de NVivo 15 dans le codage sélectif
+L'analyse confirme également le déplacement des approches transmissives vers des modalités centrées sur l'activité de l'apprenant, particulièrement visible dans les fiches pédagogiques, les guides d'activités et les documents de formation.
 
-Le logiciel NVivo 15 a joué un rôle déterminant dans la construction du modèle théorique émergent. Les fonctionnalités de visualisation, de cartographie conceptuelle et d'analyse relationnelle ont permis d'identifier les catégories centrales et de mettre en évidence les interactions entre les différents concepts.
+#### 4.7.2 Une interdisciplinarité effective, mais inégalement documentée
 
-Les cartes conceptuelles générées à partir des données ont montré la forte interconnexion entre les notions de pédagogie active, de nutrition scolaire, de participation communautaire, d'adaptation climatique, de gouvernance locale et de résilience. Ces représentations visuelles ont facilité la compréhension globale du phénomène étudié et ont renforcé la cohérence du processus d'interprétation.
+Le corpus atteste que sciences, mathématiques, langage, éducation nutritionnelle et éducation environnementale sont mobilisés à travers des activités reliées aux cultures maraîchères. Cette interdisciplinarité réduit la distance entre contenus scolaires et réalités quotidiennes des élèves, confirmant les analyses de la [section 2.3.4](#234-les-jardins-scolaires-comme-espaces-dinnovation-pédagogique).
 
-L'utilisation de NVivo 15 a ainsi contribué à la rigueur méthodologique de la recherche en assurant la traçabilité des analyses et en soutenant la construction progressive de la théorie émergente.
+Une nuance s'impose toutefois : l'interdisciplinarité est nettement plus présente dans les documents **prescriptifs** — guides, fiches, supports de formation — que dans les documents de **suivi**. Cet écart suggère que la pratique effective demeure en deçà des intentions pédagogiques affichées, hypothèse que les entretiens et observations permettront de vérifier.
 
-#### 4.6.9 Interprétation globale du modèle émergent
+#### 4.7.3 L'articulation éducation-nutrition-environnement
 
-L'analyse réalisée à travers le codage sélectif conduit à considérer les jardins scolaires comme des dispositifs éducatifs hybrides profondément ancrés dans les réalités rurales djiboutiennes. Ils remplissent simultanément des fonctions pédagogiques, nutritionnelles, environnementales et communautaires tout en contribuant au développement de capacités locales de résilience.
+Les résultats confirment la nature multidimensionnelle du dispositif établie théoriquement en [section 2.3](#23-les-jardins-scolaires-comme-dispositifs-éducatifs-multifonctionnels). Les productions maraîchères alimentent les cantines ou soutiennent les activités d'éducation nutritionnelle ; les activités agricoles permettent d'observer les cycles biologiques et d'expérimenter des pratiques de gestion durable.
 
-Les jardins scolaires apparaissent comme des espaces privilégiés de contextualisation des apprentissages, de mobilisation communautaire et d'expérimentation de pratiques adaptées aux contraintes environnementales. Ils participent à une transformation progressive de l'école rurale en favorisant l'apprentissage par l'expérience, la coopération, l'éducation environnementale et l'engagement des communautés.
+L'environnement cesse d'être un objet d'enseignement théorique pour devenir un **espace concret d'apprentissage** — validation empirique de l'argument développé en [section 2.5.2](#252-léducation-environnementale-dans-les-systèmes-éducatifs) sur les limites d'une éducation environnementale purement théorique.
 
-Toutefois, les données montrent également que cette dynamique demeure fragile et fortement dépendante des conditions matérielles, institutionnelles et environnementales dans lesquelles les projets sont mis en œuvre. Les jardins scolaires apparaissent donc à la fois comme des espaces d'innovation éducative et comme des dispositifs confrontés à d'importants défis de durabilité.
+#### 4.7.4 Le jardin scolaire comme dispositif de résilience territoriale
 
-#### 4.6.10 Transition vers les analyses de terrain
+Les documents montrent l'émergence de stratégies locales d'adaptation : techniques d'économie d'eau, irrigation goutte-à-goutte, compostage, cultures adaptées aux conditions climatiques locales.
 
-L'analyse documentaire réalisée selon les principes de la théorisation ancrée a permis de construire les premières catégories interprétatives qui serviront de fondement aux phases ultérieures de la recherche. Les résultats présentés dans ce chapitre constituent une base analytique essentielle pour l'élaboration des guides d'entretien, la conduite des observations de terrain et l'analyse des expériences vécues par les différents acteurs impliqués dans les jardins scolaires.
+Ces pratiques dépassent la dimension scolaire et s'inscrivent dans une perspective de **développement territorial durable**. Elles confirment la pertinence du cadre de la résilience mobilisé au chapitre II, tout en révélant une spécificité djiboutienne : la contrainte hydrique y est à la fois le principal obstacle au dispositif et son principal objet d'apprentissage.
 
-Les catégories émergentes identifiées à travers le codage sélectif seront approfondies dans les chapitres suivants consacrés aux entretiens semi-directifs, aux observations participantes et aux pratiques effectives des enseignants, des élèves et des communautés. Cette triangulation des sources permettra de confronter les représentations documentaires aux réalités du terrain et de consolider progressivement le modèle théorique construit au cours de cette première phase empirique.
+#### 4.7.5 Une participation communautaire différenciée selon les contextes
 
-Cette version est rédigée dans un registre doctoral plus soutenu, avec une logique argumentative et analytique conforme aux chapitres de résultats qualitatifs fondés sur la théorisation ancrée et l'analyse assistée par NVivo 15.
+La mobilisation communautaire renforce les liens entre l'école et son environnement social et favorise des dynamiques collectives autour de l'éducation, de l'alimentation et de la gestion des ressources.
 
-### 4.7 Discussion interprétative des résultats de l'analyse documentaire
+Cette mobilisation demeure toutefois **variable** : certaines écoles bénéficient d'une forte implication, d'autres rencontrent des difficultés liées à la disponibilité des acteurs, aux contraintes économiques ou à la faiblesse des ressources locales. La participation communautaire constitue ainsi à la fois une ressource essentielle et une variable déterminante de la durabilité — ce qui nuance les analyses internationales tendant à la présenter comme un acquis.
 
-#### 4.7.1 Une transformation progressive des pratiques pédagogiques dans les écoles rurales
+#### 4.7.6 Les contraintes structurelles de la durabilité
 
-L'analyse documentaire révèle une évolution progressive des pratiques pédagogiques observées dans les écoles rurales djiboutiennes engagées dans les projets de jardins scolaires. Les différents documents analysés témoignent d'un déplacement progressif des approches transmissives traditionnelles vers des modalités d'enseignement davantage centrées sur l'activité de l'apprenant, l'expérimentation et la contextualisation des savoirs. Cette transformation apparaît particulièrement visible dans les fiches pédagogiques, les guides d'activités et les documents de formation qui associent le jardin scolaire à des situations d'apprentissage fondées sur l'observation, la manipulation, l'expérimentation et la résolution de problèmes.
+Le **déficit hydrique** constitue le principal obstacle au développement et à la pérennité des jardins scolaires dans les régions étudiées. Il s'associe à d'autres contraintes : insuffisance des infrastructures d'irrigation, vieillissement des équipements, difficultés de maintenance, limites du suivi-évaluation, insuffisance des formations techniques.
 
-Les résultats montrent que le jardin scolaire favorise l'intégration de plusieurs disciplines au sein d'un même environnement d'apprentissage. Les sciences, les mathématiques, le langage, l'éducation nutritionnelle et l'éducation environnementale sont fréquemment mobilisés à travers des activités directement reliées aux cultures maraîchères et à l'entretien des espaces cultivés. Cette interdisciplinarité contribue à réduire la distance entre les contenus scolaires et les réalités quotidiennes des élèves, renforçant ainsi la signification et la pertinence des apprentissages.
+Ce résultat rejoint directement le constat de Desmond et al. (2004) rapporté en [section 2.3.5](#235-limites-et-critiques-des-jardins-scolaires), qui identifiaient la pénurie d'eau comme l'obstacle le plus courant à la réussite des jardins scolaires. L'analyse documentaire djiboutienne en fournit une confirmation contextualisée.
 
-Ces résultats rejoignent les fondements théoriques du constructivisme et du socioconstructivisme présentés dans le chapitre II. Les activités de jardinage placent les élèves dans des situations où les connaissances sont construites à travers l'expérience, les interactions sociales et l'engagement dans des tâches concrètes. Le jardin scolaire apparaît ainsi comme un environnement propice à la mise en œuvre de l'apprentissage expérientiel tel que conceptualisé par Dewey (1938) et Kolb (1984), dans lequel les savoirs émergent de la transformation réflexive de l'expérience vécue.
+#### 4.7.7 L'hybridation fonctionnelle comme apport théorique
 
-#### 4.7.2 Une articulation étroite entre éducation, nutrition et environnement
+L'apport majeur de l'analyse réside dans l'identification du caractère **hybride** du dispositif : le jardin scolaire remplit simultanément des fonctions pédagogique, nutritionnelle, environnementale, sociale, territoriale et communautaire, dans une interdépendance systémique.
 
-Les résultats mettent également en évidence la nature profondément multidimensionnelle des jardins scolaires. Loin de se limiter à une fonction pédagogique, ces dispositifs articulent simultanément des objectifs éducatifs, nutritionnels, environnementaux et sociaux. Les rapports institutionnels analysés montrent que les jardins scolaires sont fréquemment mobilisés comme instruments de soutien à la nutrition scolaire et de renforcement de la sécurité alimentaire dans les établissements ruraux.
-
-Les productions maraîchères issues des jardins sont souvent utilisées pour alimenter les cantines scolaires ou pour soutenir les activités d'éducation nutritionnelle. Cette articulation entre apprentissage et alimentation apparaît particulièrement pertinente dans des contextes marqués par la vulnérabilité alimentaire et les inégalités socio-économiques. Les jardins scolaires deviennent ainsi des espaces où les élèves développent non seulement des connaissances scolaires, mais également une compréhension des liens existant entre agriculture, alimentation, santé et développement durable.
-
-Parallèlement, l'analyse montre que les jardins scolaires constituent des supports privilégiés d'éducation environnementale. Les activités agricoles permettent aux élèves d'observer les cycles biologiques, de comprendre les interactions entre les écosystèmes et d'expérimenter des pratiques de gestion durable des ressources naturelles. L'environnement n'est plus seulement un objet d'enseignement théorique, mais devient un espace concret d'apprentissage et d'expérimentation.
-
-#### 4.7.3 Le jardin scolaire comme dispositif de résilience territoriale
-
-L'un des résultats les plus significatifs de l'analyse documentaire concerne la dimension territoriale des jardins scolaires. Les documents étudiés montrent que ces dispositifs s'inscrivent dans des territoires fortement marqués par l'aridité, les sécheresses récurrentes, le déficit hydrique et diverses formes de vulnérabilité environnementale.
-
-Dans ce contexte, les jardins scolaires apparaissent progressivement comme des espaces de résilience territoriale. Les pratiques recensées dans les rapports et les supports techniques témoignent de l'émergence de stratégies locales d'adaptation reposant sur l'utilisation de techniques d'économie d'eau, de systèmes d'irrigation goutte-à-goutte, de pratiques de compostage et de cultures adaptées aux conditions climatiques locales.
-
-L'analyse suggère ainsi que les jardins scolaires contribuent à renforcer les capacités d'adaptation des communautés éducatives face aux contraintes environnementales. Ils favorisent l'acquisition de savoirs écologiques, le développement de compétences pratiques et l'apprentissage de solutions adaptées aux réalités du territoire. Cette fonction de résilience dépasse largement la dimension scolaire et s'inscrit dans une perspective plus large de développement territorial durable.
-
-#### 4.7.4 Une participation communautaire différenciée selon les contextes
-
-L'analyse documentaire met en évidence l'importance de la participation communautaire dans le fonctionnement des jardins scolaires. Dans plusieurs établissements, les projets mobilisent un ensemble diversifié d'acteurs comprenant les enseignants, les directeurs, les parents d'élèves, les jardiniers communautaires, les cantinières ainsi que différents partenaires institutionnels.
-
-Cette participation contribue au renforcement des liens entre l'école et son environnement social. Les jardins scolaires deviennent des espaces de coopération favorisant l'émergence de dynamiques collectives autour de l'éducation, de l'alimentation et de la gestion des ressources naturelles.
-
-Toutefois, les données montrent également que cette mobilisation demeure variable selon les contextes. Certaines écoles bénéficient d'une forte implication communautaire, tandis que d'autres rencontrent des difficultés liées à la disponibilité des acteurs, aux contraintes économiques ou à la faiblesse des ressources locales. Ces variations soulignent le caractère contextuel de la participation communautaire et montrent que celle-ci constitue à la fois une ressource essentielle et une variable déterminante de la durabilité des projets.
-
-#### 4.7.5 Les contraintes structurelles de la durabilité
-
-Malgré leur potentiel éducatif et social, les jardins scolaires demeurent confrontés à de nombreuses contraintes structurelles. L'analyse documentaire révèle que le déficit hydrique constitue le principal obstacle au développement et à la pérennité des jardins scolaires dans les régions rurales étudiées.
-
-Les difficultés d'accès à l'eau sont régulièrement associées à d'autres contraintes, notamment l'insuffisance des infrastructures d'irrigation, le vieillissement des équipements, les difficultés de maintenance, les limites du suivi-évaluation et l'insuffisance des formations techniques. Ces contraintes montrent que la réussite des jardins scolaires dépend fortement de l'existence d'un environnement institutionnel et matériel favorable.
-
-Les résultats mettent ainsi en évidence une tension permanente entre les ambitions portées par les politiques éducatives et les réalités concrètes du terrain. Cette tension constitue un élément central de l'interprétation des données et permet de comprendre pourquoi certains projets parviennent à se maintenir dans le temps alors que d'autres connaissent des difficultés de pérennisation.
-
-#### 4.7.6 L'hybridation fonctionnelle du jardin scolaire
-
-L'un des apports majeurs de l'analyse documentaire réside dans l'identification du caractère hybride des jardins scolaires. Les données montrent que ces dispositifs remplissent simultanément plusieurs fonctions interdépendantes : pédagogique, nutritionnelle, environnementale, sociale, territoriale et communautaire.
-
-Cette hybridation fonctionnelle explique la complexité des dynamiques observées dans les écoles rurales. Le jardin scolaire apparaît simultanément comme un espace d'apprentissage, un outil de production alimentaire, un support d'éducation environnementale, un lieu de coopération sociale et un mécanisme local de résilience.
-
-Cette pluralité des fonctions constitue une caractéristique fondamentale du modèle émergent construit dans cette recherche. Elle permet de comprendre pourquoi les jardins scolaires occupent aujourd'hui une place croissante dans les politiques éducatives, nutritionnelles et environnementales.
-
-#### 4.7.7 Contribution de l'analyse documentaire à la construction théorique
-
-L'analyse documentaire a joué un rôle déterminant dans l'élaboration du cadre interprétatif de cette recherche. Elle a permis de faire émerger les principales catégories analytiques qui structureront les phases ultérieures de l'enquête et guideront l'interprétation des données issues des entretiens et des observations de terrain.
-
-Les résultats obtenus montrent que les jardins scolaires constituent des espaces privilégiés pour analyser les transformations contemporaines de l'école rurale, les dynamiques communautaires, les pratiques pédagogiques contextualisées et les mécanismes locaux d'adaptation climatique. Ils ont également permis de formuler les premières propositions théoriques relatives au rôle des jardins scolaires comme laboratoires vivants de résilience éducative, communautaire et climatique.
+Cette hybridation fonctionnelle explique la complexité des dynamiques observées et constitue une caractéristique fondamentale du modèle émergent. Elle éclaire également la place croissante qu'occupent les jardins scolaires dans les politiques éducatives, nutritionnelles et environnementales.
 
 ### 4.8 Synthèse générale de l'analyse documentaire
 
-L'analyse documentaire réalisée dans le cadre de cette recherche a permis de mettre en évidence la complexité des jardins scolaires dans les écoles rurales djiboutiennes. L'exploitation du corpus documentaire, composé de rapports institutionnels, de fiches pédagogiques, de supports techniques, d'archives historiques, de photographies et de vidéos pédagogiques, a permis de dégager plusieurs dimensions complémentaires qui structurent le fonctionnement de ces dispositifs.
+L'exploitation du corpus — rapports institutionnels, fiches pédagogiques, supports techniques, archives historiques, photographies, vidéos pédagogiques — a permis de dégager plusieurs dimensions complémentaires structurant le fonctionnement des jardins scolaires.
 
-Les résultats montrent que les jardins scolaires occupent une place croissante dans les stratégies éducatives nationales et dans les interventions des partenaires techniques et financiers. Ils sont progressivement intégrés aux politiques de nutrition scolaire, aux initiatives d'éducation environnementale et aux programmes de résilience communautaire.
+Les jardins scolaires occupent une place croissante dans les stratégies éducatives nationales et dans les interventions des partenaires techniques et financiers, où ils sont progressivement intégrés aux politiques de nutrition scolaire, aux initiatives d'éducation environnementale et aux programmes de résilience communautaire.
 
-L'analyse révèle également une évolution significative des pratiques pédagogiques. Les jardins scolaires favorisent l'émergence de pédagogies actives, de démarches interdisciplinaires et d'apprentissages expérientiels permettant aux élèves de construire leurs connaissances à partir de situations concrètes. Ils contribuent ainsi à renforcer la motivation scolaire, la participation active des apprenants et le développement de compétences pratiques.
+L'analyse révèle une évolution significative des pratiques pédagogiques vers des démarches actives, interdisciplinaires et expérientielles renforçant la motivation scolaire, la participation des apprenants et le développement de compétences pratiques.
 
-Par ailleurs, les données mettent en évidence la forte articulation entre les jardins scolaires et les enjeux de résilience territoriale. Dans un contexte marqué par l'aridité, les sécheresses récurrentes et les vulnérabilités environnementales, les jardins scolaires apparaissent comme des espaces d'apprentissage écologique et d'expérimentation de pratiques adaptées aux contraintes locales.
+Elle met également en évidence l'articulation étroite entre le dispositif et les enjeux de résilience territoriale, dans un contexte d'aridité, de sécheresses récurrentes et de vulnérabilités environnementales.
 
-L'analyse montre également que la participation communautaire constitue un facteur déterminant de la durabilité des projets. Toutefois, cette participation demeure variable selon les contextes et dépend largement des ressources disponibles, des capacités organisationnelles locales et du niveau d'implication des différents acteurs.
+La participation communautaire apparaît comme un facteur déterminant de la durabilité, mais demeure variable selon les contextes et dépend des ressources disponibles, des capacités organisationnelles locales et de l'implication des acteurs.
 
-Enfin, les résultats mettent en évidence plusieurs contraintes structurelles susceptibles de limiter le développement des jardins scolaires, notamment le déficit hydrique, les insuffisances techniques, les difficultés de maintenance et les limites du soutien institutionnel. Ces contraintes soulignent la nécessité d'une approche contextualisée prenant en compte les réalités territoriales propres aux écoles rurales djiboutiennes.
+Plusieurs contraintes structurelles limitent enfin le développement du dispositif — déficit hydrique, insuffisances techniques, difficultés de maintenance, limites du soutien institutionnel — soulignant la nécessité d'une approche contextualisée.
 
-L'ensemble de ces résultats conduit à conceptualiser le jardin scolaire comme un laboratoire vivant de résilience éducative, communautaire et climatique. Cette conceptualisation constitue la principale contribution théorique issue de l'analyse documentaire et servira de cadre interprétatif pour les phases suivantes de la recherche.
+L'ensemble de ces résultats conduit à conceptualiser le jardin scolaire comme un **laboratoire vivant de résilience éducative, communautaire et climatique**. Cette conceptualisation constitue la principale contribution théorique de l'analyse documentaire et servira de cadre interprétatif aux phases suivantes de la recherche.
 
-### 4.9 Conclusion du chapitre
+### 4.9 Conclusion du chapitre IV
 
-Ce chapitre a présenté les résultats de l'analyse documentaire réalisée dans le cadre de cette recherche doctorale sur les jardins scolaires dans les écoles rurales djiboutiennes. À travers une démarche de théorisation ancrée assistée par NVivo 15, l'analyse a permis de construire progressivement les principales catégories analytiques à partir des données empiriques recueillies.
+Ce chapitre a présenté les résultats de l'analyse documentaire conduite selon les principes de la théorisation ancrée avec l'appui de NVivo 15. L'analyse a permis de construire progressivement les principales catégories analytiques à partir des données empiriques.
 
-Les résultats montrent que les jardins scolaires constituent des dispositifs multidimensionnels situés à l'intersection des enjeux éducatifs, nutritionnels, environnementaux et communautaires. Ils apparaissent comme des espaces privilégiés d'apprentissage expérientiel, de contextualisation des savoirs, de coopération sociale et d'adaptation aux contraintes environnementales.
+Les résultats établissent que les jardins scolaires constituent des dispositifs multidimensionnels situés à l'intersection des enjeux éducatifs, nutritionnels, environnementaux et communautaires. Ils apparaissent comme des espaces privilégiés d'apprentissage expérientiel, de contextualisation des savoirs, de coopération sociale et d'adaptation aux contraintes environnementales.
 
-L'analyse met également en évidence le potentiel des jardins scolaires comme mécanismes de résilience éducative et territoriale dans des contextes marqués par l'aridité, les vulnérabilités climatiques et les inégalités rurales. Toutefois, elle souligne également les limites et les fragilités structurelles qui conditionnent leur pérennité.
+L'analyse met en évidence leur potentiel comme mécanismes de résilience éducative et territoriale dans des contextes marqués par l'aridité, les vulnérabilités climatiques et les inégalités rurales, tout en soulignant les fragilités structurelles qui conditionnent leur pérennité.
 
-L'une des contributions majeures de ce chapitre réside dans l'émergence de la catégorie centrale selon laquelle le jardin scolaire peut être conceptualisé comme un laboratoire vivant de résilience éducative, communautaire et climatique. Cette conceptualisation permet d'intégrer les différentes dimensions observées dans les documents analysés et fournit un cadre théorique cohérent pour l'interprétation des données de terrain.
+La contribution majeure de ce chapitre réside dans l'émergence de la catégorie centrale conceptualisant le jardin scolaire comme **laboratoire vivant de résilience éducative, communautaire et climatique** — cadre théorique cohérent pour l'interprétation des données de terrain.
 
-Les résultats obtenus constituent ainsi une base empirique et analytique essentielle pour la suite de la recherche. Le chapitre suivant sera consacré à l'analyse des données issues des entretiens semi-directifs, des observations participantes et des expériences vécues des différents acteurs impliqués dans les jardins scolaires. Cette nouvelle phase permettra de confronter les représentations institutionnelles mises en évidence dans l'analyse documentaire aux pratiques réelles observées dans les écoles rurales djiboutiennes et d'approfondir la compréhension des dynamiques locales de résilience éducative, communautaire et climatique.
+Ces résultats constituent la base empirique et analytique des phases suivantes de la recherche, consacrées aux entretiens semi-directifs, aux observations participantes et aux expériences vécues des acteurs. Cette étape permettra de confronter les représentations institutionnelles mises en évidence ici aux pratiques réelles observées dans les écoles rurales djiboutiennes.
+
+### Note de vérification bibliographique du chapitre IV
+
+| Référence citée | Section | Nature du problème |
+|---|---|---|
+| Paillé & Mucchielli (2021) | 4.2.1 | Référence absente de la bibliographie |
+| Glaser & Strauss (1967) | Introduction, 4.1 | Référence absente (déjà signalée au chapitre III) |
+| Strauss & Corbin (1998) | 4.3.4, 4.4.1, 4.5.1 | Référence absente (déjà signalée au chapitre III) |
+| Desmond et al. (2004) | 4.7.6 | Référence absente (déjà signalée au chapitre II) |
+| **Charmaz (2014)** | Introduction, 4.1 | **Incohérence entre chapitres** : le chapitre III cite Charmaz (2006), le chapitre IV cite Charmaz (2014). Les deux éditions existent ; il convient d'en retenir une seule et de l'harmoniser dans tout le document. |
+
+**Deux commentaires de rédaction ont été retirés du texte.** Ils figuraient dans le document source à la fin de l'introduction du chapitre et à la fin de la section 4.6, et décrivaient le travail rédactionnel accompli plutôt que le contenu de la recherche. Il est recommandé de vérifier si des traces analogues subsistent dans les parties du travail non couvertes par cette révision.
+
+**Deux incohérences inter-chapitres ont été corrigées.** Le code documentaire des archives historiques était « AH » au chapitre III et « AR » au chapitre IV : l'ensemble a été harmonisé sur **AH**. Le décompte du corpus était par ailleurs incomplet au chapitre III et ne correspondait pas au total de 51 unités annoncé au chapitre IV : les deux tableaux sont désormais identiques.
 
 ---
 
@@ -3811,20 +3386,55 @@ Yin, R. K. (2018). *Case study research and applications: Design and methods* (6
 
 ---
 
-<!-- ## Suivi de rédaction
+## Suivi de rédaction et points à arbitrer
 
-Ce fichier reprend l'intégralité du document Word source. Le niveau de traitement diffère selon les parties.
+### État du document
 
-| Partie | Mots | Structure Markdown | Reformulation rédactionnelle |
+L'intégralité du document Word source a été reprise, restructurée en Markdown et reformulée.
+
+| Partie | Source (mots) | Version révisée | Écart |
 |---|---|---|---|
-| **Chapitre I.** Contexte éducatif, territorial et environnemental | ~13 000 | ✅ | ✅ Terminée |
-| **Chapitre II.** Cadres théoriques et conceptuels | ~27 800 | ✅ | ⏳ En attente |
-| **Chapitre III.** Méthodologie de la recherche | ~15 400 | ✅ | ⏳ En attente |
-| **Chapitre IV.** Analyse documentaire et construction théorique | ~12 500 | ✅ | ⏳ En attente |
-| **Bibliographie** | ~900 | ✅ | ✅ Terminée | -->
+| Chapitre I. Contexte éducatif, territorial et environnemental | 14 892 | 12 832 | −14 % |
+| Chapitre II. Cadres théoriques et conceptuels | 27 827 | 18 293 | −34 % |
+| Chapitre III. Méthodologie de la recherche | 15 413 | 10 858 | −30 % |
+| Chapitre IV. Analyse documentaire et construction théorique | 12 542 | 7 866 | −37 % |
+| Bibliographie | 914 | 915 | — |
 
-**Points relevés dans le document source, à arbitrer :**
+La réduction du volume ne correspond à aucune perte d'information : elle résulte de la suppression de redondances, de la conversion des citations répétées en discours indirect attribué (références et pages conservées) et du resserrement des formulations.
 
-- Le chapitre III comportait **deux conclusions successives** de contenu proche, séparées par la section 3.12. La section 3.12 a été replacée avant la conclusion et les deux blocs ont été réunis sous un titre unique : leur fusion rédactionnelle reste à faire.
-- Le titre « c) La contextualisation des apprentissages » apparaît en **2.2.3** et en **2.3.4** ; une différenciation des intitulés faciliterait la navigation.
-- Le chapitre II emploie une numérotation sans point final (2.1, 2.1.1) tandis que le chapitre III emploie une numérotation avec point final (3.1., 3.1.1.). L'harmonisation sera faite lors de la passe de reformulation.
+### Corrections structurelles apportées
+
+- **Hiérarchie des titres reconstruite.** Dans le document source, environ la moitié des sections des chapitres II à IV étaient de simples paragraphes en gras, absents de tout sommaire.
+- **Double conclusion du chapitre III fusionnée.** La section 3.12 a été replacée avant la conclusion, et les deux blocs conclusifs de contenu proche ont été réunis.
+- **Étapes de codage dédoublonnées.** Décrites deux fois au chapitre III (sections 3.7 et 3.8), elles sont désormais réparties : la section 3.7 traite de l'outil NVivo, la section 3.8 du processus de codage.
+- **Section 2.2.4 repositionnée** en synthèse applicative au lieu d'une répétition des sections 2.2.1 à 2.2.3.
+- **Codage axial recentré** sur les relations entre catégories (modèle paradigmatique) plutôt que sur une redescription des catégories.
+- **Tableau 4.1 converti** d'un pseudo-tableau en art ASCII vers un tableau Markdown.
+- **Deux commentaires de rédaction supprimés** du chapitre IV.
+- **Vingt-cinq tableaux ajoutés** là où le texte énumérait des données en prose.
+
+### Points à arbitrer avant dépôt
+
+**1. Références citées mais absentes de la bibliographie.** Le point le plus important. Les notes de vérification figurent en fin de chapitres II, III et IV.
+
+| Chapitre | Nombre | Domaines concernés |
+|---|---|---|
+| Chapitre II | 16 | Pédagogie, nutrition, développement durable, résilience |
+| Chapitre III | 26 | Méthodologie qualitative et théorisation ancrée |
+| Chapitre IV | 1 | Analyse qualitative |
+
+La situation du chapitre III appelle une attention particulière : la bibliographie ne comporte **aucune référence méthodologique**. Une thèse conduite en théorisation ancrée qui ne cite ni Glaser et Strauss ni Charmaz dans sa liste de références sera relevée dès la première lecture.
+
+**2. Millésimes divergents.** Certaines citations renvoient à des années absentes de la bibliographie, alors que l'auteur y figure sous un autre millésime.
+
+| Citation dans le texte | Référence en bibliographie | À vérifier |
+|---|---|---|
+| Dewey (1916) | Dewey (1938) | Ouvrage distinct ou erreur de date |
+| Freire (1970) | Freire (1985) | Ouvrage distinct ou erreur de date |
+| Bruner (1966) | Bruner (1996) | Ouvrage distinct ou erreur de date |
+| UNICEF (2019) | UNICEF (2021) | Rapport distinct ou erreur de date |
+| Vygotski (1985) | Vygotsky (1978) | Édition distincte ou erreur de date |
+| Perrenoud (1994) | Perrenoud (1996) | Ouvrage distinct ou erreur de date |
+| Charmaz (2014) / Charmaz (2006) | — | Incohérence entre chapitres III et IV |
+
+**3. Harmonisations appliquées.** Orthographe **Vygotsky** alignée sur la bibliographie ; casse du MENFOP uniformisée ; sigles CFEEF, CRIPEN, EMT et APC définis à leur première occurrence ; citations des organisations alignées sur les entrées bibliographiques (World Bank, WFP, FAO, UNESCO, UNICEF) ; code documentaire des archives historiques unifié sur **AH** ; décompte du corpus aligné sur 51 unités dans les chapitres III et IV.
