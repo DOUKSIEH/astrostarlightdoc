@@ -23,6 +23,8 @@ author:
 > **Statut** : version reformulée et restructurée pour publication en Markdown
 
 ---
+
+
 ## Table des matières
 
 - [Chapitre I. Contexte éducatif, territorial et environnemental des écoles rurales djiboutiennes](#chapitre-i-contexte-éducatif-territorial-et-environnemental-des-écoles-rurales-djiboutiennes)
