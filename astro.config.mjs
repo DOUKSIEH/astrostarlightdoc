@@ -140,6 +140,7 @@ export default defineConfig({
 						{ label: "Guide Ansible", slug: "guides/iac/ansible" },
 						{ label: "Guide Terraform", slug: "guides/iac/terraform" },
 						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
+						{ label: "Control-M — Guide professionnel complet", slug: "guides/iac/controlm" },
 						],
 					},
 					{
