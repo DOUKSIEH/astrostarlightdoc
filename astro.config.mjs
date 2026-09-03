@@ -141,6 +141,7 @@ export default defineConfig({
 						{ label: "Guide Terraform", slug: "guides/iac/terraform" },
 						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
 						{ label: "Control-M — Guide professionnel complet", slug: "guides/iac/controlm" },
+						{ label: "Control-M  - Administration, Ordonnancement & Automation API", slug: "guides/iac/controlm-api-python" },
 						],
 					},
 					{
