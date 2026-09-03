@@ -4,12 +4,15 @@ description: >-
   Guide progressif pour administrateurs Control-M : comprendre l'architecture, maîtriser
   l'Automation API, et automatiser les tâches d'exploitation en Python avec du code commenté
   ligne à ligne.
-sidebar:
-  label: Control-M · API & Python
-  order: 2
-tableOfContents:
-  minHeadingLevel: 2
-  maxHeadingLevel: 3
+created: "2026-09-02"
+# updated: "2026-09-03"
+locales: "fr"
+author:
+  name: "Douksieh IH"
+  role: "DevOps Engineer"
+  avatar: "https://github.com/DOUKSIEH.png"
+
+
 ---
 
 :::note
