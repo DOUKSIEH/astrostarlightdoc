@@ -1,8 +1,12 @@
 ---
 title: "📘 Control-M — Guide complet d’Administration, d’Exploitation, d’Automatisation et de DevOps"
-description: "De l’ordonnancement à l’Automation API, Jobs as Code, CI/CD, MFT, sécurité, supervision et troubleshooting"
+description:  >-
+  Référence Control-M de A à Z : architecture, bases CTMEM et CONTROLM,
+  ordonnancement (conditions, ressources, calendriers), Automation API,
+  Jobs as Code, CI/CD, et cas concrets banque, énergie, transport, santé, éducation.
+#"De l’ordonnancement à l’Automation API, Jobs as Code, CI/CD, MFT, sécurité, supervision et troubleshooting"
 created: "2026-09-02"
-# updated: "2026-04-28"
+updated: "2026-09-03"
 locales: "fr"
 author:
   name: "Douksieh IH"
@@ -10,7 +14,127 @@ author:
   avatar: "https://github.com/DOUKSIEH.png"
 ---
 
+:::note
+Référence technique **Control-M** de bout en bout : des fondamentaux de l'ordonnancement
+jusqu'à l'industrialisation par **Automation API**, avec les deux bases de données, les
+mécanismes de dépendance, et des scripts Python de production.
+:::
 
+Le document réunit **deux livres complémentaires** :
+
+| Livre | Contenu | Pour qui |
+|---|---|---|
+| **[Livre I — Guide complet Control-M](#livre-i--guide-complet-control-m)** | Le produit de bout en bout : architecture, installation, administration, ordonnancement, supervision, MFT, sécurité, troubleshooting, **15 travaux pratiques** | Apprentissage linéaire, exploitation, prise en main |
+| **[Livre II — Administration avancée & Automation API](#livre-ii--administration-avancée--automation-api)** | Le moteur en profondeur : **bases CTMEM et CONTROLM**, conditions et ressources, les **8 opérations d'Automation API**, automatisation Python, cas sectoriels | Administration, DevOps, entretien technique |
+
+:::tip[Trois façons de lire ce document]
+- **Découverte** — suivez le Livre I dans l'ordre, puis les travaux pratiques.
+- **Exploitation** — allez directement aux runbooks de troubleshooting et à l'aide-mémoire.
+- **Administration / automatisation** — commencez par le Livre II, chapitres bases de données et Automation API.
+:::
+
+:::caution[Dépendance à la version]
+Control-M évolue par *fix packs* mensuels : noms de sous-commandes, champs JSON et paramètres
+système changent. Vérifiez toujours contre **votre** version — `ctm <service> -h` pour le CLI,
+et le Swagger local `https://<votre-EM>:8443/automation-api/swagger-ui.html` pour le REST.
+:::
+
+## Sommaire
+
+- [Livre I — Guide complet Control-M](#livre-i--guide-complet-control-m)
+    - [À propos de ce document](#à-propos-de-ce-document)
+  - [Partie I — Fondamentaux](#partie-i--fondamentaux)
+    - [1. Présentation générale de Control-M](#1-présentation-générale-de-control-m)
+  - [Partie II — Installation et configuration](#partie-ii--installation-et-configuration)
+    - [2. Installation et configuration](#2-installation-et-configuration)
+  - [Partie III — Administration](#partie-iii--administration)
+    - [3. Administration de Control-M](#3-administration-de-control-m)
+  - [Partie IV — Concepts d'ordonnancement](#partie-iv--concepts-dordonnancement)
+    - [4. Les objets d'ordonnancement](#4-les-objets-dordonnancement)
+  - [Partie V — Création et gestion des traitements](#partie-v--création-et-gestion-des-traitements)
+    - [5. Créer et gérer des jobs](#5-créer-et-gérer-des-jobs)
+  - [Partie VI — Supervision et exploitation](#partie-vi--supervision-et-exploitation)
+    - [6. Supervision et exploitation](#6-supervision-et-exploitation)
+    - [7. Gestion des dépendances — approfondissement](#7-gestion-des-dépendances--approfondissement)
+    - [8. Gestion des calendriers](#8-gestion-des-calendriers)
+    - [9. Gestion des SLA](#9-gestion-des-sla)
+  - [Partie VII — Control-M Automation API](#partie-vii--control-m-automation-api)
+    - [10. L'Automation API](#10-lautomation-api)
+  - [Partie VIII — Jobs as Code](#partie-viii--jobs-as-code)
+    - [11. L'approche Jobs as Code](#11-lapproche-jobs-as-code)
+  - [Partie IX — Intégration CI/CD](#partie-ix--intégration-cicd)
+    - [12. Control-M dans une chaîne CI/CD](#12-control-m-dans-une-chaîne-cicd)
+    - [13. Intégration avec Python](#13-intégration-avec-python)
+  - [Partie X — Gestion des fichiers et MFT](#partie-x--gestion-des-fichiers-et-mft)
+    - [14. Control-M Managed File Transfer](#14-control-m-managed-file-transfer)
+  - [Partie XI — Sécurité](#partie-xi--sécurité)
+    - [15. Sécurité et DevSecOps](#15-sécurité-et-devsecops)
+  - [Partie XII — Observabilité et troubleshooting](#partie-xii--observabilité-et-troubleshooting)
+    - [16. Diagnostiquer et résoudre](#16-diagnostiquer-et-résoudre)
+  - [Partie XIII — Architectures professionnelles](#partie-xiii--architectures-professionnelles)
+    - [17. Choisir et dimensionner son architecture](#17-choisir-et-dimensionner-son-architecture)
+    - [18. Bonnes pratiques — synthèse](#18-bonnes-pratiques--synthèse)
+  - [Partie XIV — Cas pratiques](#partie-xiv--cas-pratiques)
+    - [19. Quinze travaux pratiques](#19-quinze-travaux-pratiques)
+    - [TP 1 — Créer son premier job](#tp-1--créer-son-premier-job)
+    - [TP 2 — Une chaîne de jobs dépendants](#tp-2--une-chaîne-de-jobs-dépendants)
+    - [TP 3 — Exécution quotidienne d'un batch](#tp-3--exécution-quotidienne-dun-batch)
+    - [TP 4 — Déclencher un traitement après réception d'un fichier](#tp-4--déclencher-un-traitement-après-réception-dun-fichier)
+    - [TP 5 — Gérer un traitement avec SLA](#tp-5--gérer-un-traitement-avec-sla)
+    - [TP 6 — Un workflow avec plusieurs dépendances](#tp-6--un-workflow-avec-plusieurs-dépendances)
+    - [TP 7 — Déployer un workflow via l'Automation API](#tp-7--déployer-un-workflow-via-lautomation-api)
+    - [TP 8 — Versionner les jobs dans Git](#tp-8--versionner-les-jobs-dans-git)
+    - [TP 9 — Déployer depuis GitLab CI/CD ou Jenkins](#tp-9--déployer-depuis-gitlab-cicd-ou-jenkins)
+    - [TP 10 — Appeler Control-M depuis Python](#tp-10--appeler-control-m-depuis-python)
+    - [TP 11 — Surveiller un workflow via l'API](#tp-11--surveiller-un-workflow-via-lapi)
+    - [TP 12 — Gérer automatiquement une erreur](#tp-12--gérer-automatiquement-une-erreur)
+    - [TP 13 — Promouvoir un traitement de DEV vers PROD](#tp-13--promouvoir-un-traitement-de-dev-vers-prod)
+    - [TP 14 — Sécuriser les accès API](#tp-14--sécuriser-les-accès-api)
+    - [TP 15 — Diagnostiquer un job en échec](#tp-15--diagnostiquer-un-job-en-échec)
+  - [Partie XV — Annexes](#partie-xv--annexes)
+    - [20. Glossaire Control-M](#20-glossaire-control-m)
+    - [21. Aide-mémoire des commandes](#21-aide-mémoire-des-commandes)
+    - [22. Endpoints REST principaux](#22-endpoints-rest-principaux)
+    - [23. Codes HTTP](#23-codes-http)
+    - [24. Fichiers de configuration importants](#24-fichiers-de-configuration-importants)
+    - [25. Checklists](#25-checklists)
+    - [26. Control-M Cheat Sheet](#26-control-m-cheat-sheet)
+    - [27. Sources](#27-sources)
+    - [Mot de la fin](#mot-de-la-fin)
+- [Livre II — Administration avancée & Automation API](#livre-ii--administration-avancée--automation-api)
+    - [0. Prise en main](#0-prise-en-main)
+  - [Partie A — Connaissance du produit](#partie-a--connaissance-du-produit)
+    - [1. Architecture : qui parle à qui](#1-architecture--qui-parle-à-qui)
+    - [2. Les deux bases de données : CTMEM et CONTROLM](#2-les-deux-bases-de-données--ctmem-et-controlm)
+  - [Partie B — Ordonnancement des traitements](#partie-b--ordonnancement-des-traitements)
+    - [3. Le modèle d'exécution : les six verrous](#3-le-modèle-dexécution--les-six-verrous)
+    - [4. Conditions d'entrée et de sortie](#4-conditions-dentrée-et-de-sortie)
+    - [5. Ressources quantitatives et de contrôle](#5-ressources-quantitatives-et-de-contrôle)
+    - [6. Calendriers et planification](#6-calendriers-et-planification)
+    - [7. Cyclique, reprise, rétention, priorité](#7-cyclique-reprise-rétention-priorité)
+    - [8. Le modèle On/Do](#8-le-modèle-ondo)
+  - [Partie C — Automation API](#partie-c--automation-api)
+    - [9. Comprendre l'API avant de coder](#9-comprendre-lapi-avant-de-coder)
+    - [10. Les huit opérations, de A à Z](#10-les-huit-opérations-de-a-à-z)
+    - [11. Le socle Python réutilisable](#11-le-socle-python-réutilisable)
+    - [12. La bibliothèque d'opérations](#12-la-bibliothèque-dopérations)
+  - [Partie D — Automatisation par secteur](#partie-d--automatisation-par-secteur)
+    - [13. Banque et finance](#13-banque-et-finance)
+    - [14. Énergie et utilities](#14-énergie-et-utilities)
+    - [15. Transport et logistique](#15-transport-et-logistique)
+    - [16. Santé](#16-santé)
+    - [17. Éducation](#17-éducation)
+  - [Partie E — Industrialisation](#partie-e--industrialisation)
+    - [18. Dix runbooks automatisés](#18-dix-runbooks-automatisés)
+    - [19. CI/CD et promotion d'environnement](#19-cicd-et-promotion-denvironnement)
+    - [20. Observabilité : exporter vers Prometheus](#20-observabilité--exporter-vers-prometheus)
+    - [21. Cinquante questions d'entretien](#21-cinquante-questions-dentretien)
+    - [22. Abécédaire A → Z](#22-abécédaire-a-→-z)
+    - [23. Aide-mémoire et ressources](#23-aide-mémoire-et-ressources)
+
+---
+
+## Livre I — Guide complet Control-M
 
 
 > Documentation technique de référence et d'apprentissage
@@ -18,11 +142,22 @@ author:
 
 ---
 
-## À propos de ce document
+#### À propos de ce document
 
 Ce guide couvre **Control-M** de bout en bout : des concepts fondamentaux de l'ordonnancement
 jusqu'à l'industrialisation complète des déploiements via l'**Automation API** et une chaîne
 **CI/CD**.
+
+:::note[📘 Guide compagnon — administration avancée & Automation API]
+Pour aller plus loin sur trois sujets traités ici de façon transverse, voir
+[**Livre II — Administration avancée & Automation API**](#livre-ii--administration-avancée--automation-api) :
+les **deux bases de données `CTMEM` et `CONTROLM`** (contenu, synchronisation, sauvegarde
+cohérente, dimensionnement), l'**ordonnancement en profondeur** (conditions, ressources
+quantitatives et de contrôle, calendriers), et les **huit opérations d'Automation API**
+(déploiement d'agents, SMART Folders, jobs, conditions, hold, planification, déplanification,
+suppression) avec des scripts Python commentés et des cas concrets en banque, énergie,
+transport, santé et éducation.
+:::
 
 Il est conçu pour être lu de trois manières :
 
@@ -34,7 +169,7 @@ Il est conçu pour être lu de trois manières :
 | **Administrateur système** | Parties II, III, X (sécurité), XI (architectures) |
 | **Préparation d'entretien technique** | Glossaire, cheat sheet, parties I et IV, TP 2, 4, 5, 13 |
 
-### Versions couvertes
+##### Versions couvertes
 
 | Cible | Ce que couvre ce guide |
 |---|---|
@@ -43,15 +178,16 @@ Il est conçu pour être lu de trois manières :
 | **Control-M Automation API** | Build « Monthly » 9.0.21.x / 9.0.22.x |
 | **z/OS** | Mentionné pour les différences notables, mais ce guide cible les plateformes **distribuées** (Linux/UNIX/Windows) |
 
-> **⚠️ Dépendance à la version**
-> Control-M évolue par *fix packs* mensuels. Les noms d'objets JSON, les sous-commandes `ctm`
-> et certains paramètres système **changent entre versions**. Chaque fois qu'un élément est
-> version-dépendant, ce guide l'indique par un encadré `Version`. La règle absolue :
-> **vérifiez toujours contre la documentation de VOTRE version** — l'aide en ligne de votre
-> instance est accessible via `https://<votre-EM>:8443/automation-api` (Swagger local) et
-> `ctm <service> -h` pour le CLI.
+:::caution[⚠️ Dépendance à la version]
+Control-M évolue par *fix packs* mensuels. Les noms d'objets JSON, les sous-commandes `ctm`
+et certains paramètres système **changent entre versions**. Chaque fois qu'un élément est
+version-dépendant, ce guide l'indique par un encadré `Version`. La règle absolue :
+**vérifiez toujours contre la documentation de VOTRE version** — l'aide en ligne de votre
+instance est accessible via `https://<votre-EM>:8443/automation-api` (Swagger local) et
+`ctm <service> -h` pour le CLI.
+:::
 
-### Conventions typographiques
+##### Conventions typographiques
 
 | Convention | Signification |
 |---|---|
@@ -65,7 +201,7 @@ Il est conçu pour être lu de trois manières :
 | > **Version** | Comportement dépendant de la version de Control-M |
 | > **SaaS** | Différence de comportement en Control-M SaaS |
 
-### Nomenclature : ancienne et nouvelle terminologie
+##### Nomenclature : ancienne et nouvelle terminologie
 
 BMC a modernisé son vocabulaire à partir de la version 9.0.20. Vous rencontrerez **les deux**
 selon l'âge de votre plateforme et de votre documentation interne. Ce tableau est indispensable
@@ -87,424 +223,19 @@ pour ne pas se perdre.
 | MAXWAIT | **Days Keep Active** | `DaysKeepActive` |
 | Sysout | **Output** | `ctm run job:output::get` |
 
-> **⚠️ Attention**
-> Le vocabulaire diffère aussi **entre l'interface web et l'API** dans la même version.
-> Exemple : l'interface Control-M Web affiche le statut **« Wait Event »** là où l'Automation API
-> renvoie `"status": "Wait Condition"`. Ce n'est pas un bug, c'est un héritage.
+:::caution[⚠️ Attention]
+Le vocabulaire diffère aussi **entre l'interface web et l'API** dans la même version.
+Exemple : l'interface Control-M Web affiche le statut **« Wait Event »** là où l'Automation API
+renvoie `"status": "Wait Condition"`. Ce n'est pas un bug, c'est un héritage.
+:::
 
 ---
 
-## Table des matières
+### Partie I — Fondamentaux
 
-  - [À propos de ce document](#à-propos-de-ce-document)
-    - [Versions couvertes](#versions-couvertes)
-    - [Conventions typographiques](#conventions-typographiques)
-    - [Nomenclature : ancienne et nouvelle terminologie](#nomenclature-ancienne-et-nouvelle-terminologie)
-- [Partie I — Fondamentaux](#partie-i-fondamentaux)
-  - [1. Présentation générale de Control-M](#1-présentation-générale-de-control-m)
-    - [1.1 Le rôle de l'outil](#11-le-rôle-de-loutil)
-    - [1.2 Concepts fondamentaux](#12-concepts-fondamentaux)
-    - [1.3 Architecture générale](#13-architecture-générale)
-    - [1.4 Les composants en détail](#14-les-composants-en-détail)
-    - [1.5 Le cycle de vie complet d'un job](#15-le-cycle-de-vie-complet-dun-job)
-    - [1.6 Self-hosted vs Control-M SaaS](#16-self-hosted-vs-control-m-saas)
-    - [1.7 Versions, compatibilité et pièges](#17-versions-compatibilité-et-pièges)
-- [Partie II — Installation et configuration](#partie-ii-installation-et-configuration)
-  - [2. Installation et configuration](#2-installation-et-configuration)
-    - [2.1 Prérequis](#21-prérequis)
-    - [2.2 Architectures recommandées](#22-architectures-recommandées)
-    - [2.3 Ordre d'installation](#23-ordre-dinstallation)
-    - [2.4 Communication Server ↔ Agent](#24-communication-server-agent)
-    - [2.5 Ports réseau — référence complète](#25-ports-réseau-référence-complète)
-    - [2.6 Certificats TLS](#26-certificats-tls)
-    - [2.7 Gestion des environnements DEV / TEST / PREPROD / PROD](#27-gestion-des-environnements-dev-test-preprod-prod)
-    - [2.8 Bonnes pratiques de configuration](#28-bonnes-pratiques-de-configuration)
-- [Partie III — Administration](#partie-iii-administration)
-  - [3. Administration de Control-M](#3-administration-de-control-m)
-    - [3.1 Le modèle de sécurité en deux couches](#31-le-modèle-de-sécurité-en-deux-couches)
-    - [3.2 Utilisateurs, rôles et RBAC (couche EM)](#32-utilisateurs-rôles-et-rbac-couche-em)
-    - [3.3 Authentification](#33-authentification)
-    - [3.4 Sécurité Control-M/Server : `ctmsec`](#34-sécurité-control-mserver-ctmsec)
-    - [3.5 Gestion des Agents](#35-gestion-des-agents)
-    - [3.6 Gestion des Control-M/Servers](#36-gestion-des-control-mservers)
-    - [3.7 Run as Users et Connection Profiles](#37-run-as-users-et-connection-profiles)
-    - [3.8 Ressources](#38-ressources)
-    - [3.9 Variables](#39-variables)
-    - [3.10 Calendriers (administration)](#310-calendriers-administration)
-    - [3.11 Gestion des secrets](#311-gestion-des-secrets)
-    - [3.12 New Day Procedure et rétention](#312-new-day-procedure-et-rétention)
-    - [3.13 Workload Policies](#313-workload-policies)
-    - [3.14 Suivi de consommation](#314-suivi-de-consommation)
-- [Partie IV — Concepts d'ordonnancement](#partie-iv-concepts-dordonnancement)
-  - [4. Les objets d'ordonnancement](#4-les-objets-dordonnancement)
-    - [4.1 Le job](#41-le-job)
-    - [4.2 Folders, SMART Folders, SubFolders](#42-folders-smart-folders-subfolders)
-    - [4.3 Workflows et objet `Flow`](#43-workflows-et-objet-flow)
-    - [4.4 Dépendances : les événements](#44-dépendances-les-événements)
-    - [4.5 Ressources](#45-ressources)
-    - [4.6 Calendriers — vue d'ensemble](#46-calendriers-vue-densemble)
-    - [4.7 Cyclic, rerun, retry](#47-cyclic-rerun-retry)
-    - [4.8 Fenêtres de traitement](#48-fenêtres-de-traitement)
-    - [4.9 Actions conditionnelles (le modèle On/Do)](#49-actions-conditionnelles-le-modèle-ondo)
-    - [4.10 Notifications](#410-notifications)
-    - [4.11 SLA — concepts](#411-sla-concepts)
-    - [4.12 Ordering et règles d'exécution](#412-ordering-et-règles-dexécution)
-- [Partie V — Création et gestion des traitements](#partie-v-création-et-gestion-des-traitements)
-  - [5. Créer et gérer des jobs](#5-créer-et-gérer-des-jobs)
-    - [5.1 Les trois voies de création](#51-les-trois-voies-de-création)
-    - [5.2 Créer un job dans Control-M Web](#52-créer-un-job-dans-control-m-web)
-    - [5.3 Job de type commande — `Job:Command`](#53-job-de-type-commande-jobcommand)
-    - [5.4 Job de type script — `Job:Script`](#54-job-de-type-script-jobscript)
-    - [5.5 Script embarqué — `Job:EmbeddedScript`](#55-script-embarqué-jobembeddedscript)
-    - [5.6 Exécuter du Python](#56-exécuter-du-python)
-    - [5.7 Traitements batch](#57-traitements-batch)
-    - [5.8 Transferts de fichiers — `Job:FileTransfer`](#58-transferts-de-fichiers-jobfiletransfer)
-    - [5.9 Surveillance de fichiers — `Job:FileWatcher`](#59-surveillance-de-fichiers-jobfilewatcher)
-    - [5.10 Jobs applicatifs](#510-jobs-applicatifs)
-    - [5.11 L'objet `Defaults`](#511-lobjet-defaults)
-    - [5.12 Exemple complet commenté — une chaîne de production réaliste](#512-exemple-complet-commenté-une-chaîne-de-production-réaliste)
-- [Partie VI — Supervision et exploitation](#partie-vi-supervision-et-exploitation)
-  - [6. Supervision et exploitation](#6-supervision-et-exploitation)
-    - [6.1 Le domaine Monitoring](#61-le-domaine-monitoring)
-    - [6.2 Les Viewpoints](#62-les-viewpoints)
-    - [6.3 Les statuts de job](#63-les-statuts-de-job)
-    - [6.4 Actions d'exploitation](#64-actions-dexploitation)
-    - [6.5 Log, Output, Statistics : trois choses différentes](#65-log-output-statistics-trois-choses-différentes)
-    - [6.6 La fonction « Why »](#66-la-fonction-why)
-    - [6.7 Alertes](#67-alertes)
-    - [6.8 Suivi opérationnel par API](#68-suivi-opérationnel-par-api)
-    - [6.9 Erreurs courantes et leur résolution](#69-erreurs-courantes-et-leur-résolution)
-  - [7. Gestion des dépendances — approfondissement](#7-gestion-des-dépendances-approfondissement)
-    - [7.1 Les quatre façons d'exprimer une dépendance](#71-les-quatre-façons-dexprimer-une-dépendance)
-    - [7.2 Les motifs classiques](#72-les-motifs-classiques)
-    - [7.3 Dépendances inter-applications](#73-dépendances-inter-applications)
-    - [7.4 Dépendances inter-environnements](#74-dépendances-inter-environnements)
-    - [7.5 Événements globaux](#75-événements-globaux)
-    - [7.6 Diagnostiquer une dépendance](#76-diagnostiquer-une-dépendance)
-  - [8. Gestion des calendriers](#8-gestion-des-calendriers)
-    - [8.1 Les trois types de calendriers](#81-les-trois-types-de-calendriers)
-    - [8.2 Calendrier standard — `Calendar:Regular`](#82-calendrier-standard-calendarregular)
-    - [8.3 Calendrier périodique — `Calendar:Periodic`](#83-calendrier-périodique-calendarperiodic)
-    - [8.4 Calendrier à base de règles — `Calendar:RuleBasedCalendar`](#84-calendrier-à-base-de-règles-calendarrulebasedcalendar)
-    - [8.5 La grammaire `When` complète](#85-la-grammaire-when-complète)
-    - [8.6 Les modificateurs de calendrier](#86-les-modificateurs-de-calendrier)
-    - [8.7 Les calendriers de confirmation](#87-les-calendriers-de-confirmation)
-    - [8.8 Recettes de planification](#88-recettes-de-planification)
-    - [8.9 Tester une planification](#89-tester-une-planification)
-  - [9. Gestion des SLA](#9-gestion-des-sla)
-    - [9.1 Le principe](#91-le-principe)
-    - [9.2 Définir un service SLA](#92-définir-un-service-sla)
-    - [9.3 Les attributs](#93-les-attributs)
-    - [9.4 `CompleteBy` ou `CompleteIn` ?](#94-completeby-ou-completein)
-    - [9.5 Tolérances : écarts-types ou pourcentage ?](#95-tolérances-écarts-types-ou-pourcentage)
-    - [9.6 Les notions clés](#96-les-notions-clés)
-    - [9.7 Consulter les services par API](#97-consulter-les-services-par-api)
-    - [9.8 Tableau de bord SLA — script d'exploitation](#98-tableau-de-bord-sla-script-dexploitation)
-    - [9.9 Bonnes pratiques SLA](#99-bonnes-pratiques-sla)
-- [Partie VII — Control-M Automation API](#partie-vii-control-m-automation-api)
-  - [10. L'Automation API](#10-lautomation-api)
-    - [10.1 Rôle et positionnement](#101-rôle-et-positionnement)
-    - [10.2 Architecture](#102-architecture)
-    - [10.3 Installation du CLI](#103-installation-du-cli)
-    - [10.4 La grammaire du CLI](#104-la-grammaire-du-cli)
-    - [10.5 Les services](#105-les-services)
-    - [10.6 Authentification](#106-authentification)
-    - [10.7 Référence des commandes](#107-référence-des-commandes)
-    - [10.8 Utiliser l'API directement en `curl`](#108-utiliser-lapi-directement-en-curl)
-    - [10.9 Codes HTTP et gestion des erreurs](#109-codes-http-et-gestion-des-erreurs)
-    - [10.10 Sécuriser l'Automation API](#1010-sécuriser-lautomation-api)
-- [Partie VIII — Jobs as Code](#partie-viii-jobs-as-code)
-  - [11. L'approche Jobs as Code](#11-lapproche-jobs-as-code)
-    - [11.1 Le principe](#111-le-principe)
-    - [11.2 Anatomie d'un fichier — décryptage champ par champ](#112-anatomie-dun-fichier-décryptage-champ-par-champ)
-    - [11.3 Structure d'un dépôt Jobs as Code](#113-structure-dun-dépôt-jobs-as-code)
-    - [11.4 Le deploy descriptor](#114-le-deploy-descriptor)
-    - [11.5 Les site standards](#115-les-site-standards)
-    - [11.6 Versionnement et promotion](#116-versionnement-et-promotion)
-    - [11.7 Tester ses définitions](#117-tester-ses-définitions)
-- [Partie IX — Intégration CI/CD](#partie-ix-intégration-cicd)
-  - [12. Control-M dans une chaîne CI/CD](#12-control-m-dans-une-chaîne-cicd)
-    - [12.1 Le workflow de référence](#121-le-workflow-de-référence)
-    - [12.2 Principes transverses](#122-principes-transverses)
-    - [12.3 Git et GitHub](#123-git-et-github)
-    - [12.4 GitLab CI/CD](#124-gitlab-cicd)
-    - [12.5 Jenkins](#125-jenkins)
-    - [12.6 Azure DevOps](#126-azure-devops)
-    - [12.7 Gestion des secrets — synthèse](#127-gestion-des-secrets-synthèse)
-    - [12.8 La promotion DEV → TEST → PREPROD → PROD](#128-la-promotion-dev-test-preprod-prod)
-  - [13. Intégration avec Python](#13-intégration-avec-python)
-    - [13.1 Les deux approches](#131-les-deux-approches)
-    - [13.2 L'exemple de départ, expliqué](#132-lexemple-de-départ-expliqué)
-    - [13.3 Un client réutilisable, prêt pour la production](#133-un-client-réutilisable-prêt-pour-la-production)
-    - [13.4 Cas d'usage](#134-cas-dusage)
-    - [13.5 Le client officiel `ctm-python-client`](#135-le-client-officiel-ctm-python-client)
-- [Partie X — Gestion des fichiers et MFT](#partie-x-gestion-des-fichiers-et-mft)
-  - [14. Control-M Managed File Transfer](#14-control-m-managed-file-transfer)
-    - [14.1 Pourquoi MFT plutôt qu'un script `scp`](#141-pourquoi-mft-plutôt-quun-script-scp)
-    - [14.2 Architecture](#142-architecture)
-    - [14.3 MFT Enterprise (B2B)](#143-mft-enterprise-b2b)
-    - [14.4 Les connection profiles de transfert](#144-les-connection-profiles-de-transfert)
-    - [14.5 Le job de transfert — `Job:FileTransfer`](#145-le-job-de-transfert-jobfiletransfer)
-    - [14.6 Exemples complets](#146-exemples-complets)
-    - [14.7 Surveillance de fichiers hors MFT — `Job:FileWatcher`](#147-surveillance-de-fichiers-hors-mft-jobfilewatcher)
-    - [14.8 Reprise sur erreur](#148-reprise-sur-erreur)
-    - [14.9 Bonnes pratiques de transfert](#149-bonnes-pratiques-de-transfert)
-- [Partie XI — Sécurité](#partie-xi-sécurité)
-  - [15. Sécurité et DevSecOps](#15-sécurité-et-devsecops)
-    - [15.1 Le modèle de sécurité complet](#151-le-modèle-de-sécurité-complet)
-    - [15.2 Authentification](#152-authentification)
-    - [15.3 Autorisation et RBAC](#153-autorisation-et-rbac)
-    - [15.4 Gestion des secrets](#154-gestion-des-secrets)
-    - [15.5 Certificats TLS](#155-certificats-tls)
-    - [15.6 Comptes techniques](#156-comptes-techniques)
-    - [15.7 Audit et traçabilité](#157-audit-et-traçabilité)
-    - [15.8 Sécuriser l'Automation API](#158-sécuriser-lautomation-api)
-    - [15.9 Checklist DevSecOps](#159-checklist-devsecops)
-- [Partie XII — Observabilité et troubleshooting](#partie-xii-observabilité-et-troubleshooting)
-  - [16. Diagnostiquer et résoudre](#16-diagnostiquer-et-résoudre)
-    - [16.1 La méthode](#161-la-méthode)
-    - [16.2 Où sont les logs](#162-où-sont-les-logs)
-    - [16.3 Runbook — l'Agent est indisponible](#163-runbook-lagent-est-indisponible)
-    - [16.4 Runbook — le job n'a jamais été ordonnancé](#164-runbook-le-job-na-jamais-été-ordonnancé)
-    - [16.5 Runbook — le job est bloqué en attente](#165-runbook-le-job-est-bloqué-en-attente)
-    - [16.6 Runbook — le job est en échec](#166-runbook-le-job-est-en-échec)
-    - [16.7 Runbook — le job reste indéfiniment en `Executing`](#167-runbook-le-job-reste-indéfiniment-en-executing)
-    - [16.8 Runbook — problème de certificat](#168-runbook-problème-de-certificat)
-    - [16.9 Runbook — la chaîne est bloquée le week-end](#169-runbook-la-chaîne-est-bloquée-le-week-end)
-    - [16.10 Runbook — erreur d'API](#1610-runbook-erreur-dapi)
-    - [16.11 Runbook — échec de `ctm deploy`](#1611-runbook-échec-de-ctm-deploy)
-    - [16.12 Runbook — dépendances et conditions](#1612-runbook-dépendances-et-conditions)
-    - [16.13 Runbook — problème réseau](#1613-runbook-problème-réseau)
-    - [16.14 Runbook — le service SLA est en retard](#1614-runbook-le-service-sla-est-en-retard)
-    - [16.15 Tableau de synthèse](#1615-tableau-de-synthèse)
-- [Partie XIII — Architectures professionnelles](#partie-xiii-architectures-professionnelles)
-  - [17. Choisir et dimensionner son architecture](#17-choisir-et-dimensionner-son-architecture)
-    - [17.1 La grille de décision](#171-la-grille-de-décision)
-    - [17.2 Petite infrastructure](#172-petite-infrastructure)
-    - [17.3 Environnement d'entreprise](#173-environnement-dentreprise)
-    - [17.4 Haute disponibilité](#174-haute-disponibilité)
-    - [17.5 Architecture multi-environnements](#175-architecture-multi-environnements)
-    - [17.6 Intégration Kubernetes](#176-intégration-kubernetes)
-    - [17.7 Environnements cloud](#177-environnements-cloud)
-    - [17.8 Tableau récapitulatif](#178-tableau-récapitulatif)
-  - [18. Bonnes pratiques — synthèse](#18-bonnes-pratiques-synthèse)
-    - [18.1 Sécurité](#181-sécurité)
-    - [18.2 Disponibilité et résilience](#182-disponibilité-et-résilience)
-    - [18.3 Performance](#183-performance)
-    - [18.4 Maintenabilité](#184-maintenabilité)
-    - [18.5 Industrialisation](#185-industrialisation)
-    - [18.6 Supervision et gestion des erreurs](#186-supervision-et-gestion-des-erreurs)
-    - [18.7 Les dix erreurs les plus coûteuses](#187-les-dix-erreurs-les-plus-coûteuses)
-- [Partie XIV — Cas pratiques](#partie-xiv-cas-pratiques)
-  - [19. Quinze travaux pratiques](#19-quinze-travaux-pratiques)
-    - [Environnement de référence des TP](#environnement-de-référence-des-tp)
-  - [TP 1 — Créer son premier job](#tp-1-créer-son-premier-job)
-    - [Objectif](#objectif)
-    - [Architecture](#architecture)
-    - [Prérequis](#prérequis)
-    - [Configuration](#configuration)
-    - [Commandes](#commandes)
-    - [Explications](#explications)
-    - [Résultat attendu](#résultat-attendu)
-    - [Tests](#tests)
-    - [Troubleshooting](#troubleshooting)
-  - [TP 2 — Une chaîne de jobs dépendants](#tp-2-une-chaîne-de-jobs-dépendants)
-    - [Objectif](#objectif-1)
-    - [Architecture](#architecture-1)
-    - [Prérequis](#prérequis-1)
-    - [Configuration — version 1, avec `Flow`](#configuration-version-1-avec-flow)
-    - [Configuration — version 2, avec événements explicites](#configuration-version-2-avec-événements-explicites)
-    - [Commandes](#commandes-1)
-    - [Explications](#explications-1)
-    - [Résultat attendu](#résultat-attendu-1)
-    - [Tests](#tests-1)
-    - [Troubleshooting](#troubleshooting-1)
-  - [TP 3 — Exécution quotidienne d'un batch](#tp-3-exécution-quotidienne-dun-batch)
-    - [Objectif](#objectif-2)
-    - [Architecture](#architecture-2)
-    - [Prérequis](#prérequis-2)
-    - [Configuration](#configuration-1)
-    - [Commandes](#commandes-2)
-    - [Explications](#explications-2)
-    - [Résultat attendu](#résultat-attendu-2)
-    - [Tests](#tests-2)
-    - [Troubleshooting](#troubleshooting-2)
-  - [TP 4 — Déclencher un traitement après réception d'un fichier](#tp-4-déclencher-un-traitement-après-réception-dun-fichier)
-    - [Objectif](#objectif-3)
-    - [Architecture](#architecture-3)
-    - [Prérequis](#prérequis-3)
-    - [Configuration](#configuration-2)
-    - [Commandes](#commandes-3)
-    - [Explications](#explications-3)
-    - [Résultat attendu](#résultat-attendu-3)
-    - [Tests](#tests-3)
-    - [Troubleshooting](#troubleshooting-3)
-  - [TP 5 — Gérer un traitement avec SLA](#tp-5-gérer-un-traitement-avec-sla)
-    - [Objectif](#objectif-4)
-    - [Architecture](#architecture-4)
-    - [Prérequis](#prérequis-4)
-    - [Configuration](#configuration-3)
-    - [Commandes](#commandes-4)
-    - [Explications](#explications-4)
-    - [Résultat attendu](#résultat-attendu-4)
-    - [Tests](#tests-4)
-    - [Troubleshooting](#troubleshooting-4)
-  - [TP 6 — Un workflow avec plusieurs dépendances](#tp-6-un-workflow-avec-plusieurs-dépendances)
-    - [Objectif](#objectif-5)
-    - [Architecture](#architecture-5)
-    - [Prérequis](#prérequis-5)
-    - [Configuration](#configuration-4)
-    - [Commandes](#commandes-5)
-    - [Explications](#explications-5)
-    - [Résultat attendu](#résultat-attendu-5)
-    - [Tests](#tests-5)
-    - [Troubleshooting](#troubleshooting-5)
-  - [TP 7 — Déployer un workflow via l'Automation API](#tp-7-déployer-un-workflow-via-lautomation-api)
-    - [Objectif](#objectif-6)
-    - [Architecture](#architecture-6)
-    - [Prérequis](#prérequis-6)
-    - [Configuration](#configuration-5)
-    - [Commandes](#commandes-6)
-    - [Explications](#explications-6)
-    - [Résultat attendu](#résultat-attendu-6)
-    - [Tests](#tests-6)
-    - [Troubleshooting](#troubleshooting-6)
-  - [TP 8 — Versionner les jobs dans Git](#tp-8-versionner-les-jobs-dans-git)
-    - [Objectif](#objectif-7)
-    - [Architecture](#architecture-7)
-    - [Prérequis](#prérequis-7)
-    - [Configuration](#configuration-6)
-    - [Commandes](#commandes-7)
-    - [Explications](#explications-7)
-    - [Résultat attendu](#résultat-attendu-7)
-    - [Tests](#tests-7)
-    - [Troubleshooting](#troubleshooting-7)
-  - [TP 9 — Déployer depuis GitLab CI/CD ou Jenkins](#tp-9-déployer-depuis-gitlab-cicd-ou-jenkins)
-    - [Objectif](#objectif-8)
-    - [Architecture](#architecture-8)
-    - [Prérequis](#prérequis-8)
-    - [Configuration — GitLab CI](#configuration-gitlab-ci)
-    - [Configuration — Jenkins (équivalent)](#configuration-jenkins-équivalent)
-    - [Commandes](#commandes-8)
-    - [Explications](#explications-8)
-    - [Résultat attendu](#résultat-attendu-8)
-    - [Tests](#tests-8)
-    - [Troubleshooting](#troubleshooting-8)
-  - [TP 10 — Appeler Control-M depuis Python](#tp-10-appeler-control-m-depuis-python)
-    - [Objectif](#objectif-9)
-    - [Architecture](#architecture-9)
-    - [Prérequis](#prérequis-9)
-    - [Configuration](#configuration-7)
-    - [Commandes](#commandes-9)
-    - [Explications](#explications-9)
-    - [Résultat attendu](#résultat-attendu-9)
-    - [Tests](#tests-9)
-    - [Troubleshooting](#troubleshooting-9)
-  - [TP 11 — Surveiller un workflow via l'API](#tp-11-surveiller-un-workflow-via-lapi)
-    - [Objectif](#objectif-10)
-    - [Architecture](#architecture-10)
-    - [Prérequis](#prérequis-10)
-    - [Configuration](#configuration-8)
-    - [Commandes](#commandes-10)
-    - [Explications](#explications-10)
-    - [Résultat attendu](#résultat-attendu-10)
-    - [Tests](#tests-10)
-    - [Troubleshooting](#troubleshooting-10)
-  - [TP 12 — Gérer automatiquement une erreur](#tp-12-gérer-automatiquement-une-erreur)
-    - [Objectif](#objectif-11)
-    - [Architecture](#architecture-11)
-    - [Prérequis](#prérequis-11)
-    - [Configuration](#configuration-9)
-    - [Commandes](#commandes-11)
-    - [Explications](#explications-11)
-    - [Résultat attendu](#résultat-attendu-11)
-    - [Tests](#tests-11)
-    - [Troubleshooting](#troubleshooting-11)
-  - [TP 13 — Promouvoir un traitement de DEV vers PROD](#tp-13-promouvoir-un-traitement-de-dev-vers-prod)
-    - [Objectif](#objectif-12)
-    - [Architecture](#architecture-12)
-    - [Prérequis](#prérequis-12)
-    - [Configuration](#configuration-10)
-    - [Commandes](#commandes-12)
-    - [Explications](#explications-12)
-    - [Résultat attendu](#résultat-attendu-12)
-    - [Tests](#tests-12)
-    - [Troubleshooting](#troubleshooting-12)
-  - [TP 14 — Sécuriser les accès API](#tp-14-sécuriser-les-accès-api)
-    - [Objectif](#objectif-13)
-    - [Architecture](#architecture-13)
-    - [Prérequis](#prérequis-13)
-    - [Configuration](#configuration-11)
-    - [Commandes](#commandes-13)
-    - [Explications](#explications-13)
-    - [Résultat attendu](#résultat-attendu-13)
-    - [Tests](#tests-13)
-    - [Troubleshooting](#troubleshooting-13)
-  - [TP 15 — Diagnostiquer un job en échec](#tp-15-diagnostiquer-un-job-en-échec)
-    - [Objectif](#objectif-14)
-    - [Architecture](#architecture-14)
-    - [Prérequis](#prérequis-14)
-    - [Configuration — le script de diagnostic complet](#configuration-le-script-de-diagnostic-complet)
-    - [Commandes](#commandes-14)
-    - [Explications — la méthode en sept temps](#explications-la-méthode-en-sept-temps)
-    - [Résultat attendu](#résultat-attendu-14)
-    - [Tests](#tests-14)
-    - [Troubleshooting du diagnostic lui-même](#troubleshooting-du-diagnostic-lui-même)
-    - [Prévention — la boucle d'amélioration](#prévention-la-boucle-damélioration)
-- [Partie XV — Annexes](#partie-xv-annexes)
-  - [20. Glossaire Control-M](#20-glossaire-control-m)
-  - [21. Aide-mémoire des commandes](#21-aide-mémoire-des-commandes)
-    - [21.1 Automation API — CLI `ctm`](#211-automation-api-cli-ctm)
-    - [21.2 Utilitaires Control-M/Server](#212-utilitaires-control-mserver)
-    - [21.3 Utilitaires Control-M/Agent](#213-utilitaires-control-magent)
-    - [21.4 Utilitaires Control-M/EM](#214-utilitaires-control-mem)
-  - [22. Endpoints REST principaux](#22-endpoints-rest-principaux)
-    - [Session et authentification](#session-et-authentification)
-    - [Build et deploy](#build-et-deploy)
-    - [Run](#run)
-    - [Config](#config)
-    - [Provision, reporting, archive, usage](#provision-reporting-archive-usage)
-  - [23. Codes HTTP](#23-codes-http)
-    - [23.1 Codes documentés par BMC](#231-codes-documentés-par-bmc)
-    - [23.2 Format d'erreur](#232-format-derreur)
-    - [23.3 Stratégie de traitement](#233-stratégie-de-traitement)
-  - [24. Fichiers de configuration importants](#24-fichiers-de-configuration-importants)
-    - [Control-M/EM](#control-mem)
-    - [Control-M/Server](#control-mserver)
-    - [Control-M/Agent](#control-magent)
-    - [Poste client / CI](#poste-client-ci)
-    - [Paramètres système à connaître](#paramètres-système-à-connaître)
-  - [25. Checklists](#25-checklists)
-    - [25.1 Checklist d'exploitation quotidienne](#251-checklist-dexploitation-quotidienne)
-    - [25.2 Checklist de mise en production](#252-checklist-de-mise-en-production)
-    - [25.3 Checklist de sécurité](#253-checklist-de-sécurité)
-  - [26. Control-M Cheat Sheet](#26-control-m-cheat-sheet)
-    - [Les 20 commandes du quotidien](#les-20-commandes-du-quotidien)
-    - [Les distinctions à ne pas confondre](#les-distinctions-à-ne-pas-confondre)
-    - [Les pièges à mémoriser](#les-pièges-à-mémoriser)
-    - [Squelette de job — à copier](#squelette-de-job-à-copier)
-    - [Variables système les plus utilisées](#variables-système-les-plus-utilisées)
-    - [Recettes de planification](#recettes-de-planification)
-  - [27. Sources](#27-sources)
-    - [Architecture et composants](#architecture-et-composants)
-    - [Installation et prérequis](#installation-et-prérequis)
-    - [Réseau, communication et sécurité](#réseau-communication-et-sécurité)
-    - [Haute disponibilité et exploitation](#haute-disponibilité-et-exploitation)
-    - [Utilitaires et diagnostic](#utilitaires-et-diagnostic)
-    - [Automation API — services](#automation-api-services)
-    - [Automation API — référence de code (Jobs as Code)](#automation-api-référence-de-code-jobs-as-code)
-    - [MFT et intégrations](#mft-et-intégrations)
-    - [Control-M SaaS](#control-m-saas)
-    - [Python et dépôts publics](#python-et-dépôts-publics)
-  - [Mot de la fin](#mot-de-la-fin)
+#### 1. Présentation générale de Control-M
 
----
-
-# Partie I — Fondamentaux
-
-## 1. Présentation générale de Control-M
-
-### 1.1 Le rôle de l'outil
+##### 1.1 Le rôle de l'outil
 
 **Control-M** est une plateforme d'**orchestration de charges de travail** (*Workload Automation* /
 *Workload Orchestration*) éditée par **BMC Software**. Sa fonction : **décider quoi exécuter, où,
@@ -517,7 +248,7 @@ attend un fichier fournisseur qui arrive « quelque part entre 2 h et 5 h du mat
 plusieurs milliers de traitements, sur des dizaines de serveurs, dans plusieurs technologies, et le
 `cron` ne suffit plus.
 
-#### Ce que Control-M apporte par rapport à cron / Task Scheduler
+###### Ce que Control-M apporte par rapport à cron / Task Scheduler
 
 | Besoin | `cron` / Task Scheduler | Control-M |
 |---|---|---|
@@ -535,7 +266,7 @@ plusieurs milliers de traitements, sur des dizaines de serveurs, dans plusieurs 
 | Traitements applicatifs (SAP, bases, cloud) | Scripts maison | Plug-ins natifs |
 | Déploiement versionné en CI/CD | Non | Jobs as Code + Automation API |
 
-#### Le champ fonctionnel
+###### Le champ fonctionnel
 
 Control-M orchestre :
 
@@ -548,20 +279,21 @@ Control-M orchestre :
   GCP BigQuery/Dataflow, Snowflake, dbt, Databricks, Airflow…) ;
 - des **conteneurs** (Kubernetes) et des **appels de services web** (REST/SOAP).
 
-> **✅ Bonne pratique**
-> Control-M n'est pas un moteur d'exécution : il **pilote** des exécutants. Le code métier reste
-> dans vos scripts et vos applications. Résistez à la tentation de mettre de la logique métier
-> dans les définitions de jobs — c'est le meilleur moyen de rendre votre production
-> impossible à tester et à versionner.
+:::tip[✅ Bonne pratique]
+Control-M n'est pas un moteur d'exécution : il **pilote** des exécutants. Le code métier reste
+dans vos scripts et vos applications. Résistez à la tentation de mettre de la logique métier
+dans les définitions de jobs — c'est le meilleur moyen de rendre votre production
+impossible à tester et à versionner.
+:::
 
 ---
 
-### 1.2 Concepts fondamentaux
+##### 1.2 Concepts fondamentaux
 
 Sept notions suffisent à comprendre 90 % de Control-M. Elles sont expliquées ici en surface ;
 la Partie IV les traite en profondeur.
 
-#### 1.2.1 Le Job
+###### 1.2.1 Le Job
 
 Un **job** est **l'unité d'ordonnancement**. Ce n'est pas « un script » : c'est **la définition de
 comment, où et quand un traitement doit s'exécuter**, plus tout ce qui doit se passer autour
@@ -577,7 +309,7 @@ Un job porte typiquement :
 - des **ressources** consommées ;
 - des **actions conditionnelles** (`If` / `Action:*`).
 
-#### 1.2.2 Le Folder
+###### 1.2.2 Le Folder
 
 Un **folder** (historiquement *table*) est le **conteneur** des jobs. Il joue trois rôles :
 
@@ -585,7 +317,7 @@ Un **folder** (historiquement *table*) est le **conteneur** des jobs. Il joue tr
 2. **factoriser** (un SMART Folder porte des propriétés héritées par tous ses jobs) ;
 3. **planifier** (le folder porte les critères d'ordonnancement de la chaîne).
 
-#### 1.2.3 L'ordonnancement (*ordering*)
+###### 1.2.3 L'ordonnancement (*ordering*)
 
 Control-M distingue deux temps qu'il ne faut jamais confondre :
 
@@ -602,13 +334,14 @@ flowchart LR
   commande `ctm run order` à la demande.
 - **L'exécution** n'a lieu que quand tous les pré-requis de l'instance sont satisfaits.
 
-> **⚠️ Attention — l'erreur n°1 des débutants**
-> « Mon job n'a pas tourné » a presque toujours l'une de ces deux causes :
-> soit il **n'a jamais été ordonnancé** (critères `When` non satisfaits ce jour-là),
-> soit il **est ordonnancé mais en attente** (`Wait Condition`, `Wait Resource`, `Wait User`).
-> Ce sont deux diagnostics radicalement différents. Voir §16.4.
+:::caution[⚠️ Attention — l'erreur n°1 des débutants]
+« Mon job n'a pas tourné » a presque toujours l'une de ces deux causes :
+soit il **n'a jamais été ordonnancé** (critères `When` non satisfaits ce jour-là),
+soit il **est ordonnancé mais en attente** (`Wait Condition`, `Wait Resource`, `Wait User`).
+Ce sont deux diagnostics radicalement différents. Voir §16.4.
+:::
 
-#### 1.2.4 La date de traitement (ODATE)
+###### 1.2.4 La date de traitement (ODATE)
 
 Control-M raisonne en **date de traitement** (*Order Date*, `ODATE`), et non en date système.
 C'est fondamental : la « journée de production » du 15 janvier peut commencer à 7 h le 15 et se
@@ -621,13 +354,14 @@ terminer à 6 h 59 le 16.
 Le basculement d'ODATE est piloté par le paramètre serveur **`DAYTIME`** (défaut `+0700`, soit
 07:00). Voir §3.12.
 
-> **✅ Bonne pratique**
-> Dans vos scripts, prenez **toujours** la date en paramètre depuis Control-M (`%%ODATE`),
-> jamais via `date +%Y%m%d` dans le script lui-même. Sinon une relance à J+1 d'un job du J
-> retraitera les données du **mauvais jour**. C'est la cause la plus fréquente d'incidents
-> de rejeu en production.
+:::tip[✅ Bonne pratique]
+Dans vos scripts, prenez **toujours** la date en paramètre depuis Control-M (`%%ODATE`),
+jamais via `date +%Y%m%d` dans le script lui-même. Sinon une relance à J+1 d'un job du J
+retraitera les données du **mauvais jour**. C'est la cause la plus fréquente d'incidents
+de rejeu en production.
+:::
 
-#### 1.2.5 Les événements (ex-conditions)
+###### 1.2.5 Les événements (ex-conditions)
 
 Un **événement** est un jeton nommé, daté, dans une file globale. C'est le mécanisme de
 dépendance de Control-M.
@@ -646,7 +380,7 @@ flowchart LR
     E -->|"WaitForEvents<br/>EXTRACT-OK"| J2["JOB-TRANSFORM"]
 ```
 
-#### 1.2.6 Les ressources
+###### 1.2.6 Les ressources
 
 Deux familles, deux usages :
 
@@ -655,7 +389,7 @@ Deux familles, deux usages :
 | **Resource Pool** (ex-Quantitative) | `Resource:Pool` | Limiter la concurrence : « 20 unités disponibles, ce job en consomme 5 » | Sémaphore compteur |
 | **Resource Lock** (ex-Control) | `Resource:Lock` | Exclusion mutuelle : `Exclusive` (un seul) ou `Shared` (plusieurs lecteurs) | Verrou lecteur/écrivain |
 
-#### 1.2.7 Le SLA
+###### 1.2.7 Le SLA
 
 Un **service SLA** est un objectif de complétude horaire posé sur une chaîne de jobs.
 Control-M ne se contente pas de constater le retard : il le **prédit** à partir des statistiques
@@ -663,9 +397,9 @@ historiques d'exécution, et peut déclencher des actions **avant** que l'éché
 
 ---
 
-### 1.3 Architecture générale
+##### 1.3 Architecture générale
 
-#### 1.3.1 Vue d'ensemble
+###### 1.3.1 Vue d'ensemble
 
 Control-M est une architecture **à trois niveaux** :
 
@@ -722,7 +456,7 @@ flowchart TB
     S1 --> PLG
 ```
 
-#### 1.3.2 Répartition des responsabilités
+###### 1.3.2 Répartition des responsabilités
 
 | Niveau | Composant | Responsabilité | Détient |
 |---|---|---|---|
@@ -738,9 +472,9 @@ flowchart TB
 
 ---
 
-### 1.4 Les composants en détail
+##### 1.4 Les composants en détail
 
-#### 1.4.1 Control-M/Server
+###### 1.4.1 Control-M/Server
 
 **Rôle** : c'est le **moteur d'ordonnancement**. Il maintient sa propre base de données, décide
 quels jobs sont éligibles, résout les dépendances, réserve les ressources et soumet les
@@ -774,16 +508,18 @@ shut_ca        # arrêt du Configuration Agent
 show_ca        # état du Configuration Agent
 ```
 
-> **⚠️ Attention**
-> Les commandes historiquement citées `ctmstart` / `ctmstop` **n'existent pas** dans la
-> documentation 9.0.21/9.0.22. Les noms exacts sont **`start_ctm`** et **`shut_ctm`**.
+:::caution[⚠️ Attention]
+Les commandes historiquement citées `ctmstart` / `ctmstop` **n'existent pas** dans la
+documentation 9.0.21/9.0.22. Les noms exacts sont **`start_ctm`** et **`shut_ctm`**.
+:::
 
-> **✅ Bonne pratique**
-> Ne coupez jamais un Control-M/Server avec `kill -9`. `shut_ctm` laisse les jobs en cours se
-> terminer proprement et ferme la base. Un arrêt brutal laisse des jobs en statut
-> `Executing` fantôme qu'il faudra reprendre à la main.
+:::tip[✅ Bonne pratique]
+Ne coupez jamais un Control-M/Server avec `kill -9`. `shut_ctm` laisse les jobs en cours se
+terminer proprement et ferme la base. Un arrêt brutal laisse des jobs en statut
+`Executing` fantôme qu'il faudra reprendre à la main.
+:::
 
-#### 1.4.2 Control-M/Agent
+###### 1.4.2 Control-M/Agent
 
 **Rôle** : l'Agent est le **bras armé** du Server. Installé sur chaque machine où doivent
 s'exécuter des traitements, il :
@@ -825,11 +561,12 @@ set_agent_mode              # bascule root / non-root / sudo (Linux)
 | Windows | Registre : `HKEY_LOCAL_MACHINE\SOFTWARE\BMC Software\Control-M/Agent\CONFIG` |
 | IBM i | `<Agent Home>/data/CONFIG` |
 
-> **Version**
-> Depuis **9.0.21.100**, plusieurs Agents peuvent cohabiter sur un même hôte UNIX,
-> chacun sous **un compte système distinct** et avec **un nom unique**.
+:::note[Version]
+Depuis **9.0.21.100**, plusieurs Agents peuvent cohabiter sur un même hôte UNIX,
+chacun sous **un compte système distinct** et avec **un nom unique**.
+:::
 
-#### 1.4.3 Les hôtes agentless (*Remote Hosts*)
+###### 1.4.3 Les hôtes agentless (*Remote Hosts*)
 
 Quand l'installation d'un Agent est impossible (appliance, politique interne, machine hors
 périmètre), Control-M peut piloter la machine **sans agent**, via :
@@ -848,13 +585,14 @@ Le traitement est alors exécuté **depuis un Agent relais** vers l'hôte distan
 | Variables locales / compteurs | Oui | Limité |
 | Reprise après coupure réseau | Robuste | Fragile |
 
-> **⚠️ Attention**
-> Pour WMI, le compte de service de l'Agent doit être **Administrateur** et **utilisateur de
-> domaine**, et le compte `RunAs` doit appartenir au groupe Administrateurs de la machine cible.
-> C'est une contrainte de sécurité lourde : l'agentless Windows est souvent refusé par les
-> équipes sécurité. Privilégiez un Agent.
+:::caution[⚠️ Attention]
+Pour WMI, le compte de service de l'Agent doit être **Administrateur** et **utilisateur de
+domaine**, et le compte `RunAs` doit appartenir au groupe Administrateurs de la machine cible.
+C'est une contrainte de sécurité lourde : l'agentless Windows est souvent refusé par les
+équipes sécurité. Privilégiez un Agent.
+:::
 
-#### 1.4.4 Control-M/EM (Enterprise Manager)
+###### 1.4.4 Control-M/EM (Enterprise Manager)
 
 **Rôle** : le **point de contrôle unique** de tout l'écosystème. C'est lui qui expose l'IHM,
 détient la base des définitions, applique le modèle de sécurité et publie l'Automation API.
@@ -885,7 +623,7 @@ détient la base des définitions, applique le modèle de sécurité et publie l
 | Medium | 35 000 – 300 000 | 35 000 – 300 000 | 40 – 200 | 32 Go |
 | Large | 280 000 – 600 000 | 280 000 – 600 000 | 180 – 400 | 60 Go |
 
-#### 1.4.5 Control-M Web, Client, CCM, Self Service
+###### 1.4.5 Control-M Web, Client, CCM, Self Service
 
 | Interface | Nature | Usage principal |
 |---|---|---|
@@ -904,11 +642,12 @@ détient la base des définitions, applique le modèle de sécurité et publie l
 | **Automation API** | Documentation Swagger embarquée, jetons d'API |
 | **Plug-ins** | Installation et gestion des plug-ins applicatifs |
 
-> **SaaS**
-> **Control-M Self Service n'existe pas en Control-M SaaS**, pas plus que le CCM ni le
-> Control-M Client natif. Toute l'administration passe par Control-M Web et l'Automation API.
+:::note[SaaS]
+**Control-M Self Service n'existe pas en Control-M SaaS**, pas plus que le CCM ni le
+Control-M Client natif. Toute l'administration passe par Control-M Web et l'Automation API.
+:::
 
-#### 1.4.6 Control-M Automation API
+###### 1.4.6 Control-M Automation API
 
 **Rôle** : exposer **tout** Control-M en **REST** et en **CLI**, pour permettre l'approche
 *Jobs as Code* et l'intégration dans une chaîne CI/CD.
@@ -937,13 +676,14 @@ flowchart LR
 Le CLI `ctm` **n'est pas** un client lourd : c'est un simple habillage des mêmes appels REST.
 Tout ce que fait `ctm`, `curl` peut le faire — et réciproquement. Voir Partie VI.
 
-> **Version**
-> Le CLI `ctm` est écrit en **Python** dans les versions actuelles (Python 3.8.4+, pip 20.1.1+).
-> Les anciennes versions (≤ 9.0.20) utilisaient un CLI **Node.js** installé par
-> `npm install -g ctm-cli.tgz`. Lors d'une montée de version, le CLI est migré
-> automatiquement de Node.js vers Python.
+:::note[Version]
+Le CLI `ctm` est écrit en **Python** dans les versions actuelles (Python 3.8.4+, pip 20.1.1+).
+Les anciennes versions (≤ 9.0.20) utilisaient un CLI **Node.js** installé par
+`npm install -g ctm-cli.tgz`. Lors d'une montée de version, le CLI est migré
+automatiquement de Node.js vers Python.
+:::
 
-#### 1.4.7 Control-M Managed File Transfer (MFT)
+###### 1.4.7 Control-M Managed File Transfer (MFT)
 
 **Rôle** : industrialiser les transferts de fichiers en les traitant comme des **jobs de plein
 droit** — donc avec dépendances, calendriers, SLA, relances et supervision, exactement comme un
@@ -970,13 +710,14 @@ les utilisateurs externes passent **obligatoirement** par la Gateway en DMZ.
 
 Voir Partie VII pour le détail complet.
 
-> **⚠️ Attention — fin de support**
-> **Control-M for Advanced File Transfer (AFT)**, la génération précédente (dernière version
-> 8.2.00), est en **fin de support depuis le 31 décembre 2023**. BMC recommande la migration
-> vers MFT. Vous en verrez encore la trace : les exemples JSON MFT utilisent toujours
-> `"Application": "aft"`, et l'interface parle encore de *« Do post AFT Command on Failure »*.
+:::caution[⚠️ Attention — fin de support]
+**Control-M for Advanced File Transfer (AFT)**, la génération précédente (dernière version
+8.2.00), est en **fin de support depuis le 31 décembre 2023**. BMC recommande la migration
+vers MFT. Vous en verrez encore la trace : les exemples JSON MFT utilisent toujours
+`"Application": "aft"`, et l'interface parle encore de *« Do post AFT Command on Failure »*.
+:::
 
-#### 1.4.8 Les add-ons
+###### 1.4.8 Les add-ons
 
 | Add-on | Fonction |
 |---|---|
@@ -988,12 +729,13 @@ Voir Partie VII pour le détail complet.
 | **Control-M Reports** | Génération de rapports (CSV, PDF, Excel) |
 | **Control-M Application Integrator** | Atelier de création de plug-ins maison |
 
-> **SaaS**
-> Forecast, Workload Archiving et Self Service sont documentés comme add-ons **self-hosted**.
-> BMC ne publie pas de comparatif exhaustif « self-hosted vs SaaS » : vérifiez la disponibilité
-> d'un add-on donné auprès de votre interlocuteur BMC avant de bâtir une architecture dessus.
+:::note[SaaS]
+Forecast, Workload Archiving et Self Service sont documentés comme add-ons **self-hosted**.
+BMC ne publie pas de comparatif exhaustif « self-hosted vs SaaS » : vérifiez la disponibilité
+d'un add-on donné auprès de votre interlocuteur BMC avant de bâtir une architecture dessus.
+:::
 
-#### 1.4.9 Plug-ins et intégrations
+###### 1.4.9 Plug-ins et intégrations
 
 Control-M distingue deux familles.
 
@@ -1035,10 +777,11 @@ et livrés en continu par BMC. Le catalogue actuel (non exhaustif) :
 | **IA / agents** | LangGraph, CrewAI, Amazon Bedrock, GCP Vertex AI, Azure AI Foundry |
 | **Autres** | VMware by Broadcom, Web Services REST, Web Services SOAP, Micro Focus, Microsoft Power Automate |
 
-> **⚠️ Attention**
-> Le catalogue d'intégrations bouge **tous les mois**. Ne considérez jamais une liste comme
-> définitive : consultez le catalogue officiel de votre version avant de promettre une
-> intégration à un projet.
+:::caution[⚠️ Attention]
+Le catalogue d'intégrations bouge **tous les mois**. Ne considérez jamais une liste comme
+définitive : consultez le catalogue officiel de votre version avant de promettre une
+intégration à un projet.
+:::
 
 **Control-M Application Integrator** permet de créer **vos propres types de jobs** quand aucune
 intégration n'existe. Trois méthodes de connexion supportées : **REST API**, **ligne de commande**,
@@ -1049,7 +792,7 @@ planification, dépendances, verrous, pools et variables.
 
 ---
 
-### 1.5 Le cycle de vie complet d'un job
+##### 1.5 Le cycle de vie complet d'un job
 
 Voici ce qui se passe réellement, de la définition à l'archivage.
 
@@ -1107,7 +850,7 @@ sequenceDiagram
 
 ---
 
-### 1.6 Self-hosted vs Control-M SaaS
+##### 1.6 Self-hosted vs Control-M SaaS
 
 BMC propose deux modes de consommation. Le nom **« Helix Control-M »** subsiste dans certaines
 pages ; la dénomination actuelle est **« Control-M SaaS »**.
@@ -1155,9 +898,9 @@ ctm provision saas:agent::setup
 
 ---
 
-### 1.7 Versions, compatibilité et pièges
+##### 1.7 Versions, compatibilité et pièges
 
-#### 1.7.1 Le rythme des versions
+###### 1.7.1 Le rythme des versions
 
 Control-M suit deux cadences :
 
@@ -1165,25 +908,26 @@ Control-M suit deux cadences :
 - des **fix packs** trimestriels (9.0.21.100, 9.0.21.200, 9.0.21.300…) et une documentation
   **« Monthly »** pour l'Automation API, qui évolue chaque mois.
 
-#### 1.7.2 Java n'est plus embarqué
+###### 1.7.2 Java n'est plus embarqué
 
-> **Version — changement majeur en 9.0.21.000**
-> **Java a été découplé de Control-M.** Un JRE/JDK externe est désormais **obligatoire** :
-> il n'est plus livré avec le produit.
-> - Versions supportées : **Java 11, 17, 21** (64 bits).
-> - **L'Automation API exige Java 17 ou supérieur à partir de 9.0.21.325 et ne supporte plus Java 11.**
-> - Fournisseurs : IBM Java (AIX) ; Eclipse Temurin, Oracle, Azul, Red Hat (Linux) ;
->   Eclipse Temurin, Oracle, Azul, Microsoft, AWS Corretto (Windows).
+:::note[Version — changement majeur en 9.0.21.000]
+**Java a été découplé de Control-M.** Un JRE/JDK externe est désormais **obligatoire** :
+il n'est plus livré avec le produit.
+- Versions supportées : **Java 11, 17, 21** (64 bits).
+- **L'Automation API exige Java 17 ou supérieur à partir de 9.0.21.325 et ne supporte plus Java 11.**
+- Fournisseurs : IBM Java (AIX) ; Eclipse Temurin, Oracle, Azul, Red Hat (Linux) ;
+  Eclipse Temurin, Oracle, Azul, Microsoft, AWS Corretto (Windows).
+:::
 
 C'est la cause n°1 d'échec d'installation ou de mise à jour d'Agent depuis 9.0.21.
 
-#### 1.7.3 Compatibilité des composants
+###### 1.7.3 Compatibilité des composants
 
 Règle générale : **Control-M/EM doit être à un niveau ≥ celui des Control-M/Servers**, qui
 doivent être à un niveau ≥ celui des Agents. On monte donc **de haut en bas** :
 EM d'abord, puis les Servers, puis les Agents.
 
-#### 1.7.4 Points d'attention par version
+###### 1.7.4 Points d'attention par version
 
 | Sujet | Attention |
 |---|---|
@@ -1199,17 +943,18 @@ EM d'abord, puis les Servers, puis les Agents.
 | Solaris | **Non listé** pour EM/Server en 9.0.21.300 (AIX et Linux x86_64 uniquement) |
 | AIX 7.1 | **Plus supporté** |
 
-> **✅ Bonne pratique**
-> Documentez dans votre référentiel interne **la version exacte** de chaque composant
-> (`ctm --version` pour le CLI, la page *About* de Control-M Web pour l'EM,
-> `ctm config servers::get` pour les Servers). Un guide générique ne remplace jamais
-> la connaissance de votre propre pile.
+:::tip[✅ Bonne pratique]
+Documentez dans votre référentiel interne **la version exacte** de chaque composant
+(`ctm --version` pour le CLI, la page *About* de Control-M Web pour l'EM,
+`ctm config servers::get` pour les Servers). Un guide générique ne remplace jamais
+la connaissance de votre propre pile.
+:::
 
 ---
 
-# Partie II — Installation et configuration
+### Partie II — Installation et configuration
 
-## 2. Installation et configuration
+#### 2. Installation et configuration
 
 > **Portée de ce chapitre**
 > L'installation de Control-M est un projet d'infrastructure à part entière, guidée par un
@@ -1218,9 +963,9 @@ EM d'abord, puis les Servers, puis les Agents.
 > quels ports ouvrir, comment vérifier — pas le clic-à-clic de l'assistant, qui est propre à
 > votre version et documenté par BMC.
 
-### 2.1 Prérequis
+##### 2.1 Prérequis
 
-#### 2.1.1 Dimensionnement — installation complète (9.0.21.300)
+###### 2.1.1 Dimensionnement — installation complète (9.0.21.300)
 
 | Ressource | UNIX (AIX / Linux x86_64) | Windows |
 |---|---|---|
@@ -1230,7 +975,7 @@ EM d'abord, puis les Servers, puis les Agents.
 | Affichage | — | 16 bits (65 536 couleurs) minimum |
 | Logiciels associés | — | Chrome ou Edge ; .NET Framework 4.7.2 |
 
-#### 2.1.2 Dimensionnement par composant
+###### 2.1.2 Dimensionnement par composant
 
 | Composant | RAM | Disque (install / upgrade) | Swap |
 |---|---|---|---|
@@ -1238,7 +983,7 @@ EM d'abord, puis les Servers, puis les Agents.
 | **Control-M/Server** | 8 / 12 / 16 Go | 40 Go / 7 Go | 1,5 × RAM |
 | **Control-M/Agent** | 4 Go | 1 000 Mo | **3 × RAM** |
 
-#### 2.1.3 Bases de données supportées (9.0.21.300)
+###### 2.1.3 Bases de données supportées (9.0.21.300)
 
 | SGBD | Version | Remarques |
 |---|---|---|
@@ -1247,11 +992,12 @@ EM d'abord, puis les Servers, puis les Agents.
 | **Oracle** | **19c** | Enterprise ou Standard Edition |
 | **Microsoft SQL Server** | 2022, 2019, 2017, 2016, 2014 SP3 | Requiert **ODBC Driver 17** et **Command Line Utilities 15** |
 
-> **⚠️ Attention**
-> **Sybase n'apparaît plus** dans les bases supportées en 9.0.21.300. Si vous exploitez encore
-> une base Sybase, la montée de version implique une migration de SGBD.
+:::caution[⚠️ Attention]
+**Sybase n'apparaît plus** dans les bases supportées en 9.0.21.300. Si vous exploitez encore
+une base Sybase, la montée de version implique une migration de SGBD.
+:::
 
-#### 2.1.4 Java
+###### 2.1.4 Java
 
 Depuis 9.0.21.000, **Java est externe et obligatoire** : versions 11, 17 ou 21 en 64 bits.
 L'Automation API exige **Java 17+ à partir de 9.0.21.325**.
@@ -1262,7 +1008,7 @@ java -version
 echo $JAVA_HOME
 ```
 
-#### 2.1.5 Prérequis système
+###### 2.1.5 Prérequis système
 
 | Plateforme | Prérequis |
 |---|---|
@@ -1271,14 +1017,15 @@ echo $JAVA_HOME
 | **Windows (Server)** | Compte d'installation **Administrateur** ; droits `Read, List Folder Contents, Write, Read & Execute` sur le dossier d'installation pour le groupe `Users` |
 | **Navigateurs** | Chrome ou Edge **115+**, résolution optimale 1920×1080 |
 
-> **⚠️ Attention**
-> Les versions exactes de RHEL, Oracle Linux, SUSE ou Windows Server supportées ne sont **pas**
-> publiées dans les pages générales : elles vivent dans la **matrice de compatibilité produit
-> BMC (EPD)**, accessible après authentification sur le portail support. **Vérifiez-la
-> systématiquement** avant de commander des machines — c'est un point de blocage classique en
-> projet.
+:::caution[⚠️ Attention]
+Les versions exactes de RHEL, Oracle Linux, SUSE ou Windows Server supportées ne sont **pas**
+publiées dans les pages générales : elles vivent dans la **matrice de compatibilité produit
+BMC (EPD)**, accessible après authentification sur le portail support. **Vérifiez-la
+systématiquement** avant de commander des machines — c'est un point de blocage classique en
+projet.
+:::
 
-#### 2.1.6 Checklist de préparation
+###### 2.1.6 Checklist de préparation
 
 ```text
 [ ] Machines provisionnées (CPU/RAM/disque conformes au dimensionnement)
@@ -1295,18 +1042,19 @@ echo $JAVA_HOME
 [ ] Synchronisation NTP active sur TOUTES les machines
 ```
 
-> **✅ Bonne pratique — la synchronisation horaire**
-> Control-M raisonne en dates et fenêtres horaires. Une dérive d'horloge entre le Server et
-> un Agent provoque des symptômes incompréhensibles : jobs soumis hors fenêtre, `FromTime`
-> ignoré, statistiques faussées. **NTP est un prérequis, pas un confort.**
+:::tip[✅ Bonne pratique — la synchronisation horaire]
+Control-M raisonne en dates et fenêtres horaires. Une dérive d'horloge entre le Server et
+un Agent provoque des symptômes incompréhensibles : jobs soumis hors fenêtre, `FromTime`
+ignoré, statistiques faussées. **NTP est un prérequis, pas un confort.**
+:::
 
 ---
 
-### 2.2 Architectures recommandées
+##### 2.2 Architectures recommandées
 
 Trois topologies couvrent la majorité des cas. Le chapitre 17 les détaille davantage.
 
-#### 2.2.1 Petite infrastructure (« tout-en-un »)
+###### 2.2.1 Petite infrastructure (« tout-en-un »)
 
 ```mermaid
 flowchart TB
@@ -1324,7 +1072,7 @@ flowchart TB
 Convient pour : maquette, formation, PME, environnement de développement.
 **Ne convient pas** pour une production ayant un engagement de disponibilité.
 
-#### 2.2.2 Environnement d'entreprise
+###### 2.2.2 Environnement d'entreprise
 
 ```mermaid
 flowchart TB
@@ -1360,7 +1108,7 @@ Principes :
   PROD de DEV/TEST tout en gardant **une seule console** ;
 - Agents sur chaque machine d'exécution.
 
-#### 2.2.3 Haute disponibilité
+###### 2.2.3 Haute disponibilité
 
 Voir §17.3. Deux configurations HA sont supportées :
 
@@ -1370,7 +1118,7 @@ Voir §17.3. Deux configurations HA sont supportées :
 
 ---
 
-### 2.3 Ordre d'installation
+##### 2.3 Ordre d'installation
 
 L'ordre est **impératif** :
 
@@ -1385,7 +1133,7 @@ flowchart LR
     G --> H["8. TLS (zones 1, 2, 3)"]
 ```
 
-#### 2.3.1 Installation de Control-M/EM
+###### 2.3.1 Installation de Control-M/EM
 
 Points de vigilance :
 
@@ -1410,7 +1158,7 @@ Swagger local     : https://<EM_HOST>:8443/automation-api
 Spec YAML         : https://<EM_HOST>:8443/automation-api/yaml
 ```
 
-#### 2.3.2 Installation de Control-M/Server
+###### 2.3.2 Installation de Control-M/Server
 
 Après installation, le Server doit être **déclaré dans l'EM** — sinon il tourne mais n'est
 piloté par personne. Deux voies :
@@ -1435,7 +1183,7 @@ Répertoires clés :
 | `<Control-M/Server home>/health_check/` | Collecteur de diagnostic |
 | `<ctmserver_InstallFolder>/BMCINSTALL/uninstall/` | Désinstalleur |
 
-#### 2.3.3 Installation des Agents
+###### 2.3.3 Installation des Agents
 
 Trois méthodes, du plus manuel au plus industriel.
 
@@ -1476,19 +1224,20 @@ ctm provision upgrade:output::get <upgradeID>              # log détaillé
 ctm provision upgrade::retry <upgradeID>                   # relance après échec
 ```
 
-> **✅ Bonne pratique**
-> Le provisioning par API rend le parc d'Agents **reproductible et auditable**. Combinez-le
-> avec Ansible/Terraform : Terraform crée la VM, Ansible installe Java et les prérequis,
-> `ctm provision agent::install` pose l'Agent, `ctm config server:agent::ping` valide.
-> Toute l'opération tient dans un pipeline.
+:::tip[✅ Bonne pratique]
+Le provisioning par API rend le parc d'Agents **reproductible et auditable**. Combinez-le
+avec Ansible/Terraform : Terraform crée la VM, Ansible installe Java et les prérequis,
+`ctm provision agent::install` pose l'Agent, `ctm config server:agent::ping` valide.
+Toute l'opération tient dans un pipeline.
+:::
 
 ---
 
-### 2.4 Communication Server ↔ Agent
+##### 2.4 Communication Server ↔ Agent
 
 C'est le point le plus souvent mal compris — et la source de la moitié des incidents réseau.
 
-#### 2.4.1 Le sens des ports
+###### 2.4.1 Le sens des ports
 
 ```mermaid
 flowchart LR
@@ -1501,13 +1250,14 @@ flowchart LR
 | **Server → Agent** | **7006** | `PORTNUM` | port d'écoute de l'Agent |
 | **Agent → Server** | **7005** | `CTMS_PORT_NUM` | `ATCMNDATA` (`7005/30` = port/timeout en secondes) |
 
-> **⚠️ L'erreur classique**
-> On croit qu'un seul port suffit. **Non** : la communication est **bidirectionnelle** et
-> **chaque sens initie sa propre connexion TCP**. Un firewall qui n'ouvre que 7006 laissera
-> le Server soumettre les jobs — mais l'Agent ne pourra **jamais** remonter le statut.
-> Symptôme : les jobs restent éternellement en `Executing`.
+:::caution[⚠️ L'erreur classique]
+On croit qu'un seul port suffit. **Non** : la communication est **bidirectionnelle** et
+**chaque sens initie sa propre connexion TCP**. Un firewall qui n'ouvre que 7006 laissera
+le Server soumettre les jobs — mais l'Agent ne pourra **jamais** remonter le statut.
+Symptôme : les jobs restent éternellement en `Executing`.
+:::
 
-#### 2.4.2 Mode de connexion : transitoire ou persistant
+###### 2.4.2 Mode de connexion : transitoire ou persistant
 
 | Mode | Comportement | Quand l'utiliser |
 |---|---|---|
@@ -1527,7 +1277,7 @@ ctmagcfg
 # → touche s  : sauvegarder
 ```
 
-#### 2.4.3 Paramètres Agent essentiels
+###### 2.4.3 Paramètres Agent essentiels
 
 | Paramètre | Défaut | Rôle |
 |---|---|---|
@@ -1545,7 +1295,7 @@ Exemple de `CTMSHOST` avec bascule :
 CTMSHOST=192.138.28.121|aristo.isr.bmc.com|mybksys1|192.138.28.123
 ```
 
-#### 2.4.4 Diagnostic de communication
+###### 2.4.4 Diagnostic de communication
 
 **Depuis le Control-M/Server** :
 
@@ -1578,11 +1328,12 @@ ctm_agstat -UPDATE <agentName> AVAILABLE
 ctm_agstat -UPDATE <agentName> DISABLED
 ```
 
-> **⚠️ Attention**
-> Seules **deux valeurs** sont positionnables par `-UPDATE` : `AVAILABLE` et `DISABLED`.
-> Le statut **`Unavailable`** que vous voyez dans le CCM est un **état constaté**, pas une
-> valeur que vous fixez : il signifie « le Server n'arrive pas à joindre cet Agent ».
-> `DISABLED` signifie « je lui interdis d'essayer ».
+:::caution[⚠️ Attention]
+Seules **deux valeurs** sont positionnables par `-UPDATE` : `AVAILABLE` et `DISABLED`.
+Le statut **`Unavailable`** que vous voyez dans le CCM est un **état constaté**, pas une
+valeur que vous fixez : il signifie « le Server n'arrive pas à joindre cet Agent ».
+`DISABLED` signifie « je lui interdis d'essayer ».
+:::
 
 **Depuis l'Agent** :
 
@@ -1603,12 +1354,12 @@ ctm config server:agents::get     <server> "agent=*"
 
 ---
 
-### 2.5 Ports réseau — référence complète
+##### 2.5 Ports réseau — référence complète
 
 C'est **la** page à fournir à votre équipe réseau. Les valeurs sont **identiques entre 9.0.21 et
 9.0.22**.
 
-#### 2.5.1 Ports par défaut (table BMC de référence)
+###### 2.5.1 Ports par défaut (table BMC de référence)
 
 | Connexion | Port |
 |---|---|
@@ -1621,7 +1372,7 @@ C'est **la** page à fournir à votre équipe réseau. Les valeurs sont **identi
 | **Kafka** | **19092** |
 | **Zookeeper** | **12181** |
 
-#### 2.5.2 Ports complémentaires (page firewall)
+###### 2.5.2 Ports complémentaires (page firewall)
 
 | Usage | Port |
 |---|---|
@@ -1638,7 +1389,7 @@ C'est **la** page à fournir à votre équipe réseau. Les valeurs sont **identi
 | Gateways | **10 ports** (ou 2 × le nombre de Control-M/Servers si plus de cinq) |
 | Workload Archiving Server | 1 port (ajouté à `communication.xml`, scope **ARC**) |
 
-#### 2.5.3 Automation API — la subtilité
+###### 2.5.3 Automation API — la subtilité
 
 | Élément | Port |
 |---|---|
@@ -1648,10 +1399,11 @@ C'est **la** page à fournir à votre équipe réseau. Les valeurs sont **identi
 Le serveur web Tomcat fait **reverse-proxy de 8443 vers localhost:32080**. Vous n'exposez donc
 jamais 32080/32081 : ils restent en écoute locale.
 
-> **Version**
-> Avant **9.0.21.100**, les ports internes de l'Automation API étaient **48080** et **48081**.
-> Ils sont **migrés automatiquement** vers 32080/32081 lors d'une montée de version. Si vous
-> reprenez une documentation interne ancienne, corrigez cette valeur.
+:::note[Version]
+Avant **9.0.21.100**, les ports internes de l'Automation API étaient **48080** et **48081**.
+Ils sont **migrés automatiquement** vers 32080/32081 lors d'une montée de version. Si vous
+reprenez une documentation interne ancienne, corrigez cette valeur.
+:::
 
 ```bash
 # Changer le port interne
@@ -1661,7 +1413,7 @@ automation_api_config --change_to_free_port 32081
 
 Plage autorisée pour un port entrant : **1025 – 65535**.
 
-#### 2.5.4 Paramètres système correspondants (Control-M/Server)
+###### 2.5.4 Paramètres système correspondants (Control-M/Server)
 
 | Libellé IHM | Paramètre | Défaut | Plage | Prise en compte |
 |---|---|---|---|---|
@@ -1671,17 +1423,18 @@ Plage autorisée pour un port entrant : **1025 – 65535**.
 | Control-M/EM TCP/IP Port | `GATEWAY_TO_SERVER_PORT` | 2370 | 1025 – 32767 | Redémarrage |
 | IPC Port Number | `CTM_RT_PORT_NUMBER` | — | 1025 – 32767 | Redémarrage |
 
-#### 2.5.5 Agentless
+###### 2.5.5 Agentless
 
 | Protocole | Port |
 |---|---|
 | **SSH** | 22 (valeur standard, visible dans la sortie `ctmping -FULLDETAILS`) |
 | **WMI** | Ports RPC/DCOM Windows dynamiques |
 
-> **⚠️ Attention**
-> BMC documente **WMI**, pas WinRM, pour les hôtes agentless Windows. Ne promettez pas WinRM.
+:::caution[⚠️ Attention]
+BMC documente **WMI**, pas WinRM, pour les hôtes agentless Windows. Ne promettez pas WinRM.
+:::
 
-#### 2.5.6 MFT Enterprise (B2B)
+###### 2.5.6 MFT Enterprise (B2B)
 
 | Usage | Port |
 |---|---|
@@ -1697,20 +1450,22 @@ Plage autorisée pour un port entrant : **1025 – 65535**.
 | Cluster Hub-to-Hub | **3180 – 3183** |
 | AS2 sur HTTPS | **9443** |
 
-> **Note**
-> Les ports « standards » SFTP 22, FTP 21, FTPS 990 sont des **valeurs par défaut de protocole**
-> utilisées dans les *connection profiles* MFT — ce ne sont **pas** des ports attribués par
-> Control-M. MFT Enterprise, lui, utilise les ports non standards ci-dessus.
+:::note[Note]
+Les ports « standards » SFTP 22, FTP 21, FTPS 990 sont des **valeurs par défaut de protocole**
+utilisées dans les *connection profiles* MFT — ce ne sont **pas** des ports attribués par
+Control-M. MFT Enterprise, lui, utilise les ports non standards ci-dessus.
+:::
 
-#### 2.5.7 Ports base de données
+###### 2.5.7 Ports base de données
 
-> **⚠️ Attention**
-> PostgreSQL 5432, Oracle 1521, MSSQL 1433 **n'apparaissent pas** dans la table de ports BMC :
-> ce sont les valeurs par défaut des éditeurs. Le port du PostgreSQL fourni par BMC est
-> **choisi à l'installation**. Présentez-les comme « valeurs standard à confirmer sur votre
-> installation », jamais comme des constantes Control-M.
+:::caution[⚠️ Attention]
+PostgreSQL 5432, Oracle 1521, MSSQL 1433 **n'apparaissent pas** dans la table de ports BMC :
+ce sont les valeurs par défaut des éditeurs. Le port du PostgreSQL fourni par BMC est
+**choisi à l'installation**. Présentez-les comme « valeurs standard à confirmer sur votre
+installation », jamais comme des constantes Control-M.
+:::
 
-#### 2.5.8 Matrice de flux à fournir au réseau
+###### 2.5.8 Matrice de flux à fournir au réseau
 
 | Source | Destination | Port | Protocole | Sens |
 |---|---|---|---|---|
@@ -1729,9 +1484,9 @@ Plage autorisée pour un port entrant : **1025 – 65535**.
 
 ---
 
-### 2.6 Certificats TLS
+##### 2.6 Certificats TLS
 
-#### 2.6.1 Le modèle en trois zones
+###### 2.6.1 Le modèle en trois zones
 
 Control-M découpe le chiffrement en **trois zones** indépendantes. On peut n'en activer qu'une.
 
@@ -1754,7 +1509,7 @@ flowchart TB
 - protocole : **TLS 1.2** ;
 - **tous les composants doivent être signés par la même autorité racine (root CA)**.
 
-#### 2.6.2 Zones 2 et 3 — procédure complète
+###### 2.6.2 Zones 2 et 3 — procédure complète
 
 **Étape 1 — générer la CSR.** Éditer d'abord `csr_params.cfg` :
 
@@ -1870,10 +1625,11 @@ les Gateways vers les Servers en SSL, le service *EM-CTM Request* et le service 
 | `AUTO` | Tente SSL, bascule en TCP si échec |
 | `SSL` | **Chiffré exclusivement** — refuse le clair |
 
-> **✅ Bonne pratique**
-> Migrez en deux temps : passez d'abord en `AUTO` (aucune coupure possible), vérifiez que
-> **toutes** les Gateways affichent « Connected (SSL) », **puis seulement** basculez en `SSL`.
-> Passer directement en `SSL` avec un Agent mal configuré coupe la production.
+:::tip[✅ Bonne pratique]
+Migrez en deux temps : passez d'abord en `AUTO` (aucune coupure possible), vérifiez que
+**toutes** les Gateways affichent « Connected (SSL) », **puis seulement** basculez en `SSL`.
+Passer directement en `SSL` avec un Agent mal configuré coupe la production.
+:::
 
 **Désactivation** :
 
@@ -1888,7 +1644,7 @@ COMMOPT=SSL=N
 # EM : CmsCommMode = TCP, puis recycler CMS et Gateways
 ```
 
-#### 2.6.3 Zone 1 — serveur web
+###### 2.6.3 Zone 1 — serveur web
 
 | Élément | Chemin |
 |---|---|
@@ -1922,13 +1678,14 @@ manage_webserver
 `<EM_HOME>\etc\emweb\tomcat\conf\server.xml` (remplacer
 `keystoreFile="conf\emweb_unsigned.keystore"` par votre keystore).
 
-> **✅ Bonne pratique**
-> Le certificat livré par défaut est **auto-signé**. Il fonctionne, mais il oblige tous vos
-> clients (`curl -k`, `ctm`, pipelines CI) à désactiver la vérification TLS — ce qui vous
-> expose à une attaque de l'intercepteur. **Remplacez-le par un certificat signé par votre PKI
-> interne dès la recette.**
+:::tip[✅ Bonne pratique]
+Le certificat livré par défaut est **auto-signé**. Il fonctionne, mais il oblige tous vos
+clients (`curl -k`, `ctm`, pipelines CI) à désactiver la vérification TLS — ce qui vous
+expose à une attaque de l'intercepteur. **Remplacez-le par un certificat signé par votre PKI
+interne dès la recette.**
+:::
 
-#### 2.6.4 Gestion du cycle de vie des certificats
+###### 2.6.4 Gestion du cycle de vie des certificats
 
 L'Automation API expose la gestion des certificats d'Agents :
 
@@ -1938,16 +1695,17 @@ ctm config server:agent:csr::create         <server> <agent>   # générer une C
 ctm config server:agent:crt::deploy         <server> <agent>   # déployer le certificat signé
 ```
 
-> **✅ Bonne pratique**
-> Automatisez la **surveillance des expirations** : un job Control-M hebdomadaire qui boucle
-> sur `ctm config server:agent:crt:expiration::get` pour tous les Agents et alerte à J-30.
-> Un certificat d'Agent expiré coupe la production **sans préavis**, généralement un dimanche.
+:::tip[✅ Bonne pratique]
+Automatisez la **surveillance des expirations** : un job Control-M hebdomadaire qui boucle
+sur `ctm config server:agent:crt:expiration::get` pour tous les Agents et alerte à J-30.
+Un certificat d'Agent expiré coupe la production **sans préavis**, généralement un dimanche.
+:::
 
 ---
 
-### 2.7 Gestion des environnements DEV / TEST / PREPROD / PROD
+##### 2.7 Gestion des environnements DEV / TEST / PREPROD / PROD
 
-#### 2.7.1 Les trois niveaux de séparation
+###### 2.7.1 Les trois niveaux de séparation
 
 Il existe trois degrés d'isolation, du plus léger au plus strict :
 
@@ -1957,14 +1715,15 @@ Il existe trois degrés d'isolation, du plus léger au plus strict :
 | **2 — Par Control-M/Server** | Un Control-M/Server par environnement, un seul EM | Bonne : bases actives distinctes, Agents distincts | Modéré |
 | **3 — Par instance complète** | Un EM + un Server par environnement | Totale | Élevé |
 
-> **✅ Bonne pratique — le choix recommandé**
-> Le **niveau 2** est le meilleur compromis pour la grande majorité des organisations :
-> une seule console d'exploitation, une seule base de définitions à sauvegarder, mais des
-> environnements actifs et des parcs d'Agents réellement séparés. Le niveau 3 se justifie
-> quand la PROD doit être testable indépendamment lors des montées de version de Control-M
-> lui-même.
+:::tip[✅ Bonne pratique — le choix recommandé]
+Le **niveau 2** est le meilleur compromis pour la grande majorité des organisations :
+une seule console d'exploitation, une seule base de définitions à sauvegarder, mais des
+environnements actifs et des parcs d'Agents réellement séparés. Le niveau 3 se justifie
+quand la PROD doit être testable indépendamment lors des montées de version de Control-M
+lui-même.
+:::
 
-#### 2.7.2 Modéliser les environnements côté Automation API
+###### 2.7.2 Modéliser les environnements côté Automation API
 
 Le CLI `ctm` matérialise les environnements comme des profils nommés :
 
@@ -1980,13 +1739,14 @@ ctm environment set dev       # basculer
 
 Stockage : **`~/.ctm/env.json`** (dossier `.ctm` du répertoire personnel de l'utilisateur).
 
-> **⚠️ Attention — sécurité**
-> `env.json` contient **les jetons en clair**. Ne le versionnez **jamais**, ne le laissez pas
-> sur un runner CI partagé, et positionnez `chmod 600 ~/.ctm/env.json`.
-> En CI/CD, privilégiez `ctm environment add` en début de pipeline à partir d'un secret injecté,
-> ou l'option `-t <token>` par commande.
+:::caution[⚠️ Attention — sécurité]
+`env.json` contient **les jetons en clair**. Ne le versionnez **jamais**, ne le laissez pas
+sur un runner CI partagé, et positionnez `chmod 600 ~/.ctm/env.json`.
+En CI/CD, privilégiez `ctm environment add` en début de pipeline à partir d'un secret injecté,
+ou l'option `-t <token>` par commande.
+:::
 
-#### 2.7.3 Le deploy descriptor : un seul code, N environnements
+###### 2.7.3 Le deploy descriptor : un seul code, N environnements
 
 Le **deploy descriptor** est le mécanisme de transformation qui permet de déployer **le même
 fichier JSON** dans plusieurs environnements en réécrivant les valeurs spécifiques
@@ -1999,7 +1759,7 @@ ctm deploy jobs.json descriptor-prod.json             # déployer transformé
 
 Voir §11.4 pour la syntaxe complète.
 
-#### 2.7.4 Site standards et promotion (Workload Change Manager)
+###### 2.7.4 Site standards et promotion (Workload Change Manager)
 
 **Control-M Workload Change Manager (WCM)** est l'outil BMC pour la gouvernance multi-environnements.
 Il est accessible depuis le domaine **Planning** de Control-M Web.
@@ -2018,7 +1778,7 @@ ctm deploy promotionrules:get [-s "rulename=<motif>"]
 ctm deploy promotionrules:rule::get <nom_regle> [-s "failRule=true|false"]
 ```
 
-#### 2.7.5 Convention de nommage
+###### 2.7.5 Convention de nommage
 
 Sans convention, un environnement Control-M devient ingérable en dix-huit mois. Proposition de
 grille :
@@ -2053,14 +1813,15 @@ Règles :
 | Le nom d'événement contient le job source | On sait immédiatement qui l'a produit, sans ouvrir l'IHM |
 | Pas d'accent, pas d'espace, pas de caractère spécial | Portabilité Windows/UNIX, échappement JSON |
 
-> **✅ Bonne pratique**
-> Formalisez la convention dans un **Site Standard** Control-M : le `ctm build` refusera alors
-> automatiquement toute définition non conforme, **avant** le déploiement. C'est infiniment plus
-> efficace qu'un document Word que personne ne lit.
+:::tip[✅ Bonne pratique]
+Formalisez la convention dans un **Site Standard** Control-M : le `ctm build` refusera alors
+automatiquement toute définition non conforme, **avant** le déploiement. C'est infiniment plus
+efficace qu'un document Word que personne ne lit.
+:::
 
 ---
 
-### 2.8 Bonnes pratiques de configuration
+##### 2.8 Bonnes pratiques de configuration
 
 | Domaine | Recommandation | Pourquoi |
 |---|---|---|
@@ -2107,11 +1868,11 @@ git push origin main
 
 ---
 
-# Partie III — Administration
+### Partie III — Administration
 
-## 3. Administration de Control-M
+#### 3. Administration de Control-M
 
-### 3.1 Le modèle de sécurité en deux couches
+##### 3.1 Le modèle de sécurité en deux couches
 
 Point capital, souvent mal compris : Control-M a **deux mécanismes de sécurité distincts**, qui
 se superposent.
@@ -2137,16 +1898,17 @@ flowchart TB
 | **2 — Server** | `ctmsec`, `ctm_menu` | Un Control-M/Server | Couche applicative additionnelle sur les opérations serveur |
 | **3 — OS** | Système | Machine d'exécution | Ce que l'utilisateur `RunAs` a réellement le droit de faire |
 
-> **✅ Bonne pratique**
-> Concentrez votre modèle sur la **couche 1 (RBAC EM)** : c'est là que se joue l'essentiel et
-> c'est la seule couche pilotable par API donc automatisable. Utilisez `ctmsec` uniquement si
-> vous avez un besoin de cloisonnement serveur que le RBAC EM ne couvre pas.
+:::tip[✅ Bonne pratique]
+Concentrez votre modèle sur la **couche 1 (RBAC EM)** : c'est là que se joue l'essentiel et
+c'est la seule couche pilotable par API donc automatisable. Utilisez `ctmsec` uniquement si
+vous avez un besoin de cloisonnement serveur que le RBAC EM ne couvre pas.
+:::
 
 ---
 
-### 3.2 Utilisateurs, rôles et RBAC (couche EM)
+##### 3.2 Utilisateurs, rôles et RBAC (couche EM)
 
-#### 3.2.1 Le modèle
+###### 3.2.1 Le modèle
 
 Control-M/EM applique un **RBAC** classique : on n'attribue **jamais** de droit à un utilisateur
 directement, on lui attribue **des rôles**, et les rôles portent les permissions.
@@ -2159,12 +1921,13 @@ directement, on lui attribue **des rôles**, et les rôles portent les permissio
 | **TeamLeader** | *Team Leader* | Accès partiel avec possibilité de gérer les permissions de chaque membre |
 | **Viewer** | *Viewer* | Accès en consultation uniquement |
 
-> **⚠️ Version — l'orthographe change**
-> En **9.0.21**, ces rôles s'écrivent *Administrator* et *Team Leader* (en deux mots).
-> En **9.0.22 et en Control-M SaaS**, ils s'écrivent **`Admin`** et **`TeamLeader`**.
-> Un script qui référence un rôle par son nom exact doit donc être adapté à votre version.
+:::caution[⚠️ Version — l'orthographe change]
+En **9.0.21**, ces rôles s'écrivent *Administrator* et *Team Leader* (en deux mots).
+En **9.0.22 et en Control-M SaaS**, ils s'écrivent **`Admin`** et **`TeamLeader`**.
+Un script qui référence un rôle par son nom exact doit donc être adapté à votre version.
+:::
 
-#### 3.2.2 Les niveaux d'autorisation
+###### 3.2.2 Les niveaux d'autorisation
 
 Quatre niveaux, **hiérarchiques** :
 
@@ -2175,12 +1938,13 @@ Quatre niveaux, **hiérarchiques** :
 | **Update** | Ajouter, consulter, modifier |
 | **Full** | Contrôle complet, **y compris la suppression** |
 
-> **Note**
-> Sur les entités **Folders** et **Jobs**, une option **`Run`** s'ajoute, **indépendamment**
-> de ces quatre niveaux : elle autorise l'exécution sans impliquer un droit de modification.
-> C'est exactement ce qu'il faut pour un rôle d'exploitant N1.
+:::note[Note]
+Sur les entités **Folders** et **Jobs**, une option **`Run`** s'ajoute, **indépendamment**
+de ces quatre niveaux : elle autorise l'exécution sans impliquer un droit de modification.
+C'est exactement ce qu'il faut pour un rôle d'exploitant N1.
+:::
 
-#### 3.2.3 Les types d'entités protégeables
+###### 3.2.3 Les types d'entités protégeables
 
 | Entité | Remarque |
 |---|---|
@@ -2210,7 +1974,7 @@ Quatre niveaux, **hiérarchiques** :
 > | `EXPLOITANT_PROD` | `^(DEV\|TEST)-.*` | Browse |
 > | `ORDONNANCEUR` | `.*` | Full |
 
-#### 3.2.4 Gestion par l'Automation API
+###### 3.2.4 Gestion par l'Automation API
 
 ```bash
 # --- Rôles ---
@@ -2245,16 +2009,17 @@ Endpoints REST correspondants :
 | `authorization:user::add` | `POST /config/authorization/user` |
 | `authorization:user:role::add` | `POST /config/authorization/user/{user}/role/{role}` |
 
-> **✅ Bonne pratique — le RBAC as Code**
-> Les rôles et leurs autorisations sont du JSON manipulable par API : **versionnez-les dans Git**
-> et déployez-les par pipeline, exactement comme vos jobs. Une revue de droits devient alors une
-> *pull request*, avec un historique, un auteur et un approbateur.
+:::tip[✅ Bonne pratique — le RBAC as Code]
+Les rôles et leurs autorisations sont du JSON manipulable par API : **versionnez-les dans Git**
+et déployez-les par pipeline, exactement comme vos jobs. Une revue de droits devient alors une
+*pull request*, avec un historique, un auteur et un approbateur.
+:::
 
 ---
 
-### 3.3 Authentification
+##### 3.3 Authentification
 
-#### 3.3.1 Les modes disponibles
+###### 3.3.1 Les modes disponibles
 
 | Mode | Usage |
 |---|---|
@@ -2262,7 +2027,7 @@ Endpoints REST correspondants :
 | **LDAP / Active Directory** | Les utilisateurs appartiennent à des groupes annuaire mappés sur des rôles |
 | **IdP / SAML 2.0** | Une fois un fournisseur d'identité activé, **tous** les utilisateurs sont authentifiés en SAML 2.0 |
 
-#### 3.3.2 Paramètres LDAP
+###### 3.3.2 Paramètres LDAP
 
 | Paramètre | Défaut | Rôle |
 |---|---|---|
@@ -2283,13 +2048,14 @@ ctm config authorization:ldap:role::delete <groupeLDAP> <role>
 ctm config authorization:ldap:roles::get   <groupeLDAP>
 ```
 
-> **⚠️ Attention**
-> BMC documente LDAP/AD et SAML comme mécanismes d'**authentification de l'IHM**.
-> Pour l'**Automation API**, la documentation officielle ne décrit **pas** de flux LDAP/AD/SAML :
-> l'API s'authentifie par **login/mot de passe Control-M** (session token) ou par **jeton d'API**.
-> Ne promettez pas un SSO SAML sur l'API sans l'avoir validé sur votre version.
+:::caution[⚠️ Attention]
+BMC documente LDAP/AD et SAML comme mécanismes d'**authentification de l'IHM**.
+Pour l'**Automation API**, la documentation officielle ne décrit **pas** de flux LDAP/AD/SAML :
+l'API s'authentifie par **login/mot de passe Control-M** (session token) ou par **jeton d'API**.
+Ne promettez pas un SSO SAML sur l'API sans l'avoir validé sur votre version.
+:::
 
-#### 3.3.3 Politique de mots de passe
+###### 3.3.3 Politique de mots de passe
 
 | Paramètre | Défaut | Recommandation production |
 |---|---|---|
@@ -2305,15 +2071,16 @@ ctm config authorization:ldap:roles::get   <groupeLDAP>
 | `KeepAliveTimeout` | `600` s | 900 |
 | `UserAuditOn` | `1` (activé) | **`1` — ne jamais désactiver** |
 
-> **⚠️ Attention**
-> Les valeurs par défaut de Control-M sont **permissives** : expiration désactivée, complexité
-> désactivée, historique désactivé, longueur minimale de 6 caractères. Aucune n'est acceptable
-> en production. Traitez le durcissement de la politique de mots de passe comme une **tâche de
-> mise en service obligatoire**, pas comme une amélioration ultérieure.
+:::caution[⚠️ Attention]
+Les valeurs par défaut de Control-M sont **permissives** : expiration désactivée, complexité
+désactivée, historique désactivé, longueur minimale de 6 caractères. Aucune n'est acceptable
+en production. Traitez le durcissement de la politique de mots de passe comme une **tâche de
+mise en service obligatoire**, pas comme une amélioration ultérieure.
+:::
 
 ---
 
-### 3.4 Sécurité Control-M/Server : `ctmsec`
+##### 3.4 Sécurité Control-M/Server : `ctmsec`
 
 `ctmsec` est décrit par BMC comme *« une couche de sécurité applicative additionnelle »*
 au-dessus de la sécurité du système d'exploitation. Elle fonctionne en mode interactif (menu)
@@ -2345,10 +2112,11 @@ ctmsec -ENTITY_UPDATE {<user>|<group>} {LOG|CALENDAR|CONDITION} [-ADD {Y|N|D}]
 | `N` | Un utilisateur **non défini** dans la base de sécurité a un accès **sans restriction** |
 | `Y` | Un utilisateur non défini n'a **aucune permission** |
 
-> **⚠️ Attention — ceci est une faille par défaut**
-> Avec `SECURE=N` (valeur d'usine), **tout utilisateur inconnu de la base de sécurité serveur
-> obtient un accès total**. Sur un Control-M/Server de production, positionnez `SECURE=Y`
-> et déclarez explicitement vos utilisateurs et groupes. Prise en compte : automatique.
+:::caution[⚠️ Attention — ceci est une faille par défaut]
+Avec `SECURE=N` (valeur d'usine), **tout utilisateur inconnu de la base de sécurité serveur
+obtient un accès total**. Sur un Control-M/Server de production, positionnez `SECURE=Y`
+et déclarez explicitement vos utilisateurs et groupes. Prise en compte : automatique.
+:::
 
 L'accès à ces fonctions est aussi disponible par `ctm_menu` → *Security Authorization*
 (ajout/suppression d'utilisateurs et de groupes, sauvegarde et restauration des tables de
@@ -2356,9 +2124,9 @@ définitions de sécurité).
 
 ---
 
-### 3.5 Gestion des Agents
+##### 3.5 Gestion des Agents
 
-#### 3.5.1 Cycle de vie
+###### 3.5.1 Cycle de vie
 
 ```mermaid
 stateDiagram-v2
@@ -2384,7 +2152,7 @@ stateDiagram-v2
 | **Unavailable** | Le Server **n'arrive pas** à joindre l'Agent | Les jobs restent en `Wait Host` — **état constaté, pas choisi** |
 | **Disabled** | Le Server **n'essaie plus** de communiquer | Les jobs ne sont pas soumis — **état volontaire** |
 
-#### 3.5.2 Commandes de gestion
+###### 3.5.2 Commandes de gestion
 
 ```bash
 # Déclaration et suppression
@@ -2409,14 +2177,15 @@ ctm config server:agent:params::get  <server> <agent>
 ctm config server:agent:param::set   <server> <agent> <nom>
 ```
 
-> **✅ Bonne pratique — la fenêtre de maintenance**
-> Avant de patcher un serveur applicatif : `ctm config server:agent::disable`.
-> Les jobs visant cet hôte restent alors **en attente propre** au lieu de partir en échec en
-> masse. Après le patch : `enable`, puis `ping`, puis `free` sur les jobs concernés.
-> Encadrez le tout dans un job Control-M déclenché manuellement — la maintenance devient
-> reproductible et tracée.
+:::tip[✅ Bonne pratique — la fenêtre de maintenance]
+Avant de patcher un serveur applicatif : `ctm config server:agent::disable`.
+Les jobs visant cet hôte restent alors **en attente propre** au lieu de partir en échec en
+masse. Après le patch : `enable`, puis `ping`, puis `free` sur les jobs concernés.
+Encadrez le tout dans un job Control-M déclenché manuellement — la maintenance devient
+reproductible et tracée.
+:::
 
-#### 3.5.3 Host Groups (répartition de charge)
+###### 3.5.3 Host Groups (répartition de charge)
 
 Un **host group** est un ensemble d'Agents entre lesquels Control-M répartit les soumissions.
 On désigne le groupe dans le champ `Host` du job, et Control-M choisit l'Agent.
@@ -2434,7 +2203,7 @@ La propriété de job `RunOnAllAgentsInGroup` (booléen, défaut `false`) invers
 au lieu de choisir **un** Agent, le job s'exécute **sur tous** les Agents du groupe. Utile pour
 des tâches de maintenance (purge de logs, collecte d'inventaire) sur un parc entier.
 
-#### 3.5.4 Remote hosts (agentless)
+###### 3.5.4 Remote hosts (agentless)
 
 ```bash
 ctm config server:remotehost::add       <server> <remotehost>
@@ -2446,7 +2215,7 @@ ctm config server:remotehost::delete    <server> <remotehost>
 
 ---
 
-### 3.6 Gestion des Control-M/Servers
+##### 3.6 Gestion des Control-M/Servers
 
 ```bash
 ctm config server::add           -f server.json
@@ -2483,17 +2252,18 @@ Quelques descriptions officielles utiles :
 **Options de `ctm_menu`** : Control-M Manager, Database Menu, Security Authorization,
 Parameter Customization, Host Group, View HostID Details, Agent Status, Troubleshooting.
 
-> **⚠️ Attention**
-> `ctmstart`, `ctmstop`, `ctmcleanup`, `ctmfailover`, `root_menu`, `em_start` **n'existent pas**
-> dans les documentations 9.0.21/9.0.22. Vous les trouverez dans de vieux articles de blog :
-> ne les tapez pas en production en espérant qu'ils fonctionnent.
-> La bascule HA se fait **depuis le CCM**, pas par un utilitaire en ligne de commande.
+:::caution[⚠️ Attention]
+`ctmstart`, `ctmstop`, `ctmcleanup`, `ctmfailover`, `root_menu`, `em_start` **n'existent pas**
+dans les documentations 9.0.21/9.0.22. Vous les trouverez dans de vieux articles de blog :
+ne les tapez pas en production en espérant qu'ils fonctionnent.
+La bascule HA se fait **depuis le CCM**, pas par un utilitaire en ligne de commande.
+:::
 
 ---
 
-### 3.7 Run as Users et Connection Profiles
+##### 3.7 Run as Users et Connection Profiles
 
-#### 3.7.1 Run as Users
+###### 3.7.1 Run as Users
 
 L'utilisateur `RunAs` est le compte système sous lequel l'Agent exécute le traitement.
 Ses identifiants sont stockés côté Control-M.
@@ -2507,18 +2277,20 @@ ctm config server:runasuser::test   <server> <agent> <user>     # valide les ide
 ctm config server:runasusers::get   <server>
 ```
 
-> **✅ Bonne pratique**
-> Un compte technique **par application**, jamais un compte nominatif ni un compte partagé
-> global. `ctm config server:runasuser::test` doit faire partie de votre checklist de mise en
-> production : un mot de passe expiré côté OS met **toute** une chaîne en échec, avec un message
-> d'erreur souvent peu explicite.
+:::tip[✅ Bonne pratique]
+Un compte technique **par application**, jamais un compte nominatif ni un compte partagé
+global. `ctm config server:runasuser::test` doit faire partie de votre checklist de mise en
+production : un mot de passe expiré côté OS met **toute** une chaîne en échec, avec un message
+d'erreur souvent peu explicite.
+:::
 
-> **⚠️ Attention**
-> Pour qu'un Agent puisse **changer d'utilisateur** (`RunAs` différent du compte de l'Agent),
-> l'Agent doit tourner en root — ou en mode `sudo` configuré via `set_agent_mode`.
-> Un Agent lancé en compte non privilégié ne peut exécuter que sous son propre compte.
+:::caution[⚠️ Attention]
+Pour qu'un Agent puisse **changer d'utilisateur** (`RunAs` différent du compte de l'Agent),
+l'Agent doit tourner en root — ou en mode `sudo` configuré via `set_agent_mode`.
+Un Agent lancé en compte non privilégié ne peut exécuter que sous son propre compte.
+:::
 
-#### 3.7.2 Connection Profiles
+###### 3.7.2 Connection Profiles
 
 Un **connection profile** encapsule les paramètres de connexion vers un système externe
 (base de données, serveur SFTP, compte cloud, SAP…). Le job ne référence qu'un **nom** :
@@ -2550,16 +2322,17 @@ ctm deploy connectionprofile:local::delete    <server> <agent> <type> <nom>
 ctm deploy connectionprofile::test <definitionsFile> [ctm] [agent]
 ```
 
-> **✅ Bonne pratique**
-> Les connection profiles sont du **code déployable comme les jobs** — mais ils contiennent des
-> secrets. Versionnez leur **structure** dans Git avec les mots de passe remplacés par des
-> références `Secret:<clé>` (voir §3.11 et §15.4), jamais les valeurs en clair.
+:::tip[✅ Bonne pratique]
+Les connection profiles sont du **code déployable comme les jobs** — mais ils contiennent des
+secrets. Versionnez leur **structure** dans Git avec les mots de passe remplacés par des
+références `Secret:<clé>` (voir §3.11 et §15.4), jamais les valeurs en clair.
+:::
 
 ---
 
-### 3.8 Ressources
+##### 3.8 Ressources
 
-#### 3.8.1 Resource Pool (ex-Quantitative Resource)
+###### 3.8.1 Resource Pool (ex-Quantitative Resource)
 
 Un **pool** est un compteur global : il représente une capacité finie partagée.
 
@@ -2595,7 +2368,7 @@ Un job qui en consomme 5 :
 
 Tant que moins de 5 unités sont disponibles, le job reste en `Wait Resource`.
 
-#### 3.8.2 Resource Lock (ex-Control Resource)
+###### 3.8.2 Resource Lock (ex-Control Resource)
 
 Un **verrou** implémente l'exclusion mutuelle avec deux modes :
 
@@ -2619,14 +2392,15 @@ Un **verrou** implémente l'exclusion mutuelle avec deux modes :
 }
 ```
 
-> **✅ Le motif classique lecteur/écrivain**
-> Tous les jobs de **lecture** posent un verrou `Shared` sur `PRD-TABLE_COMPTA` ;
-> le job de **réorganisation** pose un verrou `Exclusive` sur le même nom.
-> Résultat : les lectures se parallélisent librement, mais la réorganisation attend que la
-> dernière lecture se termine, et aucune lecture ne démarre pendant la réorganisation.
-> **Zéro ligne de code de synchronisation à écrire.**
+:::tip[✅ Le motif classique lecteur/écrivain]
+Tous les jobs de **lecture** posent un verrou `Shared` sur `PRD-TABLE_COMPTA` ;
+le job de **réorganisation** pose un verrou `Exclusive` sur le même nom.
+Résultat : les lectures se parallélisent librement, mais la réorganisation attend que la
+dernière lecture se termine, et aucune lecture ne démarre pendant la réorganisation.
+**Zéro ligne de code de synchronisation à écrire.**
+:::
 
-#### 3.8.3 Dimensionner les pools
+###### 3.8.3 Dimensionner les pools
 
 | Ressource protégée | Métrique de dimensionnement |
 |---|---|
@@ -2638,9 +2412,9 @@ Un **verrou** implémente l'exclusion mutuelle avec deux modes :
 
 ---
 
-### 3.9 Variables
+##### 3.9 Variables
 
-#### 3.9.1 Les portées
+###### 3.9.1 Les portées
 
 | Portée | Référence | Déclaration JSON | Visible par |
 |---|---|---|---|
@@ -2657,13 +2431,14 @@ Un **verrou** implémente l'exclusion mutuelle avec deux modes :
 ]
 ```
 
-> **⚠️ Attention — l'échappement**
-> Les préfixes de portée utilisent des antislashs, qui doivent être **échappés en JSON**.
-> `\\\\NOM` en JSON représente `\\NOM` littéral, qui désigne la portée SMART folder.
-> C'est une source d'erreur constante. Sous Windows, la syntaxe `<Préfixe>%#%<Nom_Variable>`
-> permet d'échapper le préfixe de portée lui-même.
+:::caution[⚠️ Attention — l'échappement]
+Les préfixes de portée utilisent des antislashs, qui doivent être **échappés en JSON**.
+`\\\\NOM` en JSON représente `\\NOM` littéral, qui désigne la portée SMART folder.
+C'est une source d'erreur constante. Sous Windows, la syntaxe `<Préfixe>%#%<Nom_Variable>`
+permet d'échapper le préfixe de portée lui-même.
+:::
 
-#### 3.9.2 Variables système (AutoEdit)
+###### 3.9.2 Variables système (AutoEdit)
 
 Le préfixe `%%$` désigne généralement la variante **année sur 4 chiffres**.
 
@@ -2718,11 +2493,12 @@ Le préfixe `%%$` désigne généralement la variante **année sur 4 chiffres**.
 | `%%AVG_TIME` / `%%SD_TIME` | Durée moyenne / écart-type |
 | `%%AVG_CPU` / `%%SD_CPU` | CPU moyen / écart-type |
 
-> **⚠️ Attention**
-> `%%PARENT_FOLDER` **n'existe pas** dans la documentation BMC. Le nom du folder parent est
-> donné par **`%%SCHEDTAB`**.
+:::caution[⚠️ Attention]
+`%%PARENT_FOLDER` **n'existe pas** dans la documentation BMC. Le nom du folder parent est
+donné par **`%%SCHEDTAB`**.
+:::
 
-#### 3.9.3 Positionner une variable à l'exécution
+###### 3.9.3 Positionner une variable à l'exécution
 
 ```json
 "CapterLeNombreDeLignes": {
@@ -2758,7 +2534,7 @@ Ou directement :
 
 ---
 
-### 3.10 Calendriers (administration)
+##### 3.10 Calendriers (administration)
 
 Trois types d'objets calendrier, avec leurs noms de types **actuels** :
 
@@ -2773,16 +2549,17 @@ ctm deploy calendars::get [limite] -s "type=Periodic&name=S*"
 ctm deploy calendar::delete <nomCalendrier> [serveur] [type]
 ```
 
-> **⚠️ Attention — format**
-> Les définitions de calendriers doivent être en **JSON uniquement**. `ctm build` accepte
-> `.zip` et `.tar.gz` pour les jobs, mais **pas** pour les calendriers.
+:::caution[⚠️ Attention — format]
+Les définitions de calendriers doivent être en **JSON uniquement**. `ctm build` accepte
+`.zip` et `.tar.gz` pour les jobs, mais **pas** pour les calendriers.
+:::
 
 Le détail des calendriers (syntaxe, modificateurs, exemples de planification) est traité au
 chapitre 8.
 
 ---
 
-### 3.11 Gestion des secrets
+##### 3.11 Gestion des secrets
 
 L'Automation API dispose d'un coffre intégré. Les secrets y sont référencés par la syntaxe
 `Secret:<clé>` dans les définitions JSON — jamais en clair.
@@ -2824,17 +2601,18 @@ Le changement de mot de passe Control-M lui-même accepte aussi cette syntaxe :
 {"user": "user1", "currentPassword": "********", "newPassword": "Secret:secretKey"}
 ```
 
-> **✅ Bonne pratique — rotation**
-> La rotation devient un appel d'API : votre coffre d'entreprise (Vault, CyberArk, Azure
-> Key Vault) génère le nouveau secret, un job appelle `ctm config secret::update`, puis
-> `ctm deploy connectionprofile:centralized::test` valide immédiatement que la nouvelle valeur
-> fonctionne. **Aucune intervention humaine, aucun mot de passe dans un ticket.**
+:::tip[✅ Bonne pratique — rotation]
+La rotation devient un appel d'API : votre coffre d'entreprise (Vault, CyberArk, Azure
+Key Vault) génère le nouveau secret, un job appelle `ctm config secret::update`, puis
+`ctm deploy connectionprofile:centralized::test` valide immédiatement que la nouvelle valeur
+fonctionne. **Aucune intervention humaine, aucun mot de passe dans un ticket.**
+:::
 
 ---
 
-### 3.12 New Day Procedure et rétention
+##### 3.12 New Day Procedure et rétention
 
-#### 3.12.1 Ce que fait la New Day
+###### 3.12.1 Ce que fait la New Day
 
 Quatre tâches, exécutées à **07:00 par défaut** (paramètre **`DAYTIME`**, valeur `+0700`,
 format `+hhmm` après minuit ou `-hhmm` avant minuit ; prise en compte automatique) :
@@ -2854,7 +2632,7 @@ flowchart LR
     E --> F["ODATE = J+1"]
 ```
 
-#### 3.12.2 User Daily
+###### 3.12.2 User Daily
 
 Le **User Daily** permet à des jobs de suivre leur **propre calendrier d'ordering**, plutôt que
 d'attendre la New Day globale. Deux bénéfices : lissage de la charge (tout n'est pas ordonnancé
@@ -2884,7 +2662,7 @@ Dans le JSON, `OrderMethod` porte le nom du User Daily :
 }
 ```
 
-#### 3.12.3 Paramètres de rétention
+###### 3.12.3 Paramètres de rétention
 
 **Côté Agent (nettoyage pendant la New Day)** :
 
@@ -2913,21 +2691,23 @@ utile uniquement quand `ActiveRetentionPolicy` vaut `KeepAll`.
 supprimés automatiquement. Le paramètre **« Ignore New Day Conditions »** (défaut `N`) passé à
 `Y` préserve indéfiniment les événements anciens.
 
-> **⚠️ Attention**
-> `OUTPUTRETN` à **1 jour** signifie que la sortie d'un job en échec le vendredi soir **n'existe
-> plus** le lundi matin. Pour toute production sérieuse, remontez cette valeur (7 à 30 jours
-> selon votre volumétrie) ou activez **Control-M Workload Archiving**. C'est l'un des réglages
-> les plus regrettés après un incident.
+:::caution[⚠️ Attention]
+`OUTPUTRETN` à **1 jour** signifie que la sortie d'un job en échec le vendredi soir **n'existe
+plus** le lundi matin. Pour toute production sérieuse, remontez cette valeur (7 à 30 jours
+selon votre volumétrie) ou activez **Control-M Workload Archiving**. C'est l'un des réglages
+les plus regrettés après un incident.
+:::
 
-> **✅ Bonne pratique — positionner `DAYTIME`**
-> Placez la bascule de journée **en creux d'activité**, jamais pendant un pic. La New Day fait
-> un ménage lourd en base et un ordering massif ; si elle tombe pendant votre fenêtre batch
-> critique, vous allongez toute la chaîne. Et documentez cette heure : c'est elle qui définit
-> ce que signifie « le traitement du 15 » dans votre entreprise.
+:::tip[✅ Bonne pratique — positionner DAYTIME]
+Placez la bascule de journée **en creux d'activité**, jamais pendant un pic. La New Day fait
+un ménage lourd en base et un ordering massif ; si elle tombe pendant votre fenêtre batch
+critique, vous allongez toute la chaîne. Et documentez cette heure : c'est elle qui définit
+ce que signifie « le traitement du 15 » dans votre entreprise.
+:::
 
 ---
 
-### 3.13 Workload Policies
+##### 3.13 Workload Policies
 
 Les **workload policies** permettent de plafonner dynamiquement la charge selon des critères
 (nombre de jobs simultanés par application, par hôte, par plage horaire).
@@ -2941,14 +2721,15 @@ ctm run workloadpolicy::deactivate  <nom> [<server>]
 ctm run workloadpolicy::delete      <nom>
 ```
 
-> **✅ Cas d'usage**
-> Une politique « fin de mois » activée automatiquement le dernier jour ouvré, qui bride les
-> traitements non critiques pour laisser toute la capacité à la clôture comptable.
-> Activation et désactivation sont pilotables par un job Control-M lui-même.
+:::tip[✅ Cas d'usage]
+Une politique « fin de mois » activée automatiquement le dernier jour ouvré, qui bride les
+traitements non critiques pour laisser toute la capacité à la clôture comptable.
+Activation et désactivation sont pilotables par un job Control-M lui-même.
+:::
 
 ---
 
-### 3.14 Suivi de consommation
+##### 3.14 Suivi de consommation
 
 ```bash
 ctm usage jobs::get        # GET /usage/jobs
@@ -2959,13 +2740,13 @@ par serveur et au total. Utile pour le suivi de licence et la détection d'une d
 
 ---
 
-# Partie IV — Concepts d'ordonnancement
+### Partie IV — Concepts d'ordonnancement
 
-## 4. Les objets d'ordonnancement
+#### 4. Les objets d'ordonnancement
 
-### 4.1 Le job
+##### 4.1 Le job
 
-#### 4.1.1 Anatomie
+###### 4.1.1 Anatomie
 
 Un job Control-M est un objet à cinq facettes :
 
@@ -2979,7 +2760,7 @@ flowchart TB
     JOB --> POST["POST-TRAITEMENT<br/>If / Action:*, AddEvents,<br/>DeleteEvents, Notify:*"]
 ```
 
-#### 4.1.2 Les propriétés universelles
+###### 4.1.2 Les propriétés universelles
 
 Ces propriétés sont valables pour **tous** les types de jobs.
 
@@ -3017,24 +2798,26 @@ Ces propriétés sont valables pour **tous** les types de jobs.
 | Low | `JA` | |
 | Very Low | `AA` | Le plus bas (défaut) |
 
-> **⚠️ Attention — `Critical`**
-> `Critical: true` change fondamentalement le comportement face aux ressources : au lieu
-> d'attendre que **toutes** ses ressources soient libres avant d'en prendre une, le job
-> **réserve** au fur et à mesure. Cela garantit qu'un job critique ne sera pas indéfiniment
-> doublé par des jobs plus petits — mais **augmente le risque d'interblocage**. À réserver
-> aux vrais jobs critiques, et à tester.
+:::caution[⚠️ Attention — Critical]
+`Critical: true` change fondamentalement le comportement face aux ressources : au lieu
+d'attendre que **toutes** ses ressources soient libres avant d'en prendre une, le job
+**réserve** au fur et à mesure. Cela garantit qu'un job critique ne sera pas indéfiniment
+doublé par des jobs plus petits — mais **augmente le risque d'interblocage**. À réserver
+aux vrais jobs critiques, et à tester.
+:::
 
-> **✅ Bonne pratique — `RunAsDummy`**
-> `RunAsDummy: true` permet de **valider toute la topologie d'un workflow** (dépendances,
-> calendriers, ressources, SLA) **sans exécuter une seule ligne de traitement réel**.
-> C'est le meilleur outil de recette d'une chaîne complexe. On le retire ensuite via un
-> deploy descriptor lors de la promotion en production.
+:::tip[✅ Bonne pratique — RunAsDummy]
+`RunAsDummy: true` permet de **valider toute la topologie d'un workflow** (dépendances,
+calendriers, ressources, SLA) **sans exécuter une seule ligne de traitement réel**.
+C'est le meilleur outil de recette d'une chaîne complexe. On le retire ensuite via un
+deploy descriptor lors de la promotion en production.
+:::
 
 ---
 
-### 4.2 Folders, SMART Folders, SubFolders
+##### 4.2 Folders, SMART Folders, SubFolders
 
-#### 4.2.1 Les trois types
+###### 4.2.1 Les trois types
 
 | Type JSON | Nature | Propriétés au niveau folder ? |
 |---|---|---|
@@ -3047,7 +2830,7 @@ Ces propriétés sont valables pour **tous** les types de jobs.
 > Il n'existe pas de type `SmartFolder`. La citation officielle BMC : *« Un Simple Folder ne
 > permet pas la configuration de définitions de job au niveau du folder. »*
 
-#### 4.2.2 Propriétés du `Folder` (SMART)
+###### 4.2.2 Propriétés du `Folder` (SMART)
 
 | Clé | Valeurs / rôle |
 |---|---|
@@ -3069,15 +2852,16 @@ Sont également supportées au niveau folder, avec la même sémantique qu'au ni
 `Application`, `SubApplication`, `Confirm`, `CreatedBy`, `DaysKeepActive`, `Description`,
 `Documentation`, `EndFolder`, `Priority`, `Rerun`, `RerunLimit`, `TimeZone`, `Comment`.
 
-> **✅ `AdjustEvents` — le paramètre qui sauve les week-ends**
-> Scénario classique : `JOB-A` tourne du lundi au vendredi, `JOB-B` tous les jours et attend
-> l'événement de `JOB-A`. Le samedi, `JOB-A` **n'est pas ordonnancé** — donc son événement
-> n'arrivera jamais, et `JOB-B` reste bloqué éternellement.
-> `AdjustEvents` sur le folder résout exactement ce cas : Control-M constate que le prédécesseur
-> n'est pas dans l'environnement du jour et **neutralise l'attente**.
-> C'est la cause n°1 des « jobs bloqués le week-end ». Voir §16.9.
+:::tip[✅ AdjustEvents — le paramètre qui sauve les week-ends]
+Scénario classique : `JOB-A` tourne du lundi au vendredi, `JOB-B` tous les jours et attend
+l'événement de `JOB-A`. Le samedi, `JOB-A` **n'est pas ordonnancé** — donc son événement
+n'arrivera jamais, et `JOB-B` reste bloqué éternellement.
+`AdjustEvents` sur le folder résout exactement ce cas : Control-M constate que le prédécesseur
+n'est pas dans l'environnement du jour et **neutralise l'attente**.
+C'est la cause n°1 des « jobs bloqués le week-end ». Voir §16.9.
+:::
 
-#### 4.2.3 SubFolder
+###### 4.2.3 SubFolder
 
 ```json
 {
@@ -3102,7 +2886,7 @@ Propriétés supportées sur un `SubFolder` : `Application`, `SubApplication`,
 `AdjustEvents`, `Confirm`, `DaysKeepActive`, `Description`, `Documentation`, `Resource:Lock`,
 notifications, `PathElement`, `Priority`, `RunAs`, `TimeZone`, `Variables`, `ReferencePath`.
 
-#### 4.2.4 Quand utiliser quoi
+###### 4.2.4 Quand utiliser quoi
 
 | Situation | Choix |
 |---|---|
@@ -3113,7 +2897,7 @@ notifications, `PathElement`, `Priority`, `RunAs`, `TimeZone`, `Variables`, `Ref
 
 ---
 
-### 4.3 Workflows et objet `Flow`
+##### 4.3 Workflows et objet `Flow`
 
 L'objet `Flow` est le **raccourci syntaxique** pour exprimer une séquence linéaire.
 Règle : *« Un job doit se terminer avec succès pour que le job suivant du flux démarre. »*
@@ -3159,9 +2943,9 @@ Règle : *« Un job doit se terminer avec succès pour que le job suivant du flu
 
 ---
 
-### 4.4 Dépendances : les événements
+##### 4.4 Dépendances : les événements
 
-#### 4.4.1 Le modèle
+###### 4.4.1 Le modèle
 
 | Terme historique | Objet JSON | Sémantique |
 |---|---|---|
@@ -3169,15 +2953,16 @@ Règle : *« Un job doit se terminer avec succès pour que le job suivant du flu
 | OUT condition, signe `+` | `AddEvents` | Je publie ces événements en fin de traitement |
 | OUT condition, signe `-` | `DeleteEvents` | Je consomme (supprime) ces événements |
 
-> **⚠️ Attention — erreur de documentation fréquente**
-> `"Type": "InCondition"` et `"Type": "OutCondition"` **n'existent pas** dans le DSL Jobs-as-Code.
-> Vous les trouverez dans beaucoup de tutoriels sur internet : ils sont faux (ils viennent de
-> l'API de *conversion*, une surface produit différente). Les types corrects sont
-> `WaitForEvents`, `AddEvents` et `DeleteEvents`.
-> Il n'existe pas non plus de type `"Event"` isolé : un événement est un simple membre
-> `{"Event": "nom", "Date": "..."}` d'un tableau `Events`.
+:::caution[⚠️ Attention — erreur de documentation fréquente]
+`"Type": "InCondition"` et `"Type": "OutCondition"` **n'existent pas** dans le DSL Jobs-as-Code.
+Vous les trouverez dans beaucoup de tutoriels sur internet : ils sont faux (ils viennent de
+l'API de *conversion*, une surface produit différente). Les types corrects sont
+`WaitForEvents`, `AddEvents` et `DeleteEvents`.
+Il n'existe pas non plus de type `"Event"` isolé : un événement est un simple membre
+`{"Event": "nom", "Date": "..."}` d'un tableau `Events`.
+:::
 
-#### 4.4.2 Syntaxe
+###### 4.4.2 Syntaxe
 
 ```json
 "Attente": {
@@ -3210,7 +2995,7 @@ Règle : *« Un job doit se terminer avec succès pour que le job suivant du flu
 }
 ```
 
-#### 4.4.3 Le qualificatif de date
+###### 4.4.3 Le qualificatif de date
 
 | Valeur | Signification |
 |---|---|
@@ -3222,13 +3007,14 @@ Règle : *« Un job doit se terminer avec succès pour que le job suivant du flu
 | `MMDD` | Date fixe, ex. `"0511"` |
 | `+nnn` / `-nnn` | Décalage en jours, ex. `"+001"`, `"-002"` |
 
-> **✅ Le cas `AnyDate`**
-> Utilisez `AnyDate` pour les événements produits par un système **externe** dont vous ne
-> maîtrisez pas la date de traitement — typiquement l'arrivée d'un fichier partenaire.
-> Sans `AnyDate`, un fichier arrivé « la veille au soir » porterait la date de la veille et ne
-> déclencherait jamais le job du jour.
+:::tip[✅ Le cas AnyDate]
+Utilisez `AnyDate` pour les événements produits par un système **externe** dont vous ne
+maîtrisez pas la date de traitement — typiquement l'arrivée d'un fichier partenaire.
+Sans `AnyDate`, un fichier arrivé « la veille au soir » porterait la date de la veille et ne
+déclencherait jamais le job du jour.
+:::
 
-#### 4.4.4 Opérateurs logiques
+###### 4.4.4 Opérateurs logiques
 
 La relation par défaut est **ET**. Les parenthèses et les opérateurs sont des **chaînes
 littérales** dans le tableau :
@@ -3251,12 +3037,13 @@ littérales** dans le tableau :
 }
 ```
 
-> **⚠️ Limitation**
-> **L'imbrication de parenthèses dans des parenthèses n'est pas supportée.**
-> Pour une logique plus complexe, décomposez en jobs `Job:Dummy` intermédiaires qui matérialisent
-> les résultats partiels — c'est aussi bien plus lisible en exploitation.
+:::caution[⚠️ Limitation]
+**L'imbrication de parenthèses dans des parenthèses n'est pas supportée.**
+Pour une logique plus complexe, décomposez en jobs `Job:Dummy` intermédiaires qui matérialisent
+les résultats partiels — c'est aussi bien plus lisible en exploitation.
+:::
 
-#### 4.4.5 Gestion à l'exécution
+###### 4.4.5 Gestion à l'exécution
 
 ```bash
 ctm run events::get                                # lister
@@ -3264,16 +3051,17 @@ ctm run event::add    <server> <nom> <date>        # créer manuellement
 ctm run event::delete <server> <nom> <date>        # supprimer
 ```
 
-> **✅ Le geste d'exploitation qui débloque tout**
-> `ctm run event::add` est **l'outil de déblocage n°1** : quand un job amont a été annulé
-> volontairement mais que ses successeurs attendent son événement, on publie l'événement à la
-> main et la chaîne repart.
-> Corollaire : c'est aussi un geste **à tracer et à encadrer par le RBAC**, puisqu'il court-circuite
-> une dépendance métier.
+:::tip[✅ Le geste d'exploitation qui débloque tout]
+`ctm run event::add` est **l'outil de déblocage n°1** : quand un job amont a été annulé
+volontairement mais que ses successeurs attendent son événement, on publie l'événement à la
+main et la chaîne repart.
+Corollaire : c'est aussi un geste **à tracer et à encadrer par le RBAC**, puisqu'il court-circuite
+une dépendance métier.
+:::
 
 ---
 
-### 4.5 Ressources
+##### 4.5 Ressources
 
 Traitées en §3.8 côté administration. Rappel de la syntaxe JSON :
 
@@ -3293,14 +3081,16 @@ Traitées en §3.8 côté administration. Rappel de la syntaxe JSON :
 }
 ```
 
-> **⚠️ Attention — clé du discriminant**
-> Pour un `Resource:Lock`, la clé est **`LockType`**, pas `Type`.
-> `"Type": "Exclusive"` est faux : c'est `"LockType": "Exclusive"`.
+:::caution[⚠️ Attention — clé du discriminant]
+Pour un `Resource:Lock`, la clé est **`LockType`**, pas `Type`.
+`"Type": "Exclusive"` est faux : c'est `"LockType": "Exclusive"`.
+:::
 
-> **Version**
-> En 9.0.19 et 9.0.20, ces objets s'appelaient `Resource:Semaphore` (avec `Quantity`) et
-> `Resource:Mutex` (avec **`MutexType`**). Si vous reprenez du code d'une ancienne plateforme,
-> c'est le premier renommage à effectuer.
+:::note[Version]
+En 9.0.19 et 9.0.20, ces objets s'appelaient `Resource:Semaphore` (avec `Quantity`) et
+`Resource:Mutex` (avec **`MutexType`**). Si vous reprenez du code d'une ancienne plateforme,
+c'est le premier renommage à effectuer.
+:::
 
 **Forme tableau** (nécessite le paramètre système `allowDuplicateResourceNames`) :
 
@@ -3313,7 +3103,7 @@ Traitées en §3.8 côté administration. Rappel de la syntaxe JSON :
 
 ---
 
-### 4.6 Calendriers — vue d'ensemble
+##### 4.6 Calendriers — vue d'ensemble
 
 Trois familles, détaillées au chapitre 8 :
 
@@ -3339,7 +3129,7 @@ Un job les référence via `When` :
 
 ---
 
-### 4.7 Cyclic, rerun, retry
+##### 4.7 Cyclic, rerun, retry
 
 Quatre mécanismes différents, souvent confondus. Le tableau de décision :
 
@@ -3351,11 +3141,12 @@ Quatre mécanismes différents, souvent confondus. Le tableau de décision :
 | « Réessaie 3 fois si ça échoue » | `RerunLimit` | **Relance sur échec** (non cyclique) |
 | « Relance conditionnelle » | `Action:Rerun` dans un `If` | Relance déclenchée par une condition |
 
-> **⚠️ Attention**
-> Il **n'existe pas d'objet `Cyclic`** dans l'Automation API, ni de clés `RunAgainEvery`,
-> `Sequence` ou `Type: Interval`. Les trois modes cycliques sont **trois objets frères distincts**.
+:::caution[⚠️ Attention]
+Il **n'existe pas d'objet `Cyclic`** dans l'Automation API, ni de clés `RunAgainEvery`,
+`Sequence` ou `Type: Interval`. Les trois modes cycliques sont **trois objets frères distincts**.
+:::
 
-#### 4.7.1 `Rerun` — cyclique par intervalle
+###### 4.7.1 `Rerun` — cyclique par intervalle
 
 ```json
 "Rerun": {
@@ -3378,7 +3169,7 @@ Quatre mécanismes différents, souvent confondus. Le tableau de décision :
 > Un job de 20 min avec `Every: 15` en mode `Start` se relance **immédiatement**.
 > `From: "End"` → l'intervalle court depuis la **fin**. C'est presque toujours ce qu'on veut.
 
-#### 4.7.2 `RerunIntervals` — intervalles variables
+###### 4.7.2 `RerunIntervals` — intervalles variables
 
 ```json
 "RerunIntervals": {
@@ -3389,7 +3180,7 @@ Quatre mécanismes différents, souvent confondus. Le tableau de décision :
 
 Suffixes : `m` (minutes ou mois selon le contexte), `h` (heures), `d` (jours).
 
-#### 4.7.3 `RerunSpecificTimes` — horaires fixes
+###### 4.7.3 `RerunSpecificTimes` — horaires fixes
 
 ```json
 "RerunSpecificTimes": {
@@ -3401,7 +3192,7 @@ Suffixes : `m` (minutes ou mois selon le contexte), `h` (heures), `d` (jours).
 `Tolerance` : nombre maximal de minutes de retard tolérées pour qu'une soumission ait quand même
 lieu. Au-delà, le cycle est sauté.
 
-#### 4.7.4 `RerunLimit` — relance sur échec
+###### 4.7.4 `RerunLimit` — relance sur échec
 
 ```json
 "JobAvecRelance": {
@@ -3416,7 +3207,7 @@ lieu. Au-delà, le cycle est sauté.
 }
 ```
 
-#### 4.7.5 Relance conditionnelle
+###### 4.7.5 Relance conditionnelle
 
 ```json
 "SiEchecTransitoire": {
@@ -3434,16 +3225,17 @@ lieu. Au-delà, le cycle est sauté.
 }
 ```
 
-> **✅ Bonne pratique — distinguer les échecs**
-> Ne relancez pas aveuglément. Un `RerunLimit` global masque les vraies pannes.
-> Le motif recommandé : un `If:Output` qui reconnaît les **erreurs transitoires**
-> (timeout réseau, verrou base, service temporairement indisponible) et déclenche `Action:Rerun`,
-> **plus** un `If` sur `NOTOK` qui notifie sans relancer pour tout le reste.
-> On relance ce qui a une chance de marcher au coup suivant, on alerte sur le reste.
+:::tip[✅ Bonne pratique — distinguer les échecs]
+Ne relancez pas aveuglément. Un `RerunLimit` global masque les vraies pannes.
+Le motif recommandé : un `If:Output` qui reconnaît les **erreurs transitoires**
+(timeout réseau, verrou base, service temporairement indisponible) et déclenche `Action:Rerun`,
+**plus** un `If` sur `NOTOK` qui notifie sans relancer pour tout le reste.
+On relance ce qui a une chance de marcher au coup suivant, on alerte sur le reste.
+:::
 
 ---
 
-### 4.8 Fenêtres de traitement
+##### 4.8 Fenêtres de traitement
 
 ```json
 "When": {
@@ -3458,11 +3250,12 @@ lieu. Au-delà, le cycle est sauté.
 | `ToTime` | Le job **ne peut pas démarrer après** cette heure (`HHMM`) |
 | `ToTime: ">"` | Autorise la soumission **après la date d'origine** — le job peut déborder sur le jour suivant |
 
-> **⚠️ Attention — `ToTime` limite le DÉMARRAGE, pas la FIN**
-> Un job démarré à 05:59 avec `ToTime: "0600"` peut tourner jusqu'à 09:00 sans être interrompu.
-> Control-M ne tue pas un job qui dépasse. Pour être alerté d'un dépassement, utilisez
-> `Notify:DoesNotEnd` ; pour le **tuer**, il faut un job de surveillance qui appelle
-> `ctm run job::kill`.
+:::caution[⚠️ Attention — ToTime limite le DÉMARRAGE, pas la FIN]
+Un job démarré à 05:59 avec `ToTime: "0600"` peut tourner jusqu'à 09:00 sans être interrompu.
+Control-M ne tue pas un job qui dépasse. Pour être alerté d'un dépassement, utilisez
+`Notify:DoesNotEnd` ; pour le **tuer**, il faut un job de surveillance qui appelle
+`ctm run job::kill`.
+:::
 
 **Fenêtres et fuseaux** :
 
@@ -3477,14 +3270,15 @@ lieu. Au-delà, le cycle est sauté.
 }
 ```
 
-> **⚠️ `TimeZone` doit être défini au moins 48 heures avant l'exécution.**
-> Ce n'est pas un réglage qu'on ajoute la veille d'un traitement.
+:::caution[⚠️ TimeZone doit être défini au moins 48 heures avant l'exécution.]
+Ce n'est pas un réglage qu'on ajoute la veille d'un traitement.
+:::
 
 ---
 
-### 4.9 Actions conditionnelles (le modèle On/Do)
+##### 4.9 Actions conditionnelles (le modèle On/Do)
 
-#### 4.9.1 Les blocs `If`
+###### 4.9.1 Les blocs `If`
 
 | Type | Clé(s) | Valeurs |
 |---|---|---|
@@ -3497,12 +3291,13 @@ lieu. Au-delà, le cycle est sauté.
 | `If:Output` | `Code` (obligatoire), `Statement` (optionnel) | `Code` = chaîne à chercher dans la sortie. Jokers : `*` (plusieurs caractères), `$` ou `?` (un caractère). `Statement` restreint la recherche |
 | `If:VariableValue` | `VariableName`, `Operator`, `VariableValue`, `RangeVariableValue` | Entiers : `EqualTo`, `NotEqualTo`, `GreaterThan`, `LessThan`, `GreaterThanOrEqual`, `LessThanOrEqual`, `InRange`, `NotInRange`. Chaînes : `Like`, `NotLike`, `IsExactly`, `IsNotExactly`, `StartsWith`, `EndWith`, `Contains`, `DoesNotContain`, `IsEmpty`, `IsNotEmpty` |
 
-> **⚠️ Attention**
-> **`CompletionCode` n'est pas une clé documentée.** Les comparaisons de code retour passent par
-> `CompletionStatus` avec une valeur numérique ou une comparaison :
-> `"CompletionStatus": ">=5"`. La clé `Code` appartient exclusivement à `If:Output`.
+:::caution[⚠️ Attention]
+**`CompletionCode` n'est pas une clé documentée.** Les comparaisons de code retour passent par
+`CompletionStatus` avec une valeur numérique ou une comparaison :
+`"CompletionStatus": ">=5"`. La clé `Code` appartient exclusivement à `If:Output`.
+:::
 
-#### 4.9.2 Les actions
+###### 4.9.2 Les actions
 
 | Type | Attributs |
 |---|---|
@@ -3520,19 +3315,20 @@ lieu. Au-delà, le cycle est sauté.
 | `Action:Output` | `Operation` (`Copy` / `Move` / `Delete` / `Print` / `ChangeClass` [z/OS]), `Destination`, `FromClass` (z/OS) |
 | `Action:CaptureOutput` | `Capture` (nombre ou `UpToEndOfLine`), `Search`, `VariableName`, `ForwardBy` |
 
-> **⚠️ Corrections de noms fréquemment erronés**
-> | Nom souvent cité (faux) | Nom réel |
-> |---|---|
-> | `Action:AddEvents` | **`Event:Add`** |
-> | `Action:DeleteEvents` | **`Event:Delete`** |
-> | `Action:Order` | **`Action:Run`** |
-> | `Action:RemedyIncident` | **`Action:Remedy`** |
-> | `Action:SNMP` | **N'existe pas** — passer par `Destination` d'un `Action:Notify` |
->
-> Les anciens exemples BMC (y compris `AutomationAPISampleFlow.json`) utilisent
-> `"Type": "Mail"` sans préfixe. `Action:Mail` est l'écriture actuelle ; les deux fonctionnent.
+:::caution[⚠️ Corrections de noms fréquemment erronés]
+| Nom souvent cité (faux) | Nom réel |
+|---|---|
+| `Action:AddEvents` | **`Event:Add`** |
+| `Action:DeleteEvents` | **`Event:Delete`** |
+| `Action:Order` | **`Action:Run`** |
+| `Action:RemedyIncident` | **`Action:Remedy`** |
+| `Action:SNMP` | **N'existe pas** — passer par `Destination` d'un `Action:Notify` |
 
-#### 4.9.3 Exemple complet
+Les anciens exemples BMC (y compris `AutomationAPISampleFlow.json`) utilisent
+`"Type": "Mail"` sans préfixe. `Action:Mail` est l'écriture actuelle ; les deux fonctionnent.
+:::
+
+###### 4.9.3 Exemple complet
 
 ```json
 {
@@ -3595,7 +3391,7 @@ lieu. Au-delà, le cycle est sauté.
 
 ---
 
-### 4.10 Notifications
+##### 4.10 Notifications
 
 Les notifications sont des objets **frères** du job (pas imbriqués dans un `If`), valables sur
 jobs, folders et sous-folders.
@@ -3632,19 +3428,21 @@ de destination prédéfinie ; `Urgency` = `Regular` (défaut), `Urgent`, `VeryUr
 }
 ```
 
-> **⚠️ Attention**
-> Il **n'existe pas** de type `Job:Notify` ni de clé `NotifyWhen`.
-> Les notifications sont **exclusivement** des objets `Notify:*`.
+:::caution[⚠️ Attention]
+Il **n'existe pas** de type `Job:Notify` ni de clé `NotifyWhen`.
+Les notifications sont **exclusivement** des objets `Notify:*`.
+:::
 
-> **✅ Bonne pratique — le trio de surveillance**
-> Pour tout job critique, posez systématiquement ces trois notifications :
-> `Notify:DoesNotStart` (le job aurait dû démarrer), `Notify:DoesNotEnd` (il est parti mais
-> ne finit pas), `Notify:NotOK` (il a échoué). C'est le filet minimal : sans le premier, un job
-> jamais ordonnancé passe totalement inaperçu.
+:::tip[✅ Bonne pratique — le trio de surveillance]
+Pour tout job critique, posez systématiquement ces trois notifications :
+`Notify:DoesNotStart` (le job aurait dû démarrer), `Notify:DoesNotEnd` (il est parti mais
+ne finit pas), `Notify:NotOK` (il a échoué). C'est le filet minimal : sans le premier, un job
+jamais ordonnancé passe totalement inaperçu.
+:::
 
 ---
 
-### 4.11 SLA — concepts
+##### 4.11 SLA — concepts
 
 Le **SLA Management** (ex-BIM, *Batch Impact Manager*) est un job d'un type particulier,
 placé **à la fin** de la chaîne à surveiller.
@@ -3661,9 +3459,9 @@ Traité en profondeur au chapitre 9.
 
 ---
 
-### 4.12 Ordering et règles d'exécution
+##### 4.12 Ordering et règles d'exécution
 
-#### 4.12.1 `OrderMethod`
+###### 4.12.1 `OrderMethod`
 
 | Valeur | Comportement |
 |---|---|
@@ -3671,14 +3469,15 @@ Traité en profondeur au chapitre 9.
 | `Manual` | **`When` est ignoré** — ordering exclusivement via `ctm run order` ou `Action:Run` |
 | *autre valeur* | Nom d'un **User Daily** : ordonnancé par `ctmudly <nom>` |
 
-> **✅ Quand utiliser `Manual`**
-> - Chaînes déclenchées par un événement externe (arrivée de fichier, appel d'API applicative) ;
-> - Traitements exceptionnels (reprise, correction, rejeu à la demande) ;
-> - **Tous les folders dans un pipeline CI/CD** : on ne veut pas qu'un déploiement en TEST
->   déclenche une exécution non prévue. Le pipeline appelle explicitement `ctm run order`
->   ou `ctm run`.
+:::tip[✅ Quand utiliser Manual]
+- Chaînes déclenchées par un événement externe (arrivée de fichier, appel d'API applicative) ;
+- Traitements exceptionnels (reprise, correction, rejeu à la demande) ;
+- **Tous les folders dans un pipeline CI/CD** : on ne veut pas qu'un déploiement en TEST
+  déclenche une exécution non prévue. Le pipeline appelle explicitement `ctm run order`
+  ou `ctm run`.
+:::
 
-#### 4.12.2 Ordonnancement à la demande
+###### 4.12.2 Ordonnancement à la demande
 
 ```bash
 # Ordonnancer un folder complet
@@ -3711,7 +3510,7 @@ Depuis un job, via une action :
 }
 ```
 
-#### 4.12.3 `ctm run` vs `ctm run order` vs `ctm run ondemand`
+###### 4.12.3 `ctm run` vs `ctm run order` vs `ctm run ondemand`
 
 | Commande | Ce qu'elle fait |
 |---|---|
@@ -3728,11 +3527,11 @@ Depuis un job, via une action :
 
 ---
 
-# Partie V — Création et gestion des traitements
+### Partie V — Création et gestion des traitements
 
-## 5. Créer et gérer des jobs
+#### 5. Créer et gérer des jobs
 
-### 5.1 Les trois voies de création
+##### 5.1 Les trois voies de création
 
 ```mermaid
 flowchart LR
@@ -3755,15 +3554,16 @@ flowchart LR
 | **JSON + Automation API** | DevOps, développeurs | Versionnable en Git, testable, déployable en CI/CD, promouvable entre environnements | Courbe d'apprentissage du DSL |
 | **`ctm-python-client`** | Développeurs Python | Génération programmatique, boucles, logique conditionnelle à la construction | Couche supplémentaire, produit du JSON au final |
 
-> **✅ Bonne pratique**
-> Ces voies ne s'opposent pas. Le motif gagnant : **construire dans l'interface web** pour
-> découvrir et prototyper, **exporter en JSON** (`ctm deploy jobs::get`), puis **basculer en
-> Jobs-as-Code** pour tout ce qui va en production. L'interface reste l'outil de l'exploitant
-> au quotidien ; le JSON est le référentiel.
+:::tip[✅ Bonne pratique]
+Ces voies ne s'opposent pas. Le motif gagnant : **construire dans l'interface web** pour
+découvrir et prototyper, **exporter en JSON** (`ctm deploy jobs::get`), puis **basculer en
+Jobs-as-Code** pour tout ce qui va en production. L'interface reste l'outil de l'exploitant
+au quotidien ; le JSON est le référentiel.
+:::
 
 ---
 
-### 5.2 Créer un job dans Control-M Web
+##### 5.2 Créer un job dans Control-M Web
 
 Le parcours, domaine **Planning** :
 
@@ -3787,7 +3587,7 @@ on lit le JSON produit.
 
 ---
 
-### 5.3 Job de type commande — `Job:Command`
+##### 5.3 Job de type commande — `Job:Command`
 
 Le type le plus simple : exécute une commande système.
 
@@ -3812,14 +3612,15 @@ Le type le plus simple : exécute une commande système.
 | `Host` | Agent d'exécution. **Vide ⇒ exécution sur le Control-M/Server** |
 | `RunAs` | Compte système |
 
-> **⚠️ Attention**
-> `PreCommand` et `PostCommand` s'exécutent dans le **même contexte** que la commande principale.
-> Un `PostCommand` en échec fait échouer le job. Ne mettez pas de nettoyage « best effort »
-> dans `PostCommand` sans le protéger par `|| true`.
+:::caution[⚠️ Attention]
+`PreCommand` et `PostCommand` s'exécutent dans le **même contexte** que la commande principale.
+Un `PostCommand` en échec fait échouer le job. Ne mettez pas de nettoyage « best effort »
+dans `PostCommand` sans le protéger par `|| true`.
+:::
 
 ---
 
-### 5.4 Job de type script — `Job:Script`
+##### 5.4 Job de type script — `Job:Script`
 
 Exécute un script existant sur la machine cible.
 
@@ -3859,7 +3660,7 @@ Exécute un script existant sur la machine cible.
 }
 ```
 
-#### 5.4.1 Anatomie d'un script bien intégré à Control-M
+###### 5.4.1 Anatomie d'un script bien intégré à Control-M
 
 Le script est votre responsabilité, mais Control-M attend certaines choses de lui.
 
@@ -3942,20 +3743,21 @@ echo "Extraction terminee avec succes"
 exit 0
 ```
 
-> **✅ Les sept règles d'un script « Control-M ready »**
-> 1. **La date vient de Control-M** (`%%ODATE`), jamais de `date` dans le script ;
-> 2. **Tout sur stdout/stderr** — c'est ce que Control-M capture dans l'output ;
-> 3. **Vérifier les prérequis d'abord** — échouer vite et clairement ;
-> 4. **Être idempotent** — une relance doit être sûre ;
-> 5. **Des codes retour porteurs de sens** — `0`, `4` (avertissement), `8` (fonctionnel),
->    `16` (technique). Control-M peut alors réagir différemment selon le code ;
-> 6. **Des messages parsables** (`Clé : valeur`) pour `Action:CaptureOutput` et `If:Output` ;
-> 7. **`set -euo pipefail`** — sans cela, une commande en échec au milieu d'un pipe passe
->    inaperçue et le script retourne 0. C'est le bug silencieux classique.
+:::tip[✅ Les sept règles d'un script « Control-M ready »]
+1. **La date vient de Control-M** (`%%ODATE`), jamais de `date` dans le script ;
+2. **Tout sur stdout/stderr** — c'est ce que Control-M capture dans l'output ;
+3. **Vérifier les prérequis d'abord** — échouer vite et clairement ;
+4. **Être idempotent** — une relance doit être sûre ;
+5. **Des codes retour porteurs de sens** — `0`, `4` (avertissement), `8` (fonctionnel),
+   `16` (technique). Control-M peut alors réagir différemment selon le code ;
+6. **Des messages parsables** (`Clé : valeur`) pour `Action:CaptureOutput` et `If:Output` ;
+7. **`set -euo pipefail`** — sans cela, une commande en échec au milieu d'un pipe passe
+   inaperçue et le script retourne 0. C'est le bug silencieux classique.
+:::
 
 ---
 
-### 5.5 Script embarqué — `Job:EmbeddedScript`
+##### 5.5 Script embarqué — `Job:EmbeddedScript`
 
 Le script est **dans la définition du job**. Il n'a pas besoin d'exister sur la machine cible.
 
@@ -3979,26 +3781,28 @@ Le script est **dans la définition du job**. Il n'a pas besoin d'exister sur la
 Variante **`Job:DetachedEmbeddedScript`** : mêmes attributs, mais le script s'exécute en
 processus **détaché** (arrière-plan).
 
-> **✅ Quand l'utiliser**
-> - Traitements courts et stables (contrôles, notifications, calculs simples) ;
-> - Environnements où **déployer un fichier sur l'Agent est difficile** ;
-> - **Bootstrap** : le script embarqué va chercher le vrai code (git clone, téléchargement).
->
-> **Quand l'éviter** : tout script de plus de ~50 lignes. Un script embarqué n'est ni testable
-> unitairement, ni relisible en revue de code, ni versionnable indépendamment. Il devient
-> rapidement une dette technique invisible.
+:::tip[✅ Quand l'utiliser]
+- Traitements courts et stables (contrôles, notifications, calculs simples) ;
+- Environnements où **déployer un fichier sur l'Agent est difficile** ;
+- **Bootstrap** : le script embarqué va chercher le vrai code (git clone, téléchargement).
+
+**Quand l'éviter** : tout script de plus de ~50 lignes. Un script embarqué n'est ni testable
+unitairement, ni relisible en revue de code, ni versionnable indépendamment. Il devient
+rapidement une dette technique invisible.
+:::
 
 ---
 
-### 5.6 Exécuter du Python
+##### 5.6 Exécuter du Python
 
-> **⚠️ Point important**
-> **`Job:Python` n'existe pas.** Il n'y a pas de type de job Python natif.
-> Python s'exécute via `Job:Command`, `Job:Script` ou `Job:EmbeddedScript`.
-> (Le terme « Python » dans l'écosystème Control-M désigne la bibliothèque cliente
-> `ctm-python-client`, qui sert à **écrire** des jobs, pas à en exécuter.)
+:::caution[⚠️ Point important]
+**`Job:Python` n'existe pas.** Il n'y a pas de type de job Python natif.
+Python s'exécute via `Job:Command`, `Job:Script` ou `Job:EmbeddedScript`.
+(Le terme « Python » dans l'écosystème Control-M désigne la bibliothèque cliente
+`ctm-python-client`, qui sert à **écrire** des jobs, pas à en exécuter.)
+:::
 
-#### 5.6.1 Le motif simple
+###### 5.6.1 Le motif simple
 
 ```json
 {
@@ -4011,7 +3815,7 @@ processus **détaché** (arrière-plan).
 }
 ```
 
-#### 5.6.2 Le motif recommandé — un lanceur qui gère l'environnement
+###### 5.6.2 Le motif recommandé — un lanceur qui gère l'environnement
 
 Appeler directement `python3` pose trois problèmes : quel interpréteur, quel environnement
 virtuel, quelles variables d'environnement. Un script lanceur les résout.
@@ -4060,12 +3864,13 @@ exec python3 "${APP_HOME}/jobs/${MODULE}" "$@"
 }
 ```
 
-> **⚠️ `PYTHONUNBUFFERED=1` — le piège qui coûte des heures**
-> Sans cette variable, Python tamponne sa sortie standard. Résultat : pendant qu'un job tourne
-> 40 minutes, l'output Control-M reste **vide**, puis tout apparaît d'un coup à la fin.
-> Et si le job est tué, **vous perdez toute la sortie**. Positionnez-la systématiquement.
+:::caution[⚠️ PYTHONUNBUFFERED=1 — le piège qui coûte des heures]
+Sans cette variable, Python tamponne sa sortie standard. Résultat : pendant qu'un job tourne
+40 minutes, l'output Control-M reste **vide**, puis tout apparaît d'un coup à la fin.
+Et si le job est tué, **vous perdez toute la sortie**. Positionnez-la systématiquement.
+:::
 
-#### 5.6.3 Script Python qui « parle » à Control-M
+###### 5.6.3 Script Python qui « parle » à Control-M
 
 ```python
 #!/usr/bin/env python3
@@ -4234,7 +4039,7 @@ Le job Control-M correspondant, avec exploitation fine des codes retour :
 
 ---
 
-### 5.7 Traitements batch
+##### 5.7 Traitements batch
 
 Un « batch » au sens classique — un programme compilé ou un traitement applicatif long — se
 modélise comme un `Job:Script` ou `Job:Command`, avec quelques précautions particulières.
@@ -4305,7 +4110,7 @@ modélise comme un `Job:Script` ou `Job:Command`, avec quelques précautions par
 
 ---
 
-### 5.8 Transferts de fichiers — `Job:FileTransfer`
+##### 5.8 Transferts de fichiers — `Job:FileTransfer`
 
 Détaillé au chapitre 14. Exemple minimal :
 
@@ -4333,7 +4138,7 @@ Détaillé au chapitre 14. Exemple minimal :
 
 ---
 
-### 5.9 Surveillance de fichiers — `Job:FileWatcher`
+##### 5.9 Surveillance de fichiers — `Job:FileWatcher`
 
 ```json
 {
@@ -4381,24 +4186,25 @@ Détaillé au chapitre 14. Exemple minimal :
 **`Job:FileWatcher:Delete`** attend au contraire la **disparition** d'un fichier — utile pour
 détecter qu'un autre système a consommé un fichier de verrou.
 
-> **⚠️ Le piège du fichier en cours d'écriture**
-> Sans `MinimalAge` ni `MinimumSize`, le file watcher détecte le fichier **dès sa création** —
-> donc pendant que l'émetteur est encore en train de l'écrire. Le traitement lit alors un fichier
-> tronqué.
-> **Trois parades**, par ordre de fiabilité :
-> 1. Demander à l'émetteur d'écrire un **fichier sentinelle** (`fichier.csv.done`) et surveiller
->    celui-là ;
-> 2. Demander l'écriture sous nom temporaire puis renommage atomique — surveiller le nom final ;
-> 3. À défaut : `MinimalAge` (le fichier n'a pas bougé depuis N minutes) **et** `MinimumSize`.
->
-> `TimeLimit: "0"` (illimité) est un piège en production : le job attendra **indéfiniment**,
-> masquant une panne amont. Fixez toujours une limite alignée sur votre SLA.
+:::caution[⚠️ Le piège du fichier en cours d'écriture]
+Sans `MinimalAge` ni `MinimumSize`, le file watcher détecte le fichier **dès sa création** —
+donc pendant que l'émetteur est encore en train de l'écrire. Le traitement lit alors un fichier
+tronqué.
+**Trois parades**, par ordre de fiabilité :
+1. Demander à l'émetteur d'écrire un **fichier sentinelle** (`fichier.csv.done`) et surveiller
+   celui-là ;
+2. Demander l'écriture sous nom temporaire puis renommage atomique — surveiller le nom final ;
+3. À défaut : `MinimalAge` (le fichier n'a pas bougé depuis N minutes) **et** `MinimumSize`.
+
+`TimeLimit: "0"` (illimité) est un piège en production : le job attendra **indéfiniment**,
+masquant une panne amont. Fixez toujours une limite alignée sur votre SLA.
+:::
 
 ---
 
-### 5.10 Jobs applicatifs
+##### 5.10 Jobs applicatifs
 
-#### 5.10.1 Base de données
+###### 5.10.1 Base de données
 
 Attributs communs à tous les types `Job:Database:*` :
 
@@ -4472,7 +4278,7 @@ Autres types : `Job:Database:MSSQL:AgentJob` (`JobName`, `Category`, `RunFromSte
 Types de connection profiles base de données : `DB2`, `JDBC`, `MSSQL`, `Oracle`, `PostgreSQL`,
 `Sybase`.
 
-#### 5.10.2 Services web
+###### 5.10.2 Services web
 
 ```json
 {
@@ -4504,7 +4310,7 @@ Variantes modernes construites avec Application Integrator : `Job:Web Services R
 `Job:Web Services SOAP`, avec des clés à espaces (`Endpoint URL`, `URL Request Path`,
 `HTTP Headers`, `WsRestBody`, `OutputHandling[]`, `Connection Timeout`).
 
-#### 5.10.3 Kubernetes
+###### 5.10.3 Kubernetes
 
 ```json
 {
@@ -4522,13 +4328,14 @@ Variantes modernes construites avec Application Integrator : `Job:Web Services R
 }
 ```
 
-> **⚠️ Attention à la casse et aux espaces**
-> Les types de jobs modernes (Kubernetes, cloud, intégrations) utilisent des clés JSON **avec
-> des espaces** et une casse précise : `"Job Spec Type"`, `"Status Polling Frequency"`,
-> `"State Machine ARN"`. Ce n'est pas une coquille : c'est le nom d'affichage du champ,
-> repris tel quel comme clé JSON. Une majuscule ou un espace en trop, et le `ctm build` échoue.
+:::caution[⚠️ Attention à la casse et aux espaces]
+Les types de jobs modernes (Kubernetes, cloud, intégrations) utilisent des clés JSON **avec
+des espaces** et une casse précise : `"Job Spec Type"`, `"Status Polling Frequency"`,
+`"State Machine ARN"`. Ce n'est pas une coquille : c'est le nom d'affichage du champ,
+repris tel quel comme clé JSON. Une majuscule ou un espace en trop, et le `ctm build` échoue.
+:::
 
-#### 5.10.4 SAP
+###### 5.10.4 SAP
 
 Spellings exacts (attention aux **majuscules**) :
 
@@ -4558,19 +4365,21 @@ Spellings exacts (attention aux **majuscules**) :
 }
 ```
 
-> **⚠️ Attention**
-> `Job:SAP:R3:CreateJob` et `Job:SAP:R3:CopyExistingJob` sont **faux**.
-> Les noms réels sont `Job:SAP:R3:CREATE` et `Job:SAP:R3:COPY`, en majuscules.
+:::caution[⚠️ Attention]
+`Job:SAP:R3:CreateJob` et `Job:SAP:R3:CopyExistingJob` sont **faux**.
+Les noms réels sont `Job:SAP:R3:CREATE` et `Job:SAP:R3:COPY`, en majuscules.
+:::
 
-#### 5.10.5 Cloud
+###### 5.10.5 Cloud
 
-> **Version — dépréciation importante**
-> Les anciens types **sans espaces** (`Job:AWS:Lambda`, `Job:Azure:Function`,
-> `Job:AWS:StepFunction`, `Job:Azure:LogicApps`, `Job:Azure:BatchAccount`, `Job:AWS:Batch`)
-> sont **dépréciés**. Les types actuels utilisent des **espaces** :
-> `Job:AWS Lambda`, `Job:AWS Batch`, `Job:AWS Step Functions`, `Job:AzureFunctions`,
-> `Job:Azure Logic Apps`, `Job:Azure Batch Accounts`.
-> Les nouveaux types prennent tous `Status Polling Frequency` et `Failure Tolerance`.
+:::note[Version — dépréciation importante]
+Les anciens types **sans espaces** (`Job:AWS:Lambda`, `Job:Azure:Function`,
+`Job:AWS:StepFunction`, `Job:Azure:LogicApps`, `Job:Azure:BatchAccount`, `Job:AWS:Batch`)
+sont **dépréciés**. Les types actuels utilisent des **espaces** :
+`Job:AWS Lambda`, `Job:AWS Batch`, `Job:AWS Step Functions`, `Job:AzureFunctions`,
+`Job:Azure Logic Apps`, `Job:Azure Batch Accounts`.
+Les nouveaux types prennent tous `Status Polling Frequency` et `Failure Tolerance`.
+:::
 
 ```json
 {
@@ -4588,7 +4397,7 @@ Spellings exacts (attention aux **majuscules**) :
 }
 ```
 
-#### 5.10.6 Application Integrator
+###### 5.10.6 Application Integrator
 
 Les champs personnalisés créés dans Application Integrator sont préfixés **`AI-`** :
 
@@ -4607,7 +4416,7 @@ Les champs personnalisés créés dans Application Integrator sont préfixés **
 }
 ```
 
-#### 5.10.7 Autres types utiles
+###### 5.10.7 Autres types utiles
 
 | Type | Usage |
 |---|---|
@@ -4632,7 +4441,7 @@ Les champs personnalisés créés dans Application Integrator sont préfixés **
 
 ---
 
-### 5.11 L'objet `Defaults`
+##### 5.11 L'objet `Defaults`
 
 `Defaults` factorise les valeurs communes. **Une valeur au niveau job écrase toujours le
 `Defaults`.**
@@ -4694,18 +4503,20 @@ Les champs personnalisés créés dans Application Integrator sont préfixés **
 }
 ```
 
-> **⚠️ Limitation**
-> **`SiteStandard` n'est pas supporté comme `Defaults` global** : il doit être posé sur le folder.
+:::caution[⚠️ Limitation]
+**`SiteStandard` n'est pas supporté comme `Defaults` global** : il doit être posé sur le folder.
+:::
 
-> **✅ Bonne pratique**
-> Le bloc `Defaults` est **le meilleur endroit pour la gestion d'erreur générique**.
-> Un `If` sur `NOTOK` qui notifie l'exploitation, défini une seule fois dans `Defaults.Job`,
-> couvre automatiquement **tous** les jobs du fichier. Chaque job n'ajoute ensuite que ses
-> traitements d'erreur **spécifiques**. Vous ne pouvez plus oublier de gérer un échec.
+:::tip[✅ Bonne pratique]
+Le bloc `Defaults` est **le meilleur endroit pour la gestion d'erreur générique**.
+Un `If` sur `NOTOK` qui notifie l'exploitation, défini une seule fois dans `Defaults.Job`,
+couvre automatiquement **tous** les jobs du fichier. Chaque job n'ajoute ensuite que ses
+traitements d'erreur **spécifiques**. Vous ne pouvez plus oublier de gérer un échec.
+:::
 
 ---
 
-### 5.12 Exemple complet commenté — une chaîne de production réaliste
+##### 5.12 Exemple complet commenté — une chaîne de production réaliste
 
 Ce fichier est un exemple de bout en bout, exploitable tel quel après adaptation.
 Chaque bloc est commenté en dessous.
@@ -4958,7 +4769,7 @@ Chaque bloc est commenté en dessous.
 }
 ```
 
-#### Décryptage bloc par bloc
+###### Décryptage bloc par bloc
 
 | Bloc | Ce qu'il fait et pourquoi |
 |---|---|
@@ -4998,11 +4809,11 @@ flowchart TB
 
 ---
 
-# Partie VI — Supervision et exploitation
+### Partie VI — Supervision et exploitation
 
-## 6. Supervision et exploitation
+#### 6. Supervision et exploitation
 
-### 6.1 Le domaine Monitoring
+##### 6.1 Le domaine Monitoring
 
 Le domaine **Monitoring** de Control-M Web permet *« de visualiser les jobs, superviser leur
 traitement et contrôler le flux dans votre environnement actif »*.
@@ -5023,7 +4834,7 @@ traitement et contrôler le flux dans votre environnement actif »*.
 | **Documentation** | Documentation d'exploitation attachée |
 | **Services** | Services SLA impactés par ce job |
 
-### 6.2 Les Viewpoints
+##### 6.2 Les Viewpoints
 
 Un **viewpoint** est *« une vue filtrée des folders et jobs de votre environnement actif,
 permettant de superviser en temps réel l'exécution de vos workflows sur plusieurs
@@ -5044,23 +4855,24 @@ Control-M/Servers et Agents »*.
 
 **Limite : 60 000 jobs par viewpoint.**
 
-> **✅ Bonne pratique — la grille de viewpoints d'une équipe de production**
->
-> | Viewpoint | Filtre | Public |
-> |---|---|---|
-> | `PROD — Vue générale` | `Server = PROD` | Tous |
-> | `PROD — En échec` | `Status = Ended Not OK` | Exploitation |
-> | `PROD — En attente > 30 min` | `Status IN (Wait Condition, Wait Resource)` | Exploitation |
-> | `PROD — Services SLA critiques` | `Service Priority = 1` | Astreinte |
-> | `PROD — Finance` | `Application = FINANCE` | Équipe finance |
-> | `DEV/TEST` | `Server IN (DEV, TEST)` | Développeurs |
->
-> Un viewpoint « tout voir » n'est utile à personne : c'est un mur de 40 000 lignes.
-> **Un viewpoint = une question qu'on se pose plusieurs fois par jour.**
+:::tip[✅ Bonne pratique — la grille de viewpoints d'une équipe de production]
 
-### 6.3 Les statuts de job
+| Viewpoint | Filtre | Public |
+|---|---|---|
+| `PROD — Vue générale` | `Server = PROD` | Tous |
+| `PROD — En échec` | `Status = Ended Not OK` | Exploitation |
+| `PROD — En attente > 30 min` | `Status IN (Wait Condition, Wait Resource)` | Exploitation |
+| `PROD — Services SLA critiques` | `Service Priority = 1` | Astreinte |
+| `PROD — Finance` | `Application = FINANCE` | Équipe finance |
+| `DEV/TEST` | `Server IN (DEV, TEST)` | Développeurs |
 
-#### 6.3.1 Statuts renvoyés par l'Automation API
+Un viewpoint « tout voir » n'est utile à personne : c'est un mur de 40 000 lignes.
+**Un viewpoint = une question qu'on se pose plusieurs fois par jour.**
+:::
+
+##### 6.3 Les statuts de job
+
+###### 6.3.1 Statuts renvoyés par l'Automation API
 
 Ce sont les valeurs exactes du champ `status` de `ctm run jobs:status::get` :
 
@@ -5099,19 +4911,20 @@ Exemple de réponse :
 }
 ```
 
-#### 6.3.2 Vocabulaire de l'interface web
+###### 6.3.2 Vocabulaire de l'interface web
 
 L'IHM utilise des libellés parfois différents : *Ended OK, Ended Not OK, Executing, Wait Event,
 Wait Resource, Wait User, Wait Host (z/OS uniquement), Wait Workload, Hold / On Hold,
 Pre-execution, Disappeared, Failed Reason Unknown, Unknown*.
 
-> **⚠️ Deux pièges de vocabulaire**
-> 1. **`Wait Condition` (API) = « Wait Event » (IHM)** — même chose, deux générations de
->    vocabulaire.
-> 2. **« Late » n'est PAS un statut de job.** Le retard est une propriété du **service SLA**,
->    pas du job. Si quelqu'un vous parle d'un « job Late », il parle d'un service en retard.
+:::caution[⚠️ Deux pièges de vocabulaire]
+1. **`Wait Condition` (API) = « Wait Event » (IHM)** — même chose, deux générations de
+   vocabulaire.
+2. **« Late » n'est PAS un statut de job.** Le retard est une propriété du **service SLA**,
+   pas du job. Si quelqu'un vous parle d'un « job Late », il parle d'un service en retard.
+:::
 
-### 6.4 Actions d'exploitation
+##### 6.4 Actions d'exploitation
 
 | Action IHM | Description officielle | Commande API |
 |---|---|---|
@@ -5133,14 +4946,15 @@ Pre-execution, Disappeared, Failed Reason Unknown, Unknown*.
 | — | Voir ce qu'il attend | `ctm run job::waitingInfo <jobId>` |
 | — | Jobs liés (voisinage) | `ctm run job::related <jobId>` |
 
-> **⚠️ Toutes les actions sur un job utilisent `job::` (DOUBLE deux-points)**
-> `ctm run job::hold`, pas `ctm run job:hold`.
-> Les **consultations** utilisent un simple deux-points pour la ressource et un double pour
-> l'action : `ctm run job:output::get`, `ctm run job:log::get`, `ctm run job:status::get`.
-> C'est la grammaire générale du CLI : les segments de ressource se joignent par `:`,
-> l'action se sépare par `::`.
+:::caution[⚠️ Toutes les actions sur un job utilisent job:: (DOUBLE deux-points)]
+`ctm run job::hold`, pas `ctm run job:hold`.
+Les **consultations** utilisent un simple deux-points pour la ressource et un double pour
+l'action : `ctm run job:output::get`, `ctm run job:log::get`, `ctm run job:status::get`.
+C'est la grammaire générale du CLI : les segments de ressource se joignent par `:`,
+l'action se sépare par `::`.
+:::
 
-#### 6.4.1 Le geste d'exploitation type — relancer un job en échec
+###### 6.4.1 Le geste d'exploitation type — relancer un job en échec
 
 ```bash
 # 1. Identifier le job
@@ -5162,22 +4976,23 @@ ctm run job::rerun "ctmsrv-prod:00008"
 watch -n 10 'ctm run job:status::get "ctmsrv-prod:00008"'
 ```
 
-#### 6.4.2 `Set to OK` — le geste à encadrer
+###### 6.4.2 `Set to OK` — le geste à encadrer
 
 `Set to OK` force un job en succès **sans l'exécuter**. Les successeurs partent.
 
-> **⚠️ Attention**
-> C'est le geste le plus dangereux de l'exploitation Control-M. Il est parfois **nécessaire**
-> (le traitement a bien tourné mais le code retour est faux, ou l'action corrective a été faite
-> manuellement), mais il **falsifie l'état réel du système**.
->
-> Encadrez-le :
-> - restreint par RBAC à un rôle précis (pas tous les exploitants) ;
-> - **toujours accompagné d'un commentaire** dans l'outil de suivi d'incident ;
-> - revu en post-mortem : un `Set to OK` récurrent sur le même job est le symptôme d'un problème
->   de conception, pas d'un incident.
+:::caution[⚠️ Attention]
+C'est le geste le plus dangereux de l'exploitation Control-M. Il est parfois **nécessaire**
+(le traitement a bien tourné mais le code retour est faux, ou l'action corrective a été faite
+manuellement), mais il **falsifie l'état réel du système**.
 
-### 6.5 Log, Output, Statistics : trois choses différentes
+Encadrez-le :
+- restreint par RBAC à un rôle précis (pas tous les exploitants) ;
+- **toujours accompagné d'un commentaire** dans l'outil de suivi d'incident ;
+- revu en post-mortem : un `Set to OK` récurrent sur le même job est le symptôme d'un problème
+  de conception, pas d'un incident.
+:::
+
+##### 6.5 Log, Output, Statistics : trois choses différentes
 
 | Élément | Contenu | Question à laquelle il répond |
 |---|---|---|
@@ -5185,17 +5000,18 @@ watch -n 10 'ctm run job:status::get "ctmsrv-prod:00008"'
 | **Output** | *« Les différentes sorties du job sélectionné »* — la sortie réelle du script/programme | **Que s'est-il passé** dans le traitement ? |
 | **Statistics** | *« Control-M Statistics calcule les estimations d'heure de début et de fin, la durée d'exécution et l'écart-type à partir des exécutions passées »* | Ce comportement est-il **anormal** ? |
 
-> **✅ La méthode de diagnostic en trois temps**
-> 1. **Log** : le job a-t-il démarré ? quand ? combien de temps a-t-il tourné ? a-t-il été
->    relancé ?
-> 2. **Output** : quelle erreur exactement ? à quelle ligne ? quel message ?
-> 3. **Statistics** : ce job tourne d'habitude en 4 minutes et a mis 47 minutes — le problème
->    est peut-être ailleurs (volume, contention, infrastructure).
->
-> Beaucoup d'exploitants ne consultent que l'Output. Les statistiques sont pourtant ce qui
-> permet de **détecter une dérive avant l'incident**.
+:::tip[✅ La méthode de diagnostic en trois temps]
+1. **Log** : le job a-t-il démarré ? quand ? combien de temps a-t-il tourné ? a-t-il été
+   relancé ?
+2. **Output** : quelle erreur exactement ? à quelle ligne ? quel message ?
+3. **Statistics** : ce job tourne d'habitude en 4 minutes et a mis 47 minutes — le problème
+   est peut-être ailleurs (volume, contention, infrastructure).
 
-### 6.6 La fonction « Why »
+Beaucoup d'exploitants ne consultent que l'Output. Les statistiques sont pourtant ce qui
+permet de **détecter une dérive avant l'incident**.
+:::
+
+##### 6.6 La fonction « Why »
 
 Quand un job ne démarre pas, la question est toujours la même : **qu'attend-il ?**
 
@@ -5232,9 +5048,9 @@ Description officielle : *« Génère un rapport expliquant pourquoi un SMART fo
 job de la base des jobs actifs est bloqué. Reflète l'option "Why" du volet Tree View de
 Control-M/EM. »*
 
-### 6.7 Alertes
+##### 6.7 Alertes
 
-#### 6.7.1 Les catégories
+###### 6.7.1 Les catégories
 
 | Catégorie | Origine |
 |---|---|
@@ -5242,7 +5058,7 @@ Control-M/EM. »*
 | **System alerts** (aussi *exception alerts* / **xAlerts**) | *« Défaillances de la base Control-M, problèmes réseau et erreurs applicatives »* |
 | **Usage alerts** (CCM, self-hosted) | *« Vous préviennent quand le nombre de tâches dépasse la limite autorisée »* |
 
-#### 6.7.2 Statuts de traitement
+###### 6.7.2 Statuts de traitement
 
 | Statut | Signification officielle |
 |---|---|
@@ -5252,10 +5068,11 @@ Control-M/EM. »*
 
 **Sévérités** : `Normal`, `Urgent`, `Critical`.
 
-> **⚠️ Attention**
-> **« Handled » n'est pas un statut documenté.** Les trois statuts sont New / Reviewed / Closed.
+:::caution[⚠️ Attention]
+**« Handled » n'est pas un statut documenté.** Les trois statuts sont New / Reviewed / Closed.
+:::
 
-#### 6.7.3 Gestion par API
+###### 6.7.3 Gestion par API
 
 ```bash
 # Modifier l'urgence et/ou ajouter un commentaire
@@ -5284,7 +5101,7 @@ curl -H "Authorization: Bearer $token" -H "Content-Type: application/json" \
      -X POST "$endpoint/run/alerts/status/$alertIds" -d @alertes-statut.json
 ```
 
-#### 6.7.4 Destinations de notification
+###### 6.7.4 Destinations de notification
 
 Types exacts utilisés par les actions `Action:Notify` et les objets `Notify:*` :
 
@@ -5300,20 +5117,21 @@ Types exacts utilisés par les actions `Action:Notify` et les objets `Notify:*` 
 Champs d'une destination : **Destination Name**, **Address** (Agent / Server / NICK / Group),
 **Destination**, **Value**.
 
-> **⚠️ Attention — pas de connecteur ITSM natif en distribué**
-> BMC **ne documente pas** de connecteur natif ServiceNow, BMC Remedy ou SNMP pour Control-M
-> distribué. `SNMPDEST` est **z/OS uniquement**.
->
-> Pour intégrer un outil ITSM, deux voies :
-> 1. une destination de type **`Program`** qui appelle un script (celui-ci fait l'appel API vers
->    ServiceNow/Jira/PagerDuty) ;
-> 2. l'**export d'alertes vers un client externe** : les alertes peuvent être *« transférées vers
->    un client externe pour supervision par des outils tiers, comme un système de gestion
->    d'événements »*, configuré via des commandes Automation API et des scripts personnalisés
->    (mécanisme de type webhook).
->
-> L'action `Action:Remedy` existe pour BMC Remedy, mais vérifiez sa disponibilité et sa
-> configuration sur votre plateforme.
+:::caution[⚠️ Attention — pas de connecteur ITSM natif en distribué]
+BMC **ne documente pas** de connecteur natif ServiceNow, BMC Remedy ou SNMP pour Control-M
+distribué. `SNMPDEST` est **z/OS uniquement**.
+
+Pour intégrer un outil ITSM, deux voies :
+1. une destination de type **`Program`** qui appelle un script (celui-ci fait l'appel API vers
+   ServiceNow/Jira/PagerDuty) ;
+2. l'**export d'alertes vers un client externe** : les alertes peuvent être *« transférées vers
+   un client externe pour supervision par des outils tiers, comme un système de gestion
+   d'événements »*, configuré via des commandes Automation API et des scripts personnalisés
+   (mécanisme de type webhook).
+
+L'action `Action:Remedy` existe pour BMC Remedy, mais vérifiez sa disponibilité et sa
+configuration sur votre plateforme.
+:::
 
 **Script de passerelle vers un ITSM** — exemple de destination `Program` :
 
@@ -5339,9 +5157,9 @@ curl --fail --silent --show-error \
               assignment_group:"Exploitation-Production", urgency:"2", impact:"2"}')"
 ```
 
-### 6.8 Suivi opérationnel par API
+##### 6.8 Suivi opérationnel par API
 
-#### 6.8.1 Interroger les statuts
+###### 6.8.1 Interroger les statuts
 
 ```bash
 # Tous les jobs en échec du jour
@@ -5354,14 +5172,14 @@ ctm run jobs:status::get -s "folder=PRD-FIN-CLOTURE-QUOTIDIENNE"
 ctm run jobs:status::get 500 -s "application=FINANCE"
 ```
 
-#### 6.8.2 Suivre une exécution lancée par API
+###### 6.8.2 Suivre une exécution lancée par API
 
 ```bash
 RUN_ID=$(ctm run ma-chaine.json | jq -r '.runId')
 ctm run status "${RUN_ID}"
 ```
 
-#### 6.8.3 Consulter les archives
+###### 6.8.3 Consulter les archives
 
 Si **Control-M Workload Archiving** est installé :
 
@@ -5371,7 +5189,7 @@ ctm archive log::get    <jobId> -s runNo=<numéro>
 ctm archive output::get <jobId> -s runNo=<numéro>
 ```
 
-### 6.9 Erreurs courantes et leur résolution
+##### 6.9 Erreurs courantes et leur résolution
 
 | Symptôme | Cause la plus probable | Vérification | Résolution |
 |---|---|---|---|
@@ -5390,9 +5208,9 @@ ctm archive output::get <jobId> -s runNo=<numéro>
 
 ---
 
-## 7. Gestion des dépendances — approfondissement
+#### 7. Gestion des dépendances — approfondissement
 
-### 7.1 Les quatre façons d'exprimer une dépendance
+##### 7.1 Les quatre façons d'exprimer une dépendance
 
 | Mécanisme | Portée | Quand l'utiliser |
 |---|---|---|
@@ -5401,9 +5219,9 @@ ctm archive output::get <jobId> -s runNo=<numéro>
 | **Événements globaux** | Entre Control-M/Servers | Dépendances inter-environnements géographiques |
 | **`Resource:Lock`** | Globale | Exclusion mutuelle (ce n'est pas une dépendance d'ordre, mais de non-simultanéité) |
 
-### 7.2 Les motifs classiques
+##### 7.2 Les motifs classiques
 
-#### 7.2.1 Séquence linéaire
+###### 7.2.1 Séquence linéaire
 
 ```mermaid
 flowchart LR
@@ -5414,7 +5232,7 @@ flowchart LR
 "Flow": { "Type": "Flow", "Sequence": ["A", "B", "C"] }
 ```
 
-#### 7.2.2 Éventail sortant (fan-out)
+###### 7.2.2 Éventail sortant (fan-out)
 
 Un job termine, plusieurs démarrent en parallèle.
 
@@ -5438,12 +5256,13 @@ flowchart LR
 }
 ```
 
-> **⚠️ Ne pas mettre de `DeleteEvents` sur `EXTRACT-OK` dans les trois consommateurs !**
-> Le premier qui démarre supprimerait l'événement et les deux autres resteraient bloqués.
-> Un événement consommé par plusieurs jobs est supprimé **par un seul job dédié** en fin de
-> chaîne, ou pas du tout (le nettoyage de la New Day s'en charge).
+:::caution[⚠️ Ne pas mettre de DeleteEvents sur EXTRACT-OK dans les trois consommateurs !]
+Le premier qui démarre supprimerait l'événement et les deux autres resteraient bloqués.
+Un événement consommé par plusieurs jobs est supprimé **par un seul job dédié** en fin de
+chaîne, ou pas du tout (le nettoyage de la New Day s'en charge).
+:::
 
-#### 7.2.3 Convergence (fan-in)
+###### 7.2.3 Convergence (fan-in)
 
 ```mermaid
 flowchart LR
@@ -5469,7 +5288,7 @@ flowchart LR
 
 Relation par défaut : **ET**. Les trois événements sont requis.
 
-#### 7.2.4 Convergence avec jalon (recommandé au-delà de 5 prédécesseurs)
+###### 7.2.4 Convergence avec jalon (recommandé au-delà de 5 prédécesseurs)
 
 ```mermaid
 flowchart LR
@@ -5503,12 +5322,13 @@ flowchart LR
 }
 ```
 
-> **✅ Pourquoi c'est meilleur**
-> Sans jalon, 6 producteurs × 8 consommateurs = **48 dépendances** à maintenir.
-> Avec jalon : 6 + 8 = **14**. Et surtout, ajouter une 7ᵉ extraction ne touche qu'un seul job.
-> Le diagramme de flux devient lisible pour un humain.
+:::tip[✅ Pourquoi c'est meilleur]
+Sans jalon, 6 producteurs × 8 consommateurs = **48 dépendances** à maintenir.
+Avec jalon : 6 + 8 = **14**. Et surtout, ajouter une 7ᵉ extraction ne touche qu'un seul job.
+Le diagramme de flux devient lisible pour un humain.
+:::
 
-#### 7.2.5 Dépendance OU
+###### 7.2.5 Dépendance OU
 
 ```json
 "Att": {
@@ -5521,7 +5341,7 @@ flowchart LR
 }
 ```
 
-#### 7.2.6 Dépendance décalée dans le temps
+###### 7.2.6 Dépendance décalée dans le temps
 
 Un job du jour J attend un événement produit la veille :
 
@@ -5541,7 +5361,7 @@ Un job publie pour le lendemain :
 }
 ```
 
-#### 7.2.7 Dépendance externe (date indifférente)
+###### 7.2.7 Dépendance externe (date indifférente)
 
 ```json
 "Att": {
@@ -5550,7 +5370,7 @@ Un job publie pour le lendemain :
 }
 ```
 
-### 7.3 Dépendances inter-applications
+##### 7.3 Dépendances inter-applications
 
 Deux chaînes appartenant à des applications différentes se synchronisent par événements
 partagés. La discipline indispensable : **un contrat d'interface explicite**.
@@ -5570,38 +5390,40 @@ flowchart LR
     E -->|"WaitForEvents"| D1
 ```
 
-> **✅ Bonne pratique — le contrat d'interface**
-> Un événement partagé entre deux équipes est un **contrat d'API**. Formalisez-le :
->
-> | Champ | Valeur |
-> |---|---|
-> | Nom de l'événement | `IF-FIN-VERS-DWH-OK` |
-> | Producteur | Équipe Finance, job `PRD-FIN-VALIDER` |
-> | Consommateur | Équipe Data, job `PRD-DWH-CHARGER` |
-> | Qualificatif de date | `OrderDate` |
-> | Heure de publication attendue | Avant 05:00 |
-> | Qui supprime l'événement | Le consommateur (`PRD-DWH-CHARGER`) |
-> | Que faire si absent à 06:00 | Alerte à l'équipe Finance, escalade à 07:00 |
-> | Contact producteur | finance-prod@exemple.fr |
->
-> Le préfixe `IF-` (interface) rend ces événements immédiatement identifiables : **on ne
-> renomme jamais un événement `IF-` sans prévenir l'autre équipe.**
+:::tip[✅ Bonne pratique — le contrat d'interface]
+Un événement partagé entre deux équipes est un **contrat d'API**. Formalisez-le :
 
-### 7.4 Dépendances inter-environnements
+| Champ | Valeur |
+|---|---|
+| Nom de l'événement | `IF-FIN-VERS-DWH-OK` |
+| Producteur | Équipe Finance, job `PRD-FIN-VALIDER` |
+| Consommateur | Équipe Data, job `PRD-DWH-CHARGER` |
+| Qualificatif de date | `OrderDate` |
+| Heure de publication attendue | Avant 05:00 |
+| Qui supprime l'événement | Le consommateur (`PRD-DWH-CHARGER`) |
+| Que faire si absent à 06:00 | Alerte à l'équipe Finance, escalade à 07:00 |
+| Contact producteur | finance-prod@exemple.fr |
 
-> **⚠️ Attention — une pratique à proscrire**
-> Faire dépendre un job de **PRODUCTION** d'un événement produit en **DÉVELOPPEMENT** est une
-> faute d'architecture. Cela signifie qu'une manipulation d'un développeur peut bloquer — ou pire,
-> débloquer — la production.
->
-> Le sens **autorisé** est l'inverse : un environnement **inférieur** peut attendre un événement
-> d'un environnement **supérieur** (ex. : rafraîchissement des données de TEST après la clôture
-> de PROD). Jamais le contraire.
+Le préfixe `IF-` (interface) rend ces événements immédiatement identifiables : **on ne
+renomme jamais un événement `IF-` sans prévenir l'autre équipe.**
+:::
+
+##### 7.4 Dépendances inter-environnements
+
+:::caution[⚠️ Attention — une pratique à proscrire]
+Faire dépendre un job de **PRODUCTION** d'un événement produit en **DÉVELOPPEMENT** est une
+faute d'architecture. Cela signifie qu'une manipulation d'un développeur peut bloquer — ou pire,
+débloquer — la production.
+
+Le sens **autorisé** est l'inverse : un environnement **inférieur** peut attendre un événement
+d'un environnement **supérieur** (ex. : rafraîchissement des données de TEST après la clôture
+de PROD). Jamais le contraire.
+:::
 
 Techniquement, la dépendance entre deux Control-M/Servers différents passe par le
 **Global Conditions Server (GCS)**, qui *« identifie et distribue les événements globaux »*.
 
-### 7.5 Événements globaux
+##### 7.5 Événements globaux
 
 Un **événement global** est propagé par le GCS à tous les Control-M/Servers pilotés par le même
 Control-M/EM. C'est le mécanisme des dépendances multi-serveurs.
@@ -5615,12 +5437,13 @@ flowchart TB
 
 Les autorisations sur les **Global Events** sont une entité RBAC distincte des **Events** locaux.
 
-> **✅ Bonne pratique**
-> N'utilisez les événements globaux que pour de **vraies** dépendances inter-serveurs.
-> Chaque événement global génère du trafic GCS et de la latence. Sur un environnement mal
-> conçu où tout est global, le GCS devient un goulot d'étranglement.
+:::tip[✅ Bonne pratique]
+N'utilisez les événements globaux que pour de **vraies** dépendances inter-serveurs.
+Chaque événement global génère du trafic GCS et de la latence. Sur un environnement mal
+conçu où tout est global, le GCS devient un goulot d'étranglement.
+:::
 
-### 7.6 Diagnostiquer une dépendance
+##### 7.6 Diagnostiquer une dépendance
 
 ```bash
 # 1. Que le job attend-il ?
@@ -5641,9 +5464,9 @@ ctm run event::add <server> <nomEvenement> <date>
 
 ---
 
-## 8. Gestion des calendriers
+#### 8. Gestion des calendriers
 
-### 8.1 Les trois types de calendriers
+##### 8.1 Les trois types de calendriers
 
 | Type JSON | Nature | Cas d'usage |
 |---|---|---|
@@ -5651,13 +5474,14 @@ ctm run event::add <server> <nomEvenement> <date>
 | `Calendar:Periodic` | Périodes nommées `A`–`Z` (sauf `N` et `Y`) | Cycles de paie, périodes comptables non calendaires, semaines fiscales |
 | `Calendar:RuleBasedCalendar` | Règle réutilisable portant toute la grammaire `When` | « Jours ouvrés », « fin de mois », « chaque 2ᵉ mardi » |
 
-> **⚠️ Attention aux noms de types**
-> Les noms actuels sont `Calendar:Regular`, `Calendar:Periodic` et
-> **`Calendar:RuleBasedCalendar`** (avec le suffixe `Calendar`).
-> `"Type": "Calendar"` et `"Type": "Calendar:RuleBased"` ne sont **pas** confirmés dans la
-> référence de code. Vérifiez sur votre version.
+:::caution[⚠️ Attention aux noms de types]
+Les noms actuels sont `Calendar:Regular`, `Calendar:Periodic` et
+**`Calendar:RuleBasedCalendar`** (avec le suffixe `Calendar`).
+`"Type": "Calendar"` et `"Type": "Calendar:RuleBased"` ne sont **pas** confirmés dans la
+référence de code. Vérifiez sur votre version.
+:::
 
-### 8.2 Calendrier standard — `Calendar:Regular`
+##### 8.2 Calendrier standard — `Calendar:Regular`
 
 ```json
 {
@@ -5696,12 +5520,13 @@ ctm run event::add <server> <nomEvenement> <date>
 Attributs : `Description`, `Server` (nom du serveur ou `Global`), `Alias` (nom du calendrier
 z/OS). Les jours acceptent des **plages** : `"10-15"`.
 
-> **✅ Bonne pratique**
-> Les jours fériés changent chaque année. Créez le calendrier de l'année N+1 **en octobre de
-> l'année N**, versionné dans Git, déployé par pipeline. Un calendrier de fériés vide au
-> 1ᵉʳ janvier fait tourner toute la production un jour férié.
+:::tip[✅ Bonne pratique]
+Les jours fériés changent chaque année. Créez le calendrier de l'année N+1 **en octobre de
+l'année N**, versionné dans Git, déployé par pipeline. Un calendrier de fériés vide au
+1ᵉʳ janvier fait tourner toute la production un jour férié.
+:::
 
-### 8.3 Calendrier périodique — `Calendar:Periodic`
+##### 8.3 Calendrier périodique — `Calendar:Periodic`
 
 Les calendriers périodiques permettent d'exprimer des cycles qui ne suivent pas le calendrier
 grégorien : périodes comptables de 4 semaines, cycles de paie, semaines fiscales.
@@ -5734,7 +5559,7 @@ grégorien : périodes comptables de 4 semaines, cycles de paie, semaines fiscal
 
 **Périodes valides : `A` à `Z`, sauf `N` et `Y`** (réservées), ou `"All"`.
 
-### 8.4 Calendrier à base de règles — `Calendar:RuleBasedCalendar`
+##### 8.4 Calendrier à base de règles — `Calendar:RuleBasedCalendar`
 
 Le plus puissant : il porte la **grammaire `When` complète** et devient réutilisable par
 n'importe quel job.
@@ -5768,7 +5593,7 @@ Attributs `When` supportés : `Schedule`, `MonthDays`, `MonthDaysCalendar`, `Mon
 `WeekDaysCalendar`, `DaysRelation`, `SpecificDates`, `StartDate`, `EndDate`, `ActivePeriod`,
 `DaysKeepActive` (0–99), `ConfirmationCalendars`.
 
-### 8.5 La grammaire `When` complète
+##### 8.5 La grammaire `When` complète
 
 | Clé | Valeurs |
 |---|---|
@@ -5787,11 +5612,12 @@ Attributs `When` supportés : `Schedule`, `MonthDays`, `MonthDaysCalendar`, `Mon
 | `RuleBasedCalendars` | `{"Included": [...], "Excluded": [...], "Relationship": "AND"\|"OR"}` |
 | `ConfirmationCalendars` | `{"Calendar": "...", "ExceptionPolicy": "...", "ShiftBy": "n"}` |
 
-> **⚠️ Attention à l'orthographe**
-> `"Schedule": "Everyday"` — **un seul mot, un seul `d` majuscule au début**.
-> `"EveryDay"` avec un `D` majuscule est incorrect.
+:::caution[⚠️ Attention à l'orthographe]
+`"Schedule": "Everyday"` — **un seul mot, un seul `d` majuscule au début**.
+`"EveryDay"` avec un `D` majuscule est incorrect.
+:::
 
-### 8.6 Les modificateurs de calendrier
+##### 8.6 Les modificateurs de calendrier
 
 Ce sont eux qui donnent toute sa puissance à Control-M. Identiques pour `MonthDays` et
 `WeekDays`.
@@ -5838,17 +5664,18 @@ Ce sont eux qui donnent toute sa puissance à Control-M. Identiques pour `MonthD
 }
 ```
 
-> **⚠️ `Relationship` — la valeur par défaut est `OR`**
-> Si vous voulez que le calendrier à base de règles **restreigne** les critères en ligne
-> (comportement intuitif), vous devez écrire `"Relationship": "AND"` **explicitement**.
-> Par défaut, le job tourne si **l'un OU l'autre** est satisfait — ce qui produit
-> beaucoup plus d'exécutions que prévu.
+:::caution[⚠️ Relationship — la valeur par défaut est OR]
+Si vous voulez que le calendrier à base de règles **restreigne** les critères en ligne
+(comportement intuitif), vous devez écrire `"Relationship": "AND"` **explicitement**.
+Par défaut, le job tourne si **l'un OU l'autre** est satisfait — ce qui produit
+beaucoup plus d'exécutions que prévu.
+:::
 
 **Héritage dans un sous-folder** : un sous-folder hérite des calendriers à base de règles de son
 parent en utilisant le littéral **`"USE PARENT"`** (avec un **espace**, pas un underscore) à la
 place des noms de calendriers.
 
-### 8.7 Les calendriers de confirmation
+##### 8.7 Les calendriers de confirmation
 
 `ConfirmationCalendars` gère les décalages quand une date planifiée tombe un jour non travaillé.
 
@@ -5876,15 +5703,15 @@ place des noms de calendriers.
 
 `ShiftBy` : de **−62 à +62** (défaut `0`).
 
-### 8.8 Recettes de planification
+##### 8.8 Recettes de planification
 
-#### 8.8.1 Quotidien
+###### 8.8.1 Quotidien
 
 ```json
 "When": { "Schedule": "Everyday", "FromTime": "0200", "ToTime": "0600" }
 ```
 
-#### 8.8.2 Tous les jours ouvrés
+###### 8.8.2 Tous les jours ouvrés
 
 ```json
 "When": {
@@ -5893,13 +5720,13 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.3 Hebdomadaire — chaque lundi
+###### 8.8.3 Hebdomadaire — chaque lundi
 
 ```json
 "When": { "WeekDays": ["MON"], "FromTime": "0300" }
 ```
 
-#### 8.8.4 Hebdomadaire — le lundi, ou le jour ouvré suivant si férié
+###### 8.8.4 Hebdomadaire — le lundi, ou le jour ouvré suivant si férié
 
 ```json
 "When": {
@@ -5908,13 +5735,13 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.5 Mensuel — le 1ᵉʳ de chaque mois
+###### 8.8.5 Mensuel — le 1ᵉʳ de chaque mois
 
 ```json
 "When": { "MonthDays": ["1"] }
 ```
 
-#### 8.8.6 Mensuel — 1ᵉʳ jour **ouvré** du mois
+###### 8.8.6 Mensuel — 1ᵉʳ jour **ouvré** du mois
 
 ```json
 "When": {
@@ -5923,7 +5750,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.7 Mensuel — dernier jour **ouvré** du mois
+###### 8.8.7 Mensuel — dernier jour **ouvré** du mois
 
 ```json
 "When": {
@@ -5932,7 +5759,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.8 Mensuel — 3ᵉ jour ouvré avant la fin du mois
+###### 8.8.8 Mensuel — 3ᵉ jour ouvré avant la fin du mois
 
 ```json
 "When": {
@@ -5941,7 +5768,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.9 Le 15, ou le jour ouvré précédent si le 15 est chômé
+###### 8.8.9 Le 15, ou le jour ouvré précédent si le 15 est chômé
 
 ```json
 "When": {
@@ -5950,7 +5777,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.10 Trimestriel — 1ᵉʳ jour ouvré de janvier, avril, juillet, octobre
+###### 8.8.10 Trimestriel — 1ᵉʳ jour ouvré de janvier, avril, juillet, octobre
 
 ```json
 "When": {
@@ -5960,16 +5787,17 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.11 Annuel — dates fixes
+###### 8.8.11 Annuel — dates fixes
 
 ```json
 "When": { "SpecificDates": ["01/02", "07/01", "12/31"] }
 ```
 
-> **⚠️ `SpecificDates` est exclusif**
-> Il ne peut pas être combiné avec `WeekDays`, `Months` ou `MonthDays`.
+:::caution[⚠️ SpecificDates est exclusif]
+Il ne peut pas être combiné avec `WeekDays`, `Months` ou `MonthDays`.
+:::
 
-#### 8.8.12 Le dernier vendredi du mois
+###### 8.8.12 Le dernier vendredi du mois
 
 ```json
 "When": {
@@ -5980,7 +5808,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.13 Campagne limitée dans le temps
+###### 8.8.13 Campagne limitée dans le temps
 
 ```json
 "When": {
@@ -5991,7 +5819,7 @@ place des noms de calendriers.
 }
 ```
 
-#### 8.8.14 Tout sauf une période de gel
+###### 8.8.14 Tout sauf une période de gel
 
 ```json
 "When": {
@@ -6002,12 +5830,13 @@ place des noms de calendriers.
 }
 ```
 
-> **✅ Le motif « gel de fin d'année »**
-> `ActivePeriod: false` sur une plage est **exactement** l'outil pour les périodes de gel :
-> le job ne tourne **pas** entre les deux dates, et reprend automatiquement ensuite.
-> Aucune intervention manuelle, aucun risque d'oubli de réactivation.
+:::tip[✅ Le motif « gel de fin d'année »]
+`ActivePeriod: false` sur une plage est **exactement** l'outil pour les périodes de gel :
+le job ne tourne **pas** entre les deux dates, et reprend automatiquement ensuite.
+Aucune intervention manuelle, aucun risque d'oubli de réactivation.
+:::
 
-#### 8.8.15 Toutes les 15 minutes en journée ouvrée
+###### 8.8.15 Toutes les 15 minutes en journée ouvrée
 
 ```json
 {
@@ -6029,12 +5858,13 @@ place des noms de calendriers.
 }
 ```
 
-### 8.9 Tester une planification
+##### 8.9 Tester une planification
 
-> **✅ La règle d'or**
-> **Ne mettez jamais un calendrier en production sans l'avoir simulé.**
-> Une règle de planification fausse ne se voit pas : elle produit simplement un job qui ne
-> tourne pas — et personne ne s'en aperçoit avant la clôture trimestrielle.
+:::tip[✅ La règle d'or]
+**Ne mettez jamais un calendrier en production sans l'avoir simulé.**
+Une règle de planification fausse ne se voit pas : elle produit simplement un job qui ne
+tourne pas — et personne ne s'en aperçoit avant la clôture trimestrielle.
+:::
 
 Trois méthodes, de la plus légère à la plus complète :
 
@@ -6050,9 +5880,9 @@ ctm run forecast:timeline::poll <pollId>
 
 ---
 
-## 9. Gestion des SLA
+#### 9. Gestion des SLA
 
-### 9.1 Le principe
+##### 9.1 Le principe
 
 Control-M ne se contente pas de **constater** un retard : à partir des statistiques historiques
 d'exécution de chaque job de la chaîne, il **prédit** l'heure de fin et alerte **avant**
@@ -6069,7 +5899,7 @@ flowchart LR
     P -->|"Non"| KO["Slack negatif<br/>ALERTE ANTICIPEE"]
 ```
 
-### 9.2 Définir un service SLA
+##### 9.2 Définir un service SLA
 
 Le SLA est un **job** (`Job:SLAManagement`) placé **à la fin** de la chaîne, qui attend
 l'événement du dernier traitement.
@@ -6096,7 +5926,7 @@ l'événement du dernier traitement.
 }
 ```
 
-### 9.3 Les attributs
+##### 9.3 Les attributs
 
 | Attribut | Valeurs | Notes |
 |---|---|---|
@@ -6110,13 +5940,14 @@ l'événement du dernier traitement.
 | `CompleteIn` | `{"Time": "HH:MM"}` | Échéance **relative** au démarrage du service |
 | `ServiceActions` | Objets `If` / `Action:*` | Interventions automatiques |
 
-> **⚠️ Attention**
-> `JobRunsDeviationsToleranceUnits` **n'existe pas**. Le choix `Percentage` / `Minutes` se fait
-> dans **`AverageRunTimeTolerance.Units`**.
-> Il n'existe pas non plus d'objet folder `"Type": "SLAManagement"` : **uniquement**
-> `"Type": "Job:SLAManagement"`.
+:::caution[⚠️ Attention]
+`JobRunsDeviationsToleranceUnits` **n'existe pas**. Le choix `Percentage` / `Minutes` se fait
+dans **`AverageRunTimeTolerance.Units`**.
+Il n'existe pas non plus d'objet folder `"Type": "SLAManagement"` : **uniquement**
+`"Type": "Job:SLAManagement"`.
+:::
 
-### 9.4 `CompleteBy` ou `CompleteIn` ?
+##### 9.4 `CompleteBy` ou `CompleteIn` ?
 
 | | `CompleteBy` | `CompleteIn` |
 |---|---|---|
@@ -6135,7 +5966,7 @@ l'événement du dernier traitement.
 `Days` dans `CompleteBy` permet de franchir minuit : `{"Time": "02:00", "Days": "1"}` = « terminé
 avant 02:00 **le lendemain** ».
 
-### 9.5 Tolérances : écarts-types ou pourcentage ?
+##### 9.5 Tolérances : écarts-types ou pourcentage ?
 
 | Méthode | Quand l'utiliser |
 |---|---|
@@ -6151,13 +5982,14 @@ avant 02:00 **le lendemain** ».
 "AverageRunTimeTolerance": { "Units": "Minutes", "AverageRunTime": "10" }
 ```
 
-> **⚠️ Prérequis absolu : l'historique**
-> La prédiction repose sur **Control-M Statistics**. Un job **sans historique** ne peut pas être
-> prédit : le service affichera `jobsWithoutStatistics > 0` et sa prédiction sera fausse.
-> **Ne posez pas de SLA sur une chaîne le jour de sa mise en production** : laissez-la tourner
-> deux à quatre semaines pour accumuler des statistiques représentatives.
+:::caution[⚠️ Prérequis absolu : l'historique]
+La prédiction repose sur **Control-M Statistics**. Un job **sans historique** ne peut pas être
+prédit : le service affichera `jobsWithoutStatistics > 0` et sa prédiction sera fausse.
+**Ne posez pas de SLA sur une chaîne le jour de sa mise en production** : laissez-la tourner
+deux à quatre semaines pour accumuler des statistiques représentatives.
+:::
 
-### 9.6 Les notions clés
+##### 9.6 Les notions clés
 
 | Notion | Définition officielle |
 |---|---|
@@ -6176,13 +6008,14 @@ path*, *Job ran too long*, *Job finished too quickly*, *Service ended OK / NOT O
 
 **Onglets du panneau service** : Summary, Errors, Parameters, Log, Tickets.
 
-> **✅ « Job finished too quickly » — l'alerte qu'on oublie de poser**
-> Un job qui termine en 3 secondes au lieu de 12 minutes **est un incident**, même s'il retourne 0.
-> C'est typiquement le symptôme d'un fichier source vide, d'un filtre trop restrictif ou d'une
-> requête qui ne ramène rien. Sans cette alerte, l'anomalie se découvre… lors de la clôture,
-> trois semaines plus tard.
+:::tip[✅ « Job finished too quickly » — l'alerte qu'on oublie de poser]
+Un job qui termine en 3 secondes au lieu de 12 minutes **est un incident**, même s'il retourne 0.
+C'est typiquement le symptôme d'un fichier source vide, d'un filtre trop restrictif ou d'une
+requête qui ne ramène rien. Sans cette alerte, l'anomalie se découvre… lors de la clôture,
+trois semaines plus tard.
+:::
 
-### 9.7 Consulter les services par API
+##### 9.7 Consulter les services par API
 
 ```bash
 ctm run services:sla::get
@@ -6236,7 +6069,7 @@ Réponse :
 | `jobsWithoutStatistics` | **> 0 signifie que la prédiction est peu fiable** |
 | `statusByJobs` | Répartition des jobs par état — où ça coince |
 
-### 9.8 Tableau de bord SLA — script d'exploitation
+##### 9.8 Tableau de bord SLA — script d'exploitation
 
 ```bash
 #!/usr/bin/env bash
@@ -6260,7 +6093,7 @@ ctm run services:sla::get | jq -r '
   | awk 'NR==1{print; next} /^-/{print "\033[31m" $0 "\033[0m"; next} {print}'
 ```
 
-### 9.9 Bonnes pratiques SLA
+##### 9.9 Bonnes pratiques SLA
 
 | Pratique | Justification |
 |---|---|
@@ -6276,11 +6109,11 @@ ctm run services:sla::get | jq -r '
 
 ---
 
-# Partie VII — Control-M Automation API
+### Partie VII — Control-M Automation API
 
-## 10. L'Automation API
+#### 10. L'Automation API
 
-### 10.1 Rôle et positionnement
+##### 10.1 Rôle et positionnement
 
 L'**Automation API** est la surface programmable de Control-M. Elle transforme un outil
 d'ordonnancement piloté à la souris en une plateforme **pilotable par du code**, et rend possibles :
@@ -6290,7 +6123,7 @@ d'ordonnancement piloté à la souris en une plateforme **pilotable par du code*
 - l'**automatisation de l'exploitation** (déblocages, relances, reporting) ;
 - l'**administration as code** (agents, rôles, secrets, ressources).
 
-### 10.2 Architecture
+##### 10.2 Architecture
 
 ```mermaid
 flowchart LR
@@ -6333,14 +6166,15 @@ quel langage et n'importe quel runner CI.
 | Ports internes du service | 32080, 32081 (jamais exposés) |
 | Processus | `emrestsrv` |
 
-> **⚠️ SaaS — attention au nom d'hôte**
-> Le nom d'hôte SaaS porte un suffixe **`-aapi`** sur le segment du tenant :
-> `tenant-123-aapi.us1.controlm.com`, **pas** `tenant-123.us1.controlm.com`.
-> Et il n'y a **pas de port `:8443`**.
+:::caution[⚠️ SaaS — attention au nom d'hôte]
+Le nom d'hôte SaaS porte un suffixe **`-aapi`** sur le segment du tenant :
+`tenant-123-aapi.us1.controlm.com`, **pas** `tenant-123.us1.controlm.com`.
+Et il n'y a **pas de port `:8443`**.
+:::
 
-### 10.3 Installation du CLI
+##### 10.3 Installation du CLI
 
-#### 10.3.1 Version actuelle (Python)
+###### 10.3.1 Version actuelle (Python)
 
 **Prérequis** :
 
@@ -6350,12 +6184,13 @@ quel langage et n'importe quel runner CI.
 | **pip** | **20.1.1** |
 | **Java** — installation **externe**, pour le service `provision` | **17 ou supérieur**, 64 bits |
 
-> **⚠️ Ne pas confondre les deux Java**
-> Le Java 17 externe exigé ici est celui **du poste où tourne le CLI**, utilisé par le service
-> `provision`. Il est **distinct** du Java utilisé par le **serveur** Automation API sur le
-> Control-M/EM. L'annonce BMC est sans ambiguïté : *« Control-M Automation API version 9.0.21.325
-> … will require an external Java installation of version 17 or higher, and will no longer
-> support Java 11. »*
+:::caution[⚠️ Ne pas confondre les deux Java]
+Le Java 17 externe exigé ici est celui **du poste où tourne le CLI**, utilisé par le service
+`provision`. Il est **distinct** du Java utilisé par le **serveur** Automation API sur le
+Control-M/EM. L'annonce BMC est sans ambiguïté : *« Control-M Automation API version 9.0.21.325
+… will require an external Java installation of version 17 or higher, and will no longer
+support Java 11. »*
+:::
 
 ```bash
 # 1. Télécharger l'installeur depuis votre Control-M/EM
@@ -6374,14 +6209,15 @@ ctm
 ctm -v
 ```
 
-> **Version**
-> - Sur **AIX**, utilisez un Python provenant de l'*IBM AIX Toolbox* officiel.
-> - Si le CLI est installé derrière un **proxy**, les paramètres de proxy doivent être définis.
-> - Le paramètre **`rootCertificateRequired`** à `true` impose l'acceptation des seuls
->   certificats signés par une CA (rejette les auto-signés).
-> - **L'Automation API exige Java 17+ depuis 9.0.21.325 et ne supporte plus Java 11.**
+:::note[Version]
+- Sur **AIX**, utilisez un Python provenant de l'*IBM AIX Toolbox* officiel.
+- Si le CLI est installé derrière un **proxy**, les paramètres de proxy doivent être définis.
+- Le paramètre **`rootCertificateRequired`** à `true` impose l'acceptation des seuls
+  certificats signés par une CA (rejette les auto-signés).
+- **L'Automation API exige Java 17+ depuis 9.0.21.325 et ne supporte plus Java 11.**
+:::
 
-#### 10.3.2 Version historique (Node.js, ≤ 9.0.20)
+###### 10.3.2 Version historique (Node.js, ≤ 9.0.20)
 
 ```bash
 wget --no-check-certificate https://<hôte_EM>:8443/automation-api/ctm-cli.tgz
@@ -6390,18 +6226,19 @@ npm install -g ctm-cli.tgz
 
 Prérequis : Node.js 4.x+, npm 3.x+, Java 8 64 bits pour le service `provision`.
 
-> **Version**
-> Lors d'une montée de version automatique, *« le CLI est également migré de Node.js vers Python
-> si possible »*. L'usage de l'ancien CLI est journalisé côté serveur dans `old-cli-usage.log`.
+:::note[Version]
+Lors d'une montée de version automatique, *« le CLI est également migré de Node.js vers Python
+si possible »*. L'usage de l'ancien CLI est journalisé côté serveur dans `old-cli-usage.log`.
+:::
 
-#### 10.3.3 Installation en Control-M SaaS
+###### 10.3.3 Installation en Control-M SaaS
 
 Via l'IHM : **Configuration → Plug-ins → Install Plug-in → Automation API**.
 Installeurs : `DR5V3_Linux-x86_64.BIN` (Linux) ou `DR5V3_windows_x86_64.exe` (Windows).
 L'URL S3 de l'installeur est récupérable par `ctm provision installer:url::get`.
 La voie Python (`install_ctm_cli.py`) fonctionne également.
 
-### 10.4 La grammaire du CLI
+##### 10.4 La grammaire du CLI
 
 ```text
 ctm <service> <commande> [arguments] [options]
@@ -6430,12 +6267,13 @@ ctm config server:hostgroups::get <server>
 | `-t <token>` | Jeton de session à utiliser pour cette commande |
 | `-e <environnement>` | Environnement à cibler (autre que celui par défaut) |
 
-> **✅ `ctm <service> -h` est votre meilleure documentation**
-> L'aide du CLI est générée depuis la version **exactement installée sur votre plateforme**.
-> Elle est donc toujours plus juste qu'un guide générique. Prenez le réflexe :
-> `ctm run -h`, `ctm run job -h`, `ctm config authorization -h`.
+:::tip[✅ ctm <service> -h est votre meilleure documentation]
+L'aide du CLI est générée depuis la version **exactement installée sur votre plateforme**.
+Elle est donc toujours plus juste qu'un guide générique. Prenez le réflexe :
+`ctm run -h`, `ctm run job -h`, `ctm config authorization -h`.
+:::
 
-### 10.5 Les services
+##### 10.5 Les services
 
 | Service | Rôle |
 |---|---|
@@ -6453,16 +6291,16 @@ ctm config server:hostgroups::get <server>
 | **`usage`** | Comptage des tâches |
 | **`documentation`** | Documentation |
 
-### 10.6 Authentification
+##### 10.6 Authentification
 
-#### 10.6.1 Deux types de jetons
+###### 10.6.1 Deux types de jetons
 
 | Type | En-tête HTTP | Durée | Usage recommandé |
 |---|---|---|---|
 | **Jeton d'API** (9.0.21+) | `x-api-key: <token>` | **Longue** — date d'expiration fixée à la création | **CI/CD, automatisation, scripts** |
 | **Jeton de session** | `Authorization: Bearer <token>` | **30 minutes** | Usage interactif, développement |
 
-#### 10.6.2 Le service `session`
+###### 10.6.2 Le service `session`
 
 | CLI | REST |
 |---|---|
@@ -6470,10 +6308,11 @@ ctm config server:hostgroups::get <server>
 | `ctm session logout <token>` | `POST /session/logout` |
 | `ctm session user:password::update <mdpActuel> <nouveauMdp>` | `POST /session/user/password/update` |
 
-> **⚠️ `ctm session login` ne prend PAS d'options `-u` / `-p`**
-> Il **demande les identifiants de façon interactive**. L'option `-p` n'existe que sur
-> `session user:password::update`.
-> Pour de l'automatisation, utilisez un **jeton d'API** (§10.6.4), pas un login scripté.
+:::caution[⚠️ ctm session login ne prend PAS d'options -u / -p]
+Il **demande les identifiants de façon interactive**. L'option `-p` n'existe que sur
+`session user:password::update`.
+Pour de l'automatisation, utilisez un **jeton d'API** (§10.6.4), pas un login scripté.
+:::
 
 **Corps de la requête de login** :
 
@@ -6520,7 +6359,7 @@ Charge utile du changement de mot de passe (les deux champs acceptent du texte c
 ctm config servers::get -t "<TOKEN>"
 ```
 
-#### 10.6.3 Durée de vie du jeton de session
+###### 10.6.3 Durée de vie du jeton de session
 
 > *« Un jeton est valide 30 minutes. »*
 
@@ -6534,16 +6373,18 @@ automation_api_config --allow_token_in_uri true|false
 Le plafond est fixé par le paramètre système **`MaxUserTimeoutSec`** (défaut **10 800 s = 3 h**).
 L'application redémarre le processus `emrestsrv`.
 
-> **Note — l'expiration n'est pas à la seconde près**
-> L'expiration effective d'un jeton de session peut être **différée jusqu'à 10 minutes** en
-> raison du paramètre `EM_REFRESH_INTERVAL`. N'écrivez donc pas de logique métier reposant sur
-> une expiration à la minute exacte : renouvelez le jeton avec une marge (25 minutes plutôt
-> que 30, comme le fait le client Python du §13.3).
+:::note[Note — l'expiration n'est pas à la seconde près]
+L'expiration effective d'un jeton de session peut être **différée jusqu'à 10 minutes** en
+raison du paramètre `EM_REFRESH_INTERVAL`. N'écrivez donc pas de logique métier reposant sur
+une expiration à la minute exacte : renouvelez le jeton avec une marge (25 minutes plutôt
+que 30, comme le fait le client Python du §13.3).
+:::
 
-#### 10.6.4 Le service `authentication` — jetons d'API
+###### 10.6.4 Le service `authentication` — jetons d'API
 
-> **⚠️ Ce n'est PAS `ctm config authentication:token::add`**
-> Les jetons d'API relèvent d'un **service à part entière** : `ctm authentication`.
+:::caution[⚠️ Ce n'est PAS ctm config authentication:token::add]
+Les jetons d'API relèvent d'un **service à part entière** : `ctm authentication`.
+:::
 
 | CLI | REST |
 |---|---|
@@ -6569,8 +6410,10 @@ L'application redémarre le processus `emrestsrv`.
 | `expirationDate` | `AAAA-MM-JJ`, en **UTC**. Optionnel : sans valeur, le jeton **n'expire jamais** |
 | `roles` | **Obligatoire, au moins un rôle.** L'utilisateur qui crée le jeton **doit appartenir à tous les rôles listés** |
 
-> **⚠️ `token::update` ne peut pas changer le nom** et exige que **tous** les paramètres soient
-> présents dans le fichier.
+:::caution[⚠️ token::update ne peut pas changer le nom]
+et exige que **tous** les paramètres soient
+présents dans le fichier.
+:::
 
 **En curl** :
 
@@ -6591,20 +6434,21 @@ ctm environment set prod
 curl -H "x-api-key: <TOKEN_API>" "$endpoint/config/servers"
 ```
 
-> **✅ Bonne pratique — un jeton par usage**
-> Ne réutilisez **jamais** le même jeton pour plusieurs pipelines ou environnements.
-> Un jeton = un usage = un rôle minimal = une date d'expiration.
-> | Jeton | Rôle | Expiration |
-> |---|---|---|
-> | `cicd-gitlab-dev` | `DEPLOIEUR_DEV` | 12 mois |
-> | `cicd-gitlab-prod` | `DEPLOIEUR_PROD` | 6 mois |
-> | `monitoring-readonly` | `LECTEUR` | 12 mois |
-> | `sauvegarde-definitions` | `LECTEUR` | 12 mois |
->
-> **Ne créez jamais de jeton sans date d'expiration** en production : c'est une clé permanente
-> qui survivra au départ de son créateur.
+:::tip[✅ Bonne pratique — un jeton par usage]
+Ne réutilisez **jamais** le même jeton pour plusieurs pipelines ou environnements.
+Un jeton = un usage = un rôle minimal = une date d'expiration.
+| Jeton | Rôle | Expiration |
+|---|---|---|
+| `cicd-gitlab-dev` | `DEPLOIEUR_DEV` | 12 mois |
+| `cicd-gitlab-prod` | `DEPLOIEUR_PROD` | 6 mois |
+| `monitoring-readonly` | `LECTEUR` | 12 mois |
+| `sauvegarde-definitions` | `LECTEUR` | 12 mois |
 
-#### 10.6.5 Stockage des environnements
+**Ne créez jamais de jeton sans date d'expiration** en production : c'est une clé permanente
+qui survivra au départ de son créateur.
+:::
+
+###### 10.6.5 Stockage des environnements
 
 Les environnements (endpoint, utilisateur, jeton) sont stockés dans **`env.json`**, dans le
 répertoire **`.ctm`** du répertoire personnel de l'utilisateur connecté.
@@ -6615,23 +6459,24 @@ chmod 700 ~/.ctm
 chmod 600 ~/.ctm/env.json
 ```
 
-> **⚠️ Points non documentés**
-> Un fichier `.ctmrc` et des variables d'environnement `AUTOMATION_API_TOKEN` / `CTM_TOKEN`
-> **ne sont documentés nulle part** par BMC. Ne construisez pas d'automatisation dessus.
-> Il n'existe pas non plus d'endpoint `GET /session` : seuls les trois POST existent.
-> De même, l'authentification **LDAP / AD / SAML pour l'API** n'est pas documentée par BMC
-> (LDAP n'apparaît que pour l'**autorisation**, via `ctm config authorization:ldap:role::add`).
+:::caution[⚠️ Points non documentés]
+Un fichier `.ctmrc` et des variables d'environnement `AUTOMATION_API_TOKEN` / `CTM_TOKEN`
+**ne sont documentés nulle part** par BMC. Ne construisez pas d'automatisation dessus.
+Il n'existe pas non plus d'endpoint `GET /session` : seuls les trois POST existent.
+De même, l'authentification **LDAP / AD / SAML pour l'API** n'est pas documentée par BMC
+(LDAP n'apparaît que pour l'**autorisation**, via `ctm config authorization:ldap:role::add`).
+:::
 
 ---
 
-### 10.7 Référence des commandes
+##### 10.7 Référence des commandes
 
 Cette section détaille, pour chaque commande importante : **objectif, syntaxe, paramètres,
 exemple, résultat attendu, erreurs possibles, bonnes pratiques**.
 
 ---
 
-#### 10.7.1 `ctm environment configure`
+###### 10.7.1 `ctm environment configure`
 
 **Objectif** — modifier un réglage du CLI pour l'environnement courant.
 
@@ -6677,7 +6522,7 @@ ctm environment configure rootCertificateRequired true
 
 ---
 
-#### 10.7.2 `ctm environment` — le service complet
+###### 10.7.2 `ctm environment` — le service complet
 
 **Objectif** — définir, sélectionner et gérer les environnements cibles. **Service CLI
 uniquement : aucune API REST.**
@@ -6697,9 +6542,11 @@ ctm environment load <fichierEnvironnements>
 ctm environment configure <réglage> [valeur]
 ```
 
-> **⚠️ Il n'existe pas de `ctm environment list`.** La commande de listage est
-> **`ctm environment show`**.
-> La copie s'écrit littéralement `ctm environment <env> <nouvelEnv>`, sans mot-clé `copy`.
+:::caution[⚠️ Il n'existe pas de ctm environment list.]
+La commande de listage est
+**`ctm environment show`**.
+La copie s'écrit littéralement `ctm environment <env> <nouvelEnv>`, sans mot-clé `copy`.
+:::
 
 **Exemple complet**
 
@@ -6757,7 +6604,7 @@ l'environnement courant.
 
 ---
 
-#### 10.7.3 `ctm session login`
+###### 10.7.3 `ctm session login`
 
 **Objectif** — ouvrir une session interactive et obtenir un jeton valable 30 minutes.
 
@@ -6822,9 +6669,10 @@ Ligne par ligne :
 | **503** | *Service unavailable* | EM en cours de démarrage | Attendre, puis réessayer |
 | Erreur TLS | — | Certificat non approuvé | `-k` (dev) ou installer la CA (prod) |
 
-> **⚠️ L'authentification échouée renvoie 403, pas 401.**
-> C'est contre-intuitif mais c'est ce que documente BMC. Si vous traitez les codes HTTP dans du
-> code, ne cherchez pas 401.
+:::caution[⚠️ L'authentification échouée renvoie 403, pas 401.]
+C'est contre-intuitif mais c'est ce que documente BMC. Si vous traitez les codes HTTP dans du
+code, ne cherchez pas 401.
+:::
 
 **Bonnes pratiques**
 
@@ -6836,7 +6684,7 @@ Ligne par ligne :
 
 ---
 
-#### 10.7.4 `ctm build`
+###### 10.7.4 `ctm build`
 
 **Objectif** — **valider** les définitions (jobs, folders, calendriers) contre les règles
 Control-M et les *site standards*, **sans rien déployer**.
@@ -6965,7 +6813,7 @@ ctm build definitions/
 
 ---
 
-#### 10.7.5 `ctm deploy`
+###### 10.7.5 `ctm deploy`
 
 **Objectif** — **enregistrer** les définitions dans Control-M. C'est l'équivalent d'un
 « check-in » : le job existe désormais dans la base EM, mais **n'est pas exécuté**.
@@ -7105,7 +6953,7 @@ ctm deploy nouvelles-definitions.json
 
 ---
 
-#### 10.7.6 `ctm run`
+###### 10.7.6 `ctm run`
 
 **Objectif** — **déployer et exécuter immédiatement** les définitions d'un fichier. C'est la
 commande du **développeur**, pas de la production.
@@ -7160,20 +7008,21 @@ ctm run ondemand <definitions.json> [deployDescriptor.json]
 
 **Bonnes pratiques**
 
-> **⚠️ `ctm run` n'est PAS une commande de production.**
-> Elle déploie **et** exécute. En production, on veut ces deux actions **séparées** :
-> le pipeline `deploy` (contrôlé, tracé, réversible), puis l'ordonnancement (`ctm run order`)
-> ou l'ordonnancement automatique par la New Day.
->
-> | Contexte | Commande |
-> |---|---|
-> | Développement local, Workbench | `ctm run` |
-> | Pipeline CI, environnement DEV | `ctm run` acceptable pour les tests |
-> | Pipeline CI, TEST / PREPROD / PROD | `ctm build` → `ctm deploy` → (`ctm run order` si nécessaire) |
+:::caution[⚠️ ctm run n'est PAS une commande de production.]
+Elle déploie **et** exécute. En production, on veut ces deux actions **séparées** :
+le pipeline `deploy` (contrôlé, tracé, réversible), puis l'ordonnancement (`ctm run order`)
+ou l'ordonnancement automatique par la New Day.
+
+| Contexte | Commande |
+|---|---|
+| Développement local, Workbench | `ctm run` |
+| Pipeline CI, environnement DEV | `ctm run` acceptable pour les tests |
+| Pipeline CI, TEST / PREPROD / PROD | `ctm build` → `ctm deploy` → (`ctm run order` si nécessaire) |
+:::
 
 ---
 
-#### 10.7.7 `ctm run status`
+###### 10.7.7 `ctm run status`
 
 **Objectif** — suivre l'exécution lancée par un `ctm run`, à partir de son `runId`.
 
@@ -7292,15 +7141,16 @@ done
 
 ---
 
-#### 10.7.8 `ctm run jobs:status::get`
+###### 10.7.8 `ctm run jobs:status::get`
 
 **Objectif** — interroger le statut des jobs de l'environnement actif selon des critères de
 recherche. C'est **la commande de supervision** par excellence.
 
-> **⚠️ Orthographe exacte**
-> C'est **`ctm run jobs:status::get`**, avec un simple deux-points entre `jobs` et `status`,
-> et un **double** deux-points avant `get`.
-> `ctm run jobs:status` seul, ou `ctm run jobs:get`, n'existent pas.
+:::caution[⚠️ Orthographe exacte]
+C'est **`ctm run jobs:status::get`**, avec un simple deux-points entre `jobs` et `status`,
+et un **double** deux-points avant `get`.
+`ctm run jobs:status` seul, ou `ctm run jobs:get`, n'existent pas.
+:::
 
 **Syntaxe**
 
@@ -7418,7 +7268,7 @@ ctm run jobs:status::get -s "server=ctmsrv-prod" \
 
 ---
 
-#### 10.7.9 `ctm config`
+###### 10.7.9 `ctm config`
 
 **Objectif** — configurer l'environnement Control-M : serveurs, agents, host groups, run-as users,
 autorisations, secrets, certificats.
@@ -7458,10 +7308,11 @@ ctm config server:agent:params::get <server> <agent>
 ctm config server:agent:param::set  <server> <agent> <nom>
 ```
 
-> **⚠️ `ctm config agents::get` n'existe pas.**
-> La commande est **`ctm config server:agents::get <server>`** — le serveur est obligatoire.
-> Il n'existe pas non plus de `server:agent::get` au singulier : utilisez `server:agents::get`
-> avec un motif `agent=`.
+:::caution[⚠️ ctm config agents::get n'existe pas.]
+La commande est **`ctm config server:agents::get <server>`** — le serveur est obligatoire.
+Il n'existe pas non plus de `server:agent::get` au singulier : utilisez `server:agents::get`
+avec un motif `agent=`.
+:::
 
 *Certificats d'agents*
 
@@ -7576,7 +7427,7 @@ ctm config secrets::get                     > backup/secrets-noms.json   # noms 
 
 ---
 
-#### 10.7.10 Autres commandes du service `run`
+###### 10.7.10 Autres commandes du service `run`
 
 **Gestion des jobs**
 
@@ -7659,21 +7510,22 @@ ctm config secrets::get                     > backup/secrets-noms.json   # noms 
 | `ctm run alerts::update -f <config.json>` | `POST /run/alerts` |
 | `ctm run alerts:status::update <alertIds> -f <config.json>` | `POST /run/alerts/status/$alertIds` |
 
-> **⚠️ Commandes fréquemment citées qui N'EXISTENT PAS**
-> | Écriture erronée | Réalité |
-> |---|---|
-> | `ctm run wait` | N'existe pas — écrire une boucle sur `ctm run status` |
-> | `ctm run variables:*` | N'existe pas — les variables passent par un fichier de configuration |
-> | `ctm run folder:order` | La commande est `ctm run order <ctm> <folder>` |
-> | `ctm run restart` | L'équivalent est `ctm run job::rerun` |
-> | `ctm run jobs:get` | La commande est `ctm run jobs:status::get` |
-> | `ctm run alerts::get` | Seules `alerts::update` et `alerts:status::update` existent |
-> | `ctm run service:*` | L'orthographe est `ctm run services:sla::get` |
-> | `ctm run job:rerun` (simple `:`) | **Toutes** les actions sur job utilisent `job::` |
+:::caution[⚠️ Commandes fréquemment citées qui N'EXISTENT PAS]
+| Écriture erronée | Réalité |
+|---|---|
+| `ctm run wait` | N'existe pas — écrire une boucle sur `ctm run status` |
+| `ctm run variables:*` | N'existe pas — les variables passent par un fichier de configuration |
+| `ctm run folder:order` | La commande est `ctm run order <ctm> <folder>` |
+| `ctm run restart` | L'équivalent est `ctm run job::rerun` |
+| `ctm run jobs:get` | La commande est `ctm run jobs:status::get` |
+| `ctm run alerts::get` | Seules `alerts::update` et `alerts:status::update` existent |
+| `ctm run service:*` | L'orthographe est `ctm run services:sla::get` |
+| `ctm run job:rerun` (simple `:`) | **Toutes** les actions sur job utilisent `job::` |
+:::
 
 ---
 
-#### 10.7.11 Les services `provision`, `reporting`, `package`, `archive`, `usage`
+###### 10.7.11 Les services `provision`, `reporting`, `package`, `archive`, `usage`
 
 **`provision`** — installation de composants
 
@@ -7709,8 +7561,10 @@ ctm provision upgrade::cancel    <upgradeID>
 ctm provision upgrade::delete    <upgradeID>
 ```
 
-> **⚠️** `ctm provision install` et `ctm provision setup` **sans préfixe n'existent pas** :
-> ce sont `agent::install` / `agent::setup` / `server::install` / `server::setup`.
+:::caution[⚠️]
+`ctm provision install` et `ctm provision setup` **sans préfixe n'existent pas** :
+ce sont `agent::install` / `agent::setup` / `server::install` / `server::setup`.
+:::
 
 **`reporting`** — génération de rapports
 
@@ -7754,9 +7608,9 @@ ctm package folderDeploy.zip /srv/controlm/definitions
 
 ---
 
-### 10.8 Utiliser l'API directement en `curl`
+##### 10.8 Utiliser l'API directement en `curl`
 
-#### 10.8.1 L'exemple de référence, ligne par ligne
+###### 10.8.1 L'exemple de référence, ligne par ligne
 
 ```bash
 curl -X POST \
@@ -7773,22 +7627,23 @@ curl -X POST \
 | `-H "Authorization: Bearer <TOKEN>"` | En-tête d'authentification par **jeton de session**. Pour un **jeton d'API**, utiliser `-H "x-api-key: <TOKEN>"` à la place |
 | `https://.../automation-api/session/login` | L'endpoint. Notez le préfixe `/automation-api` sur **tous** les chemins |
 
-> **⚠️ Une nuance sur cet exemple**
-> Un `POST /session/login` sert **précisément à obtenir** un jeton : il n'en attend donc pas
-> en entrée. L'appel ci-dessus, avec un `Authorization: Bearer`, est syntaxiquement valide mais
-> conceptuellement bancal — c'est le **corps** de la requête qui doit porter les identifiants :
->
-> ```bash
-> curl -X POST \
->   -H "Content-Type: application/json" \
->   -d '{"username":"emuser","password":"'"${CTM_PASSWORD}"'"}' \
->   "https://controlm.exemple.fr/automation-api/session/login"
-> ```
->
-> L'en-tête `Authorization: Bearer <TOKEN>` est en revanche requis sur **toutes les autres**
-> requêtes.
+:::caution[⚠️ Une nuance sur cet exemple]
+Un `POST /session/login` sert **précisément à obtenir** un jeton : il n'en attend donc pas
+en entrée. L'appel ci-dessus, avec un `Authorization: Bearer`, est syntaxiquement valide mais
+conceptuellement bancal — c'est le **corps** de la requête qui doit porter les identifiants :
 
-#### 10.8.2 Recettes curl
+```bash
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"username":"emuser","password":"'"${CTM_PASSWORD}"'"}' \
+  "https://controlm.exemple.fr/automation-api/session/login"
+```
+
+L'en-tête `Authorization: Bearer <TOKEN>` est en revanche requis sur **toutes les autres**
+requêtes.
+:::
+
+###### 10.8.2 Recettes curl
 
 ```bash
 # ---------- Variables communes ----------
@@ -7841,12 +7696,13 @@ curl -s "${AUTH[@]}" -X POST \
   "${ENDPOINT}/deploy" | jq .
 ```
 
-> **✅ Trois réflexes curl**
-> 1. **`--data-urlencode`** plutôt que d'encoder les espaces à la main : `status=Ended Not OK`
->    devient automatiquement `status=Ended%20Not%20OK`.
-> 2. **Tableau bash pour les en-têtes** (`AUTH=(-H "...")`) : évite les cauchemars de quoting.
-> 3. **`--fail --show-error`** en script : sans `--fail`, curl retourne 0 même sur un HTTP 500,
->    et votre pipeline croit que tout va bien.
+:::tip[✅ Trois réflexes curl]
+1. **`--data-urlencode`** plutôt que d'encoder les espaces à la main : `status=Ended Not OK`
+   devient automatiquement `status=Ended%20Not%20OK`.
+2. **Tableau bash pour les en-têtes** (`AUTH=(-H "...")`) : évite les cauchemars de quoting.
+3. **`--fail --show-error`** en script : sans `--fail`, curl retourne 0 même sur un HTTP 500,
+   et votre pipeline croit que tout va bien.
+:::
 
 ```bash
 curl --fail --silent --show-error \
@@ -7857,9 +7713,9 @@ curl --fail --silent --show-error \
 
 ---
 
-### 10.9 Codes HTTP et gestion des erreurs
+##### 10.9 Codes HTTP et gestion des erreurs
 
-#### 10.9.1 Les codes documentés par BMC
+###### 10.9.1 Les codes documentés par BMC
 
 | Code | Signification officielle |
 |---|---|
@@ -7871,12 +7727,13 @@ curl --fail --silent --show-error \
 | **500** | Erreur interne du serveur |
 | **503** | Service indisponible (peu après un redémarrage du serveur) |
 
-> **⚠️ Ne présumez pas 201, 401 ou 409**
-> Ces trois codes **ne figurent pas** dans la liste documentée par BMC.
-> En particulier, **l'échec d'authentification renvoie 403, pas 401.**
-> Si vous écrivez du code qui teste `if status == 401`, il ne se déclenchera jamais.
+:::caution[⚠️ Ne présumez pas 201, 401 ou 409]
+Ces trois codes **ne figurent pas** dans la liste documentée par BMC.
+En particulier, **l'échec d'authentification renvoie 403, pas 401.**
+Si vous écrivez du code qui teste `if status == 401`, il ne se déclenchera jamais.
+:::
 
-#### 10.9.2 Format des erreurs
+###### 10.9.2 Format des erreurs
 
 Chaque erreur est un objet dont les champs sont les suivants :
 
@@ -7904,7 +7761,7 @@ Les erreurs sont renvoyées dans un tableau `errors` :
 }
 ```
 
-#### 10.9.3 Stratégie de traitement des codes
+###### 10.9.3 Stratégie de traitement des codes
 
 | Code | Nature | Action recommandée |
 |---|---|---|
@@ -7917,14 +7774,15 @@ Les erreurs sont renvoyées dans un tableau `errors` :
 | **503** | Indisponibilité **temporaire** | Réessayer avec backoff — typiquement au redémarrage de l'EM |
 | Timeout / erreur réseau | Transitoire | Réessayer avec backoff |
 
-> **✅ La règle**
-> On réessaie **500, 503 et les erreurs réseau**. On ne réessaie **jamais** 400, 403, 404, 405 :
-> réessayer une requête malformée cinq fois ne la rendra pas valide, cela ne fait que retarder
-> le diagnostic et polluer les logs.
+:::tip[✅ La règle]
+On réessaie **500, 503 et les erreurs réseau**. On ne réessaie **jamais** 400, 403, 404, 405 :
+réessayer une requête malformée cinq fois ne la rendra pas valide, cela ne fait que retarder
+le diagnostic et polluer les logs.
+:::
 
 ---
 
-### 10.10 Sécuriser l'Automation API
+##### 10.10 Sécuriser l'Automation API
 
 | Mesure | Mise en œuvre |
 |---|---|
@@ -7958,11 +7816,11 @@ ctm authentication tokens::get \
 
 ---
 
-# Partie VIII — Jobs as Code
+### Partie VIII — Jobs as Code
 
-## 11. L'approche Jobs as Code
+#### 11. L'approche Jobs as Code
 
-### 11.1 Le principe
+##### 11.1 Le principe
 
 **Jobs as Code** signifie : *la définition de vos traitements ordonnancés est du code source,
 au même titre que votre application.*
@@ -7994,7 +7852,7 @@ Ce que cela change concrètement :
 
 ---
 
-### 11.2 Anatomie d'un fichier — décryptage champ par champ
+##### 11.2 Anatomie d'un fichier — décryptage champ par champ
 
 Reprenons l'exemple canonique et décortiquons-le entièrement.
 
@@ -8011,12 +7869,12 @@ Reprenons l'exemple canonique et décortiquons-le entièrement.
 }
 ```
 
-#### Structure générale
+###### Structure générale
 
 Le fichier est **un objet JSON unique**. Ses clés de premier niveau sont soit `Defaults`,
 soit des **noms de folders**. Ce n'est pas un tableau : chaque objet est nommé par sa clé.
 
-#### Champ par champ
+###### Champ par champ
 
 **`"Application"`** — clé de premier niveau
 
@@ -8024,10 +7882,11 @@ C'est le **nom du folder**, pas un attribut. Le mot « Application » est ici si
 choisi ; il aurait pu s'appeler `"PRD-FIN-EXTRACTIONS"`. C'est le nom sous lequel le folder
 apparaîtra dans Control-M.
 
-> **⚠️ Piège de lecture**
-> Ne confondez pas cette clé avec l'**attribut** `Application` (le champ de regroupement
-> fonctionnel). Ici, `"Application"` est le **nom de l'objet** ; l'attribut de regroupement
-> s'écrirait `"Application": "FINANCE"` **à l'intérieur** du folder.
+:::caution[⚠️ Piège de lecture]
+Ne confondez pas cette clé avec l'**attribut** `Application` (le champ de regroupement
+fonctionnel). Ici, `"Application"` est le **nom de l'objet** ; l'attribut de regroupement
+s'écrirait `"Application": "FINANCE"` **à l'intérieur** du folder.
+:::
 
 **`"Type": "Folder"`**
 
@@ -8051,10 +7910,11 @@ sont créées).
 | **`Manual`** | **Les critères `When` sont totalement ignorés.** Le folder n'est ordonnancé que sur demande explicite : `ctm run order`, `ctm run`, ou une action `Action:Run` |
 | *toute autre valeur* | Nom d'un **User Daily** : ordonnancé par `ctmudly <cette valeur>` |
 
-> **✅ Pourquoi `Manual` est le bon choix ici**
-> Dans un pipeline CI/CD, on ne veut **jamais** qu'un déploiement déclenche une exécution
-> non prévue. `Manual` garantit que déployer et exécuter sont deux actes distincts.
-> C'est aussi le bon réglage pour toute chaîne déclenchée par un événement externe.
+:::tip[✅ Pourquoi Manual est le bon choix ici]
+Dans un pipeline CI/CD, on ne veut **jamais** qu'un déploiement déclenche une exécution
+non prévue. `Manual` garantit que déployer et exécuter sont deux actes distincts.
+C'est aussi le bon réglage pour toute chaîne déclenchée par un événement externe.
+:::
 
 **`"Job-Extract"`** — clé de deuxième niveau
 
@@ -8064,10 +7924,11 @@ comme un objet enfant (job, sous-folder, événement, ressource, notification, b
 Control-M distingue les attributs des objets enfants par la présence d'une clé `Type` à
 l'intérieur : `"Job-Extract"` contient `"Type": "Job:Command"`, c'est donc un objet.
 
-> **⚠️ Le tiret dans le nom**
-> `Job-Extract` est valide. Évitez en revanche les **deux-points** dans un nom de job :
-> ils servent de séparateur de chemin (`Folder:Job`) et doivent être échappés (`\\`).
-> Évitez aussi les espaces, accents et caractères spéciaux.
+:::caution[⚠️ Le tiret dans le nom]
+`Job-Extract` est valide. Évitez en revanche les **deux-points** dans un nom de job :
+ils servent de séparateur de chemin (`Folder:Job`) et doivent être échappés (`\\`).
+Évitez aussi les espaces, accents et caractères spéciaux.
+:::
 
 **`"Type": "Job:Command"`**
 
@@ -8090,7 +7951,7 @@ Points d'attention sur cette ligne précise :
 | Pas de `Host` | Le job s'exécutera **sur le Control-M/Server lui-même** — rarement souhaitable en production |
 | Pas de `RunAs` | Hérite du `Defaults` ou du folder ; si aucun, comportement dépendant de la configuration |
 
-#### La même définition, prête pour la production
+###### La même définition, prête pour la production
 
 ```json
 {
@@ -8168,7 +8029,7 @@ Points d'attention sur cette ligne précise :
 
 ---
 
-### 11.3 Structure d'un dépôt Jobs as Code
+##### 11.3 Structure d'un dépôt Jobs as Code
 
 ```text
 controlm-production/
@@ -8259,7 +8120,7 @@ connection-profiles/    @equipe-securite
 
 ---
 
-### 11.4 Le deploy descriptor
+##### 11.4 Le deploy descriptor
 
 Le **deploy descriptor** est le mécanisme qui permet de déployer **le même fichier de définitions**
 dans plusieurs environnements en réécrivant les valeurs spécifiques à chacun.
@@ -8303,16 +8164,18 @@ ctm run   definitions/cloture.json descriptors/dev.json
 | Destinataires de mail | `dev-team@` | `qa-team@` | `exploitation@` |
 | `RunAsDummy` | `true` | `false` | `false` |
 
-> **⚠️ La syntaxe exacte du deploy descriptor dépend de votre version.**
-> BMC la documente sur la page *Deploy service* et dans un exemple
-> `examples/deployDescriptor.json` du dépôt quickstart. **Consultez la référence de votre
-> version** : les mécanismes de correspondance (par nom, par type, par expression) ont évolué.
->
-> Testez toujours avec `ctm deploy transform` avant d'appliquer.
+:::caution[⚠️ La syntaxe exacte du deploy descriptor dépend de votre version.]
+BMC la documente sur la page *Deploy service* et dans un exemple
+`examples/deployDescriptor.json` du dépôt quickstart. **Consultez la référence de votre
+version** : les mécanismes de correspondance (par nom, par type, par expression) ont évolué.
 
-> **✅ L'alternative simple : le gabarit + `envsubst`**
-> Si le deploy descriptor de votre version vous paraît limité, une approche pragmatique et
-> parfaitement maintenable :
+Testez toujours avec `ctm deploy transform` avant d'appliquer.
+:::
+
+:::tip[✅ L'alternative simple : le gabarit + envsubst]
+Si le deploy descriptor de votre version vous paraît limité, une approche pragmatique et
+parfaitement maintenable :
+:::
 
 ```bash
 # definitions/cloture.json.tmpl
@@ -8357,7 +8220,7 @@ DESTINATAIRES=exploitation@exemple.fr
 
 ---
 
-### 11.5 Les site standards
+##### 11.5 Les site standards
 
 Un **site standard** est un jeu de règles que `ctm build` applique **automatiquement** :
 la validation échoue si une définition ne les respecte pas.
@@ -8416,22 +8279,25 @@ Le folder s'y rattache via `SiteStandard` et, le cas échéant, `BusinessFields`
 }
 ```
 
-> **⚠️ `SiteStandard` ne peut pas être posé dans un `Defaults` global** — il doit figurer sur
-> le folder lui-même.
+:::caution[⚠️ SiteStandard ne peut pas être posé dans un Defaults global]
+— il doit figurer sur
+le folder lui-même.
+:::
 
-> **✅ La séquence gagnante**
-> 1. Définir la convention de nommage **avant** le premier job ;
-> 2. La coder en site standard ;
-> 3. `ctm build` refuse tout ce qui dévie **avant** que ça n'atteigne un environnement.
->
-> Rétro-appliquer une convention sur 3 000 jobs existants est un projet à part entière.
-> Le faire dès le premier jour ne coûte rien.
+:::tip[✅ La séquence gagnante]
+1. Définir la convention de nommage **avant** le premier job ;
+2. La coder en site standard ;
+3. `ctm build` refuse tout ce qui dévie **avant** que ça n'atteigne un environnement.
+
+Rétro-appliquer une convention sur 3 000 jobs existants est un projet à part entière.
+Le faire dès le premier jour ne coûte rien.
+:::
 
 ---
 
-### 11.6 Versionnement et promotion
+##### 11.6 Versionnement et promotion
 
-#### 11.6.1 Le modèle de branches
+###### 11.6.1 Le modèle de branches
 
 ```mermaid
 gitGraph
@@ -8457,7 +8323,7 @@ gitGraph
 | `main` | PREPROD puis PROD | **Manuel, sur approbation** |
 | `tag v*` | PROD | Déploiement d'une version figée |
 
-#### 11.6.2 La promotion pas à pas
+###### 11.6.2 La promotion pas à pas
 
 ```bash
 #!/usr/bin/env bash
@@ -8513,7 +8379,7 @@ echo "=== Promotion terminee ==="
 echo "En cas de probleme : ctm deploy ${SAUVEGARDE}"
 ```
 
-#### 11.6.3 Le retour arrière (rollback)
+###### 11.6.3 Le retour arrière (rollback)
 
 **Trois niveaux**, du plus rapide au plus complet :
 
@@ -8567,16 +8433,17 @@ ctm deploy definitions/ "descriptors/${ENV}.json"
 echo "Retour arriere vers ${TAG} termine sur ${ENV}."
 ```
 
-> **⚠️ Ce que le rollback ne restaure PAS**
-> `ctm deploy` restaure les **définitions**. Il ne restaure **pas** :
-> - les **instances actives** déjà ordonnancées (elles gardent l'ancienne définition) ;
-> - l'état des **événements** et des **ressources** ;
-> - les données modifiées par les traitements déjà exécutés.
->
-> Un rollback de définitions n'annule pas un traitement qui a tourné. Prévoyez toujours,
-> **à côté**, une procédure de reprise fonctionnelle.
+:::caution[⚠️ Ce que le rollback ne restaure PAS]
+`ctm deploy` restaure les **définitions**. Il ne restaure **pas** :
+- les **instances actives** déjà ordonnancées (elles gardent l'ancienne définition) ;
+- l'état des **événements** et des **ressources** ;
+- les données modifiées par les traitements déjà exécutés.
 
-#### 11.6.4 Étiquetage des versions
+Un rollback de définitions n'annule pas un traitement qui a tourné. Prévoyez toujours,
+**à côté**, une procédure de reprise fonctionnelle.
+:::
+
+###### 11.6.4 Étiquetage des versions
 
 ```bash
 # Après validation en PREPROD
@@ -8589,7 +8456,7 @@ retour arrière.
 
 ---
 
-### 11.7 Tester ses définitions
+##### 11.7 Tester ses définitions
 
 ```mermaid
 flowchart LR
@@ -8686,11 +8553,11 @@ se teste sur un mois, pas sur une journée).
 
 ---
 
-# Partie IX — Intégration CI/CD
+### Partie IX — Intégration CI/CD
 
-## 12. Control-M dans une chaîne CI/CD
+#### 12. Control-M dans une chaîne CI/CD
 
-### 12.1 Le workflow de référence
+##### 12.1 Le workflow de référence
 
 ```text
 Git
@@ -8732,7 +8599,7 @@ flowchart TB
     M --> N["Tag Git"]
 ```
 
-### 12.2 Principes transverses
+##### 12.2 Principes transverses
 
 | Principe | Mise en œuvre |
 |---|---|
@@ -8747,9 +8614,9 @@ flowchart TB
 
 ---
 
-### 12.3 Git et GitHub
+##### 12.3 Git et GitHub
 
-#### 12.3.1 Hook pre-commit
+###### 12.3.1 Hook pre-commit
 
 ```bash
 #!/usr/bin/env bash
@@ -8794,7 +8661,7 @@ fi
 echo "Pre-commit : OK"
 ```
 
-#### 12.3.2 GitHub Actions
+###### 12.3.2 GitHub Actions
 
 ```yaml
 # .github/workflows/controlm.yml
@@ -9002,7 +8869,7 @@ jobs:
 
 ---
 
-### 12.4 GitLab CI/CD
+##### 12.4 GitLab CI/CD
 
 ```yaml
 # .gitlab-ci.yml
@@ -9195,14 +9062,15 @@ deploy:prod:
 | `CTM_ENDPOINT_PROD` | **Oui** | Non |
 | `CTM_TOKEN_PROD` | **Oui** | **Oui** |
 
-> **✅ `resource_group: production`**
-> Ce réglage GitLab garantit qu'**un seul job de déploiement PROD tourne à la fois**.
-> Sans lui, deux merges rapprochés peuvent déclencher deux déploiements concurrents et laisser
-> la production dans un état indéterminé.
+:::tip[✅ resource_group: production]
+Ce réglage GitLab garantit qu'**un seul job de déploiement PROD tourne à la fois**.
+Sans lui, deux merges rapprochés peuvent déclencher deux déploiements concurrents et laisser
+la production dans un état indéterminé.
+:::
 
 ---
 
-### 12.5 Jenkins
+##### 12.5 Jenkins
 
 ```groovy
 // Jenkinsfile
@@ -9410,7 +9278,7 @@ pipeline {
 
 ---
 
-### 12.6 Azure DevOps
+##### 12.6 Azure DevOps
 
 ```yaml
 # azure-pipelines.yml
@@ -9568,7 +9436,7 @@ stages:
 
 ---
 
-### 12.7 Gestion des secrets — synthèse
+##### 12.7 Gestion des secrets — synthèse
 
 | Où | Solution | Récupération |
 |---|---|---|
@@ -9600,16 +9468,17 @@ ctm environment set ci
 unset CTM_TOKEN
 ```
 
-> **⚠️ Les cinq erreurs à ne jamais commettre**
-> 1. Un jeton dans le dépôt Git (même dans un fichier « temporaire ») ;
-> 2. `echo "${CTM_TOKEN}"` dans un script — il finit dans les logs du pipeline ;
-> 3. Un jeton **sans date d'expiration** en production ;
-> 4. **Le même jeton** partagé entre DEV et PROD ;
-> 5. Un jeton avec le rôle `Admin` pour un pipeline qui ne fait que déployer un folder.
+:::caution[⚠️ Les cinq erreurs à ne jamais commettre]
+1. Un jeton dans le dépôt Git (même dans un fichier « temporaire ») ;
+2. `echo "${CTM_TOKEN}"` dans un script — il finit dans les logs du pipeline ;
+3. Un jeton **sans date d'expiration** en production ;
+4. **Le même jeton** partagé entre DEV et PROD ;
+5. Un jeton avec le rôle `Admin` pour un pipeline qui ne fait que déployer un folder.
+:::
 
 ---
 
-### 12.8 La promotion DEV → TEST → PREPROD → PROD
+##### 12.8 La promotion DEV → TEST → PREPROD → PROD
 
 ```mermaid
 flowchart LR
@@ -9639,24 +9508,25 @@ flowchart LR
 | **TEST → PREPROD** | Exécution réelle OK sur données de test, durées cohérentes, dépendances vérifiées |
 | **PREPROD → PROD** | Cycle complet représentatif OK, PV de recette signé, statistiques accumulées (pour les SLA), procédure de retour arrière testée, fenêtre de déploiement respectée, approbation formelle |
 
-> **✅ Le critère qu'on oublie systématiquement**
-> **Les statistiques d'exécution.** Une chaîne promue en production le jour même de sa recette
-> n'a **aucun historique** : ses SLA ne peuvent rien prédire, ses alertes `ExecutionTime`
-> n'ont pas de moyenne de référence, et `Notify:DoesNotEnd` est calé sur une estimation.
-> Prévoyez deux à quatre semaines de fonctionnement avant d'activer la surveillance fine.
+:::tip[✅ Le critère qu'on oublie systématiquement]
+**Les statistiques d'exécution.** Une chaîne promue en production le jour même de sa recette
+n'a **aucun historique** : ses SLA ne peuvent rien prédire, ses alertes `ExecutionTime`
+n'ont pas de moyenne de référence, et `Notify:DoesNotEnd` est calé sur une estimation.
+Prévoyez deux à quatre semaines de fonctionnement avant d'activer la surveillance fine.
+:::
 
 ---
 
-## 13. Intégration avec Python
+#### 13. Intégration avec Python
 
-### 13.1 Les deux approches
+##### 13.1 Les deux approches
 
 | Approche | Bibliothèque | Usage |
 |---|---|---|
 | **API REST directe** | `requests` | Supervision, exploitation, scripts d'intégration |
 | **Client officiel** | `ctm-python-client` | **Construction** de workflows en Python |
 
-### 13.2 L'exemple de départ, expliqué
+##### 13.2 L'exemple de départ, expliqué
 
 ```python
 import requests
@@ -9714,7 +9584,7 @@ for job in data.get("statuses", []):
     print(f"{job['status']:<18} {job['folder']:<40} {job['name']}")
 ```
 
-### 13.3 Un client réutilisable, prêt pour la production
+##### 13.3 Un client réutilisable, prêt pour la production
 
 ```python
 """
@@ -10115,9 +9985,9 @@ def client_depuis_environnement() -> ControlMClient:
     )
 ```
 
-### 13.4 Cas d'usage
+##### 13.4 Cas d'usage
 
-#### 13.4.1 Lancer un workflow et attendre sa fin
+###### 13.4.1 Lancer un workflow et attendre sa fin
 
 ```python
 import logging
@@ -10156,7 +10026,7 @@ except TimeoutError as exc:
     raise SystemExit(2)
 ```
 
-#### 13.4.2 Rechercher des jobs
+###### 13.4.2 Rechercher des jobs
 
 ```python
 ctm = client_depuis_environnement()
@@ -10174,7 +10044,7 @@ jobs = ctm.statuts_jobs(server="ctmsrv-prod", application="FINANCE")
 print(f"{len(jobs)} job(s) FINANCE sur ctmsrv-prod")
 ```
 
-#### 13.4.3 Récupérer les logs et la sortie
+###### 13.4.3 Récupérer les logs et la sortie
 
 ```python
 ctm = client_depuis_environnement()
@@ -10197,7 +10067,7 @@ print("\n=== POURQUOI CE JOB ATTEND-IL ? ===")
 print(ctm.info_attente(job_id))
 ```
 
-#### 13.4.4 Surveiller un workflow — daemon de supervision
+###### 13.4.4 Surveiller un workflow — daemon de supervision
 
 ```python
 """
@@ -10305,7 +10175,7 @@ if __name__ == "__main__":
     main()
 ```
 
-#### 13.4.5 Gestion des erreurs HTTP et retries
+###### 13.4.5 Gestion des erreurs HTTP et retries
 
 ```python
 """
@@ -10391,7 +10261,7 @@ if __name__ == "__main__":
             print(f"  {err.get('file')}:{err.get('line')}:{err.get('col')} — {err['message']}")
 ```
 
-#### 13.4.6 Protéger les secrets
+###### 13.4.6 Protéger les secrets
 
 ```python
 """
@@ -10454,18 +10324,19 @@ def masquer(secret: str, visible: int = 6) -> str:
 print(f"Jeton charge : {masquer(token)}")
 ```
 
-> **⚠️ Attention aux traces involontaires**
-> Un jeton peut fuiter par des chemins inattendus :
-> - `logging.debug` d'un objet `requests.Request` (les en-têtes en font partie) ;
-> - une exception `requests` non filtrée qui inclut l'URL complète ;
-> - `set -x` dans un script bash appelant ;
-> - l'historique shell (`~/.bash_history`) ;
-> - une capture d'écran de terminal dans un ticket.
->
-> Positionnez `allow_token_in_uri=false` côté serveur pour que le jeton ne puisse jamais
-> se retrouver dans une URL — donc jamais dans les logs d'accès du serveur web.
+:::caution[⚠️ Attention aux traces involontaires]
+Un jeton peut fuiter par des chemins inattendus :
+- `logging.debug` d'un objet `requests.Request` (les en-têtes en font partie) ;
+- une exception `requests` non filtrée qui inclut l'URL complète ;
+- `set -x` dans un script bash appelant ;
+- l'historique shell (`~/.bash_history`) ;
+- une capture d'écran de terminal dans un ticket.
 
-### 13.5 Le client officiel `ctm-python-client`
+Positionnez `allow_token_in_uri=false` côté serveur pour que le jeton ne puisse jamais
+se retrouver dans une URL — donc jamais dans les logs d'accès du serveur web.
+:::
+
+##### 13.5 Le client officiel `ctm-python-client`
 
 BMC publie une bibliothèque dédiée à la **construction** de workflows en Python.
 
@@ -10534,21 +10405,23 @@ workflow.chain(
 workflow.connect(firstjob, secondjob)
 ```
 
-> **⚠️ Constructeurs d'environnement**
-> Seul **`Environment.create_workbench(host='workbench')`** est confirmé dans le matériel
-> *Getting Started* officiel. D'autres constructeurs (on-premise, SaaS) existent probablement
-> mais n'ont pas pu être vérifiés dans la documentation publique — **consultez la documentation
-> de votre version** avant de vous appuyer dessus.
+:::caution[⚠️ Constructeurs d'environnement]
+Seul **`Environment.create_workbench(host='workbench')`** est confirmé dans le matériel
+*Getting Started* officiel. D'autres constructeurs (on-premise, SaaS) existent probablement
+mais n'ont pas pu être vérifiés dans la documentation publique — **consultez la documentation
+de votre version** avant de vous appuyer dessus.
+:::
 
-> **✅ Quand utiliser `ctm-python-client` plutôt que du JSON**
-> Sa force est la **génération**. Il devient pertinent quand la définition est **calculée**
-> plutôt qu'écrite :
-> - « Créer un job d'extraction **par table** listée dans un fichier de configuration » ;
-> - « Générer la chaîne de N pays, chacun avec ses horaires locaux » ;
-> - « Construire le workflow à partir du graphe de dépendances d'un DAG existant ».
->
-> Pour une chaîne écrite à la main et relue en revue de code, **le JSON reste plus lisible** —
-> et il est le format de vérité que Control-M consomme de toute façon.
+:::tip[✅ Quand utiliser ctm-python-client plutôt que du JSON]
+Sa force est la **génération**. Il devient pertinent quand la définition est **calculée**
+plutôt qu'écrite :
+- « Créer un job d'extraction **par table** listée dans un fichier de configuration » ;
+- « Générer la chaîne de N pays, chacun avec ses horaires locaux » ;
+- « Construire le workflow à partir du graphe de dépendances d'un DAG existant ».
+
+Pour une chaîne écrite à la main et relue en revue de code, **le JSON reste plus lisible** —
+et il est le format de vérité que Control-M consomme de toute façon.
+:::
 
 **Générer du JSON avec Python — l'approche pragmatique** :
 
@@ -10650,19 +10523,20 @@ if __name__ == "__main__":
     main()
 ```
 
-> **✅ Le point fort de cette approche**
-> Le fichier généré est **versionné dans Git au même titre que le générateur**.
-> On peut donc relire le diff du JSON en revue de code, tout en gardant la logique de
-> génération maintenable. Ajouter une table = une ligne dans `TABLES` + `python generer.py`
-> + `git commit`.
+:::tip[✅ Le point fort de cette approche]
+Le fichier généré est **versionné dans Git au même titre que le générateur**.
+On peut donc relire le diff du JSON en revue de code, tout en gardant la logique de
+génération maintenable. Ajouter une table = une ligne dans `TABLES` + `python generer.py`
++ `git commit`.
+:::
 
 ---
 
-# Partie X — Gestion des fichiers et MFT
+### Partie X — Gestion des fichiers et MFT
 
-## 14. Control-M Managed File Transfer
+#### 14. Control-M Managed File Transfer
 
-### 14.1 Pourquoi MFT plutôt qu'un script `scp`
+##### 14.1 Pourquoi MFT plutôt qu'un script `scp`
 
 | Aspect | Script maison | MFT |
 |---|---|---|
@@ -10678,7 +10552,7 @@ if __name__ == "__main__":
 | Audit / traçabilité | Logs épars | Centralisé |
 | Multi-protocole | Un script par protocole | Un seul type de job |
 
-### 14.2 Architecture
+##### 14.2 Architecture
 
 **MFT** s'installe comme **plug-in sur un Control-M/Agent**. Définition officielle :
 
@@ -10714,7 +10588,7 @@ flowchart LR
     A <--> GCS
 ```
 
-### 14.3 MFT Enterprise (B2B)
+##### 14.3 MFT Enterprise (B2B)
 
 Pour les échanges avec l'**extérieur**, MFT Enterprise ajoute trois composants.
 
@@ -10761,15 +10635,16 @@ les utilisateurs externes doivent se connecter via la Control-M MFT Enterprise G
 
 Ports : voir §2.5.6.
 
-> **✅ Le principe de sécurité fondamental**
-> **La Gateway en DMZ ne stocke rien.** C'est ce qui rend l'architecture acceptable pour une
-> équipe sécurité : même compromise, la Gateway ne contient aucune donnée métier — elle ne fait
-> que relayer vers le Hub, situé en zone interne. Ne détournez jamais ce principe en stockant
-> des fichiers sur la Gateway.
+:::tip[✅ Le principe de sécurité fondamental]
+**La Gateway en DMZ ne stocke rien.** C'est ce qui rend l'architecture acceptable pour une
+équipe sécurité : même compromise, la Gateway ne contient aucune donnée métier — elle ne fait
+que relayer vers le Hub, situé en zone interne. Ne détournez jamais ce principe en stockant
+des fichiers sur la Gateway.
+:::
 
-### 14.4 Les connection profiles de transfert
+##### 14.4 Les connection profiles de transfert
 
-#### 14.4.1 Les types exacts
+###### 14.4.1 Les types exacts
 
 ```text
 ConnectionProfile:FileTransfer:FTP
@@ -10796,13 +10671,14 @@ ConnectionProfile:FileTransfer:DualEndPoint
 ConnectionProfile:FileTransfer:Group
 ```
 
-> **⚠️ Attention à la casse et aux formes exactes**
-> - C'est **`:Local`** (majuscule initiale), **pas** `:LOCAL` ;
-> - il n'existe **pas** de type `:S3` seul — c'est `:S3:Amazon`, `:S3:Compatible` ou
->   `:S3:AWSPrivateLink` ;
-> - il n'existe **pas** de type `:AZURE` — c'est `:Azure:<méthodeAuth>`.
+:::caution[⚠️ Attention à la casse et aux formes exactes]
+- C'est **`:Local`** (majuscule initiale), **pas** `:LOCAL` ;
+- il n'existe **pas** de type `:S3` seul — c'est `:S3:Amazon`, `:S3:Compatible` ou
+  `:S3:AWSPrivateLink` ;
+- il n'existe **pas** de type `:AZURE` — c'est `:Azure:<méthodeAuth>`.
+:::
 
-#### 14.4.2 Attributs partagés
+###### 14.4.2 Attributs partagés
 
 Communs à FTP / SFTP / FTPS / AS2 / Local / DualEndPoint :
 
@@ -10814,7 +10690,7 @@ Communs à FTP / SFTP / FTPS / AS2 / Local / DualEndPoint :
 | `VerifyBytes` | `false` | Vérifie le nombre d'octets |
 | `AdditionalParameters` | — | Paramètres additionnels |
 
-#### 14.4.3 SFTP
+###### 14.4.3 SFTP
 
 ```json
 {
@@ -10860,10 +10736,11 @@ Avec authentification par **clé** (à privilégier) :
 | `HomeDirectory` | | Répertoire de base |
 | `SSHCompression` | | Défaut `false` |
 
-> **⚠️ Attribut fréquemment mal orthographié**
-> C'est **`PrivateKeyName`**, pas `SshKey`. `SshKey` n'existe pas.
+:::caution[⚠️ Attribut fréquemment mal orthographié]
+C'est **`PrivateKeyName`**, pas `SshKey`. `SshKey` n'existe pas.
+:::
 
-#### 14.4.4 FTP et FTPS
+###### 14.4.4 FTP et FTPS
 
 **FTP** : `HostName`*, `Port`*, `User`*, `Password`, `HomeDirectory`,
 `OsType` (`Unix`, `Windows`, `z/OS`, `OS400`, `Tandem`, `OS2200`, `OpenVMS`),
@@ -10893,12 +10770,13 @@ Avec authentification par **clé** (à privilégier) :
 }
 ```
 
-> **⚠️ FTP en clair**
-> `ConnectionProfile:FileTransfer:FTP` transmet **les identifiants et les données en clair**.
-> Il ne devrait plus exister en production. Si un partenaire l'impose encore, documentez-le
-> comme une dérogation de sécurité datée, avec un plan de migration.
+:::caution[⚠️ FTP en clair]
+`ConnectionProfile:FileTransfer:FTP` transmet **les identifiants et les données en clair**.
+Il ne devrait plus exister en production. Si un partenaire l'impose encore, documentez-le
+comme une dérogation de sécurité datée, avec un plan de migration.
+:::
 
-#### 14.4.5 Local
+###### 14.4.5 Local
 
 ```json
 {
@@ -10912,7 +10790,7 @@ Avec authentification par **clé** (à privilégier) :
 }
 ```
 
-#### 14.4.6 Amazon S3
+###### 14.4.6 Amazon S3
 
 ```json
 {
@@ -10929,7 +10807,7 @@ Avec authentification par **clé** (à privilégier) :
 
 **S3 compatible** (MinIO, Ceph, Scality…) : `RestEndPoint`*, `AccessKey`*, `SecretAccessKey`*.
 
-#### 14.4.7 Azure
+###### 14.4.7 Azure
 
 Tous les variants prennent `AzureAccountName`*,
 `AzureStorageType` (`BLOB_STORAGE`, `DATA_LAKE_STORAGE_GEN2`, `FILE_STORAGE`), `AzureEndpoint`,
@@ -10953,7 +10831,7 @@ plus les champs propres à la méthode d'authentification :
 }
 ```
 
-#### 14.4.8 Google Cloud Storage
+###### 14.4.8 Google Cloud Storage
 
 ```json
 {
@@ -10966,7 +10844,7 @@ plus les champs propres à la méthode d'authentification :
 }
 ```
 
-#### 14.4.9 AS2
+###### 14.4.9 AS2
 
 ```json
 {
@@ -10997,7 +10875,7 @@ plus les champs propres à la méthode d'authentification :
 }
 ```
 
-#### 14.4.10 Dual endpoint et groupes
+###### 14.4.10 Dual endpoint et groupes
 
 **DualEndPoint** — un profil unique décrivant les deux extrémités (FTP, SFTP et système de
 fichiers local uniquement) :
@@ -11037,7 +10915,7 @@ fichiers local uniquement) :
 }
 ```
 
-#### 14.4.11 Déploiement et test
+###### 14.4.11 Déploiement et test
 
 ```bash
 # Déploiement (comme n'importe quelle définition)
@@ -11053,16 +10931,17 @@ ctm deploy connectionprofile:centralized::deploymentstatus FileTransfer:SFTP SFT
 ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*"
 ```
 
-> **✅ Bonne pratique**
-> `connectionprofile:centralized::test` doit faire partie de votre **checklist de mise en
-> production** et de votre **surveillance périodique**. Un mot de passe partenaire qui expire
-> silencieusement est une cause d'incident classique — et le partenaire ne vous préviendra pas.
+:::tip[✅ Bonne pratique]
+`connectionprofile:centralized::test` doit faire partie de votre **checklist de mise en
+production** et de votre **surveillance périodique**. Un mot de passe partenaire qui expire
+silencieusement est une cause d'incident classique — et le partenaire ne vous préviendra pas.
+:::
 
 ---
 
-### 14.5 Le job de transfert — `Job:FileTransfer`
+##### 14.5 Le job de transfert — `Job:FileTransfer`
 
-#### 14.5.1 Attributs de niveau job
+###### 14.5.1 Attributs de niveau job
 
 | Attribut | Rôle |
 |---|---|
@@ -11078,7 +10957,7 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 | `SharePointSiteNameSrc/Dest`, `SharePointSiteIdSrc/Dest`, `SharePointDocLibNameSrc/Dest`, `SharePointDocLibIdSrc/Dest` | Cibles SharePoint Online |
 | `FileTransfers` | **Tableau** des transferts (jusqu'à 5) |
 
-#### 14.5.2 Attributs d'un transfert
+###### 14.5.2 Attributs d'un transfert
 
 | Attribut | Valeurs / défaut |
 |---|---|
@@ -11099,7 +10978,7 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 | `DestinationFilename` | `{NamePattern, FindSubString, ReplaceSubString, ModifyCase}` |
 | `FileWatcherOptions` | Voir §14.5.4 |
 
-#### 14.5.3 `TransferOption` — les 8 valeurs
+###### 14.5.3 `TransferOption` — les 8 valeurs
 
 | Valeur | Description officielle |
 |---|---|
@@ -11112,16 +10991,18 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 | `SyncSrcToDest` | Transfère uniquement les fichiers nouveaux ou modifiés source → destination, **et supprime à destination les fichiers absents de la source** |
 | `SyncDestToSrc` | Idem en sens inverse |
 
-> **⚠️ Valeurs souvent citées à tort**
-> `FileWatcherSrcToDest` et `ListenSrcToDest` **n'existent pas**.
-> La bonne orthographe est **`SrcToDestFileWatcher`**.
+:::caution[⚠️ Valeurs souvent citées à tort]
+`FileWatcherSrcToDest` et `ListenSrcToDest` **n'existent pas**.
+La bonne orthographe est **`SrcToDestFileWatcher`**.
+:::
 
-> **⚠️ `SyncSrcToDest` SUPPRIME à destination**
-> Cette option supprime les fichiers de la destination qui ne sont pas présents à la source.
-> Sur un répertoire mal ciblé, elle efface des données. **Testez-la toujours d'abord avec
-> `DirectoryListing`** pour visualiser ce qui serait affecté.
+:::caution[⚠️ SyncSrcToDest SUPPRIME à destination]
+Cette option supprime les fichiers de la destination qui ne sont pas présents à la source.
+Sur un répertoire mal ciblé, elle efface des données. **Testez-la toujours d'abord avec
+`DirectoryListing`** pour visualiser ce qui serait affecté.
+:::
 
-#### 14.5.4 `FileWatcherOptions`
+###### 14.5.4 `FileWatcherOptions`
 
 | Attribut | Valeurs |
 |---|---|
@@ -11137,17 +11018,18 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 | `VariableType` | Type de variable (ex. `Named Pool`) |
 | `VariablePoolName` | Nom du pool de variables |
 
-> **⚠️ Ne pas confondre**
-> - `FileWatcherOptions` (dans `Job:FileTransfer`) utilise `MinDetectedSizeInBytes`,
->   `MinFileAge`, `MaxFileAge`, `TimeLimitValue` ;
-> - `Job:FileWatcher:Create` / `:Delete` utilise `MinimumSize`, `MinimalAge`, `MaximalAge`,
->   `TimeLimit`.
->
-> Ce sont **deux jeux d'attributs différents**. `TimeLimitToWait` n'existe dans aucun des deux.
+:::caution[⚠️ Ne pas confondre]
+- `FileWatcherOptions` (dans `Job:FileTransfer`) utilise `MinDetectedSizeInBytes`,
+  `MinFileAge`, `MaxFileAge`, `TimeLimitValue` ;
+- `Job:FileWatcher:Create` / `:Delete` utilise `MinimumSize`, `MinimalAge`, `MaximalAge`,
+  `TimeLimit`.
 
-### 14.6 Exemples complets
+Ce sont **deux jeux d'attributs différents**. `TimeLimitToWait` n'existe dans aucun des deux.
+:::
 
-#### 14.6.1 Envoi simple vers un partenaire
+##### 14.6 Exemples complets
+
+###### 14.6.1 Envoi simple vers un partenaire
 
 ```json
 {
@@ -11199,13 +11081,14 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 }
 ```
 
-> **✅ `AddTempFilePrefix` — indispensable**
-> Le fichier est déposé sous `tmp_factures_20260902.csv` puis **renommé** en fin de transfert.
-> Sans cela, le partenaire peut lire un fichier **partiellement transféré** et traiter des
-> données tronquées. C'est l'un des incidents d'échange les plus fréquents et les plus
-> difficiles à diagnostiquer *a posteriori*.
+:::tip[✅ AddTempFilePrefix — indispensable]
+Le fichier est déposé sous `tmp_factures_20260902.csv` puis **renommé** en fin de transfert.
+Sans cela, le partenaire peut lire un fichier **partiellement transféré** et traiter des
+données tronquées. C'est l'un des incidents d'échange les plus fréquents et les plus
+difficiles à diagnostiquer *a posteriori*.
+:::
 
-#### 14.6.2 Réception déclenchée par arrivée de fichier
+###### 14.6.2 Réception déclenchée par arrivée de fichier
 
 ```json
 {
@@ -11265,12 +11148,13 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 }
 ```
 
-> **✅ `AssignFileNameToVariable`**
-> Le nom du fichier réellement détecté est affecté à la variable `FICHIER_RECU`, exploitable
-> par les jobs suivants. Indispensable quand le nom contient un horodatage ou un numéro de
-> séquence imprévisible.
+:::tip[✅ AssignFileNameToVariable]
+Le nom du fichier réellement détecté est affecté à la variable `FICHIER_RECU`, exploitable
+par les jobs suivants. Indispensable quand le nom contient un horodatage ou un numéro de
+séquence imprévisible.
+:::
 
-#### 14.6.3 Transfert chiffré PGP avec transfert incrémental
+###### 14.6.3 Transfert chiffré PGP avec transfert incrémental
 
 ```json
 {
@@ -11324,7 +11208,7 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 | `MaxModificationAgeForFirstRunInHours: "24"` | À la **première** exécution, ne remonte pas 10 ans d'historique |
 | `SimultaneousTransfer` | 5 transferts en parallèle — accélère sensiblement sur de nombreux petits fichiers |
 
-#### 14.6.4 Transferts multiples séquentiels
+###### 14.6.4 Transferts multiples séquentiels
 
 ```json
 {
@@ -11365,18 +11249,19 @@ ctm deploy connectionprofiles:centralized::get -s "type=FileTransfer:SFTP&name=*
 }
 ```
 
-> **✅ Le fichier sentinelle**
-> Le 4ᵉ transfert dépose un fichier `.done` **vide**. Le partenaire surveille **ce fichier**,
-> et non les trois fichiers de données. Il a ainsi la garantie que les trois fichiers sont
-> complets et cohérents avant de commencer son traitement.
-> **C'est le protocole d'échange le plus fiable, et le plus simple à mettre en œuvre.**
->
-> `ContinueOnFailure` reste à `false` (défaut) : si l'un des trois transferts échoue,
-> le fichier sentinelle **n'est pas déposé**, et le partenaire ne traite rien.
+:::tip[✅ Le fichier sentinelle]
+Le 4ᵉ transfert dépose un fichier `.done` **vide**. Le partenaire surveille **ce fichier**,
+et non les trois fichiers de données. Il a ainsi la garantie que les trois fichiers sont
+complets et cohérents avant de commencer son traitement.
+**C'est le protocole d'échange le plus fiable, et le plus simple à mettre en œuvre.**
+
+`ContinueOnFailure` reste à `false` (défaut) : si l'un des trois transferts échoue,
+le fichier sentinelle **n'est pas déposé**, et le partenaire ne traite rien.
+:::
 
 ---
 
-### 14.7 Surveillance de fichiers hors MFT — `Job:FileWatcher`
+##### 14.7 Surveillance de fichiers hors MFT — `Job:FileWatcher`
 
 Quand il ne s'agit pas de transférer mais seulement de **détecter**, le type
 `Job:FileWatcher:Create` (ou `:Delete`) suffit. Voir §5.9 pour la référence complète des
@@ -11386,9 +11271,9 @@ attributs (`Path`, `WildCard`, `SearchInterval`, `TimeLimit`, `MinimumSize`, `Mi
 L'utilitaire correspondant sur l'Agent est **`ctmfw`** : *« Détecte la création ou la
 suppression réussie d'un fichier, ou une activité de transfert de fichier. »*
 
-### 14.8 Reprise sur erreur
+##### 14.8 Reprise sur erreur
 
-#### 14.8.1 Les mécanismes disponibles
+###### 14.8.1 Les mécanismes disponibles
 
 | Mécanisme | Ce qu'il fait |
 |---|---|
@@ -11398,16 +11283,17 @@ suppression réussie d'un fichier, ou une activité de transfert de fichier. »*
 | **`DeleteFileOnDestIfFails`** | Supprime le fichier partiel à destination |
 | **`RerunLimit` / `Action:Rerun`** | Relance du **job** entier (mécanisme Control-M générique) |
 
-#### 14.8.2 Contraintes de la reprise au point d'échec
+###### 14.8.2 Contraintes de la reprise au point d'échec
 
-> **⚠️ Trois limites documentées**
-> 1. Pour **FTP**, la reprise à la position exacte en octets exige que le serveur FTP supporte
->    la commande **`REST`**. Beaucoup de serveurs ne l'implémentent pas.
-> 2. *« Si vous mettez un job en HOLD puis le relancez, il **redémarre depuis le début**. »*
-> 3. La reprise est **indisponible** quand l'option **Append** est sélectionnée, ou lors d'un
->    transfert vers **plusieurs hôtes**.
+:::caution[⚠️ Trois limites documentées]
+1. Pour **FTP**, la reprise à la position exacte en octets exige que le serveur FTP supporte
+   la commande **`REST`**. Beaucoup de serveurs ne l'implémentent pas.
+2. *« Si vous mettez un job en HOLD puis le relancez, il **redémarre depuis le début**. »*
+3. La reprise est **indisponible** quand l'option **Append** est sélectionnée, ou lors d'un
+   transfert vers **plusieurs hôtes**.
+:::
 
-#### 14.8.3 Stratégie de reprise recommandée
+###### 14.8.3 Stratégie de reprise recommandée
 
 ```json
 {
@@ -11462,7 +11348,7 @@ suppression réussie d'un fichier, ou une activité de transfert de fichier. »*
 
 ---
 
-### 14.9 Bonnes pratiques de transfert
+##### 14.9 Bonnes pratiques de transfert
 
 | Pratique | Pourquoi |
 |---|---|
@@ -11505,11 +11391,11 @@ suppression réussie d'un fichier, ou une activité de transfert de fichier. »*
 
 ---
 
-# Partie XI — Sécurité
+### Partie XI — Sécurité
 
-## 15. Sécurité et DevSecOps
+#### 15. Sécurité et DevSecOps
 
-### 15.1 Le modèle de sécurité complet
+##### 15.1 Le modèle de sécurité complet
 
 ```mermaid
 flowchart TB
@@ -11537,7 +11423,7 @@ flowchart TB
     P --> T --> A --> Z --> S --> E --> AUD
 ```
 
-### 15.2 Authentification
+##### 15.2 Authentification
 
 Voir §3.3 pour le détail. Synthèse des décisions de sécurité :
 
@@ -11551,9 +11437,9 @@ Voir §3.3 pour le détail. Synthèse des décisions de sécurité :
 | Timeout d'inactivité | `KeepAliveTimeout = 900` |
 | Audit | `UserAuditOn = 1` — **jamais** désactivé |
 
-### 15.3 Autorisation et RBAC
+##### 15.3 Autorisation et RBAC
 
-#### 15.3.1 Concevoir un modèle de rôles
+###### 15.3.1 Concevoir un modèle de rôles
 
 Partez des **métiers**, pas des fonctionnalités.
 
@@ -11570,12 +11456,13 @@ Partez des **métiers**, pas des fonctionnalités.
 | `DEPLOIEUR_PROD` | Jeton CI | `deploy` sur `^PRD-.*` | `config server::delete`, gestion d'utilisateurs |
 | `SUPERVISION` | Jeton monitoring | Lecture des statuts, services, alertes | Toute écriture |
 
-> **✅ La séparation N1 / N2 est le point clé**
-> Un exploitant de niveau 1 doit pouvoir **débloquer** (Hold, Free, Rerun, Confirm) sans pouvoir
-> **falsifier** (Set to OK) ni **détruire** (Delete). `Set to OK` réécrit l'histoire : il doit
-> être un geste conscient, tracé, réservé à un profil identifié.
+:::tip[✅ La séparation N1 / N2 est le point clé]
+Un exploitant de niveau 1 doit pouvoir **débloquer** (Hold, Free, Rerun, Confirm) sans pouvoir
+**falsifier** (Set to OK) ni **détruire** (Delete). `Set to OK` réécrit l'histoire : il doit
+être un geste conscient, tracé, réservé à un profil identifié.
+:::
 
-#### 15.3.2 Le RBAC as code
+###### 15.3.2 Le RBAC as code
 
 ```json
 {
@@ -11596,12 +11483,13 @@ Partez des **métiers**, pas des fonctionnalités.
 }
 ```
 
-> **⚠️ Le schéma exact d'un objet rôle dépend de votre version.**
-> Récupérez le format réel de votre plateforme avec :
-> ```bash
-> ctm config authorization:role::get Admin > exemple-role.json
-> ```
-> puis adaptez. **Ne recopiez pas un schéma trouvé en ligne sans vérifier.**
+:::caution[⚠️ Le schéma exact d'un objet rôle dépend de votre version.]
+Récupérez le format réel de votre plateforme avec :
+```bash
+ctm config authorization:role::get Admin > exemple-role.json
+```
+puis adaptez. **Ne recopiez pas un schéma trouvé en ligne sans vérifier.**
+:::
 
 ```bash
 # Déploiement du RBAC par pipeline
@@ -11615,7 +11503,7 @@ ctm config authorization:roles::get | jq -r '.[].name' | while read -r ROLE; do
 done
 ```
 
-#### 15.3.3 Le principe du moindre privilège
+###### 15.3.3 Le principe du moindre privilège
 
 | Question à se poser | Application concrète |
 |---|---|
@@ -11627,9 +11515,9 @@ done
 
 ---
 
-### 15.4 Gestion des secrets
+##### 15.4 Gestion des secrets
 
-#### 15.4.1 Les quatre niveaux
+###### 15.4.1 Les quatre niveaux
 
 ```mermaid
 flowchart LR
@@ -11646,7 +11534,7 @@ flowchart LR
 | **3 — Définitions** | **Références uniquement** : `Secret:<clé>` | Git |
 | **4 — Pipeline** | Jetons d'API injectés au runtime | Variables masquées du CI |
 
-#### 15.4.2 Le coffre Control-M
+###### 15.4.2 Le coffre Control-M
 
 ```bash
 ctm config secret::add    sftp_partenaire_a_pwd "<valeur>"
@@ -11670,7 +11558,7 @@ Référencement dans les définitions :
 }
 ```
 
-#### 15.4.3 Rotation automatisée
+###### 15.4.3 Rotation automatisée
 
 ```bash
 #!/usr/bin/env bash
@@ -11708,7 +11596,7 @@ unset NOUVELLE
 echo "Rotation de ${CLE_SECRET} terminee avec succes."
 ```
 
-#### 15.4.4 Détecter les fuites
+###### 15.4.4 Détecter les fuites
 
 ```bash
 #!/usr/bin/env bash
@@ -11759,14 +11647,15 @@ fi
 echo "Aucun secret en clair detecte."
 ```
 
-> **⚠️ Si un secret a été committé, le changer est OBLIGATOIRE**
-> Retirer le fichier d'un commit ultérieur ne suffit pas : la valeur reste dans l'historique
-> Git, et l'historique est distribué sur tous les clones. La seule réponse correcte est de
-> **révoquer et régénérer le secret**, puis (éventuellement) de réécrire l'historique.
+:::caution[⚠️ Si un secret a été committé, le changer est OBLIGATOIRE]
+Retirer le fichier d'un commit ultérieur ne suffit pas : la valeur reste dans l'historique
+Git, et l'historique est distribué sur tous les clones. La seule réponse correcte est de
+**révoquer et régénérer le secret**, puis (éventuellement) de réécrire l'historique.
+:::
 
 ---
 
-### 15.5 Certificats TLS
+##### 15.5 Certificats TLS
 
 Voir §2.6 pour la procédure. Points de sécurité :
 
@@ -11806,7 +11695,7 @@ done
 
 ---
 
-### 15.6 Comptes techniques
+##### 15.6 Comptes techniques
 
 | Règle | Justification |
 |---|---|
@@ -11827,9 +11716,9 @@ ctm config server:runasuser::test ctmsrv-prod srv-fin-01 svc_finance
 
 ---
 
-### 15.7 Audit et traçabilité
+##### 15.7 Audit et traçabilité
 
-#### 15.7.1 Les sources de traces
+###### 15.7.1 Les sources de traces
 
 | Source | Contenu | Rétention |
 |---|---|---|
@@ -11842,21 +11731,22 @@ ctm config server:runasuser::test ctmsrv-prod srv-fin-01 svc_finance
 | **Logs du pipeline CI** | Qui a déployé quoi, quand, sur approbation de qui | Selon le CI |
 | **Logs d'accès Tomcat** | Appels à l'API | Selon la configuration |
 
-#### 15.7.2 Le point aveugle à corriger
+###### 15.7.2 Le point aveugle à corriger
 
-> **⚠️ Les valeurs de rétention par défaut ne permettent pas un audit sérieux**
-> `OUTPUTRETN = 1 jour` et `IOALOGLM = 2 jours` signifient qu'une analyse post-incident
-> demandée le mardi sur un incident du vendredi précédent est **impossible** : les données
-> n'existent plus.
->
-> Trois actions :
-> 1. Remonter `OUTPUTRETN` et `IOALOGLM` à une valeur compatible avec votre besoin d'audit
->    (7 à 30 jours selon la volumétrie) ;
-> 2. Activer **Control-M Workload Archiving** pour la conservation longue ;
-> 3. Exporter quotidiennement les définitions vers Git (§2.8) — c'est votre trace des
->    **changements**, indépendante des logs d'exécution.
+:::caution[⚠️ Les valeurs de rétention par défaut ne permettent pas un audit sérieux]
+`OUTPUTRETN = 1 jour` et `IOALOGLM = 2 jours` signifient qu'une analyse post-incident
+demandée le mardi sur un incident du vendredi précédent est **impossible** : les données
+n'existent plus.
 
-#### 15.7.3 Traçabilité de bout en bout
+Trois actions :
+1. Remonter `OUTPUTRETN` et `IOALOGLM` à une valeur compatible avec votre besoin d'audit
+   (7 à 30 jours selon la volumétrie) ;
+2. Activer **Control-M Workload Archiving** pour la conservation longue ;
+3. Exporter quotidiennement les définitions vers Git (§2.8) — c'est votre trace des
+   **changements**, indépendante des logs d'exécution.
+:::
+
+###### 15.7.3 Traçabilité de bout en bout
 
 Avec Jobs-as-Code, la chaîne de traçabilité devient complète :
 
@@ -11887,7 +11777,7 @@ flowchart LR
 
 ---
 
-### 15.8 Sécuriser l'Automation API
+##### 15.8 Sécuriser l'Automation API
 
 Récapitulatif de §10.10, avec les mesures de durcissement :
 
@@ -11917,7 +11807,7 @@ ctm environment configure rootCertificateRequired true
 
 ---
 
-### 15.9 Checklist DevSecOps
+##### 15.9 Checklist DevSecOps
 
 ```text
 CONCEPTION
@@ -11971,11 +11861,11 @@ REVUE PÉRIODIQUE (trimestrielle)
 
 ---
 
-# Partie XII — Observabilité et troubleshooting
+### Partie XII — Observabilité et troubleshooting
 
-## 16. Diagnostiquer et résoudre
+#### 16. Diagnostiquer et résoudre
 
-### 16.1 La méthode
+##### 16.1 La méthode
 
 Chaque incident suit la même trame :
 
@@ -11993,9 +11883,9 @@ Vérification
 
 Les runbooks de ce chapitre sont directement utilisables en astreinte.
 
-### 16.2 Où sont les logs
+##### 16.2 Où sont les logs
 
-#### 16.2.1 Chemins confirmés
+###### 16.2.1 Chemins confirmés
 
 **Control-M/EM**
 
@@ -12031,13 +11921,14 @@ Les runbooks de ce chapitre sont directement utilisables en astreinte.
 
 **NginX / répartiteur de charge** : `/etc/pki/nginx/private/` (clés), `/etc/pki/nginx/` (certificats).
 
-> **⚠️ Chemins fréquemment cités mais non confirmés**
-> `$CONTROLM/ctm_server/proclog`, les répertoires `proclog` et `sysout` de l'Agent, et
-> `$HOME/ctm_em/log` **n'apparaissent pas** dans les documentations 9.0.21/9.0.22. BMC oriente
-> désormais la collecte de logs vers les utilitaires de **Health Check** plutôt que de publier
-> l'arborescence brute. **Vérifiez ces chemins sur votre installation avant de vous y fier.**
+:::caution[⚠️ Chemins fréquemment cités mais non confirmés]
+`$CONTROLM/ctm_server/proclog`, les répertoires `proclog` et `sysout` de l'Agent, et
+`$HOME/ctm_em/log` **n'apparaissent pas** dans les documentations 9.0.21/9.0.22. BMC oriente
+désormais la collecte de logs vers les utilitaires de **Health Check** plutôt que de publier
+l'arborescence brute. **Vérifiez ces chemins sur votre installation avant de vous y fier.**
+:::
 
-#### 16.2.2 La collecte de diagnostic — la méthode fiable
+###### 16.2.2 La collecte de diagnostic — la méthode fiable
 
 C'est l'outil à utiliser quand vous ouvrez un ticket chez BMC, et le plus sûr pour tout
 diagnostic approfondi.
@@ -12075,7 +11966,7 @@ Options : `-days` (défaut 2), `-max_size` (défaut **1 000 Mo**), `-threads` 1�
 **Control-M/Agent** : **Health Check** (collecte des données d'environnement et des logs) et
 **Agent Toolbox** (*« analyse le bon fonctionnement et diagnostique les problèmes sur l'Agent »*).
 
-#### 16.2.3 Augmenter le niveau de trace
+###### 16.2.3 Augmenter le niveau de trace
 
 | Composant | Méthode |
 |---|---|
@@ -12094,14 +11985,15 @@ Options : `-days` (défaut 2), `-max_size` (défaut **1 000 Mo**), `-threads` 1�
 
 Plage : `-1` (illimité) ou 1 à 2³¹. Prise en compte : redémarrage.
 
-> **⚠️ Ne laissez jamais un niveau de trace élevé en production**
-> Un niveau 5 ou 6 sur un Agent produit des volumes de logs considérables et dégrade les
-> performances. **Remettez le niveau à 0 dès le diagnostic terminé** — et notez-le dans votre
-> procédure d'incident, c'est l'oubli le plus fréquent.
+:::caution[⚠️ Ne laissez jamais un niveau de trace élevé en production]
+Un niveau 5 ou 6 sur un Agent produit des volumes de logs considérables et dégrade les
+performances. **Remettez le niveau à 0 dès le diagnostic terminé** — et notez-le dans votre
+procédure d'incident, c'est l'oubli le plus fréquent.
+:::
 
 ---
 
-### 16.3 Runbook — l'Agent est indisponible
+##### 16.3 Runbook — l'Agent est indisponible
 
 ```text
 SYMPTÔME
@@ -12191,7 +12083,7 @@ ctm run jobs:status::get -s "status=Wait Host" | jq -r '.statuses[].jobId' \
 
 ---
 
-### 16.4 Runbook — le job n'a jamais été ordonnancé
+##### 16.4 Runbook — le job n'a jamais été ordonnancé
 
 ```text
 SYMPTÔME
@@ -12269,14 +12161,15 @@ ctm run jobs:status::get -s "jobname=<job>"      # le job doit maintenant appara
 
 **Prévention**
 
-> **✅ Poser un `Notify:DoesNotStart` sur les jobs critiques**
-> C'est **la seule** alerte qui détecte un job **jamais ordonnancé**. Sans elle, l'absence
-> d'un traitement est parfaitement silencieuse — on ne s'en aperçoit qu'au moment où le
-> résultat manque, souvent des jours plus tard.
+:::tip[✅ Poser un Notify:DoesNotStart sur les jobs critiques]
+C'est **la seule** alerte qui détecte un job **jamais ordonnancé**. Sans elle, l'absence
+d'un traitement est parfaitement silencieuse — on ne s'en aperçoit qu'au moment où le
+résultat manque, souvent des jours plus tard.
+:::
 
 ---
 
-### 16.5 Runbook — le job est bloqué en attente
+##### 16.5 Runbook — le job est bloqué en attente
 
 ```text
 SYMPTÔME
@@ -12297,7 +12190,7 @@ ctmwhy "*1234"
 
 **Étape 2 — traiter selon le statut**
 
-#### `Wait Condition` (« Wait Event » dans l'IHM)
+###### `Wait Condition` (« Wait Event » dans l'IHM)
 
 | Cause | Diagnostic | Solution |
 |---|---|---|
@@ -12316,7 +12209,7 @@ ctm run events::get
 ctm run event::add <server> <nomEvenement> ODAT
 ```
 
-#### `Wait Resource`
+###### `Wait Resource`
 
 ```bash
 # État des ressources
@@ -12333,7 +12226,7 @@ ctm run jobs:status::get -s "status=Executing"
 | Verrou orphelin (job disparu) | Vérifier l'état, puis `ctm run resource::update` ou supprimer/recréer la ressource |
 | Pool sous-dimensionné | Revoir la capacité en fonction de la charge réelle |
 
-#### `Wait User`
+###### `Wait User`
 
 ```bash
 ctm run job::confirm <jobId>
@@ -12343,7 +12236,7 @@ Le job a `Confirm: true` : il attend une validation humaine. Vérifiez que la pr
 confirmation est bien connue de l'équipe d'astreinte — un job en attente de confirmation
 la nuit bloque toute la chaîne.
 
-#### `Wait Workload`
+###### `Wait Workload`
 
 ```bash
 ctm run workloadpolicies::get Active
@@ -12351,7 +12244,7 @@ ctm run workloadpolicies:detailed::get -s "name=<nom>"
 ctm run workloadpolicy::deactivate <nom> <server>     # si justifié
 ```
 
-#### `Wait Host`
+###### `Wait Host`
 
 Voir §16.3.
 
@@ -12363,7 +12256,7 @@ ctm run job:status::get <jobId>      # doit être passé en Executing ou Ended O
 
 ---
 
-### 16.6 Runbook — le job est en échec
+##### 16.6 Runbook — le job est en échec
 
 ```text
 SYMPTÔME
@@ -12407,14 +12300,15 @@ ctm run job::rerun <jobId>
 ctm run job:status::get <jobId>
 ```
 
-> **✅ Le réflexe qui distingue un bon diagnostic**
-> **Regardez les statistiques avant de conclure.** Un job qui échoue après 47 minutes alors
-> qu'il tourne d'habitude en 4 minutes n'a probablement pas un problème de code : il a un
-> problème de **volume** ou de **contention**. Corriger le script ne servira à rien.
+:::tip[✅ Le réflexe qui distingue un bon diagnostic]
+**Regardez les statistiques avant de conclure.** Un job qui échoue après 47 minutes alors
+qu'il tourne d'habitude en 4 minutes n'a probablement pas un problème de code : il a un
+problème de **volume** ou de **contention**. Corriger le script ne servira à rien.
+:::
 
 ---
 
-### 16.7 Runbook — le job reste indéfiniment en `Executing`
+##### 16.7 Runbook — le job reste indéfiniment en `Executing`
 
 ```text
 SYMPTÔME
@@ -12463,7 +12357,7 @@ ctm run job::kill <jobId>
 
 ---
 
-### 16.8 Runbook — problème de certificat
+##### 16.8 Runbook — problème de certificat
 
 ```text
 SYMPTÔME
@@ -12511,7 +12405,7 @@ ctm_diag_comm <agent>       # doit indiquer une connexion sécurisée
 
 ---
 
-### 16.9 Runbook — la chaîne est bloquée le week-end
+##### 16.9 Runbook — la chaîne est bloquée le week-end
 
 ```text
 SYMPTÔME
@@ -12601,7 +12495,7 @@ ctm run event::add <server> FIN-A-OK ODAT
 
 ---
 
-### 16.10 Runbook — erreur d'API
+##### 16.10 Runbook — erreur d'API
 
 ```text
 SYMPTÔME
@@ -12649,13 +12543,14 @@ $HOME/ctm_em/etc/emweb/automation-api/bin/automation_api_config --help
 ctm authentication token::create -f nouveau-jeton.json
 ```
 
-> **⚠️ Rappel important**
-> Un échec d'authentification renvoie **403**, pas 401. Si votre code teste `401`,
-> il ne détectera jamais le cas.
+:::caution[⚠️ Rappel important]
+Un échec d'authentification renvoie **403**, pas 401. Si votre code teste `401`,
+il ne détectera jamais le cas.
+:::
 
 ---
 
-### 16.11 Runbook — échec de `ctm deploy`
+##### 16.11 Runbook — échec de `ctm deploy`
 
 ```text
 SYMPTÔME
@@ -12702,7 +12597,7 @@ ctm deploy backups/prod-20260902-021500.json
 
 ---
 
-### 16.12 Runbook — dépendances et conditions
+##### 16.12 Runbook — dépendances et conditions
 
 ```text
 SYMPTÔME
@@ -12747,14 +12642,15 @@ ctm run event::add    <server> <nomEvenement> ODAT     # publier
 ctm run event::delete <server> <nomEvenement> ODAT     # supprimer un événement parasite
 ```
 
-> **✅ Prévention — le motif à adopter**
-> Fixez une règle d'équipe : **c'est le CONSOMMATEUR qui supprime l'événement**, et lui seul.
-> Quand plusieurs jobs consomment le même événement, personne ne le supprime — le nettoyage
-> de la New Day s'en charge. Cette règle simple élimine la moitié des incidents de dépendance.
+:::tip[✅ Prévention — le motif à adopter]
+Fixez une règle d'équipe : **c'est le CONSOMMATEUR qui supprime l'événement**, et lui seul.
+Quand plusieurs jobs consomment le même événement, personne ne le supprime — le nettoyage
+de la New Day s'en charge. Cette règle simple élimine la moitié des incidents de dépendance.
+:::
 
 ---
 
-### 16.13 Runbook — problème réseau
+##### 16.13 Runbook — problème réseau
 
 ```text
 SYMPTÔME
@@ -12797,7 +12693,7 @@ netstat -an | grep -E '7005|7006'
 
 ---
 
-### 16.14 Runbook — le service SLA est en retard
+##### 16.14 Runbook — le service SLA est en retard
 
 ```text
 SYMPTÔME
@@ -12846,14 +12742,15 @@ ctm run jobs:status::get -s "folder=<folder_du_service>"
 | Retard **récurrent** | **Le SLA est mal calibré ou la chaîne est sous-dimensionnée** — problème de conception, pas d'exploitation |
 | `jobsWithoutStatistics > 0` | Laisser accumuler de l'historique avant de faire confiance à la prédiction |
 
-> **⚠️ Un SLA en retard toutes les semaines n'est pas un incident, c'est un défaut de conception**
-> Soit l'échéance est irréaliste, soit la chaîne n'est pas dimensionnée pour la tenir.
-> Traiter cela comme un incident récurrent épuise l'équipe d'astreinte et décrédibilise
-> l'ensemble des alertes. Portez-le en revue de production.
+:::caution[⚠️ Un SLA en retard toutes les semaines n'est pas un incident, c'est un défaut de conception]
+Soit l'échéance est irréaliste, soit la chaîne n'est pas dimensionnée pour la tenir.
+Traiter cela comme un incident récurrent épuise l'équipe d'astreinte et décrédibilise
+l'ensemble des alertes. Portez-le en revue de production.
+:::
 
 ---
 
-### 16.15 Tableau de synthèse
+##### 16.15 Tableau de synthèse
 
 | Symptôme | Première commande à taper |
 |---|---|
@@ -12872,11 +12769,11 @@ ctm run jobs:status::get -s "folder=<folder_du_service>"
 
 ---
 
-# Partie XIII — Architectures professionnelles
+### Partie XIII — Architectures professionnelles
 
-## 17. Choisir et dimensionner son architecture
+#### 17. Choisir et dimensionner son architecture
 
-### 17.1 La grille de décision
+##### 17.1 La grille de décision
 
 | Critère | Petite infra | Entreprise | Haute disponibilité | Multi-environnements | Cloud / hybride |
 |---|---|---|---|---|---|
@@ -12889,7 +12786,7 @@ ctm run jobs:status::get -s "folder=<folder_du_service>"
 
 ---
 
-### 17.2 Petite infrastructure
+##### 17.2 Petite infrastructure
 
 ```mermaid
 flowchart TB
@@ -12939,7 +12836,7 @@ entreprise.
 
 ---
 
-### 17.3 Environnement d'entreprise
+##### 17.3 Environnement d'entreprise
 
 ```mermaid
 flowchart TB
@@ -13005,11 +12902,11 @@ utilisateurs) :
 
 ---
 
-### 17.4 Haute disponibilité
+##### 17.4 Haute disponibilité
 
 BMC documente **deux configurations HA supportées**.
 
-#### 17.4.1 Configuration 1 — Oracle / MSSQL / PostgreSQL externe
+###### 17.4.1 Configuration 1 — Oracle / MSSQL / PostgreSQL externe
 
 *« Permet de mettre en place un hôte secondaire avec un Control-M/EM ou un Control-M/Server
 auto-hébergé. »*
@@ -13045,7 +12942,7 @@ La haute disponibilité de la base est assurée par le **SGBD lui-même** (RAC, 
 réplication PostgreSQL) — c'est le cas le plus simple à exploiter, car il s'appuie sur des
 mécanismes que vos DBA maîtrisent déjà.
 
-#### 17.4.2 Configuration 2 — PostgreSQL dédié BMC
+###### 17.4.2 Configuration 2 — PostgreSQL dédié BMC
 
 Control-M/Server secondaire **et** serveur PostgreSQL secondaire, avec **bascule manuelle**.
 
@@ -13057,7 +12954,7 @@ Control-M/Server secondaire **et** serveur PostgreSQL secondaire, avec **bascule
 | Chemin du disque partagé | Modifié par **`ctmchangeshdir`** |
 | Bascule | **Manuelle**, depuis le CCM |
 
-#### 17.4.3 Le rôle du Configuration Agent
+###### 17.4.3 Le rôle du Configuration Agent
 
 > *« Si un composant Control-M/EM ou Control-M/Server tombe, le Configuration Agent tente de
 > le redémarrer si l'état désiré est "Set to Up". »*
@@ -13068,7 +12965,7 @@ Server, SLA Manager et le serveur PostgreSQL.
 **C'est le premier niveau de haute disponibilité** — celui qui traite les pannes de processus,
 de loin les plus fréquentes.
 
-#### 17.4.4 Opérations de bascule
+###### 17.4.4 Opérations de bascule
 
 Toutes depuis le **CCM** : *Configuration → Control-M/Servers → sélectionner le serveur →
 menu déroulant High Availability*.
@@ -13086,13 +12983,14 @@ ctm config server::failover     <server>
 ctm config server::setasprimary <server>
 ```
 
-> **⚠️ Il n'existe pas d'utilitaire `ctmfailover`.**
-> La bascule est une **action du CCM** (ou de l'API), pas une commande shell. Et `ctm_menu`
-> **n'a pas d'option HA** en 9.0.21 : ses options sont Control-M Manager, Database Menu,
-> Security Authorization, Parameter Customization, Host Group, View HostID Details,
-> Agent Status, Troubleshooting.
+:::caution[⚠️ Il n'existe pas d'utilitaire ctmfailover.]
+La bascule est une **action du CCM** (ou de l'API), pas une commande shell. Et `ctm_menu`
+**n'a pas d'option HA** en 9.0.21 : ses options sont Control-M Manager, Database Menu,
+Security Authorization, Parameter Customization, Host Group, View HostID Details,
+Agent Status, Troubleshooting.
+:::
 
-#### 17.4.5 Résilience côté Agent
+###### 17.4.5 Résilience côté Agent
 
 L'Agent porte sa **propre liste de bascule** dans le paramètre `CTMSHOST` :
 
@@ -13103,7 +13001,7 @@ CTMSHOST=srv-ctm-prod-01|srv-ctm-prod-02|192.168.10.21
 L'Agent essaie les Control-M/Servers dans l'ordre. C'est ce qui permet à un Agent de retrouver
 le service après une bascule, **sans reconfiguration**.
 
-#### 17.4.6 Haute disponibilité de l'EM
+###### 17.4.6 Haute disponibilité de l'EM
 
 Les ports des instances multiples de composants EM proviennent du paramètre **`HostPort`** :
 
@@ -13112,7 +13010,7 @@ Les ports des instances multiples de composants EM proviennent du paramètre **`
 | Composants EM généraux | 20 ports |
 | Gateways | 10 ports (ou 2 × le nombre de Servers si plus de cinq) |
 
-#### 17.4.7 Checklist HA
+###### 17.4.7 Checklist HA
 
 ```text
 [ ] Configuration HA choisie (SGBD externe, ou PostgreSQL dédié BMC)
@@ -13128,15 +13026,16 @@ Les ports des instances multiples de composants EM proviennent du paramètre **`
 [ ] Sauvegarde des définitions indépendante de la HA (export Git)
 ```
 
-> **⚠️ Le piège de la réplication asynchrone silencieuse**
-> La réplication passe **automatiquement** en asynchrone en cas de problème réseau, et le
-> retour en synchrone est **manuel**. Si personne ne surveille ce mode, vous pouvez fonctionner
-> des mois en asynchrone sans le savoir — et découvrir la perte de données au moment de la
-> bascule. **Supervisez le mode de réplication.**
+:::caution[⚠️ Le piège de la réplication asynchrone silencieuse]
+La réplication passe **automatiquement** en asynchrone en cas de problème réseau, et le
+retour en synchrone est **manuel**. Si personne ne surveille ce mode, vous pouvez fonctionner
+des mois en asynchrone sans le savoir — et découvrir la perte de données au moment de la
+bascule. **Supervisez le mode de réplication.**
+:::
 
 ---
 
-### 17.5 Architecture multi-environnements
+##### 17.5 Architecture multi-environnements
 
 ```mermaid
 flowchart TB
@@ -13187,21 +13086,22 @@ flowchart TB
 | Calendriers | **Partagés** (jours fériés) ou dupliqués (calendriers métier) | Les fériés sont les mêmes partout |
 | Connection profiles | **Un jeu par environnement** | Un job TEST ne doit jamais atteindre la base de production |
 
-> **⚠️ Le risque n°1 en multi-environnements**
-> Un connection profile de **production** accessible depuis un job de **test**.
-> Le job de test écrase alors des données réelles. Deux parades cumulatives :
-> 1. des connection profiles **nommés par environnement** (`ORACLE-PROD`, `ORACLE-TEST`),
->    substitués par le deploy descriptor ;
-> 2. un **RBAC** qui interdit aux rôles hors-production l'accès aux connection profiles
->    de production.
+:::caution[⚠️ Le risque n°1 en multi-environnements]
+Un connection profile de **production** accessible depuis un job de **test**.
+Le job de test écrase alors des données réelles. Deux parades cumulatives :
+1. des connection profiles **nommés par environnement** (`ORACLE-PROD`, `ORACLE-TEST`),
+   substitués par le deploy descriptor ;
+2. un **RBAC** qui interdit aux rôles hors-production l'accès aux connection profiles
+   de production.
+:::
 
 ---
 
-### 17.6 Intégration Kubernetes
+##### 17.6 Intégration Kubernetes
 
 Deux relations distinctes entre Control-M et Kubernetes, souvent confondues :
 
-#### 17.6.1 Control-M **orchestre** des charges Kubernetes
+###### 17.6.1 Control-M **orchestre** des charges Kubernetes
 
 C'est le cas le plus courant. Un Agent (hors du cluster ou dans le cluster) porte le
 connection profile Kubernetes et soumet des Jobs K8s.
@@ -13249,12 +13149,13 @@ flowchart LR
 | `Job Cleanup` | `Delete Job` \| `Keep` |
 | `Job Status Polling Interval` | Défaut **20 s** |
 
-> **✅ `Get Pod Logs: "Get Logs"`**
-> Sans cela, l'output Control-M est vide et vous devez aller chercher les logs dans le cluster —
-> qui les aura peut-être déjà purgés si `Job Cleanup: Delete Job`. **Activez la récupération
-> des logs**, sinon vous perdez toute capacité de diagnostic.
+:::tip[✅ Get Pod Logs: "Get Logs"]
+Sans cela, l'output Control-M est vide et vous devez aller chercher les logs dans le cluster —
+qui les aura peut-être déjà purgés si `Job Cleanup: Delete Job`. **Activez la récupération
+des logs**, sinon vous perdez toute capacité de diagnostic.
+:::
 
-#### 17.6.2 Agents Control-M **dans** Kubernetes
+###### 17.6.2 Agents Control-M **dans** Kubernetes
 
 Un Agent peut tourner en conteneur pour exécuter des traitements dans le cluster. Points de
 vigilance :
@@ -13267,16 +13168,17 @@ vigilance :
 | Mise à l'échelle | Un Agent n'est pas conçu pour être autoscalé — dimensionnez fixement |
 | Certificats | Montés en secrets |
 
-> **✅ Control-M SaaS simplifie radicalement ce cas**
-> Un Agent en conteneur qui se connecte **en sortant** vers `*.controlm.com:443` n'a besoin
-> d'aucune règle réseau entrante, d'aucun service exposé, d'aucun NodePort. C'est l'un des
-> arguments les plus forts du SaaS pour les environnements conteneurisés.
+:::tip[✅ Control-M SaaS simplifie radicalement ce cas]
+Un Agent en conteneur qui se connecte **en sortant** vers `*.controlm.com:443` n'a besoin
+d'aucune règle réseau entrante, d'aucun service exposé, d'aucun NodePort. C'est l'un des
+arguments les plus forts du SaaS pour les environnements conteneurisés.
+:::
 
 ---
 
-### 17.7 Environnements cloud
+##### 17.7 Environnements cloud
 
-#### 17.7.1 Control-M sur IaaS
+###### 17.7.1 Control-M sur IaaS
 
 Control-M s'installe sur des VM cloud comme sur des serveurs physiques.
 
@@ -13290,7 +13192,7 @@ Control-M s'installe sur des VM cloud comme sur des serveurs physiques.
 | Haute disponibilité | Zones de disponibilité distinctes pour primaire et secondaire |
 | Coût | Attention aux frais de sortie de données pour les transferts MFT |
 
-#### 17.7.2 Control-M SaaS
+###### 17.7.2 Control-M SaaS
 
 ```mermaid
 flowchart LR
@@ -13327,7 +13229,7 @@ flowchart LR
 | **Montées de version** | Assurées par BMC |
 | **Proxy** | Si vous sortez par un proxy, ses paramètres doivent être définis |
 
-#### 17.7.3 Architecture hybride
+###### 17.7.3 Architecture hybride
 
 Le cas le plus courant en pratique : Control-M SaaS pilotant des Agents répartis entre le
 site et plusieurs clouds.
@@ -13374,7 +13276,7 @@ flowchart TB
 
 ---
 
-### 17.8 Tableau récapitulatif
+##### 17.8 Tableau récapitulatif
 
 | Architecture | Quand la choisir | Points de vigilance |
 |---|---|---|
@@ -13389,9 +13291,9 @@ flowchart TB
 
 ---
 
-## 18. Bonnes pratiques — synthèse
+#### 18. Bonnes pratiques — synthèse
 
-### 18.1 Sécurité
+##### 18.1 Sécurité
 
 | Pratique | Détail |
 |---|---|
@@ -13406,7 +13308,7 @@ flowchart TB
 | Audit permanent | `UserAuditOn = 1`, rétention alignée sur le besoin réel |
 | Revue trimestrielle | Utilisateurs, rôles, jetons, comptes, dérogations |
 
-### 18.2 Disponibilité et résilience
+##### 18.2 Disponibilité et résilience
 
 | Pratique | Détail |
 |---|---|
@@ -13419,7 +13321,7 @@ flowchart TB
 | Rétention adaptée | `OUTPUTRETN`, `IOALOGLM`, `DaysKeepActive` alignés sur le besoin d'analyse |
 | Surveillance des expirations | Certificats et jetons, alerte à J-30 |
 
-### 18.3 Performance
+##### 18.3 Performance
 
 | Pratique | Détail |
 |---|---|
@@ -13433,7 +13335,7 @@ flowchart TB
 | `SimultaneousTransfer` sur les gros lots MFT | Parallélisation des transferts |
 | Niveau de trace remis à 0 | Après chaque diagnostic |
 
-### 18.4 Maintenabilité
+##### 18.4 Maintenabilité
 
 | Pratique | Détail |
 |---|---|
@@ -13447,7 +13349,7 @@ flowchart TB
 | Scripts idempotents | Une relance doit toujours être sûre |
 | Date depuis Control-M | `%%ODATE`, jamais `date` dans le script |
 
-### 18.5 Industrialisation
+##### 18.5 Industrialisation
 
 | Pratique | Détail |
 |---|---|
@@ -13462,7 +13364,7 @@ flowchart TB
 | Rollback préparé et testé | Avant le premier déploiement, pas après le premier incident |
 | Provisioning des Agents par API | Parc reproductible et auditable |
 
-### 18.6 Supervision et gestion des erreurs
+##### 18.6 Supervision et gestion des erreurs
 
 | Pratique | Détail |
 |---|---|
@@ -13476,7 +13378,7 @@ flowchart TB
 | Alertes crédibles | Une alerte qui sonne tous les jours n'est plus une alerte |
 | Revue des `Set to OK` récurrents | Symptôme d'un défaut de conception |
 
-### 18.7 Les dix erreurs les plus coûteuses
+##### 18.7 Les dix erreurs les plus coûteuses
 
 | # | Erreur | Conséquence | Parade |
 |---|---|---|---|
@@ -13493,11 +13395,11 @@ flowchart TB
 
 ---
 
-# Partie XIV — Cas pratiques
+### Partie XIV — Cas pratiques
 
-## 19. Quinze travaux pratiques
+#### 19. Quinze travaux pratiques
 
-### Environnement de référence des TP
+##### Environnement de référence des TP
 
 Tous les TP utilisent le même environnement fictif. Adaptez les noms à votre plateforme.
 
@@ -13539,14 +13441,14 @@ git init
 
 ---
 
-## TP 1 — Créer son premier job
+#### TP 1 — Créer son premier job
 
-### Objectif
+##### Objectif
 
 Créer, valider, déployer et exécuter un job simple. Comprendre la différence entre
 `ctm build`, `ctm deploy` et `ctm run`.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -13556,7 +13458,7 @@ flowchart LR
     A --> C["echo 'Bonjour Control-M'"]
 ```
 
-### Prérequis
+##### Prérequis
 
 - CLI `ctm` installé et environnement configuré ;
 - un Agent `srv-app-01` en état `Available` ;
@@ -13567,7 +13469,7 @@ ctm config server:agent::ping ctmsrv-dev srv-app-01
 ctm config server:runasuser::test ctmsrv-dev srv-app-01 svc_formation
 ```
 
-### Configuration
+##### Configuration
 
 `definitions/tp01-premier-job.json` :
 
@@ -13593,7 +13495,7 @@ ctm config server:runasuser::test ctmsrv-dev srv-app-01 svc_formation
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 # 1. Valider la syntaxe JSON pure (réflexe systématique)
@@ -13606,7 +13508,7 @@ ctm build definitions/tp01-premier-job.json
 ctm run definitions/tp01-premier-job.json
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle |
 |---|---|
@@ -13620,7 +13522,7 @@ ctm run definitions/tp01-premier-job.json
 | `Host` | L'Agent qui exécute. **Vide, le job tournerait sur le Control-M/Server** |
 | `RunAs` | Le compte système d'exécution |
 
-### Résultat attendu
+##### Résultat attendu
 
 `ctm build` :
 
@@ -13642,7 +13544,7 @@ ctm run definitions/tp01-premier-job.json
 }
 ```
 
-### Tests
+##### Tests
 
 ```bash
 # Suivre l'exécution
@@ -13665,7 +13567,7 @@ Sortie attendue :
 Bonjour Control-M — date de traitement 20260902 — hote srv-app-01
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -13678,14 +13580,14 @@ Bonjour Control-M — date de traitement 20260902 — hote srv-app-01
 
 ---
 
-## TP 2 — Une chaîne de jobs dépendants
+#### TP 2 — Une chaîne de jobs dépendants
 
-### Objectif
+##### Objectif
 
 Construire une chaîne de trois jobs enchaînés, d'abord avec `Flow`, puis avec des **événements
 explicites**. Comprendre ce que `Flow` fait réellement.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -13693,11 +13595,11 @@ flowchart LR
     B -->|"TP02-TRANSFORM-OK"| C["030-CHARGER"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 1 réalisé.
 
-### Configuration — version 1, avec `Flow`
+##### Configuration — version 1, avec `Flow`
 
 `definitions/tp02-chaine-flow.json` :
 
@@ -13743,7 +13645,7 @@ TP 1 réalisé.
 }
 ```
 
-### Configuration — version 2, avec événements explicites
+##### Configuration — version 2, avec événements explicites
 
 `definitions/tp02-chaine-evenements.json` :
 
@@ -13809,7 +13711,7 @@ TP 1 réalisé.
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 # Version Flow
@@ -13824,7 +13726,7 @@ RUN2=$(ctm run definitions/tp02-chaine-evenements.json | jq -r '.runId')
 watch -n 3 'ctm run events::get | jq -r ".[] | select(.name | startswith(\"TP02\"))"'
 ```
 
-### Explications
+##### Explications
 
 | Point | Version `Flow` | Version événements |
 |---|---|---|
@@ -13842,7 +13744,7 @@ watch -n 3 'ctm run events::get | jq -r ".[] | select(.name | startswith(\"TP02\
 > **Ne mélangez pas les deux dans la même chaîne** : vous obtiendriez des événements
 > supplémentaires invisibles dans votre code, et des blocages incompréhensibles.
 
-### Résultat attendu
+##### Résultat attendu
 
 Les trois jobs s'exécutent **en séquence**. Le second ne démarre qu'après la fin OK du premier.
 
@@ -13856,7 +13758,7 @@ Ended OK        020-TRANSFORMER
 Ended OK        030-CHARGER
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — la dépendance fonctionne-t-elle vraiment ?**
 
@@ -13880,7 +13782,7 @@ Modifiez `010-EXTRAIRE` pour qu'il retourne un code d'erreur :
 
 Redéployez et exécutez : `020` et `030` doivent rester en `Wait Condition`, sans jamais démarrer.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -13891,14 +13793,14 @@ Redéployez et exécutez : `020` et `030` doivent rester en `Wait Condition`, sa
 
 ---
 
-## TP 3 — Exécution quotidienne d'un batch
+#### TP 3 — Exécution quotidienne d'un batch
 
-### Objectif
+##### Objectif
 
 Planifier un batch quotidien, en jours ouvrés, avec fenêtre horaire, calendrier de jours fériés
 et alertes de surveillance.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -13909,11 +13811,11 @@ flowchart LR
     J -.->|"NotOK"| N3["Alerte"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 1 réalisé.
 
-### Configuration
+##### Configuration
 
 **Étape 1 — le calendrier des jours fériés**, `calendars/feries-fr-2026.json` :
 
@@ -14073,7 +13975,7 @@ chmod +x scripts/batch_quotidien.sh
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 # 1. Déployer les calendriers (JSON obligatoire pour les calendriers)
@@ -14089,7 +13991,7 @@ ctm deploy definitions/tp03-batch-quotidien.json
 ctm run order ctmsrv-dev TP03-BATCH-QUOTIDIEN
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle |
 |---|---|
@@ -14102,7 +14004,7 @@ ctm run order ctmsrv-dev TP03-BATCH-QUOTIDIEN
 | `Action:CaptureOutput` | Extrait la volumétrie de la sortie vers une variable Control-M |
 | `DaysKeepActive: "7"` | L'instance reste analysable une semaine |
 
-### Résultat attendu
+##### Résultat attendu
 
 Le job apparaît dans le Monitoring et s'exécute. À partir du lendemain, il est ordonnancé
 automatiquement chaque jour ouvré non férié.
@@ -14111,7 +14013,7 @@ automatiquement chaque jour ouvré non férié.
 ctm run jobs:status::get -s "folder=TP03-BATCH-QUOTIDIEN"
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — la fenêtre horaire est-elle respectée ?**
 
@@ -14131,7 +14033,7 @@ Vérifiez que le 25 décembre 2026 (férié) n'apparaît pas.
 
 Consultez la sortie et vérifiez que `NB_LIGNES` a bien été valorisée.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -14143,14 +14045,14 @@ Consultez la sortie et vérifiez que `NB_LIGNES` a bien été valorisée.
 
 ---
 
-## TP 4 — Déclencher un traitement après réception d'un fichier
+#### TP 4 — Déclencher un traitement après réception d'un fichier
 
-### Objectif
+##### Objectif
 
 Détecter l'arrivée d'un fichier, éviter le piège du fichier en cours d'écriture, et déclencher
 la chaîne aval.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -14160,12 +14062,12 @@ flowchart LR
     T -->|"TP04-TRAITEMENT-OK"| AR["030-ARCHIVER"]
 ```
 
-### Prérequis
+##### Prérequis
 
 - TP 1 réalisé ;
 - répertoire `/data/entrant` accessible en lecture par `svc_formation` sur `srv-app-01`.
 
-### Configuration
+##### Configuration
 
 `definitions/tp04-arrivee-fichier.json` :
 
@@ -14259,7 +14161,7 @@ flowchart LR
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 ctm build  definitions/tp04-arrivee-fichier.json
@@ -14270,7 +14172,7 @@ ctm run order ctmsrv-dev TP04-ARRIVEE-FICHIER
 ssh svc_formation@srv-app-01 'printf "id;valeur\n1;100\n2;200\n" > /data/entrant/donnees_20260902.csv'
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle | Sans lui |
 |---|---|---|
@@ -14281,16 +14183,17 @@ ssh svc_formation@srv-app-01 'printf "id;valeur\n1;100\n2;200\n" > /data/entrant
 | **`MinimalAge: "1Min"`** | Le fichier doit être stable depuis 1 minute | **Le traitement lirait un fichier partiellement écrit** |
 | `AdjustEvents: true` | Évite les blocages si un prédécesseur n'est pas ordonnancé | — |
 
-> **⚠️ Le piège du fichier en cours d'écriture**
-> Sans `MinimalAge` et `MinimumSize`, le file watcher détecte le fichier **dès sa création**,
-> alors que l'émetteur écrit encore. Le traitement lit alors des données tronquées — et le
-> résultat est faux **sans aucune erreur**.
->
-> **La parade la plus fiable reste le fichier sentinelle** : demandez à l'émetteur d'écrire
-> `donnees_20260902.csv` puis `donnees_20260902.done`, et surveillez `*.done`.
-> `MinimalAge` est le repli quand vous ne maîtrisez pas l'émetteur.
+:::caution[⚠️ Le piège du fichier en cours d'écriture]
+Sans `MinimalAge` et `MinimumSize`, le file watcher détecte le fichier **dès sa création**,
+alors que l'émetteur écrit encore. Le traitement lit alors des données tronquées — et le
+résultat est faux **sans aucune erreur**.
 
-### Résultat attendu
+**La parade la plus fiable reste le fichier sentinelle** : demandez à l'émetteur d'écrire
+`donnees_20260902.csv` puis `donnees_20260902.done`, et surveillez `*.done`.
+`MinimalAge` est le repli quand vous ne maîtrisez pas l'émetteur.
+:::
+
+##### Résultat attendu
 
 ```text
 010-ATTENDRE-FICHIER   Executing  →  Ended OK   (dès la détection)
@@ -14298,7 +14201,7 @@ ssh svc_formation@srv-app-01 'printf "id;valeur\n1;100\n2;200\n" > /data/entrant
 030-ARCHIVER           Wait Condition → Executing → Ended OK
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — la détection fonctionne-t-elle ?**
 
@@ -14322,7 +14225,7 @@ Le file watcher ne doit **pas** déclencher tant que le fichier grossit.
 Ne déposez aucun fichier. Après 240 minutes, `010` doit passer `Ended Not OK` et générer
 l'alerte. Pour tester plus vite, réduisez temporairement `TimeLimit` à `2`.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -14335,14 +14238,14 @@ l'alerte. Pour tester plus vite, réduisez temporairement `TimeLimit` à `2`.
 
 ---
 
-## TP 5 — Gérer un traitement avec SLA
+#### TP 5 — Gérer un traitement avec SLA
 
-### Objectif
+##### Objectif
 
 Poser un engagement de service sur une chaîne, comprendre le *slack time* et la prédiction de
 retard.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -14351,11 +14254,11 @@ flowchart LR
     J3 -->|"TP05-CHAINE-TERMINEE"| SLA["099-SLA<br/>CompleteBy 08:00"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 2 réalisé. **Le module SLA Management doit être disponible sur votre plateforme.**
 
-### Configuration
+##### Configuration
 
 `definitions/tp05-sla.json` :
 
@@ -14430,7 +14333,7 @@ TP 2 réalisé. **Le module SLA Management doit être disponible sur votre plate
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 ctm build  definitions/tp05-sla.json
@@ -14441,7 +14344,7 @@ ctm run order ctmsrv-dev TP05-CHAINE-SLA
 watch -n 30 'ctm run services:sla::get | jq -r ".activeServices[] | select(.serviceName==\"TP05-CHAINE-FORMATION\")"'
 ```
 
-### Explications
+##### Explications
 
 | Attribut | Rôle |
 |---|---|
@@ -14463,7 +14366,7 @@ flowchart LR
     S -->|"negatif"| KO["ALERTE ANTICIPEE<br/>'Service is late'"]
 ```
 
-### Résultat attendu
+##### Résultat attendu
 
 ```json
 {
@@ -14487,12 +14390,13 @@ flowchart LR
 }
 ```
 
-> **⚠️ Notez `jobsWithoutStatistics: "3"`**
-> Au premier passage, les jobs n'ont **aucun historique**. La prédiction est donc peu fiable.
-> **C'est normal, et c'est exactement pourquoi il ne faut pas poser un SLA le jour de la mise
-> en production d'une chaîne.**
+:::caution[⚠️ Notez jobsWithoutStatistics: "3"]
+Au premier passage, les jobs n'ont **aucun historique**. La prédiction est donc peu fiable.
+**C'est normal, et c'est exactement pourquoi il ne faut pas poser un SLA le jour de la mise
+en production d'une chaîne.**
+:::
 
-### Tests
+##### Tests
 
 **Test 1 — le service apparaît-il ?**
 
@@ -14515,7 +14419,7 @@ Le `slackTime` doit devenir **négatif** et `statusReason` mentionner *« Servic
 Laissez la chaîne tourner plusieurs jours, puis observez comment
 `jobsWithoutStatistics` passe à `0` et la prédiction devient précise.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -14528,13 +14432,13 @@ Laissez la chaîne tourner plusieurs jours, puis observez comment
 
 ---
 
-## TP 6 — Un workflow avec plusieurs dépendances
+#### TP 6 — Un workflow avec plusieurs dépendances
 
-### Objectif
+##### Objectif
 
 Construire un workflow réaliste : divergence, convergence, jalon, ressources, logique OU.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart TB
@@ -14550,11 +14454,11 @@ flowchart TB
     C1 --> R2["061-RAPPORT-B"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 2 réalisé.
 
-### Configuration
+##### Configuration
 
 **Étape 1 — créer le pool de ressources** :
 
@@ -14695,7 +14599,7 @@ ctm run resources::get -s "name=TP06-*"
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 ctm build definitions/tp06-workflow.json
@@ -14711,7 +14615,7 @@ watch -n 5 'ctm run events::get | jq -r ".[] | select(.name | startswith(\"TP06\
 watch -n 5 'ctm run resources::get -s "name=TP06-*"'
 ```
 
-### Explications
+##### Explications
 
 | Motif | Mise en œuvre | Bénéfice |
 |---|---|---|
@@ -14724,13 +14628,14 @@ watch -n 5 'ctm run resources::get -s "name=TP06-*"'
 | **Parallélisation finale** | Deux rapports attendent le même événement | — |
 | **Un seul nettoyage final** | `061-RAPPORT-B` supprime `TP06-CHARGE-OK` | Évite l'accumulation |
 
-> **⚠️ La règle d'or de la divergence**
-> **Un événement consommé par plusieurs jobs ne doit être supprimé que par UN SEUL d'entre eux**
-> — ou par aucun, en laissant la New Day faire le ménage.
-> C'est l'erreur la plus fréquente dans les workflows en éventail : le premier consommateur
-> supprime l'événement et tous les autres restent bloqués.
+:::caution[⚠️ La règle d'or de la divergence]
+**Un événement consommé par plusieurs jobs ne doit être supprimé que par UN SEUL d'entre eux**
+— ou par aucun, en laissant la New Day faire le ménage.
+C'est l'erreur la plus fréquente dans les workflows en éventail : le premier consommateur
+supprime l'événement et tous les autres restent bloqués.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 Ended OK   010-INITIALISER
@@ -14744,7 +14649,7 @@ Ended OK   060-RAPPORT-A
 Ended OK   061-RAPPORT-B
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — le pool bride-t-il bien la concurrence ?**
 
@@ -14773,7 +14678,7 @@ JALON=$(ctm run status "${RUN}" | jq -r '.statuses[] | select(.name=="030-JALON-
 ctm run job::waitingInfo "${JALON}"
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -14785,14 +14690,14 @@ ctm run job::waitingInfo "${JALON}"
 
 ---
 
-## TP 7 — Déployer un workflow via l'Automation API
+#### TP 7 — Déployer un workflow via l'Automation API
 
-### Objectif
+##### Objectif
 
 Automatiser le cycle complet : valider, sauvegarder, déployer, vérifier, avec possibilité de
 retour arrière.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -14805,11 +14710,11 @@ flowchart LR
     C -->|"KO"| R["Rollback"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 6 réalisé. Un jeton d'API avec les droits de déploiement.
 
-### Configuration
+##### Configuration
 
 `scripts/deployer.sh` :
 
@@ -14921,7 +14826,7 @@ echo "  Sauvegarde disponible : ${SAUVEGARDE}"
 echo "  Retour arriere        : ctm deploy ${SAUVEGARDE}"
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 chmod +x scripts/deployer.sh
@@ -14933,7 +14838,7 @@ chmod +x scripts/deployer.sh
 ./scripts/deployer.sh prod definitions/tp06-workflow.json PRD
 ```
 
-### Explications
+##### Explications
 
 | Étape | Pourquoi elle est là |
 |---|---|
@@ -14946,7 +14851,7 @@ chmod +x scripts/deployer.sh
 | **5 — `ctm deploy`** | L'écriture réelle |
 | **6 — vérification** | Confirme que ce qui devait arriver est bien arrivé |
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 === 1/6 — Validation syntaxique JSON ===
@@ -14980,7 +14885,7 @@ TP06-WORKFLOW
 [OK] Deploiement de definitions/tp06-workflow.json vers dev termine
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — le script bloque-t-il sur une erreur ?**
 
@@ -15003,7 +14908,7 @@ ctm deploy backups/dev-20260902-143012.json
 Utilisez un jeton en lecture seule : le script doit échouer proprement à l'étape 5 avec un
 **403**.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -15015,14 +14920,14 @@ Utilisez un jeton en lecture seule : le script doit échouer proprement à l'ét
 
 ---
 
-## TP 8 — Versionner les jobs dans Git
+#### TP 8 — Versionner les jobs dans Git
 
-### Objectif
+##### Objectif
 
 Mettre en place un dépôt Jobs-as-Code complet : structure, hooks, tests, protection contre les
 fuites de secrets.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -15033,11 +14938,11 @@ flowchart LR
     REV --> CI["Pipeline CI"]
 ```
 
-### Prérequis
+##### Prérequis
 
 Git installé, `jq` installé.
 
-### Configuration
+##### Configuration
 
 **Étape 1 — la structure** :
 
@@ -15202,7 +15107,7 @@ git config core.hooksPath .githooks
 - Astreinte production : +33 1 23 45 67 89
 ````
 
-### Commandes
+##### Commandes
 
 ```bash
 # Premier commit
@@ -15225,7 +15130,7 @@ git add definitions/test-fuite.json
 git commit -m "Test de detection"     # doit être REFUSÉ
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle |
 |---|---|
@@ -15235,12 +15140,13 @@ git commit -m "Test de detection"     # doit être REFUSÉ
 | Détection de secrets | Trois mécanismes cumulés : clés JSON suspectes, motifs connus, fichiers sensibles |
 | `README.md` | La procédure de contribution est dans le dépôt, pas dans un wiki oublié |
 
-> **⚠️ Un secret committé doit être changé, pas seulement retiré**
-> Retirer le fichier dans un commit ultérieur **ne suffit pas** : la valeur reste dans
-> l'historique Git, distribué sur tous les clones. La seule réponse correcte est de
-> **révoquer et régénérer le secret**.
+:::caution[⚠️ Un secret committé doit être changé, pas seulement retiré]
+Retirer le fichier dans un commit ultérieur **ne suffit pas** : la valeur reste dans
+l'historique Git, distribué sur tous les clones. La seule réponse correcte est de
+**révoquer et régénérer le secret**.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 $ git commit -m "Test de detection"
@@ -15252,7 +15158,7 @@ Commit refuse : 1 probleme(s).
 Pour forcer (a eviter) : git commit --no-verify
 ```
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — JSON invalide
@@ -15272,7 +15178,7 @@ git reset HEAD~1 2>/dev/null || true
 rm -f definitions/test-fuite.json definitions/casse.json certificat.pem
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -15284,14 +15190,14 @@ rm -f definitions/test-fuite.json definitions/casse.json certificat.pem
 
 ---
 
-## TP 9 — Déployer depuis GitLab CI/CD ou Jenkins
+#### TP 9 — Déployer depuis GitLab CI/CD ou Jenkins
 
-### Objectif
+##### Objectif
 
 Automatiser complètement la chaîne : commit → validation → déploiement DEV → TEST →
 approbation → PRODUCTION.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -15304,7 +15210,7 @@ flowchart LR
     A -->|"NON"| S["Arret"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 8 réalisé. Un jeton d'API **par environnement**, avec des rôles distincts.
 
@@ -15324,7 +15230,7 @@ ctm authentication token::create -f /tmp/jeton-dev.json
 ctm authentication tokens::get
 ```
 
-### Configuration — GitLab CI
+##### Configuration — GitLab CI
 
 `.gitlab-ci.yml` (version pédagogique, resserrée) :
 
@@ -15453,7 +15359,7 @@ deploy:prod:
 | `CTM_ENDPOINT_PROD` | **Oui** | Non |
 | `CTM_TOKEN_PROD` | **Oui** | **Oui** |
 
-### Configuration — Jenkins (équivalent)
+##### Configuration — Jenkins (équivalent)
 
 Voir §12.5 pour le `Jenkinsfile` complet. Points clés :
 
@@ -15474,7 +15380,7 @@ stage('Approbation production') {
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 git checkout -b develop
@@ -15486,7 +15392,7 @@ git checkout main && git merge develop && git push origin main
 # → le job deploy:prod apparaît en attente d'approbation manuelle
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle |
 |---|---|
@@ -15499,7 +15405,7 @@ git checkout main && git merge develop && git push origin main
 | Variables **protégées** | Le jeton PROD n'est accessible que depuis les branches protégées |
 | `ctm deploy transform` avant `deploy` | On voit ce qui va être écrit |
 
-### Résultat attendu
+##### Résultat attendu
 
 Pipeline GitLab :
 
@@ -15511,7 +15417,7 @@ deploy:test ✓ 1m 34s
 deploy:prod ⏸ (en attente d'approbation manuelle)
 ```
 
-### Tests
+##### Tests
 
 **Test 1 — le lint bloque-t-il ?** Committez un JSON invalide : le pipeline doit échouer
 à la première étape, sans jamais toucher Control-M.
@@ -15525,7 +15431,7 @@ la séparation des rôles fonctionne.
 **Test 4 — les artefacts.** Vérifiez que `backups/` est téléchargeable depuis l'interface,
 même après un échec.
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -15538,14 +15444,14 @@ même après un échec.
 
 ---
 
-## TP 10 — Appeler Control-M depuis Python
+#### TP 10 — Appeler Control-M depuis Python
 
-### Objectif
+##### Objectif
 
 Écrire un outil Python de production : authentification, retries, gestion typée des erreurs,
 attente active.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -15554,7 +15460,7 @@ flowchart LR
     P -.->|"retries + backoff"| API
 ```
 
-### Prérequis
+##### Prérequis
 
 Python 3.10+, `requests` installé, un jeton d'API en lecture/écriture.
 
@@ -15565,7 +15471,7 @@ export CTM_ENDPOINT="https://ctm-em.exemple.fr:8443/automation-api"
 export CTM_API_TOKEN="<votre-jeton>"
 ```
 
-### Configuration
+##### Configuration
 
 Réutilisez le module `controlm_client.py` du §13.3. Voici l'outil qui l'exploite.
 
@@ -15810,7 +15716,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 chmod +x scripts/ctm_outil.py
@@ -15834,7 +15740,7 @@ chmod +x scripts/ctm_outil.py
 ./scripts/ctm_outil.py relancer TP06-WORKFLOW
 ```
 
-### Explications
+##### Explications
 
 | Point du code | Pourquoi |
 |---|---|
@@ -15847,7 +15753,7 @@ chmod +x scripts/ctm_outil.py
 | **Codes retour distincts** (0/1/2/3/4) | Le pipeline peut réagir différemment selon la nature de l'échec |
 | Sortie des jobs en échec affichée automatiquement | Diagnostic immédiat, sans commande supplémentaire |
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 $ ./scripts/ctm_outil.py statut --application FORMATION
@@ -15872,7 +15778,7 @@ TP05-CHAINE-FORMATION                    2     Executing      -00:12:30    75%  
 1 service(s), dont 1 en retard.
 ```
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — le code retour est-il exploitable ?
@@ -15888,7 +15794,7 @@ CTM_API_TOKEN="invalide" ./scripts/ctm_outil.py statut
 # Doit échouer proprement en 403, SANS retry
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -15901,13 +15807,13 @@ CTM_API_TOKEN="invalide" ./scripts/ctm_outil.py statut
 
 ---
 
-## TP 11 — Surveiller un workflow via l'API
+#### TP 11 — Surveiller un workflow via l'API
 
-### Objectif
+##### Objectif
 
 Écrire un démon de surveillance qui alerte sur les échecs, les SLA en risque et les jobs bloqués.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -15918,11 +15824,11 @@ flowchart LR
     D --> S[("Etat des alertes<br/>deja emises")]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 10 réalisé.
 
-### Configuration
+##### Configuration
 
 `scripts/surveiller.py` — version complète et exploitable :
 
@@ -16218,7 +16124,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 export CTM_ENDPOINT="https://ctm-em.exemple.fr:8443/automation-api"
@@ -16268,7 +16174,7 @@ sudo systemctl enable --now ctm-surveillance
 sudo journalctl -u ctm-surveillance -f
 ```
 
-### Explications
+##### Explications
 
 | Mécanisme | Rôle |
 |---|---|
@@ -16281,11 +16187,12 @@ sudo journalctl -u ctm-surveillance -f
 | **Mention `PREDICTION INCERTAINE`** | Évite de mobiliser l'astreinte sur une fausse alerte SLA |
 | **Sévérité selon la priorité du service** | Priorité 1–2 = critique, 3–5 = avertissement |
 
-> **⚠️ La croissance de l'ensemble `deja`**
-> En production, purgez périodiquement les clés anciennes (par exemple celles dont l'ODATE
-> a plus de 7 jours), sinon le fichier d'état grossit indéfiniment.
+:::caution[⚠️ La croissance de l'ensemble deja]
+En production, purgez périodiquement les clés anciennes (par exemple celles dont l'ODATE
+a plus de 7 jours), sinon le fichier d'état grossit indéfiniment.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 2026-09-02 14:35:12 | INFO     | Demarrage de la surveillance — intervalle=60s perimetre=TP06-* seuil_attente=30min
@@ -16304,7 +16211,7 @@ ERREUR TECHNIQUE : connexion a la source impossible
 2026-09-02 14:36:17 | INFO     | Cycle 2 termine en 2.1s — 1 alerte(s) connue(s)
 ```
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — provoquer un échec
@@ -16322,7 +16229,7 @@ python3 scripts/surveiller.py
 # Ne doit PAS ré-alerter sur les échecs déjà signalés
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -16334,13 +16241,13 @@ python3 scripts/surveiller.py
 
 ---
 
-## TP 12 — Gérer automatiquement une erreur
+#### TP 12 — Gérer automatiquement une erreur
 
-### Objectif
+##### Objectif
 
 Construire un job qui distingue **trois natures d'échec** et réagit différemment à chacune.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart TB
@@ -16354,11 +16261,11 @@ flowchart TB
     OUT -->|"apres 3 relances"| E["Escalade"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 1 réalisé.
 
-### Configuration
+##### Configuration
 
 **Le script qui produit différents codes retour**, `scripts/traitement_variable.sh` :
 
@@ -16555,7 +16462,7 @@ esac
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 ctm build definitions/tp12-gestion-erreur.json
@@ -16573,7 +16480,7 @@ EOF
 ctm run order ctmsrv-dev TP12-GESTION-ERREUR -f /tmp/config-run.json
 ```
 
-### Explications
+##### Explications
 
 | Bloc | Nature d'échec | Réaction | Pourquoi |
 |---|---|---|---|
@@ -16586,17 +16493,19 @@ ctm run order ctmsrv-dev TP12-GESTION-ERREUR -f /tmp/config-run.json
 | `RerunLimit` | — | Plafonne à 3 relances | Évite la boucle infinie |
 | `Notify:ExecutionTime` | **Dérive** | Alerte si +50 % vs moyenne | Détecte un problème **avant** l'échec |
 
-> **✅ Pourquoi les noms de blocs commencent par `_1_`, `_2_`…**
-> L'ordre des clés dans un objet JSON n'est pas garanti, mais un préfixe numérique rend
-> **l'intention de lecture** évidente pour l'humain qui reprend le code. C'est une convention
-> de lisibilité, pas une contrainte technique.
+:::tip[✅ Pourquoi les noms de blocs commencent par _1_, _2_…]
+L'ordre des clés dans un objet JSON n'est pas garanti, mais un préfixe numérique rend
+**l'intention de lecture** évidente pour l'humain qui reprend le code. C'est une convention
+de lisibilité, pas une contrainte technique.
+:::
 
-> **⚠️ `Action:SetToOK` dans le bloc « avertissement »**
-> C'est une décision d'exploitation **explicite et tracée dans le code** : « des rejets ne
-> doivent pas bloquer la chaîne ». C'est infiniment mieux qu'un exploitant qui fait un
-> `Set to OK` manuel à 3 h du matin sans que personne ne sache pourquoi.
+:::caution[⚠️ Action:SetToOK dans le bloc « avertissement »]
+C'est une décision d'exploitation **explicite et tracée dans le code** : « des rejets ne
+doivent pas bloquer la chaîne ». C'est infiniment mieux qu'un exploitant qui fait un
+`Set to OK` manuel à 3 h du matin sans que personne ne sache pourquoi.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 | Scénario | Statut final de `010` | `020` démarre ? | Notifications |
 |---|---|---|---|
@@ -16606,7 +16515,7 @@ ctm run order ctmsrv-dev TP12-GESTION-ERREUR -f /tmp/config-run.json
 | `technique` | Ended Not OK, relancé 3× | Non | Alerte exploitation + escalade |
 | `timeout` | Relancé immédiatement | Selon le résultat | Escalade si persistant |
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — les rejets ne bloquent pas la chaîne
@@ -16624,7 +16533,7 @@ ctm run job:log::get "${JOB}"     # doit montrer les relances
 ctm run job:output::get "${JOB}"  # 020 doit afficher le nombre de lignes
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -16637,14 +16546,14 @@ ctm run job:output::get "${JOB}"  # 020 doit afficher le nombre de lignes
 
 ---
 
-## TP 13 — Promouvoir un traitement de DEV vers PROD
+#### TP 13 — Promouvoir un traitement de DEV vers PROD
 
-### Objectif
+##### Objectif
 
 Réaliser une promotion complète, avec deploy descriptor, sauvegarde, validation à chaque étape
 et retour arrière préparé.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart LR
@@ -16664,11 +16573,11 @@ flowchart LR
     DP --> T3 --> PRD["PROD : PRD-FORMATION-CHAINE"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 7 et TP 8 réalisés. Trois environnements déclarés dans `ctm environment`.
 
-### Configuration
+##### Configuration
 
 **Étape 1 — les gabarits de définitions**, `definitions/chaine.json.tmpl` :
 
@@ -16875,7 +16784,7 @@ ok "Promotion ${SOURCE} -> ${CIBLE} terminee"
 echo "  Retour arriere : ctm deploy ${SAUVEGARDE}"
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 chmod +x scripts/generer.sh scripts/promouvoir.sh
@@ -16898,7 +16807,7 @@ ctm run order ctmsrv-test TST-FORMATION-CHAINE
 ./scripts/promouvoir.sh test prod
 ```
 
-### Explications
+##### Explications
 
 | Élément | Rôle |
 |---|---|
@@ -16912,7 +16821,7 @@ ctm run order ctmsrv-test TST-FORMATION-CHAINE
 | **Confirmation explicite pour la PROD** | Le garde-fou humain |
 | **Sauvegarde avant déploiement** | Le retour arrière est immédiat |
 
-### Résultat attendu
+##### Résultat attendu
 
 | Environnement | Folder | Serveur | Hôte | Compte | Dummy | Ordering |
 |---|---|---|---|---|---|---|
@@ -16920,7 +16829,7 @@ ctm run order ctmsrv-test TST-FORMATION-CHAINE
 | TEST | `TST-FORMATION-CHAINE` | `ctmsrv-test` | `srv-app-test-01` | `test_formation` | Non | Manual |
 | PROD | `PRD-FORMATION-CHAINE` | `ctmsrv-prod` | `srv-app-01` | `svc_formation` | Non | **Automatic** |
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — les substitutions sont-elles correctes ?
@@ -16938,7 +16847,7 @@ diff <(jq -S . build/dev/chaine.json) <(jq -S . build/prod/chaine.json)
 ctm deploy backups/prod-20260902-160000.json
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -16951,14 +16860,14 @@ ctm deploy backups/prod-20260902-160000.json
 
 ---
 
-## TP 14 — Sécuriser les accès API
+#### TP 14 — Sécuriser les accès API
 
-### Objectif
+##### Objectif
 
 Mettre en place un modèle de jetons et de rôles au moindre privilège, avec surveillance des
 expirations.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart TB
@@ -16984,11 +16893,11 @@ flowchart TB
     T4 --> P4["Sauvegarde quotidienne"]
 ```
 
-### Prérequis
+##### Prérequis
 
 Droits d'administration Control-M.
 
-### Configuration
+##### Configuration
 
 **Étape 1 — définir les rôles**
 
@@ -17195,7 +17104,7 @@ exit 1
 }
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 # Inventaire des jetons
@@ -17214,7 +17123,7 @@ ctm authentication token::delete cicd-gitlab-prod
 ctm deploy definitions/tp14-surveillance-jetons.json
 ```
 
-### Explications
+##### Explications
 
 | Mesure | Ce qu'elle évite |
 |---|---|
@@ -17227,11 +17136,12 @@ ctm deploy definitions/tp14-surveillance-jetons.json
 | **Détection du rôle `Admin`** | Le moindre privilège est vérifié, pas seulement documenté |
 | **`Action:SetToOK` sur le job de surveillance** | Le job alerte sans bloquer la chaîne de surveillance |
 
-> **⚠️ Le jeton n'est affiché qu'une seule fois**
-> À la création, copiez-le immédiatement dans votre coffre. Il n'existe **aucun moyen de le
-> relire** ensuite : `token::get` renvoie les métadonnées (nom, expiration, rôles), pas la valeur.
+:::caution[⚠️ Le jeton n'est affiché qu'une seule fois]
+À la création, copiez-le immédiatement dans votre coffre. Il n'existe **aucun moyen de le
+relire** ensuite : `token::get` renvoie les métadonnées (nom, expiration, rôles), pas la valeur.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 $ ./scripts/surveiller_jetons.sh 30
@@ -17246,7 +17156,7 @@ AVERTISSEMENT — jetons expirant bientot :
 2 categorie(s) de probleme detectee(s).
 ```
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — un jeton DEV peut-il déployer en PROD ?
@@ -17264,7 +17174,7 @@ ctm authentication token::delete test-jeton
 # Puis utiliser ce jeton → 403 immédiat
 ```
 
-### Troubleshooting
+##### Troubleshooting
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -17276,14 +17186,14 @@ ctm authentication token::delete test-jeton
 
 ---
 
-## TP 15 — Diagnostiquer un job en échec
+#### TP 15 — Diagnostiquer un job en échec
 
-### Objectif
+##### Objectif
 
 Appliquer la méthode complète de diagnostic sur un cas réel, jusqu'à la résolution et la
 prévention.
 
-### Architecture
+##### Architecture
 
 ```mermaid
 flowchart TB
@@ -17298,11 +17208,11 @@ flowchart TB
     V --> P["PREVENTION"]
 ```
 
-### Prérequis
+##### Prérequis
 
 TP 10 réalisé.
 
-### Configuration — le script de diagnostic complet
+##### Configuration — le script de diagnostic complet
 
 `scripts/diagnostiquer.sh` :
 
@@ -17438,7 +17348,7 @@ else
 fi
 ```
 
-### Commandes
+##### Commandes
 
 ```bash
 chmod +x scripts/diagnostiquer.sh
@@ -17453,7 +17363,7 @@ chmod +x scripts/diagnostiquer.sh
 ./scripts/diagnostiquer.sh "ctmsrv-dev:00042" > /tmp/diagnostic-INC0012345.txt
 ```
 
-### Explications — la méthode en sept temps
+##### Explications — la méthode en sept temps
 
 | Temps | Question | Commande | Ce que ça révèle |
 |---|---|---|---|
@@ -17465,13 +17375,14 @@ chmod +x scripts/diagnostiquer.sh
 | **6. Voisinage** | Le problème vient-il d'amont ? | `ctm run job::related` | Un prédécesseur a peut-être produit un fichier vide |
 | **7. Contexte** | L'agent va bien ? Les ressources ? | `ctm config server:agent::ping`, `ctm run resources::get` | Un problème d'infrastructure ne se corrige pas dans le script |
 
-> **✅ L'erreur de diagnostic la plus fréquente**
-> Regarder **uniquement l'output**. C'est là qu'on voit l'erreur, mais pas toujours la
-> **cause**. Un `ORA-01652: unable to extend temp segment` dans l'output vient d'un tablespace
-> plein — mais **pourquoi** est-il plein ? Les statistiques montreront que le job traite
-> 10 fois plus de données que d'habitude, ce qui pointe vers le vrai problème, en amont.
+:::tip[✅ L'erreur de diagnostic la plus fréquente]
+Regarder **uniquement l'output**. C'est là qu'on voit l'erreur, mais pas toujours la
+**cause**. Un `ORA-01652: unable to extend temp segment` dans l'output vient d'un tablespace
+plein — mais **pourquoi** est-il plein ? Les statistiques montreront que le job traite
+10 fois plus de données que d'habitude, ce qui pointe vers le vrai problème, en amont.
+:::
 
-### Résultat attendu
+##### Résultat attendu
 
 ```text
 ==============================================================================
@@ -17519,7 +17430,7 @@ la durée n'est pas anormale. **Cause : indisponibilité passagère de la base.*
 **Résolution : relancer.** **Prévention : ajouter un `If:Output` sur `ORA-12170` avec
 `Action:Rerun`** — exactement ce que fait le TP 12.
 
-### Tests
+##### Tests
 
 ```bash
 # Test 1 — sur un job en succès
@@ -17537,7 +17448,7 @@ ctm config server:agent::disable ctmsrv-dev srv-app-01
 ctm config server:agent::enable ctmsrv-dev srv-app-01
 ```
 
-### Troubleshooting du diagnostic lui-même
+##### Troubleshooting du diagnostic lui-même
 
 | Symptôme | Cause | Solution |
 |---|---|---|
@@ -17547,7 +17458,7 @@ ctm config server:agent::enable ctmsrv-dev srv-app-01
 | L'agent n'est pas identifié | `host` absent de la réponse | Le job tourne peut-être sur le Control-M/Server |
 | `job::get` renvoie une erreur | Job purgé de l'environnement actif | Chercher dans les archives : `ctm archive search::get` |
 
-### Prévention — la boucle d'amélioration
+##### Prévention — la boucle d'amélioration
 
 Après chaque incident, posez-vous les quatre questions :
 
@@ -17558,17 +17469,18 @@ Après chaque incident, posez-vous les quatre questions :
 | **Le diagnostic a-t-il été rapide ?** | Améliorer les messages du script ; augmenter `OUTPUTRETN` |
 | **Cela peut-il se reproduire ailleurs ?** | Porter la correction dans le `Defaults` du folder, ou dans le site standard |
 
-> **✅ La règle du post-mortem**
-> Un incident qui se reproduit à l'identique signifie que le post-mortem n'a produit
-> **aucune action concrète**. Chaque incident doit se terminer par au moins **une ligne de
-> code ajoutée** — une notification, un `If`, une ressource, une correction de script — pas
-> seulement par un compte rendu.
+:::tip[✅ La règle du post-mortem]
+Un incident qui se reproduit à l'identique signifie que le post-mortem n'a produit
+**aucune action concrète**. Chaque incident doit se terminer par au moins **une ligne de
+code ajoutée** — une notification, un `If`, une ressource, une correction de script — pas
+seulement par un compte rendu.
+:::
 
 ---
 
-# Partie XV — Annexes
+### Partie XV — Annexes
 
-## 20. Glossaire Control-M
+#### 20. Glossaire Control-M
 
 | Terme | Définition |
 |---|---|
@@ -17639,14 +17551,14 @@ Après chaque incident, posez-vous les quatre questions :
 
 ---
 
-## 21. Aide-mémoire des commandes
+#### 21. Aide-mémoire des commandes
 
-### 21.1 Automation API — CLI `ctm`
+##### 21.1 Automation API — CLI `ctm`
 
 **Grammaire** : `ctm <service> <ressource>[:<sous-ressource>]::<action> [args]`
 Ressources jointes par `:`, action séparée par `::`.
 
-#### Environnement et session
+###### Environnement et session
 
 ```bash
 ctm environment show                                   # lister (PAS "list")
@@ -17665,7 +17577,7 @@ ctm session logout <token>
 ctm session user:password::update <ancien> <nouveau>
 ```
 
-#### Jetons d'API
+###### Jetons d'API
 
 ```bash
 ctm authentication token::create -f <definition.json>
@@ -17675,7 +17587,7 @@ ctm authentication token::delete <nom>
 ctm authentication tokens::get
 ```
 
-#### Build et deploy
+###### Build et deploy
 
 ```bash
 ctm build  <definitions> [descriptor]
@@ -17707,7 +17619,7 @@ ctm deploy ai:jobtypes::get
 ctm deploy workbench::import <resources.zip>
 ```
 
-#### Exécution et suivi
+###### Exécution et suivi
 
 ```bash
 ctm run <definitions> [descriptor]                     # deploie ET execute
@@ -17764,7 +17676,7 @@ ctm run alerts::update -f <config.json>
 ctm run alerts:status::update <alertIds> -f <config.json>
 ```
 
-#### Configuration
+###### Configuration
 
 ```bash
 ctm config servers::get
@@ -17817,7 +17729,7 @@ ctm config em:param::set <param>
 ctm config item::recycle <id>
 ```
 
-#### Provisioning, rapports, archives, usage
+###### Provisioning, rapports, archives, usage
 
 ```bash
 ctm provision images <os>                              # Linux | Windows | AIX
@@ -17844,7 +17756,7 @@ ctm archive output::get <jobId> -s runNo=<n>
 ctm usage jobs::get
 ```
 
-### 21.2 Utilitaires Control-M/Server
+##### 21.2 Utilitaires Control-M/Server
 
 ```bash
 # Cycle de vie
@@ -17883,7 +17795,7 @@ ctmwhy <orderID>            # base 36 ; "*1234" pour une valeur base 10
 ctmudly <nomUserDaily>
 ```
 
-### 21.3 Utilitaires Control-M/Agent
+##### 21.3 Utilitaires Control-M/Agent
 
 ```bash
 start-ag -u <user> -p ALL      # demarrage
@@ -17900,7 +17812,7 @@ ctmfw                           # file watcher
 _exit | _sleep                  # Windows
 ```
 
-### 21.4 Utilitaires Control-M/EM
+##### 21.4 Utilitaires Control-M/EM
 
 ```bash
 em_data_collector -U <user> -P <pwd> [-days N] [-max_size N] [-threads 1-4]
@@ -17921,14 +17833,14 @@ ctmkeytool -status -host <server> -keystore_pass <p> -key_pass <p>
 
 ---
 
-## 22. Endpoints REST principaux
+#### 22. Endpoints REST principaux
 
 Base : `https://<hôte>:8443/automation-api` (self-hosted) ou
 `https://<tenant>-aapi.<zone>.controlm.com/automation-api` (SaaS).
 
 En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>` (session).
 
-### Session et authentification
+##### Session et authentification
 
 | Méthode | Chemin |
 |---|---|
@@ -17941,7 +17853,7 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 | DELETE | `/authentication/token/{nom}` |
 | GET | `/authentication/tokens` |
 
-### Build et deploy
+##### Build et deploy
 
 | Méthode | Chemin |
 |---|---|
@@ -17979,7 +17891,7 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 | GET | `/deploy/promotionrules` |
 | POST | `/deploy/workbench/import` |
 
-### Run
+##### Run
 
 | Méthode | Chemin |
 |---|---|
@@ -18028,7 +17940,7 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 | POST | `/run/alerts` |
 | POST | `/run/alerts/status/{alertIds}` |
 
-### Config
+##### Config
 
 | Méthode | Chemin |
 |---|---|
@@ -18085,7 +17997,7 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 | POST | `/config/em/param/{nom}` |
 | POST | `/config/item/{id}/recycle` |
 
-### Provision, reporting, archive, usage
+##### Provision, reporting, archive, usage
 
 | Méthode | Chemin |
 |---|---|
@@ -18112,9 +18024,9 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 
 ---
 
-## 23. Codes HTTP
+#### 23. Codes HTTP
 
-### 23.1 Codes documentés par BMC
+##### 23.1 Codes documentés par BMC
 
 | Code | Signification | Réessayer ? |
 |---|---|---|
@@ -18126,10 +18038,11 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 | **500** | Erreur interne du serveur | **Oui**, avec backoff |
 | **503** | Service indisponible (peu après un redémarrage) | **Oui**, avec backoff |
 
-> **⚠️ 201, 401 et 409 ne figurent PAS dans la liste documentée.**
-> **L'échec d'authentification renvoie 403, pas 401.**
+:::caution[⚠️ 201, 401 et 409 ne figurent PAS dans la liste documentée.]
+**L'échec d'authentification renvoie 403, pas 401.**
+:::
 
-### 23.2 Format d'erreur
+##### 23.2 Format d'erreur
 
 ```json
 {
@@ -18146,7 +18059,7 @@ En-tête : `x-api-key: <jeton>` (jeton d'API) ou `Authorization: Bearer <jeton>`
 }
 ```
 
-### 23.3 Stratégie de traitement
+##### 23.3 Stratégie de traitement
 
 ```python
 TRANSITOIRES = (500, 502, 503, 504)     # rejouer avec backoff exponentiel
@@ -18155,9 +18068,9 @@ DEFINITIVES  = (400, 403, 404, 405)     # ne JAMAIS rejouer
 
 ---
 
-## 24. Fichiers de configuration importants
+#### 24. Fichiers de configuration importants
 
-### Control-M/EM
+##### Control-M/EM
 
 | Fichier | Rôle |
 |---|---|
@@ -18174,7 +18087,7 @@ DEFINITIVES  = (400, 403, 404, 405)     # ne JAMAIS rejouer
 | `<EM_HOME>/data/SSL/config/csr_params.cfg` | Paramètres de génération de CSR |
 | `$HOME/ctm_em/etc/emweb/automation-api/bin/automation_api_config` | Configuration de l'API |
 
-### Control-M/Server
+##### Control-M/Server
 
 | Fichier / répertoire | Rôle |
 |---|---|
@@ -18184,7 +18097,7 @@ DEFINITIVES  = (400, 403, 404, 405)     # ne JAMAIS rejouer
 | `<Server home>/data/SSL/config/csr_params.cfg` | Paramètres de CSR |
 | `<Server home>/health_check/` | Collecteur de diagnostic |
 
-### Control-M/Agent
+##### Control-M/Agent
 
 | Fichier | Rôle |
 |---|---|
@@ -18193,13 +18106,13 @@ DEFINITIVES  = (400, 403, 404, 405)     # ne JAMAIS rejouer
 | `<Agent Home>/data/CONFIG` | Configuration (IBM i) |
 | `<Agent Home>/exe/` | Binaires : `ctmkeytool`, `openssl` |
 
-### Poste client / CI
+##### Poste client / CI
 
 | Fichier | Rôle |
 |---|---|
 | `~/.ctm/env.json` | **Environnements de l'Automation API — contient les jetons.** `chmod 600` |
 
-### Paramètres système à connaître
+##### Paramètres système à connaître
 
 | Paramètre | Composant | Défaut | Rôle |
 |---|---|---|---|
@@ -18229,9 +18142,9 @@ DEFINITIVES  = (400, 403, 404, 405)     # ne JAMAIS rejouer
 
 ---
 
-## 25. Checklists
+#### 25. Checklists
 
-### 25.1 Checklist d'exploitation quotidienne
+##### 25.1 Checklist d'exploitation quotidienne
 
 ```text
 DÉBUT DE JOURNÉE
@@ -18266,7 +18179,7 @@ HEBDOMADAIRE
 [ ] Vérification de la sauvegarde des définitions
 ```
 
-### 25.2 Checklist de mise en production
+##### 25.2 Checklist de mise en production
 
 ```text
 AVANT — CONCEPTION
@@ -18327,7 +18240,7 @@ APRÈS
 [ ] Équipe d'astreinte informée du nouveau traitement
 ```
 
-### 25.3 Checklist de sécurité
+##### 25.3 Checklist de sécurité
 
 ```text
 AUTHENTIFICATION
@@ -18394,9 +18307,9 @@ AUDIT
 
 ---
 
-## 26. Control-M Cheat Sheet
+#### 26. Control-M Cheat Sheet
 
-### Les 20 commandes du quotidien
+##### Les 20 commandes du quotidien
 
 ```bash
 # --- ÉTAT DE LA PRODUCTION ---
@@ -18429,7 +18342,7 @@ ctm deploy <fichier> [descriptor]                      # enregistrer
 ctm run order <server> <folder>                        # ordonnancer
 ```
 
-### Les distinctions à ne pas confondre
+##### Les distinctions à ne pas confondre
 
 | A | B | Différence |
 |---|---|---|
@@ -18446,7 +18359,7 @@ ctm run order <server> <folder>                        # ordonnancer
 | `%%ODATE` | `%%DATE` | Date de **traitement** / date **système** |
 | Port **7005** | Port **7006** | Agent → **Server** / Server → **Agent** |
 
-### Les pièges à mémoriser
+##### Les pièges à mémoriser
 
 | Piège | La vérité |
 |---|---|
@@ -18474,7 +18387,7 @@ ctm run order <server> <folder>                        # ordonnancer
 | `SshKey` dans un profil SFTP | **`PrivateKeyName`** + **`Passphrase`** |
 | « Late » est un statut de job | Non — le retard est une propriété du **service SLA** |
 
-### Squelette de job — à copier
+##### Squelette de job — à copier
 
 ```json
 {
@@ -18571,7 +18484,7 @@ ctm run order <server> <folder>                        # ordonnancer
 }
 ```
 
-### Variables système les plus utilisées
+##### Variables système les plus utilisées
 
 ```text
 %%$ODATE     Date de traitement AAAAMMJJ    ← LA plus importante
@@ -18587,7 +18500,7 @@ ctm run order <server> <folder>                        # ordonnancer
 %%AVG_TIME   Durée moyenne historique
 ```
 
-### Recettes de planification
+##### Recettes de planification
 
 ```text
 Quotidien              "Schedule": "Everyday"
@@ -18608,11 +18521,11 @@ Horaires fixes         "RerunSpecificTimes": {"At":["0900","1200","1700"]}
 
 ---
 
-## 27. Sources
+#### 27. Sources
 
 Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, par thème :
 
-### Architecture et composants
+##### Architecture et composants
 
 - [Control-M Architecture](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/Architecture.htm)
 - [Control-M Documentation (accueil)](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/home.htm)
@@ -18621,7 +18534,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [System Configuration](https://documents.bmc.com/supportu/9.0.21.000/en-US/Documentation/System_Configuration.htm)
 - [Add-ons](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Add-ons.htm)
 
-### Installation et prérequis
+##### Installation et prérequis
 
 - [Introduction to Control-M Installation](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Introduction_to_Control-M_Installation.htm)
 - [Control-M Full Installation System Requirements](https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Control-M_full_installation_system_requirements.htm)
@@ -18632,7 +18545,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [Control-M Compatibility 9.0.22](https://docs.bmc.com/xwiki/bin/view/Control-M-Orchestration/Control-M/ctm9022/Control-M-9-0-22-Release-Notes/Control-M-Compatibility/)
 - [Control-M Compatibility 9.0.21.300](https://docs.bmc.com/docs/controlm/90201/control-m-compatibility-for-version-9-0-21-300-1313884441.html)
 
-### Réseau, communication et sécurité
+##### Réseau, communication et sécurité
 
 - [Default Connection Ports (9.0.21)](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/Default_connection_ports.htm)
 - [Default Connection Ports (9.0.22)](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Default_connection_ports.htm)
@@ -18648,7 +18561,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [User and Role Authorizations](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Users_and_Roles.htm)
 - [Agentless Hosts](https://documents.bmc.com/supportu/9.0.21.200/en-US/Documentation/Agentless_Hosts.htm)
 
-### Haute disponibilité et exploitation
+##### Haute disponibilité et exploitation
 
 - [High Availability](https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/High_Availability.htm)
 - [HA with a Dedicated BMC PostgreSQL](https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/HA_Dedicated_PG.htm)
@@ -18666,7 +18579,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [SLA Management Job Parameters](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/SLA_Management_Job_parameters.htm)
 - [Workload Change Manager](https://documents.bmc.com/supportu/9.0.20/help/Main_help/en-US/34229.htm)
 
-### Utilitaires et diagnostic
+##### Utilitaires et diagnostic
 
 - [Control-M/Server Utilities](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/Server_Utils.htm)
 - [Control-M/Agent Utilities](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/Agent_Utilities.htm)
@@ -18686,7 +18599,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [Control-M/EM Health Check](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/HCU_EM.htm)
 - [Agent Diagnostics](https://documents.bmc.com/supportu/9.0.21.300/en-US/Documentation/Diagnostics.htm)
 
-### Automation API — services
+##### Automation API — services
 
 - [Automation API Homepage](https://controlm.github.io/)
 - [Automation API Guidelines](https://documents.bmc.com/supportu/API/Monthly/en-US/Documentation/Automation_API_Guidelines.htm)
@@ -18716,7 +18629,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [API Installation (9.0.20, Node.js)](https://docs.bmc.com/docs/automation-api/920/installation-887941091.html)
 - [Automation API Administration](https://documents.bmc.com/supportu/9.0.22/en-US/Documentation/Automation_API_Administration.htm)
 
-### Automation API — référence de code (Jobs as Code)
+##### Automation API — référence de code (Jobs as Code)
 
 - [Code Reference (index)](https://documents.bmc.com/supportu/API/Monthly/en-US/Documentation/API_CodeRef_Main.htm)
 - [Folders and Flows](https://documents.bmc.com/supportu/API/Monthly/en-US/Documentation/API_CodeRef_Folder.htm)
@@ -18745,7 +18658,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [Automating Code Deployment (tutoriel)](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/API_Tutorials_Automating_Code_Deployment.htm)
 - [`AutomationAPISampleFlow.json` (quickstart GitHub)](https://raw.githubusercontent.com/controlm/automation-api-quickstart/master/control-m/101-create-first-job-flow/AutomationAPISampleFlow.json)
 
-### MFT et intégrations
+##### MFT et intégrations
 
 - [Managed File Transfer](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/Managed_File_Transfer.htm)
 - [Control-M MFT Enterprise B2B](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/Control-M_MFT_Enterprise_B2B.htm)
@@ -18760,7 +18673,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [Download Links for Control-M Plug-ins](https://docs.bmc.com/docs/controlm/90201/download-links-for-control-m-plug-ins-1044383572.html)
 - [Control-M for Web Services, Java and Messaging](https://documents.bmc.com/supportu/9.0.21/en-US/Documentation/WJM.htm)
 
-### Control-M SaaS
+##### Control-M SaaS
 
 - [Introduction to Control-M SaaS](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/Introduction_to.htm)
 - [Control-M Agents (SaaS)](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/Control-M_Agents.htm)
@@ -18771,7 +18684,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 - [Automation API Authorizations (SaaS)](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/Automation_API_Authorizations.htm)
 - [Automation API Provisioning (SaaS)](https://documents.bmc.com/supportu/controlm-saas/en-US/Documentation/Automation_API_Provisioning.htm)
 
-### Python et dépôts publics
+##### Python et dépôts publics
 
 - [`ctm-python-client` (PyPI)](https://pypi.org/project/ctm-python-client/)
 - [`ctm-python-client` (GitHub)](https://github.com/controlm/ctm-python-client)
@@ -18783,7 +18696,7 @@ Ce guide s'appuie sur la documentation officielle BMC. Les pages consultées, pa
 
 ---
 
-## Mot de la fin
+#### Mot de la fin
 
 Ce guide couvre Control-M de la première commande `echo` jusqu'à une chaîne CI/CD complète.
 Trois principes le traversent :
@@ -18796,3 +18709,7654 @@ Trois principes le traversent :
    version-dépendant, mais l'aide en ligne de **votre** plateforme (`ctm <service> -h`, le
    Swagger local sur `https://<votre-EM>:8443/automation-api`) reste toujours la référence.
 
+---
+
+## Livre II — Administration avancée & Automation API
+
+
+> **De A à Z, pour tous les publics.**
+> Bases de données `CTMEM` / `CONTROLM` · Ordonnancement (conditions, ressources, calendriers) ·
+> Automation API · Automatisation Python · Cas concrets banque / énergie / transport / santé / éducation
+
+---
+
+##### Comment utiliser ce document
+
+Ce guide est le **compagnon avancé** de [**Livre I — Guide complet Control-M**](#livre-i--guide-complet-control-m).
+
+| Ce guide-ci | Le guide complet |
+|---|---|
+| Va **en profondeur** sur les trois compétences exigées en poste d'administration | Couvre **l'ensemble** du produit de façon linéaire |
+| Explique **le moteur** : ce qui se passe dans les bases, dans l'ordonnanceur, dans l'API | Explique **l'usage** : interfaces, objets, procédures |
+| Fournit des **scripts Python de production** prêts à adapter | Fournit des **TP** pédagogiques |
+| Organise tout autour de **l'automatisation par API** | Organise tout autour de **l'apprentissage du produit** |
+
+Les deux se lisent ensemble. Quand un sujet est déjà traité en détail dans le guide complet,
+un renvoi `→ Guide complet §x.y` vous y envoie plutôt que de dupliquer.
+
+###### Pour qui ?
+
+| Profil | Vous cherchez… | Parcours conseillé |
+|---|---|---|
+| 🎓 **Débutant / reconversion** | Comprendre de quoi on parle | §0.1 → §1 → §2.1‑2.2 → §3 → §4.1‑4.3 → §6.1‑6.2 → §9.1 → §10.3 |
+| 🖥️ **Exploitant / pilote de production** | Débloquer une chaîne à 3 h du matin | §3 → §4.7 → §5.7 → §10.5 → §10.6 → §18 → §21 |
+| 🛠️ **Administrateur Control-M** | Tenir la plateforme et ses bases | **§2 en entier** → §5 → §6.7 → §9.5 → §18 → §22 |
+| 🤖 **DevOps / automatisation** | Scripter et industrialiser | §9 → §10 → §11 → §12 → §13‑17 → §19 → §20 |
+| 🗄️ **DBA** | Sauvegarder, purger, dimensionner | **§2.7 → §2.14** |
+| 🏢 **Architecte / chef de projet** | Cadrer, chiffrer, décider | §1 → §2.1 → §2.10 → §5.4 → §13‑17 → §19 |
+| 🎤 **Candidat en entretien** | Ne pas se faire piéger | §2.5 → §4.3 → §5.3 → §6.6 → §21 → §22 |
+
+###### Niveaux de difficulté
+
+Chaque section porte un marqueur :
+
+| Marqueur | Niveau | Prérequis |
+|---|---|---|
+| 🟢 | **Découverte** — aucun prérequis, vocabulaire expliqué | Savoir ce qu'est un serveur |
+| 🟡 | **Praticien** — vous avez déjà vu Control-M tourner | Notions de shell et de JSON |
+| 🔴 | **Expert** — production, incidents réels, arbitrages | Admin système, SQL, Python |
+
+> Un débutant peut lire **uniquement les 🟢** de bout en bout : cela forme un parcours cohérent.
+
+###### Conventions
+
+| Convention | Signification |
+|---|---|
+| `code` | Commande, nom d'objet, paramètre, valeur littérale |
+| `<placeholder>` | À remplacer par une valeur de **votre** environnement |
+| > **📖 Définition** | Terme expliqué pour les débutants — les experts peuvent sauter |
+| > **⚠️ Piège** | Erreur classique, vécue en production |
+| > **✅ Bonne pratique** | À appliquer en entreprise |
+| > **🔬 Sous le capot** | Détail de fonctionnement interne (niveau 🔴) |
+| > **☁️ SaaS** | Différence en Control-M SaaS (ex‑Helix Control-M) |
+| > **🔢 Version** | Comportement dépendant de la version |
+
+###### Versions couvertes
+
+Control-M **self-hosted 9.0.21.x / 9.0.22.x**, Automation API build *Monthly* correspondant,
+plateformes **distribuées** (Linux / UNIX / Windows). Les différences **SaaS** sont signalées.
+
+:::caution[⚠️ Piège — la règle absolue]
+Control-M évolue par *fix packs* mensuels : noms de sous-commandes, champs JSON et
+paramètres système **changent**. Vérifiez toujours contre **votre** version :
+`ctm <service> -h` pour le CLI, et le Swagger local
+`https://<votre-EM>:8443/automation-api/swagger-ui.html` pour le REST.
+Tout ce qui est version-dépendant est signalé dans ce guide — et on vous montre
+**comment vérifier vous-même** plutôt que de vous demander de faire confiance.
+:::
+
+---
+
+#### 0. Prise en main
+
+##### 0.1 Control-M en une page
+
+🟢 **Le problème que Control-M résout.**
+Dans une entreprise, des centaines de traitements doivent s'exécuter chaque nuit dans un ordre
+précis : extraire les opérations bancaires de la journée, les contrôler, calculer les soldes,
+éditer les relevés, envoyer les fichiers au régulateur. Chacun dépend du précédent. Si l'un
+échoue à 2 h 15, il faut le savoir, décider, relancer.
+
+Sans outil, on écrit des `cron` et des scripts qui s'appellent entre eux. Cela tient jusqu'à
+vingt traitements. À deux mille, personne ne sait plus ce qui dépend de quoi, ni pourquoi la
+paie n'est pas partie.
+
+:::note[📖 Définition — ordonnanceur]
+Un ordonnanceur (*scheduler*) est un chef d'orchestre : il sait **quoi** lancer, **quand**,
+**où**, **sous quelles conditions**, **avec quelles ressources**, et **quoi faire** si ça rate.
+Control-M (éditeur **BMC Software**) est l'un des trois grands du marché, avec
+IBM Workload Automation et Broadcom/CA AutoSys.
+:::
+
+**Les cinq apports concrets** :
+
+| Apport | Sans ordonnanceur | Avec Control-M |
+|---|---|---|
+| **Dépendances** | Scripts qui s'appellent, `sleep 300` « au cas où » | Le job B démarre quand A a réussi, point |
+| **Calendrier métier** | `cron` ignore fériés et jours ouvrés | Calendriers ouvrés, arrêtés comptables, fins de mois |
+| **Ressources** | Tout part en même temps, la base tombe | 8 jobs maximum sur le pool `ORACLE-FIN` |
+| **Reprise** | Un humain relit les logs à 3 h | Relance automatique, escalade, SLA |
+| **Traçabilité** | « Qui a lancé ça ? » | Audit complet : qui a fait quoi, quand |
+
+**L'architecture en une phrase** : une **console** (Control-M/EM) pour voir et définir, un ou
+plusieurs **moteurs** (Control-M/Server) pour décider, des **agents** sur les machines pour
+exécuter — et **deux bases de données** pour tout mémoriser.
+
+##### 0.2 Le vocabulaire minimal
+
+🟢 Quinze mots suffisent pour comprendre 90 % des conversations.
+
+| Terme | Définition simple | Analogie |
+|---|---|---|
+| **Job** | Une unité de travail : un script, une commande, un transfert | Une tâche sur une liste |
+| **Folder** | Un conteneur de jobs | Un dossier |
+| **SMART Folder** | Un folder qui porte **lui-même** des règles (planification, conditions, actions) héritées par ses jobs | Un classeur avec les consignes en couverture |
+| **Chaîne** | Un enchaînement de jobs liés par des dépendances | Une recette de cuisine |
+| **Condition** (*Event*) | Un drapeau `NOM + date` posé par un job, attendu par un autre | Un témoin de relais |
+| **Ressource quantitative** (*Pool*) | Un compteur limitant les exécutions simultanées | Des places de parking |
+| **Ressource de contrôle** (*Lock*) | Un verrou exclusif ou partagé sur un objet | La clé unique d'une salle |
+| **ODATE** | La *date de traitement* logique d'un job | Le « pour quel jour » du travail |
+| **AJF** | *Active Jobs File* : les jobs de la journée en cours | Le tableau de service du jour |
+| **Ordering** | L'action de créer une instance de job dans l'AJF | Passer commande |
+| **New Day** | La bascule quotidienne : ménage puis ordering du jour | Le changement d'équipe |
+| **Agent** | Le programme installé sur la machine qui exécute | Un ouvrier sur site |
+| **RunAs** | Le compte système sous lequel tourne le job | Le badge de l'ouvrier |
+| **Viewpoint** | Une vue filtrée du monitoring | Une requête sauvegardée |
+| **SLA** | L'engagement d'heure de fin d'un service métier | Le « livré avant 6 h » |
+
+##### 0.3 Ancienne et nouvelle terminologie
+
+🟢 BMC a modernisé le vocabulaire à partir de la 9.0.20. **Les deux coexistent** : l'interface
+web dit « Event », vos collègues disent « condition », l'API renvoie `Wait Condition`.
+
+| Historique (encore parlé) | Actuel (interface) | Objet JSON |
+|---|---|---|
+| Condition IN / OUT | **Event** | `WaitForEvents` / `AddEvents` / `DeleteEvents` |
+| Quantitative Resource (QR) | **Resource Pool** | `Resource:Pool` |
+| Control Resource | **Resource Lock** | `Resource:Lock` |
+| Table / Scheduling Table | **Folder** | `Folder` / `SimpleFolder` |
+| SMART Table | **SMART Folder** | `Folder` avec propriétés de niveau dossier |
+| BIM | **SLA Management** | `Job:SLAManagement` |
+| AutoEdit | **Variable** | `Variables`, syntaxe `%%NOM` |
+| AFT | **MFT** | `Job:FileTransfer` |
+| Job Owner | **Run as User** | `RunAs` |
+| MAXWAIT | **Days Keep Active** | `DaysKeepActive` |
+| Sysout | **Output** | `ctm run job:output::get` |
+
+:::caution[⚠️ Piège]
+En entretien, employer « condition » et « event » indifféremment est un **bon signe** : cela
+prouve que vous avez vu des plateformes anciennes **et** récentes. En revanche, confondre
+ressource *quantitative* et ressource *de contrôle* est éliminatoire
+(→ [§5.3](#53-comparatif-et-arbre-de-décision)).
+:::
+
+##### 0.4 Les trois compétences attendues d'un administrateur
+
+🟡 Les fiches de poste « administrateur Control-M » demandent aujourd'hui trois blocs.
+Ce guide est bâti sur eux.
+
+```mermaid
+flowchart LR
+    ROOT["Administrateur<br/>Control-M"]
+
+    ROOT --> P["① Connaissance<br/>du produit"]
+    ROOT --> O["② Ordonnancement<br/>des traitements"]
+    ROOT --> A["③ Automation API"]
+
+    P --> P1["Architecture<br/>EM / Server / Agent"]
+    P --> P2["Base CTMEM"]
+    P --> P3["Base CONTROLM"]
+    P --> P4["Synchronisation<br/>et cohérence"]
+    P --> P5["Sauvegarde et<br/>dimensionnement"]
+
+    O --> O1["Conditions IN / OUT"]
+    O --> O2["Ressources<br/>quantitatives"]
+    O --> O3["Ressources<br/>de contrôle"]
+    O --> O4["Calendriers<br/>et New Day"]
+    O --> O5["Cyclique, reprise,<br/>SLA"]
+
+    A --> A1["Déploiement<br/>des agents"]
+    A --> A2["SMART Folders<br/>et jobs"]
+    A --> A3["Conditions<br/>et Hold"]
+    A --> A4["Planifier, déplanifier,<br/>supprimer"]
+    A --> A5["Python et CI/CD"]
+```
+
+| Bloc | Ce qu'on vous demandera de **faire** | Section |
+|---|---|---|
+| **Produit** | « La base EM est à 92 % d'occupation, que fais-tu ? » | [§2](#2-les-deux-bases-de-données--ctmem-et-controlm) |
+| **Ordonnancement** | « Le job attend depuis 4 h, pourquoi ? » | [§3](#3-le-modèle-dexécution--les-six-verrous) à [§8](#8-le-modèle-ondo) |
+| **API** | « Déploie 40 agents et 3 chaînes sans un clic » | [§9](#9-comprendre-lapi-avant-de-coder) à [§12](#12-la-bibliothèque-dopérations) |
+
+:::tip[✅ Bonne pratique]
+La maîtrise de l'API n'est plus un « plus » : c'est ce qui distingue l'administrateur qui
+**subit** son parc (clics, tickets, oublis) de celui qui le **pilote** (code versionné, revu,
+rejouable, auditable). Tout ce qui est fait à la souris dans ce guide est **aussi** montré en
+API — jamais l'inverse.
+:::
+
+##### 0.5 Monter un labo pour tout tester
+
+🟢🟡 Rien de ce qui suit ne se comprend vraiment sans exécuter. Trois options.
+
+###### Option 1 — Le Workbench (recommandé pour apprendre)
+
+Le **Control-M Workbench** est un environnement autonome et gratuit : un Control-M miniature
+dans un conteneur, avec un agent local. Il ne remplace pas une plateforme, mais il valide la
+syntaxe, les dépendances et les scripts.
+
+```bash
+ctm environment workbench::add        # déclarer le Workbench comme environnement CLI
+ctm environment show                  # vérifier qu'il répond
+ctm build mon-workflow.json           # validation syntaxique, sans déploiement
+ctm run mon-workflow.json             # exécution immédiate dans le Workbench
+```
+
+###### Option 2 — Valider sans plateforme du tout
+
+`ctm build` ne fait que valider ; `jq` suffit pour la mise au point JSON en amont :
+
+```bash
+jq empty mon-workflow.json && echo "JSON bien formé"   # forme
+ctm build mon-workflow.json                            # fond : schéma, champs, cohérence
+```
+
+###### Option 3 — Un environnement d'entreprise
+
+C'est le cas réel. Ce qui compte alors :
+
+```bash
+ctm environment add dev  "https://ctm-dev.exemple.fr:8443/automation-api"  "$TOKEN_DEV"
+ctm environment add prod "https://ctm-prod.exemple.fr:8443/automation-api" "$TOKEN_PROD"
+
+ctm environment set dev          # ⚠️ à vérifier AVANT toute commande destructive
+ctm environment show             # (il n'existe pas de « ctm environment list »)
+```
+
+:::caution[⚠️ Piège vécu]
+`ctm environment set` est **persistant** : il reste actif dans le shell suivant, demain, et
+après un redémarrage (`~/.ctm/env.json`). Scénario classique d'incident : on bascule sur
+`prod` pour un contrôle le vendredi, on revient le lundi, on lance un `ctm deploy` « de
+test »… en production. **Affichez l'environnement courant dans votre prompt** :
+
+```bash
+# ~/.bashrc
+ctm_env() { jq -r '.current // "?"' ~/.ctm/env.json 2>/dev/null; }
+PS1='[\u@\h $(ctm_env)] \w\$ '
+```
+:::
+
+---
+### Partie A — Connaissance du produit
+
+#### 1. Architecture : qui parle à qui
+
+##### 1.1 Les quatre couches
+
+🟢 Control-M n'est pas un programme, c'est **quatre couches** qui coopèrent. Comprendre qui
+détient quelle information est la clé de tout le reste — et notamment des deux bases.
+
+```mermaid
+flowchart TB
+    subgraph L1["① Couche présentation"]
+        WEB["Control-M Web<br/>(navigateur)"]
+        CLI["Automation API<br/>ctm CLI / REST"]
+        CCM["CCM<br/>Configuration Manager"]
+    end
+
+    subgraph L2["② Couche Enterprise Manager (EM)"]
+        GUISRV["GUI Server"]
+        GTW["Gateway<br/>(1 par Control-M/Server)"]
+        CMS["CMS<br/>Configuration Mgmt Server"]
+        AAPI["Automation API Server"]
+        EMDB[("Base CTMEM<br/>définitions, supervision,<br/>sécurité EM, audit, alertes")]
+    end
+
+    subgraph L3["③ Couche moteur — Control-M/Server"]
+        SEL["Selector / Scheduler"]
+        NDP["New Day Procedure"]
+        TR["Track & Route"]
+        SRVDB[("Base CONTROLM<br/>AJF, conditions, ressources,<br/>calendriers, sécurité serveur")]
+    end
+
+    subgraph L4["④ Couche exécution"]
+        AG1["Agent<br/>serveur applicatif"]
+        AG2["Agent<br/>serveur base de données"]
+        RH["Remote host<br/>(agentless, SSH/WMI)"]
+    end
+
+    WEB --> GUISRV
+    CLI --> AAPI
+    CCM --> CMS
+    GUISRV --> EMDB
+    AAPI --> EMDB
+    CMS --> EMDB
+    GTW <--> EMDB
+    GTW <-->|"port 2370"| SEL
+    CMS -->|"port 2369"| SEL
+    SEL <--> SRVDB
+    NDP --> SRVDB
+    TR --> SRVDB
+    SEL -->|"port 7006"| AG1
+    SEL -->|"port 7006"| AG2
+    SEL -->|"SSH 22"| RH
+    AG1 -->|"port 7005"| TR
+    AG2 -->|"port 7005"| TR
+```
+
+| Couche | Rôle | Peut-on s'en passer ? |
+|---|---|---|
+| ① Présentation | Voir, définir, piloter | Oui temporairement : la production continue sans console |
+| ② Enterprise Manager | Consolider N serveurs, sécuriser, historiser | Oui temporairement — **mais plus aucune visibilité** |
+| ③ Control-M/Server | **Décider** : qui part, quand, avec quoi | **Non.** L'arrêt = arrêt de la production |
+| ④ Agents | Exécuter | Non pour les machines concernées |
+
+:::note[🔬 Sous le capot — la conséquence architecturale majeure]
+Le Control-M/Server est **autonome**. Coupez l'Enterprise Manager : les jobs continuent de
+s'ordonnancer, de démarrer, de réussir ou d'échouer. Vous ne les **voyez** simplement plus.
+C'est précisément pour cela qu'il existe **deux bases** et non une seule (→ [§2.1](#21-pourquoi-deux-bases)).
+:::
+
+##### 1.2 Le trajet complet d'un ordre
+
+🟡 Suivons un job de sa définition à son résultat, en notant **quelle base** est touchée à
+chaque étape. C'est la question type d'entretien : *« que se passe-t-il exactement entre le
+moment où je clique sur Deploy et le moment où le script tourne ? »*
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant DEV as Développeur / CI
+    participant API as Automation API
+    participant EMDB as Base CTMEM
+    participant GTW as Gateway
+    participant SRV as Control-M/Server
+    participant SRVDB as Base CONTROLM
+    participant AG as Agent
+
+    DEV->>API: ctm deploy chaine.json
+    API->>API: validation du schéma JSON
+    API->>EMDB: écriture des définitions
+    EMDB-->>SRV: propagation vers le serveur cible
+    SRV->>SRVDB: définitions actives enregistrées
+    Note over SRV: New Day (ou order manuel)
+    SRV->>SRVDB: création des instances dans l'AJF
+    loop toutes les N secondes
+        SRV->>SRVDB: le Selector évalue les jobs en attente
+    end
+    SRV->>SRVDB: conditions IN satisfaites ? ressources libres ?
+    SRV->>AG: ordre de soumission (port 7006)
+    AG->>AG: exécution sous le compte RunAs
+    AG-->>SRV: statut + code retour (port 7005)
+    SRV->>SRVDB: mise à jour AJF, pose des conditions OUT
+    SRVDB-->>GTW: notification de changement
+    GTW->>EMDB: mise à jour du miroir de supervision
+    EMDB-->>DEV: le job passe au vert dans Control-M Web
+```
+
+**Ce que ce schéma apprend** :
+
+| Observation | Conséquence pratique |
+|---|---|
+| La définition transite par **CTMEM avant** d'arriver dans CONTROLM | Un `deploy` réussi mais un job absent côté serveur ⇒ problème de propagation, pas de syntaxe |
+| L'AJF vit dans **CONTROLM** | La « vraie » production est côté serveur ; l'EM n'en est que le reflet |
+| La supervision passe par le **Gateway** | Gateway arrêté ⇒ écran figé, alors que **tout fonctionne** derrière |
+| L'agent ne parle **jamais** à une base | Un agent n'a aucun accès aux données Control-M : c'est un exécutant |
+
+:::caution[⚠️ Piège d'exploitation classique]
+Écran de monitoring figé depuis 20 minutes, aucun job ne bouge. Réflexe de débutant :
+« la production est bloquée, on réveille tout le monde ». Réflexe d'administrateur :
+vérifier **d'abord** le Gateway et la base EM. Neuf fois sur dix, la production tourne
+normalement et c'est seulement le **miroir** qui est arrêté.
+Contrôle en trois secondes : `ctm run jobs::status` (qui interroge l'EM) **et**
+`ctmpsm`/`ctm run` côté serveur, ou simplement : les fichiers de sortie continuent-ils
+d'être produits sur les serveurs applicatifs ?
+:::
+
+##### 1.3 Les processus et leur base
+
+🔴 Tableau de référence : quel processus écrit dans quelle base. Indispensable pour
+diagnostiquer, et pour justifier un dimensionnement auprès d'un DBA.
+
+| Processus | Couche | Base accédée | Type d'accès | Si arrêté |
+|---|---|---|---|---|
+| **GUI Server** | EM | CTMEM | Lecture/écriture | Plus d'interface web |
+| **Automation API Server** | EM | CTMEM | Lecture/écriture | Plus d'API ni de CLI |
+| **Gateway** | EM | CTMEM (écriture) + Server (réseau) | Écriture intensive | Supervision figée, **production OK** |
+| **CMS** | EM | CTMEM | Lecture/écriture | Plus de gestion de configuration |
+| **Global Conditions Server** | EM | CTMEM | Lecture/écriture | Conditions inter-serveurs non propagées |
+| **Selector / Scheduler** | Server | CONTROLM | Lecture/écriture permanente | **Production arrêtée** |
+| **New Day Procedure** | Server | CONTROLM | Écriture massive, 1×/jour | Pas d'ordering du jour |
+| **Track & Route (TR)** | Server | CONTROLM | Écriture (statuts) | Statuts jamais mis à jour |
+| **Communication (CA)** | Server | — | Réseau vers agents | Jobs non soumis |
+| **Agent** | Agent | *aucune* | — | Jobs de cette machine non exécutés |
+
+:::tip[✅ Bonne pratique — la question à poser en incident]
+Toujours dans cet ordre : **(1)** l'exécution est-elle réellement arrêtée, ou seulement son
+affichage ? **(2)** si l'exécution est arrêtée, est-ce le Server, la base CONTROLM, ou le
+réseau vers les agents ? **(3)** si c'est l'affichage, est-ce le Gateway, la base CTMEM,
+ou le GUI Server ? Chaque branche a un runbook distinct (→ [§18](#18-dix-runbooks-automatisés)).
+:::
+
+---
+
+#### 2. Les deux bases de données : CTMEM et CONTROLM
+
+> **Cette section est le cœur de la compétence « connaissance du produit ».**
+> C'est aussi ce qui sépare l'utilisateur avancé de l'administrateur : savoir créer un job
+> s'apprend en une journée ; savoir **où vit l'information**, ce qui se passe quand les deux
+> bases divergent et comment les sauvegarder ensemble, cela s'apprend en incident.
+
+##### 2.1 Pourquoi deux bases
+
+🟢 **La réponse courte** : parce que ce sont deux produits, avec deux disponibilités et deux
+cycles de vie différents.
+
+**La réponse longue**, qui est celle attendue en entretien :
+
+| Raison | Explication | Ce que ça implique au quotidien |
+|---|---|---|
+| **Historique** | Control-M/Server est le moteur d'origine, autonome. L'Enterprise Manager est arrivé **ensuite** comme couche de consolidation multi-serveurs | Le Server ne dépend pas de l'EM ; l'inverse est faux |
+| **Disponibilité** | La production ne doit pas s'arrêter parce qu'une console tombe | On peut arrêter l'EM en pleine journée pour une maintenance |
+| **Cardinalité** | **1 EM ↔ N Control-M/Servers** | Une seule base CTMEM face à plusieurs bases CONTROLM |
+| **Nature de la charge** | CONTROLM = transactionnel intense et régulier ; CTMEM = pics de lecture (écrans) + rétention longue (audit, archives) | Réglages, disques et sauvegardes différents |
+| **Périmètre de sécurité** | Deux modèles d'autorisation distincts : RBAC EM d'un côté, `ctmsec` de l'autre | Deux endroits à auditer (→ [§9.5](#95-droits-minimum-par-opération)) |
+| **Découplage géographique** | Le Server peut être dans un datacenter, l'EM dans un autre | Latence réseau à surveiller sur le Gateway |
+
+```mermaid
+flowchart LR
+    subgraph EMZONE["Enterprise Manager — 1 seul"]
+        EMDB[("CTMEM<br/>1 base")]
+    end
+    subgraph SRVZONE["Control-M/Servers — N"]
+        S1[("CONTROLM<br/>base PROD")]
+        S2[("CONTROLM<br/>base PREPROD")]
+        S3[("CONTROLM<br/>base DR / site 2")]
+    end
+    EMDB <--> S1
+    EMDB <--> S2
+    EMDB <--> S3
+```
+
+:::note[📖 Définition — pourquoi ces noms]
+`CTMEM` et `CONTROLM` sont les noms **usuels** du schéma / compte propriétaire de chacune :
+`ctmem` pour Control-M Enterprise Manager, `controlm` (ou historiquement `ctrlm`) pour
+Control-M/Server. Ces noms sont **choisis à l'installation** : sur votre plateforme ils
+peuvent être `emuser`, `ctmuser`, `CTMPROD`… La section [§2.7](#27-moteurs-comptes-schémas)
+montre comment retrouver les vrais noms sans deviner.
+:::
+
+##### 2.2 Tableau comparatif
+
+🟡 La fiche à connaître par cœur.
+
+| Critère | **CTMEM** (Control-M/EM) | **CONTROLM** (Control-M/Server) |
+|---|---|---|
+| **Produit propriétaire** | Enterprise Manager | Control-M/Server |
+| **Nombre d'instances** | **1** par EM | **1 par Control-M/Server** (donc N) |
+| **Rôle en une phrase** | *Ce qu'on définit et ce qu'on regarde* | *Ce qui s'exécute réellement* |
+| **Contenu clé** | Définitions, sécurité EM, miroir de supervision, alertes, audit, historique, SLA | AJF, conditions, ressources, calendriers actifs, agents, sécurité serveur, journal |
+| **Écrit par** | GUI Server, API Server, Gateway, CMS | Selector, New Day, Track & Route, utilitaires `ctm*` |
+| **Charge typique** | Lectures nombreuses (écrans, rapports) + écritures du Gateway | Écritures transactionnelles permanentes |
+| **Croissance** | **Forte et continue** (audit, alertes, archives, statistiques) | Cyclique : gonfle le jour, purge à la New Day |
+| **Si la base est arrêtée** | Console et API HS. **La production continue** | **Production arrêtée** |
+| **Si la base est perdue** | Perte de l'historique et des définitions non redéployées | Perte de l'état d'exécution : reprise à froid |
+| **Criticité** | Élevée | **Maximale** |
+| **Purge principale** | Housekeeping EM (rétention paramétrable) | **New Day Procedure** |
+| **Utilitaires locaux** | Côté EM (menus d'administration EM, CCM) | `ctmdbused`, `ctmdbcheck`, `ctmdbopt`, `dbu_menu`, `ctmdbbck`… |
+| **Sauvegarde** | Quotidienne, rétention longue | Quotidienne, **synchronisée avec CTMEM** |
+
+:::note[🎤 Question d'entretien fréquente]
+*« Si je perds la base Control-M/Server à 3 h du matin, que se passe-t-il ? »*
+Réponse attendue : la production s'arrête immédiatement (le Selector n'a plus d'état).
+Après restauration, l'AJF est **revenu en arrière** : des jobs déjà exécutés apparaissent
+à nouveau en attente. Il faut donc, avant toute reprise, **rapprocher** l'état restauré de
+la réalité (fichiers produits, écritures en base applicative) et neutraliser manuellement
+les jobs non ré-exécutables. C'est exactement pour cela qu'on écrit des jobs **idempotents**
+(→ [§13.4](#134-idempotence-et-rejouabilité)).
+:::
+
+##### 2.3 La base CTMEM en détail
+
+🟡🔴 Ce que contient réellement la base de l'Enterprise Manager, par familles fonctionnelles.
+
+| Famille | Contenu | Qui l'alimente | Croissance |
+|---|---|---|---|
+| **Configuration des composants** | Déclaration des Control-M/Servers, Gateways, GUI Servers, paramètres système EM | CCM / CMS | Nulle |
+| **Référentiel de définitions** | Folders, SMART Folders, jobs, calendriers, site standards, connection profiles centralisés, variables globales | Control-M Web, `ctm deploy` | Proportionnelle au patrimoine |
+| **Sécurité EM** | Utilisateurs, rôles, autorisations, mappage LDAP/SSO | Interface d'administration EM | Faible |
+| **Miroir de supervision** | Copie de l'AJF de **chaque** serveur : statuts, heures, hôtes | **Gateway** | Forte le jour, purgée ensuite |
+| **Alertes** | Alertes ouvertes et traitées (`xAlerts`, alertes système) | Gateway, EM | **Forte si non purgée** |
+| **Audit** | Toute action utilisateur : création, modification, hold, rerun, suppression, avec auteur et horodatage | GUI Server, API Server | **Forte et permanente** |
+| **Historique / archives** | Jobs archivés, viewpoints archivés, journaux et sorties conservés | Housekeeping EM | **La plus forte** |
+| **Statistiques** | Durées moyennes, écarts-types, servant aux SLA et aux prévisions | Gateway | Modérée |
+| **SLA / services** | Définition et suivi des services, prévisions | EM | Faible |
+| **Workload Policies** | Règles de limitation transverses | EM | Nulle |
+| **Reporting** | Données du module de rapports | EM | Modérée |
+| **Conditions globales** | Conditions partagées entre plusieurs Control-M/Servers | Global Conditions Server | Faible |
+
+:::note[🔬 Sous le capot — pourquoi CTMEM grossit toujours]
+Trois familles écrivent en continu et **ne se purgent pas toutes seules** si la rétention est
+mal réglée : l'**audit** (obligation réglementaire, donc rétention longue), les **alertes**
+(une alerte non acquittée reste), et les **archives** (sorties de jobs conservées).
+Sur une plateforme de 10 000 jobs/jour mal réglée, la base EM peut prendre **plusieurs
+dizaines de Go par an** — et le premier symptôme n'est pas un disque plein : c'est un
+**écran de monitoring qui rame**, parce que les requêtes de l'interface balayent des tables
+devenues énormes.
+:::
+
+**Trois réglages à vérifier dès la prise en main d'une plateforme** :
+
+| Réglage | Question à poser | Où |
+|---|---|---|
+| Rétention des jobs archivés | Combien de jours conserve-t-on ? Est-ce cohérent avec l'exigence d'audit métier ? | Paramètres système EM / CCM |
+| Rétention des alertes | Les alertes traitées sont-elles supprimées ? Au bout de combien de temps ? | Paramètres système EM |
+| Rétention de l'audit | Souvent imposée par la conformité (banque : plusieurs années) | Paramètres système EM + politique de sauvegarde |
+
+:::tip[✅ Bonne pratique]
+Une rétention réglementaire longue **ne doit pas** vivre dans la base opérationnelle.
+Exportez périodiquement l'audit et les archives vers un entrepôt (datalake, base
+d'archivage, S3 + Athena) et gardez dans CTMEM la fenêtre **opérationnelle** :
+typiquement 30 à 90 jours. On concilie ainsi conformité et performance.
+:::
+
+##### 2.4 La base CONTROLM en détail
+
+🟡🔴 La base du moteur. Tout ce qui décide s'y trouve.
+
+| Famille | Contenu | Rôle |
+|---|---|---|
+| **AJF — Active Jobs File** | Une **instance** par job ordonnancé : ODATE, statut, heures, code retour, compteurs de reprise | Le cœur battant : c'est l'état de la journée |
+| **Pool de conditions** | Chaque condition `NOM + date` posée et non encore supprimée | Ce que les jobs attendent et posent |
+| **Ressources quantitatives** | Nom, quantité totale, quantité utilisée | Les compteurs de parallélisme |
+| **Ressources de contrôle** | Nom, état (Exclusive / Shared), détenteur | Les verrous |
+| **Définitions actives** | Folders, SMART Folders et jobs propagés depuis l'EM | Ce que la New Day va ordonnancer |
+| **Calendriers** | Calendriers réguliers, périodiques, à base de règles | Le « quels jours » |
+| **Agents et host groups** | Déclaration des agents, statut, groupes d'hôtes | Le « où » |
+| **RunAs / identifiants** | Comptes d'exécution et secrets **chiffrés** | Le « sous quel compte » |
+| **Sécurité serveur** | Utilisateurs, groupes et autorisations gérés par `ctmsec` | Le contrôle d'accès du moteur |
+| **Journal (IOA Log)** | Toute la trace d'exécution du serveur | La boîte noire du diagnostic |
+| **Statistiques d'exécution** | Historique des durées par job | Alimente prévisions et SLA |
+| **Paramètres système** | `DAYTIME`, rétention, limites, comportements | Le réglage du moteur |
+
+```mermaid
+flowchart TB
+    subgraph DB["Base CONTROLM"]
+        AJF[["AJF<br/>instances du jour"]]
+        COND[["Conditions<br/>NOM + date"]]
+        QR[["Ressources<br/>quantitatives"]]
+        CR[["Ressources<br/>de contrôle"]]
+        DEF[["Définitions<br/>folders / jobs"]]
+        CAL[["Calendriers"]]
+        LOG[["Journal IOA"]]
+    end
+    NDP["New Day Procedure"] -->|"purge + ordering"| AJF
+    NDP -->|"nettoie"| COND
+    DEF --> NDP
+    CAL --> NDP
+    SEL["Selector"] -->|"lit en boucle"| AJF
+    SEL -->|"teste"| COND
+    SEL -->|"réserve"| QR
+    SEL -->|"verrouille"| CR
+    SEL -->|"trace"| LOG
+```
+
+:::note[🔬 Sous le capot — la boucle du Selector]
+Le Selector parcourt en permanence les jobs de l'AJF en statut *Wait*. Pour chacun, il
+évalue dans l'ordre : fenêtre de temps → conditions IN → ressources quantitatives →
+ressources de contrôle → disponibilité de l'agent → limites de charge. **Le premier test
+qui échoue arrête l'évaluation** et le job reste en attente. C'est pourquoi
+[§3](#3-le-modèle-dexécution--les-six-verrous) présente ces contrôles comme **six verrous en
+série** : un job bloqué l'est toujours sur **un** verrou précis, et le savoir change tout
+dans un diagnostic.
+:::
+
+##### 2.5 La synchronisation EM et Server
+
+🔴 **Le sujet le plus mal maîtrisé** — et celui qui produit les incidents les plus déroutants.
+
+###### Deux flux, deux sens
+
+```mermaid
+flowchart LR
+    subgraph DESC["Flux descendant — les définitions"]
+        direction TB
+        D1["Control-M Web / ctm deploy"] --> D2[("CTMEM")]
+        D2 --> D3["propagation vers le serveur"]
+        D3 --> D4[("CONTROLM")]
+    end
+    subgraph MONT["Flux montant — l'état d'exécution"]
+        direction TB
+        M1[("CONTROLM<br/>AJF modifié")] --> M2["Gateway"]
+        M2 --> M3[("CTMEM<br/>miroir")]
+        M3 --> M4["Monitoring / API"]
+    end
+```
+
+| Flux | Sens | Porté par | Fréquence | Source de vérité |
+|---|---|---|---|---|
+| **Définitions** | EM → Server | Déploiement (Web, API, CMS) | À chaque `deploy` | **CTMEM** |
+| **État d'exécution** | Server → EM | **Gateway** | Continu, quasi temps réel | **CONTROLM** |
+
+**La règle à retenir** :
+
+> **Les définitions sont vraies côté EM. L'exécution est vraie côté Server.**
+
+C'est-à-dire :
+
+- « À quoi ressemble ce job ? » → la référence est **CTMEM** (c'est ce que verra le prochain
+  déploiement).
+- « Ce job a-t-il tourné, et avec quel code retour ? » → la référence est **CONTROLM**.
+  Ce que montre l'écran n'est qu'une **copie** transmise par le Gateway.
+
+###### Ce qui se passe quand le Gateway s'arrête
+
+🔴 Scénario réel, à connaître :
+
+| Instant | Côté Server (CONTROLM) | Côté EM (CTMEM) | Ce que voit l'exploitant |
+|---|---|---|---|
+| T | Jobs en cours | Miroir à jour | Écran correct |
+| T+1 : Gateway tombe | Les jobs continuent, l'AJF évolue | **Plus aucune mise à jour** | Écran **figé** |
+| T+30 min | 200 jobs ont terminé | Toujours l'image de T | « Rien ne bouge, c'est bloqué ! » |
+| Gateway redémarre | — | Resynchronisation | L'écran **rattrape** d'un coup |
+
+:::caution[⚠️ Piège — la fausse urgence]
+C'est l'incident qui déclenche le plus d'astreintes inutiles. Signature caractéristique :
+**tous** les jobs figés au même instant, y compris ceux qui n'ont aucun lien entre eux.
+Un vrai blocage de production est presque toujours **sélectif** (une chaîne, une ressource,
+un agent). Un blocage **global et parfaitement simultané** désigne le Gateway ou la base EM,
+pas l'ordonnancement.
+:::
+
+###### Vérifier la cohérence des deux côtés
+
+```bash
+# 1. Vue EM (passe par l'API, donc par CTMEM)
+ctm run jobs::status -s "jobname=PAIE-*"
+
+# 2. Vue Server (à exécuter sur la machine Control-M/Server)
+#    ctmpsm est l'interface texte du moteur : elle lit CONTROLM directement
+ctmpsm
+
+# 3. Le Gateway est-il vivant ? (statut des composants, depuis le CCM ou en CLI)
+ctm config servers::get
+```
+
+Un écart durable entre 1 et 2 = problème de synchronisation, **pas** de production.
+
+##### 2.6 Le piège numéro un : la désynchronisation
+
+🔴 Trois façons de désynchroniser les deux bases — les trois se voient sur le terrain.
+
+###### Cas 1 — Modifier côté serveur ce qui est géré côté EM
+
+Les utilitaires locaux (`ctmcreate`, `ctmpsm`, etc.) écrivent **directement** dans CONTROLM.
+Ce qu'ils créent n'existe pas dans le référentiel CTMEM.
+
+| Conséquence | Détail |
+|---|---|
+| Invisible dans le référentiel | Le job n'apparaît pas dans les définitions de Control-M Web |
+| **Écrasé au prochain déploiement** | Un `ctm deploy` du folder repropage la version EM : la modification locale disparaît |
+| Non versionné, non audité | Aucune trace dans l'audit EM : personne ne sait qui a fait quoi |
+
+:::tip[✅ Bonne pratique — la règle d'or]
+**Les définitions se modifient par l'EM (Web ou Automation API), jamais par les utilitaires
+serveur.** Les utilitaires serveur servent au **diagnostic** et aux **actions
+d'exploitation ponctuelles**, pas à la définition du patrimoine.
+Exception assumée et documentée : une action d'urgence sur l'AJF du jour, tracée dans le
+ticket d'incident.
+:::
+
+###### Cas 2 — Restaurer une seule base
+
+| Scénario | Résultat |
+|---|---|
+| Restaurer **CONTROLM** seul (sauvegarde de la veille) | L'AJF revient en arrière : des jobs déjà exécutés repassent en attente et **peuvent se ré-exécuter** |
+| Restaurer **CTMEM** seul | Le référentiel revient en arrière ; le prochain déploiement **écrase** les définitions plus récentes côté serveur |
+
+:::caution[⚠️ Piège — le double débit bancaire]
+Restaurer CONTROLM seul sur une chaîne de paiements non idempotente, c'est rejouer des
+virements déjà partis. Cette section existe à cause de ce type d'incident : voir la
+procédure de reprise en [§2.10](#210-sauvegarde-et-restauration-cohérentes).
+:::
+
+###### Cas 3 — Écrire directement en SQL dans les bases
+
+Jamais. Voir [§2.12](#212-ce-quil-ne-faut-jamais-faire).
+
+###### Détecter une désynchronisation
+
+```bash
+# Comparer le patrimoine EM et ce que le serveur connaît réellement
+ctm config server:folders::get <server> > /tmp/serveur.json   # selon version : vérifier « ctm config -h »
+ctm deploy folders::get -s "server=<server>"  > /tmp/em.json
+
+# Diff structuré (jq neutralise l'ordre des clés)
+diff <(jq -S . /tmp/em.json) <(jq -S . /tmp/serveur.json)
+```
+
+:::note[🔢 Version]
+Les sous-commandes d'introspection des folders varient entre 9.0.21 et 9.0.22.
+Lancez `ctm deploy -h` et `ctm config -h` sur **votre** plateforme et adaptez ; le principe
+— comparer référentiel et réalité — reste valable dans toutes les versions.
+:::
+
+##### 2.7 Moteurs, comptes, schémas
+
+🟡🔴
+
+###### Moteurs supportés
+
+| Moteur | Versions typiques 9.0.21/22 | Remarques |
+|---|---|---|
+| **PostgreSQL fourni par BMC** | 15.3 | Installé automatiquement en mode « Default », port choisi à l'installation |
+| **PostgreSQL externe** | 11.x à 16.x | Extensions `plpgsql` et `dblink` requises |
+| **Oracle** | 19c (Enterprise ou Standard) | Le plus fréquent en grand compte |
+| **Microsoft SQL Server** | Versions supportées à vérifier par version de Control-M | Fréquent en environnement Windows |
+
+:::note[🔢 Version]
+— la matrice exacte figure dans les *Compatibility Requirements* de **votre**
+version chez BMC. Ne la recopiez jamais de mémoire dans un dossier d'architecture.
+:::
+
+###### Retrouver les vrais noms sur votre plateforme
+
+Plutôt que de supposer que le compte s'appelle `ctmem` ou `controlm` :
+
+```bash
+# --- Côté Control-M/Server (sur la machine du serveur, sous le compte propriétaire) ---
+dbversion            # version et informations de la base utilisée par le serveur
+ctm_menu             # → « Database Menu » : paramètres de connexion, maintenance
+ctmdbused            # occupation de la base : le premier réflexe de supervision
+
+# --- Inventaire des utilitaires réellement présents dans VOTRE version ---
+ls "$CONTROLM_SERVER/bin" | sort | head -60
+```
+
+```bash
+# --- Côté Enterprise Manager ---
+# Le CCM (Control-M Configuration Manager) est l'entrée officielle : composants, paramètres,
+# connexion à la base. En ligne de commande, inventoriez ce qui existe :
+ls "$EM_HOME/bin" | sort | head -60
+```
+
+:::caution[⚠️ Piège]
+N'inventez pas de noms d'utilitaires trouvés sur de vieux blogs. Des commandes comme
+`ctmstart`, `ctmstop` ou `root_menu` **n'existent pas** dans les documentations 9.0.21/9.0.22.
+La méthode fiable est toujours la même : `ls .../bin` puis `<utilitaire> -h`.
+:::
+
+###### Règles de configuration à imposer au DBA
+
+| Règle | Pourquoi |
+|---|---|
+| **Un schéma dédié par base**, jamais partagé avec une application tierce | Sauvegarde, restauration et purge doivent être indépendantes |
+| Encodage **UTF-8** cohérent des deux côtés | Noms de jobs, libellés et sorties accentués : un mismatch produit des `?` illisibles |
+| Fuseau horaire **identique** sur les serveurs et les bases | Une heure de décalage sur l'ODATE, et toute la planification est fausse |
+| Pas d'index ni de trigger « maison » | Non supporté : cassé au prochain fix pack, et diagnostic impossible côté éditeur |
+| Statistiques d'optimiseur **à jour** | Un plan d'exécution qui dérive = un monitoring qui rame sans cause apparente |
+| Auto-vacuum actif (PostgreSQL) | Sinon la table AJF se fragmente et les temps de réponse s'effondrent |
+| Surveillance disque **avec seuil à 75 %** | À 90 %, il est déjà trop tard pour purger tranquillement |
+
+##### 2.8 Dimensionnement et croissance
+
+🔴 Personne ne peut vous donner une taille de base « standard » : elle dépend de votre volume.
+Voici un modèle de calcul défendable en comité d'architecture — à **calibrer** ensuite sur
+vos mesures réelles.
+
+###### Modèle pour CONTROLM
+
+```text
+Taille ≈ (jobs_par_jour × jours_de_rétention_AJF × taille_instance)
+       + (conditions_actives × taille_condition)
+       + volume_du_journal
+       + définitions
+```
+
+| Paramètre | Comment l'obtenir | Ordre de grandeur usuel |
+|---|---|---|
+| `jobs_par_jour` | Comptage sur l'AJF, ou `ctm run jobs::status` agrégé | 500 à 100 000 |
+| `jours_de_rétention_AJF` | `DaysKeepActive` + politique de purge New Day | 1 à 7 |
+| `taille_instance` | Mesure : taille de la table AJF ÷ nombre d'instances | quelques Ko |
+| `volume_du_journal` | Croissance du journal IOA sur 24 h | souvent le poste n°2 |
+
+###### Modèle pour CTMEM
+
+```text
+Taille ≈ miroir_supervision (≈ AJF de tous les serveurs)
+       + archives (jobs × jours_de_rétention_archive × taille_moyenne)
+       + audit (actions_par_jour × jours_de_rétention_audit)
+       + alertes (alertes_par_jour × rétention)
+       + statistiques
+```
+
+:::tip[✅ Bonne pratique — mesurer plutôt que deviner]
+Relevez la taille des deux bases **tous les jours** pendant un mois et tracez la courbe.
+La pente vous donne la croissance réelle ; l'extrapolation à 12 et 36 mois donne le
+dimensionnement disque à demander. Un script prêt à l'emploi est fourni en
+[§20](#20-observabilité--exporter-vers-prometheus) : il publie ces métriques dans Prometheus,
+ce qui transforme une discussion d'opinion en graphique.
+:::
+
+###### Signaux d'alerte
+
+| Signal | Interprétation probable | Action |
+|---|---|---|
+| L'AJF ne redescend pas après la New Day | Jobs non purgés (`DaysKeepActive` trop élevé, jobs bloqués retenus) | Analyser les jobs les plus anciens de l'AJF |
+| Le monitoring ralentit progressivement | Tables EM devenues énormes, statistiques obsolètes | Purge + recalcul des statistiques |
+| Croissance brutale en une nuit | Boucle de jobs cycliques, ou New Day partiellement échouée | Vérifier les jobs cycliques et le journal de la New Day |
+| Espace consommé, mais peu de lignes | Fragmentation (PostgreSQL : bloat) | Réorganisation / `VACUUM FULL` en fenêtre d'arrêt |
+
+##### 2.9 Exploitation quotidienne des bases
+
+🟡🔴
+
+###### Côté Control-M/Server
+
+| Besoin | Utilitaire | Commentaire |
+|---|---|---|
+| Occupation de la base | `ctmdbused` | **Le réflexe quotidien.** À superviser automatiquement |
+| Espace disponible | `ctmdbspace` | Complément du précédent |
+| Cohérence | `ctmdbcheck` | À passer avant/après opération lourde |
+| Optimisation / réorganisation | `ctmdbopt` | **En fenêtre d'arrêt**, jamais en pleine production |
+| Sauvegarde | `ctmdbbck`, `ctm_backup_bcp` | Voir [§2.10](#210-sauvegarde-et-restauration-cohérentes) |
+| Restauration | `ctmdbrst`, `ctm_restore_bcp` | Procédure à répéter à blanc au moins une fois par an |
+| Version de la base | `dbversion` | Utile avant toute montée de version |
+| Menu global | `dbu_menu` | Regroupe les opérations de maintenance |
+| Journal du serveur | `ctmlog` | « Crée un rapport des entrées du journal, ou supprime des entrées » |
+| Espace disque | `ctmdiskspace` | Vérifie l'espace libre d'un périphérique |
+
+```bash
+# Supervision minimale à mettre en place dès le premier jour (cron ou job Control-M)
+ctmdbused        # occupation : alerte au-delà de 75 %
+ctmdiskspace     # espace disque du filesystem de la base
+```
+
+###### Côté Enterprise Manager
+
+L'entrée officielle est le **CCM** : état des composants, paramètres système, et réglages de
+rétention. Les points à contrôler périodiquement :
+
+| Contrôle | Fréquence | Pourquoi |
+|---|---|---|
+| Taille de la base et croissance | Quotidienne | Détecter une dérive avant la saturation |
+| Rétention archives / alertes / audit | À chaque revue trimestrielle | C'est le principal levier de maîtrise du volume |
+| Alertes non acquittées | Quotidienne | Une pile d'alertes ouvertes = du volume **et** du bruit qui masque les vraies |
+| Statistiques d'optimiseur | Hebdomadaire | Performance du monitoring |
+| État des Gateways | Continue | Un Gateway arrêté fige la supervision ([§2.5](#25-la-synchronisation-em-et-server)) |
+
+:::tip[✅ Bonne pratique — automatiser plutôt que ritualiser]
+Ces contrôles ne doivent pas être une checklist manuelle du matin : **ce sont des jobs
+Control-M**. Control-M supervise très bien Control-M. Un folder `ADM-CONTROLM-HOUSEKEEPING`
+qui exécute `ctmdbused`, teste les seuils et poste une alerte vaut mieux que la meilleure
+des procédures écrites (→ [§18](#18-dix-runbooks-automatisés)).
+:::
+
+##### 2.10 Sauvegarde et restauration cohérentes
+
+🔴 **La section la plus importante de ce chapitre.**
+
+###### Le principe
+
+Les deux bases forment **un seul système**. Une sauvegarde n'a de valeur que si les deux
+images correspondent au **même instant logique**.
+
+```mermaid
+flowchart LR
+    A["Sauvegarde CTMEM<br/>à 22 h 00"] --- C{"Écart<br/>= 2 h"}
+    B["Sauvegarde CONTROLM<br/>à 00 h 00"] --- C
+    C --> D["Restauration croisée :<br/>définitions et exécution<br/>ne correspondent plus"]
+```
+
+| Règle | Pourquoi |
+|---|---|
+| **Sauvegarder les deux dans la même fenêtre** | Sinon la restauration produit un état incohérent |
+| **Jamais pendant la New Day** | La New Day réécrit massivement l'AJF : image instable |
+| **Jamais pendant un pic** | Verrous longs, sauvegarde qui traîne, production ralentie |
+| **Documenter l'ordre de restauration** | En incident, personne n'improvise à 3 h du matin |
+| **Tester la restauration au moins une fois par an** | Une sauvegarde jamais restaurée n'est pas une sauvegarde |
+
+###### Fenêtre recommandée
+
+```text
+   New Day (ex. 07:00)          Pic nocturne              Fenêtre calme
+        │                       ┌──────────┐          ┌──────────────┐
+────────┼───────────────────────┤ 22h-04h  ├──────────┤  05h - 06h30 ├────────►
+        │                       └──────────┘          └──────────────┘
+   ✗ interdit                    ✗ interdit             ✓ sauvegarde
+```
+
+###### Matrice de décision en cas de perte
+
+| Situation | Restaurer | Points de vigilance |
+|---|---|---|
+| Perte **CTMEM** seule | CTMEM | Redéployer les définitions modifiées depuis la sauvegarde (**le dépôt Git fait foi** — voir [§19](#19-cicd-et-promotion-denvironnement)) |
+| Perte **CONTROLM** seule | CONTROLM | **Rapprocher l'AJF restauré de la réalité avant reprise** : identifier les jobs déjà exécutés et les neutraliser |
+| Perte des **deux** | Les deux, même point de sauvegarde | Reprise à froid : Server d'abord, EM ensuite, puis contrôle de cohérence |
+| Corruption logique (mauvaise manipulation) | Restauration sur un environnement **de secours** | Ne jamais écraser la production pour analyser : on compare d'abord |
+
+###### Procédure de reprise après restauration de CONTROLM
+
+🔴 Le point délicat : **des jobs déjà exécutés vont réapparaître en attente**.
+
+```mermaid
+flowchart TB
+    R["1 · Base CONTROLM restaurée"] --> S["2 · NE PAS démarrer le serveur<br/>en mode normal"]
+    S --> T["3 · Inventorier l'AJF restauré"]
+    T --> U["4 · Confronter aux effets réels :<br/>fichiers produits, écritures applicatives,<br/>fichiers envoyés aux partenaires"]
+    U --> V["5 · Neutraliser les jobs déjà exécutés<br/>et non idempotents"]
+    V --> W["6 · Reprise contrôlée<br/>chaîne par chaîne"]
+    W --> X["7 · Rapport d'écart au métier"]
+```
+
+:::caution[⚠️ Piège — le job non idempotent]
+« Générer et transmettre le fichier de virements SEPA » relancé une seconde fois envoie
+**deux fois** les virements. Les jobs à effet externe irréversible (paiement, envoi
+partenaire, notification client, écriture comptable définitive) doivent **toujours** :
+1. tester en début d'exécution si le travail a déjà été fait (marqueur en base, fichier
+   témoin horodaté par ODATE) ;
+2. sortir en succès sans rien faire si c'est le cas.
+C'est cette discipline — et non l'ordonnanceur — qui rend une reprise sereine.
+:::
+
+##### 2.11 SQL d'exploration et de supervision
+
+🔴 **Lecture seule uniquement.** Ces requêtes servent à comprendre et à surveiller, jamais à
+modifier (→ [§2.12](#212-ce-quil-ne-faut-jamais-faire)).
+
+> **Pourquoi on ne donne pas ici une liste de noms de tables** : ils varient selon la version
+> et selon le moteur. La bonne méthode, celle d'un administrateur, est de **découvrir le
+> catalogue de sa propre instance** — c'est aussi ce qui fait bonne impression en entretien.
+
+###### PostgreSQL
+
+```sql
+-- 1. Les 25 plus grosses tables du schéma : où part vraiment l'espace ?
+SELECT n.nspname                                   AS schema,
+       c.relname                                   AS table_name,
+       pg_size_pretty(pg_total_relation_size(c.oid)) AS taille_totale,
+       c.reltuples::bigint                         AS lignes_estimees
+FROM   pg_class c
+JOIN   pg_namespace n ON n.oid = c.relnamespace
+WHERE  c.relkind = 'r'
+  AND  n.nspname NOT IN ('pg_catalog', 'information_schema')
+ORDER  BY pg_total_relation_size(c.oid) DESC
+LIMIT  25;
+
+-- 2. Taille totale de la base (à historiser quotidiennement pour tracer la croissance)
+SELECT current_database() AS base,
+       pg_size_pretty(pg_database_size(current_database())) AS taille;
+
+-- 3. Trouver les tables candidates au stockage de l'AJF ou des conditions
+--    (on cherche par motif de nom : le catalogue ne ment jamais)
+SELECT table_schema, table_name
+FROM   information_schema.tables
+WHERE  table_name ILIKE '%ajf%'
+    OR table_name ILIKE '%cond%'
+    OR table_name ILIKE '%res%'
+ORDER  BY table_schema, table_name;
+
+-- 4. Sessions actives et requêtes longues : qui charge la base ?
+SELECT pid, usename, state,
+       now() - query_start AS duree,
+       left(query, 120)    AS requete
+FROM   pg_stat_activity
+WHERE  state <> 'idle'
+ORDER  BY duree DESC NULLS LAST
+LIMIT  20;
+
+-- 5. Tables les plus sollicitées en écriture (utile pour placer les disques rapides)
+SELECT relname,
+       n_tup_ins AS insertions, n_tup_upd AS maj, n_tup_del AS suppressions,
+       n_live_tup AS lignes_vivantes, n_dead_tup AS lignes_mortes
+FROM   pg_stat_user_tables
+ORDER  BY (n_tup_ins + n_tup_upd + n_tup_del) DESC
+LIMIT  20;
+
+-- 6. Fragmentation : beaucoup de lignes mortes = auto-vacuum en retard
+SELECT relname, n_dead_tup, last_autovacuum, last_autoanalyze
+FROM   pg_stat_user_tables
+WHERE  n_dead_tup > 10000
+ORDER  BY n_dead_tup DESC;
+```
+
+###### Oracle
+
+```sql
+-- 1. Espace occupé par segment, pour le schéma Control-M
+SELECT segment_name, segment_type,
+       ROUND(bytes/1024/1024, 1) AS mo
+FROM   dba_segments
+WHERE  owner = UPPER('&schema_controlm')      -- ex. CTMEM ou CONTROLM
+ORDER  BY bytes DESC
+FETCH FIRST 25 ROWS ONLY;
+
+-- 2. Occupation des tablespaces : l'indicateur à mettre sous surveillance
+SELECT df.tablespace_name,
+       ROUND(SUM(df.bytes)/1024/1024)                      AS alloue_mo,
+       ROUND(SUM(NVL(fs.free_bytes,0))/1024/1024)          AS libre_mo,
+       ROUND(100 * (1 - SUM(NVL(fs.free_bytes,0)) / SUM(df.bytes)), 1) AS pct_utilise
+FROM   dba_data_files df
+LEFT   JOIN (SELECT file_id, SUM(bytes) free_bytes
+             FROM dba_free_space GROUP BY file_id) fs
+       ON fs.file_id = df.file_id
+GROUP  BY df.tablespace_name
+ORDER  BY pct_utilise DESC;
+
+-- 3. Découvrir les tables du schéma
+SELECT table_name, num_rows, last_analyzed
+FROM   all_tables
+WHERE  owner = UPPER('&schema_controlm')
+ORDER  BY num_rows DESC NULLS LAST;
+
+-- 4. Fraîcheur des statistiques d'optimiseur (cause n°1 de lenteur inexpliquée)
+SELECT table_name, last_analyzed,
+       ROUND(SYSDATE - last_analyzed) AS jours_depuis_analyse
+FROM   all_tables
+WHERE  owner = UPPER('&schema_controlm')
+  AND (last_analyzed IS NULL OR SYSDATE - last_analyzed > 7)
+ORDER  BY jours_depuis_analyse DESC NULLS FIRST;
+```
+
+:::tip[✅ Bonne pratique — un compte SQL dédié en lecture seule]
+Créez un compte `ctm_readonly` avec `SELECT` uniquement, et **utilisez-le pour toute
+supervision**. Cela supprime physiquement le risque du `UPDATE` malencontreux, et permet de
+donner l'accès à un exploitant sans lui donner les clés de la production.
+
+```sql
+-- PostgreSQL
+CREATE ROLE ctm_readonly LOGIN PASSWORD '<secret géré par le coffre>';
+GRANT CONNECT ON DATABASE <base> TO ctm_readonly;
+GRANT USAGE ON SCHEMA <schema> TO ctm_readonly;
+GRANT SELECT ON ALL TABLES IN SCHEMA <schema> TO ctm_readonly;
+ALTER DEFAULT PRIVILEGES IN SCHEMA <schema> GRANT SELECT ON TABLES TO ctm_readonly;
+```
+:::
+
+##### 2.12 Ce qu'il ne faut jamais faire
+
+🔴 Liste courte, chaque ligne correspond à un incident déjà vu quelque part.
+
+| Interdit | Pourquoi | À faire à la place |
+|---|---|---|
+| `UPDATE` / `DELETE` / `INSERT` direct dans CTMEM ou CONTROLM | Aucune cohérence applicative : caches, index internes et miroir divergent. **Support éditeur perdu** | Utilitaires `ctm*`, interface, ou **API** |
+| Créer ses propres index ou triggers | Non supporté, effacé au prochain fix pack, plans d'exécution imprévisibles | Ouvrir un cas support si une requête est lente |
+| Restaurer une seule des deux bases sans analyse | Divergence garantie ([§2.6](#26-le-piège-numéro-un--la-désynchronisation)) | Suivre la matrice de [§2.10](#210-sauvegarde-et-restauration-cohérentes) |
+| Sauvegarder pendant la New Day | Image instable de l'AJF | Fenêtre calme documentée |
+| Lancer `ctmdbopt` en pleine production | Réorganisation lourde, verrous | Fenêtre d'arrêt planifiée |
+| Partager le schéma avec une autre application | Sauvegardes et purges impossibles à isoler | Schéma dédié |
+| Laisser la rétention par défaut « pour voir » | La base grossit jusqu'à l'incident | Politique de rétention décidée et écrite |
+| Modifier les définitions par utilitaire serveur | Écrasé au prochain déploiement, non audité | Automation API + Git |
+| Stocker les mots de passe de base dans un script | Fuite garantie tôt ou tard | Coffre (Vault, CyberArk, secret CI) |
+| Découvrir la procédure de restauration le jour de l'incident | Le pire moment pour apprendre | Test de restauration annuel |
+
+##### 2.13 Checklist DBA Control-M
+
+🟡 À remettre telle quelle à votre équipe base de données.
+
+**Quotidien**
+
+- [ ] Occupation des deux bases relevée et historisée (seuil d'alerte : **75 %**)
+- [ ] Sauvegardes des deux bases terminées, dans la même fenêtre, **statut vérifié**
+- [ ] Aucune session bloquée de plus de N minutes
+- [ ] Croissance de la journée cohérente avec la tendance
+
+**Hebdomadaire**
+
+- [ ] Statistiques d'optimiseur à jour
+- [ ] Fragmentation / lignes mortes sous contrôle
+- [ ] Journal du serveur purgé selon la politique
+- [ ] Alertes EM acquittées, pile non cumulative
+
+**Mensuel**
+
+- [ ] Courbe de croissance revue et extrapolée à 12 mois
+- [ ] Politique de rétention réévaluée (archives, audit, alertes)
+- [ ] Contrôle de cohérence (`ctmdbcheck`)
+
+**Annuel**
+
+- [ ] **Test de restauration complet des deux bases** sur un environnement de secours
+- [ ] Revue de la fenêtre de sauvegarde face à l'évolution des volumes
+- [ ] Revue des versions moteur face à la matrice de compatibilité BMC
+
+##### 2.14 En SaaS : ce qui change
+
+☁️ En **Control-M SaaS** (ex‑Helix Control-M), les deux bases existent toujours — mais **chez
+BMC**. Vous n'y avez pas accès.
+
+| Sujet | Self-hosted | SaaS |
+|---|---|---|
+| Accès aux bases | Vous, et votre DBA | **Aucun** |
+| Sauvegarde / restauration | À votre charge | Assurée par BMC (voir contrat) |
+| Purge et rétention | Vous les réglez | Paramétrable dans les limites de l'offre |
+| Dimensionnement | Votre responsabilité | Inclus |
+| Diagnostic « base pleine » | Vous | Support BMC |
+| Ce qui reste chez vous | Tout | Les **agents**, et donc leur déploiement |
+
+> **Ce que cela change pour la compétence.** En SaaS, la connaissance des bases reste utile
+> pour **raisonner** (comprendre le miroir, la synchronisation, l'ODATE, la New Day), mais le
+> centre de gravité du métier se déplace nettement vers **l'ordonnancement** et surtout vers
+> **l'Automation API** : c'est le seul levier qui vous reste pour industrialiser. D'où
+> l'importance des parties C, D et E de ce guide.
+
+---
+### Partie B — Ordonnancement des traitements
+
+#### 3. Le modèle d'exécution : les six verrous
+
+🟡 **La section à lire avant toutes les autres de cette partie.**
+
+Un job ne démarre que si **six conditions sont vraies simultanément**. Le Selector les évalue
+**dans cet ordre** et s'arrête au premier échec. Autrement dit : un job bloqué l'est toujours
+sur **un** verrou précis — et savoir lequel, c'est 80 % du diagnostic.
+
+```mermaid
+flowchart TB
+    START(["Instance présente dans l'AJF"]) --> V1
+    V1{"① Statut<br/>ni Hold ni Deleted ?"} -->|non| B1["🔒 Held / Deleted"]
+    V1 -->|oui| V2
+    V2{"② Fenêtre de temps<br/>FromTime / ToTime atteinte ?"} -->|non| B2["⏰ Wait Time"]
+    V2 -->|oui| V3
+    V3{"③ Conditions IN<br/>toutes satisfaites ?"} -->|non| B3["🔗 Wait Condition"]
+    V3 -->|oui| V4
+    V4{"④ Ressource quantitative<br/>quantité disponible ?"} -->|non| B4["📊 Wait Resource"]
+    V4 -->|oui| V5
+    V5{"⑤ Ressource de contrôle<br/>verrou obtenable ?"} -->|non| B5["🔐 Wait Resource"]
+    V5 -->|oui| V6
+    V6{"⑥ Agent disponible<br/>et limites non atteintes ?"} -->|non| B6["🖥️ Wait Host"]
+    V6 -->|oui| RUN(["▶️ Executing"])
+```
+
+| # | Verrou | Statut affiché | Où chercher | Section |
+|---|---|---|---|---|
+| ① | Statut de l'instance | `Held`, `Deleted`, `Wait Confirmation` | Action manuelle, `Confirm`, `OrderMethod` | [§10.5](#105-holder-et-libérer-des-jobs) |
+| ② | Fenêtre de temps | `Wait Time` | `FromTime`, `ToTime`, cyclique | [§7](#7-cyclique-reprise-rétention-priorité) |
+| ③ | Conditions IN | `Wait Condition` | Événements manquants | [§4](#4-conditions-dentrée-et-de-sortie) |
+| ④ | Ressource quantitative | `Wait Resource` | Pool épuisé | [§5.1](#51-ressource-quantitative--le-sémaphore) |
+| ⑤ | Ressource de contrôle | `Wait Resource` | Verrou détenu | [§5.2](#52-ressource-de-contrôle--le-verrou) |
+| ⑥ | Hôte / limites | `Wait Host`, `Wait Workload` | Agent HS, limites de charge | [§5.6](#56-ressources-ou-workload-policies) |
+
+:::tip[✅ Le réflexe qui fait gagner une heure]
+Face à un job en attente, ne cherchez pas « pourquoi ça ne part pas » en général : lisez
+**le statut**, il nomme le verrou. Puis utilisez la fonction **Why** (interface) ou
+`ctmwhy` (côté serveur), qui répond exactement à la question :
+
+```bash
+# Interface : clic droit sur le job → « Why »
+# API : le statut détaillé porte déjà l'information
+ctm run jobs::status -s "jobid=<jobId>"
+```
+:::
+
+:::caution[⚠️ Piège]
+`Wait Resource` couvre **deux** verrous très différents (④ et ⑤). Le premier se règle en
+augmentant une capacité, le second en identifiant un **détenteur**. Les confondre fait
+perdre un temps considérable — c'est pourquoi [§5.3](#53-comparatif-et-arbre-de-décision)
+insiste autant sur la distinction.
+:::
+
+---
+
+#### 4. Conditions d'entrée et de sortie
+
+##### 4.1 Anatomie d'une condition
+
+🟢 Une condition (aujourd'hui **Event**) est un simple drapeau à deux composantes :
+
+```text
+        NOM_DE_LA_CONDITION  +  DATE
+        └────────┬────────┘     └─┬─┘
+        ce qui s'est passé      pour quel jour de traitement
+```
+
+:::note[📖 Définition — pourquoi une date dans une condition ?]
+Parce qu'une chaîne s'exécute **tous les jours**. Sans la date, l'événement
+`EXTRACT-COMPTA-OK` posé lundi ferait démarrer le job de mardi sans que l'extraction de
+mardi ait tourné. **La date rend l'événement propre à une journée de traitement.**
+C'est le mécanisme qui évite les faux départs — et la source de la moitié des incidents
+de planification quand elle est mal comprise ([§4.3](#43-la-sémantique-de-lodate)).
+:::
+
+```mermaid
+flowchart LR
+    A["JOB-EXTRACT"] -->|"AddEvents<br/>EXTRACT-OK"| E(("EXTRACT-OK<br/>ODATE 2026-09-03"))
+    E -->|"WaitForEvents<br/>EXTRACT-OK"| B["JOB-TRANSFORM"]
+    B -->|"DeleteEvents<br/>EXTRACT-OK"| F(("consommé"))
+```
+
+##### 4.2 IN, OUT, DELETE et la logique booléenne
+
+🟢🟡
+
+| Rôle | Terme historique | Objet JSON | Sens |
+|---|---|---|---|
+| **Attendre** | IN condition | `WaitForEvents` | « Je ne démarre pas tant que… » |
+| **Publier** | OUT condition, signe `+` | `AddEvents` | « J'annonce que j'ai fini » |
+| **Consommer** | OUT condition, signe `-` | `DeleteEvents` | « Je supprime le drapeau » |
+
+```json
+{
+  "TRANSFORM": {
+    "Type": "Job:Command",
+    "Command": "/opt/etl/transform.sh",
+    "RunAs": "svc_etl",
+    "Attendre": {
+      "Type": "WaitForEvents",
+      "Events": [
+        {"Event": "EXTRACT-COMPTA-OK"},
+        {"Event": "EXTRACT-TIERS-OK"}
+      ]
+    },
+    "Publier": {
+      "Type": "AddEvents",
+      "Events": [{"Event": "TRANSFORM-OK"}]
+    },
+    "Consommer": {
+      "Type": "DeleteEvents",
+      "Events": [
+        {"Event": "EXTRACT-COMPTA-OK"},
+        {"Event": "EXTRACT-TIERS-OK"}
+      ]
+    }
+  }
+}
+```
+
+:::note[🔬 Sous le capot — pourquoi DeleteEvents compte]
+Sans consommation, les événements s'accumulent dans le pool de conditions de la base
+CONTROLM. La New Day en nettoie une partie, mais un événement `AnyDate` ou `NoDate` **n'est
+jamais nettoyé automatiquement**. Résultat au bout de six mois : des milliers de conditions
+orphelines, un pool illisible, et — c'est le pire — des jobs qui démarrent **à tort** parce
+qu'un vieux drapeau traîne. Règle : **qui attend, consomme** (sauf motif documenté).
+:::
+
+###### Le ET, le OU et les parenthèses
+
+La relation par défaut entre événements est **ET**. Les opérateurs sont des chaînes littérales
+dans le tableau :
+
+```json
+"Attente": {
+  "Type": "WaitForEvents",
+  "Events": [
+    "(", {"Event": "SOURCE-A-OK"}, "OR", {"Event": "SOURCE-B-OK"}, ")",
+    {"Event": "REFERENTIEL-CHARGE-OK"}
+  ]
+}
+```
+
+Lecture : *(A ou B) **et** REFERENTIEL*.
+
+:::caution[⚠️ Limitation — pas de parenthèses imbriquées]
+`((A OR B) AND C) OR D` n'est **pas** exprimable directement. La solution propre :
+introduire un job `Job:Dummy` intermédiaire qui matérialise le résultat partiel.
+
+```json
+"SOURCE-PRETE": {
+  "Type": "Job:Dummy",
+  "Attente": {"Type": "WaitForEvents",
+              "Events": ["(", {"Event": "A-OK"}, "OR", {"Event": "B-OK"}, ")",
+                         {"Event": "C-OK"}]},
+  "Publier": {"Type": "AddEvents", "Events": [{"Event": "SOURCE-PRETE-OK"}]}
+}
+```
+
+**Bonus d'exploitation** : le job `Dummy` apparaît dans le monitoring. Un exploitant voit
+immédiatement « la source n'est pas prête » au lieu de devoir décoder une expression
+booléenne. Un `Dummy` bien nommé vaut dix lignes de documentation.
+:::
+
+###### Le motif « OU » par convergence de nom
+
+🔴 Astuce d'architecture : pour un « OU » entre N producteurs, faites-les publier **le même
+nom d'événement**.
+
+```mermaid
+flowchart LR
+    A["FLUX-BANQUE-A"] -->|"AddEvents<br/>FICHIER-RECU"| E(("FICHIER-RECU"))
+    B["FLUX-BANQUE-B"] -->|"AddEvents<br/>FICHIER-RECU"| E
+    C["FLUX-BANQUE-C"] -->|"AddEvents<br/>FICHIER-RECU"| E
+    E --> D["TRAITEMENT"]
+```
+
+Le premier arrivé déclenche. C'est plus simple qu'une expression booléenne — mais attention :
+si vous voulez traiter **chaque** arrivée, ce motif ne convient pas (il ne déclenche
+qu'une fois par ODATE). Dans ce cas, un job cyclique ou un `Job:FileWatcher` est adapté.
+
+##### 4.3 La sémantique de l'ODATE
+
+🔴 **Le sujet qui départage un débutant d'un praticien.**
+
+| Valeur | Signification | Cas d'usage |
+|---|---|---|
+| `OrderDate` | Date de traitement courante — **valeur par défaut** | 95 % des cas : chaîne du jour |
+| `PreviousOrderDate` | Date de traitement précédente | Job du jour qui dépend du résultat de la veille |
+| `NextOrderDate` | Date de traitement suivante | Pré-positionner un jeton pour demain |
+| `AnyDate` | N'importe quelle date | **Événement venant d'un système externe** |
+| `NoDate` | Sans qualificatif | Drapeau global, hors journée |
+| `MMDD` | Date fixe, ex. `"0511"` | Événement annuel |
+| `+nnn` / `-nnn` | Décalage en jours, ex. `"+001"` | Décalage explicite |
+
+:::caution[⚠️ Le piège n°1 des conditions — l'événement externe daté]
+Le fichier du partenaire arrive à **23 h 40**. Votre chaîne tourne le lendemain matin avec
+l'ODATE du **jour suivant**. Le `Job:FileWatcher` a posé `FICHIER-PARTENAIRE-RECU` avec
+l'ODATE de la veille. Le job du matin attend `FICHIER-PARTENAIRE-RECU` en `OrderDate` : il
+attendra **pour toujours**, alors que le fichier est là.
+
+**Solution** : `"Date": "AnyDate"` sur le `WaitForEvents` du consommateur.
+
+```json
+"Attente": {
+  "Type": "WaitForEvents",
+  "Events": [{"Event": "FICHIER-PARTENAIRE-RECU", "Date": "AnyDate"}]
+}
+```
+
+**Contrepartie à assumer** : `AnyDate` accepte aussi un fichier vieux de trois jours.
+Ajoutez donc **toujours** un contrôle de fraîcheur dans le job consommateur (âge du fichier,
+date interne, horodatage) — l'ordonnanceur garantit la séquence, pas la pertinence métier.
+:::
+
+:::caution[⚠️ Piège n°2 — AnyDate en publication]
+`AnyDate` n'est valide que pour `WaitForEvents` et `DeleteEvents`. On **ne publie pas** un
+événement en `AnyDate`.
+:::
+
+###### Chaîne à cheval sur deux journées
+
+🔴 Cas fréquent en banque et en énergie : la chaîne démarre à 22 h et finit à 5 h du matin.
+
+| Question | Réponse |
+|---|---|
+| Quelle est l'ODATE des jobs de 3 h du matin ? | **Celle de la journée de traitement**, définie par le `DAYTIME` (heure de New Day), pas par l'horloge |
+| Si la New Day est à 7 h, un job lancé à 3 h porte quelle ODATE ? | Celle de la **veille** — la journée de traitement n'a pas encore basculé |
+| Comment enchaîner sur le jour suivant ? | `PreviousOrderDate` côté consommateur, ou décalage `+001` côté producteur |
+
+:::tip[✅ Bonne pratique]
+Positionnez le `DAYTIME` (heure de bascule) **dans un creux d'activité** et **hors** de la
+plage des chaînes à cheval. Une bascule au milieu d'une chaîne nocturne coupe la chaîne en
+deux journées de traitement : la moitié des conditions ne se rencontre plus.
+:::
+
+##### 4.4 Les huit motifs de dépendance
+
+🟡 Le vocabulaire d'architecture. Savoir les nommer aide à concevoir et à expliquer.
+
+###### 1 — Séquence
+
+```mermaid
+flowchart LR
+    A[EXTRACT] --> B[TRANSFORM] --> C[LOAD] --> D[REPORT]
+```
+
+Le plus simple. En JSON, l'objet `Flow` l'exprime en une ligne :
+
+```json
+"chaine": {"Type": "Flow", "Sequence": ["EXTRACT", "TRANSFORM", "LOAD", "REPORT"]}
+```
+
+:::note[🔬 Sous le capot]
+— `Flow` n'est pas un mécanisme distinct : à la compilation, Control-M
+**génère un `AddEvents` sur le prédécesseur et un `WaitForEvents` sur le successeur**.
+C'est du sucre syntaxique, très pratique, mais qui produit des noms d'événements automatiques
+peu parlants en exploitation. Pour une chaîne critique supervisée par une équipe 24/7,
+**préférez les événements explicites et nommés**.
+:::
+
+###### 2 — Éventail (fan-out)
+
+```mermaid
+flowchart LR
+    A[EXTRACT] --> B1[CALCUL-FR]
+    A --> B2[CALCUL-BE]
+    A --> B3[CALCUL-LU]
+```
+
+Un producteur, N consommateurs. Tous attendent le **même** événement — un événement peut être
+consommé par plusieurs jobs.
+
+:::caution[⚠️ Piège]
+— si **chacun** des trois jobs fait `DeleteEvents` sur `EXTRACT-OK`, le premier
+qui termine supprime le drapeau et les deux autres attendent indéfiniment (ou pire :
+démarrent puis échouent aléatoirement selon l'ordre). **Dans un fan-out, seul le dernier
+consommateur supprime** — ou personne, et on laisse la New Day nettoyer.
+:::
+
+###### 3 — Entonnoir (fan-in)
+
+```mermaid
+flowchart LR
+    A1[CALCUL-FR] --> C[CONSOLIDATION]
+    A2[CALCUL-BE] --> C
+    A3[CALCUL-LU] --> C
+```
+
+`WaitForEvents` avec trois événements en ET. Point de synchronisation classique.
+
+###### 4 — Rendez-vous conditionnel
+
+Attendre `(A ou B) et C` — voir [§4.2](#42-in-out-delete-et-la-logique-booléenne).
+
+###### 5 — Dépendance inter-applications
+
+Deux équipes, deux folders, un contrat d'interface :
+
+```mermaid
+flowchart LR
+    subgraph APP1["Folder COMPTA (équipe A)"]
+        J1[COMPTA-CLOTURE]
+    end
+    subgraph APP2["Folder DECISIONNEL (équipe B)"]
+        J2[DWH-CHARGEMENT]
+    end
+    J1 -->|"COMPTA-CLOTURE-OK<br/>(contrat d'interface)"| J2
+```
+
+:::tip[✅ Bonne pratique — le contrat d'événement]
+Un événement partagé entre deux équipes est une **interface** : il se documente, se
+versionne, et **ne se renomme pas sans préavis**. Tenez un tableau des événements publics
+(nom, producteur, consommateurs, sémantique, criticité). Sans ce registre, personne n'ose
+plus renommer quoi que ce soit et le patrimoine se fige.
+:::
+
+###### 6 — Dépendance inter-serveurs (conditions globales)
+
+Quand producteur et consommateur sont sur **deux Control-M/Servers différents**, l'événement
+doit être déclaré **global** : il transite alors par l'EM (Global Conditions Server) qui le
+réplique. C'est plus lent (quelques secondes) et cela crée une dépendance à la disponibilité
+de l'EM — à réserver aux vrais besoins.
+
+###### 7 — Dépendance temporelle molle
+
+```json
+"FromTime": "0600", "ToTime": "0900"
+```
+
+« Pas avant 6 h, plus la peine après 9 h. » Souvent **combiné** à une condition : « quand le
+fichier est là **et** qu'il est au moins 6 h ».
+
+###### 8 — Dépendance sur événement externe
+
+Le monde extérieur pousse l'événement dans Control-M — par `Job:FileWatcher`, par un appel
+d'API depuis une application, ou par un opérateur. C'est le motif clé de l'intégration
+temps réel (→ [§10.4](#104-poster-une-condition-de-démarrage)).
+
+##### 4.5 Convention de nommage
+
+🟡 Un patrimoine de 5 000 conditions sans convention est ingérable. Proposez celle-ci
+(ou une autre, mais **écrivez-la**) :
+
+```text
+<ENV>-<DOMAINE>-<OBJET>-<ETAT>
+
+PRD-COMPTA-EXTRACT-OK
+PRD-COMPTA-EXTRACT-KO
+PRD-RH-PAIE-CALCUL-OK
+PRD-EXT-BANQUE-FICHIER-RECU
+```
+
+| Segment | Valeurs | Pourquoi |
+|---|---|---|
+| `ENV` | `PRD`, `PPR`, `TST`, `DEV` | **Interdit physiquement** qu'une condition de test débloque la production |
+| `DOMAINE` | `COMPTA`, `RH`, `EXT`… | Filtrage, propriété, habilitations |
+| `OBJET` | Ce dont on parle | Lisibilité |
+| `ETAT` | `OK`, `KO`, `RECU`, `PRET` | Sémantique explicite |
+
+:::caution[⚠️ Le préfixe d'environnement n'est pas cosmétique]
+Sans lui, un test qui poste `EXTRACT-OK` sur une plateforme partagée déclenche la chaîne de
+production. Cela arrive, et le préfixe est la seule protection réellement efficace.
+Il permet en prime de filtrer proprement dans le RBAC et dans les scripts de purge.
+:::
+
+##### 4.6 Cycle de vie et nettoyage
+
+🔴
+
+```mermaid
+stateDiagram-v2
+    [*] --> Publiee : AddEvents (fin de job)
+    Publiee --> Consommee : DeleteEvents
+    Publiee --> Purgee : New Day Procedure
+    Consommee --> [*]
+    Purgee --> [*]
+    Publiee --> Orpheline : NoDate / AnyDate<br/>jamais consommée
+    Orpheline --> Orpheline : reste indéfiniment
+```
+
+| Type d'événement | Nettoyé par la New Day ? | Risque |
+|---|---|---|
+| Daté (`OrderDate`, `MMDD`…) | Oui, selon la rétention | Faible |
+| `NoDate` | **Non** | Accumulation, faux déclenchements |
+| Publié par un job supprimé | Reste | Chaîne qui part sans raison |
+
+**Audit périodique du pool de conditions** :
+
+```bash
+# Combien de conditions vivent dans le serveur ?
+ctm run events::get | jq 'length'
+
+# Les plus anciennes (candidates au ménage) — adapter les noms de champs à votre version
+ctm run events::get | jq -r '.[] | [.date, .name] | @tsv' | sort | head -40
+```
+
+:::tip[✅ Bonne pratique]
+Un job Control-M mensuel `ADM-AUDIT-CONDITIONS` qui compte les conditions, détecte les
+`NoDate` et alerte au-delà d'un seuil. Cinq lignes de script, et un problème structurel
+détecté avant qu'il ne devienne un incident (script complet en [§18](#18-dix-runbooks-automatisés)).
+:::
+
+##### 4.7 Diagnostic : pourquoi mon job attend
+
+🟡🔴 **La méthode, en cinq étapes, avec les commandes.**
+
+```mermaid
+flowchart TB
+    S1["1 · Lire le statut exact du job"] --> S2["2 · Wait Condition ?"]
+    S2 -->|oui| C1["3a · Lister les événements attendus"]
+    S2 -->|non| R1["→ voir les autres verrous §3"]
+    C1 --> C2["4a · Le producteur a-t-il tourné ?"]
+    C2 -->|"jamais ordonnancé"| F1["Problème de CALENDRIER (§6)"]
+    C2 -->|"en échec"| F2["Problème d'EXÉCUTION"]
+    C2 -->|"OK mais événement absent"| F3["Problème d'ODATE (§4.3)<br/>ou de suppression concurrente (§4.4 fan-out)"]
+    F1 --> S5["5 · Corriger la cause,<br/>puis débloquer"]
+    F2 --> S5
+    F3 --> S5
+```
+
+```bash
+# 1. Statut détaillé du job bloqué
+ctm run jobs::status -s "jobname=TRANSFORM-COMPTA"
+
+# 2. Quels événements existent actuellement ?
+ctm run events::get
+
+# 3. Le producteur a-t-il seulement été ordonnancé aujourd'hui ?
+ctm run jobs::status -s "jobname=EXTRACT-COMPTA"
+
+# 4. Déblocage assumé et tracé : publier l'événement manquant
+ctm run event::add ctmsrv-prod PRD-COMPTA-EXTRACT-OK ODAT
+```
+
+| Symptôme | Cause la plus fréquente | Correction durable |
+|---|---|---|
+| Le producteur n'est **pas dans l'AJF** | Critère `When` non satisfait (férié, jour ouvré) | Corriger le calendrier ([§6](#6-calendriers-et-planification)) |
+| Le producteur est **en échec** | Erreur applicative | Corriger, `job::rerun` |
+| Producteur OK, événement **absent** | Mauvais qualificatif d'ODATE | `AnyDate` ou décalage explicite ([§4.3](#43-la-sémantique-de-lodate)) |
+| Événement présent, job **toujours en attente** | Nom différent (casse, tiret, espace) | Convention de nommage + `ctm build` en CI |
+| Cela marchait hier | Suppression concurrente en fan-out | Un seul consommateur supprime ([§4.4](#44-les-huit-motifs-de-dépendance)) |
+
+:::caution[⚠️ Le geste de déblocage est à encadrer]
+`ctm run event::add` court-circuite une dépendance **métier**. Il doit être :
+tracé (numéro de ticket), limité par le RBAC à un rôle d'exploitation, et suivi d'une
+**analyse de cause**. Un `event::add` répété toutes les semaines sur la même chaîne
+n'est pas un déblocage : c'est un défaut de conception qui n'a jamais été corrigé.
+:::
+
+##### 4.8 Traduction en JSON et en API
+
+🟡 Récapitulatif opérationnel.
+
+| Besoin | JSON | CLI |
+|---|---|---|
+| Attendre | `WaitForEvents` | — (défini dans le job) |
+| Publier | `AddEvents` | `ctm run event::add <server> <nom> <date>` |
+| Consommer | `DeleteEvents` | `ctm run event::delete <server> <nom> <date>` |
+| Lister | — | `ctm run events::get` |
+| Publier en fin d'action conditionnelle | `Event:Add` (dans un bloc `If`/`On`) | — |
+| Supprimer en fin d'action conditionnelle | `Event:Delete` | — |
+
+:::note[🔢 Version]
+— dans les actions conditionnelles (`If` / `On`), les types s'écrivent
+`Event:Add` et `Event:Delete`, **et non** `Action:AddEvents`. C'est une différence classique
+entre la documentation ancienne et la version courante : vérifiez avec `ctm build` avant de
+déployer 200 jobs.
+:::
+
+---
+
+#### 5. Ressources quantitatives et de contrôle
+
+> **La confusion entre les deux est la faute la plus fréquente en entretien technique**, et
+> l'une des causes les plus fréquentes de saturation d'un système source en production.
+
+##### 5.1 Ressource quantitative : le sémaphore
+
+🟢 **Définition** : un **compteur** de capacité partagée. On déclare *« il existe 20 unités »*,
+chaque job en consomme un nombre, et Control-M ne lance que ce qui tient dans l'enveloppe.
+
+:::note[📖 Analogie]
+Un parking de 20 places. Une voiture prend 1 place, un camion en prend 3. Quand tout est
+plein, on attend qu'une place se libère. Personne ne « possède » le parking : c'est une
+**capacité**.
+:::
+
+```mermaid
+flowchart LR
+    subgraph POOL["Pool PRD-ORACLE-FIN — 20 unités"]
+        U["Utilisées : 18 / 20"]
+    end
+    J1["JOB-A (2 unités)"] -->|"réserve"| POOL
+    J2["JOB-B (5 unités)"] -.->|"attend : il en reste 2"| POOL
+```
+
+**Déclarer et gérer un pool** :
+
+```bash
+ctm run resource::add    <server> PRD-ORACLE-FIN 20   # créer
+ctm run resource::update <server> PRD-ORACLE-FIN 25   # ajuster la capacité
+ctm run resources::get   -s "server=<server>"         # consulter
+ctm run resource::delete <server> PRD-ORACLE-FIN      # supprimer
+```
+
+**Côté job** :
+
+```json
+"PoolBaseFinance": {
+  "Type": "Resource:Pool",
+  "Quantity": "5"
+}
+```
+
+**Cas d'usage typiques** :
+
+| Ressource protégée | Nom de pool | Capacité |
+|---|---|---|
+| Sessions d'une base Oracle | `PRD-ORACLE-FIN-SESSIONS` | Sessions max **moins** la marge des applications interactives |
+| Licences d'un ETL | `PRD-INFORMATICA-LIC` | Nombre de licences réellement détenues |
+| Bande passante d'un lien MFT | `PRD-MFT-PARTENAIRES` | Transferts simultanés supportés |
+| Appels à une API externe | `PRD-API-BANQUE-DE-FRANCE` | Quota contractuel par minute |
+| CPU d'un serveur applicatif | `PRD-SRVAPP01-CPU` | Cœurs disponibles moins la réserve système |
+
+##### 5.2 Ressource de contrôle : le verrou
+
+🟢 **Définition** : un **verrou** sur un objet unique, en mode **exclusif** ou **partagé**.
+Ce n'est pas une quantité : c'est un **droit d'accès**.
+
+:::note[📖 Analogie]
+La clé d'une salle de réunion. En mode `Exclusive`, une seule personne entre et ferme à
+clé. En mode `Shared`, plusieurs personnes peuvent entrer ensemble — mais personne ne peut
+entrer en mode exclusif tant qu'elles sont là.
+:::
+
+| `LockType` | Sémantique | Cas d'usage |
+|---|---|---|
+| `Exclusive` | Un seul job à la fois | Écriture dans un fichier, `TRUNCATE`, réorganisation, mise à jour de référentiel |
+| `Shared` | Plusieurs jobs simultanés, mais incompatibles avec un `Exclusive` | Lecture d'un référentiel pendant qu'aucune mise à jour ne tourne |
+
+```json
+"VerrouReferentiel": {
+  "Type": "Resource:Lock",
+  "LockType": "Exclusive"
+}
+```
+
+:::caution[⚠️ Piège de syntaxe très fréquent]
+La clé est **`LockType`**, pas `Type`. `"Type": "Exclusive"` est **faux** et sera rejeté —
+ou pire, ignoré selon la version.
+:::
+
+**Le motif lecteurs / écrivain** :
+
+```mermaid
+flowchart TB
+    W["MAJ-REFERENTIEL<br/>Lock EXCLUSIVE"] -->|"bloque tout le monde"| REF[("Référentiel")]
+    R1["RAPPORT-A<br/>Lock SHARED"] --> REF
+    R2["RAPPORT-B<br/>Lock SHARED"] --> REF
+    R3["RAPPORT-C<br/>Lock SHARED"] --> REF
+```
+
+Les trois rapports peuvent tourner **ensemble** ; la mise à jour attend qu'ils aient tous
+terminé, puis bloque tout le monde le temps de son exécution. C'est exactement la sémantique
+d'un verrou lecteur/écrivain — et cela se déclare en trois lignes de JSON, sans une seule
+ligne de code applicatif.
+
+##### 5.3 Comparatif et arbre de décision
+
+🟡 **Le tableau à savoir restituer.**
+
+| Critère | Ressource **quantitative** (`Resource:Pool`) | Ressource **de contrôle** (`Resource:Lock`) |
+|---|---|---|
+| Nature | Compteur | Verrou |
+| Question posée | « Combien en même temps ? » | « Qui a le droit d'y toucher ? » |
+| Valeurs | Capacité totale, quantité par job | `Exclusive` / `Shared` |
+| Analogie | Places de parking | Clé de salle |
+| Objectif | **Protéger une capacité** | **Garantir la cohérence** |
+| Effet si mal dimensionné | Système source saturé, ou jobs qui attendent trop | Corruption de données, ou sérialisation excessive |
+| Exemple | 20 sessions Oracle maximum | Un seul `TRUNCATE` à la fois sur la table |
+| Attribut JSON clé | `Quantity` | `LockType` |
+| Statut en attente | `Wait Resource` | `Wait Resource` (même statut !) |
+
+```mermaid
+flowchart TB
+    Q1{"Le risque est-il une<br/>SATURATION (trop de choses<br/>en même temps) ?"} -->|oui| QR["Resource:Pool<br/>avec une capacité"]
+    Q1 -->|non| Q2{"Le risque est-il une<br/>INCOHÉRENCE (deux jobs<br/>touchent le même objet) ?"}
+    Q2 -->|oui| Q3{"Plusieurs lecteurs<br/>simultanés acceptables ?"}
+    Q3 -->|oui| SH["Resource:Lock<br/>Shared pour les lecteurs<br/>Exclusive pour l'écrivain"]
+    Q3 -->|non| EX["Resource:Lock<br/>Exclusive"]
+    Q2 -->|non| Q4{"Simple ordre<br/>d'exécution ?"}
+    Q4 -->|oui| EV["Ce n'est pas une ressource :<br/>c'est une CONDITION (§4)"]
+```
+
+:::caution[⚠️ La confusion classique et sa conséquence]
+Utiliser un `Resource:Pool` de capacité 1 **au lieu** d'un `Resource:Lock Exclusive` :
+cela « marche » et c'est un motif très répandu… mais on perd la sémantique `Shared`, on ne
+peut plus exprimer « plusieurs lecteurs, un seul écrivain », et le nom du pool ne dit plus
+ce qu'il protège. Un pool de capacité 1 dit *« une seule place »* ; un verrou exclusif dit
+*« cet objet ne se manipule qu'à un »*. En exploitation, la différence de lisibilité est
+énorme à 3 h du matin.
+:::
+
+##### 5.4 Dimensionner un pool
+
+🔴 La question qu'on vous posera : *« pourquoi 20 et pas 50 ? »*
+
+###### La formule
+
+```text
+Capacité_pool = Capacité_technique_réelle
+              − Réserve_interactive
+              − Marge_de_sécurité
+```
+
+###### Exemple 1 — sessions Oracle (banque)
+
+| Élément | Valeur | Justification |
+|---|---|---|
+| `sessions` configuré sur l'instance | 300 | Paramètre Oracle |
+| Applications interactives et web | −180 | Mesuré au pic de journée |
+| Administration, sauvegarde, supervision | −20 | Réserve d'exploitation |
+| Marge de sécurité (20 %) | −20 | Absorbe les pics imprévus |
+| **Capacité du pool batch** | **80** | À répartir entre les jobs |
+
+Si un job ETL ouvre 4 connexions, il déclare `"Quantity": "4"` → **20 jobs simultanés maximum**.
+
+###### Exemple 2 — API partenaire à quota (énergie)
+
+| Élément | Valeur |
+|---|---|
+| Quota contractuel | 600 appels/minute |
+| Appels par job | 60/minute |
+| Marge pour les rejeux et les erreurs | 20 % |
+| **Capacité** | `600 × 0,8 ÷ 60 = 8` jobs simultanés |
+
+:::tip[✅ Bonne pratique — nommer la capacité, pas la technologie]
+`PRD-ORACLE-FIN-SESSIONS` (ce qu'on protège) vaut mieux que `POOL1` ou `RESSOURCE-BATCH`.
+Le jour où la base migre vers PostgreSQL, le nom reste juste. Et en incident, un exploitant
+lit le nom et comprend immédiatement quelle capacité est saturée.
+:::
+
+:::tip[✅ Bonne pratique — mesurer, puis ajuster]
+Un pool trop large ne protège rien ; un pool trop étroit allonge la chaîne critique.
+Instrumentez : taux d'occupation du pool, temps d'attente cumulé des jobs `Wait Resource`.
+[§20](#20-observabilité--exporter-vers-prometheus) fournit l'exporteur qui produit ces deux
+métriques ; c'est ce qui permet de **négocier** une capacité au lieu de la deviner.
+:::
+
+##### 5.5 Interblocage, famine, ordre d'acquisition
+
+🔴
+
+###### Pas d'interblocage classique — et pourquoi
+
+:::note[🔬 Sous le capot]
+Control-M évalue **toutes** les ressources d'un job **avant** de le soumettre, et ne le
+soumet que si **l'ensemble** est disponible. Il n'y a donc pas de « je prends A, puis
+j'attends B en gardant A » : pas de *hold and wait*, donc **pas d'interblocage** entre deux
+jobs Control-M. C'est une propriété importante et rassurante de l'ordonnanceur.
+:::
+
+**Mais** : les verrous pris **à l'intérieur** de vos scripts (verrou applicatif, `LOCK TABLE`,
+fichier `.lock` posé par le job lui-même) échappent totalement à Control-M. Là, l'interblocage
+est possible — et Control-M ne peut rien pour vous.
+
+:::tip[✅ Bonne pratique]
+— remontez les verrous **au niveau de l'ordonnanceur** plutôt que de
+les cacher dans les scripts. Un verrou visible dans le monitoring se diagnostique en dix
+secondes ; un fichier `.lock` oublié dans `/tmp` par un job tué se cherche pendant une heure.
+:::
+
+###### La famine, elle, est bien réelle
+
+```mermaid
+flowchart LR
+    P["Pool : 10 unités"]
+    A["20 petits jobs<br/>1 unité chacun"] -->|"occupent en permanence"| P
+    B["1 gros job<br/>10 unités"] -.->|"n'obtient jamais<br/>les 10 unités libres<br/>en même temps"| P
+```
+
+| Parade | Comment | Effet |
+|---|---|---|
+| **Priorité** | Augmenter la `Priority` du gros job | Il passe devant dans la file d'évaluation |
+| **Fenêtre dédiée** | `FromTime`/`ToTime` réservant un créneau au gros job | Simple et très efficace |
+| **Verrou complémentaire** | Un `Resource:Lock Exclusive` sur les petits jobs pendant la fenêtre du gros | Garantit le drain du pool |
+| **Découpage** | Rendre le gros job parallélisable en 10 petits | La meilleure solution, mais c'est du développement |
+
+###### Ordre d'acquisition et granularité
+
+| Règle | Pourquoi |
+|---|---|
+| **Un pool par capacité réelle**, pas un pool fourre-tout | Un pool `BATCH` global ne protège rien de précis |
+| **Quantité proportionnelle au coût réel** du job | Un job qui ouvre 4 connexions déclare 4, pas 1 |
+| **Ne pas empiler cinq ressources** sur un même job | Chaque ressource est un verrou de plus, donc une attente de plus |
+| **Documenter ce que protège chaque ressource** | Sinon plus personne n'ose changer la capacité |
+
+##### 5.6 Ressources ou Workload Policies
+
+🔴 Trois mécanismes limitent la charge — on les confond souvent.
+
+| Mécanisme | Portée | Ce qu'il exprime | Quand l'utiliser |
+|---|---|---|---|
+| **`Resource:Pool`** | Globale, par serveur | « Cette capacité vaut N » | Protéger une ressource **technique** identifiée |
+| **`Resource:Lock`** | Globale, par serveur | « Cet objet ne se manipule pas à plusieurs » | Garantir une **cohérence** |
+| **Workload Policy** | Transverse, dynamique | « Pas plus de X jobs de ce type, sur cette période, sur cet hôte » | Politique **d'exploitation** globale |
+| **Limite de l'agent** | Par agent | « Cette machine ne dépasse pas N jobs » | Protéger une **machine** |
+
+:::tip[✅ Règle d'arbitrage]
+Ressource = contrainte **technique**, stable, liée à un objet précis.
+Workload Policy = contrainte **d'exploitation**, contextuelle (période, criticité, campagne).
+Exemple : le pool `PRD-ORACLE-FIN` protège la base **toute l'année** ; une Workload Policy
+bride le batch décisionnel **pendant la semaine de clôture** pour laisser passer la compta.
+:::
+
+##### 5.7 Diagnostic et déblocage
+
+🟡🔴
+
+```bash
+# 1. État de toutes les ressources d'un serveur
+ctm run resources::get -s "server=ctmsrv-prod"
+
+# 2. Qui attend une ressource ?
+ctm run jobs::status -s "status=Wait Resource"
+
+# 3. Qui la détient ? → les jobs en cours qui déclarent cette ressource
+ctm run jobs::status -s "status=Executing"
+```
+
+| Symptôme | Cause probable | Action immédiate | Action durable |
+|---|---|---|---|
+| Pool à 100 %, jobs en file | Capacité insuffisante **ou** pic exceptionnel | `ctm run resource::update` (temporaire) | Redimensionner ([§5.4](#54-dimensionner-un-pool)) |
+| Pool à 100 %, **aucun job en cours** | Unités **non libérées** après un arrêt brutal | Réajuster la capacité pour resynchroniser le compteur | Comprendre l'arrêt brutal |
+| Verrou détenu, détenteur introuvable | Job tué ou serveur redémarré pendant l'exécution | Identifier puis terminer proprement le job fantôme (`ctm run job::kill`) | Éviter les `kill -9` sur les agents |
+| Un job n'obtient jamais sa quantité | Famine ([§5.5](#55-interblocage-famine-ordre-dacquisition)) | Priorité ou fenêtre dédiée | Découper le job |
+| Tous les jobs d'un agent en attente | Ce n'est **pas** une ressource : c'est l'agent | `ctm config server:agent::ping` | Supervision de l'agent |
+
+:::caution[⚠️ Piège — augmenter la capacité « juste pour ce soir »]
+C'est le geste qui sauve la nuit et qui crée l'incident du mois suivant : la capacité
+temporaire n'est jamais remise. **Toute modification de capacité doit être tracée et
+horodatée**, avec une remise à la valeur nominale planifiée — idéalement par un job
+Control-M de remise à niveau (`ADM-RESOURCES-RESET`), pas par une bonne intention.
+:::
+
+##### 5.8 Traduction en JSON et en API
+
+🟡
+
+| Besoin | JSON (dans le job) | CLI |
+|---|---|---|
+| Consommer N unités | `{"Type": "Resource:Pool", "Quantity": "N"}` | — |
+| Verrou exclusif | `{"Type": "Resource:Lock", "LockType": "Exclusive"}` | — |
+| Verrou partagé | `{"Type": "Resource:Lock", "LockType": "Shared"}` | — |
+| Créer un pool | — | `ctm run resource::add <server> <nom> <max>` |
+| Modifier la capacité | — | `ctm run resource::update <server> <nom> <max>` |
+| Supprimer | — | `ctm run resource::delete <server> <nom>` |
+| Lister | — | `ctm run resources::get -s "<critère>"` |
+
+**Exemple complet — un job qui combine les trois mécanismes** :
+
+```json
+{
+  "PRD-COMPTA": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+
+    "MAJ-REFERENTIEL-TIERS": {
+      "Type": "Job:Command",
+      "Command": "/opt/compta/maj_referentiel.sh",
+      "RunAs": "svc_compta",
+      "Description": "Mise à jour du référentiel tiers — écriture exclusive",
+
+      "SessionsOracle": {
+        "Type": "Resource:Pool",
+        "Quantity": "4",
+        "Description": "4 connexions ouvertes par ce traitement"
+      },
+      "VerrouReferentiel": {
+        "Type": "Resource:Lock",
+        "LockType": "Exclusive",
+        "Description": "Aucune lecture pendant la mise à jour"
+      },
+      "Attente": {
+        "Type": "WaitForEvents",
+        "Events": [{"Event": "PRD-COMPTA-EXTRACT-OK"}]
+      },
+      "Publier": {
+        "Type": "AddEvents",
+        "Events": [{"Event": "PRD-COMPTA-REFERENTIEL-OK"}]
+      }
+    }
+  }
+}
+```
+
+Lecture de ce job en une phrase : *« quand l'extraction du jour est terminée, et à condition
+de disposer de 4 connexions dans le pool Oracle et du verrou exclusif sur le référentiel,
+mettre à jour le référentiel, puis annoncer que c'est fait. »* Les quatre mécanismes de
+l'ordonnancement sont là, en douze lignes.
+
+---
+#### 6. Calendriers et planification
+
+> Le guide complet contient la **référence exhaustive** de la grammaire `When`, des
+> modificateurs et des calendriers de confirmation (→ *Guide complet §8*).
+> Cette section-ci se concentre sur ce qui manque ailleurs : **la mécanique**, **les pièges
+> qui coûtent une nuit**, et **comment tester avant de déployer**.
+
+##### 6.1 Les trois types de calendriers
+
+🟢
+
+| Type | Objet JSON | Ce qu'il exprime | Exemple |
+|---|---|---|---|
+| **Régulier** | `Calendar:Regular` | Une liste de dates explicites | Jours ouvrés France 2026, jours fériés |
+| **Périodique** | `Calendar:Periodic` | Des périodes nommées, cycliques et non calées sur le mois | Semaines de paie, cycles de 4 semaines, tournées A/B/C |
+| **À base de règles** | `Calendar:RuleBasedCalendar` | Une **règle** qui se recalcule seule | « Dernier jour ouvré du mois », « chaque 3ᵉ mardi » |
+
+```mermaid
+flowchart TB
+    Q1{"La liste de dates est-elle<br/>connue et figée à l'avance ?"} -->|oui| REG["Calendar:Regular<br/>(fériés, dates de clôture)"]
+    Q1 -->|non| Q2{"S'agit-il d'un cycle<br/>indépendant du calendrier<br/>(toutes les 4 semaines,<br/>tournées A/B/C) ?"}
+    Q2 -->|oui| PER["Calendar:Periodic"]
+    Q2 -->|non| RUL["Calendar:RuleBasedCalendar<br/>(se recalcule tout seul)"]
+```
+
+:::tip[✅ Bonne pratique — préférer la règle à la liste]
+Un calendrier régulier « jours ouvrés 2026 » doit être **refait chaque année**, et il sera
+oublié un 2 janvier. Un calendrier à base de règles se recalcule seul. Réservez le régulier
+à ce qui est réellement imprévisible : **les jours fériés** (qui, eux, se chargent une fois
+par an — et c'est justement le job qu'on automatise, voir [§18](#18-dix-runbooks-automatisés)).
+:::
+
+##### 6.2 La grammaire When
+
+🟡 Table de référence compacte (détail complet → *Guide complet §8.5*).
+
+| Clé | Valeurs | Remarque |
+|---|---|---|
+| `Schedule` | `"Everyday"` / `"Never"` | **Un seul mot, un seul `d`** : `"EveryDay"` est faux |
+| `WeekDays` | `SUN`…`SAT`, `ALL`, `NONE` + modificateurs | |
+| `MonthDays` | `1`–`31`, `ALL` + modificateurs | |
+| `Months` | `JAN`…`DEC`, `ALL` | Défaut : tous |
+| `DaysRelation` | `AND` (défaut) / `OR` | **Voir [§6.3](#63-le-piège-du-etou-entre-jours)** |
+| `FromTime` / `ToTime` | `HHMM` | `ToTime: ">"` autorise le débordement sur le jour suivant |
+| `StartDate` / `EndDate` | `AAAAMMJJ` | Fenêtre de validité |
+| `SpecificDates` | `"MM/JJ"`, jusqu'à 400 | **Exclusif** avec `WeekDays`/`Months`/`MonthDays` |
+| `WeekDaysCalendar` / `MonthDaysCalendar` | Nom de calendrier | |
+| `RuleBasedCalendars` | `{Included, Excluded, Relationship}` | **`Relationship` vaut `OR` par défaut** |
+| `ConfirmationCalendars` | `{Calendar, ExceptionPolicy, ShiftBy}` | Décalage quand le jour n'est pas ouvré |
+
+**Les modificateurs** (identiques pour `WeekDays` et `MonthDays`) :
+
+| Syntaxe | Signification | Exemple métier |
+|---|---|---|
+| `1` | Inclus **si** le jour est dans le calendrier | |
+| `+2` | Force l'inclusion | Le 2 même si férié |
+| `-3` | Force l'exclusion | Jamais le 3 |
+| `>4` | Le 4, **ou le jour ouvré suivant** | Prélèvement du 4, reporté si week-end |
+| `<5` | Le 5, **ou le jour ouvré précédent** | Paie du 5, anticipée si week-end |
+| `D6` | Le **6ᵉ jour ouvré du mois** | « J+6 ouvré » comptable |
+| `L7` | Le **7ᵉ jour ouvré en partant de la fin** | Clôture « J‑7 ouvré » |
+
+##### 6.3 Le piège du ET/OU entre jours
+
+🔴 **Le piège n°1 des calendriers Control-M, tous niveaux confondus.**
+
+```json
+"When": {
+  "MonthDays": ["1", "15"],
+  "WeekDays": ["MON"]
+}
+```
+
+Question : ce job tourne-t-il **les 1ers et 15 du mois, plus tous les lundis** ? Ou bien
+**uniquement les 1ers et 15 qui tombent un lundi** ?
+
+**Réponse** : par défaut `DaysRelation` vaut **`AND`** → *uniquement les 1ers et 15 qui
+tombent un lundi*, soit environ **trois fois par an**. Beaucoup d'équipes découvrent cela en
+constatant qu'un traitement « bimensuel » n'a tourné que deux fois dans l'année.
+
+| Ce que vous voulez | Ce qu'il faut écrire |
+|---|---|
+| Les 1 et 15, **et aussi** tous les lundis | `"DaysRelation": "OR"` |
+| Les 1 et 15 **seulement s'ils** tombent un lundi | `"DaysRelation": "AND"` (défaut) |
+| Les 1 et 15, sans condition de jour de semaine | **Ne pas mettre** `WeekDays` du tout |
+
+###### Le deuxième piège, symétrique
+
+```json
+"RuleBasedCalendars": {
+  "Included": ["JOURS-OUVRES-FR"],
+  "Relationship": "AND"
+}
+```
+
+La ligne `"Relationship": "AND"` doit être écrite **explicitement**.
+
+Ici, `Relationship` vaut **`OR` par défaut** : sans le préciser, le job tourne si les critères
+en ligne **ou** le calendrier sont satisfaits — donc **bien plus souvent** que prévu.
+
+:::tip[✅ Bonne pratique — la règle mnémotechnique]
+`DaysRelation` : défaut **AND** (restrictif).
+`RuleBasedCalendars.Relationship` : défaut **OR** (permissif).
+Les deux défauts sont **inverses**. Écrivez-les donc **toujours explicitement**, dans les
+deux cas, même quand vous voulez le défaut. Vos successeurs vous remercieront, et vos
+revues de code seront possibles.
+
+Un site standard ([§19](#19-cicd-et-promotion-denvironnement)) peut même **rendre cette
+écriture obligatoire** : c'est le meilleur usage qu'on puisse en faire.
+:::
+
+##### 6.4 Jours ouvrés, fériés, décalages
+
+🟡 Le trio qui couvre 90 % des besoins métier.
+
+```json
+"When": {
+  "WeekDays": ["MON", "TUE", "WED", "THU", "FRI"],
+  "RuleBasedCalendars": {
+    "Excluded": ["FERIES-FR"],
+    "Relationship": "AND"
+  }
+}
+```
+
+**Décaler proprement un traitement daté** :
+
+| Besoin métier | Écriture |
+|---|---|
+| Le 5 du mois, reporté au jour ouvré **suivant** si non ouvré | `"MonthDaysCalendar": "JOURS-OUVRES-FR", "MonthDays": [">5"]` |
+| Le 5 du mois, anticipé au jour ouvré **précédent** | `"MonthDays": ["<5"]` |
+| 6ᵉ jour ouvré du mois | `"MonthDays": ["D6"]` |
+| Dernier jour ouvré du mois | `"MonthDays": ["L1"]` |
+| Avant-dernier jour ouvré | `"MonthDays": ["L2"]` |
+
+:::caution[⚠️ Piège — les fériés ne sont pas les mêmes partout]
+Une chaîne européenne a besoin d'**un calendrier par pays** : le 14 juillet n'existe qu'en
+France, le 1er novembre est férié en Belgique et pas au Royaume-Uni, l'Alsace-Moselle a deux
+jours de plus. Nommez explicitement : `FERIES-FR`, `FERIES-BE`, `FERIES-FR-ALSACE`.
+Et pour les marchés financiers, ce ne sont pas les fériés **nationaux** qui comptent mais
+les jours de **fermeture des places** (`TARGET2`, Euronext…) : ce sont deux calendriers
+différents, et les confondre décale un arrêté de bourse.
+:::
+
+##### 6.5 Calendriers de confirmation
+
+🔴 `ConfirmationCalendars` répond à une question précise : *« la date planifiée tombe un jour
+non travaillé — que fait-on ? »*
+
+```json
+"When": {
+  "MonthDays": ["1"],
+  "ConfirmationCalendars": {
+    "Calendar": "JOURS-OUVRES-FR",
+    "ExceptionPolicy": "ShiftAndRunOnNextConfirmedDay",
+    "ShiftBy": "0"
+  }
+}
+```
+
+| `ExceptionPolicy` | Comportement | Cas d'usage typique |
+|---|---|---|
+| `DoNotOrder` | On saute | Rapport optionnel |
+| `OrderOnNextConfirmedDay` | Ordonnancé le jour ouvré suivant | Facturation |
+| `OrderOnPreviousConfirmedDay` | Ordonnancé le jour ouvré précédent | **Paie** (jamais en retard) |
+| `OrderAnyway` | Ordonnancé quand même | Sauvegarde |
+| `Shift…` | Idem, mais avec décalage de l'ODATE | Quand la **date de traitement** doit suivre |
+
+:::caution[⚠️ La différence Order… / Shift… est subtile et importante]
+`OrderOnNextConfirmedDay` exécute le lendemain **avec l'ODATE d'origine** : le traitement
+« du 1er » tourne le 2, mais il reste le traitement **du 1er** — c'est ce que veut la
+comptabilité. `ShiftAndRun…` **décale aussi la date de traitement**. Choisir le mauvais
+décale toute la numérotation d'une chaîne comptable ou d'un arrêté. Posez la question au
+métier en ces termes : *« le traitement de lundi exécuté mardi reste-t-il le traitement de
+lundi ? »*
+:::
+
+##### 6.6 ODATE contre date système
+
+🔴 **Question d'entretien quasi systématique.**
+
+| | ODATE (`%%ODATE`) | Date système (`date`, `SYSDATE`) |
+|---|---|---|
+| Définie par | Control-M, à l'ordering | L'horloge de la machine |
+| Change à | La **New Day** (`DAYTIME`) | Minuit |
+| Stable pendant | Toute la journée de traitement | Non |
+| En cas de rejeu 3 jours plus tard | **Conserve la date d'origine** | Donne la date du jour |
+| À utiliser pour | **Toute logique métier** | Journalisation technique uniquement |
+
+```bash
+#!/bin/bash
+# ✅ CORRECT : le script reçoit l'ODATE de Control-M
+ODATE="$1"                                # ex. 20260903, passé en argument via %%ODATE
+FICHIER="/data/extract_${ODATE}.csv"
+
+# ❌ FAUX : rejouer le 6 septembre le traitement du 3 produirait extract_20260906.csv
+# FICHIER="/data/extract_$(date +%Y%m%d).csv"
+```
+
+```json
+"Arguments": ["%%ODATE", "%%JOBNAME", "%%ORDERID"]
+```
+
+:::caution[⚠️ Le scénario qui coûte cher]
+Chaîne de clôture du 31 janvier, en échec. Rejouée le 2 février. Les scripts utilisent
+`date +%Y%m%d` : ils extraient les données du **2 février** et les écrivent dans le
+**fichier du 2 février**. La clôture de janvier est perdue, et — plus grave — personne ne
+s'en aperçoit, puisque le job est vert.
+
+**Règle absolue** : un job Control-M ne doit **jamais** déduire sa date de l'horloge.
+Elle lui est **donnée**. C'est aussi ce qui rend une chaîne rejouable, donc récupérable
+après un incident de base ([§2.10](#210-sauvegarde-et-restauration-cohérentes)).
+:::
+
+##### 6.7 La New Day Procedure
+
+🔴 La mécanique quotidienne. La connaître, c'est comprendre pourquoi un job « n'existe pas ».
+
+```mermaid
+flowchart TB
+    T0["DAYTIME atteint<br/>(ex. 07:00)"] --> A["1 · Bascule de la journée<br/>de traitement"]
+    A --> B["2 · Nettoyage de l'AJF<br/>selon DaysKeepActive"]
+    B --> C["3 · Nettoyage des conditions<br/>datées obsolètes"]
+    C --> D["4 · Évaluation des critères When<br/>de tous les folders"]
+    D --> E["5 · Ordering : création des<br/>instances du jour dans l'AJF"]
+    E --> F["6 · Application des conditions<br/>de démarrage préexistantes"]
+    F --> G["7 · Le Selector reprend<br/>son cycle normal"]
+```
+
+| Étape | Effet sur la base CONTROLM | Ce qui peut mal tourner |
+|---|---|---|
+| 2 · Nettoyage AJF | Suppressions massives | Base saturée si `DaysKeepActive` est trop long |
+| 3 · Nettoyage conditions | Suppressions | Les `NoDate` **ne sont pas** nettoyées ([§4.6](#46-cycle-de-vie-et-nettoyage)) |
+| 4 · Évaluation `When` | Lectures | Un calendrier absent = folder non ordonnancé, **silencieusement** |
+| 5 · Ordering | Insertions massives | Le pic d'écriture le plus fort de la journée |
+
+:::caution[⚠️ Piège — « mon job n'existe pas aujourd'hui »]
+Ce n'est presque jamais un bug de Control-M. C'est, dans l'ordre de fréquence :
+1. Un critère `When` non satisfait (jour férié, `DaysRelation` mal compris → [§6.3](#63-le-piège-du-etou-entre-jours)) ;
+2. Un `OrderMethod: "Manual"` : le folder attend un `ctm run order` explicite ;
+3. Un calendrier référencé mais absent ou vide sur le serveur ;
+4. `StartDate`/`EndDate` échus — le grand classique du job saisonnier oublié ;
+5. La New Day elle-même en échec (à vérifier dans le journal du serveur).
+:::
+
+:::tip[✅ Bonne pratique — le job témoin]
+Créez un job trivial ordonnancé **tous les jours sans exception** (`Schedule: "Everyday"`,
+aucun calendrier, un simple `echo`). S'il est absent de l'AJF, ce n'est pas votre chaîne qui
+a un problème : c'est la **New Day**. Ce job de trois lignes fait gagner des heures de
+diagnostic, et c'est un excellent réflexe à montrer en entretien.
+:::
+
+##### 6.8 Vingt recettes de planification
+
+🟡 Directement réutilisables. Adaptez les noms de calendriers aux vôtres.
+
+| # | Besoin métier | `When` |
+|---|---|---|
+| 1 | Tous les jours | `{"Schedule": "Everyday"}` |
+| 2 | Tous les jours, entre 2 h et 6 h | `{"Schedule": "Everyday", "FromTime": "0200", "ToTime": "0600"}` |
+| 3 | Jours ouvrés (hors fériés) | `{"WeekDays": ["MON","TUE","WED","THU","FRI"], "RuleBasedCalendars": {"Excluded": ["FERIES-FR"], "Relationship": "AND"}}` |
+| 4 | Chaque lundi | `{"WeekDays": ["MON"]}` |
+| 5 | Lundi, ou jour ouvré suivant si férié | `{"WeekDaysCalendar": "JOURS-OUVRES-FR", "WeekDays": [">MON"]}` |
+| 6 | Le 1er du mois | `{"MonthDays": ["1"]}` |
+| 7 | Dernier jour du mois | `{"MonthDays": ["31"], "ConfirmationCalendars": {"Calendar": "JOURS-OUVRES-FR", "ExceptionPolicy": "OrderOnPreviousConfirmedDay"}}` |
+| 8 | Dernier **jour ouvré** du mois | `{"MonthDaysCalendar": "JOURS-OUVRES-FR", "MonthDays": ["L1"]}` |
+| 9 | 6ᵉ jour ouvré (arrêté comptable) | `{"MonthDaysCalendar": "JOURS-OUVRES-FR", "MonthDays": ["D6"]}` |
+| 10 | Le 5, anticipé si non ouvré (paie) | `{"MonthDaysCalendar": "JOURS-OUVRES-FR", "MonthDays": ["<5"]}` |
+| 11 | Les 1 et 15 **et** tous les lundis | `{"MonthDays": ["1","15"], "WeekDays": ["MON"], "DaysRelation": "OR"}` |
+| 12 | Trimestriel (fin de trimestre) | `{"Months": ["MAR","JUN","SEP","DEC"], "MonthDaysCalendar": "JOURS-OUVRES-FR", "MonthDays": ["L1"]}` |
+| 13 | Annuel, le 31 décembre | `{"Months": ["DEC"], "MonthDays": ["31"]}` |
+| 14 | Uniquement le week-end | `{"WeekDays": ["SAT","SUN"]}` |
+| 15 | Toutes les 15 minutes en journée | `{"Schedule": "Everyday", "FromTime": "0800", "ToTime": "2000"}` + cyclique 15 min ([§7](#7-cyclique-reprise-rétention-priorité)) |
+| 16 | Jamais automatiquement (API ou CI uniquement) | `{"Schedule": "Never"}` **ou** `"OrderMethod": "Manual"` |
+| 17 | Campagne du 1er au 30 juin 2026 | `{"Schedule": "Everyday", "StartDate": "20260601", "EndDate": "20260630"}` |
+| 18 | Dates fixes de clôture | `{"SpecificDates": ["01/31","04/30","07/31","10/31"]}` |
+| 19 | Jours de bourse ouverts | `{"RuleBasedCalendars": {"Included": ["BOURSE-EURONEXT"], "Relationship": "AND"}}` |
+| 20 | Rentrée scolaire — jours de classe | `{"RuleBasedCalendars": {"Included": ["CALENDRIER-SCOLAIRE-ZONE-C"], "Excluded": ["VACANCES-SCOLAIRES"], "Relationship": "AND"}}` |
+
+##### 6.9 Tester une planification sans attendre
+
+🔴 **Ne déployez jamais un calendrier sans l'avoir simulé.** Trois niveaux de contrôle.
+
+###### Niveau 1 — validation syntaxique (systématique, en CI)
+
+```bash
+ctm build chaine.json      # schéma, champs, cohérence — coûte 2 secondes
+```
+
+###### Niveau 2 — prévision d'ordonnancement
+
+```bash
+# Selon la version : service de prévision / forecast
+ctm run -h            # lister ce que propose VOTRE version
+ctm deploy -h
+```
+
+:::note[🔢 Version]
+— le service de prévision (*forecast*) n'expose pas les mêmes sous-commandes
+selon les builds. La méthode robuste, valable partout : `ctm <service> -h`, puis le
+Swagger local.
+:::
+
+###### Niveau 3 — simulation hors ligne (toujours disponible)
+
+La plus fiable pour une **revue** : recalculer les dates avec Python et les faire valider par
+le métier **avant** de déployer.
+
+```python
+#!/usr/bin/env python3
+"""
+simuler_planification.py — projette les dates d'exécution d'une règle de planification
+sur 12 mois, pour validation métier AVANT déploiement.
+
+Ne remplace pas le moteur Control-M : c'est un outil de revue. Il répond à la question
+« montre-moi les 30 prochaines dates » que tout métier pose et à laquelle personne ne sait
+répondre sans déployer.
+
+Usage :
+    python simuler_planification.py --regle dernier-jour-ouvre --mois 12
+"""
+from __future__ import annotations
+
+import argparse
+from datetime import date, timedelta
+
+# --- Jours fériés France (à remplacer par votre source de vérité : API, référentiel RH) ---
+FERIES_2026 = {
+    date(2026, 1, 1), date(2026, 4, 6), date(2026, 5, 1), date(2026, 5, 8),
+    date(2026, 5, 14), date(2026, 5, 25), date(2026, 7, 14), date(2026, 8, 15),
+    date(2026, 11, 1), date(2026, 11, 11), date(2026, 12, 25),
+}
+
+
+def est_ouvre(j: date) -> bool:
+    """Un jour ouvré : ni samedi/dimanche (weekday 5 et 6), ni férié."""
+    return j.weekday() < 5 and j not in FERIES_2026
+
+
+def jours_ouvres_du_mois(annee: int, mois: int) -> list[date]:
+    """Liste ordonnée des jours ouvrés d'un mois donné."""
+    premier = date(annee, mois, 1)
+    # Le 28 du mois + 4 jours tombe toujours dans le mois suivant : on remonte au 1er.
+    mois_suivant = (premier.replace(day=28) + timedelta(days=4)).replace(day=1)
+    dernier = mois_suivant - timedelta(days=1)
+
+    jours, courant = [], premier
+    while courant <= dernier:
+        if est_ouvre(courant):
+            jours.append(courant)
+        courant += timedelta(days=1)
+    return jours
+
+
+def resoudre(regle: str, annee: int, mois: int) -> date | None:
+    """Traduit une règle Control-M courante en date effective."""
+    ouvres = jours_ouvres_du_mois(annee, mois)
+    if not ouvres:
+        return None
+    if regle == "dernier-jour-ouvre":        # équivaut à MonthDays ["L1"]
+        return ouvres[-1]
+    if regle == "6e-jour-ouvre":             # équivaut à MonthDays ["D6"]
+        return ouvres[5] if len(ouvres) >= 6 else None
+    if regle == "le-5-anticipe":             # équivaut à MonthDays ["<5"]
+        cible = date(annee, mois, 5)
+        while not est_ouvre(cible):
+            cible -= timedelta(days=1)
+        return cible
+    raise ValueError(f"Règle inconnue : {regle}")
+
+
+def main() -> None:
+    p = argparse.ArgumentParser(description="Simule une planification Control-M")
+    p.add_argument("--regle", required=True,
+                   choices=["dernier-jour-ouvre", "6e-jour-ouvre", "le-5-anticipe"])
+    p.add_argument("--mois", type=int, default=12, help="nombre de mois à projeter")
+    p.add_argument("--depuis", default=date.today().isoformat())
+    args = p.parse_args()
+
+    debut = date.fromisoformat(args.depuis)
+    print(f"Règle : {args.regle} — projection sur {args.mois} mois\n")
+
+    annee, mois = debut.year, debut.month
+    for _ in range(args.mois):
+        d = resoudre(args.regle, annee, mois)
+        if d:
+            # Le nom du jour aide énormément le métier à valider d'un coup d'œil
+            jours_fr = ["lundi", "mardi", "mercredi", "jeudi",
+                        "vendredi", "samedi", "dimanche"]
+            print(f"  {d.isoformat()}  ({jours_fr[d.weekday()]})")
+        mois += 1
+        if mois > 12:
+            mois, annee = 1, annee + 1
+
+
+if __name__ == "__main__":
+    main()
+```
+
+:::tip[✅ Bonne pratique]
+Joignez la sortie de ce script à la demande de mise en production. Le métier valide
+**des dates**, pas du JSON. C'est ce qui évite le classique : *« nous pensions que ça
+tournerait le vendredi »*, découvert trois mois plus tard.
+:::
+
+---
+
+#### 7. Cyclique, reprise, rétention, priorité
+
+🟡 Les paramètres qui gouvernent le comportement d'un job dans le temps.
+
+##### 7.1 Les jobs cycliques
+
+```json
+"MonJobCyclique": {
+  "Type": "Job:Command",
+  "Command": "/opt/app/surveiller.sh",
+  "RunAs": "svc_app",
+  "Cyclic": true,
+  "CyclicInterval": "15",
+  "When": {"Schedule": "Everyday", "FromTime": "0800", "ToTime": "2000"}
+}
+```
+
+| Paramètre | Rôle | Piège |
+|---|---|---|
+| `Cyclic` | Active la répétition | |
+| `CyclicInterval` | Intervalle entre deux exécutions | Compté **à partir de la fin** ou du début selon le réglage : à vérifier sur votre version |
+| `FromTime`/`ToTime` | Bornent la plage cyclique | Sans `ToTime`, le job tourne jusqu'à la New Day |
+| `MaxRerun` / limites | Bornent le nombre de cycles | Sans limite, un job cyclique en échec **boucle** |
+
+:::caution[⚠️ Piège — le cyclique qui remplit la base]
+Un job cyclique toutes les minutes, en échec permanent, avec relance automatique, produit
+**1 440 exécutions par jour**, chacune avec sa trace, sa sortie et son entrée de journal.
+C'est une des causes les plus fréquentes de saturation soudaine de la base CONTROLM
+([§2.8](#28-dimensionnement-et-croissance)). **Bornez toujours** : intervalle réaliste,
+plage horaire, et un `If`/`On` qui coupe le cycle après N échecs consécutifs.
+:::
+
+:::tip[✅ Bonne pratique — cyclique ou FileWatcher ?]
+Pour attendre un fichier, un `Job:FileWatcher` est **toujours** préférable à un job cyclique
+qui teste `ls` : il est conçu pour ça, consomme moins, et publie un événement propre.
+:::
+
+##### 7.2 Reprise : rerun, retry, `On`/`Do`
+
+| Mécanisme | Déclenché par | Usage |
+|---|---|---|
+| **Rerun manuel** | Un exploitant (`ctm run job::rerun`) | Après correction |
+| **Retry automatique** | Le job lui-même (relance sur échec) | Erreur **transitoire** uniquement |
+| **`On`/`Do`** | Une condition sur le résultat | Logique fine ([§8](#8-le-modèle-ondo)) |
+
+:::caution[⚠️ Piège — le retry qui masque le problème]
+Un retry automatique sur une erreur **fonctionnelle** (fichier mal formé, données
+incohérentes) rejoue trois fois le même échec, retarde la chaîne de vingt minutes et
+**masque la cause** dans le monitoring. Le retry automatique se réserve aux erreurs
+**transitoires** : timeout réseau, verrou base momentané, indisponibilité brève d'une API.
+D'où l'intérêt d'un `On`/`Do` qui **distingue** les deux à partir du code retour ou de la
+sortie (→ [§8](#8-le-modèle-ondo)).
+:::
+
+##### 7.3 Rétention : `DaysKeepActive`
+
+| Valeur | Effet |
+|---|---|
+| `0` | L'instance disparaît à la New Day suivante |
+| `n` | Conservée `n` jours dans l'AJF, même terminée |
+| Élevée | Confort de consultation… et **grossissement de l'AJF** |
+
+:::tip[✅ Bonne pratique]
+— `DaysKeepActive` élevé sur les jobs **critiques uniquement**
+(ceux qu'on rejoue ou qu'on audite). Partout ailleurs, la consultation se fait dans
+l'**historique EM**, pas dans l'AJF. C'est le principal levier pour maîtriser la taille
+de la base CONTROLM.
+:::
+
+##### 7.4 Priorité et jobs critiques
+
+| Paramètre | Effet |
+|---|---|
+| `Priority` | Ordre de passage dans l'évaluation du Selector, à ressources égales |
+| `Critical` | Le job **réserve** ses ressources plutôt que de les laisser prendre par d'autres |
+
+:::caution[⚠️ Piège]
+— si **tout** est critique, plus rien ne l'est. Réservez `Critical` au chemin
+réellement critique du SLA (typiquement moins de 5 % du patrimoine). Un patrimoine où 40 %
+des jobs sont critiques est un patrimoine où personne n'a jamais arbitré.
+:::
+
+---
+
+#### 8. Le modèle On/Do
+
+🟡🔴 **Le mécanisme qui transforme un ordonnanceur en automate d'exploitation.**
+
+##### 8.1 Le principe
+
+```text
+SI <condition sur le résultat>   ALORS   <une ou plusieurs actions>
+   ── On / If ──                        ── Do ──
+```
+
+Les conditions portent sur : le **code retour**, le **statut**, ou le **contenu de la sortie**.
+
+```json
+"TRAITEMENT-CRITIQUE": {
+  "Type": "Job:Command",
+  "Command": "/opt/app/traitement.sh %%ODATE",
+  "RunAs": "svc_app",
+
+  "SiEchec": {
+    "Type": "If",
+    "CompletionStatus": "NOTOK",
+    "AlerterExploitation": {
+      "Type": "Mail",
+      "Message": "Echec de %%JOBNAME (order %%ORDERID) sur %%NODEID pour l'ODATE %%ODATE",
+      "To": "exploitation@exemple.fr",
+      "Subject": "[PROD] Echec %%JOBNAME"
+    },
+    "PoserEvenementKO": {
+      "Type": "Event:Add",
+      "Events": [{"Event": "PRD-APP-TRAITEMENT-KO"}]
+    }
+  },
+
+  "SiTimeoutReseau": {
+    "Type": "If",
+    "Output": "ORA-12170",
+    "Relancer": {
+      "Type": "Action:Rerun",
+      "MaxRerun": 2,
+      "RerunInterval": "5"
+    }
+  }
+}
+```
+
+##### 8.2 Les conditions disponibles
+
+| Condition | Porte sur | Exemple |
+|---|---|---|
+| `CompletionStatus` | Statut final | `"OK"`, `"NOTOK"`, `"ANY"` |
+| `CompletionCode` | Code retour | `"> 4"`, `"= 0"` |
+| `Output` | **Contenu** de la sortie | `"ORA-12170"`, `"Disk full"` |
+| `NumberOfFailures` | Nombre d'échecs | Escalade progressive |
+| `Every` / `Time` | Contexte temporel | Selon version |
+
+##### 8.3 Les actions disponibles
+
+| Famille | Actions |
+|---|---|
+| **Notification** | `Mail`, `Notify` (message d'exploitation), destinations paramétrées |
+| **Événements** | `Event:Add`, `Event:Delete` |
+| **Contrôle de flux** | `Action:Rerun`, `Action:Run` (lancer un autre job), `Action:Kill`, mise en `Hold` |
+| **Statut** | Forcer OK, forcer NOTOK |
+| **Ressources** | Modification de ressources selon version |
+
+:::note[🔢 Version]
+— les types d'action ont changé de nom : `Event:Add` / `Event:Delete`
+aujourd'hui, `Action:AddEvents` / `Action:DeleteEvents` dans d'anciennes documentations.
+`ctm build` est votre garde-fou : il refuse les formes obsolètes.
+:::
+
+##### 8.4 Le motif à connaître : distinguer transitoire et fonctionnel
+
+🔴 Le plus utile en production, et un excellent sujet de discussion en entretien.
+
+```json
+"CHARGEMENT-DWH": {
+  "Type": "Job:Command",
+  "Command": "/opt/dwh/charger.sh %%ODATE",
+  "RunAs": "svc_dwh",
+
+  "ErreurTransitoire": {
+    "Type": "If",
+    "Output": "ORA-12170",
+    "Rejouer": {"Type": "Action:Rerun", "MaxRerun": 3, "RerunInterval": "5"}
+  },
+
+  "ErreurFonctionnelle": {
+    "Type": "If",
+    "Output": "ORA-01722",
+    "AlerterMetier": {
+      "Type": "Mail",
+      "To": "donnees@exemple.fr",
+      "Subject": "[DWH] Donnees invalides pour l'ODATE %%ODATE",
+      "Message": "Rejeu inutile : corriger la source puis relancer manuellement."
+    },
+    "SignalerKO": {
+      "Type": "Event:Add",
+      "Events": [{"Event": "PRD-DWH-CHARGEMENT-KO"}]
+    }
+  }
+}
+```
+
+| Bloc `If` | Code Oracle | Nature de l'erreur | Décision |
+|---|---|---|---|
+| `ErreurTransitoire` | `ORA-12170` | Timeout de connexion réseau | **Rejouer** : ça repartira tout seul |
+| `ErreurFonctionnelle` | `ORA-01722` | Nombre invalide — données corrompues | **Ne pas rejouer** : alerter l'équipe données |
+
+:::caution[⚠️ Pas de commentaires dans les définitions]
+Le JSON n'accepte pas de commentaires, et Control-M rejette les champs inconnus :
+n'ajoutez pas de clé `"_commentaire"`. Ce qui doit être expliqué se met dans le champ
+**`Description`** (prévu pour cela, et affiché en exploitation) ou dans le dépôt Git.
+:::
+
+:::tip[✅ Ce que ce motif apporte]
+Sans lui, toute erreur produit la même alerte, à la même personne, avec le même niveau
+d'urgence — et l'exploitation finit par ne plus lire les alertes. Avec lui : le transitoire
+se répare **tout seul**, le fonctionnel réveille **la bonne équipe** avec le bon message.
+C'est ce qui fait la différence entre une exploitation subie et une exploitation pilotée.
+:::
+
+---
+### Partie C — Automation API
+
+#### 9. Comprendre l'API avant de coder
+
+##### 9.1 Ce que l'API sait faire
+
+🟢 L'**Automation API** est l'interface REST de Control-M. Tout ce que fait l'interface web,
+ou presque, se fait par API — donc par script, donc par pipeline, donc **de façon reproductible
+et auditable**.
+
+```mermaid
+flowchart LR
+    subgraph CLIENTS["Ce qui appelle l'API"]
+        CI["Pipeline CI/CD"]
+        PY["Scripts Python"]
+        CLI["ctm CLI"]
+        APP["Applications métier"]
+        ITSM["ITSM / ServiceNow"]
+    end
+    CLIENTS --> API["Automation API<br/>REST /automation-api"]
+    API --> EM[("CTMEM")]
+    API --> SRV["Control-M/Server"]
+```
+
+| Service | Ce qu'il pilote | Verbe mental |
+|---|---|---|
+| `build` | Validation de définitions | « Est-ce correct ? » |
+| `deploy` | Écriture du **patrimoine** (folders, jobs, calendriers, profils) | « Mets ça en production » |
+| `run` | Le **quotidien** : ordering, statuts, hold, événements, ressources | « Lance / regarde / agis » |
+| `config` | La **plateforme** : serveurs, agents, host groups, rôles, secrets | « Configure l'infrastructure » |
+| `provision` | **Installation** de composants (agents, serveurs), montées de version | « Installe » |
+| `session` | Authentification | « Qui suis-je ? » |
+| `environment` | Environnements du CLI — **CLI uniquement, pas de REST** | « Où je pointe ? » |
+| `reporting`, `archive`, `usage` | Rapports, archives, consommation | « Rends compte » |
+
+**Ce que l'API ne fait pas** :
+
+| Limite | Conséquence |
+|---|---|
+| Elle ne remplace pas la connaissance du produit | Une API bien appelée sur un mauvais modèle d'ordonnancement produit une mauvaise chaîne, plus vite |
+| Elle ne rend pas les opérations atomiques par magie | Un `deploy` interrompu laisse un état **partiel** ([§9.4](#94-codes-http-erreurs-idempotence)) |
+| Elle n'a pas d'accès direct aux bases | Impossible de contourner le modèle applicatif — et c'est une **bonne** chose |
+| Certaines opérations restent asynchrones | Il faut **poller** un `pollId` ([§9.4](#94-codes-http-erreurs-idempotence)) |
+
+##### 9.2 CLI et REST : la correspondance
+
+🟡 Le CLI `ctm` **est** un client REST. Comprendre la règle de correspondance permet de passer
+de l'un à l'autre sans documentation.
+
+```text
+ctm  <service>  <objet>::<action>  <arguments>
+      │           │       │
+      │           │       └──► verbe HTTP + segment de chemin
+      │           └──────────► segment de chemin
+      └──────────────────────► préfixe de chemin
+
+ctm run job::hold 00008      ⟷    POST /automation-api/run/job/00008/hold
+ctm run events::get          ⟷    GET  /automation-api/run/events
+ctm deploy folder::delete …  ⟷    DELETE …/deploy/folder/…
+```
+
+| Règle | Détail |
+|---|---|
+| Préfixe | **Toujours** `/automation-api` |
+| `::` | Sépare l'objet de l'action — **jamais** un simple `:` sur les actions de job |
+| Pluriel | `jobs`, `events`, `resources` = **lecture** de collection (GET) |
+| Singulier | `job`, `event`, `resource` = **action** sur un élément |
+| `-s "clé=valeur&clé2=valeur2"` | Devient la *query string* du GET |
+| `-f fichier.json` | Devient le corps de la requête |
+
+:::tip[✅ Comment vérifier sans se tromper]
+Deux sources font foi, et **elles sont sur votre plateforme** :
+
+```bash
+ctm run -h                 # toutes les sous-commandes de VOTRE version
+ctm run job -h             # le détail d'un objet
+```
+
+et le **Swagger local** : `https://<EM>:8443/automation-api/swagger-ui.html`.
+Toute autre source (blog, mémoire, ce guide compris) est une **approximation datée**.
+:::
+
+**Les erreurs de syntaxe les plus fréquentes** :
+
+| Écriture erronée | Réalité |
+|---|---|
+| `ctm run job:hold` | `ctm run job::hold` — double deux-points |
+| `ctm run folder:order` | `ctm run order <ctm> <folder>` |
+| `ctm run restart` | `ctm run job::rerun` |
+| `ctm environment list` | `ctm environment show` |
+| `ctm run jobs:get` | `ctm run jobs:status::get` |
+
+##### 9.3 Authentification
+
+🟡🔴 Deux mécanismes, deux usages. **Ne pas les confondre est une question de sécurité.**
+
+| Type | En-tête HTTP | Durée | Usage |
+|---|---|---|---|
+| **Jeton d'API** | `x-api-key: <token>` | Longue, expiration fixée à la création | **Automatisation, CI/CD, scripts** |
+| **Jeton de session** | `Authorization: Bearer <token>` | ~30 minutes (configurable) | Interactif, développement |
+
+**Obtenir un jeton de session** :
+
+```bash
+curl -H "Content-Type: application/json" -X POST \
+     -d '{"username":"<user>","password":"<mdp>"}' \
+     "https://<EM>:8443/automation-api/session/login"
+```
+
+```json
+{"username": "emuser", "token": "E14A4F8E…", "version": "9.0.21"}
+```
+
+:::caution[⚠️ ctm session login ne prend pas -u / -p]
+Il demande les identifiants **interactivement**. Pour de l'automatisation, c'est un
+**jeton d'API** qu'il faut — pas un `expect` autour du login, pas un mot de passe dans un
+script.
+:::
+
+###### Les cinq règles de gestion des jetons
+
+| Règle | Pourquoi | Mise en œuvre |
+|---|---|---|
+| **Jamais dans le code** | Un jeton commité est un jeton compromis, y compris après suppression du commit | Variable d'environnement, coffre |
+| **Un jeton par usage** | Révoquer le pipeline A sans casser le pipeline B | `CI-DEPLOY-APP1`, `MONITORING-READONLY` |
+| **Droits minimaux** | Un jeton de supervision ne doit pas pouvoir supprimer un folder | [§9.5](#95-droits-minimum-par-opération) |
+| **Expiration courte et rotation** | Limite la fenêtre d'exposition | Rotation trimestrielle **planifiée par un job Control-M** |
+| **Traçabilité** | Savoir qui a fait quoi | Un jeton = une identité, jamais partagé entre équipes |
+
+```python
+import os
+
+# ✅ Le jeton vient de l'environnement — jamais du code source
+TOKEN = os.environ["CTM_API_TOKEN"]
+HEADERS = {"x-api-key": TOKEN}
+
+# ❌ À ne jamais écrire, même « temporairement », même sur une branche
+# TOKEN = "E14A4F8E45406977B31A1B091E5E04237D81C91B47AA1CE0F3FF"
+```
+
+:::tip[✅ Bonne pratique — vérifier avant de committer]
+Un *pre-commit hook* qui refuse tout fichier contenant une chaîne hexadécimale de plus de
+40 caractères coûte cinq minutes à écrire et évite une rotation d'urgence un dimanche soir.
+:::
+
+##### 9.4 Codes HTTP, erreurs, idempotence
+
+🟡🔴
+
+###### Les codes et ce qu'ils veulent dire ici
+
+| Code | Signification | Réaction du script |
+|---|---|---|
+| `200` / `201` | Succès | Continuer |
+| `202` | **Accepté, traitement asynchrone** | **Récupérer le `pollId` et poller** |
+| `400` | Définitions invalides | Ne **pas** réessayer : corriger. Lancer `ctm build` |
+| `401` | Jeton absent, expiré ou invalide | Renouveler **une fois**, puis échouer |
+| `403` | Authentifié mais **pas autorisé** | Ne pas réessayer : problème de RBAC ([§9.5](#95-droits-minimum-par-opération)) |
+| `404` | Objet inexistant | Vérifier le nom / le serveur |
+| `409` | Conflit (objet déjà présent, verrou) | Décider : ignorer ou échouer |
+| `500`, `502`, `503`, `504` | Erreur serveur ou passerelle | **Réessayer** avec backoff exponentiel |
+
+:::caution[⚠️ Le piège du 403 pris pour un 401]
+Un script qui « renouvelle le jeton » en boucle sur un `403` ne s'arrêtera jamais et fera
+tomber le compte en verrouillage. `401` = *qui es-tu ?* ; `403` = *je sais qui tu es, et
+tu n'as pas le droit*. On ne réessaie **jamais** un `403`.
+:::
+
+###### L'asynchrone : le `pollId`
+
+Certaines opérations lourdes (déploiement volumineux, provisioning, prévision) répondent
+immédiatement avec un identifiant à interroger.
+
+```bash
+ctm deploy chaine.json          # peut renvoyer un pollId
+ctm deploy poll <pollId>        # état d'avancement
+```
+
+```python
+import time
+import requests
+
+def attendre_fin(base_url: str, headers: dict, poll_id: str,
+                 timeout_s: int = 600, intervalle_s: int = 5) -> dict:
+    """
+    Attend la fin d'une opération asynchrone identifiée par son pollId.
+
+    Deux règles non négociables :
+      - un timeout global : un script d'automatisation ne doit JAMAIS pouvoir
+        attendre indéfiniment, sinon il bloque le pipeline qui l'a lancé ;
+      - un intervalle raisonnable : poller toutes les 100 ms sature l'API sans
+        rien accélérer.
+    """
+    debut = time.monotonic()
+    while time.monotonic() - debut < timeout_s:
+        r = requests.get(f"{base_url}/deploy/poll/{poll_id}",
+                         headers=headers, timeout=(5, 30))
+        r.raise_for_status()
+        etat = r.json()
+        # Le nom exact du champ d'état varie selon la version : on reste tolérant
+        statut = str(etat.get("status", etat.get("state", ""))).lower()
+        if statut in {"ended", "completed", "success", "failed", "error"}:
+            return etat
+        time.sleep(intervalle_s)
+    raise TimeoutError(f"Opération {poll_id} non terminée après {timeout_s} s")
+```
+
+###### Idempotence : ce qui est rejouable, ce qui ne l'est pas
+
+🔴 **Point décisif pour écrire des pipelines fiables.**
+
+| Opération | Idempotente ? | Conséquence d'un rejeu |
+|---|---|---|
+| `ctm deploy <fichier>` | **Oui** (*upsert*) | Réécrit la même définition : sans effet de bord |
+| `ctm run order` | **Non** | Crée une **nouvelle instance** : double exécution ! |
+| `ctm run event::add` | Oui, en pratique | L'événement existe déjà |
+| `ctm run job::hold` | Oui | Déjà en hold |
+| `ctm run resource::update` | Oui | Même valeur |
+| `ctm deploy folder::delete` | Oui | `404` la seconde fois — à traiter comme un succès |
+| `ctm run job::rerun` | **Non** | Relance réellement |
+
+:::caution[⚠️ Le piège du retry générique]
+Un client HTTP configuré pour réessayer automatiquement **toutes** les requêtes en échec
+transformera un `ctm run order` en timeout… en **deux ordonnancements**. La règle : le retry
+automatique s'applique aux **lectures** et aux opérations idempotentes ; les opérations non
+idempotentes doivent être réessayées **explicitement**, après vérification de l'état réel.
+Le client de [§11](#11-le-socle-python-réutilisable) implémente exactement cette distinction.
+:::
+
+##### 9.5 Droits minimum par opération
+
+🔴 Le principe du moindre privilège, appliqué aux huit opérations de [§10](#10-les-huit-opérations-de-a-à-z).
+
+| Opération | Service | Droit nécessaire (ordre de grandeur) | Jeton conseillé |
+|---|---|---|---|
+| Déployer un agent | `provision`, `config` | Administration de la plateforme | `ADM-INFRA` |
+| Créer un SMART Folder | `deploy` | `Update` / `Full` sur le folder | `CI-DEPLOY-<APP>` |
+| Créer des jobs | `deploy` | `Update` / `Full` sur le folder | `CI-DEPLOY-<APP>` |
+| Poster une condition | `run` | Droit d'action sur les événements du serveur | `OPS-EXPLOITATION` |
+| Holder / libérer | `run` | Droit d'action sur les jobs concernés | `OPS-EXPLOITATION` |
+| Planifier (order) | `run` | Droit `Order` sur le folder | `OPS-EXPLOITATION` ou `CI-DEPLOY` |
+| Déplanifier | `run` / `deploy` | Droit d'action + `Update` | `OPS-EXPLOITATION` |
+| Supprimer une chaîne | `deploy` | **`Delete`** sur le folder | `ADM-PATRIMOINE` (rare, tracé) |
+| Superviser | `run` (GET) | Lecture seule | `MONITORING-RO` |
+
+```mermaid
+flowchart TB
+    subgraph JETONS["Jetons recommandés"]
+        RO["MONITORING-RO<br/>lecture seule"]
+        OPS["OPS-EXPLOITATION<br/>actions du quotidien"]
+        CI["CI-DEPLOY-APP<br/>déploiement d'UNE application"]
+        ADM["ADM-INFRA<br/>agents, serveurs"]
+        PAT["ADM-PATRIMOINE<br/>suppression — usage exceptionnel"]
+    end
+```
+
+:::tip[✅ Bonne pratique — le jeton de suppression séparé]
+`deploy folder::delete` est irréversible sans sauvegarde. Isolez ce droit dans un jeton
+distinct, utilisé par une procédure explicite, jamais par un pipeline courant. Le coût :
+une variable de plus. Le bénéfice : un `deploy` mal configuré ne peut pas effacer un
+patrimoine ([§10.8](#108-supprimer-une-chaîne)).
+:::
+
+**Sauvegarder la configuration RBAC** (à faire tourner comme un job Control-M) :
+
+```bash
+ctm config authorization:roles::get > backup/roles.json
+ctm config authorization:users::get > backup/users.json
+ctm config servers::get             > backup/servers.json
+```
+
+---
+
+#### 10. Les huit opérations, de A à Z
+
+> Chaque opération suit le même plan : **objectif → prérequis → CLI → REST → Python commenté →
+> vérification → erreurs → retour arrière**. Les scripts sont autonomes ; la version
+> industrialisée (retries, journalisation, `--dry-run`) est en [§11](#11-le-socle-python-réutilisable)
+> et [§12](#12-la-bibliothèque-dopérations).
+
+##### 10.1 Déployer un agent Control-M
+
+###### Objectif
+
+Installer un Control-M/Agent sur une machine cible, le rattacher à un Control-M/Server, et
+**vérifier** qu'il répond — sans se connecter à la machine, et de façon reproductible sur
+40 serveurs.
+
+###### Prérequis
+
+| Prérequis | Vérification |
+|---|---|
+| Java 17+ **côté poste qui exécute le CLI** (service `provision`) | `java -version` |
+| Un dépôt d'images d'agents accessible | `ctm provision repositories::get` |
+| Droits d'administration sur la plateforme | Jeton `ADM-INFRA` ([§9.5](#95-droits-minimum-par-opération)) |
+| Flux réseau ouverts : Server → Agent **7006**, Agent → Server **7005** | Matrice de flux |
+| Compte système d'installation sur la machine cible | Selon la politique de l'entreprise |
+
+```mermaid
+stateDiagram-v2
+    [*] --> Images : ctm provision images
+    Images --> Depot : repository::add / ::set
+    Depot --> Install : agent::install
+    Install --> Enregistre : l'agent se déclare au Server
+    Enregistre --> Verifie : config server:agent::ping
+    Verifie --> Actif : Available
+    Verifie --> Echec : ping KO
+    Echec --> Diagnostic : agent::test / analysis
+```
+
+###### En CLI
+
+```bash
+# 1. Quelles images d'agent sont disponibles pour l'OS cible ?
+ctm provision images Linux
+
+# 2. Déclarer (une fois) un dépôt local d'images, puis le sélectionner
+ctm provision repository::add DepotAgents /partage/controlm/images "Images Agents"
+ctm provision repository::set DepotAgents
+
+# 3. Installer l'agent à distance
+#    <image>   : nom de l'image retenue à l'étape 1
+#    <server>  : le Control-M/Server de rattachement
+#    <nom>     : le nom logique de l'agent (celui qu'on verra dans Control-M)
+#    <port>    : port d'écoute de l'agent (7006 par défaut)
+ctm provision agent::install <image> ctmsrv-prod srvapp01 7006 -f agent-config.json
+
+# 4. Vérifier — l'étape que tout le monde oublie
+ctm config server:agent::ping ctmsrv-prod srvapp01
+
+# 5. Diagnostiquer si le ping échoue
+ctm config server:agent::test     ctmsrv-prod srvapp01
+ctm config server:agent::analysis ctmsrv-prod srvapp01
+```
+
+**Gestion du cycle de vie ensuite** :
+
+```bash
+ctm config server:agent::disable ctmsrv-prod srvapp01   # avant un patch applicatif
+ctm config server:agent::enable  ctmsrv-prod srvapp01   # après
+ctm config server:agents::get    ctmsrv-prod            # inventaire
+ctm config server:agent::delete  ctmsrv-prod srvapp01   # décommissionnement
+```
+
+**Montée de version du parc** :
+
+```bash
+ctm provision upgrades:versions::get
+ctm provision upgrades:agents::get -s "type=Agent&version=9.0.21.200"
+ctm provision upgrade::install ctmsrv-prod srvapp01 Agent 9.0.21.300 "MAJ-Agents-Q1"
+ctm provision upgrade::get       <upgradeID>      # suivi
+ctm provision upgrade:output::get <upgradeID>     # log détaillé
+ctm provision upgrade::retry     <upgradeID>      # relance après échec
+```
+
+###### En REST
+
+:::note[🔢 Version]
+— le service `provision` est **piloté par le CLI** dans la pratique : c'est lui
+qui orchestre le transfert d'image et l'installation. Les chemins REST suivent le motif
+`/automation-api/provision/<objet>/<action>`, mais **confirmez-les dans le Swagger local** de
+votre version avant de les câbler en dur. Le service `config`, lui, est pleinement REST :
+:::
+
+```bash
+# Vérification d'un agent — REST direct
+curl -s -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/config/server/ctmsrv-prod/agent/srvapp01/ping"
+
+# Inventaire des agents d'un serveur
+curl -s -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/config/server/ctmsrv-prod/agents"
+```
+
+###### En Python — déployer une flotte d'agents
+
+**Le cas réel** : 40 nouvelles machines à équiper. À la main, c'est deux jours et trois oublis.
+En script, c'est vingt minutes et un rapport.
+
+```python
+#!/usr/bin/env python3
+"""
+deployer_agents.py — déploiement en masse de Control-M/Agents à partir d'un inventaire.
+
+Pourquoi un mélange CLI + REST ?
+  - le service `provision` orchestre le transfert d'image et l'installation distante :
+    c'est le CLI `ctm` qui fait ce travail, on l'appelle donc en sous-processus ;
+  - la VÉRIFICATION (ping, inventaire) passe par REST, plus simple à exploiter en Python.
+
+Ce script est volontairement conservateur :
+  - il ne réinstalle jamais un agent déjà présent et fonctionnel (idempotence) ;
+  - il traite les machines une par une et continue en cas d'échec unitaire ;
+  - il produit un rapport exploitable (CSV) plutôt qu'un simple « OK ».
+
+Usage :
+    export CTM_API_TOKEN="..."
+    python deployer_agents.py --inventaire agents.json --dry-run
+    python deployer_agents.py --inventaire agents.json
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import logging
+import os
+import subprocess
+import sys
+from dataclasses import dataclass, field
+
+import requests
+
+LOG = logging.getLogger("deployer_agents")
+
+BASE_URL = os.environ.get("CTM_ENDPOINT", "https://ctm-em:8443/automation-api")
+TOKEN = os.environ.get("CTM_API_TOKEN", "")
+HEADERS = {"x-api-key": TOKEN}
+# Timeouts (connexion, lecture) : jamais d'appel HTTP sans timeout dans un script d'exploitation
+TIMEOUT = (5, 30)
+
+
+@dataclass
+class Agent:
+    """Une ligne de l'inventaire à déployer."""
+    nom: str
+    serveur: str
+    image: str
+    port: int = 7006
+    config: str | None = None          # fichier -f optionnel, par machine
+    tags: list[str] = field(default_factory=list)
+
+
+def charger_inventaire(chemin: str) -> list[Agent]:
+    """Lit le fichier d'inventaire JSON et le transforme en objets typés.
+
+    Travailler avec des objets plutôt que des dictionnaires bruts fait échouer le
+    script au chargement (message clair) plutôt qu'au milieu d'un déploiement.
+    """
+    with open(chemin, encoding="utf-8") as f:
+        donnees = json.load(f)
+    return [Agent(**item) for item in donnees["agents"]]
+
+
+def agent_deja_operationnel(serveur: str, nom: str) -> bool:
+    """Teste si l'agent répond déjà — c'est ce qui rend le script rejouable.
+
+    Un déploiement de masse est TOUJOURS relancé (échec réseau, machine pas prête,
+    interruption). Sans ce test, la relance réinstalle 38 agents pour en corriger 2.
+    """
+    url = f"{BASE_URL}/config/server/{serveur}/agent/{nom}/ping"
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+    except requests.RequestException as exc:
+        LOG.debug("Ping %s injoignable : %s", nom, exc)
+        return False
+    if r.status_code == 200:
+        LOG.info("  ↳ %s répond déjà : rien à faire", nom)
+        return True
+    return False
+
+
+def installer(agent: Agent, dry_run: bool) -> tuple[bool, str]:
+    """Lance l'installation via le CLI `ctm provision agent::install`.
+
+    Retourne (succès, message). On ne lève pas d'exception : dans un déploiement de
+    masse, l'échec d'une machine ne doit pas interrompre les 39 autres.
+    """
+    commande = [
+        "ctm", "provision", "agent::install",
+        agent.image, agent.serveur, agent.nom, str(agent.port),
+    ]
+    if agent.config:
+        commande += ["-f", agent.config]
+
+    if dry_run:
+        # --dry-run affiche exactement ce qui serait exécuté : c'est ce qu'on fait
+        # valider en revue de changement avant d'attaquer la production.
+        LOG.info("  [DRY-RUN] %s", " ".join(commande))
+        return True, "dry-run"
+
+    LOG.info("  ↳ installation de %s sur %s…", agent.nom, agent.serveur)
+    try:
+        res = subprocess.run(
+            commande,
+            capture_output=True, text=True,
+            timeout=1800,          # 30 min : une installation distante peut être lente
+            check=False,           # on gère nous-mêmes le code retour
+        )
+    except subprocess.TimeoutExpired:
+        return False, "timeout d'installation (30 min dépassées)"
+
+    if res.returncode != 0:
+        # stderr contient le message utile ; on le tronque pour garder un rapport lisible
+        return False, (res.stderr or res.stdout).strip()[:300]
+    return True, "installé"
+
+
+def deployer(agents: list[Agent], dry_run: bool) -> list[dict]:
+    """Boucle principale : installe puis vérifie chaque agent, et compile un rapport."""
+    rapport: list[dict] = []
+
+    for i, agent in enumerate(agents, start=1):
+        LOG.info("[%d/%d] %s (%s)", i, len(agents), agent.nom, agent.serveur)
+
+        if agent_deja_operationnel(agent.serveur, agent.nom):
+            rapport.append({"agent": agent.nom, "serveur": agent.serveur,
+                            "resultat": "DEJA_PRESENT", "detail": ""})
+            continue
+
+        ok, message = installer(agent, dry_run)
+        if not ok:
+            LOG.error("  ✗ %s : %s", agent.nom, message)
+            rapport.append({"agent": agent.nom, "serveur": agent.serveur,
+                            "resultat": "ECHEC_INSTALL", "detail": message})
+            continue
+
+        # Vérification post-installation : un `install` qui rend la main n'est PAS
+        # une preuve que l'agent communique. C'est le ping qui fait foi.
+        if dry_run or agent_deja_operationnel(agent.serveur, agent.nom):
+            LOG.info("  ✓ %s opérationnel", agent.nom)
+            rapport.append({"agent": agent.nom, "serveur": agent.serveur,
+                            "resultat": "OK", "detail": message})
+        else:
+            LOG.warning("  ⚠ %s installé mais ne répond pas au ping", agent.nom)
+            rapport.append({"agent": agent.nom, "serveur": agent.serveur,
+                            "resultat": "INSTALLE_SANS_PING",
+                            "detail": "vérifier le pare-feu 7005/7006"})
+    return rapport
+
+
+def ecrire_rapport(rapport: list[dict], chemin: str) -> None:
+    """Un CSV vaut mieux qu'un log : il se relit, se trie et s'envoie au chef de projet."""
+    with open(chemin, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["agent", "serveur", "resultat", "detail"])
+        w.writeheader()
+        w.writerows(rapport)
+    LOG.info("Rapport écrit : %s", chemin)
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Déploiement en masse d'agents Control-M")
+    p.add_argument("--inventaire", required=True, help="fichier JSON d'inventaire")
+    p.add_argument("--rapport", default="rapport-agents.csv")
+    p.add_argument("--dry-run", action="store_true",
+                   help="affiche les actions sans rien exécuter")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO,
+                        format="%(asctime)s %(levelname)-7s %(message)s")
+
+    if not TOKEN and not args.dry_run:
+        LOG.error("CTM_API_TOKEN n'est pas défini")
+        return 2
+
+    agents = charger_inventaire(args.inventaire)
+    LOG.info("%d agents à traiter (dry-run=%s)", len(agents), args.dry_run)
+
+    rapport = deployer(agents, args.dry_run)
+    ecrire_rapport(rapport, args.rapport)
+
+    echecs = [r for r in rapport if r["resultat"].startswith(("ECHEC", "INSTALLE_SANS"))]
+    LOG.info("Terminé : %d OK, %d à reprendre", len(rapport) - len(echecs), len(echecs))
+    # Code retour non nul si au moins un échec : indispensable pour un job Control-M
+    # ou une étape de pipeline, qui doivent devenir rouges.
+    return 1 if echecs else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+**Le fichier d'inventaire** :
+
+```json
+{
+  "agents": [
+    {"nom": "srvapp01", "serveur": "ctmsrv-prod", "image": "Agent.Linux.x86_64.9.0.21.300",
+     "port": 7006, "tags": ["banque", "paiements"]},
+    {"nom": "srvapp02", "serveur": "ctmsrv-prod", "image": "Agent.Linux.x86_64.9.0.21.300",
+     "port": 7006, "tags": ["banque", "reporting"]},
+    {"nom": "srvdwh01", "serveur": "ctmsrv-prod", "image": "Agent.Linux.x86_64.9.0.21.300",
+     "port": 7006, "config": "conf/agent-dwh.json", "tags": ["decisionnel"]}
+  ]
+}
+```
+
+###### Vérification
+
+```bash
+ctm config server:agents::get ctmsrv-prod | jq -r '.[] | [.nodeid, .status] | @tsv'
+```
+
+###### Erreurs fréquentes
+
+| Erreur | Cause | Résolution |
+|---|---|---|
+| L'installation réussit, le ping échoue | Pare-feu : 7005/7006 non ouverts | Matrice de flux ; tester avec `nc -zv` dans les deux sens |
+| `Image not found` | Dépôt non sélectionné, ou image absente | `ctm provision repository::set`, `ctm provision images <os>` |
+| `Java not found` | Java 17+ absent **sur le poste du CLI** | Installer le JDK ; c'est un Java distinct de celui du serveur API |
+| Agent en `Unavailable` après quelques heures | Connexion persistante non configurée, ou coupure NAT/pare-feu | Paramètres de communication de l'agent |
+| Nom d'agent déjà utilisé | Décommissionnement incomplet | `ctm config server:agent::delete` puis réinstaller |
+
+###### Retour arrière
+
+```bash
+ctm config server:agent::disable ctmsrv-prod srvapp01   # neutraliser d'abord
+ctm config server:agent::delete  ctmsrv-prod srvapp01   # puis retirer
+ctm provision agent::uninstall                          # désinstallation locale
+```
+
+:::tip[✅ Bonne pratique]
+— `disable` **avant** `delete`. Un agent désactivé ne reçoit plus de
+jobs mais reste déclaré : si on s'est trompé de machine, un `enable` répare en une seconde.
+Après un `delete`, il faut réinstaller.
+:::
+
+##### 10.2 Créer un SMART Folder
+
+###### Objectif
+
+Créer un conteneur qui porte **lui-même** la planification, les conditions et les actions
+communes — que **tous** ses jobs héritent.
+
+:::note[📖 Pourquoi un SMART Folder plutôt qu'un simple Folder ?]
+Dans un folder simple, chaque job répète sa planification, ses notifications et ses règles
+d'erreur. À 40 jobs, une modification de calendrier devient 40 modifications — et 40 risques
+d'oubli. Dans un SMART Folder, la règle est écrite **une fois**, au niveau du dossier.
+C'est la différence entre un patrimoine maintenable et un patrimoine qu'on n'ose plus toucher.
+:::
+
+###### Prérequis
+
+| Prérequis | Détail |
+|---|---|
+| Nom du Control-M/Server cible | `ControlmServer` |
+| Convention de nommage | `<ENV>-<DOMAINE>-<CHAINE>` |
+| Calendriers référencés **déjà déployés** | Sinon le folder ne s'ordonnance pas, **silencieusement** |
+| Droit `Update`/`Full` sur le folder | Jeton `CI-DEPLOY-<APP>` |
+
+###### La définition
+
+```json
+{
+  "PRD-BANQUE-CLOTURE": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+    "Application": "BANQUE",
+    "SubApplication": "CLOTURE-QUOTIDIENNE",
+    "Description": "Clôture quotidienne des opérations — chaîne critique SLA 06:00",
+    "RunAs": "svc_banque",
+    "OrderMethod": "Automatic",
+
+    "When": {
+      "WeekDays": ["MON", "TUE", "WED", "THU", "FRI"],
+      "RuleBasedCalendars": {
+        "Excluded": ["FERIES-FR"],
+        "Relationship": "AND"
+      },
+      "FromTime": "2200",
+      "ToTime": "0600"
+    },
+
+    "AttenteFolder": {
+      "Type": "WaitForEvents",
+      "Events": [{"Event": "PRD-BANQUE-FIN-JOURNEE-CAISSE"}]
+    },
+    "PublierFolder": {
+      "Type": "AddEvents",
+      "Events": [{"Event": "PRD-BANQUE-CLOTURE-TERMINEE"}]
+    },
+
+    "SiEchecFolder": {
+      "Type": "If",
+      "CompletionStatus": "NOTOK",
+      "AlerteAstreinte": {
+        "Type": "Mail",
+        "To": "astreinte-banque@exemple.fr",
+        "Subject": "[PROD][CRITIQUE] Echec %%JOBNAME - cloture du %%ODATE",
+        "Message": "Job %%JOBNAME (order %%ORDERID) en echec sur %%NODEID."
+      }
+    },
+
+    "Variables": [
+      {"ENV": "PROD"},
+      {"REP_ECHANGE": "/data/banque/prod"},
+      {"SEUIL_ANOMALIE": "0.01"}
+    ]
+  }
+}
+```
+
+| Clé de niveau folder | Ce qu'elle apporte |
+|---|---|
+| `When` | **Une seule** planification pour toute la chaîne |
+| `WaitForEvents` / `AddEvents` | Le folder entier attend, et publie quand tout est fini |
+| `If` / `On` | Une politique d'alerte homogène — plus d'oubli sur le 37ᵉ job |
+| `Variables` | Les valeurs d'environnement, injectées à tous les jobs |
+| `RunAs` | Le compte d'exécution par défaut |
+| `Application` / `SubApplication` | Le classement qui rend le monitoring lisible et le RBAC applicable |
+
+:::tip[✅ Bonne pratique — Application et SubApplication ne sont pas décoratifs]
+Ce sont les axes de filtrage des viewpoints, des rapports, des SLA **et** des habilitations.
+Un patrimoine où tout est `Application: "DIVERS"` est un patrimoine qu'on ne peut ni
+superviser par métier, ni déléguer, ni facturer.
+:::
+
+###### CLI et REST
+
+```bash
+ctm build   definitions/PRD-BANQUE-CLOTURE.json      # 1. valider (toujours)
+ctm deploy  definitions/PRD-BANQUE-CLOTURE.json      # 2. déployer
+ctm deploy  folders::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-*"   # 3. vérifier
+```
+
+```bash
+# REST équivalent du déploiement : le fichier de définitions est envoyé en multipart
+curl -s -X POST \
+     -H "x-api-key: $CTM_API_TOKEN" \
+     -F "definitionsFile=@definitions/PRD-BANQUE-CLOTURE.json" \
+     "https://ctm-em:8443/automation-api/deploy"
+```
+
+###### En Python
+
+```python
+#!/usr/bin/env python3
+"""
+creer_smart_folder.py — génère et déploie un SMART Folder à partir de paramètres.
+
+Intérêt : on ne recopie plus un JSON de 200 lignes pour chaque nouvelle chaîne.
+On décrit ce qui CHANGE (nom, application, calendrier, SLA) et le squelette commun
+— alertes, conventions de nommage, variables d'environnement — est garanti identique
+partout. C'est le « site standard du pauvre », et c'est déjà énorme.
+"""
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import tempfile
+
+import requests
+
+BASE_URL = os.environ["CTM_ENDPOINT"]
+HEADERS = {"x-api-key": os.environ["CTM_API_TOKEN"]}
+TIMEOUT = (5, 60)
+
+
+def construire_smart_folder(
+    *,
+    env: str,
+    domaine: str,
+    chaine: str,
+    serveur: str,
+    run_as: str,
+    jours: list[str],
+    calendrier_exclusion: str,
+    from_time: str,
+    to_time: str,
+    email_astreinte: str,
+    variables: dict[str, str],
+) -> dict:
+    """Construit la définition JSON d'un SMART Folder normalisé.
+
+    Toutes les conventions maison sont appliquées ici, à un seul endroit :
+      - nom      : <ENV>-<DOMAINE>-<CHAINE>
+      - événement de fin : <nom du folder>-TERMINEE
+      - alerte systématique en cas d'échec
+    Changer la convention = changer cette fonction, pas 300 fichiers.
+    """
+    nom = f"{env}-{domaine}-{chaine}".upper()
+
+    return {
+        nom: {
+            "Type": "Folder",
+            "ControlmServer": serveur,
+            "Application": domaine.upper(),
+            "SubApplication": chaine.upper(),
+            "Description": f"Chaine {chaine} du domaine {domaine} ({env})",
+            "RunAs": run_as,
+            "OrderMethod": "Automatic",
+
+            "When": {
+                "WeekDays": jours,
+                "RuleBasedCalendars": {
+                    "Excluded": [calendrier_exclusion],
+                    # Explicite : le défaut est OR, et ce n'est presque jamais ce qu'on veut
+                    "Relationship": "AND",
+                },
+                "FromTime": from_time,
+                "ToTime": to_time,
+            },
+
+            "PublierFinChaine": {
+                "Type": "AddEvents",
+                "Events": [{"Event": f"{nom}-TERMINEE"}],
+            },
+
+            "SiEchecFolder": {
+                "Type": "If",
+                "CompletionStatus": "NOTOK",
+                "AlerteAstreinte": {
+                    "Type": "Mail",
+                    "To": email_astreinte,
+                    "Subject": f"[{env}][{domaine}] Echec %%JOBNAME - %%ODATE",
+                    "Message": "Job %%JOBNAME (order %%ORDERID) en echec sur %%NODEID.",
+                },
+            },
+
+            "Variables": [{k: v} for k, v in variables.items()],
+        }
+    }
+
+
+def valider(definition: dict) -> None:
+    """Passe la définition par `ctm build` AVANT tout déploiement.
+
+    `ctm build` coûte deux secondes et attrape : champs inconnus, valeurs interdites,
+    incohérences de version (ex. Action:AddEvents au lieu de Event:Add).
+    Ne jamais déployer sans cette étape, même « pour un petit changement ».
+    """
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False,
+                                     encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+        chemin = f.name
+
+    res = subprocess.run(["ctm", "build", chemin],
+                         capture_output=True, text=True, check=False)
+    if res.returncode != 0:
+        raise RuntimeError(f"ctm build a échoué :\n{res.stdout}\n{res.stderr}")
+    print("✓ Validation ctm build : OK")
+
+
+def deployer(definition: dict) -> dict:
+    """Déploie la définition via l'API REST (envoi multipart du fichier)."""
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False,
+                                     encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+        chemin = f.name
+
+    with open(chemin, "rb") as fh:
+        r = requests.post(f"{BASE_URL}/deploy",
+                          headers=HEADERS,
+                          files={"definitionsFile": fh},
+                          timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.json()
+
+
+if __name__ == "__main__":
+    folder = construire_smart_folder(
+        env="PRD",
+        domaine="BANQUE",
+        chaine="CLOTURE",
+        serveur="ctmsrv-prod",
+        run_as="svc_banque",
+        jours=["MON", "TUE", "WED", "THU", "FRI"],
+        calendrier_exclusion="FERIES-FR",
+        from_time="2200",
+        to_time="0600",
+        email_astreinte="astreinte-banque@exemple.fr",
+        variables={"ENV": "PROD", "REP_ECHANGE": "/data/banque/prod"},
+    )
+
+    print(json.dumps(folder, ensure_ascii=False, indent=2))
+    valider(folder)
+    print(deployer(folder))
+```
+
+###### Erreurs fréquentes
+
+| Erreur | Cause | Résolution |
+|---|---|---|
+| `403` | Rôle sans droit `Update`/`Full` sur ce folder | Vérifier le RBAC du jeton |
+| `400` | Définition invalide | `ctm build` d'abord — toujours |
+| `ControlmServer not specified` | Plusieurs serveurs déclarés, champ absent | Ajouter `ControlmServer` ou l'injecter par *deploy descriptor* |
+| `Author is not current user` | `CreatedBy` ≠ utilisateur du jeton, mode restrictif | Aligner `CreatedBy` ou ajuster le paramétrage |
+| Le folder existe mais **ne s'ordonnance jamais** | Calendrier référencé absent, ou `DaysRelation` mal compris | [§6.3](#63-le-piège-du-etou-entre-jours), [§6.7](#67-la-new-day-procedure) |
+| Site standard violé | Convention d'entreprise non respectée | Corriger la définition |
+
+###### Retour arrière
+
+:::caution[⚠️ ctm deploy est un *upsert]
+* : il **écrase** la définition existante du même nom.
+Il n'y a pas d'annulation. Le retour arrière consiste à **redéployer la version
+précédente** — ce qui suppose qu'elle est dans Git ([§19](#19-cicd-et-promotion-denvironnement)).
+Sauvegardez **avant** :
+
+```bash
+ctm deploy folders::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE" \
+    > backup/PRD-BANQUE-CLOTURE.$(date +%Y%m%d-%H%M%S).json
+```
+:::
+
+##### 10.3 Créer des jobs
+
+###### Objectif
+
+Ajouter des jobs dans un folder, avec leurs dépendances, ressources et actions.
+
+###### Les types de jobs les plus courants
+
+| Type | Usage | Champ principal |
+|---|---|---|
+| `Job:Command` | Commande unique | `Command` |
+| `Job:Script` | Script existant sur l'agent | `FilePath` + `FileName` |
+| `Job:EmbeddedScript` | Script **embarqué dans la définition** | `Script` |
+| `Job:FileTransfer` | Transfert MFT | `FileTransfers` |
+| `Job:FileWatcher` | Attente de fichier | `Path`, `SearchInterval` |
+| `Job:Dummy` | Job vide — jalon, agrégation logique | — |
+| `Job:Database:*` | SQL, procédure stockée | `ConnectionProfile` |
+
+###### Une chaîne complète et commentée
+
+```json
+{
+  "PRD-BANQUE-CLOTURE": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+    "Application": "BANQUE",
+    "SubApplication": "CLOTURE-QUOTIDIENNE",
+    "RunAs": "svc_banque",
+
+    "EXTRACTION-OPERATIONS": {
+      "Type": "Job:Command",
+      "Command": "/opt/banque/extraire_operations.sh %%ODATE",
+      "Host": "srvapp01",
+      "Description": "Extraction des opérations de la journée",
+      "SessionsOracle": {"Type": "Resource:Pool", "Quantity": "4"},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-EXTRACTION-OK"}]}
+    },
+
+    "CONTROLE-COHERENCE": {
+      "Type": "Job:Command",
+      "Command": "/opt/banque/controler.sh %%ODATE",
+      "Host": "srvapp01",
+      "Description": "Contrôles de cohérence — bloquant",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-EXTRACTION-OK"}]},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-CONTROLE-OK"}]},
+      "SiAnomalie": {
+        "Type": "If",
+        "CompletionCode": "> 0",
+        "BloquerLaSuite": {"Type": "Event:Add",
+                           "Events": [{"Event": "PRD-BANQUE-CONTROLE-KO"}]},
+        "PrevenirLeMetier": {
+          "Type": "Mail",
+          "To": "controle-interne@exemple.fr",
+          "Subject": "[CLOTURE] Anomalies detectees le %%ODATE",
+          "Message": "Le controle de coherence a detecte des anomalies. Chaine suspendue."
+        }
+      }
+    },
+
+    "CALCUL-SOLDES": {
+      "Type": "Job:Command",
+      "Command": "/opt/banque/calculer_soldes.sh %%ODATE",
+      "Host": "srvapp01",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-CONTROLE-OK"}]},
+      "VerrouSoldes": {"Type": "Resource:Lock", "LockType": "Exclusive"},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-SOLDES-OK"}]}
+    },
+
+    "EDITION-RELEVES": {
+      "Type": "Job:Command",
+      "Command": "/opt/banque/editer_releves.sh %%ODATE",
+      "Host": "srvapp02",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-SOLDES-OK"}]},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-RELEVES-OK"}]}
+    },
+
+    "TRANSMISSION-REGULATEUR": {
+      "Type": "Job:FileTransfer",
+      "ConnectionProfileSrc": "LOCAL-BANQUE",
+      "ConnectionProfileDest": "SFTP-REGULATEUR",
+      "Host": "srvmft01",
+      "Description": "Transmission réglementaire — SLA 06:00",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-RELEVES-OK"}]},
+      "FileTransfers": [
+        {
+          "Src": "/data/banque/prod/declaration_%%ODATE.xml",
+          "Dest": "/depot/declarations/",
+          "TransferType": "Binary",
+          "TransferOption": "SrcToDest"
+        }
+      ],
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-TRANSMISSION-OK"}]}
+    }
+  }
+}
+```
+
+```mermaid
+flowchart LR
+    A["EXTRACTION-OPERATIONS<br/>pool Oracle ×4"] --> B["CONTROLE-COHERENCE"]
+    B -->|"OK"| C["CALCUL-SOLDES<br/>verrou exclusif"]
+    B -->|"anomalie"| K["🚨 alerte métier<br/>chaîne suspendue"]
+    C --> D["EDITION-RELEVES"]
+    D --> E["TRANSMISSION-REGULATEUR<br/>MFT — SLA 06:00"]
+```
+
+###### CLI
+
+```bash
+ctm build  chaine.json
+ctm deploy chaine.json
+ctm deploy jobs::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE"
+```
+
+###### En Python — générer des jobs en série
+
+Le cas où l'API change vraiment la vie : **30 jobs identiques à un paramètre près** (une
+agence, un pays, une région, un établissement).
+
+```python
+#!/usr/bin/env python3
+"""
+generer_jobs_serie.py — génère N jobs paramétrés dans un folder, plus un job
+de consolidation qui attend la fin de tous.
+
+Cas typique : un traitement par agence / par région / par établissement.
+À la main, c'est 30 copier-coller et au moins une faute de frappe qui ne se
+verra qu'en production, un dimanche.
+"""
+from __future__ import annotations
+
+import json
+
+AGENCES = [
+    {"code": "PAR", "libelle": "Paris",     "host": "srvapp01"},
+    {"code": "LYO", "libelle": "Lyon",      "host": "srvapp01"},
+    {"code": "MAR", "libelle": "Marseille", "host": "srvapp02"},
+    {"code": "LIL", "libelle": "Lille",     "host": "srvapp02"},
+    {"code": "BOR", "libelle": "Bordeaux",  "host": "srvapp02"},
+]
+
+FOLDER = "PRD-BANQUE-AGENCES"
+
+
+def generer() -> dict:
+    """Construit le folder complet : un job par agence + une consolidation."""
+    definition: dict = {
+        FOLDER: {
+            "Type": "Folder",
+            "ControlmServer": "ctmsrv-prod",
+            "Application": "BANQUE",
+            "SubApplication": "AGENCES",
+            "RunAs": "svc_banque",
+            "When": {"Schedule": "Everyday", "FromTime": "2300"},
+        }
+    }
+
+    evenements_fin = []
+
+    for agence in AGENCES:
+        nom_job = f"TRAITEMENT-{agence['code']}"
+        evenement = f"PRD-BANQUE-{agence['code']}-OK"
+        evenements_fin.append({"Event": evenement})
+
+        definition[FOLDER][nom_job] = {
+            "Type": "Job:Command",
+            # %%ODATE garantit la rejouabilité : jamais date du jour (§6.6)
+            "Command": f"/opt/banque/traiter_agence.sh {agence['code']} %%ODATE",
+            "Host": agence["host"],
+            "Description": f"Traitement quotidien — agence de {agence['libelle']}",
+            # Chaque agence consomme 2 connexions : le pool protège la base source
+            "SessionsOracle": {"Type": "Resource:Pool", "Quantity": "2"},
+            "Publier": {"Type": "AddEvents", "Events": [{"Event": evenement}]},
+            # Une erreur sur une agence ne doit pas faire tomber les 29 autres :
+            # on signale, on n'interrompt pas.
+            "SiEchec": {
+                "Type": "If",
+                "CompletionStatus": "NOTOK",
+                "Signaler": {
+                    "Type": "Mail",
+                    "To": "exploitation-banque@exemple.fr",
+                    "Subject": f"[AGENCES] Echec {agence['libelle']} le %%ODATE",
+                    "Message": "Traitement d'agence en echec. Les autres agences continuent.",
+                },
+            },
+        }
+
+    # Le point de synchronisation : fan-in sur les N événements (§4.4)
+    definition[FOLDER]["CONSOLIDATION-NATIONALE"] = {
+        "Type": "Job:Command",
+        "Command": "/opt/banque/consolider.sh %%ODATE",
+        "Host": "srvapp01",
+        "Description": "Consolidation nationale — attend TOUTES les agences",
+        "Attente": {"Type": "WaitForEvents", "Events": evenements_fin},
+        "Publier": {"Type": "AddEvents",
+                    "Events": [{"Event": "PRD-BANQUE-CONSOLIDATION-OK"}]},
+        # On consomme les événements d'agence : sans cela, ils s'accumulent (§4.6)
+        "Consommer": {"Type": "DeleteEvents", "Events": evenements_fin},
+    }
+
+    return definition
+
+
+if __name__ == "__main__":
+    chaine = generer()
+    with open("PRD-BANQUE-AGENCES.json", "w", encoding="utf-8") as f:
+        json.dump(chaine, f, ensure_ascii=False, indent=2)
+    print(f"✓ {len(AGENCES)} jobs + 1 consolidation générés")
+    print("  Prochaine étape : ctm build PRD-BANQUE-AGENCES.json")
+```
+
+:::tip[✅ Bonne pratique — générer, versionner, déployer]
+Le fichier généré est **commité dans Git**, puis déployé. On garde ainsi la trace exacte de
+ce qui est en production, et la revue de code porte sur le générateur (5 lignes lisibles)
+**et** sur le résultat (le diff montre l'ajout de la 6ᵉ agence). C'est le fondement du
+*Jobs as Code* ([§19](#19-cicd-et-promotion-denvironnement)).
+:::
+
+###### Erreurs fréquentes
+
+| Erreur | Cause | Résolution |
+|---|---|---|
+| Job déployé mais jamais exécuté | Il hérite du `When` du folder — vérifier au **niveau folder** | [§6.7](#67-la-new-day-procedure) |
+| `Host` inconnu | Agent non déclaré ou nom erroné | `ctm config server:agents::get` |
+| `RunAs` en échec | Mot de passe du compte système expiré | `ctm config server:runasuser::test` |
+| Le job démarre trop tôt | Événement attendu au mauvais qualificatif d'ODATE | [§4.3](#43-la-sémantique-de-lodate) |
+| Type de job rejeté | Plug-in absent sur la plateforme | Installer le plug-in |
+
+---
+##### 10.4 Poster une condition de démarrage
+
+###### Objectif
+
+Publier (ou supprimer) un **événement** dans le pool de conditions du Control-M/Server, pour
+déclencher un job en attente — depuis un script, une application métier, ou un opérateur.
+
+:::note[📖 Pourquoi c'est l'opération la plus utile de toutes]
+Elle est le **pont entre Control-M et le reste du système d'information**. Une application
+qui termine un traitement peut poster elle-même son événement : la chaîne repart sans
+attendre un fichier témoin, sans job cyclique qui interroge, sans latence. C'est le
+mécanisme d'intégration temps réel de Control-M.
+:::
+
+###### Les trois usages
+
+| Usage | Qui appelle | Exemple |
+|---|---|---|
+| **Intégration** | Une application métier | « Le référentiel client est publié » |
+| **Déblocage** | Un exploitant | Le job amont a été annulé, on libère la suite |
+| **Orchestration externe** | Un autre ordonnanceur, un ESB | Un traitement mainframe signale sa fin |
+
+###### En CLI
+
+```bash
+# Publier un événement pour la date de traitement courante
+ctm run event::add ctmsrv-prod PRD-BANQUE-REFERENTIEL-OK ODAT
+
+# Publier pour une date de traitement précise
+ctm run event::add ctmsrv-prod PRD-BANQUE-REFERENTIEL-OK 20260903
+
+# Supprimer
+ctm run event::delete ctmsrv-prod PRD-BANQUE-REFERENTIEL-OK ODAT
+
+# Lister ce qui existe
+ctm run events::get
+```
+
+###### En REST
+
+```bash
+# POST /run/event
+curl -s -X POST \
+     -H "x-api-key: $CTM_API_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"server":"ctmsrv-prod","name":"PRD-BANQUE-REFERENTIEL-OK","date":"ODAT"}' \
+     "https://ctm-em:8443/automation-api/run/event"
+
+# DELETE /run/event/{server}/{name}/{date}
+curl -s -X DELETE \
+     -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/run/event/ctmsrv-prod/PRD-BANQUE-REFERENTIEL-OK/ODAT"
+
+# GET /run/events
+curl -s -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/run/events"
+```
+
+:::note[🔢 Version]
+— le nom exact des champs du corps (`server`/`ctm`, `date`/`odate`) peut varier.
+Vérifiez dans le Swagger local ; en cas de doute, le CLI est la référence sûre :
+`ctm run event -h`.
+:::
+
+###### En Python
+
+```python
+#!/usr/bin/env python3
+"""
+poster_condition.py — publie une condition de démarrage Control-M depuis une application.
+
+Scénario : une application métier vient de terminer un traitement et veut réveiller
+la chaîne Control-M qui en dépend, immédiatement, sans fichier témoin ni polling.
+
+Ce script est fait pour être appelé DEPUIS une application : il est court, il n'a
+qu'une dépendance (requests), et il retourne un code de sortie exploitable.
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+import os
+import sys
+
+import requests
+
+LOG = logging.getLogger("poster_condition")
+
+
+class ControlMEvent:
+    """Petit client dédié aux événements. Volontairement minimal et lisible."""
+
+    def __init__(self, base_url: str, token: str, timeout=(5, 30)) -> None:
+        self.base_url = base_url.rstrip("/")
+        self.session = requests.Session()
+        # x-api-key : jeton d'API durable, adapté à l'automatisation (§9.3)
+        self.session.headers.update({"x-api-key": token,
+                                     "Content-Type": "application/json"})
+        self.timeout = timeout
+
+    def poster(self, serveur: str, nom: str, date: str = "ODAT") -> dict:
+        """Publie un événement.
+
+        `date` accepte :
+          - "ODAT"     : date de traitement courante (le cas normal)
+          - "AAAAMMJJ" : une date de traitement précise (rejeu, rattrapage)
+        """
+        charge = {"server": serveur, "name": nom, "date": date}
+        LOG.info("POST événement %s (%s) sur %s", nom, date, serveur)
+        r = self.session.post(f"{self.base_url}/run/event",
+                              json=charge, timeout=self.timeout)
+        self._verifier(r, f"publication de {nom}")
+        return r.json() if r.content else {}
+
+    def supprimer(self, serveur: str, nom: str, date: str = "ODAT") -> None:
+        """Supprime un événement (utile pour rejouer une chaîne proprement)."""
+        url = f"{self.base_url}/run/event/{serveur}/{nom}/{date}"
+        r = self.session.delete(url, timeout=self.timeout)
+        # 404 = l'événement n'existait pas : c'est le résultat voulu, pas une erreur
+        if r.status_code == 404:
+            LOG.info("Événement %s déjà absent", nom)
+            return
+        self._verifier(r, f"suppression de {nom}")
+
+    def lister(self) -> list:
+        """Retourne tous les événements du pool. Utile pour auditer (§4.6)."""
+        r = self.session.get(f"{self.base_url}/run/events", timeout=self.timeout)
+        self._verifier(r, "listage des événements")
+        return r.json()
+
+    @staticmethod
+    def _verifier(reponse: requests.Response, action: str) -> None:
+        """Traduit les codes HTTP en messages actionnables plutôt qu'en traces brutes.
+
+        Un 403 et un 500 appellent des réactions opposées : l'un est un problème
+        d'habilitation qu'il ne sert à rien de réessayer, l'autre une erreur
+        transitoire qu'il faut réessayer (§9.4).
+        """
+        if reponse.status_code in (200, 201, 204):
+            return
+        if reponse.status_code == 401:
+            raise PermissionError(f"{action} : jeton invalide ou expiré")
+        if reponse.status_code == 403:
+            raise PermissionError(
+                f"{action} : droits insuffisants sur le serveur — NE PAS réessayer")
+        if reponse.status_code >= 500:
+            raise ConnectionError(f"{action} : erreur serveur {reponse.status_code} "
+                                  f"— réessayable")
+        raise RuntimeError(f"{action} : HTTP {reponse.status_code} — {reponse.text[:300]}")
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Poster une condition Control-M")
+    p.add_argument("--serveur", required=True)
+    p.add_argument("--nom", required=True, help="nom de la condition")
+    p.add_argument("--date", default="ODAT", help="ODAT (défaut) ou AAAAMMJJ")
+    p.add_argument("--supprimer", action="store_true")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    client = ControlMEvent(os.environ["CTM_ENDPOINT"], os.environ["CTM_API_TOKEN"])
+    try:
+        if args.supprimer:
+            client.supprimer(args.serveur, args.nom, args.date)
+        else:
+            client.poster(args.serveur, args.nom, args.date)
+    except PermissionError as exc:
+        LOG.error("Habilitation : %s", exc)
+        return 2                      # code distinct : le pipeline sait que c'est du RBAC
+    except ConnectionError as exc:
+        LOG.error("Transitoire : %s", exc)
+        return 3                      # code distinct : celui-là, on peut le rejouer
+    except Exception as exc:          # noqa: BLE001 — on veut un code de sortie propre
+        LOG.error("Échec : %s", exc)
+        return 1
+    LOG.info("✓ Terminé")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+**Utilisation depuis une application métier** :
+
+```python
+# À la fin d'un traitement applicatif — trois lignes, et la chaîne Control-M repart
+from poster_condition import ControlMEvent
+import os
+
+ctm = ControlMEvent(os.environ["CTM_ENDPOINT"], os.environ["CTM_API_TOKEN"])
+ctm.poster("ctmsrv-prod", "PRD-BANQUE-REFERENTIEL-OK")
+```
+
+###### Vérification
+
+```bash
+ctm run events::get | jq '.[] | select(.name | test("REFERENTIEL"))'
+ctm run jobs::status -s "jobname=TRAITEMENT-*"      # les successeurs sont-ils partis ?
+```
+
+###### Erreurs fréquentes
+
+| Symptôme | Cause | Résolution |
+|---|---|---|
+| Événement posté, job toujours en attente | **Qualificatif d'ODATE** différent | Poster avec la bonne date, ou passer le consommateur en `AnyDate` ([§4.3](#43-la-sémantique-de-lodate)) |
+| Événement posté, job jamais ordonnancé | Le job n'est pas dans l'AJF | C'est un problème de **calendrier**, pas de condition ([§6.7](#67-la-new-day-procedure)) |
+| Nom rejeté | Caractères interdits, longueur, casse | Convention de nommage ([§4.5](#45-convention-de-nommage)) |
+| `403` | Le jeton n'a pas de droit d'action sur ce serveur | Jeton `OPS-EXPLOITATION` |
+| La chaîne repart… deux fois | Événement posté par l'application **et** par le job amont | Choisir **un seul** producteur |
+
+###### Retour arrière
+
+```bash
+ctm run event::delete ctmsrv-prod PRD-BANQUE-REFERENTIEL-OK ODAT
+```
+
+:::caution[⚠️ Attention — la suppression n'annule pas ce qui est parti]
+Si le job a déjà démarré, supprimer l'événement ne l'arrête pas. Il faut alors
+`ctm run job::kill` ([§10.5](#105-holder-et-libérer-des-jobs)) — et assumer les effets
+déjà produits.
+:::
+
+##### 10.5 Holder et libérer des jobs
+
+###### Objectif
+
+Empêcher temporairement l'exécution d'un job ou d'un ensemble de jobs, puis les libérer.
+**Le geste d'exploitation le plus fréquent.**
+
+###### Quand on hold
+
+| Situation | Pourquoi |
+|---|---|
+| Incident sur un système amont | Éviter d'accumuler des échecs |
+| Maintenance applicative planifiée | Suspendre la chaîne pendant la fenêtre |
+| Investigation en cours | Figer l'état pour analyser |
+| Modification d'un job actif | Un job en `Hold` peut être modifié |
+| Décision métier | « On ne facture pas aujourd'hui » |
+
+###### Les actions disponibles
+
+```bash
+ctm run job::hold    <jobId>     # suspendre
+ctm run job::free    <jobId>     # libérer
+ctm run job::rerun   <jobId>     # relancer
+ctm run job::kill    <jobId>     # tuer en cours d'exécution
+ctm run job::setToOk <jobId>     # forcer le statut OK (⚠️ voir plus bas)
+ctm run job::delete  <jobId>     # retirer l'instance de l'AJF
+ctm run job::bypass  <jobId|folderId> -f options.json
+ctm run job::confirm <jobId>     # confirmer un job en attente de confirmation
+ctm run job::runNow  <jobId>     # forcer l'exécution immédiate
+```
+
+:::caution[⚠️ La différence Hold / Delete / setToOk — à ne jamais confondre]
+
+| Action | Effet | Réversible ? | Effet sur les successeurs |
+|---|---|---|---|
+| `hold` | Le job **ne partira pas**, mais il reste là | **Oui** (`free`) | Ils attendent |
+| `delete` | L'instance est retirée de l'AJF du jour | Oui (`undelete`), le jour même | Ils attendent **pour toujours** — l'événement ne sera jamais posté |
+| `setToOk` | Le job passe **artificiellement** en succès | Non | **Ils partent**, comme si le traitement avait eu lieu |
+
+`setToOk` est la commande la plus dangereuse de Control-M : elle fait croire à toute une
+chaîne qu'un traitement a eu lieu. Elle a des usages légitimes (job devenu inutile,
+traitement effectué manuellement en dehors de Control-M) mais elle doit **toujours** être
+tracée dans un ticket, et jamais utilisée « pour faire passer la nuit ».
+:::
+
+###### En REST
+
+```bash
+curl -s -X POST -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/run/job/00008/hold"
+
+curl -s -X POST -H "x-api-key: $CTM_API_TOKEN" \
+     "https://ctm-em:8443/automation-api/run/job/00008/free"
+```
+
+###### En Python — hold et free de masse, avec sauvegarde d'état
+
+**Le cas réel** : maintenance de deux heures sur le système comptable. Il faut suspendre les
+80 jobs de trois chaînes, puis les libérer — **exactement ceux-là**, sans libérer ceux qui
+étaient déjà en hold pour une autre raison.
+
+```python
+#!/usr/bin/env python3
+"""
+hold_masse.py — suspend puis libère un ensemble de jobs, en toute sécurité.
+
+Le vrai problème de l'opération de masse n'est pas le hold : c'est le FREE.
+Si l'on libère « tous les jobs en hold du folder », on libère aussi ceux qui
+étaient déjà suspendus AVANT, pour une raison qu'on ignore — et on relance un
+traitement que quelqu'un avait délibérément bloqué.
+
+La parade : mémoriser dans un fichier d'état la liste exacte des jobs que
+CE script a suspendus, et ne libérer que ceux-là.
+
+Usage :
+    python hold_masse.py hold --filtre "folder=PRD-COMPTA-*" --etat maintenance.json
+    python hold_masse.py free --etat maintenance.json
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import sys
+from datetime import datetime
+
+import requests
+
+LOG = logging.getLogger("hold_masse")
+BASE_URL = os.environ["CTM_ENDPOINT"].rstrip("/")
+HEADERS = {"x-api-key": os.environ["CTM_API_TOKEN"]}
+TIMEOUT = (5, 30)
+
+
+def lister_jobs(filtre: str) -> list[dict]:
+    """Retourne les jobs correspondant au filtre.
+
+    Le filtre suit la syntaxe `-s` du CLI : "folder=PRD-COMPTA-*&status=Wait Condition".
+    """
+    r = requests.get(f"{BASE_URL}/run/jobs/status",
+                     headers=HEADERS,
+                     params=dict(pair.split("=", 1) for pair in filtre.split("&")),
+                     timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.json().get("statuses", [])
+
+
+def action_sur_job(job_id: str, action: str) -> bool:
+    """Applique hold ou free à un job. Retourne True si l'appel a réussi."""
+    r = requests.post(f"{BASE_URL}/run/job/{job_id}/{action}",
+                      headers=HEADERS, timeout=TIMEOUT)
+    if r.status_code in (200, 201):
+        return True
+    LOG.warning("  ✗ %s sur %s : HTTP %s — %s",
+                action, job_id, r.status_code, r.text[:200])
+    return False
+
+
+def commande_hold(filtre: str, fichier_etat: str, dry_run: bool) -> int:
+    """Suspend les jobs du filtre et enregistre exactement lesquels."""
+    jobs = lister_jobs(filtre)
+    LOG.info("%d jobs correspondent au filtre", len(jobs))
+
+    suspendus, ignores = [], []
+    for job in jobs:
+        job_id, statut = job.get("jobId"), job.get("status", "")
+
+        # On ne touche pas à ce qui est déjà en hold : ce n'est pas notre affaire,
+        # et c'est précisément ce qu'il ne faudra pas libérer tout à l'heure.
+        if "hold" in statut.lower():
+            ignores.append(job_id)
+            continue
+        # Ni à ce qui tourne déjà : un hold n'arrête pas une exécution en cours,
+        # il empêche seulement les démarrages. Autant être explicite.
+        if statut.lower() in {"executing", "en cours"}:
+            LOG.info("  ⏵ %s est en cours d'exécution : non suspendu", job_id)
+            ignores.append(job_id)
+            continue
+
+        if dry_run:
+            LOG.info("  [DRY-RUN] hold %s (%s)", job_id, job.get("name"))
+            suspendus.append(job_id)
+            continue
+
+        if action_sur_job(job_id, "hold"):
+            LOG.info("  ⏸ %s (%s)", job_id, job.get("name"))
+            suspendus.append(job_id)
+
+    etat = {
+        "horodatage": datetime.now().isoformat(timespec="seconds"),
+        "filtre": filtre,
+        "operateur": os.environ.get("USER", os.environ.get("USERNAME", "inconnu")),
+        "suspendus": suspendus,
+        "deja_en_hold_ou_en_cours": ignores,
+    }
+    if not dry_run:
+        with open(fichier_etat, "w", encoding="utf-8") as f:
+            json.dump(etat, f, ensure_ascii=False, indent=2)
+        LOG.info("État sauvegardé dans %s", fichier_etat)
+
+    LOG.info("✓ %d suspendus, %d ignorés", len(suspendus), len(ignores))
+    return 0
+
+
+def commande_free(fichier_etat: str, dry_run: bool) -> int:
+    """Libère UNIQUEMENT les jobs listés dans le fichier d'état."""
+    with open(fichier_etat, encoding="utf-8") as f:
+        etat = json.load(f)
+
+    suspendus = etat["suspendus"]
+    LOG.info("Libération de %d jobs suspendus le %s par %s",
+             len(suspendus), etat["horodatage"], etat["operateur"])
+
+    liberes = 0
+    for job_id in suspendus:
+        if dry_run:
+            LOG.info("  [DRY-RUN] free %s", job_id)
+            liberes += 1
+            continue
+        if action_sur_job(job_id, "free"):
+            LOG.info("  ▶ %s", job_id)
+            liberes += 1
+
+    LOG.info("✓ %d/%d libérés", liberes, len(suspendus))
+    if liberes < len(suspendus):
+        # Un job non libéré bloque une chaîne : cela doit remonter en erreur,
+        # pas se perdre dans les logs.
+        LOG.error("%d jobs n'ont PAS pu être libérés — vérifier manuellement",
+                  len(suspendus) - liberes)
+        return 1
+    return 0
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Hold/Free de masse Control-M")
+    p.add_argument("commande", choices=["hold", "free"])
+    p.add_argument("--filtre", help='ex. "folder=PRD-COMPTA-*" (obligatoire pour hold)')
+    p.add_argument("--etat", default="etat-hold.json")
+    p.add_argument("--dry-run", action="store_true")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    if args.commande == "hold":
+        if not args.filtre:
+            LOG.error("--filtre est obligatoire pour la commande hold")
+            return 2
+        return commande_hold(args.filtre, args.etat, args.dry_run)
+    return commande_free(args.etat, args.dry_run)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+:::tip[✅ Bonne pratique — le fichier d'état est le vrai livrable]
+Il documente **qui** a suspendu **quoi**, **quand** et **pourquoi** (le filtre le dit).
+Joignez-le au ticket de changement. Le jour où quelqu'un demande « pourquoi la chaîne
+comptable n'a pas tourné mardi », la réponse tient dans un fichier de dix lignes.
+:::
+
+###### Erreurs fréquentes
+
+| Symptôme | Cause | Résolution |
+|---|---|---|
+| `hold` sans effet | Le job **tourne déjà** | `hold` empêche le démarrage, il n'arrête pas l'exécution : utiliser `kill` |
+| `free` et le job ne part pas | Un **autre** verrou l'arrête | Relire les six verrous ([§3](#3-le-modèle-dexécution--les-six-verrous)) |
+| On a libéré trop de jobs | `free` appliqué à un filtre au lieu d'une liste | Toujours passer par le fichier d'état |
+| `404` sur le `jobId` | L'instance a été purgée (New Day) | Re-lister les jobs |
+
+##### 10.6 Planifier une chaîne
+
+###### Objectif
+
+Créer les **instances** d'une chaîne dans l'AJF pour qu'elle s'exécute. C'est l'**ordering**.
+
+:::note[📖 Déployer ≠ planifier]
+`ctm deploy` **enregistre** la définition : rien ne s'exécute.
+`ctm run order` **crée l'instance du jour** : ça part.
+Une chaîne déployée mais jamais ordonnancée ne tournera jamais — c'est la confusion n°1
+des débutants avec l'API.
+:::
+
+###### Les trois façons de planifier
+
+| Méthode | Déclencheur | Usage |
+|---|---|---|
+| **Automatique** | La New Day évalue le `When` | Le cas normal : 95 % du patrimoine |
+| **À la demande** | `ctm run order` | Rattrapage, rejeu, chaîne pilotée par un événement métier |
+| **Sans enregistrement** | `ctm run <fichier.json>` | Test, exécution ponctuelle non répétitive |
+
+```mermaid
+flowchart TB
+    D["ctm deploy<br/>(patrimoine)"] --> DEF[("Définition<br/>enregistrée")]
+    DEF --> AUTO["New Day évalue le When"]
+    DEF --> MAN["ctm run order<br/>(à la demande)"]
+    AUTO --> AJF[("Instance dans l'AJF")]
+    MAN --> AJF
+    RUN["ctm run fichier.json<br/>(sans enregistrer)"] --> AJF
+    AJF --> EXEC["Exécution"]
+```
+
+###### En CLI
+
+```bash
+# Ordonnancer un folder entier
+ctm run order ctmsrv-prod PRD-BANQUE-CLOTURE
+
+# Ordonnancer certains jobs seulement
+ctm run order ctmsrv-prod PRD-BANQUE-CLOTURE "EXTRACTION-OPERATIONS,CONTROLE-COHERENCE"
+
+# Avec un fichier de configuration : ODATE, variables, mise en hold à l'ordering
+ctm run order ctmsrv-prod PRD-BANQUE-CLOTURE -f order-config.json
+
+# Vérifier
+ctm run jobs::status -s "folder=PRD-BANQUE-CLOTURE"
+```
+
+**`order-config.json`** — permet notamment de **rejouer une journée passée** :
+
+```json
+{
+  "hold": false,
+  "orderDate": "20260902",
+  "variables": [
+    {"MODE": "RATTRAPAGE"},
+    {"REP_ECHANGE": "/data/banque/rattrapage"}
+  ]
+}
+```
+
+:::tip[✅ Le motif « ordonnancer en hold »]
+`"hold": true` crée les instances **suspendues**. On vérifie la chaîne, les variables,
+l'ODATE — puis on libère. C'est **la** bonne pratique pour un rattrapage sensible :
+on ne découvre pas une erreur de paramètre après le départ du premier job.
+
+```bash
+ctm run order ctmsrv-prod PRD-BANQUE-CLOTURE -f order-hold.json   # tout en hold
+ctm run jobs::status -s "folder=PRD-BANQUE-CLOTURE"               # contrôle
+ctm run job::free <jobId-du-premier>                              # départ maîtrisé
+```
+:::
+
+###### En REST
+
+```bash
+curl -s -X POST \
+     -H "x-api-key: $CTM_API_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"ctm":"ctmsrv-prod","folder":"PRD-BANQUE-CLOTURE","hold":false}' \
+     "https://ctm-em:8443/automation-api/run/order"
+```
+
+###### En Python — rattrapage d'une journée manquée
+
+```python
+#!/usr/bin/env python3
+"""
+planifier_chaine.py — ordonnance une chaîne Control-M, avec contrôle préalable.
+
+Cas d'usage principal : le RATTRAPAGE. La chaîne du 2 septembre n'a pas tourné
+(incident réseau). Il faut la rejouer avec l'ODATE du 2, pas celle d'aujourd'hui —
+sinon les fichiers, les partitions et les écritures porteront la mauvaise date (§6.6).
+
+Trois garde-fous, parce que l'ordering n'est PAS idempotent (§9.4) :
+  1. on vérifie qu'aucune instance n'existe déjà pour cette ODATE ;
+  2. on propose le mode « hold » pour contrôler avant de libérer ;
+  3. on demande une confirmation explicite en production.
+"""
+from __future__ import annotations
+
+import argparse
+import logging
+import os
+import sys
+
+import requests
+
+LOG = logging.getLogger("planifier_chaine")
+BASE_URL = os.environ["CTM_ENDPOINT"].rstrip("/")
+HEADERS = {"x-api-key": os.environ["CTM_API_TOKEN"], "Content-Type": "application/json"}
+TIMEOUT = (5, 60)
+
+
+def instances_existantes(folder: str, odate: str | None) -> list[dict]:
+    """Cherche des instances déjà présentes dans l'AJF pour ce folder.
+
+    C'est LE contrôle qui évite le double ordonnancement — donc la double
+    exécution d'une chaîne de paiements, de facturation ou de relances.
+    """
+    params = {"folder": folder}
+    if odate:
+        params["odate"] = odate
+    r = requests.get(f"{BASE_URL}/run/jobs/status", headers=HEADERS,
+                     params=params, timeout=TIMEOUT)
+    r.raise_for_status()
+    return r.json().get("statuses", [])
+
+
+def ordonnancer(serveur: str, folder: str, *, jobs: str | None = None,
+                odate: str | None = None, hold: bool = False,
+                variables: dict[str, str] | None = None) -> dict:
+    """Crée les instances dans l'AJF (POST /run/order)."""
+    charge: dict = {"ctm": serveur, "folder": folder, "hold": hold}
+    if jobs:
+        charge["jobs"] = jobs
+    if odate:
+        charge["orderDate"] = odate          # ⚠️ le champ décisif d'un rattrapage
+    if variables:
+        charge["variables"] = [{k: v} for k, v in variables.items()]
+
+    LOG.info("Ordering : %s", charge)
+    r = requests.post(f"{BASE_URL}/run/order", headers=HEADERS,
+                      json=charge, timeout=TIMEOUT)
+    if r.status_code >= 400:
+        raise RuntimeError(f"Ordering refusé : HTTP {r.status_code} — {r.text[:400]}")
+    return r.json() if r.content else {}
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Planifier une chaîne Control-M")
+    p.add_argument("--serveur", required=True)
+    p.add_argument("--folder", required=True)
+    p.add_argument("--jobs", help="liste de jobs séparés par des virgules")
+    p.add_argument("--odate", help="AAAAMMJJ — pour un rattrapage")
+    p.add_argument("--hold", action="store_true",
+                   help="crée les instances suspendues (recommandé en production)")
+    p.add_argument("--var", action="append", default=[],
+                   help="variable au format CLE=VALEUR, répétable")
+    p.add_argument("--forcer", action="store_true",
+                   help="ordonnance même si des instances existent déjà")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    # --- Garde-fou n°1 : y a-t-il déjà des instances ? -----------------------
+    existantes = instances_existantes(args.folder, args.odate)
+    if existantes and not args.forcer:
+        LOG.error("%d instance(s) existent déjà pour %s (ODATE %s).",
+                  len(existantes), args.folder, args.odate or "courante")
+        for job in existantes[:10]:
+            LOG.error("   %s  %s  %s",
+                      job.get("jobId"), job.get("status"), job.get("name"))
+        LOG.error("Ordonnancer à nouveau créerait des DOUBLONS d'exécution.")
+        LOG.error("Si c'est volontaire, relancer avec --forcer.")
+        return 2
+
+    variables = dict(v.split("=", 1) for v in args.var)
+
+    # --- Garde-fou n°2 : confirmation explicite en production ---------------
+    if "prod" in args.serveur.lower() and not args.hold:
+        reponse = input(f"⚠️  Ordonnancer {args.folder} en PRODUCTION "
+                        f"sans hold ? (taper OUI) : ")
+        if reponse.strip() != "OUI":
+            LOG.info("Annulé par l'opérateur")
+            return 0
+
+    resultat = ordonnancer(args.serveur, args.folder, jobs=args.jobs,
+                           odate=args.odate, hold=args.hold, variables=variables)
+    LOG.info("✓ Ordonnancement effectué : %s", resultat)
+
+    if args.hold:
+        LOG.info("Les jobs sont en HOLD. Contrôlez puis libérez :")
+        LOG.info("   ctm run jobs::status -s \"folder=%s\"", args.folder)
+        LOG.info("   ctm run job::free <jobId>")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+###### Erreurs fréquentes
+
+| Symptôme | Cause | Résolution |
+|---|---|---|
+| `404 folder not found` | Folder non déployé, ou mauvais serveur | `ctm deploy folders::get` |
+| Ordonnancé mais rien ne part | Les jobs attendent une condition | [§4.7](#47-diagnostic--pourquoi-mon-job-attend) |
+| **Double exécution** | `order` lancé deux fois | Contrôle préalable des instances (garde-fou n°1) |
+| Mauvaise ODATE au rattrapage | `orderDate` oublié | Toujours l'expliciter en rattrapage |
+| `403` | Droit `Order` absent sur le folder | Jeton `OPS-EXPLOITATION` |
+
+##### 10.7 Déplanifier une chaîne
+
+###### Objectif
+
+Empêcher une chaîne de s'exécuter. **Trois portées très différentes** — les confondre est
+une source classique d'incident.
+
+```mermaid
+flowchart TB
+    Q{"Que veut-on empêcher ?"}
+    Q -->|"L'exécution d'AUJOURD'HUI"| N1["Niveau 1 — l'instance<br/>hold / delete sur l'AJF<br/>↩️ réversible dans la journée"]
+    Q -->|"Les exécutions FUTURES"| N2["Niveau 2 — la planification<br/>When / OrderMethod / EndDate<br/>↩️ réversible par redéploiement"]
+    Q -->|"L'existence même de la chaîne"| N3["Niveau 3 — le patrimoine<br/>folder::delete<br/>⚠️ irréversible → §10.8"]
+```
+
+###### Niveau 1 — neutraliser l'instance du jour
+
+```bash
+# a) Suspendre : réversible immédiatement, les successeurs attendent
+ctm run job::hold <jobId>
+
+# b) Retirer l'instance de l'AJF du jour
+ctm run job::delete <jobId>
+ctm run job::undelete <jobId>        # annulation, le jour même
+
+# c) Contourner : le job est considéré comme passé, la chaîne CONTINUE
+ctm run job::bypass <jobId|folderId> -f options.json
+```
+
+:::caution[⚠️ Choisir entre delete et bypass — la question à se poser]
+*« La suite de la chaîne doit-elle continuer sans ce job ? »*
+- **Non, tout doit s'arrêter** → `hold` ou `delete` : les successeurs attendent un événement
+  qui ne viendra jamais.
+- **Oui, ce job est devenu inutile mais la chaîne doit finir** → `bypass`, ou publication
+  manuelle de son événement de sortie ([§10.4](#104-poster-une-condition-de-démarrage)).
+
+Se tromper ici, c'est soit bloquer une chaîne toute la nuit, soit laisser partir une suite
+de traitements sur des données qui n'ont pas été produites.
+:::
+
+###### Niveau 2 — arrêter les exécutions futures
+
+Trois écritures, trois sémantiques :
+
+| Objectif | Écriture | Effet |
+|---|---|---|
+| **Suspendre durablement**, réactivation prévue | `"OrderMethod": "Manual"` | Le `When` est **ignoré** ; ordering uniquement sur `ctm run order` |
+| **Arrêter définitivement** l'automatisme | `"When": {"Schedule": "Never"}` | Plus aucun ordonnancement automatique |
+| **Borner dans le temps** (campagne, saison) | `"When": {"EndDate": "20261231"}` | Plus rien après la date |
+
+```bash
+# 1. Sauvegarder la définition actuelle — AVANT toute modification
+ctm deploy folders::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE" \
+    > backup/PRD-BANQUE-CLOTURE.$(date +%Y%m%d-%H%M%S).json
+
+# 2. Modifier le When ou l'OrderMethod dans le JSON, puis
+ctm build  PRD-BANQUE-CLOTURE.json
+ctm deploy PRD-BANQUE-CLOTURE.json
+```
+
+:::tip[✅ Bonne pratique — préférer OrderMethod: Manual à la suppression]
+Une chaîne « qu'on ne veut plus » revient souvent six mois plus tard (audit, régularisation,
+reprise d'activité). `Manual` la rend inerte tout en la **conservant** : elle reste
+documentée, versionnée, et réactivable en une commande. La suppression, elle, est
+définitive ([§10.8](#108-supprimer-une-chaîne)).
+:::
+
+###### En Python — déplanification propre et réversible
+
+```python
+#!/usr/bin/env python3
+"""
+deplanifier_chaine.py — déplanifie une chaîne à deux niveaux, avec sauvegarde.
+
+Niveau 1 (--niveau instance) : neutralise les instances du jour dans l'AJF.
+Niveau 2 (--niveau planification) : bascule le folder en OrderMethod=Manual
+                                    et redéploie, après sauvegarde.
+
+Le script REFUSE d'agir sans sauvegarde préalable réussie : une déplanification
+sans copie de la définition d'origine est un aller simple.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import sys
+from datetime import datetime
+
+import requests
+
+LOG = logging.getLogger("deplanifier")
+BASE_URL = os.environ["CTM_ENDPOINT"].rstrip("/")
+HEADERS = {"x-api-key": os.environ["CTM_API_TOKEN"]}
+TIMEOUT = (5, 60)
+
+
+def sauvegarder_definition(serveur: str, folder: str, dossier: str) -> str:
+    """Exporte la définition actuelle du folder. Retourne le chemin du fichier.
+
+    Cette sauvegarde est la seule chose qui rende l'opération réversible :
+    elle est donc bloquante, pas optionnelle.
+    """
+    os.makedirs(dossier, exist_ok=True)
+    r = requests.get(f"{BASE_URL}/deploy/folders",
+                     headers=HEADERS,
+                     params={"server": serveur, "folder": folder},
+                     timeout=TIMEOUT)
+    r.raise_for_status()
+    definition = r.json()
+    if not definition:
+        raise RuntimeError(f"Aucune définition trouvée pour {folder} sur {serveur}")
+
+    horodatage = datetime.now().strftime("%Y%m%d-%H%M%S")
+    chemin = os.path.join(dossier, f"{folder}.{horodatage}.json")
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+    LOG.info("✓ Sauvegarde : %s", chemin)
+    return chemin
+
+
+def neutraliser_instances(folder: str, mode: str, dry_run: bool) -> int:
+    """Applique hold ou delete à toutes les instances du folder dans l'AJF."""
+    r = requests.get(f"{BASE_URL}/run/jobs/status", headers=HEADERS,
+                     params={"folder": folder}, timeout=TIMEOUT)
+    r.raise_for_status()
+    jobs = r.json().get("statuses", [])
+    LOG.info("%d instance(s) trouvée(s) pour %s", len(jobs), folder)
+
+    traites = 0
+    for job in jobs:
+        job_id = job.get("jobId")
+        if dry_run:
+            LOG.info("  [DRY-RUN] %s %s (%s)", mode, job_id, job.get("name"))
+            traites += 1
+            continue
+        rep = requests.post(f"{BASE_URL}/run/job/{job_id}/{mode}",
+                            headers=HEADERS, timeout=TIMEOUT)
+        if rep.status_code in (200, 201):
+            LOG.info("  ✓ %s %s", mode, job_id)
+            traites += 1
+        else:
+            LOG.warning("  ✗ %s %s : HTTP %s", mode, job_id, rep.status_code)
+    return traites
+
+
+def basculer_en_manuel(chemin_definition: str, dry_run: bool) -> None:
+    """Modifie la définition sauvegardée pour la rendre inerte, puis la redéploie.
+
+    On repart du fichier EXPORTÉ, jamais d'un fichier reconstruit de mémoire :
+    c'est ce qui garantit qu'on ne perd aucun champ au passage.
+    """
+    with open(chemin_definition, encoding="utf-8") as f:
+        definition = json.load(f)
+
+    for nom, corps in definition.items():
+        if isinstance(corps, dict) and corps.get("Type") == "Folder":
+            corps["OrderMethod"] = "Manual"
+            # Trace lisible dans l'outil : l'exploitant comprend au premier coup d'œil
+            corps["Description"] = (
+                f"[DEPLANIFIE le {datetime.now():%Y-%m-%d}] "
+                + corps.get("Description", "")
+            )
+            LOG.info("  → %s : OrderMethod=Manual", nom)
+
+    chemin_modifie = chemin_definition.replace(".json", ".manual.json")
+    with open(chemin_modifie, "w", encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+
+    if dry_run:
+        LOG.info("[DRY-RUN] à déployer : %s", chemin_modifie)
+        return
+
+    with open(chemin_modifie, "rb") as fh:
+        rep = requests.post(f"{BASE_URL}/deploy", headers=HEADERS,
+                            files={"definitionsFile": fh}, timeout=TIMEOUT)
+    rep.raise_for_status()
+    LOG.info("✓ Folder déplanifié (OrderMethod=Manual)")
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Déplanifier une chaîne Control-M")
+    p.add_argument("--serveur", required=True)
+    p.add_argument("--folder", required=True)
+    p.add_argument("--niveau", choices=["instance", "planification", "les-deux"],
+                   default="instance")
+    p.add_argument("--mode-instance", choices=["hold", "delete"], default="hold")
+    p.add_argument("--sauvegarde", default="backup")
+    p.add_argument("--dry-run", action="store_true")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    try:
+        chemin = sauvegarder_definition(args.serveur, args.folder, args.sauvegarde)
+    except Exception as exc:                      # noqa: BLE001
+        LOG.error("Sauvegarde impossible : %s", exc)
+        LOG.error("Opération ANNULÉE : on ne déplanifie pas sans filet.")
+        return 2
+
+    if args.niveau in ("instance", "les-deux"):
+        n = neutraliser_instances(args.folder, args.mode_instance, args.dry_run)
+        LOG.info("✓ %d instance(s) en %s", n, args.mode_instance)
+
+    if args.niveau in ("planification", "les-deux"):
+        basculer_en_manuel(chemin, args.dry_run)
+
+    LOG.info("Pour revenir en arrière : ctm deploy %s", chemin)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+###### Erreurs fréquentes
+
+| Symptôme | Cause | Résolution |
+|---|---|---|
+| La chaîne repart le lendemain | Seules les instances ont été neutralisées (niveau 1) | Agir aussi au niveau 2 |
+| Les chaînes **aval** se bloquent | L'événement de fin n'est jamais publié | Publier manuellement, ou `bypass` |
+| Impossible de réactiver | Aucune sauvegarde de la définition | Restaurer depuis Git ([§19](#19-cicd-et-promotion-denvironnement)) |
+| Le folder est en `Manual` mais tourne quand même | Un `ctm run order` est resté dans un pipeline | Chercher l'appelant, pas le folder |
+
+##### 10.8 Supprimer une chaîne
+
+###### Objectif
+
+Retirer définitivement une chaîne du patrimoine.
+
+:::caution[⚠️ Opération irréversible]
+`ctm deploy folder::delete` supprime la **définition**. Il n'y a pas de corbeille, pas de
+`undelete`. La seule restauration possible est un **redéploiement** depuis une sauvegarde ou
+depuis Git. Cette section est écrite autour de ce seul fait.
+:::
+
+###### La procédure en six étapes
+
+```mermaid
+flowchart TB
+    E1["1 · Analyse d'impact<br/>qui dépend de cette chaîne ?"] --> E2["2 · Sauvegarde de la définition<br/>+ commit Git"]
+    E2 --> E3["3 · Déplanification<br/>OrderMethod = Manual"]
+    E3 --> E4["4 · Période d'observation<br/>2 à 4 semaines"]
+    E4 --> E5["5 · Neutralisation des instances<br/>résiduelles de l'AJF"]
+    E5 --> E6["6 · Suppression<br/>folder::delete"]
+```
+
+:::tip[✅ La période d'observation n'est pas une lourdeur administrative]
+C'est ce qui révèle les dépendances non documentées : le rapport mensuel qui lisait un
+fichier produit par la chaîne, l'équipe qui attendait un événement, le partenaire qui
+recevait un flux. Une chaîne déplanifiée mais conservée se réactive en une commande ;
+une chaîne supprimée se reconstruit en trois jours.
+:::
+
+###### Étape 1 — analyse d'impact
+
+```bash
+# Qui attend un événement produit par cette chaîne ?
+ctm deploy jobs::get -s "server=ctmsrv-prod&folder=*" \
+  | jq -r '.. | objects | select(has("WaitForEvents")) | .WaitForEvents.Events[]?.Event' \
+  | grep -i "PRD-BANQUE-CLOTURE" | sort -u
+
+# Quels événements cette chaîne publie-t-elle ?
+ctm deploy jobs::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE" \
+  | jq -r '.. | objects | select(has("AddEvents")) | .AddEvents.Events[]?.Event' | sort -u
+```
+
+###### Étape 2 — sauvegarde
+
+```bash
+mkdir -p archive/$(date +%Y%m%d)
+ctm deploy folders::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE" \
+    > archive/$(date +%Y%m%d)/PRD-BANQUE-CLOTURE.folder.json
+ctm deploy jobs::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE" \
+    > archive/$(date +%Y%m%d)/PRD-BANQUE-CLOTURE.jobs.json
+
+git add archive/ && git commit -m "archive: PRD-BANQUE-CLOTURE avant suppression"
+```
+
+###### Étapes 5 et 6 — suppression
+
+```bash
+# Instances résiduelles de l'AJF
+ctm run jobs::status -s "folder=PRD-BANQUE-CLOTURE" \
+  | jq -r '.statuses[].jobId' \
+  | while read -r J; do ctm run job::delete "$J"; done
+
+# Suppression de la définition
+ctm deploy folder::delete    ctmsrv-prod PRD-BANQUE-CLOTURE
+ctm deploy job::delete       <cheminJob> [server] [library]      # un job seul
+ctm deploy subfolder::delete <cheminSousFolder> [server] [library]
+
+# Vérification : la commande ne doit plus rien renvoyer
+ctm deploy folders::get -s "server=ctmsrv-prod&folder=PRD-BANQUE-CLOTURE"
+```
+
+###### En Python — suppression avec garde-fous
+
+```python
+#!/usr/bin/env python3
+"""
+supprimer_chaine.py — suppression d'une chaîne Control-M, avec les garde-fous
+qui manquent cruellement quand on fait la manipulation à la main.
+
+Garde-fous implémentés :
+  1. analyse d'impact : refuse si d'autres folders attendent ses événements ;
+  2. archivage obligatoire de la définition avant toute suppression ;
+  3. double confirmation en production, avec saisie du nom exact du folder ;
+  4. mode --dry-run par défaut : il faut --executer pour agir réellement.
+
+Ce script est volontairement paranoïaque. Une suppression de chaîne se fait
+une fois ; une restauration se paie longtemps.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import os
+import sys
+from datetime import datetime
+
+import requests
+
+LOG = logging.getLogger("supprimer_chaine")
+BASE_URL = os.environ["CTM_ENDPOINT"].rstrip("/")
+HEADERS = {"x-api-key": os.environ["CTM_API_TOKEN"]}
+TIMEOUT = (5, 60)
+
+
+def collecter_evenements_publies(serveur: str, folder: str) -> set[str]:
+    """Retourne l'ensemble des événements publiés (AddEvents) par la chaîne."""
+    r = requests.get(f"{BASE_URL}/deploy/jobs", headers=HEADERS,
+                     params={"server": serveur, "folder": folder}, timeout=TIMEOUT)
+    r.raise_for_status()
+    return _extraire_evenements(r.json(), "AddEvents")
+
+
+def collecter_consommateurs(serveur: str, evenements: set[str],
+                            folder_exclu: str) -> dict[str, set[str]]:
+    """Cherche, dans TOUT le patrimoine, qui attend ces événements.
+
+    C'est l'analyse d'impact. Sans elle, on supprime une chaîne et l'on découvre
+    trois semaines plus tard qu'un rapport réglementaire ne part plus.
+    """
+    r = requests.get(f"{BASE_URL}/deploy/jobs", headers=HEADERS,
+                     params={"server": serveur, "folder": "*"}, timeout=(5, 180))
+    r.raise_for_status()
+    tout = r.json()
+
+    impacts: dict[str, set[str]] = {}
+    for nom_folder, contenu in (tout.items() if isinstance(tout, dict) else []):
+        if nom_folder == folder_exclu or not isinstance(contenu, dict):
+            continue
+        attendus = _extraire_evenements({nom_folder: contenu}, "WaitForEvents")
+        communs = attendus & evenements
+        if communs:
+            impacts[nom_folder] = communs
+    return impacts
+
+
+def _extraire_evenements(arbre, cle: str) -> set[str]:
+    """Parcourt récursivement une définition et collecte les noms d'événements.
+
+    Les définitions Control-M sont des arbres imbriqués (folder → sous-folder → job),
+    et le nom de la propriété portant WaitForEvents est libre : seul le champ "Type"
+    est fiable. D'où le parcours récursif plutôt qu'un accès par chemin.
+    """
+    trouves: set[str] = set()
+
+    def descendre(noeud) -> None:
+        if isinstance(noeud, dict):
+            if noeud.get("Type") == cle:
+                for ev in noeud.get("Events", []):
+                    if isinstance(ev, dict) and "Event" in ev:
+                        trouves.add(ev["Event"])
+            for valeur in noeud.values():
+                descendre(valeur)
+        elif isinstance(noeud, list):
+            for valeur in noeud:
+                descendre(valeur)
+
+    descendre(arbre)
+    return trouves
+
+
+def archiver(serveur: str, folder: str, dossier: str) -> str:
+    """Archive folder + jobs. Bloquant : pas d'archive, pas de suppression."""
+    os.makedirs(dossier, exist_ok=True)
+    horodatage = datetime.now().strftime("%Y%m%d-%H%M%S")
+    chemin = os.path.join(dossier, f"{folder}.{horodatage}.json")
+
+    archive = {}
+    for objet in ("folders", "jobs"):
+        r = requests.get(f"{BASE_URL}/deploy/{objet}", headers=HEADERS,
+                         params={"server": serveur, "folder": folder}, timeout=TIMEOUT)
+        r.raise_for_status()
+        archive[objet] = r.json()
+
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump(archive, f, ensure_ascii=False, indent=2)
+    LOG.info("✓ Archive écrite : %s", chemin)
+    return chemin
+
+
+def supprimer(serveur: str, folder: str) -> None:
+    """Supprime définitivement la définition du folder."""
+    r = requests.delete(f"{BASE_URL}/deploy/folder/{serveur}/{folder}",
+                        headers=HEADERS, timeout=TIMEOUT)
+    if r.status_code == 404:
+        LOG.info("Le folder n'existe déjà plus : rien à faire")
+        return
+    r.raise_for_status()
+    LOG.info("✓ Folder %s supprimé", folder)
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Supprimer une chaîne Control-M")
+    p.add_argument("--serveur", required=True)
+    p.add_argument("--folder", required=True)
+    p.add_argument("--archive", default="archive")
+    p.add_argument("--executer", action="store_true",
+                   help="sans ce drapeau, le script se contente d'analyser")
+    p.add_argument("--ignorer-impacts", action="store_true",
+                   help="passer outre l'analyse d'impact (à justifier)")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    # --- 1. Analyse d'impact ------------------------------------------------
+    publies = collecter_evenements_publies(args.serveur, args.folder)
+    LOG.info("La chaîne publie %d événement(s) : %s",
+             len(publies), ", ".join(sorted(publies)) or "aucun")
+
+    if publies:
+        impacts = collecter_consommateurs(args.serveur, publies, args.folder)
+        if impacts:
+            LOG.error("⚠️  %d folder(s) DÉPENDENT de cette chaîne :", len(impacts))
+            for nom, evs in impacts.items():
+                LOG.error("   %-40s attend %s", nom, ", ".join(sorted(evs)))
+            if not args.ignorer_impacts:
+                LOG.error("Suppression ANNULÉE. Traiter les dépendances d'abord,")
+                LOG.error("ou relancer avec --ignorer-impacts si c'est assumé.")
+                return 2
+        else:
+            LOG.info("✓ Aucune dépendance détectée")
+
+    # --- 2. Archivage obligatoire -------------------------------------------
+    chemin = archiver(args.serveur, args.folder, args.archive)
+
+    if not args.executer:
+        LOG.info("Mode analyse : rien n'a été supprimé.")
+        LOG.info("Pour supprimer réellement, relancer avec --executer")
+        return 0
+
+    # --- 3. Double confirmation en production -------------------------------
+    if "prod" in args.serveur.lower():
+        saisie = input(f"⚠️  SUPPRESSION DÉFINITIVE en production.\n"
+                       f"    Retaper exactement le nom du folder pour confirmer : ")
+        if saisie.strip() != args.folder:
+            LOG.info("Nom non confirmé — annulé")
+            return 0
+
+    supprimer(args.serveur, args.folder)
+    LOG.info("Restauration éventuelle : ctm deploy %s", chemin)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+###### Erreurs fréquentes
+
+| Symptôme | Cause | Résolution |
+|---|---|---|
+| `403` | Droit `Delete` absent | Jeton `ADM-PATRIMOINE` ([§9.5](#95-droits-minimum-par-opération)) |
+| Folder supprimé mais jobs encore visibles | Instances toujours dans l'AJF | Les supprimer d'abord |
+| Une chaîne tierce se bloque | Dépendance non détectée | Analyse d'impact **avant** |
+| « On a supprimé le mauvais folder » | Pas de double confirmation | Le script ci-dessus |
+| Impossible de restaurer | Aucune archive | Git + archivage obligatoire |
+
+###### Récapitulatif des huit opérations
+
+| # | Opération | Commande de référence | Réversible ? |
+|---|---|---|---|
+| 1 | Déployer un agent | `ctm provision agent::install` | Oui (`disable`, `delete`) |
+| 2 | Créer un SMART Folder | `ctm deploy <fichier.json>` | Oui (redéploiement) |
+| 3 | Créer des jobs | `ctm deploy <fichier.json>` | Oui (redéploiement) |
+| 4 | Poster une condition | `ctm run event::add` | Oui (`event::delete`) |
+| 5 | Holder un job | `ctm run job::hold` | Oui (`job::free`) |
+| 6 | Planifier une chaîne | `ctm run order` | **Non** — instances créées |
+| 7 | Déplanifier | `job::hold` / `OrderMethod: Manual` | Oui |
+| 8 | Supprimer une chaîne | `ctm deploy folder::delete` | **Non** — archive obligatoire |
+
+---
+#### 11. Le socle Python réutilisable
+
+🔴 Les scripts de [§10](#10-les-huit-opérations-de-a-à-z) sont autonomes, donc chacun réécrit
+l'authentification, les timeouts et la gestion d'erreur. En production, on factorise.
+
+**Ce que ce client apporte, et qu'un `requests.get()` nu n'a pas** :
+
+| Fonction | Pourquoi c'est indispensable |
+|---|---|
+| **Timeouts systématiques** | Sans timeout, un script d'exploitation se fige **indéfiniment** et bloque le job Control-M qui l'appelle |
+| **Retries avec backoff, sur les bonnes opérations seulement** | Rejouer un `order` en timeout, c'est doubler une chaîne de paiement ([§9.4](#94-codes-http-erreurs-idempotence)) |
+| **Erreurs typées** | Un `403` et un `503` appellent des réactions opposées |
+| **Session HTTP réutilisée** | Connexion TCP/TLS gardée : 3 à 5 fois plus rapide sur 100 appels |
+| **Journalisation structurée** | Ce qui rend un incident analysable *a posteriori* |
+| **Mode `dry_run`** | Faire valider une opération de masse **avant** de l'exécuter |
+| **Jeton hors du code** | La base de toute hygiène de sécurité |
+
+```python
+#!/usr/bin/env python3
+"""
+ctm_client.py — client Python pour Control-M Automation API, prêt pour la production.
+
+Installation :
+    pip install requests
+
+Configuration (jamais de secret dans le code) :
+    export CTM_ENDPOINT="https://ctm-em.exemple.fr:8443/automation-api"
+    export CTM_API_TOKEN="<jeton d'API>"
+    export CTM_VERIFY_TLS="/etc/pki/ca-trust/ctm-ca.pem"   # ou "true" / "false"
+
+Exemple :
+    from ctm_client import ControlMClient
+    with ControlMClient.depuis_environnement() as ctm:
+        for job in ctm.statut_jobs(folder="PRD-BANQUE-*"):
+            print(job["status"], job["name"])
+"""
+from __future__ import annotations
+
+import logging
+import os
+import random
+import time
+from dataclasses import dataclass
+from typing import Any, Iterator
+
+import requests
+
+LOG = logging.getLogger("ctm_client")
+
+
+# --------------------------------------------------------------------------- #
+# Erreurs typées
+# --------------------------------------------------------------------------- #
+class ControlMError(Exception):
+    """Erreur de base. Tout ce que lève ce client en hérite."""
+
+
+class ControlMAuthError(ControlMError):
+    """401 — jeton absent, expiré ou invalide. Renouveler, puis abandonner."""
+
+
+class ControlMForbidden(ControlMError):
+    """403 — authentifié mais pas autorisé. NE JAMAIS réessayer : c'est du RBAC."""
+
+
+class ControlMNotFound(ControlMError):
+    """404 — objet inexistant. Souvent normal (suppression déjà faite)."""
+
+
+class ControlMValidationError(ControlMError):
+    """400 — définitions invalides. Corriger, ne pas réessayer. Lancer `ctm build`."""
+
+
+class ControlMServerError(ControlMError):
+    """5xx — erreur serveur. Réessayable avec backoff."""
+
+
+# --------------------------------------------------------------------------- #
+# Configuration
+# --------------------------------------------------------------------------- #
+@dataclass
+class Config:
+    endpoint: str
+    token: str
+    verify_tls: bool | str = True
+    # (connexion, lecture) : la lecture est plus longue car certains GET
+    # de patrimoine balayent tout un serveur.
+    timeout: tuple[int, int] = (5, 60)
+    max_retries: int = 3
+    backoff_base: float = 1.5
+    dry_run: bool = False
+
+    @classmethod
+    def depuis_environnement(cls, **surcharges: Any) -> "Config":
+        """Construit la configuration à partir des variables d'environnement.
+
+        On échoue TÔT et avec un message clair si le jeton manque : mieux vaut
+        un message explicite au démarrage qu'un 401 obscur au 40ᵉ appel.
+        """
+        endpoint = os.environ.get("CTM_ENDPOINT")
+        token = os.environ.get("CTM_API_TOKEN")
+        if not endpoint:
+            raise ControlMError("CTM_ENDPOINT n'est pas défini")
+        if not token:
+            raise ControlMError("CTM_API_TOKEN n'est pas défini")
+
+        brut = os.environ.get("CTM_VERIFY_TLS", "true")
+        if brut.lower() in {"true", "1", "yes"}:
+            verify: bool | str = True
+        elif brut.lower() in {"false", "0", "no"}:
+            # Accepté pour un labo, JAMAIS en production : cela désactive
+            # la vérification du certificat, donc toute protection contre
+            # une interception.
+            LOG.warning("Vérification TLS DÉSACTIVÉE — inacceptable en production")
+            verify = False
+        else:
+            verify = brut                       # chemin vers un bundle de CA
+
+        return cls(endpoint=endpoint.rstrip("/"), token=token,
+                   verify_tls=verify, **surcharges)
+
+
+# --------------------------------------------------------------------------- #
+# Client
+# --------------------------------------------------------------------------- #
+class ControlMClient:
+    """Client HTTP pour l'Automation API.
+
+    Conçu pour être utilisé comme gestionnaire de contexte :
+
+        with ControlMClient.depuis_environnement() as ctm:
+            ...
+
+    ce qui garantit la fermeture propre de la session HTTP.
+    """
+
+    # Les opérations NON idempotentes ne sont jamais rejouées automatiquement.
+    # C'est la règle la plus importante de ce client (§9.4).
+    NON_IDEMPOTENTES = ("/run/order", "/run/ondemand", "/rerun", "/runNow")
+
+    def __init__(self, config: Config) -> None:
+        self.config = config
+        self.session = requests.Session()
+        self.session.headers.update({
+            "x-api-key": config.token,
+            "Accept": "application/json",
+        })
+        self.session.verify = config.verify_tls
+
+    # -- gestion de contexte ------------------------------------------------
+    @classmethod
+    def depuis_environnement(cls, **surcharges: Any) -> "ControlMClient":
+        return cls(Config.depuis_environnement(**surcharges))
+
+    def __enter__(self) -> "ControlMClient":
+        return self
+
+    def __exit__(self, *_exc: Any) -> None:
+        self.session.close()
+
+    # -- cœur : l'appel HTTP ------------------------------------------------
+    def _appeler(self, methode: str, chemin: str, **kwargs: Any) -> Any:
+        """Exécute une requête, avec retries ciblés et erreurs typées."""
+        url = f"{self.config.endpoint}{chemin}"
+        idempotente = (methode.upper() == "GET"
+                       or not any(m in chemin for m in self.NON_IDEMPOTENTES))
+
+        if self.config.dry_run and methode.upper() != "GET":
+            LOG.info("[DRY-RUN] %s %s %s", methode, chemin,
+                     kwargs.get("json") or kwargs.get("params") or "")
+            return {"dry_run": True, "methode": methode, "chemin": chemin}
+
+        derniere: Exception | None = None
+        tentatives = self.config.max_retries if idempotente else 1
+
+        for essai in range(1, tentatives + 1):
+            try:
+                reponse = self.session.request(
+                    methode, url, timeout=self.config.timeout, **kwargs)
+            except (requests.ConnectionError, requests.Timeout) as exc:
+                derniere = exc
+                if essai < tentatives:
+                    self._attendre(essai, f"réseau : {exc}")
+                    continue
+                raise ControlMServerError(
+                    f"{methode} {chemin} : injoignable après {essai} tentative(s)"
+                ) from exc
+
+            # --- interprétation du code HTTP --------------------------------
+            code = reponse.status_code
+            if code in (200, 201, 202, 204):
+                LOG.debug("%s %s → %s", methode, chemin, code)
+                return reponse.json() if reponse.content else {}
+
+            if code == 400:
+                raise ControlMValidationError(
+                    f"{methode} {chemin} : définitions invalides — "
+                    f"{reponse.text[:400]}")
+            if code == 401:
+                raise ControlMAuthError(
+                    f"{methode} {chemin} : jeton invalide ou expiré")
+            if code == 403:
+                # Aucune répétition : réessayer un 403 ne fait que verrouiller
+                # le compte et masquer le vrai problème (habilitation).
+                raise ControlMForbidden(
+                    f"{methode} {chemin} : droits insuffisants — vérifier le RBAC "
+                    f"du jeton (§9.5)")
+            if code == 404:
+                raise ControlMNotFound(f"{methode} {chemin} : objet introuvable")
+
+            if code >= 500:
+                derniere = ControlMServerError(
+                    f"{methode} {chemin} : HTTP {code} — {reponse.text[:200]}")
+                if essai < tentatives:
+                    self._attendre(essai, f"HTTP {code}")
+                    continue
+                raise derniere
+
+            raise ControlMError(
+                f"{methode} {chemin} : HTTP {code} — {reponse.text[:400]}")
+
+        raise ControlMError(str(derniere))       # sécurité : ne devrait pas arriver
+
+    def _attendre(self, essai: int, motif: str) -> None:
+        """Backoff exponentiel avec « jitter ».
+
+        Le jitter (composante aléatoire) évite que dix scripts lancés par la même
+        New Day réessaient tous exactement en même temps et rejouent la surcharge
+        qu'ils viennent de subir.
+        """
+        delai = (self.config.backoff_base ** essai) + random.uniform(0, 0.5)
+        LOG.warning("Tentative %d échouée (%s) — nouvel essai dans %.1f s",
+                    essai, motif, delai)
+        time.sleep(delai)
+
+    # -- verbes ------------------------------------------------------------- #
+    def get(self, chemin: str, **params: Any) -> Any:
+        propres = {k: v for k, v in params.items() if v is not None}
+        return self._appeler("GET", chemin, params=propres)
+
+    def post(self, chemin: str, corps: dict | None = None, **kwargs: Any) -> Any:
+        return self._appeler("POST", chemin, json=corps, **kwargs)
+
+    def delete(self, chemin: str) -> Any:
+        return self._appeler("DELETE", chemin)
+
+    def poster_fichier(self, chemin: str, fichier: str,
+                       champ: str = "definitionsFile") -> Any:
+        """Envoie un fichier de définitions (multipart) — utilisé par /deploy."""
+        if self.config.dry_run:
+            LOG.info("[DRY-RUN] POST %s avec %s", chemin, fichier)
+            return {"dry_run": True}
+        with open(fichier, "rb") as fh:
+            return self._appeler("POST", chemin, files={champ: fh})
+
+    # -- lectures de haut niveau -------------------------------------------- #
+    def statut_jobs(self, **filtres: Any) -> list[dict]:
+        """Retourne les jobs de l'AJF correspondant aux filtres.
+
+        Exemples :
+            ctm.statut_jobs(folder="PRD-BANQUE-*")
+            ctm.statut_jobs(status="Ended Not OK")
+        """
+        donnees = self.get("/run/jobs/status", **filtres)
+        return donnees.get("statuses", []) if isinstance(donnees, dict) else []
+
+    def parcourir_jobs(self, taille_page: int = 500, **filtres: Any) -> Iterator[dict]:
+        """Itère sur les jobs page par page.
+
+        Sur un patrimoine de 50 000 jobs, tout charger en mémoire d'un coup est
+        une mauvaise idée : le script gonfle et l'API souffre. On pagine.
+        """
+        debut = 0
+        while True:
+            page = self.get("/run/jobs/status",
+                            **filtres, startIndex=debut, limit=taille_page)
+            lot = page.get("statuses", []) if isinstance(page, dict) else []
+            if not lot:
+                return
+            yield from lot
+            if len(lot) < taille_page:
+                return
+            debut += taille_page
+
+    def evenements(self) -> list[dict]:
+        resultat = self.get("/run/events")
+        return resultat if isinstance(resultat, list) else resultat.get("events", [])
+
+    def ressources(self, **filtres: Any) -> list[dict]:
+        resultat = self.get("/run/resources", **filtres)
+        return resultat if isinstance(resultat, list) else resultat.get("resources", [])
+
+    def attendre_operation(self, poll_id: str, service: str = "deploy",
+                           timeout_s: int = 900, intervalle_s: int = 5) -> dict:
+        """Attend la fin d'une opération asynchrone (§9.4)."""
+        debut = time.monotonic()
+        while time.monotonic() - debut < timeout_s:
+            etat = self.get(f"/{service}/poll/{poll_id}")
+            statut = str(etat.get("status", etat.get("state", ""))).lower()
+            if statut in {"ended", "completed", "success", "failed", "error"}:
+                return etat
+            time.sleep(intervalle_s)
+        raise ControlMError(f"Opération {poll_id} non terminée après {timeout_s} s")
+
+
+# --------------------------------------------------------------------------- #
+# Démonstration
+# --------------------------------------------------------------------------- #
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO,
+                        format="%(asctime)s %(levelname)-7s %(name)s : %(message)s")
+
+    with ControlMClient.depuis_environnement() as ctm:
+        en_echec = ctm.statut_jobs(status="Ended Not OK")
+        print(f"{len(en_echec)} job(s) en échec :")
+        for job in en_echec[:20]:
+            print(f"  {job.get('folder','?'):<35} {job.get('name','?'):<30} "
+                  f"{job.get('jobId','?')}")
+```
+
+:::tip[✅ Bonne pratique — un paquet interne, pas un copier-coller]
+Publiez ce client comme paquet Python interne (`pip install ctm-client -i <votre-index>`).
+Le jour où l'API change, ou où l'on ajoute une métrique, **un seul** dépôt bouge — au lieu
+de trente scripts dispersés dans autant d'équipes.
+:::
+
+---
+
+#### 12. La bibliothèque d'opérations
+
+🔴 Les huit opérations, en fonctions réutilisables au-dessus du client.
+
+```python
+#!/usr/bin/env python3
+"""
+ctm_ops.py — les huit opérations d'administration Control-M, en fonctions.
+
+S'appuie sur ctm_client.py (§11).
+
+Conception :
+  - chaque fonction fait UNE chose et retourne un résultat exploitable ;
+  - les opérations dangereuses exigent un paramètre explicite (confirmer=True) ;
+  - tout est journalisé, avec l'identité de l'appelant, pour l'audit.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import os
+import subprocess
+import tempfile
+from datetime import datetime
+
+from ctm_client import (ControlMClient, ControlMError, ControlMNotFound)
+
+LOG = logging.getLogger("ctm_ops")
+
+
+# =========================================================================== #
+# 1. Déployer un agent
+# =========================================================================== #
+def deployer_agent(ctm: ControlMClient, *, serveur: str, nom: str,
+                   image: str, port: int = 7006,
+                   config: str | None = None) -> dict:
+    """Installe un agent (CLI) puis vérifie qu'il répond (REST).
+
+    L'installation passe par le CLI `ctm provision` : c'est lui qui orchestre le
+    transfert d'image vers la machine cible. La vérification, elle, passe par REST.
+    """
+    if agent_operationnel(ctm, serveur=serveur, nom=nom):
+        LOG.info("Agent %s déjà opérationnel", nom)
+        return {"agent": nom, "resultat": "DEJA_PRESENT"}
+
+    commande = ["ctm", "provision", "agent::install",
+                image, serveur, nom, str(port)]
+    if config:
+        commande += ["-f", config]
+
+    LOG.info("Installation de %s sur %s", nom, serveur)
+    res = subprocess.run(commande, capture_output=True, text=True,
+                         timeout=1800, check=False)
+    if res.returncode != 0:
+        raise ControlMError(f"Installation de {nom} échouée : "
+                            f"{(res.stderr or res.stdout)[:300]}")
+
+    ok = agent_operationnel(ctm, serveur=serveur, nom=nom)
+    return {"agent": nom, "resultat": "OK" if ok else "INSTALLE_SANS_PING"}
+
+
+def agent_operationnel(ctm: ControlMClient, *, serveur: str, nom: str) -> bool:
+    """Ping d'un agent. Retourne False sur toute erreur, jamais d'exception :
+    un ping est un test, pas une opération critique."""
+    try:
+        ctm.get(f"/config/server/{serveur}/agent/{nom}/ping")
+        return True
+    except ControlMError:
+        return False
+
+
+# =========================================================================== #
+# 2 & 3. Créer un SMART Folder et des jobs
+# =========================================================================== #
+def valider_definition(definition: dict) -> None:
+    """Passe la définition par `ctm build`. Lève une exception si invalide."""
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False,
+                                     encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+        chemin = f.name
+    res = subprocess.run(["ctm", "build", chemin],
+                         capture_output=True, text=True, check=False)
+    os.unlink(chemin)
+    if res.returncode != 0:
+        raise ControlMError(f"ctm build a échoué :\n{res.stdout}\n{res.stderr}")
+    LOG.info("✓ ctm build : définition valide")
+
+
+def deployer_definition(ctm: ControlMClient, definition: dict,
+                        *, valider: bool = True,
+                        sauvegarder_dans: str | None = None) -> dict:
+    """Déploie une définition (folder, jobs, calendriers…).
+
+    `ctm deploy` est un UPSERT : il écrase la définition existante du même nom.
+    D'où la sauvegarde préalable, qui est la seule voie de retour arrière.
+    """
+    if valider:
+        valider_definition(definition)
+
+    if sauvegarder_dans:
+        for nom in definition:
+            _sauvegarder_folder(ctm, nom, sauvegarder_dans)
+
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False,
+                                     encoding="utf-8") as f:
+        json.dump(definition, f, ensure_ascii=False, indent=2)
+        chemin = f.name
+    try:
+        return ctm.poster_fichier("/deploy", chemin)
+    finally:
+        os.unlink(chemin)
+
+
+def _sauvegarder_folder(ctm: ControlMClient, folder: str, dossier: str) -> None:
+    """Exporte la définition existante avant écrasement. Silencieux si absente."""
+    os.makedirs(dossier, exist_ok=True)
+    try:
+        actuel = ctm.get("/deploy/folders", folder=folder)
+    except ControlMNotFound:
+        LOG.info("Aucune version existante de %s : premier déploiement", folder)
+        return
+    if not actuel:
+        return
+    chemin = os.path.join(
+        dossier, f"{folder}.{datetime.now():%Y%m%d-%H%M%S}.json")
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump(actuel, f, ensure_ascii=False, indent=2)
+    LOG.info("Sauvegarde avant écrasement : %s", chemin)
+
+
+# =========================================================================== #
+# 4. Poster / supprimer une condition
+# =========================================================================== #
+def poster_condition(ctm: ControlMClient, *, serveur: str, nom: str,
+                     date: str = "ODAT") -> dict:
+    LOG.info("Publication de l'événement %s (%s) sur %s", nom, date, serveur)
+    return ctm.post("/run/event",
+                    {"server": serveur, "name": nom, "date": date})
+
+
+def supprimer_condition(ctm: ControlMClient, *, serveur: str, nom: str,
+                        date: str = "ODAT") -> None:
+    try:
+        ctm.delete(f"/run/event/{serveur}/{nom}/{date}")
+        LOG.info("Événement %s supprimé", nom)
+    except ControlMNotFound:
+        # Absent = état voulu atteint. On ne fait pas échouer un script pour ça.
+        LOG.info("Événement %s déjà absent", nom)
+
+
+# =========================================================================== #
+# 5. Hold / Free
+# =========================================================================== #
+def holder_jobs(ctm: ControlMClient, *, filtre: dict,
+                fichier_etat: str | None = None) -> list[str]:
+    """Suspend les jobs correspondant au filtre et mémorise lesquels.
+
+    Le fichier d'état est ce qui permettra de ne libérer QUE ces jobs-là (§10.5).
+    """
+    jobs = ctm.statut_jobs(**filtre)
+    suspendus: list[str] = []
+
+    for job in jobs:
+        statut = (job.get("status") or "").lower()
+        if "hold" in statut:
+            continue                       # déjà suspendu par quelqu'un d'autre
+        job_id = job.get("jobId")
+        try:
+            ctm.post(f"/run/job/{job_id}/hold")
+            suspendus.append(job_id)
+            LOG.info("⏸ %s (%s)", job_id, job.get("name"))
+        except ControlMError as exc:
+            LOG.warning("Hold impossible sur %s : %s", job_id, exc)
+
+    if fichier_etat:
+        with open(fichier_etat, "w", encoding="utf-8") as f:
+            json.dump({"horodatage": datetime.now().isoformat(timespec="seconds"),
+                       "filtre": filtre,
+                       "operateur": os.environ.get("USER",
+                                                   os.environ.get("USERNAME", "?")),
+                       "suspendus": suspendus}, f, ensure_ascii=False, indent=2)
+    return suspendus
+
+
+def liberer_jobs(ctm: ControlMClient, *, fichier_etat: str) -> int:
+    """Libère exactement les jobs listés dans le fichier d'état."""
+    with open(fichier_etat, encoding="utf-8") as f:
+        etat = json.load(f)
+
+    liberes = 0
+    for job_id in etat["suspendus"]:
+        try:
+            ctm.post(f"/run/job/{job_id}/free")
+            liberes += 1
+            LOG.info("▶ %s", job_id)
+        except ControlMError as exc:
+            LOG.error("Libération impossible sur %s : %s", job_id, exc)
+    return liberes
+
+
+# =========================================================================== #
+# 6. Planifier
+# =========================================================================== #
+def planifier(ctm: ControlMClient, *, serveur: str, folder: str,
+              jobs: str | None = None, odate: str | None = None,
+              hold: bool = False, variables: dict[str, str] | None = None,
+              verifier_doublons: bool = True) -> dict:
+    """Ordonnance une chaîne.
+
+    ⚠️ NON idempotent : deux appels = deux exécutions. Le contrôle de doublon
+    est activé par défaut, et ne doit être désactivé qu'en connaissance de cause.
+    """
+    if verifier_doublons:
+        existantes = ctm.statut_jobs(folder=folder,
+                                     **({"odate": odate} if odate else {}))
+        if existantes:
+            raise ControlMError(
+                f"{len(existantes)} instance(s) existent déjà pour {folder}. "
+                f"Ordonnancer à nouveau créerait des doublons "
+                f"(passer verifier_doublons=False si c'est voulu).")
+
+    charge: dict = {"ctm": serveur, "folder": folder, "hold": hold}
+    if jobs:
+        charge["jobs"] = jobs
+    if odate:
+        charge["orderDate"] = odate
+    if variables:
+        charge["variables"] = [{k: v} for k, v in variables.items()]
+
+    LOG.info("Ordering %s sur %s (hold=%s, odate=%s)",
+             folder, serveur, hold, odate or "courante")
+    return ctm.post("/run/order", charge)
+
+
+# =========================================================================== #
+# 7. Déplanifier
+# =========================================================================== #
+def deplanifier(ctm: ControlMClient, *, serveur: str, folder: str,
+                niveau: str = "instance", mode: str = "hold",
+                sauvegarde: str = "backup") -> dict:
+    """Déplanifie une chaîne.
+
+    niveau="instance"      : neutralise les instances du jour (réversible)
+    niveau="planification" : bascule le folder en OrderMethod=Manual (réversible
+                             par redéploiement de la sauvegarde)
+    """
+    _sauvegarder_folder(ctm, folder, sauvegarde)
+    resultat = {"folder": folder, "niveau": niveau}
+
+    if niveau in ("instance", "les-deux"):
+        traites = 0
+        for job in ctm.statut_jobs(folder=folder):
+            try:
+                ctm.post(f"/run/job/{job['jobId']}/{mode}")
+                traites += 1
+            except ControlMError as exc:
+                LOG.warning("%s impossible sur %s : %s", mode, job.get("jobId"), exc)
+        resultat["instances_traitees"] = traites
+
+    if niveau in ("planification", "les-deux"):
+        definition = ctm.get("/deploy/folders", server=serveur, folder=folder)
+        for corps in definition.values():
+            if isinstance(corps, dict) and corps.get("Type") == "Folder":
+                corps["OrderMethod"] = "Manual"
+                corps["Description"] = (
+                    f"[DEPLANIFIE {datetime.now():%Y-%m-%d}] "
+                    + corps.get("Description", ""))
+        deployer_definition(ctm, definition, valider=True)
+        resultat["planification"] = "OrderMethod=Manual"
+
+    return resultat
+
+
+# =========================================================================== #
+# 8. Supprimer
+# =========================================================================== #
+def supprimer_chaine(ctm: ControlMClient, *, serveur: str, folder: str,
+                     confirmer: bool = False,
+                     archive: str = "archive") -> dict:
+    """Supprime définitivement une chaîne.
+
+    `confirmer=True` est OBLIGATOIRE : sans lui, la fonction se contente
+    d'archiver et de rendre compte. C'est volontaire — une suppression ne doit
+    jamais pouvoir arriver « par accident » au détour d'un refactoring.
+    """
+    os.makedirs(archive, exist_ok=True)
+    contenu = {
+        "folders": ctm.get("/deploy/folders", server=serveur, folder=folder),
+        "jobs": ctm.get("/deploy/jobs", server=serveur, folder=folder),
+    }
+    chemin = os.path.join(archive, f"{folder}.{datetime.now():%Y%m%d-%H%M%S}.json")
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump(contenu, f, ensure_ascii=False, indent=2)
+    LOG.info("Archive : %s", chemin)
+
+    if not confirmer:
+        LOG.warning("confirmer=False : archivage effectué, RIEN n'a été supprimé")
+        return {"archive": chemin, "supprime": False}
+
+    for job in ctm.statut_jobs(folder=folder):
+        try:
+            ctm.post(f"/run/job/{job['jobId']}/delete")
+        except ControlMError as exc:
+            LOG.warning("Suppression d'instance impossible : %s", exc)
+
+    ctm.delete(f"/deploy/folder/{serveur}/{folder}")
+    LOG.info("✓ %s supprimé — restauration : ctm deploy %s", folder, chemin)
+    return {"archive": chemin, "supprime": True}
+```
+
+**Utilisation** :
+
+```python
+import logging
+from ctm_client import ControlMClient
+import ctm_ops as ops
+
+logging.basicConfig(level=logging.INFO)
+
+with ControlMClient.depuis_environnement(dry_run=True) as ctm:
+    # Suspendre une chaîne pendant une maintenance
+    ops.holder_jobs(ctm, filtre={"folder": "PRD-COMPTA-*"},
+                    fichier_etat="maintenance-20260903.json")
+
+    # … maintenance …
+
+    ops.liberer_jobs(ctm, fichier_etat="maintenance-20260903.json")
+```
+
+:::tip[✅ Bonne pratique — dry_run=True par défaut dans les scripts d'astreinte]
+Un script d'exploitation lancé à 3 h du matin par quelqu'un qui n'est pas son auteur doit
+**montrer** ce qu'il ferait avant de le faire. Le passage en mode réel est une décision
+explicite, pas un défaut.
+:::
+
+---
+### Partie D — Automatisation par secteur
+
+> Cinq secteurs, cinq contraintes métier différentes, **cinq scripts Python réellement
+> différents** — pas cinq variantes du même. Chacun illustre un usage distinct de l'API :
+>
+> | Secteur | Contrainte dominante | Ce que le script automatise |
+> |---|---|---|
+> | Banque | Irréversibilité des paiements | Rejeu **idempotent** et contrôle de SLA |
+> | Énergie | Volume massif, fenêtre de marché | **Dimensionnement dynamique** des ressources |
+> | Transport | Référentiel qui change souvent | **Génération** de chaînes depuis un référentiel |
+> | Santé | Confidentialité et traçabilité | **Audit de conformité** du patrimoine |
+> | Éducation | Saisonnalité extrême | **Activation/désactivation** de campagnes |
+
+---
+
+#### 13. Banque et finance
+
+##### 13.1 Le contexte
+
+🟢 La production bancaire est faite de **chaînes nocturnes** dont le résultat part vers
+l'extérieur : virements, prélèvements, déclarations réglementaires, relevés clients.
+
+| Contrainte | Conséquence sur l'ordonnancement |
+|---|---|
+| **Irréversibilité** | Un virement parti ne revient pas : la rejouabilité est un enjeu de conception, pas de confort |
+| **SLA réglementaire** | Un fichier remis après l'heure = pénalité, voire incident déclarable |
+| **Calendrier des places** | Ce ne sont pas les fériés nationaux qui comptent, mais les jours d'ouverture des marchés |
+| **Piste d'audit** | Qui a relancé quoi, quand, pourquoi — conservé plusieurs années |
+| **Séparation des tâches** | Celui qui développe ne déploie pas en production |
+
+##### 13.2 La chaîne de clôture quotidienne
+
+```mermaid
+flowchart TB
+    A["ATTENTE-FIN-CAISSE<br/>FileWatcher"] --> B["EXTRACTION-OPERATIONS<br/>pool Oracle ×4"]
+    B --> C["CONTROLE-COHERENCE"]
+    C -->|"anomalies = 0"| D["CALCUL-SOLDES<br/>verrou exclusif"]
+    C -->|"anomalies > 0"| X["🚨 ALERTE CONTRÔLE INTERNE<br/>chaîne suspendue"]
+    D --> E["GENERATION-SEPA<br/>⚠️ non rejouable"]
+    D --> F["EDITION-RELEVES"]
+    E --> G["TRANSMISSION-BANQUE-CENTRALE<br/>MFT — SLA 06:00"]
+    F --> H["ARCHIVAGE"]
+    G --> I["CONFIRMATION-RECEPTION"]
+```
+
+```json
+{
+  "PRD-BANQUE-CLOTURE": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+    "Application": "BANQUE",
+    "SubApplication": "CLOTURE-QUOTIDIENNE",
+    "RunAs": "svc_banque",
+    "Description": "Cloture quotidienne — SLA transmission 06:00",
+
+    "When": {
+      "WeekDays": ["MON", "TUE", "WED", "THU", "FRI"],
+      "RuleBasedCalendars": {
+        "Included": ["JOURS-OUVRES-BANCAIRES"],
+        "Excluded": ["FERIES-TARGET2"],
+        "Relationship": "AND"
+      },
+      "FromTime": "2200",
+      "ToTime": "0700"
+    },
+
+    "SLA": {
+      "Type": "Job:SLAManagement",
+      "ServiceName": "Cloture quotidienne",
+      "ServicePriority": "1",
+      "CompleteBy": {"Time": "0600", "Days": "0"},
+      "CreatedBy": "svc_banque"
+    },
+
+    "ATTENTE-FIN-CAISSE": {
+      "Type": "Job:FileWatcher",
+      "Host": "srvapp01",
+      "Path": "/data/banque/prod/depot/FIN_CAISSE_%%ODATE.flag",
+      "SearchInterval": "60",
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-FIN-CAISSE"}]}
+    },
+
+    "GENERATION-SEPA": {
+      "Type": "Job:Command",
+      "Command": "/opt/banque/generer_sepa.sh %%ODATE",
+      "Host": "srvapp01",
+      "Description": "ATTENTION : produit un fichier de virements. Rejeu controle.",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-SOLDES-OK"}]},
+      "VerrouSepa": {"Type": "Resource:Lock", "LockType": "Exclusive"},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-SEPA-GENERE"}]},
+      "SiEchec": {
+        "Type": "If",
+        "CompletionStatus": "NOTOK",
+        "AlerteImmediate": {
+          "Type": "Mail",
+          "To": "astreinte-paiements@exemple.fr",
+          "Subject": "[CRITIQUE] Echec generation SEPA du %%ODATE",
+          "Message": "NE PAS RELANCER sans verifier l'etat du fichier de sortie."
+        }
+      }
+    },
+
+    "TRANSMISSION-BANQUE-CENTRALE": {
+      "Type": "Job:FileTransfer",
+      "ConnectionProfileSrc": "LOCAL-BANQUE",
+      "ConnectionProfileDest": "SFTP-BANQUE-CENTRALE",
+      "Host": "srvmft01",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-BANQUE-SEPA-GENERE"}]},
+      "FileTransfers": [{
+        "Src": "/data/banque/prod/sortie/sepa_%%ODATE.xml",
+        "Dest": "/depot/entrant/",
+        "TransferType": "Binary",
+        "TransferOption": "SrcToDest"
+      }],
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-BANQUE-TRANSMISSION-OK"}]}
+    }
+  }
+}
+```
+
+##### 13.3 Points d'exploitation
+
+| Point | Ce qu'il faut faire |
+|---|---|
+| **Le job SEPA n'est pas rejouable à l'aveugle** | La consigne est écrite **dans la `Description`** : c'est ce que lira l'exploitant à 3 h |
+| **SLA à 06:00** | Un service SLA est défini : l'alerte part **avant** l'échéance, pas après |
+| **Calendrier `FERIES-TARGET2`** | Les jours de fermeture des systèmes de paiement européens, pas les fériés français |
+| **Verrou exclusif sur SEPA** | Deux générations simultanées produiraient deux fichiers de virements |
+
+##### 13.4 Idempotence et rejouabilité
+
+🔴 **Le sujet central du secteur.** Un job à effet externe irréversible doit pouvoir être
+relancé **sans conséquence** s'il a déjà produit son effet.
+
+```bash
+#!/bin/bash
+# generer_sepa.sh — modèle de job idempotent pour un traitement irréversible
+set -euo pipefail
+
+ODATE="$1"                                          # ⚠️ jamais date +%Y%m%d (§6.6)
+FICHIER_SORTIE="/data/banque/prod/sortie/sepa_${ODATE}.xml"
+TEMOIN="/data/banque/prod/temoins/sepa_${ODATE}.done"
+
+# --- 1. Le travail a-t-il déjà été fait pour cette date de traitement ? -----
+if [[ -f "$TEMOIN" ]]; then
+    echo "INFO : SEPA du $ODATE déjà généré le $(cat "$TEMOIN")."
+    echo "INFO : rejeu sans effet — sortie en succès."
+    exit 0                                   # ✅ succès, sans rien refaire
+fi
+
+# --- 2. Production dans un fichier temporaire ------------------------------
+# On n'écrit JAMAIS directement dans le fichier final : un plantage à mi-course
+# laisserait un fichier partiel que la transmission enverrait quand même.
+TEMPORAIRE="${FICHIER_SORTIE}.tmp.$$"
+/opt/banque/bin/sepa_generator --date "$ODATE" --out "$TEMPORAIRE"
+
+# --- 3. Contrôles avant publication ----------------------------------------
+NB=$(grep -c "<CdtTrfTxInf>" "$TEMPORAIRE" || true)
+if [[ "$NB" -eq 0 ]]; then
+    echo "ERREUR : aucune transaction générée pour $ODATE" >&2
+    rm -f "$TEMPORAIRE"
+    exit 1
+fi
+
+# --- 4. Publication atomique ------------------------------------------------
+# mv sur le même système de fichiers est atomique : le fichier final apparaît
+# complet, ou n'apparaît pas. Pas d'état intermédiaire visible.
+mv "$TEMPORAIRE" "$FICHIER_SORTIE"
+date -Iseconds > "$TEMOIN"
+
+echo "OK : $NB transactions générées dans $FICHIER_SORTIE"
+```
+
+| Principe | Mise en œuvre |
+|---|---|
+| **Témoin par ODATE** | Un fichier (ou une ligne en base) indexé par la date de traitement |
+| **Sortir en succès si déjà fait** | Le rejeu ne casse pas la chaîne |
+| **Écriture temporaire puis `mv`** | Pas de fichier partiel exploitable |
+| **Contrôle avant publication** | On ne transmet pas un fichier vide |
+| **ODATE en argument** | Rejouable à n'importe quelle date ([§6.6](#66-odate-contre-date-système)) |
+
+:::tip[✅ Ce que cela change concrètement]
+Avec ce motif, la reprise après une restauration de base ([§2.10](#210-sauvegarde-et-restauration-cohérentes))
+devient possible : on relance **toute** la chaîne, et seuls les traitements réellement
+manquants s'exécutent. Sans lui, chaque reprise est une opération manuelle à haut risque.
+:::
+
+##### 13.5 Le script : surveillance du SLA avec escalade
+
+```python
+#!/usr/bin/env python3
+"""
+surveillance_sla_banque.py — surveille l'avancement de la chaîne de clôture
+et alerte AVANT le dépassement du SLA, pas après.
+
+Le principe : à intervalle régulier, on compare l'avancement réel au « chemin
+de fer » attendu (chaque jalon a une heure limite). Dès qu'un jalon est en
+retard, on alerte — avec un niveau d'urgence qui dépend de la marge restante.
+
+Exécuté comme job Control-M cyclique (toutes les 10 minutes, 22:00–07:00),
+il transforme un SLA subi en SLA piloté.
+"""
+from __future__ import annotations
+
+import logging
+import sys
+from dataclasses import dataclass
+from datetime import datetime, time, timedelta
+
+from ctm_client import ControlMClient, ControlMError
+
+LOG = logging.getLogger("sla_banque")
+
+
+@dataclass
+class Jalon:
+    """Un point de passage de la chaîne, avec son heure limite."""
+    evenement: str          # l'événement qui matérialise le franchissement
+    libelle: str
+    heure_limite: time
+    criticite: str          # "bloquant" ou "avertissement"
+
+
+# Le « chemin de fer » de la clôture : chaque étape a une heure limite,
+# calculée à rebours depuis le SLA de transmission (06:00).
+CHEMIN_DE_FER = [
+    Jalon("PRD-BANQUE-FIN-CAISSE",      "Fin de caisse reçue",        time(23, 0), "bloquant"),
+    Jalon("PRD-BANQUE-EXTRACTION-OK",   "Extraction terminée",        time(0, 30), "bloquant"),
+    Jalon("PRD-BANQUE-CONTROLE-OK",     "Contrôles validés",          time(1, 30), "bloquant"),
+    Jalon("PRD-BANQUE-SOLDES-OK",       "Soldes calculés",            time(3, 0),  "bloquant"),
+    Jalon("PRD-BANQUE-SEPA-GENERE",     "Fichier SEPA généré",        time(4, 30), "bloquant"),
+    Jalon("PRD-BANQUE-TRANSMISSION-OK", "Transmission effectuée",     time(6, 0),  "bloquant"),
+]
+
+SLA_FINAL = time(6, 0)
+
+
+def evenements_presents(ctm: ControlMClient) -> set[str]:
+    """Retourne l'ensemble des noms d'événements actuellement publiés."""
+    return {e.get("name", "") for e in ctm.evenements()}
+
+
+def maintenant_logique() -> datetime:
+    """Heure courante — isolée dans une fonction pour être testable.
+
+    En test, on remplace cette fonction pour rejouer un scénario de nuit
+    entière en trois secondes.
+    """
+    return datetime.now()
+
+
+def evaluer(presents: set[str], instant: datetime) -> list[dict]:
+    """Compare l'avancement réel au chemin de fer et retourne les écarts."""
+    ecarts = []
+    for jalon in CHEMIN_DE_FER:
+        if jalon.evenement in presents:
+            continue                                   # jalon franchi : rien à dire
+
+        limite = datetime.combine(instant.date(), jalon.heure_limite)
+        # Les jalons d'avant minuit appartiennent à la veille : sans ce
+        # recalage, le jalon « 23:00 » serait jugé en retard dès 00:01.
+        if jalon.heure_limite >= time(22, 0):
+            limite -= timedelta(days=1)
+
+        if instant > limite:
+            retard = instant - limite
+            marge = datetime.combine(instant.date(), SLA_FINAL) - instant
+            ecarts.append({
+                "jalon": jalon.libelle,
+                "evenement": jalon.evenement,
+                "retard_min": int(retard.total_seconds() // 60),
+                "marge_sla_min": int(marge.total_seconds() // 60),
+                "criticite": jalon.criticite,
+            })
+    return ecarts
+
+
+def niveau_alerte(ecart: dict) -> str:
+    """Gradue l'urgence selon la marge restante avant le SLA.
+
+    C'est ce qui évite le réflexe « tout est rouge, donc rien n'est rouge » :
+    l'astreinte n'est réveillée que quand la marge est réellement compromise.
+    """
+    marge = ecart["marge_sla_min"]
+    if marge <= 0:
+        return "SLA DEPASSE"
+    if marge < 30:
+        return "CRITIQUE"
+    if marge < 90:
+        return "URGENT"
+    return "VIGILANCE"
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    try:
+        with ControlMClient.depuis_environnement() as ctm:
+            presents = evenements_presents(ctm)
+            instant = maintenant_logique()
+            ecarts = evaluer(presents, instant)
+
+            franchis = len(CHEMIN_DE_FER) - len(ecarts)
+            LOG.info("Avancement : %d/%d jalons franchis à %s",
+                     franchis, len(CHEMIN_DE_FER), instant.strftime("%H:%M"))
+
+            if not ecarts:
+                LOG.info("✓ Chaîne conforme au chemin de fer")
+                return 0
+
+            pire = "VIGILANCE"
+            for ecart in ecarts:
+                niveau = niveau_alerte(ecart)
+                LOG.warning("[%s] %s — retard %d min, marge SLA %d min",
+                            niveau, ecart["jalon"],
+                            ecart["retard_min"], ecart["marge_sla_min"])
+                if ["VIGILANCE", "URGENT", "CRITIQUE", "SLA DEPASSE"].index(niveau) > \
+                   ["VIGILANCE", "URGENT", "CRITIQUE", "SLA DEPASSE"].index(pire):
+                    pire = niveau
+
+            # Code retour gradué : le job Control-M appelant peut déclencher
+            # des actions On/Do différentes selon le niveau (§8).
+            return {"VIGILANCE": 1, "URGENT": 2,
+                    "CRITIQUE": 3, "SLA DEPASSE": 4}[pire]
+
+    except ControlMError as exc:
+        LOG.error("Supervision impossible : %s", exc)
+        return 9          # code distinct : c'est la SUPERVISION qui est en panne,
+                          # pas forcément la chaîne
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+---
+
+#### 14. Énergie et utilities
+
+##### 14.1 Le contexte
+
+🟢 Le secteur de l'énergie combine deux contraintes rarement réunies : **des volumes de données
+considérables** (des millions de compteurs communicants) et **des fenêtres de marché
+inflexibles** (les nominations d'énergie se déposent avant une heure précise, sinon la position
+est réputée nulle).
+
+| Contrainte | Conséquence |
+|---|---|
+| **Volume massif** | Le parallélisme doit être **piloté**, pas subi : d'où les ressources quantitatives |
+| **Fenêtre de marché J‑1** | Un dépôt à 12 h 01 pour une échéance à 12 h 00 n'existe pas |
+| **Saisonnalité** | La charge d'hiver n'est pas celle d'été : le dimensionnement doit s'adapter |
+| **Données temps réel** | Les prévisions se recalculent en continu → jobs cycliques |
+| **Réglementation** | Traçabilité des données de comptage |
+
+##### 14.2 La chaîne de collecte et de nomination
+
+```mermaid
+flowchart TB
+    A["COLLECTE-COMPTEURS<br/>N jobs parallèles<br/>pool RELEVE ×20"] --> B["AGREGATION-REGIONALE"]
+    B --> C["CONTROLE-QUALITE<br/>taux de complétude"]
+    C -->|"complétude ≥ 98 %"| D["PREVISION-CHARGE"]
+    C -->|"complétude < 98 %"| R["RELANCE-COLLECTE<br/>compteurs manquants"]
+    R --> B
+    D --> E["CALCUL-NOMINATION"]
+    E --> F["DEPOT-MARCHE<br/>⏰ SLA 12:00 strict"]
+    F --> G["ACQUITTEMENT-GRT"]
+```
+
+```json
+{
+  "PRD-ENERGIE-NOMINATION": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+    "Application": "ENERGIE",
+    "SubApplication": "NOMINATION-J1",
+    "RunAs": "svc_energie",
+    "When": {"Schedule": "Everyday", "FromTime": "0400", "ToTime": "1200"},
+
+    "SLA": {
+      "Type": "Job:SLAManagement",
+      "ServiceName": "Nomination J-1",
+      "ServicePriority": "1",
+      "CompleteBy": {"Time": "1130", "Days": "0"},
+      "CreatedBy": "svc_energie"
+    },
+
+    "CONTROLE-QUALITE": {
+      "Type": "Job:Command",
+      "Command": "/opt/energie/controle_qualite.sh %%ODATE %%SEUIL_COMPLETUDE",
+      "Host": "srvdata01",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-ENERGIE-AGREGATION-OK"}]},
+      "SiCompletudeInsuffisante": {
+        "Type": "If",
+        "CompletionCode": "= 2",
+        "RelancerCollecte": {"Type": "Event:Add",
+                             "Events": [{"Event": "PRD-ENERGIE-RELANCE-REQUISE"}]},
+        "PrevenirDonnees": {
+          "Type": "Mail",
+          "To": "qualite-donnees@exemple.fr",
+          "Subject": "[ENERGIE] Completude insuffisante le %%ODATE",
+          "Message": "Relance automatique de la collecte declenchee."
+        }
+      },
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-ENERGIE-QUALITE-OK"}]}
+    },
+
+    "DEPOT-MARCHE": {
+      "Type": "Job:FileTransfer",
+      "ConnectionProfileSrc": "LOCAL-ENERGIE",
+      "ConnectionProfileDest": "SFTP-GRT",
+      "Host": "srvmft01",
+      "Description": "Depot de nomination — echeance stricte 12:00",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-ENERGIE-NOMINATION-CALCULEE"}]},
+      "FileTransfers": [{
+        "Src": "/data/energie/nomination_%%ODATE.xml",
+        "Dest": "/incoming/nominations/",
+        "TransferType": "Binary",
+        "TransferOption": "SrcToDest"
+      }],
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-ENERGIE-DEPOT-OK"}]}
+    }
+  }
+}
+```
+
+##### 14.3 Le script : dimensionnement dynamique des ressources
+
+🔴 **L'automatisation la plus rentable du secteur.** Le pool de collecte est dimensionné pour
+l'hiver : en été il bride inutilement, et lors d'un rattrapage massif il devient le goulot.
+Un script ajuste la capacité selon la charge réelle et l'échéance restante.
+
+```python
+#!/usr/bin/env python3
+"""
+piloter_ressources_energie.py — ajuste dynamiquement la capacité des pools de
+collecte en fonction du volume à traiter et du temps restant avant l'échéance.
+
+Le raisonnement :
+    capacité_nécessaire ≈ (travail_restant / temps_restant) × durée_unitaire
+
+On borne ensuite cette valeur par la capacité TECHNIQUE réelle du système source :
+augmenter le pool au-delà ne ferait qu'écrouler la base de comptage — le pool
+protège une capacité, il ne la crée pas (§5.4).
+
+Exécuté toutes les 15 minutes entre 04:00 et 11:00 comme job Control-M cyclique.
+"""
+from __future__ import annotations
+
+import logging
+import math
+import sys
+from dataclasses import dataclass
+from datetime import datetime, time
+
+from ctm_client import ControlMClient, ControlMError
+
+LOG = logging.getLogger("ressources_energie")
+
+
+@dataclass
+class PolitiquePool:
+    """Règles de pilotage d'un pool de ressources."""
+    nom: str
+    capacite_min: int          # plancher : en dessous, la chaîne n'avance plus
+    capacite_max: int          # plafond TECHNIQUE du système protégé — jamais dépassé
+    duree_unitaire_min: float  # durée moyenne d'un job consommant 1 unité
+    echeance: time
+
+
+POLITIQUES = [
+    PolitiquePool("PRD-ENERGIE-COLLECTE", capacite_min=5, capacite_max=40,
+                  duree_unitaire_min=6.0, echeance=time(11, 0)),
+    PolitiquePool("PRD-ENERGIE-AGREGATION", capacite_min=2, capacite_max=12,
+                  duree_unitaire_min=15.0, echeance=time(11, 30)),
+]
+
+
+def travail_restant(ctm: ControlMClient, prefixe_folder: str) -> int:
+    """Compte les jobs qui n'ont pas encore terminé.
+
+    On considère « restant » tout ce qui n'est ni terminé OK ni supprimé :
+    un job en attente de ressource fait bien partie du travail à faire.
+    """
+    jobs = ctm.statut_jobs(folder=prefixe_folder)
+    termines = {"ended ok", "ended not ok", "deleted"}
+    return sum(1 for j in jobs
+               if (j.get("status") or "").lower() not in termines)
+
+
+def capacite_actuelle(ctm: ControlMClient, nom_pool: str) -> int | None:
+    """Lit la capacité configurée d'un pool. None si le pool n'existe pas."""
+    for res in ctm.ressources(name=nom_pool):
+        if res.get("name") == nom_pool:
+            # Le nom du champ varie selon la version : on tente les plus courants
+            for cle in ("max", "maxQuantity", "quantity", "total"):
+                if cle in res:
+                    return int(res[cle])
+    return None
+
+
+def capacite_cible(restant: int, politique: PolitiquePool,
+                   instant: datetime) -> int:
+    """Calcule la capacité nécessaire pour tenir l'échéance."""
+    echeance = datetime.combine(instant.date(), politique.echeance)
+    minutes_restantes = (echeance - instant).total_seconds() / 60
+
+    if restant == 0:
+        return politique.capacite_min           # plus rien à faire : on relâche
+    if minutes_restantes <= 0:
+        # Échéance dépassée : on met tout ce qu'on peut, la question du
+        # dimensionnement fin ne se pose plus.
+        LOG.warning("Échéance de %s dépassée — capacité au maximum",
+                    politique.nom)
+        return politique.capacite_max
+
+    # Combien de « vagues » de jobs peut-on encore enchaîner ?
+    vagues_possibles = max(1.0, minutes_restantes / politique.duree_unitaire_min)
+    besoin = math.ceil(restant / vagues_possibles)
+
+    # Bornage : jamais sous le plancher, jamais au-dessus du plafond technique
+    return max(politique.capacite_min, min(politique.capacite_max, besoin))
+
+
+def ajuster(ctm: ControlMClient, serveur: str, politique: PolitiquePool,
+            cible: int, actuelle: int | None, dry_run: bool) -> bool:
+    """Applique la nouvelle capacité si l'écart le justifie.
+
+    On ignore les micro-variations (±1) : modifier un pool à chaque cycle
+    produirait un journal illisible et n'apporterait rien.
+    """
+    if actuelle is None:
+        LOG.error("Pool %s introuvable — vérifier son existence", politique.nom)
+        return False
+    if abs(cible - actuelle) <= 1:
+        LOG.info("%s : %d unités — inchangé", politique.nom, actuelle)
+        return False
+
+    sens = "↑" if cible > actuelle else "↓"
+    LOG.info("%s : %d → %d unités %s", politique.nom, actuelle, cible, sens)
+    if dry_run:
+        return True
+
+    ctm.post(f"/run/resource/{serveur}/{politique.nom}", {"max": cible})
+    return True
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+    serveur = "ctmsrv-prod"
+    instant = datetime.now()
+    modifications = 0
+
+    try:
+        with ControlMClient.depuis_environnement() as ctm:
+            for politique in POLITIQUES:
+                restant = travail_restant(ctm, "PRD-ENERGIE-*")
+                cible = capacite_cible(restant, politique, instant)
+                actuelle = capacite_actuelle(ctm, politique.nom)
+
+                LOG.info("%s : %d job(s) restant(s), échéance %s",
+                         politique.nom, restant,
+                         politique.echeance.strftime("%H:%M"))
+
+                if ajuster(ctm, serveur, politique, cible, actuelle,
+                           dry_run=ctm.config.dry_run):
+                    modifications += 1
+
+    except ControlMError as exc:
+        LOG.error("Pilotage impossible : %s", exc)
+        return 1
+
+    LOG.info("✓ %d pool(s) ajusté(s)", modifications)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+:::caution[⚠️ Le garde-fou indispensable]
+`capacite_max` **doit** correspondre à la capacité technique réelle du système protégé
+([§5.4](#54-dimensionner-un-pool)). Un script qui augmente un pool sans plafond ne
+« accélère » rien : il transfère la file d'attente de Control-M vers la base de données,
+qui s'effondre. Le pool ne crée pas de capacité, il la **répartit**.
+:::
+
+:::tip[✅ Bonne pratique — la remise à la valeur nominale]
+Prévoyez un job de fin de journée qui remet chaque pool à sa capacité nominale. Sinon la
+capacité de crise devient la capacité permanente, et le prochain pic n'aura plus de marge
+([§5.7](#57-diagnostic-et-déblocage)).
+:::
+
+---
+
+#### 15. Transport et logistique
+
+##### 15.1 Le contexte
+
+🟢 Le transport se caractérise par un **référentiel qui bouge sans arrêt** : lignes, dépôts,
+tournées, entrepôts, transporteurs. Chaque changement du plan de transport devrait se traduire
+par une modification des chaînes — ce qui est impossible à la main.
+
+| Contrainte | Conséquence |
+|---|---|
+| **Référentiel mouvant** | Les chaînes doivent être **générées** depuis le référentiel, pas écrites à la main |
+| **Temps réel** | Positions, retards, incidents : traitements cycliques à intervalle court |
+| **Pics saisonniers** | Fêtes, soldes, vacances : les volumes triplent |
+| **Multi-sites** | Un dépôt = un agent, parfois une connectivité imparfaite |
+| **Tolérance à la panne partielle** | Un dépôt indisponible ne doit pas bloquer les 40 autres |
+
+##### 15.2 Le script : générer les chaînes depuis le référentiel
+
+🔴 **L'usage le plus transformateur de l'API dans ce secteur.** Le référentiel des dépôts est
+la source de vérité ; les chaînes Control-M en sont la **projection**, régénérée à chaque
+changement et déployée par pipeline.
+
+```python
+#!/usr/bin/env python3
+"""
+generer_chaines_transport.py — génère les chaînes Control-M à partir du
+référentiel des dépôts, puis calcule le différentiel avec ce qui est déployé.
+
+Principe : le référentiel (base, API, ou fichier maintenu par le métier) est la
+SOURCE DE VÉRITÉ. Les folders Control-M en sont la projection. Quand un dépôt
+ouvre, ferme ou change d'horaire, on régénère et on déploie — sans qu'un humain
+n'écrive une ligne de JSON.
+
+Le calcul de différentiel est la partie qui compte : il montre en revue de
+changement exactement ce qui va être créé, modifié ou supprimé.
+
+Usage :
+    python generer_chaines_transport.py --referentiel depots.json --diff
+    python generer_chaines_transport.py --referentiel depots.json --deployer
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import sys
+
+from ctm_client import ControlMClient, ControlMError, ControlMNotFound
+import ctm_ops as ops
+
+LOG = logging.getLogger("chaines_transport")
+
+SERVEUR = "ctmsrv-prod"
+PREFIXE = "PRD-TRANSPORT"
+
+
+def charger_referentiel(chemin: str) -> list[dict]:
+    """Charge le référentiel des dépôts.
+
+    En production, cette fonction interroge l'API du référentiel plutôt qu'un
+    fichier : la logique en aval est identique, seule la source change.
+    """
+    with open(chemin, encoding="utf-8") as f:
+        donnees = json.load(f)
+    actifs = [d for d in donnees["depots"] if d.get("actif", True)]
+    LOG.info("%d dépôt(s) actif(s) sur %d dans le référentiel",
+             len(actifs), len(donnees["depots"]))
+    return actifs
+
+
+def generer_folder(depot: dict) -> dict:
+    """Construit la définition du folder d'un dépôt.
+
+    Tout ce qui est propre au dépôt vient du référentiel ; tout ce qui est
+    commun (alertes, conventions, ressources) est écrit ici, une seule fois.
+    """
+    nom = f"{PREFIXE}-{depot['code']}"
+    evenement_fin = f"{nom}-TERMINE"
+
+    return {
+        nom: {
+            "Type": "Folder",
+            "ControlmServer": SERVEUR,
+            "Application": "TRANSPORT",
+            "SubApplication": depot["region"],
+            "Description": f"Traitements du depot {depot['libelle']} ({depot['code']})",
+            "RunAs": "svc_transport",
+            "OrderMethod": "Automatic",
+            "When": {
+                "WeekDays": depot.get("jours", ["MON", "TUE", "WED", "THU", "FRI"]),
+                "RuleBasedCalendars": {"Excluded": ["FERIES-FR"],
+                                       "Relationship": "AND"},
+                "FromTime": depot.get("heure_debut", "0500"),
+            },
+
+            "RECEPTION-PLAN": {
+                "Type": "Job:FileWatcher",
+                "Host": depot["agent"],
+                "Path": f"/data/transport/{depot['code']}/plan_%%ODATE.csv",
+                "SearchInterval": "120",
+                "Publier": {"Type": "AddEvents",
+                            "Events": [{"Event": f"{nom}-PLAN-RECU"}]},
+            },
+
+            "OPTIMISATION-TOURNEES": {
+                "Type": "Job:Command",
+                "Command": (f"/opt/transport/optimiser.sh {depot['code']} %%ODATE"),
+                "Host": depot["agent"],
+                "Attente": {"Type": "WaitForEvents",
+                            "Events": [{"Event": f"{nom}-PLAN-RECU"}]},
+                # Le solveur d'optimisation est gourmand : on borne la
+                # consommation globale, tous dépôts confondus.
+                "PoolCalcul": {"Type": "Resource:Pool", "Quantity": "1"},
+                "Publier": {"Type": "AddEvents",
+                            "Events": [{"Event": f"{nom}-TOURNEES-OK"}]},
+            },
+
+            "DIFFUSION-EMBARQUE": {
+                "Type": "Job:Command",
+                "Command": (f"/opt/transport/diffuser.sh {depot['code']} %%ODATE"),
+                "Host": depot["agent"],
+                "Attente": {"Type": "WaitForEvents",
+                            "Events": [{"Event": f"{nom}-TOURNEES-OK"}]},
+                "Publier": {"Type": "AddEvents",
+                            "Events": [{"Event": evenement_fin}]},
+                # Panne partielle assumée : un dépôt en échec alerte son
+                # exploitation locale et n'interrompt pas les autres (§15.1).
+                "SiEchec": {
+                    "Type": "If",
+                    "CompletionStatus": "NOTOK",
+                    "AlerterDepot": {
+                        "Type": "Mail",
+                        "To": depot.get("contact", "exploitation@exemple.fr"),
+                        "Subject": f"[TRANSPORT] Echec depot {depot['libelle']} %%ODATE",
+                        "Message": "Les autres depots poursuivent normalement.",
+                    },
+                },
+            },
+        }
+    }
+
+
+def folders_deployes(ctm: ControlMClient) -> set[str]:
+    """Liste les folders actuellement déployés portant notre préfixe."""
+    try:
+        actuels = ctm.get("/deploy/folders", server=SERVEUR, folder=f"{PREFIXE}-*")
+    except ControlMNotFound:
+        return set()
+    if isinstance(actuels, dict):
+        return set(actuels.keys())
+    return {f.get("name", "") for f in actuels or []}
+
+
+def calculer_differentiel(souhaites: set[str], deployes: set[str]) -> dict:
+    """Compare l'état souhaité et l'état déployé.
+
+    C'est CE tableau qu'on présente en revue de changement, pas 3 000 lignes
+    de JSON. Il tient en trois lignes et se comprend en trois secondes.
+    """
+    return {
+        "a_creer": sorted(souhaites - deployes),
+        "a_maintenir": sorted(souhaites & deployes),
+        "a_supprimer": sorted(deployes - souhaites),
+    }
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Génère les chaînes transport")
+    p.add_argument("--referentiel", required=True)
+    p.add_argument("--diff", action="store_true", help="affiche le différentiel seul")
+    p.add_argument("--deployer", action="store_true")
+    p.add_argument("--supprimer-obsoletes", action="store_true",
+                   help="supprime les folders des dépôts fermés (avec archivage)")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    depots = charger_referentiel(args.referentiel)
+    definitions = {}
+    for depot in depots:
+        definitions.update(generer_folder(depot))
+
+    try:
+        with ControlMClient.depuis_environnement() as ctm:
+            diff = calculer_differentiel(set(definitions), folders_deployes(ctm))
+
+            LOG.info("À créer     : %d  %s", len(diff["a_creer"]),
+                     ", ".join(diff["a_creer"][:5]) or "—")
+            LOG.info("À maintenir : %d", len(diff["a_maintenir"]))
+            LOG.info("Obsolètes   : %d  %s", len(diff["a_supprimer"]),
+                     ", ".join(diff["a_supprimer"][:5]) or "—")
+
+            if args.diff and not args.deployer:
+                return 0
+
+            if args.deployer:
+                # Un seul deploy pour tout : Control-M traite l'ensemble de
+                # façon cohérente, et on évite N appels réseau.
+                ops.deployer_definition(ctm, definitions,
+                                        valider=True, sauvegarder_dans="backup")
+                LOG.info("✓ %d folder(s) déployé(s)", len(definitions))
+
+            if args.supprimer_obsoletes:
+                for nom in diff["a_supprimer"]:
+                    LOG.warning("Suppression du folder obsolète %s", nom)
+                    ops.supprimer_chaine(ctm, serveur=SERVEUR, folder=nom,
+                                         confirmer=True)
+
+    except ControlMError as exc:
+        LOG.error("Échec : %s", exc)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+**Le référentiel** :
+
+```json
+{
+  "depots": [
+    {"code": "IDF01", "libelle": "Roissy", "region": "ILE-DE-FRANCE",
+     "agent": "srvdep-idf01", "heure_debut": "0430", "actif": true,
+     "contact": "exploitation-idf@exemple.fr"},
+    {"code": "RHA01", "libelle": "Lyon Corbas", "region": "AUVERGNE-RHONE-ALPES",
+     "agent": "srvdep-rha01", "heure_debut": "0500", "actif": true},
+    {"code": "PAC01", "libelle": "Marseille", "region": "PACA",
+     "agent": "srvdep-pac01", "actif": false}
+  ]
+}
+```
+
+:::tip[✅ Ce que ce motif change]
+Ouvrir un dépôt devient : ajouter cinq lignes au référentiel, ouvrir une *merge request*,
+lire le différentiel en revue, fusionner. Le pipeline déploie. **Aucune** intervention
+manuelle dans Control-M, **aucun** risque d'oubli, et l'historique Git raconte l'évolution
+du réseau logistique.
+:::
+
+---
+
+#### 16. Santé
+
+##### 16.1 Le contexte
+
+🟢 En santé, la contrainte dominante n'est ni le volume ni la vitesse : c'est la
+**confidentialité** et la **traçabilité**. Les données de santé sont des données sensibles au
+sens du RGPD, et leur hébergement est réglementé (certification HDS en France).
+
+| Contrainte | Conséquence sur Control-M |
+|---|---|
+| **Données sensibles** | **Aucune donnée patient dans les noms de jobs, les sorties, les messages d'alerte** |
+| **Traçabilité** | Qui a relancé quel traitement, quand — conservé et auditable |
+| **Continuité de service** | Un établissement de santé fonctionne 24/7 : pas de fenêtre d'arrêt confortable |
+| **Interopérabilité** | Flux HL7, DICOM, formats normalisés |
+| **Contrôle des accès** | RBAC strict, principe du moindre privilège |
+
+:::caution[⚠️ Le piège spécifique au secteur]
+Un nom de job comme `EXPORT-DUPONT-JEAN-20260903` est une **violation de données** : il
+apparaît dans le monitoring, dans les alertes, dans les mails, dans les rapports, et il est
+conservé des mois dans la base CTMEM. La règle est absolue : **jamais d'identifiant patient
+dans un objet Control-M** — ni nom de job, ni variable, ni message d'alerte, ni chemin de
+fichier journalisé. On manipule des **lots** et des **identifiants techniques**.
+:::
+
+##### 16.2 La chaîne d'intégration des flux hospitaliers
+
+```mermaid
+flowchart TB
+    A["RECEPTION-HL7<br/>FileWatcher lot"] --> B["CONTROLE-FORMAT"]
+    B -->|"conforme"| C["ANONYMISATION<br/>avant toute exploitation"]
+    B -->|"non conforme"| Q["QUARANTAINE<br/>+ alerte technique"]
+    C --> D["INTEGRATION-DPI"]
+    D --> E["ALIMENTATION-PMSI"]
+    E --> F["CONTROLE-EXHAUSTIVITE"]
+    F --> G["ARCHIVAGE-LEGAL"]
+```
+
+```json
+{
+  "PRD-SANTE-FLUX-HL7": {
+    "Type": "Folder",
+    "ControlmServer": "ctmsrv-prod",
+    "Application": "SANTE",
+    "SubApplication": "INTEGRATION-HL7",
+    "RunAs": "svc_sante",
+    "Description": "Integration des flux HL7 — lots anonymises, aucune donnee nominative",
+    "When": {"Schedule": "Everyday"},
+
+    "RECEPTION-HL7": {
+      "Type": "Job:FileWatcher",
+      "Host": "srvsante01",
+      "Path": "/data/sante/entrant/lot_%%ODATE_*.hl7",
+      "SearchInterval": "60",
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-SANTE-LOT-RECU"}]}
+    },
+
+    "CONTROLE-FORMAT": {
+      "Type": "Job:Command",
+      "Command": "/opt/sante/controler_hl7.sh %%ODATE",
+      "Host": "srvsante01",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-SANTE-LOT-RECU"}]},
+      "SiNonConforme": {
+        "Type": "If",
+        "CompletionCode": "> 0",
+        "MettreEnQuarantaine": {
+          "Type": "Event:Add",
+          "Events": [{"Event": "PRD-SANTE-QUARANTAINE"}]
+        },
+        "AlerteTechnique": {
+          "Type": "Mail",
+          "To": "integration-sante@exemple.fr",
+          "Subject": "[SANTE] Lot non conforme le %%ODATE",
+          "Message": "Lot mis en quarantaine. Voir le rapport technique. AUCUNE donnee patient dans ce message."
+        }
+      },
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-SANTE-FORMAT-OK"}]}
+    },
+
+    "ANONYMISATION": {
+      "Type": "Job:Command",
+      "Command": "/opt/sante/anonymiser.sh %%ODATE",
+      "Host": "srvsante01",
+      "Description": "Pseudonymisation avant toute exploitation secondaire",
+      "Attente": {"Type": "WaitForEvents",
+                  "Events": [{"Event": "PRD-SANTE-FORMAT-OK"}]},
+      "VerrouTableCorrespondance": {"Type": "Resource:Lock",
+                                    "LockType": "Exclusive"},
+      "Publier": {"Type": "AddEvents",
+                  "Events": [{"Event": "PRD-SANTE-ANONYMISE-OK"}]}
+    }
+  }
+}
+```
+
+##### 16.3 Le script : audit de conformité du patrimoine
+
+🔴 Un contrôle **automatique** que rien dans le patrimoine Control-M ne contrevient aux règles
+de confidentialité. Exécuté chaque semaine, il produit la preuve attendue par l'audit.
+
+```python
+#!/usr/bin/env python3
+"""
+auditer_conformite_sante.py — vérifie que le patrimoine Control-M respecte les
+règles de confidentialité et de traçabilité applicables aux données de santé.
+
+Contrôles effectués :
+  1. aucune donnée potentiellement nominative dans les noms d'objets ;
+  2. aucun compte RunAs nominatif (seuls des comptes de service) ;
+  3. tout job manipulant des données sensibles publie un événement de traçabilité ;
+  4. aucune alerte n'expose de chemin de fichier contenant un identifiant ;
+  5. les folders sensibles portent bien une Application/SubApplication (base du RBAC).
+
+Sortie : un rapport lisible + un code retour non nul si des écarts sont détectés,
+ce qui permet de l'exécuter comme un job Control-M qui devient rouge.
+"""
+from __future__ import annotations
+
+import logging
+import re
+import sys
+from dataclasses import dataclass, field
+
+from ctm_client import ControlMClient, ControlMError
+
+LOG = logging.getLogger("audit_sante")
+
+# --- Motifs suspects -------------------------------------------------------
+# Ces expressions ne prouvent rien à elles seules : elles SIGNALENT, un humain
+# tranche. Un audit automatique qui prétend décider seul produit surtout des
+# faux positifs ignorés — et donc aucune sécurité réelle.
+MOTIFS_SUSPECTS = [
+    (re.compile(r"\b\d{13,15}\b"), "numéro long — NIR/INS potentiel"),
+    (re.compile(r"\b(?:19|20)\d{2}[-/]?\d{2}[-/]?\d{2}\b.*\b[A-Z]{4,}\b"),
+     "date de naissance associée à un nom potentiel"),
+    (re.compile(r"(?i)\b(patient|dossier|nom|prenom|naissance)[-_]"),
+     "vocabulaire nominatif dans un identifiant d'objet"),
+]
+
+COMPTES_SERVICE_AUTORISES = re.compile(r"^svc_[a-z0-9_]+$")
+
+
+@dataclass
+class Ecart:
+    gravite: str            # "bloquant" | "majeur" | "mineur"
+    objet: str
+    controle: str
+    detail: str
+
+
+@dataclass
+class Rapport:
+    ecarts: list[Ecart] = field(default_factory=list)
+    objets_analyses: int = 0
+
+    def ajouter(self, gravite: str, objet: str, controle: str, detail: str) -> None:
+        self.ecarts.append(Ecart(gravite, objet, controle, detail))
+
+    @property
+    def bloquants(self) -> list[Ecart]:
+        return [e for e in self.ecarts if e.gravite == "bloquant"]
+
+
+def parcourir_objets(definition, chemin: str = ""):
+    """Parcourt récursivement une définition et produit (chemin, objet).
+
+    Les définitions Control-M sont des arbres : folder → sous-folder → job.
+    Un parcours récursif est le seul moyen fiable de tout voir.
+    """
+    if isinstance(definition, dict):
+        for cle, valeur in definition.items():
+            if isinstance(valeur, dict):
+                sous_chemin = f"{chemin}/{cle}" if chemin else cle
+                yield sous_chemin, valeur
+                yield from parcourir_objets(valeur, sous_chemin)
+
+
+def controler_nommage(chemin: str, objet: dict, rapport: Rapport) -> None:
+    """Contrôle 1 & 4 — aucune donnée nominative dans les identifiants et chemins."""
+    a_inspecter = [chemin, objet.get("Description", "")]
+    for cle in ("Command", "Path", "FileName", "FilePath"):
+        if isinstance(objet.get(cle), str):
+            a_inspecter.append(objet[cle])
+
+    for texte in a_inspecter:
+        for motif, libelle in MOTIFS_SUSPECTS:
+            if motif.search(texte):
+                rapport.ajouter("bloquant", chemin, "confidentialité",
+                                f"{libelle} — « {texte[:80]} »")
+                return          # un signalement suffit par objet
+
+
+def controler_runas(chemin: str, objet: dict, rapport: Rapport) -> None:
+    """Contrôle 2 — le compte d'exécution doit être un compte de service."""
+    run_as = objet.get("RunAs")
+    if run_as and not COMPTES_SERVICE_AUTORISES.match(run_as):
+        rapport.ajouter(
+            "majeur", chemin, "compte d'exécution",
+            f"RunAs « {run_as} » ne suit pas la convention svc_* "
+            f"(compte nominatif interdit : la traçabilité doit porter sur le "
+            f"service, pas sur une personne)")
+
+
+def controler_classification(chemin: str, objet: dict, rapport: Rapport) -> None:
+    """Contrôle 5 — Application/SubApplication renseignés (socle du RBAC)."""
+    if objet.get("Type") != "Folder":
+        return
+    if not objet.get("Application") or not objet.get("SubApplication"):
+        rapport.ajouter(
+            "majeur", chemin, "classification",
+            "Application/SubApplication manquants — le RBAC et les rapports "
+            "d'audit ne peuvent pas filtrer ce folder")
+
+
+def controler_tracabilite(chemin: str, objet: dict, rapport: Rapport) -> None:
+    """Contrôle 3 — un job sensible doit laisser une trace exploitable."""
+    if not str(objet.get("Type", "")).startswith("Job:"):
+        return
+    publie = any(isinstance(v, dict) and v.get("Type") == "AddEvents"
+                 for v in objet.values())
+    if not publie:
+        rapport.ajouter(
+            "mineur", chemin, "traçabilité",
+            "aucun AddEvents : le franchissement de cette étape n'est pas "
+            "matérialisé, ce qui complique la reconstitution a posteriori")
+
+
+def auditer(ctm: ControlMClient, filtre_folder: str = "PRD-SANTE-*") -> Rapport:
+    rapport = Rapport()
+    definition = ctm.get("/deploy/jobs", folder=filtre_folder)
+
+    for chemin, objet in parcourir_objets(definition):
+        if not isinstance(objet, dict) or "Type" not in objet:
+            continue
+        rapport.objets_analyses += 1
+        controler_nommage(chemin, objet, rapport)
+        controler_runas(chemin, objet, rapport)
+        controler_classification(chemin, objet, rapport)
+        controler_tracabilite(chemin, objet, rapport)
+
+    return rapport
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    try:
+        with ControlMClient.depuis_environnement() as ctm:
+            rapport = auditer(ctm)
+    except ControlMError as exc:
+        LOG.error("Audit impossible : %s", exc)
+        return 9
+
+    LOG.info("%d objet(s) analysé(s), %d écart(s)",
+             rapport.objets_analyses, len(rapport.ecarts))
+
+    for gravite in ("bloquant", "majeur", "mineur"):
+        lot = [e for e in rapport.ecarts if e.gravite == gravite]
+        if not lot:
+            continue
+        LOG.warning("--- %d écart(s) de gravité %s ---", len(lot), gravite)
+        for e in lot:
+            LOG.warning("  [%s] %s : %s", e.controle, e.objet, e.detail)
+
+    if rapport.bloquants:
+        LOG.error("❌ %d écart(s) BLOQUANT(S) — traitement immédiat requis",
+                  len(rapport.bloquants))
+        return 2
+    if rapport.ecarts:
+        LOG.warning("⚠️  Écarts non bloquants à planifier")
+        return 1
+    LOG.info("✓ Patrimoine conforme")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+:::tip[✅ Bonne pratique — l'audit tourne dans Control-M]
+Ce script est lui-même un job Control-M hebdomadaire. Son résultat (vert/rouge) est visible
+dans le monitoring, historisé, et produit la **preuve de contrôle périodique** que demandera
+l'auditeur. Un contrôle qui existe dans une procédure Word mais nulle part dans l'outillage
+ne vaut rien le jour de l'audit.
+:::
+
+---
+
+#### 17. Éducation
+
+##### 17.1 Le contexte
+
+🟢 L'éducation a une signature unique : **une saisonnalité extrême**. Onze mois calmes, puis
+deux semaines de rentrée où tout arrive en même temps — inscriptions, affectations, emplois du
+temps, dotations, bourses.
+
+| Contrainte | Conséquence |
+|---|---|
+| **Pic de rentrée** | Le dimensionnement de septembre est absurde en février, et inversement |
+| **Calendrier scolaire par zone** | Les zones A, B, C ont des vacances différentes |
+| **Campagnes datées** | Inscriptions, examens, résultats : des chaînes qui n'existent que quelques semaines |
+| **Établissements multiples** | Des milliers d'entités, avec des tailles très inégales |
+| **Données d'élèves** | Mineurs : contraintes RGPD renforcées (voir [§16](#16-santé)) |
+
+##### 17.2 Le script : piloter les campagnes saisonnières
+
+🔴 La bonne réponse à la saisonnalité n'est pas de supprimer et recréer les chaînes chaque
+année. C'est de les **activer et désactiver** selon un calendrier de campagnes, en une
+commande — avec, en prime, le dimensionnement adapté à la période.
+
+```python
+#!/usr/bin/env python3
+"""
+piloter_campagnes_education.py — active ou désactive les chaînes Control-M selon
+le calendrier des campagnes de l'année scolaire, et ajuste le dimensionnement.
+
+Le problème résolu : une chaîne « inscriptions » n'a de sens que de juin à
+septembre. Le reste de l'année, elle ne doit pas s'ordonnancer — mais elle doit
+RESTER, documentée et versionnée, prête à être réactivée (§10.7).
+
+Le script fait deux choses :
+  1. il bascule OrderMethod entre Automatic (campagne ouverte) et Manual (fermée) ;
+  2. il ajuste la capacité des pools au profil de la période.
+
+Exécuté chaque nuit comme job Control-M : le calendrier des campagnes devient
+la seule chose que le métier maintient.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import logging
+import sys
+from dataclasses import dataclass
+from datetime import date
+
+from ctm_client import ControlMClient, ControlMError
+import ctm_ops as ops
+
+LOG = logging.getLogger("campagnes_education")
+SERVEUR = "ctmsrv-prod"
+
+
+@dataclass
+class Campagne:
+    """Une campagne : une chaîne active sur une période, avec un profil de charge."""
+    folder: str
+    libelle: str
+    debut: date
+    fin: date
+    pool: str | None = None
+    capacite_campagne: int = 10
+    capacite_hors_campagne: int = 2
+
+    def est_ouverte(self, jour: date) -> bool:
+        return self.debut <= jour <= self.fin
+
+
+def charger_campagnes(chemin: str, annee_scolaire: int) -> list[Campagne]:
+    """Charge le calendrier des campagnes (maintenu par le métier).
+
+    Les dates sont exprimées en MM-JJ et rattachées à l'année scolaire : le
+    métier écrit « du 15-06 au 15-09 » une fois, pas chaque année.
+    """
+    with open(chemin, encoding="utf-8") as f:
+        brut = json.load(f)
+
+    campagnes = []
+    for item in brut["campagnes"]:
+        mois_debut = int(item["debut"].split("-")[0])
+        # Une campagne qui commence en janvier appartient à l'année civile
+        # suivante de l'année scolaire (une année scolaire est à cheval).
+        annee_debut = annee_scolaire if mois_debut >= 6 else annee_scolaire + 1
+        mois_fin = int(item["fin"].split("-")[0])
+        annee_fin = annee_scolaire if mois_fin >= 6 else annee_scolaire + 1
+
+        campagnes.append(Campagne(
+            folder=item["folder"],
+            libelle=item["libelle"],
+            debut=date.fromisoformat(f"{annee_debut}-{item['debut']}"),
+            fin=date.fromisoformat(f"{annee_fin}-{item['fin']}"),
+            pool=item.get("pool"),
+            capacite_campagne=item.get("capacite_campagne", 10),
+            capacite_hors_campagne=item.get("capacite_hors_campagne", 2),
+        ))
+    return campagnes
+
+
+def etat_actuel(ctm: ControlMClient, folder: str) -> str | None:
+    """Retourne l'OrderMethod actuel du folder, ou None s'il est introuvable."""
+    definition = ctm.get("/deploy/folders", server=SERVEUR, folder=folder)
+    for corps in (definition.values() if isinstance(definition, dict) else []):
+        if isinstance(corps, dict) and corps.get("Type") == "Folder":
+            return corps.get("OrderMethod", "Automatic")
+    return None
+
+
+def basculer(ctm: ControlMClient, folder: str, vers: str, dry_run: bool) -> bool:
+    """Bascule l'OrderMethod du folder. Retourne True si un changement a eu lieu."""
+    actuel = etat_actuel(ctm, folder)
+    if actuel is None:
+        LOG.error("Folder %s introuvable — campagne mal déclarée ?", folder)
+        return False
+    if actuel == vers:
+        LOG.debug("%s déjà en %s", folder, vers)
+        return False
+
+    LOG.info("%s : %s → %s", folder, actuel, vers)
+    if dry_run:
+        return True
+
+    definition = ctm.get("/deploy/folders", server=SERVEUR, folder=folder)
+    for corps in definition.values():
+        if isinstance(corps, dict) and corps.get("Type") == "Folder":
+            corps["OrderMethod"] = vers
+    # On redéploie la définition EXPORTÉE : aucun champ n'est perdu au passage.
+    ops.deployer_definition(ctm, definition, valider=True,
+                            sauvegarder_dans="backup")
+    return True
+
+
+def ajuster_pool(ctm: ControlMClient, pool: str, capacite: int,
+                 dry_run: bool) -> None:
+    """Aligne la capacité d'un pool sur le profil de la période."""
+    LOG.info("Pool %s → %d unités", pool, capacite)
+    if not dry_run:
+        ctm.post(f"/run/resource/{SERVEUR}/{pool}", {"max": capacite})
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(description="Pilotage des campagnes éducation")
+    p.add_argument("--calendrier", required=True)
+    p.add_argument("--annee-scolaire", type=int, required=True,
+                   help="année de la rentrée, ex. 2026 pour 2026-2027")
+    p.add_argument("--jour", default=date.today().isoformat(),
+                   help="date d'évaluation (permet de tester une date future)")
+    p.add_argument("--dry-run", action="store_true")
+    args = p.parse_args()
+
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    jour = date.fromisoformat(args.jour)
+    campagnes = charger_campagnes(args.calendrier, args.annee_scolaire)
+    LOG.info("Évaluation au %s — %d campagne(s) déclarée(s)", jour, len(campagnes))
+
+    changements = 0
+    try:
+        with ControlMClient.depuis_environnement() as ctm:
+            for campagne in campagnes:
+                ouverte = campagne.est_ouverte(jour)
+                etiquette = "OUVERTE" if ouverte else "fermée"
+                LOG.info("%-32s %-8s (%s → %s)",
+                         campagne.libelle, etiquette, campagne.debut, campagne.fin)
+
+                if basculer(ctm, campagne.folder,
+                            "Automatic" if ouverte else "Manual", args.dry_run):
+                    changements += 1
+
+                if campagne.pool:
+                    ajuster_pool(ctm, campagne.pool,
+                                 campagne.capacite_campagne if ouverte
+                                 else campagne.capacite_hors_campagne,
+                                 args.dry_run)
+
+    except ControlMError as exc:
+        LOG.error("Pilotage impossible : %s", exc)
+        return 1
+
+    LOG.info("✓ %d changement(s) appliqué(s)", changements)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+**Le calendrier des campagnes** — le seul fichier que le métier maintient :
+
+```json
+{
+  "campagnes": [
+    {"folder": "PRD-EDUC-INSCRIPTIONS", "libelle": "Inscriptions",
+     "debut": "06-01", "fin": "09-30",
+     "pool": "PRD-EDUC-INSCRIPTIONS", "capacite_campagne": 25,
+     "capacite_hors_campagne": 2},
+
+    {"folder": "PRD-EDUC-AFFECTATIONS", "libelle": "Affectations",
+     "debut": "06-15", "fin": "07-31",
+     "pool": "PRD-EDUC-CALCUL", "capacite_campagne": 15,
+     "capacite_hors_campagne": 2},
+
+    {"folder": "PRD-EDUC-EMPLOIS-DU-TEMPS", "libelle": "Emplois du temps",
+     "debut": "08-15", "fin": "09-20", "capacite_campagne": 10},
+
+    {"folder": "PRD-EDUC-EXAMENS", "libelle": "Session d'examens",
+     "debut": "05-01", "fin": "07-15",
+     "pool": "PRD-EDUC-CALCUL", "capacite_campagne": 20,
+     "capacite_hors_campagne": 2},
+
+    {"folder": "PRD-EDUC-BOURSES", "libelle": "Campagne de bourses",
+     "debut": "01-15", "fin": "05-31", "capacite_campagne": 8}
+  ]
+}
+```
+
+##### 17.3 La planification par zone scolaire
+
+```json
+"When": {
+  "RuleBasedCalendars": {
+    "Included": ["CALENDRIER-SCOLAIRE-ZONE-C"],
+    "Excluded": ["VACANCES-ZONE-C", "FERIES-FR"],
+    "Relationship": "AND"
+  },
+  "FromTime": "1900"
+}
+```
+
+:::tip[✅ Bonne pratique]
+Un calendrier **par zone** (`ZONE-A`, `ZONE-B`, `ZONE-C`), chargé une fois par an depuis la
+source officielle par un job dédié. C'est exactement le runbook n°6 de
+[§18](#18-dix-runbooks-automatisés) : le jour où le calendrier officiel change, un seul job
+est à relancer, et toutes les chaînes suivent.
+:::
+
+---
+### Partie E — Industrialisation
+
+#### 18. Dix runbooks automatisés
+
+🔴 **Le principe : Control-M supervise très bien Control-M.** Chacun de ces runbooks est un
+job Control-M, pas une procédure écrite que personne ne lit. Regroupez-les dans un folder
+`ADM-CONTROLM-HOUSEKEEPING`.
+
+| # | Runbook | Fréquence | Ce qu'il évite |
+|---|---|---|---|
+| 1 | Santé des bases CTMEM et CONTROLM | Quotidien | La saturation découverte à 3 h du matin |
+| 2 | Inventaire et santé du parc d'agents | Quotidien | L'agent tombé depuis trois jours que personne n'a vu |
+| 3 | Audit du pool de conditions | Hebdomadaire | Les conditions orphelines qui déclenchent à tort |
+| 4 | Occupation des ressources | Quotidien | Les pools saturés en permanence, jamais redimensionnés |
+| 5 | Sauvegarde du patrimoine vers Git | Quotidien | La perte de définitions non versionnées |
+| 6 | Chargement annuel des calendriers | Annuel | Le 2 janvier où plus rien ne s'ordonnance |
+| 7 | Détection des jobs en anomalie de durée | Quotidien | La dérive lente jusqu'au dépassement de SLA |
+| 8 | Rotation des jetons d'API | Trimestriel | Le jeton de 2019 encore actif |
+| 9 | Remise à niveau des capacités | Quotidien | Les capacités « temporaires » devenues permanentes |
+| 10 | Contrôle du patrimoine orphelin | Mensuel | Les chaînes que plus personne ne connaît |
+
+##### Runbook 1 — Santé des bases
+
+```bash
+#!/bin/bash
+# adm_sante_bases.sh — contrôle quotidien des deux bases (§2.9)
+# Job Control-M : ADM-CONTROLM-SANTE-BASES, tous les jours à 08:00
+set -uo pipefail
+
+SEUIL_ALERTE=75          # % — on alerte AVANT que ce soit un problème
+SEUIL_CRITIQUE=90
+CODE=0
+
+echo "=== Occupation de la base Control-M/Server ==="
+SORTIE=$(ctmdbused 2>&1) || { echo "ERREUR : ctmdbused a échoué"; exit 2; }
+echo "$SORTIE"
+
+# On extrait le plus grand pourcentage renvoyé : le format exact varie selon
+# la version, donc on reste tolérant plutôt que de parser une colonne précise.
+PCT=$(echo "$SORTIE" | grep -oE '[0-9]+(\.[0-9]+)?%' | tr -d '%' \
+      | sort -rn | head -1)
+
+if [[ -n "${PCT:-}" ]]; then
+    PCT_ENT=${PCT%%.*}
+    echo "Occupation maximale relevée : ${PCT_ENT}%"
+    if   (( PCT_ENT >= SEUIL_CRITIQUE )); then
+        echo "CRITIQUE : purge immédiate requise"; CODE=2
+    elif (( PCT_ENT >= SEUIL_ALERTE )); then
+        echo "ALERTE : planifier une purge"; CODE=1
+    fi
+fi
+
+echo "=== Espace disque ==="
+ctmdiskspace || true
+
+exit $CODE
+```
+
+:::tip[✅ Pourquoi un code retour gradué]
+Le job Control-M peut alors déclencher des actions `On`/`Do` **différentes** :
+code 1 → mail à l'équipe ; code 2 → alerte à l'astreinte. Un script qui répond
+seulement 0 ou 1 oblige l'humain à lire les logs pour savoir s'il doit se lever.
+:::
+
+##### Runbook 2 — Inventaire et santé du parc d'agents
+
+```python
+#!/usr/bin/env python3
+"""adm_sante_agents.py — inventorie les agents et signale ceux qui ne répondent pas."""
+import logging
+import sys
+
+from ctm_client import ControlMClient, ControlMError
+
+LOG = logging.getLogger("sante_agents")
+SERVEURS = ["ctmsrv-prod", "ctmsrv-preprod"]
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+    indisponibles = []
+
+    with ControlMClient.depuis_environnement() as ctm:
+        for serveur in SERVEURS:
+            try:
+                agents = ctm.get(f"/config/server/{serveur}/agents")
+            except ControlMError as exc:
+                LOG.error("%s : inventaire impossible — %s", serveur, exc)
+                return 2
+
+            liste = agents if isinstance(agents, list) else agents.get("agents", [])
+            LOG.info("%s : %d agent(s)", serveur, len(liste))
+
+            for agent in liste:
+                nom = agent.get("nodeid") or agent.get("name")
+                statut = (agent.get("status") or "").lower()
+                if statut and statut not in {"available", "disponible"}:
+                    LOG.warning("  ✗ %-24s %s", nom, agent.get("status"))
+                    indisponibles.append(f"{serveur}/{nom}")
+
+    if indisponibles:
+        LOG.error("%d agent(s) indisponible(s) : %s",
+                  len(indisponibles), ", ".join(indisponibles))
+        return 1
+    LOG.info("✓ Tous les agents répondent")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+##### Runbook 3 — Audit du pool de conditions
+
+```python
+#!/usr/bin/env python3
+"""
+adm_audit_conditions.py — détecte les conditions orphelines (§4.6).
+
+Les conditions NoDate / AnyDate ne sont jamais purgées par la New Day. Elles
+s'accumulent, encombrent le pool, et — c'est le vrai risque — font démarrer des
+jobs à tort parce qu'un vieux drapeau traîne.
+"""
+import logging
+import sys
+from collections import Counter
+
+from ctm_client import ControlMClient
+
+LOG = logging.getLogger("audit_conditions")
+SEUIL_TOTAL = 5000          # à calibrer sur votre plateforme
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+
+    with ControlMClient.depuis_environnement() as ctm:
+        evenements = ctm.evenements()
+
+    LOG.info("%d condition(s) dans le pool", len(evenements))
+
+    par_date = Counter(str(e.get("date", "?")) for e in evenements)
+    for valeur, nombre in par_date.most_common(10):
+        LOG.info("  date=%-12s : %5d", valeur, nombre)
+
+    sans_date = sum(n for d, n in par_date.items()
+                    if d.upper() in {"NODATE", "ANYDATE", "STAT", "****", "NONE"})
+    if sans_date:
+        LOG.warning("%d condition(s) sans date : jamais purgées automatiquement",
+                    sans_date)
+
+    # Les préfixes d'environnement croisés sont le signal d'alerte le plus grave :
+    # une condition de test dans le pool de production peut déclencher une chaîne (§4.5).
+    prefixes = Counter((e.get("name", "") or "").split("-")[0] for e in evenements)
+    LOG.info("Préfixes : %s", dict(prefixes.most_common(8)))
+    croises = [p for p in prefixes if p in {"TST", "DEV", "PPR"}]
+    if croises:
+        LOG.error("⚠️  Conditions d'environnements non-production présentes : %s",
+                  croises)
+        return 2
+
+    return 1 if len(evenements) > SEUIL_TOTAL else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+##### Runbook 5 — Sauvegarde du patrimoine vers Git
+
+```bash
+#!/bin/bash
+# adm_sauvegarde_patrimoine.sh — export quotidien du patrimoine dans Git.
+# C'est le filet de sécurité INDÉPENDANT de la sauvegarde SGBD (§2.10) :
+# il permet de restaurer une définition sans restaurer une base entière.
+set -euo pipefail
+
+DEPOT="/srv/controlm-backup"
+HORODATAGE=$(date +%Y-%m-%d)
+cd "$DEPOT"
+
+mkdir -p folders calendars config
+
+ctm deploy folders::get   -s "server=*&folder=*"  > folders/all-folders.json
+ctm deploy jobs::get      -s "server=*&folder=*"  > folders/all-jobs.json
+ctm deploy calendars::get -s "name=*"             > calendars/all-calendars.json
+ctm config  servers::get                          > config/servers.json
+ctm config  authorization:roles::get              > config/roles.json
+ctm config  authorization:users::get              > config/users.json
+
+# jq --sort-keys neutralise l'ordre des clés : sans cela, le diff quotidien est
+# illisible et personne ne le relit — donc la sauvegarde ne sert à rien.
+for f in folders/*.json calendars/*.json config/*.json; do
+    jq --sort-keys . "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+done
+
+if git diff --quiet; then
+    echo "Aucun changement de patrimoine le $HORODATAGE"
+    exit 0
+fi
+
+git add -A
+git commit -m "sauvegarde patrimoine Control-M du $HORODATAGE"
+git push origin main
+echo "✓ Patrimoine sauvegardé et poussé"
+```
+
+:::tip[✅ Le bénéfice caché de ce runbook]
+Le `git diff` quotidien répond automatiquement à la question la plus fréquente en
+exploitation : **« qu'est-ce qui a changé hier ? »** — même pour les modifications faites
+à la souris dans l'interface web par quelqu'un qui ne passe pas par le pipeline.
+:::
+
+##### Runbook 7 — Détection des dérives de durée
+
+```python
+#!/usr/bin/env python3
+"""
+adm_derive_durees.py — détecte les jobs dont la durée s'écarte de leur historique.
+
+Une chaîne ne casse presque jamais d'un coup : elle dérive. Le job qui prenait
+20 minutes en prend 35, puis 50, et un matin il dépasse le SLA. Ce contrôle
+attrape la dérive AVANT l'incident.
+"""
+import logging
+import sys
+
+from ctm_client import ControlMClient
+
+LOG = logging.getLogger("derive_durees")
+FACTEUR_ALERTE = 1.5        # 50 % plus long que la moyenne historique
+
+
+def main() -> int:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+    anomalies = 0
+
+    with ControlMClient.depuis_environnement() as ctm:
+        for job in ctm.parcourir_jobs(status="Ended OK"):
+            job_id = job.get("jobId")
+            if not job_id:
+                continue
+            try:
+                stats = ctm.get(f"/run/job/{job_id}/statistics")
+            except Exception:            # noqa: BLE001 — un job sans historique est normal
+                continue
+
+            moyenne = stats.get("averageRunTime") or stats.get("average")
+            reelle = job.get("runTime") or stats.get("lastRunTime")
+            if not moyenne or not reelle:
+                continue
+
+            try:
+                moyenne, reelle = float(moyenne), float(reelle)
+            except (TypeError, ValueError):
+                continue
+
+            if moyenne > 0 and reelle > moyenne * FACTEUR_ALERTE:
+                LOG.warning("%-40s %.0f s contre %.0f s en moyenne (×%.1f)",
+                            job.get("name"), reelle, moyenne, reelle / moyenne)
+                anomalies += 1
+
+    LOG.info("%d job(s) en dérive de durée", anomalies)
+    return 1 if anomalies else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+```
+
+##### Les autres runbooks — squelettes
+
+| # | Cœur du contrôle | Signal d'alerte |
+|---|---|---|
+| 4 | `ctm run resources::get` → taux d'occupation par pool | Pool à 100 % plus de X % du temps |
+| 6 | Chargement des calendriers depuis la source officielle, puis `ctm deploy` | Échec = plus aucun ordonnancement en janvier |
+| 8 | Inventaire des jetons et de leur date d'expiration | Jeton expirant sous 30 jours, ou créé il y a plus d'un an |
+| 9 | Comparaison capacité courante / capacité nominale de référence | Écart persistant après 24 h |
+| 10 | Folders sans exécution depuis N jours, ou sans `Application` renseignée | Patrimoine orphelin candidat à la revue |
+
+---
+
+#### 19. CI/CD et promotion d'environnement
+
+> La mise en œuvre détaillée (GitLab CI, Jenkins, Azure DevOps, deploy descriptors,
+> site standards) est traitée dans le *Guide complet §11 et §12*. Cette section-ci donne
+> **le principe directeur** et les trois règles qui font la différence.
+
+##### 19.1 Le pipeline de référence
+
+```mermaid
+flowchart LR
+    A["Commit<br/>JSON de définitions"] --> B["ctm build<br/>validation"]
+    B --> C["Déploiement DEV<br/>automatique"]
+    C --> D["Tests<br/>ordering + statuts"]
+    D --> E["Merge request<br/>revue humaine"]
+    E --> F["Déploiement TEST<br/>automatique"]
+    F --> G["Validation métier"]
+    G --> H["Déploiement PROD<br/>⚠️ approbation manuelle"]
+    H --> I["Vérification<br/>post-déploiement"]
+```
+
+##### 19.2 Les trois règles qui changent tout
+
+| Règle | Pourquoi | Mise en œuvre |
+|---|---|---|
+| **Une définition, N environnements** | Un JSON par environnement = trois vérités qui divergent en six mois | Un fichier + un *deploy descriptor* par environnement |
+| **`ctm build` bloque le pipeline** | Une erreur de syntaxe détectée en production, c'est une nuit perdue | Étape obligatoire, jamais `allow_failure` |
+| **La production exige une approbation humaine** | Le déploiement automatique en production est un gain de temps qui se paie une fois, très cher | *Manual gate* dans le pipeline |
+
+```yaml
+# .gitlab-ci.yml — squelette
+stages: [valider, dev, test, prod]
+
+valider:
+  stage: valider
+  script:
+    - ctm environment set dev
+    - ctm build definitions/*.json          # aucune tolérance à l'échec
+
+deployer_prod:
+  stage: prod
+  when: manual                              # ⚠️ approbation humaine obligatoire
+  environment: production
+  script:
+    - ctm environment set prod
+    # 1. Sauvegarder AVANT (le seul retour arrière possible — §10.2)
+    - ctm deploy folders::get -s "server=*&folder=PRD-*" > backup-avant.json
+    # 2. Voir exactement ce qui va être écrit, valeurs substituées
+    - ctm deploy transform definitions/chaine.json descriptors/prod.json
+    # 3. Déployer
+    - ctm deploy definitions/chaine.json descriptors/prod.json
+  artifacts:
+    paths: [backup-avant.json]
+    expire_in: 90 days
+```
+
+:::tip[✅ L'artefact de sauvegarde est la partie la plus importante de ce fichier]
+Il transforme « on ne peut pas revenir en arrière » en « on redéploie l'artefact du job
+précédent ». Sans lui, `ctm deploy` étant un *upsert* irréversible, chaque déploiement
+en production est un pari.
+:::
+
+##### 19.3 Le deploy descriptor
+
+Un seul JSON de définitions, trois environnements :
+
+```json
+{
+  "ControlmServer": "ctmsrv-prod",
+  "RunAs": "svc_banque_prod",
+  "Host": "srvapp-prod01",
+  "Variables": [
+    {"ENV": "PROD"},
+    {"REP_ECHANGE": "/data/banque/prod"},
+    {"ConnectionProfile": "ORACLE-FIN-PROD"}
+  ]
+}
+```
+
+```bash
+ctm deploy transform definitions/chaine.json descriptors/prod.json   # visualiser
+ctm deploy           definitions/chaine.json descriptors/prod.json   # déployer
+```
+
+---
+
+#### 20. Observabilité : exporter vers Prometheus
+
+🔴 Les métriques qui manquent presque partout, et qui transforment les discussions
+d'opinion en décisions étayées.
+
+| Métrique | Question à laquelle elle répond |
+|---|---|
+| Jobs par statut | « Combien d'échecs cette nuit ? » |
+| Jobs en attente par verrou | « Attend-on des conditions ou des ressources ? » ([§3](#3-le-modèle-dexécution--les-six-verrous)) |
+| Occupation des pools | « Faut-il redimensionner ? » ([§5.4](#54-dimensionner-un-pool)) |
+| Agents indisponibles | « Le parc est-il sain ? » |
+| Conditions dans le pool | « Le pool dérive-t-il ? » ([§4.6](#46-cycle-de-vie-et-nettoyage)) |
+| Âge du job le plus ancien en attente | « Y a-t-il un blocage silencieux ? » |
+
+```python
+#!/usr/bin/env python3
+"""
+exporteur_controlm.py — expose des métriques Control-M au format Prometheus.
+
+À lancer comme service (port 9188) ou comme job Control-M cyclique écrivant
+dans un fichier lu par le node_exporter (textfile collector).
+
+Installation :
+    pip install prometheus_client requests
+"""
+from __future__ import annotations
+
+import logging
+import time
+from collections import Counter
+
+from prometheus_client import Gauge, start_http_server
+
+from ctm_client import ControlMClient, ControlMError
+
+LOG = logging.getLogger("exporteur_controlm")
+
+# --- Définition des métriques ---------------------------------------------
+JOBS = Gauge("controlm_jobs", "Nombre de jobs par statut", ["statut"])
+ATTENTE = Gauge("controlm_jobs_en_attente", "Jobs en attente par type de verrou",
+                ["verrou"])
+POOL_MAX = Gauge("controlm_pool_capacite", "Capacité totale d'un pool", ["pool"])
+POOL_UTIL = Gauge("controlm_pool_utilise", "Unités utilisées d'un pool", ["pool"])
+AGENTS = Gauge("controlm_agents", "Agents par statut", ["serveur", "statut"])
+CONDITIONS = Gauge("controlm_conditions_total", "Conditions dans le pool")
+COLLECTE_OK = Gauge("controlm_collecte_reussie",
+                    "1 si la dernière collecte a réussi, 0 sinon")
+
+SERVEURS = ["ctmsrv-prod"]
+
+# Correspondance entre statut affiché et verrou du modèle à six verrous (§3).
+# C'est ce qui rend la métrique ACTIONNABLE : « 40 jobs en attente » n'aide pas,
+# « 40 jobs bloqués sur une ressource » désigne immédiatement quoi regarder.
+VERROUS = {
+    "wait condition": "conditions",
+    "wait event": "conditions",
+    "wait resource": "ressources",
+    "wait host": "hote",
+    "wait time": "temps",
+    "wait workload": "workload",
+    "held": "hold",
+}
+
+
+def collecter(ctm: ControlMClient) -> None:
+    """Une passe de collecte complète."""
+    # --- Jobs par statut ---------------------------------------------------
+    jobs = list(ctm.parcourir_jobs())
+    par_statut = Counter((j.get("status") or "inconnu") for j in jobs)
+    JOBS.clear()
+    for statut, nombre in par_statut.items():
+        JOBS.labels(statut=statut).set(nombre)
+
+    # --- Jobs en attente, ventilés par verrou ------------------------------
+    par_verrou: Counter = Counter()
+    for statut, nombre in par_statut.items():
+        cle = VERROUS.get(statut.lower())
+        if cle:
+            par_verrou[cle] += nombre
+    ATTENTE.clear()
+    for verrou, nombre in par_verrou.items():
+        ATTENTE.labels(verrou=verrou).set(nombre)
+
+    # --- Ressources --------------------------------------------------------
+    POOL_MAX.clear()
+    POOL_UTIL.clear()
+    for res in ctm.ressources():
+        nom = res.get("name")
+        if not nom:
+            continue
+        # Les noms de champs varient selon la version : on essaie les usuels
+        for cle in ("max", "maxQuantity", "total"):
+            if cle in res:
+                POOL_MAX.labels(pool=nom).set(float(res[cle]))
+                break
+        for cle in ("used", "usedQuantity", "inUse"):
+            if cle in res:
+                POOL_UTIL.labels(pool=nom).set(float(res[cle]))
+                break
+
+    # --- Agents ------------------------------------------------------------
+    AGENTS.clear()
+    for serveur in SERVEURS:
+        try:
+            donnees = ctm.get(f"/config/server/{serveur}/agents")
+        except ControlMError as exc:
+            LOG.warning("Agents de %s indisponibles : %s", serveur, exc)
+            continue
+        liste = donnees if isinstance(donnees, list) else donnees.get("agents", [])
+        for statut, nombre in Counter(
+                (a.get("status") or "inconnu") for a in liste).items():
+            AGENTS.labels(serveur=serveur, statut=statut).set(nombre)
+
+    # --- Conditions --------------------------------------------------------
+    CONDITIONS.set(len(ctm.evenements()))
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)-7s %(message)s")
+    start_http_server(9188)
+    LOG.info("Exporteur démarré sur le port 9188")
+
+    while True:
+        try:
+            with ControlMClient.depuis_environnement() as ctm:
+                collecter(ctm)
+            COLLECTE_OK.set(1)
+            LOG.info("Collecte effectuée")
+        except Exception as exc:            # noqa: BLE001
+            # Un exporteur ne doit JAMAIS s'arrêter sur une erreur : il doit
+            # signaler qu'il ne collecte plus (métrique à 0) et réessayer.
+            COLLECTE_OK.set(0)
+            LOG.error("Collecte en échec : %s", exc)
+        time.sleep(60)
+
+
+if __name__ == "__main__":
+    main()
+```
+
+**Les alertes qui en découlent** :
+
+```yaml
+groups:
+  - name: controlm
+    rules:
+      - alert: ControlMCollecteHS
+        expr: controlm_collecte_reussie == 0
+        for: 5m
+        annotations:
+          summary: "Supervision Control-M en panne — angle mort"
+
+      - alert: ControlMJobsEnEchec
+        expr: controlm_jobs{statut="Ended Not OK"} > 5
+        for: 10m
+        annotations:
+          summary: "{{ $value }} jobs en échec"
+
+      - alert: ControlMPoolSature
+        expr: controlm_pool_utilise / controlm_pool_capacite > 0.95
+        for: 30m
+        annotations:
+          summary: "Pool {{ $labels.pool }} saturé depuis 30 min — redimensionner ?"
+
+      - alert: ControlMAgentIndisponible
+        expr: controlm_agents{statut!~"(?i)available|disponible"} > 0
+        for: 15m
+        annotations:
+          summary: "{{ $value }} agent(s) indisponible(s) sur {{ $labels.serveur }}"
+```
+
+:::tip[✅ L'alerte la plus importante est ControlMCollecteHS]
+Une supervision qui tombe en silence est pire qu'une absence de supervision : elle donne
+l'illusion que tout va bien. Toujours superviser le superviseur.
+:::
+
+---
+
+#### 21. Cinquante questions d'entretien
+
+🎤 Réponses courtes, celles qu'on attend réellement.
+
+##### Architecture et bases de données
+
+| # | Question | Réponse attendue |
+|---|---|---|
+| 1 | Quels sont les composants de Control-M ? | EM (console + consolidation), Server (moteur), Agents (exécution), + les deux bases |
+| 2 | Combien de bases, lesquelles ? | Deux : **CTMEM** (Enterprise Manager) et **CONTROLM** (Control-M/Server), une par serveur |
+| 3 | Que contient CTMEM ? | Définitions, sécurité EM, miroir de supervision, alertes, audit, historique, SLA |
+| 4 | Que contient CONTROLM ? | AJF, conditions, ressources, calendriers actifs, agents, sécurité serveur, journal |
+| 5 | Pourquoi deux bases ? | Découplage : le Server est autonome et continue si l'EM tombe ; 1 EM pour N Servers |
+| 6 | J'arrête l'EM, que se passe-t-il ? | La production **continue** ; on perd la visibilité et l'API |
+| 7 | J'arrête le Server ? | La production **s'arrête** |
+| 8 | Rôle du Gateway ? | Remonter l'état d'exécution du Server vers la base EM |
+| 9 | L'écran est figé, tout est bloqué ? | Probablement le Gateway ou la base EM. Blocage **global et simultané** = supervision, pas ordonnancement |
+| 10 | Qui est la source de vérité pour une définition ? | **CTMEM**. Pour l'exécution : **CONTROLM** |
+| 11 | Je restaure CONTROLM seul, risque ? | L'AJF revient en arrière : des jobs déjà exécutés peuvent se rejouer → double effet externe |
+| 12 | Comment sauvegarder ? | Les **deux** bases, **même fenêtre**, hors New Day et hors pic ; test de restauration annuel |
+| 13 | La base EM grossit, pourquoi ? | Audit, alertes non acquittées, archives : rétention mal réglée |
+| 14 | Peut-on écrire en SQL dans les bases ? | **Non.** Perte de cohérence et de support |
+| 15 | Un agent accède-t-il à une base ? | Non. C'est un pur exécutant |
+
+##### Ordonnancement
+
+| # | Question | Réponse attendue |
+|---|---|---|
+| 16 | Qu'est-ce qu'une condition IN/OUT ? | Un drapeau `nom + date` : le producteur pose (`AddEvents`), le consommateur attend (`WaitForEvents`) |
+| 17 | Pourquoi une date dans une condition ? | Pour rattacher l'événement à une journée de traitement et éviter les faux départs |
+| 18 | Que fait `AnyDate` ? | Accepte n'importe quelle date — pour les événements externes non maîtrisés |
+| 19 | Différence quantitative / contrôle ? | Quantitative = **compteur** de capacité ; contrôle = **verrou** exclusif ou partagé |
+| 20 | Un pool de capacité 1 vaut-il un verrou ? | Fonctionnellement souvent oui, sémantiquement non : on perd le mode `Shared` et la lisibilité |
+| 21 | Peut-il y avoir un interblocage ? | Pas entre jobs Control-M (acquisition atomique de toutes les ressources). Oui pour des verrous **applicatifs** internes aux scripts |
+| 22 | Comment dimensionner un pool ? | Capacité technique réelle − réserve interactive − marge ; puis mesurer et ajuster |
+| 23 | Qu'est-ce que l'ODATE ? | La date de **traitement** logique, fixée à l'ordering, stable au rejeu |
+| 24 | ODATE ou `date` système dans un script ? | **Toujours** l'ODATE, passée en argument. Sinon un rejeu produit la mauvaise date |
+| 25 | Que fait la New Day ? | Bascule de journée, purge de l'AJF et des conditions, évaluation des `When`, ordering du jour |
+| 26 | Mon job n'existe pas aujourd'hui | Critère `When` non satisfait, `OrderMethod: Manual`, calendrier absent, `EndDate` échue, ou New Day en échec |
+| 27 | `MonthDays` + `WeekDays`, relation ? | **AND** par défaut : uniquement les jours satisfaisant les deux |
+| 28 | `RuleBasedCalendars.Relationship` ? | **OR** par défaut — l'inverse du précédent. À écrire explicitement |
+| 29 | Différence `Order…` / `Shift…` en confirmation ? | `Order…` décale l'exécution en gardant l'ODATE ; `Shift…` décale aussi l'ODATE |
+| 30 | Les six verrous d'un job ? | Statut, fenêtre de temps, conditions IN, ressource quantitative, ressource de contrôle, hôte/limites |
+| 31 | Job en `Wait Resource`, deux causes ? | Pool épuisé, ou verrou détenu par un autre job |
+| 32 | Risque d'un job cyclique mal borné ? | Boucle d'échecs, saturation de la base, bruit d'alertes |
+| 33 | Retry automatique, quand ? | Erreurs **transitoires** uniquement. Jamais sur une erreur fonctionnelle |
+| 34 | À quoi sert `Job:Dummy` ? | Jalon logique, agrégation de conditions, lisibilité en exploitation |
+| 35 | Fan-out : qui supprime la condition ? | Un seul consommateur, sinon les autres attendent indéfiniment |
+
+##### API et automatisation
+
+| # | Question | Réponse attendue |
+|---|---|---|
+| 36 | Différence `ctm deploy` / `ctm run order` ? | `deploy` enregistre la définition ; `order` crée l'instance qui s'exécute |
+| 37 | `ctm deploy` est-il idempotent ? | Oui, c'est un **upsert** — il écrase, sans annulation possible |
+| 38 | `ctm run order` est-il idempotent ? | **Non** : deux appels = deux exécutions |
+| 39 | Jeton de session ou d'API ? | API (`x-api-key`) pour l'automatisation ; session (`Bearer`) pour l'interactif |
+| 40 | Que faire sur un 403 ? | **Ne pas réessayer** : c'est du RBAC. Un 401 se renouvelle, un 5xx se rejoue |
+| 41 | Comment déployer un agent par API ? | `ctm provision agent::install`, puis **vérifier** avec `ctm config server:agent::ping` |
+| 42 | Comment poster une condition ? | `ctm run event::add <server> <nom> <date>` — l'outil de déblocage n°1, à tracer |
+| 43 | Comment holder un job ? | `ctm run job::hold <jobId>` ; libérer avec `job::free` |
+| 44 | Différence `hold` / `delete` / `setToOk` ? | `hold` suspend (réversible) ; `delete` retire l'instance (les successeurs attendent) ; `setToOk` fait croire au succès (**les successeurs partent**) |
+| 45 | Comment déplanifier ? | Trois niveaux : instance (`hold`/`delete`), planification (`OrderMethod: Manual`), patrimoine (suppression) |
+| 46 | Comment supprimer une chaîne proprement ? | Analyse d'impact → archivage → déplanification → observation → suppression |
+| 47 | Comment rejouer une journée passée ? | `ctm run order` avec `orderDate`, idéalement en `hold`, et des jobs idempotents |
+| 48 | Où trouver la syntaxe exacte ? | `ctm <service> -h` et le Swagger local. Jamais un blog |
+| 49 | Étape obligatoire avant tout déploiement ? | `ctm build` |
+| 50 | Comment garantir un retour arrière ? | Le patrimoine dans **Git** + export avant chaque déploiement |
+
+---
+
+#### 22. Abécédaire A → Z
+
+🟢🟡 Le glossaire, dans l'ordre. Utile en révision comme en lecture au fil de l'eau.
+
+| Lettre | Terme | Définition |
+|---|---|---|
+| **A** | **Agent** | Programme installé sur la machine cible qui exécute les jobs. Ne parle à aucune base |
+| | **AJF** | *Active Jobs File* — les instances de la journée, dans la base CONTROLM |
+| | **AnyDate** | Qualificatif acceptant n'importe quelle date de traitement ([§4.3](#43-la-sémantique-de-lodate)) |
+| | **Application** | Axe de classement d'un folder ; base du filtrage et du RBAC |
+| **B** | **Bypass** | Contourner un job : la chaîne continue comme s'il était passé |
+| | **Build** | `ctm build` — validation d'une définition avant déploiement |
+| **C** | **Calendrier** | Régulier, périodique ou à base de règles ([§6.1](#61-les-trois-types-de-calendriers)) |
+| | **CCM** | *Control-M Configuration Manager* — l'administration des composants EM |
+| | **Condition** | Ancien nom de l'*Event* : drapeau `nom + date` |
+| | **CONTROLM** | La base du Control-M/Server : AJF, conditions, ressources ([§2.4](#24-la-base-controlm-en-détail)) |
+| | **CTMEM** | La base de l'Enterprise Manager : définitions, supervision, audit ([§2.3](#23-la-base-ctmem-en-détail)) |
+| | **Cyclique** | Job qui se répète à intervalle donné |
+| **D** | **DaysKeepActive** | Rétention d'une instance dans l'AJF (ex-MAXWAIT) |
+| | **DAYTIME** | Heure de bascule de la journée de traitement |
+| | **Deploy** | Enregistrement d'une définition. **Upsert irréversible** |
+| | **Deploy descriptor** | Fichier de substitution par environnement |
+| **E** | **EM** | *Enterprise Manager* — console, consolidation, sécurité, historique |
+| | **Event** | Terme actuel pour condition |
+| **F** | **Fan-in / fan-out** | Convergence / divergence de dépendances ([§4.4](#44-les-huit-motifs-de-dépendance)) |
+| | **FileWatcher** | Job qui attend l'apparition d'un fichier |
+| | **Flow** | Sucre syntaxique générant automatiquement les événements d'une séquence |
+| | **Folder** | Conteneur de jobs (ex-Table) |
+| **G** | **Gateway** | Processus EM qui remonte l'état d'exécution d'un Server vers CTMEM |
+| | **Global condition** | Condition partagée entre plusieurs Control-M/Servers |
+| **H** | **Hold** | Suspension réversible d'un job |
+| | **Host group** | Groupe d'agents pour la répartition de charge |
+| **I** | **Idempotence** | Propriété d'une opération rejouable sans effet supplémentaire ([§13.4](#134-idempotence-et-rejouabilité)) |
+| | **IN condition** | Ce qu'un job attend (`WaitForEvents`) |
+| **J** | **Job** | Unité de travail exécutable |
+| | **Jobs as Code** | Définir le patrimoine en JSON versionné |
+| **K** | **Kill** | Terminer un job en cours d'exécution |
+| **L** | **Lock** | `Resource:Lock` — verrou `Exclusive` ou `Shared` |
+| | **L*n*** | Modificateur : *n*-ième jour ouvré **depuis la fin** du mois |
+| **M** | **MFT** | *Managed File Transfer* (ex-AFT) |
+| | **Monitoring** | Domaine de supervision de l'exécution |
+| **N** | **New Day** | Bascule quotidienne : purge puis ordering ([§6.7](#67-la-new-day-procedure)) |
+| | **NoDate** | Condition sans date — **jamais purgée automatiquement** |
+| **O** | **ODATE** | Date de traitement logique |
+| | **On/Do** | Actions conditionnelles selon le résultat ([§8](#8-le-modèle-ondo)) |
+| | **Order** | Créer une instance dans l'AJF. **Non idempotent** |
+| | **OrderMethod** | `Automatic`, `Manual`, ou nom d'un User Daily |
+| | **OUT condition** | Ce qu'un job publie (`AddEvents`) ou consomme (`DeleteEvents`) |
+| **P** | **Pool** | `Resource:Pool` — compteur de capacité |
+| | **Priority** | Ordre de passage à ressources égales |
+| | **Provision** | Service d'installation de composants |
+| **Q** | **Quantitative resource** | Ancien nom du `Resource:Pool` |
+| | **Quarantaine** | Motif : isoler un lot non conforme sans bloquer le flux |
+| **R** | **RBAC** | Contrôle d'accès par rôles |
+| | **Rerun** | Relance d'un job déjà exécuté |
+| | **RunAs** | Compte système d'exécution (ex-Job Owner) |
+| **S** | **Selector** | Processus du Server qui décide des soumissions |
+| | **setToOk** | Forcer artificiellement le succès — **la commande la plus dangereuse** |
+| | **Site standard** | Règle d'entreprise imposée aux définitions |
+| | **SLA** | Engagement d'heure de fin d'un service (ex-BIM) |
+| | **SMART Folder** | Folder portant ses propres règles, héritées par ses jobs |
+| **T** | **Track & Route** | Processus du Server qui remonte les statuts d'exécution |
+| | **Transform** | `ctm deploy transform` — visualiser sans déployer |
+| **U** | **Upsert** | Créer ou remplacer — le comportement de `ctm deploy` |
+| | **User Daily** | Ordering décalé et lissé, hors New Day globale |
+| **V** | **Variable** | `%%NOM` — valeur injectée dans un job (ex-AutoEdit) |
+| | **Viewpoint** | Vue filtrée du monitoring |
+| **W** | **WaitForEvents** | Objet JSON des conditions d'entrée |
+| | **When** | Bloc de planification d'un folder ou d'un job |
+| | **Why** | Fonction expliquant pourquoi un job ne démarre pas |
+| | **Workbench** | Environnement autonome de test |
+| | **Workload Policy** | Politique transverse de limitation de charge |
+| **X** | **XML / X-api-key** | Format d'échange fréquent ; en-tête du jeton d'API |
+| **Y** | **Y2K…** | Rappel : toujours des dates sur 4 chiffres, `AAAAMMJJ` |
+| **Z** | **Zone** | Fuseau horaire — à aligner entre serveurs et bases ([§2.7](#27-moteurs-comptes-schémas)) |
+| | **z/OS** | Plateforme mainframe, avec ses spécificités |
+
+---
+
+#### 23. Aide-mémoire et ressources
+
+##### 23.1 Les commandes du quotidien
+
+```bash
+# --- Contexte ------------------------------------------------------------
+ctm environment show                       # où je pointe (PAS « list »)
+ctm environment set <env>                  # ⚠️ persistant
+
+# --- Patrimoine ----------------------------------------------------------
+ctm build   <fichier.json>                 # valider — TOUJOURS avant deploy
+ctm deploy  <fichier.json> [descriptor]    # déployer (upsert irréversible)
+ctm deploy  transform <def.json> <desc.json>   # voir sans déployer
+ctm deploy  folders::get -s "server=*&folder=PRD-*"
+ctm deploy  jobs::get    -s "server=*&folder=PRD-*"
+ctm deploy  folder::delete <server> <folder>   # ⚠️ irréversible
+
+# --- Exécution -----------------------------------------------------------
+ctm run order <server> <folder> [jobs] [-f config.json]   # ⚠️ non idempotent
+ctm run jobs::status -s "folder=PRD-*"
+ctm run job::hold   <jobId>
+ctm run job::free   <jobId>
+ctm run job::rerun  <jobId>
+ctm run job::kill   <jobId>
+ctm run job::output::get <jobId>
+ctm run job::waitingInfo <jobId>           # pourquoi il attend
+
+# --- Événements et ressources -------------------------------------------
+ctm run events::get
+ctm run event::add    <server> <nom> ODAT
+ctm run event::delete <server> <nom> ODAT
+ctm run resources::get   -s "server=<srv>"
+ctm run resource::update <server> <nom> <max>
+
+# --- Plateforme ----------------------------------------------------------
+ctm config servers::get
+ctm config server:agents::get   <server>
+ctm config server:agent::ping   <server> <agent>
+ctm config server:agent::disable <server> <agent>
+ctm provision agent::install <image> <server> <nom> <port>
+
+# --- Bases (sur la machine du Control-M/Server) --------------------------
+ctmdbused                                  # occupation — réflexe quotidien
+ctmdiskspace
+ctmdbcheck
+dbversion
+```
+
+##### 23.2 Les dix pièges les plus coûteux
+
+| # | Piège | Section |
+|---|---|---|
+| 1 | Utiliser `date` au lieu de `%%ODATE` dans un script | [§6.6](#66-odate-contre-date-système) |
+| 2 | Restaurer une seule des deux bases | [§2.10](#210-sauvegarde-et-restauration-cohérentes) |
+| 3 | `DaysRelation` (AND) et `Relationship` (OR) : défauts inverses | [§6.3](#63-le-piège-du-etou-entre-jours) |
+| 4 | Croire à un blocage de production alors que c'est le Gateway | [§2.5](#25-la-synchronisation-em-et-server) |
+| 5 | Rejouer `ctm run order` et doubler une chaîne | [§9.4](#94-codes-http-erreurs-idempotence) |
+| 6 | `setToOk` pour « faire passer la nuit » | [§10.5](#105-holder-et-libérer-des-jobs) |
+| 7 | Augmenter une capacité « juste pour ce soir » et l'oublier | [§5.7](#57-diagnostic-et-déblocage) |
+| 8 | Supprimer un folder sans analyse d'impact ni archive | [§10.8](#108-supprimer-une-chaîne) |
+| 9 | Conditions `NoDate` accumulées qui déclenchent à tort | [§4.6](#46-cycle-de-vie-et-nettoyage) |
+| 10 | Modifier des définitions par utilitaire serveur | [§2.6](#26-le-piège-numéro-un--la-désynchronisation) |
+
+##### 23.3 Où vérifier
+
+| Besoin | Source |
+|---|---|
+| Syntaxe CLI de **votre** version | `ctm <service> -h` |
+| Contrat REST de **votre** version | `https://<EM>:8443/automation-api/swagger-ui.html` |
+| Compatibilité moteurs, OS, Java | *Compatibility Requirements* BMC de votre version |
+| Vue d'ensemble du produit | [**Livre I — Guide complet Control-M**](#livre-i--guide-complet-control-m) |
+| Utilitaires réellement présents | `ls "$CONTROLM_SERVER/bin"`, `ls "$EM_HOME/bin"` |
+
+##### 23.4 Le mot de la fin
+
+Trois idées à retenir de ce guide :
+
+1. **Deux bases, deux vérités.** Les définitions sont vraies côté CTMEM, l'exécution côté
+   CONTROLM. La moitié des incidents déroutants vient de l'oubli de cette distinction.
+2. **Un job bloqué l'est sur un verrou précis.** Statut, temps, condition, pool, verrou, hôte.
+   Lire le statut avant de chercher évite des heures.
+3. **Tout ce qui est fait à la souris est à faire deux fois.** L'API n'est pas un raccourci
+   pour les experts : c'est ce qui rend le travail reproductible, revu, versionné et
+   rejouable — donc fiable.
+
+---
+
+> **Document rédigé pour accompagner [**Livre I — Guide complet Control-M**](#livre-i--guide-complet-control-m).**
+> Les commandes, champs JSON et comportements version-dépendants doivent être vérifiés contre
+> **votre** plateforme avant tout usage en production.
