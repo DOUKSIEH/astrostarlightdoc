@@ -142,6 +142,7 @@ export default defineConfig({
 						{ label: "Installation AWX Operator - Talos", slug: "guides/iac/awx" },
 						{ label: "Control-M — Guide professionnel complet", slug: "guides/iac/controlm" },
 						{ label: "Control-M  - Administration, Ordonnancement & Automation API", slug: "guides/iac/controlm-api-python" },
+						{ label: "API & Control-M Automation API", slug: "guides/iac/api" },
 						],
 					},
 					{
@@ -169,7 +170,7 @@ export default defineConfig({
 						{ label: "Guide Openstack", slug: "guides/cloud/openstack" },
 						{ label: "Guide AWS", slug: "guides/cloud/aws" },
 						{ label: "AWS SAA-C03", slug: "guides/cloud/aws-saa-c03" },
-						{ label: "Projet de thèse", slug: "guides/cloud/these" },
+						// { label: "Projet de thèse", slug: "guides/cloud/these" },
 						],
 					},
 					{
