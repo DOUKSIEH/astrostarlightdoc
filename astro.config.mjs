@@ -170,6 +170,8 @@ export default defineConfig({
 						{ label: "Guide Openstack", slug: "guides/cloud/openstack" },
 						{ label: "Guide AWS", slug: "guides/cloud/aws" },
 						{ label: "AWS SAA-C03", slug: "guides/cloud/aws-saa-c03" },
+						{ label: "Floci pour AWS : émuler AWS en local", slug: "guides/cloud/floci" },
+						{ label: "AWS SAA-C03 — Révision express", slug: "guides/cloud/saa-c03-express" },
 						// { label: "Projet de thèse", slug: "guides/cloud/these" },
 						],
 					},
@@ -178,6 +180,7 @@ export default defineConfig({
 						items: [
 						{ label: "Guide Talos Linux", slug: "guides/linux/talos" },
 						{ label: "Infrastructure Proxmox + Talos + Odoo", slug: "guides/linux/infrastructure-odoo" },
+						{ label: "FacturaDJ — Référentiel Architecture et Exploitation ", slug: "guides/linux/facturadj" },
 						],
 					},
 					{
