@@ -132,6 +132,7 @@ export default defineConfig({
 						{ label: "Docker...", slug: "guides/kubernetes/docker" },
 						{ label: "K8S - Outils & Méthodes", slug: "guides/kubernetes/k8s-outils" },
 						{ label: "K8S - Bonnes pratiques", slug: "guides/kubernetes/k8s-bonnes-pratiques" },
+						{ label: "K8S - Troubleshooting ", slug: "guides/kubernetes/troubleshooting" },
 						],
 					},
 					{
