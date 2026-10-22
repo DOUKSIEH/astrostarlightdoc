@@ -131,6 +131,7 @@ export default defineConfig({
 						{ label: "Talos longhorn", slug: "guides/kubernetes/talos-longhorn" },
 						{ label: "Docker...", slug: "guides/kubernetes/docker" },
 						{ label: "K8S - Outils & Méthodes", slug: "guides/kubernetes/k8s-outils" },
+						{ label: "K8S - Bonnes pratiques", slug: "guides/kubernetes/k8s-bonnes-pratiques" },
 						],
 					},
 					{
@@ -154,7 +155,7 @@ export default defineConfig({
 						{ label: "SIEM - Graylog · Wazuh · Suricata", slug: "guides/security/siem" },
 						{ label: "Comprendre et exploiter SBOM", slug: "guides/security/sbom" },
 						{ label: "Sécurité de la Supply Chain", slug: "guides/security/supply-chain" },
-
+						{ label: "bascule contrôlée de Trivy vers Syft et Grype", slug: "guides/security/bascule-trivy-to-grype" },
 						],
 					},
 					{
@@ -197,6 +198,7 @@ export default defineConfig({
 						label: "CI/CD",
 						items: [
 						{ label: "Git & Git Flow", slug: "guides/cicd/git" },
+						{ label: "Guide pratique GitLab et Azure DevOps", slug: "guides/cicd/cicd" },
 						],
 					},
 					{
